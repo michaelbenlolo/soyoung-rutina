@@ -164,6 +164,7 @@ h2 { font-size:20px; font-weight:800; letter-spacing:-.01em; text-wrap:balance; 
 .mlab { font-size:10.5px; font-weight:700; letter-spacing:.13em; text-transform:uppercase;
   color:var(--mut); margin-bottom:3px; }
 .mrow b { color:var(--ink); }
+.nota.suave { background:var(--crema2); border-left:3px solid var(--rosa); }
 .vacio { text-align:center; color:var(--mut); font-size:13px; padding:20px 0; }
 
 </style>
@@ -5140,15 +5141,23 @@ function pintarCombinada() {
   }).join("");
 
   let extra = "";
+  const sensible = sel.includes("sensible");
+  let fuertesYa = rt.filter(i => esFuerte(PROD[i])).length;
   if (faltan.length) {
     const usados = new Set(rt);
     const filas = faltan.map(f => {
-      let best = null, bv = -1;
+      let best = null, bs = null;
       PROD.forEach((p, i) => {
         if (usados.has(i) || !p.t.includes(f)) return;
-        if (p.v > bv) { bv = p.v; best = i; }
+        // regla de seguridad: nunca un activo fuerte si la piel es sensible,
+        // ni un segundo activo fuerte en la misma recomendación
+        const pen = (sensible || fuertesYa >= 1) ? (esFuerte(p) ? -1 : 0) : 0;
+        const sc = [pen, p.v];
+        if (!bs || sc[0] > bs[0] || (sc[0] === bs[0] && sc[1] > bs[1])) { best = i; bs = sc; }
       });
       if (best === null) return "";
+      usados.add(best);
+      if (esFuerte(PROD[best])) fuertesYa++;
       const p = PROD[best];
       return `<div class="crow">${p.th ? `<img class="cimg" src="p/${p.th}" alt="" loading="lazy">` : ""}
         <div><button class="pname" data-p="${best}">${p.d}<span class="pver">ver ficha</span></button>
@@ -5172,6 +5181,7 @@ function pintarCombinada() {
         <div class="rtcifra">${money(totC)}<span>ó ${q} quincenas de $${Math.round(totCr/q)}</span></div></div>
     </div>
     ${extra}
+    ${sensible ? `<div class="nota suave" style="margin-top:12px">🌸 <b>Como marcaste piel sensible</b>, elegimos fórmulas suaves y dejamos fuera los activos fuertes (retinol, kójico, ácidos exfoliantes). Apilar varios activos sobre piel sensible irrita — mejor resolver de a poco.</div>` : ""}
     <div class="nota" style="margin-top:12px">💡 Una sola rutina resuelve varias cosas a la vez: por eso el limpiador y la crema son suaves, y el <b>tratamiento</b> es el que ataca lo que más te importa. Tocá el nombre de cualquier producto para ver su ficha.</div>
     <div class="cta">💕 <b>Pídeselo a tu asesora:</b> te arma esta rutina, te la aparta hoy y la pagas con tu vale en quincenas.</div>`;
 }
