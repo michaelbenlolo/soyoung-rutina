@@ -5117,6 +5117,16 @@ function mejorPaso(paso, s) {
   return best;
 }
 
+function fila(i, etiquetas) {
+  const p = PROD[i];
+  return `<div class="crow">${p.th ? `<img class="cimg" src="p/${p.th}" alt="" loading="lazy">` : ""}
+    <div><button class="pname" data-p="${i}">${p.d}<span class="pver">ver ficha</span></button>
+      <span class="cmarca2">${p.m}</span>
+      <div class="cuso">${p.u}</div>
+      <div class="cobs">${etiquetas}</div></div>
+    <div class="cprec"><b>${money(p.pc)}</b><span>${p.q}q × $${p.pq}</span></div></div>`;
+}
+
 function pintarCombinada() {
   const rt = ["L","T","S","SOL"].map(pa => mejorPaso(pa, sel)).filter(i => i !== null);
   const cubiertas = new Set();
@@ -5144,14 +5154,17 @@ function pintarCombinada() {
 
   let extra = "";
   const sensible = sel.includes("sensible");
+  const quiereMasc = sel.includes("mascarillas");
   let fuertesYa = rt.filter(i => esFuerte(PROD[i])).length;
-  if (faltan.length) {
-    const usados = new Set(rt);
-    const filas = faltan.map(f => {
+  const usados = new Set(rt);
+  const faltanSinMasc = faltan.filter(f => f !== "mascarillas");
+
+  if (faltanSinMasc.length) {
+    const filas = faltanSinMasc.map(f => {
       let best = null, bs = null;
       PROD.forEach((p, i) => {
         if (usados.has(i) || !p.t.includes(f)) return;
-        // regla de seguridad: nunca un activo fuerte si la piel es sensible,
+        // seguridad: nunca un activo fuerte si la piel es sensible,
         // ni un segundo activo fuerte en la misma recomendación
         const pen = (sensible || fuertesYa >= 1) ? (esFuerte(p) ? -1 : 0) : 0;
         const sc = [pen, p.v];
@@ -5161,15 +5174,41 @@ function pintarCombinada() {
       usados.add(best);
       if (esFuerte(PROD[best])) fuertesYa++;
       const p = PROD[best];
-      return `<div class="crow">${p.th ? `<img class="cimg" src="p/${p.th}" alt="" loading="lazy">` : ""}
-        <div><button class="pname" data-p="${best}">${p.d}<span class="pver">ver ficha</span></button>
-          <span class="cmarca2">${p.m}</span>
-          <div class="cuso">${p.u}</div>
-          <div class="cobs"><span class="cob">${NEC[f].i} ${NEC[f].t}</span></div></div>
-        <div class="cprec"><b>${money(p.pc)}</b><span>${p.q}q × $${p.pq}</span></div></div>`;
+      return fila(best, `<span class="cob">${NEC[f].i} ${NEC[f].t}</span>`);
     }).join("");
     extra = `<div class="plabel">Súmale esto para lo que falta</div>
       <div class="compl">${filas}</div>`;
+  }
+
+  // ---- mascarillas: se eligen por lo que le sirven a ESTA rutina, no por ventas ----
+  const otras = sel.filter(x => x !== "mascarillas");
+  const cand = PROD.map((p, i) => ({p, i}))
+    .filter(({p, i}) => p.t.includes("mascarillas") && !usados.has(i));
+  cand.sort((a, b) =>
+    (otras.filter(x => b.p.t.includes(x)).length - otras.filter(x => a.p.t.includes(x)).length)
+    || (b.p.v - a.p.v));
+  // se van eligiendo de a una, contando los activos fuertes sobre la marcha
+  const masc = [];
+  const tope = quiereMasc ? 3 : 2;
+  for (const c of cand) {
+    if (masc.length >= tope) break;
+    if ((sensible || fuertesYa >= 1) && esFuerte(c.p)) continue;
+    masc.push(c);
+    if (esFuerte(c.p)) fuertesYa++;
+  }
+  if (masc.length) {
+    const filasM = masc.map(({p, i}) => {
+      const ay = otras.filter(x => p.t.includes(x));
+      const et = ay.length
+        ? ay.map(x => `<span class="cob">${NEC[x].i} ${NEC[x].t}</span>`).join("")
+        : `<span class="cob base">consentirse · va con cualquier rutina</span>`;
+      return fila(i, et);
+    }).join("");
+    extra += quiereMasc
+      ? `<div class="plabel">🎭 Mascarillas que le van a tu rutina</div><div class="compl">${filasM}</div>`
+      : `<div class="plabel">✨ Y si quieres consentirte</div>
+         <div class="compl">${filasM}</div>
+         <div class="nota" style="margin-top:9px">La mascarilla es el extra más fácil: <b>el resultado se ve en una noche</b> y no interfiere con tu rutina. Perfecta para el domingo o antes de un evento.</div>`;
   }
 
   const titulo = sel.map(x => `<span class="selchip">${NEC[x].i} ${NEC[x].t}</span>`).join("");
