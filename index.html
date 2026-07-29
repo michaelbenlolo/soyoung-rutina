@@ -192,6 +192,27 @@ div.limg { background-size:contain; background-repeat:no-repeat; background-posi
   background:#fdf3dd; border:1px solid #f0dcae; border-radius:6px; padding:2px 7px; }
 .lnota { margin:2px 11px 9px; font-size:10.8px; line-height:1.4; color:var(--mut);
   background:var(--crema2); border-radius:8px; padding:7px 9px; }
+/* niveles de rutina: ventanas cerradas bajo la rutina sugerida */
+.tier { border-top:1px solid var(--line); background:#fff; }
+.tier summary { display:flex; align-items:center; gap:7px; padding:10px 12px; cursor:pointer; list-style:none; }
+.tier summary::-webkit-details-marker { display:none; }
+.tcaret { color:var(--mut); font-size:11px; transition:transform .15s; flex:none; }
+.tier[open] .tcaret { transform:rotate(90deg); }
+.tier[open] summary { background:var(--crema2); }
+.ticn { font-size:15px; flex:none; }
+.tnom { font-size:12px; font-weight:800; min-width:0; }
+.tnom em { display:block; font-style:normal; font-weight:400; font-size:9.8px; color:var(--mut); }
+.tprecio { margin-left:auto; text-align:right; font-weight:800; font-size:13.5px; color:var(--rosad); flex:none; }
+.tprecio em { display:block; font-style:normal; font-weight:400; font-size:9.3px; color:var(--mut); }
+.tbody { padding:2px 12px 10px; }
+.tsub { font-size:10.5px; font-weight:700; color:var(--mut); margin:4px 0 2px; }
+.trow { display:flex; align-items:flex-start; gap:8px; padding:7px 0; border-bottom:1px dashed var(--line); }
+.trow:last-child { border-bottom:0; }
+.timg { width:30px; height:38px; object-fit:contain; flex:none; }
+div.timg { background-size:contain; background-repeat:no-repeat; background-position:center; }
+.tinfo { flex:1; min-width:0; }
+.tchip { display:inline-block; margin-top:3px; font-size:9.8px; font-weight:600; color:#245a8d;
+  background:#e8f2fb; border:1px solid #cfe3f5; border-radius:6px; padding:1px 6px; }
 .ltotal { display:flex; justify-content:space-between; align-items:center; gap:10px;
   background:var(--ink); color:#fff; padding:11px 13px; }
 .ltotal>div:first-child { font-size:12.5px; font-weight:700; }
@@ -3271,7 +3292,31 @@ div.limg { background-size:contain; background-repeat:no-repeat; background-posi
           <div class="lprec"><b>$342</b><span>10 quincenas de $48</span></div></div></div>
       <div class="ltotal">
         <div>Rutina sugerida<span>⭐ los 3 productos marcados de los 15 de esta línea — lo que le armas a la clienta</span></div>
-        <div class="rtcifra">$1,408<span>ó 12 quincenas de $164</span></div></div></div>
+        <div class="rtcifra">$1,408<span>ó 12 quincenas de $164</span></div></div><div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">➕</span>
+          <span class="tnom">Rutina más completa<em>le suma tónico</em></span>
+          <span class="tprecio">$1,871<em>4 productos · 12 quincenas de $218</em></span></summary>
+          <div class="tbody"><div class="tsub">Los 3 de la rutina sugerida ⭐ más:</div><div class="trow"><img class="timg" src="p/B0DX74CWSQ.jpg" alt="PDRN Pink Toning Gel Toner Pad" loading="lazy">
+          <div class="tinfo"><button class="pname" data-p="51">PDRN Pink Toning Gel Toner Pad<span class="pver">ver ficha</span></button>
+            <div class="tchip">tónico / toallitas · después de lavar, antes del sérum</div></div>
+          <div class="lprec"><b>$463</b><span>10 quincenas de $65</span></div></div></div></details><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">👑</span>
+          <span class="tnom">Rutina coreana completa<em>todo lo que la línea ofrece</em></span>
+          <span class="tprecio">$3,622<em>8 productos · 12 quincenas de $423</em></span></summary>
+          <div class="tbody"><div class="tsub">Los 3 de la rutina sugerida ⭐ más:</div><div class="trow"><img class="timg" src="p/B0DX74CWSQ.jpg" alt="PDRN Pink Toning Gel Toner Pad" loading="lazy">
+          <div class="tinfo"><button class="pname" data-p="51">PDRN Pink Toning Gel Toner Pad<span class="pver">ver ficha</span></button>
+            <div class="tchip">tónico / toallitas · después de lavar, antes del sérum</div></div>
+          <div class="lprec"><b>$463</b><span>10 quincenas de $65</span></div></div><div class="trow"><img class="timg" src="p/B0FYN9CJKC.jpg" alt="PDRN Pink Glow Jelly Mist 100ml" loading="lazy">
+          <div class="tinfo"><button class="pname" data-p="48">PDRN Pink Glow Jelly Mist 100ml<span class="pver">ver ficha</span></button>
+            <div class="tchip">bruma · refresca y fija durante el día</div></div>
+          <div class="lprec"><b>$443</b><span>10 quincenas de $62</span></div></div><div class="trow"><img class="timg" src="p/B0DWMSM6Y9.jpg" alt="PDRN Pink Peptide Eye Serum 30ml" loading="lazy">
+          <div class="tinfo"><button class="pname" data-p="40">PDRN Pink Peptide Eye Serum 30ml<span class="pver">ver ficha</span></button>
+            <div class="tchip">contorno de ojos · líneas finas y ojeras</div></div>
+          <div class="lprec"><b>$342</b><span>10 quincenas de $48</span></div></div><div class="trow"><img class="timg" src="p/B0F8HHJG25.jpg" alt="PDRN Pink Caffeine Night Mask 75ml" loading="lazy">
+          <div class="tinfo"><button class="pname" data-p="42">PDRN Pink Caffeine Night Mask 75ml<span class="pver">ver ficha</span></button>
+            <div class="tchip">mascarilla de noche · trabaja mientras duerme</div></div>
+          <div class="lprec"><b>$483</b><span>12 quincenas de $56</span></div></div><div class="trow"><img class="timg" src="p/B0GHMZXX8Y.jpg" alt="PDRN Pink Collagen Multi Balm 10g" loading="lazy">
+          <div class="tinfo"><button class="pname" data-p="132">PDRN Pink Collagen Multi Balm 10g<span class="pver">ver ficha</span></button>
+            <div class="tchip">bálsamo en barra · retoque en el día, sobre el maquillaje</div></div>
+          <div class="lprec"><b>$483</b><span>12 quincenas de $56</span></div></div></div></details></div></div>
       </div></details><details class="col"  data-buscar="Medicube Zero Pore Poro cerrado y cero brillo, todo el día Ácidos suaves y arcilla que limpian por dentro del poro Piel grasa o mixta, con puntos negros y brillo en la zona T. Zero Foam Cleanser 120ml Espuma para piel grasa: limpia profundo sin apretar 302 Zero Pore Capsule Cleansing Foam Espuma con cápsulas: limpieza profunda del poro 322 Zero Pore Blackhead Cleansing Oil 205ml Aceite que disuelve puntos negros al masajear 382 Zero Pore Pad 2.0 (toallitas) Las toallitas virales: destapan poros y quitan brillo en una pasada 443 Zero Pore Blackhead Mud Mask Mascarilla de barro: puntos negros y nariz brillosa 322 Zero Pore One Day Cream 50ml Gel-crema matificante: hidrata sin brillo 523 Zero Pore Hydrating Sun Serum 50ml Bloqueador-sérum para piel grasa: no tapa poros 282 aceite algodones bloqueador brillo brillosa cachetes crema discos espinillas espuma filtro grasa grasosa hidratante humectante jabon jabón lavar limpiador limpiar mascarilla mascarillas mask negros oleo overnight pantalla parche parches poros proteccion protección protector puntos sebo sellar serum sheet sol solar spf sérum t toallita toallitas tratamiento tratar zona óleo">
       <summary><span class="cico">🫧</span>
         <div class="chead"><div class="cnom">Zero Pore <span class="cmarca">Medicube</span></div>
@@ -3329,7 +3374,22 @@ div.limg { background-size:contain; background-repeat:no-repeat; background-posi
           <div class="lprec"><b>$282</b><span>10 quincenas de $39</span></div></div></div>
       <div class="ltotal">
         <div>Rutina sugerida<span>⭐ los 4 productos marcados de los 7 de esta línea — lo que le armas a la clienta</span></div>
-        <div class="rtcifra">$1,550<span>ó 12 quincenas de $181</span></div></div></div>
+        <div class="rtcifra">$1,550<span>ó 12 quincenas de $181</span></div></div><div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">➕</span>
+          <span class="tnom">Rutina más completa<em>le suma aceite limpiador</em></span>
+          <span class="tprecio">$1,932<em>5 productos · 12 quincenas de $225</em></span></summary>
+          <div class="tbody"><div class="tsub">Los 4 de la rutina sugerida ⭐ más:</div><div class="trow"><img class="timg" src="p/B0FP176X2H.jpg" alt="Zero Pore Blackhead Cleansing Oil 205ml" loading="lazy">
+          <div class="tinfo"><button class="pname" data-p="33">Zero Pore Blackhead Cleansing Oil 205ml<span class="pver">ver ficha</span></button>
+            <div class="tchip">aceite limpiador · va primero: disuelve maquillaje y bloqueador</div></div>
+          <div class="lprec"><b>$382</b><span>10 quincenas de $54</span></div></div></div></details><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">👑</span>
+          <span class="tnom">Rutina coreana completa<em>todo lo que la línea ofrece</em></span>
+          <span class="tprecio">$2,254<em>6 productos · 12 quincenas de $263</em></span></summary>
+          <div class="tbody"><div class="tsub">Los 4 de la rutina sugerida ⭐ más:</div><div class="trow"><img class="timg" src="p/B0FP176X2H.jpg" alt="Zero Pore Blackhead Cleansing Oil 205ml" loading="lazy">
+          <div class="tinfo"><button class="pname" data-p="33">Zero Pore Blackhead Cleansing Oil 205ml<span class="pver">ver ficha</span></button>
+            <div class="tchip">aceite limpiador · va primero: disuelve maquillaje y bloqueador</div></div>
+          <div class="lprec"><b>$382</b><span>10 quincenas de $54</span></div></div><div class="trow"><img class="timg" src="p/B0D1G7XF9X.jpg" alt="Zero Pore Blackhead Mud Mask" loading="lazy">
+          <div class="tinfo"><button class="pname" data-p="30">Zero Pore Blackhead Mud Mask<span class="pver">ver ficha</span></button>
+            <div class="tchip">mascarilla / parches · 2-3 veces por semana</div></div>
+          <div class="lprec"><b>$322</b><span>10 quincenas de $45</span></div></div></div></details></div></div>
       </div></details><details class="col"  data-buscar="Medicube Collagen Piel que rebota: firmeza y efecto lifting Colágeno triple, en textura de gelatina que se derrite en la piel De los 30 en adelante, o quien siente la piel «caída» o sin vida. Triple Collagen Serum 4.0 55ml Sérum de colágeno triple: el paso fuerte anti-flacidez 423 Collagen Lifting Mask (1 pza) Mascarilla lifting individual: efecto tensor para hoy 383 Collagen Night Wrapping Mask 75ml Te la pones y duermes: amaneces con piel firme 483 Collagen Jelly Cream 110ml LA crema gelatina viral de colágeno: rebote y glow 483 Triple Collagen Cream 4.0 50ml Colágeno triple: firmeza visible en semanas 503 Collagen Jelly Cream 50ml La gelatina de colágeno en tamaño chico 322 Collagen Firming Suncream 50ml Bloqueador reafirmante: sin capa blanca, puro glow 463 anti-edad antiedad arrugas bloqueador colageno crema de edad filtro firmeza flacidez gallo hidratante humectante lineas líneas madura mascarilla mascarillas mask overnight parche parches patas proteccion protección protector sellar serum sheet solar spf sérum tratamiento tratar">
       <summary><span class="cico">✨</span>
         <div class="chead"><div class="cnom">Collagen <span class="cmarca">Medicube</span></div>
@@ -3392,7 +3452,16 @@ div.limg { background-size:contain; background-repeat:no-repeat; background-posi
           <div class="lprec"><b>$463</b><span>10 quincenas de $65</span></div></div></div>
       <div class="ltotal">
         <div>Rutina sugerida<span>⭐ los 4 productos marcados · 1 de otra línea de Medicube — lo que le armas a la clienta</span></div>
-        <div class="rtcifra">$1,671<span>ó 12 quincenas de $195</span></div></div></div>
+        <div class="rtcifra">$1,671<span>ó 12 quincenas de $195</span></div></div><div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">👑</span>
+          <span class="tnom">Rutina coreana completa<em>todo lo que la línea ofrece</em></span>
+          <span class="tprecio">$2,537<em>6 productos · 12 quincenas de $296</em></span></summary>
+          <div class="tbody"><div class="tsub">Los 4 de la rutina sugerida ⭐ más:</div><div class="trow"><img class="timg" src="p/B0BRMYHMS5.jpg" alt="Collagen Night Wrapping Mask 75ml" loading="lazy">
+          <div class="tinfo"><button class="pname" data-p="58">Collagen Night Wrapping Mask 75ml<span class="pver">ver ficha</span></button>
+            <div class="tchip">mascarilla de noche · trabaja mientras duerme</div></div>
+          <div class="lprec"><b>$483</b><span>12 quincenas de $56</span></div></div><div class="trow"><img class="timg" src="p/B0DM894XYZ.jpg" alt="Collagen Lifting Mask (1 pza)" loading="lazy">
+          <div class="tinfo"><button class="pname" data-p="124">Collagen Lifting Mask (1 pza)<span class="pver">ver ficha</span></button>
+            <div class="tchip">mascarilla / parches · 2-3 veces por semana</div></div>
+          <div class="lprec"><b>$383</b><span>10 quincenas de $54</span></div></div></div></details></div></div>
       </div></details><details class="col"  data-buscar="Medicube Kojic Acid Turmeric Contra las manchas más difíciles y el paño Ácido kójico + cúrcuma, la dupla clásica para aclarar Manchas de embarazo, de sol o marcas viejas que no se van con nada. Kojic Acid Turmeric Serum 30ml Kójico + cúrcuma: para manchas difíciles y paño 382 Kojic Turmeric Night Mask 75ml Duerme con ella y amanece con tono más parejo 543 Kojic Turmeric Gel Mask (4 pzas) 4 mascarillas iluminadoras: el plan de domingo 402 Kojic Turmeric Vita Eye Gel 30ml Para ojeras oscuras: aclara la mirada 342 Kojic Turmeric Vita Capsule Cream 53g Crema aclaradora para sellar la rutina anti-manchas 563 crema decoloracion desigual gel hidratante hiperpigmentacion humectante manchas marcas mascarilla mascarillas mask melasma oscuras overnight parche parches paño pigmentacion pigmentación sellar serum sheet sérum tono tratamiento tratar">
       <summary><span class="cico">🎯</span>
         <div class="chead"><div class="cnom">Kojic Acid Turmeric <span class="cmarca">Medicube</span></div>
@@ -3486,7 +3555,13 @@ div.limg { background-size:contain; background-repeat:no-repeat; background-posi
           <div class="lprec"><b>$563</b><span>12 quincenas de $66</span></div></div></div>
       <div class="ltotal">
         <div>Rutina sugerida<span>⭐ los 3 productos marcados · 1 de otra línea de Medicube — lo que le armas a la clienta</span></div>
-        <div class="rtcifra">$1,247<span>ó 12 quincenas de $146</span></div></div></div>
+        <div class="rtcifra">$1,247<span>ó 12 quincenas de $146</span></div></div><div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">➕</span>
+          <span class="tnom">Rutina más completa<em>le suma tónico</em></span>
+          <span class="tprecio">$1,770<em>4 productos · 12 quincenas de $207</em></span></summary>
+          <div class="tbody"><div class="tsub">Los 3 de la rutina sugerida ⭐ más:</div><div class="trow"><img class="timg" src="p/B0BPLYHDPG.jpg" alt="Deep Vita C Pad (toallitas)" loading="lazy">
+          <div class="tinfo"><button class="pname" data-p="37">Deep Vita C Pad (toallitas)<span class="pver">ver ficha</span></button>
+            <div class="tchip">tónico / toallitas · después de lavar, antes del sérum</div></div>
+          <div class="lprec"><b>$523</b><span>12 quincenas de $61</span></div></div></div></details></div></div>
       </div></details><details class="col"  data-buscar="Medicube TXA Niacinamide Borra las marcas que deja el acné Ácido tranexámico + niacinamida, despigmentantes suaves de uso diario La que ya no tiene granitos pero le quedaron las manchitas oscuras. TXA Niacinamide 15 Serum 30ml Aclara manchas oscuras y marcas de granitos 382 TXA Niacinamide Capsule Cream 55g Crema despigmentante de uso diario 563 crema decoloracion desigual hidratante hiperpigmentacion humectante manchas marcas melasma oscuras paño pigmentacion pigmentación sellar serum sérum tono tratamiento tratar">
       <summary><span class="cico">🎯</span>
         <div class="chead"><div class="cnom">TXA Niacinamide <span class="cmarca">Medicube</span></div>
@@ -3748,7 +3823,13 @@ div.limg { background-size:contain; background-repeat:no-repeat; background-posi
           <div class="lprec"><b>$196</b><span>8 quincenas de $34</span></div></div></div>
       <div class="ltotal">
         <div>Rutina sugerida<span>⭐ los 3 productos marcados de los 9 de esta línea — lo que le armas a la clienta</span></div>
-        <div class="rtcifra">$1,378<span>ó 12 quincenas de $161</span></div></div></div>
+        <div class="rtcifra">$1,378<span>ó 12 quincenas de $161</span></div></div><div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">➕</span>
+          <span class="tnom">Rutina más completa<em>le suma espuma</em></span>
+          <span class="tprecio">$1,715<em>4 productos · 12 quincenas de $200</em></span></summary>
+          <div class="tbody"><div class="tsub">Los 3 de la rutina sugerida ⭐ más:</div><div class="trow"><img class="timg" src="p/B09JBJDFHH.jpg" alt="Centella Ampoule Foam 125ml" loading="lazy">
+          <div class="tinfo"><button class="pname" data-p="111">Centella Ampoule Foam 125ml<span class="pver">ver ficha</span></button>
+            <div class="tchip">espuma · termina la limpieza (2º paso de la doble limpieza)</div></div>
+          <div class="lprec"><b>$337</b><span>10 quincenas de $47</span></div></div></div></details></div></div>
       </div></details><details class="col"  data-buscar="SKIN1004 Tea-Trica Rutina completa contra los granitos Árbol de té + centella: desinflama el brote sin resecar Piel con acné activo, adolescentes, o brotes de temporada. Tea-Trica BHA Foam 125ml Espuma exfoliante anti-granitos con árbol de té 333 Tea-Trica Mild Peeling Gel 125ml Exfoliante suave en gel: piel lisa sin maltratar 433 Tea-Trica Relief Ampoule 100ml Árbol de té + centella: calma granitos activos 533 Tea-Trica Spot Cream 20ml Puntual: se aplica directo sobre el granito 464 Tea-Trica Relief Ampoule 30ml La ampolla anti-granitos en mini 209 Tea-Trica C5 Cream 75ml Crema ligera que calma piel con brotes 415 Tea-Trica Soothing Sun Milk 50ml Bloqueador ligero para piel con granitos 422 acne acné ampolla barros bloqueador brotes crema espinillas espuma filtro gel granitos granos hidratante humectante imperfecciones jabon jabón lavar leche limpiador limpiar proteccion protección protector puntitos rojos sellar solar spf tratamiento tratar">
       <summary><span class="cico">🌿</span>
         <div class="chead"><div class="cnom">Tea-Trica <span class="cmarca">SKIN1004</span></div>
@@ -3917,7 +3998,22 @@ div.limg { background-size:contain; background-repeat:no-repeat; background-posi
           <div class="lprec"><b>$428</b><span>10 quincenas de $60</span></div></div></div>
       <div class="ltotal">
         <div>Rutina sugerida<span>⭐ los 4 productos marcados de los 6 de esta línea — lo que le armas a la clienta</span></div>
-        <div class="rtcifra">$1,543<span>ó 12 quincenas de $180</span></div></div></div>
+        <div class="rtcifra">$1,543<span>ó 12 quincenas de $180</span></div></div><div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">➕</span>
+          <span class="tnom">Rutina más completa<em>le suma tónico</em></span>
+          <span class="tprecio">$1,943<em>5 productos · 12 quincenas de $227</em></span></summary>
+          <div class="tbody"><div class="tsub">Los 4 de la rutina sugerida ⭐ más:</div><div class="trow"><img class="timg" src="p/B0B1JPZYMN.jpg" alt="Poremizing Clear Toner 210ml" loading="lazy">
+          <div class="tinfo"><button class="pname" data-p="100">Poremizing Clear Toner 210ml<span class="pver">ver ficha</span></button>
+            <div class="tchip">tónico / toallitas · después de lavar, antes del sérum</div></div>
+          <div class="lprec"><b>$400</b><span>10 quincenas de $56</span></div></div></div></details><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">👑</span>
+          <span class="tnom">Rutina coreana completa<em>todo lo que la línea ofrece</em></span>
+          <span class="tprecio">$2,378<em>6 productos · 12 quincenas de $277</em></span></summary>
+          <div class="tbody"><div class="tsub">Los 4 de la rutina sugerida ⭐ más:</div><div class="trow"><img class="timg" src="p/B0B1JPZYMN.jpg" alt="Poremizing Clear Toner 210ml" loading="lazy">
+          <div class="tinfo"><button class="pname" data-p="100">Poremizing Clear Toner 210ml<span class="pver">ver ficha</span></button>
+            <div class="tchip">tónico / toallitas · después de lavar, antes del sérum</div></div>
+          <div class="lprec"><b>$400</b><span>10 quincenas de $56</span></div></div><div class="trow"><img class="timg" src="p/B0C8Y1TSKZ.jpg" alt="Poremizing Clay Stick Mask 27g" loading="lazy">
+          <div class="tinfo"><button class="pname" data-p="96">Poremizing Clay Stick Mask 27g<span class="pver">ver ficha</span></button>
+            <div class="tchip">mascarilla / parches · 2-3 veces por semana</div></div>
+          <div class="lprec"><b>$435</b><span>10 quincenas de $61</span></div></div></div></details></div></div>
       </div></details><details class="col"  data-buscar="SKIN1004 Probio-Cica Barrera fuerte y anti-edad suave Probióticos + centella + bakuchiol (el «retinol vegetal») Piel madura o debilitada que quiere anti-edad sin irritación. Probio-Cica Intensive Ampoule 95ml Ampolla con probióticos: piel fuerte y elástica 627 Probio-Cica Bakuchiol Eye Cream 20ml Contorno con retinol vegetal: líneas sin irritación 390 Probio-Cica Enrich Cream 50ml Nutre y refuerza la barrera de piel madura 489 Probio-Cica Glow Sun Ampoule 50ml Bloqueador con glow y probióticos 422 ampolla anti-edad antiedad arrugas bloqueador bolsas cansada colageno contorno crema de edad filtro firmeza flacidez gallo hidratante hinchazon hinchazón humectante lineas líneas madura mirada ojeras ojos parpado patas proteccion protección protector párpado sellar solar spf tratamiento tratar">
       <summary><span class="cico">🛡️</span>
         <div class="chead"><div class="cnom">Probio-Cica <span class="cmarca">SKIN1004</span></div>
@@ -3965,7 +4061,13 @@ div.limg { background-size:contain; background-repeat:no-repeat; background-posi
           <div class="lprec"><b>$422</b><span>10 quincenas de $59</span></div></div></div>
       <div class="ltotal">
         <div>Rutina sugerida<span>⭐ los 4 productos marcados · 1 de otra línea de SKIN1004 — lo que le armas a la clienta</span></div>
-        <div class="rtcifra">$1,948<span>ó 12 quincenas de $227</span></div></div></div>
+        <div class="rtcifra">$1,948<span>ó 12 quincenas de $227</span></div></div><div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">👑</span>
+          <span class="tnom">Rutina coreana completa<em>todo lo que la línea ofrece</em></span>
+          <span class="tprecio">$2,338<em>5 productos · 12 quincenas de $273</em></span></summary>
+          <div class="tbody"><div class="tsub">Los 4 de la rutina sugerida ⭐ más:</div><div class="trow"><img class="timg" src="p/B0CFL7LS43.jpg" alt="Probio-Cica Bakuchiol Eye Cream 20ml" loading="lazy">
+          <div class="tinfo"><button class="pname" data-p="92">Probio-Cica Bakuchiol Eye Cream 20ml<span class="pver">ver ficha</span></button>
+            <div class="tchip">contorno de ojos · líneas finas y ojeras</div></div>
+          <div class="lprec"><b>$390</b><span>10 quincenas de $55</span></div></div></div></details></div></div>
       </div></details><details class="col"  data-buscar="SKIN1004 Tone Brightening Efecto buena cara desde el primer día Centella + activos iluminadores, con bloqueador con color La que quiere verse despierta ya, aunque las manchas tarden en irse. Tone Brightening Cleansing Gel 125ml Gel limpiador que ilumina desde el primer paso 309 Tone Brightening Capsule Cream 75ml Crema efecto buena cara: ilumina de inmediato 508 Tone Brightening Tone-Up Sunscreen 50ml Bloqueador con color: empareja y da efecto buena cara 408 bloqueador crema decoloracion desigual filtro gel hidratante hiperpigmentacion humectante lavar limpiador limpiar manchas marcas melasma oscuras pantalla paño pigmentacion pigmentación proteccion protección protector sellar sol solar spf tono">
       <summary><span class="cico">🌟</span>
         <div class="chead"><div class="cnom">Tone Brightening <span class="cmarca">SKIN1004</span></div>
@@ -4166,7 +4268,22 @@ div.limg { background-size:contain; background-repeat:no-repeat; background-posi
           <div class="lprec"><b>$348</b><span>10 quincenas de $49</span></div></div></div>
       <div class="ltotal">
         <div>Rutina sugerida<span>⭐ los 4 productos marcados de los 8 de esta línea — lo que le armas a la clienta</span></div>
-        <div class="rtcifra">$2,283<span>ó 12 quincenas de $266</span></div></div></div>
+        <div class="rtcifra">$2,283<span>ó 12 quincenas de $266</span></div></div><div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">➕</span>
+          <span class="tnom">Rutina más completa<em>le suma tónico</em></span>
+          <span class="tprecio">$2,836<em>5 productos · 12 quincenas de $331</em></span></summary>
+          <div class="tbody"><div class="tsub">Los 4 de la rutina sugerida ⭐ más:</div><div class="trow"><img class="timg" src="p/B0CJC6P3BN.jpg" alt="Bean Toner 300ml" loading="lazy">
+          <div class="tinfo"><button class="pname" data-p="73">Bean Toner 300ml<span class="pver">ver ficha</span></button>
+            <div class="tchip">tónico / toallitas · después de lavar, antes del sérum</div></div>
+          <div class="lprec"><b>$553</b><span>12 quincenas de $65</span></div></div></div></details><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">👑</span>
+          <span class="tnom">Rutina coreana completa<em>todo lo que la línea ofrece</em></span>
+          <span class="tprecio">$3,447<em>6 productos · 12 quincenas de $402</em></span></summary>
+          <div class="tbody"><div class="tsub">Los 4 de la rutina sugerida ⭐ más:</div><div class="trow"><img class="timg" src="p/B0CJC6P3BN.jpg" alt="Bean Toner 300ml" loading="lazy">
+          <div class="tinfo"><button class="pname" data-p="73">Bean Toner 300ml<span class="pver">ver ficha</span></button>
+            <div class="tchip">tónico / toallitas · después de lavar, antes del sérum</div></div>
+          <div class="lprec"><b>$553</b><span>12 quincenas de $65</span></div></div><div class="trow"><img class="timg" src="p/B0CJC4Y7W3.jpg" alt="Bean Eye Cream 20ml" loading="lazy">
+          <div class="tinfo"><button class="pname" data-p="81">Bean Eye Cream 20ml<span class="pver">ver ficha</span></button>
+            <div class="tchip">contorno de ojos · líneas finas y ojeras</div></div>
+          <div class="lprec"><b>$611</b><span>12 quincenas de $71</span></div></div></div></details></div></div>
       </div></details><details class="col"  data-buscar="MIXSOON PDRN Collagen Regeneración y firmeza a precio accesible PDRN + colágeno, la misma tecnología premium en versión económica La que quiere probar el PDRN sin gastar de más. PDRN Collagen Gel Cleanser Gel limpiador de la línea regeneradora 245 PDRN Collagen Eye Serum Sérum de ojos regenerador 408 PDRN Collagen Serum 30ml PDRN + colágeno: regeneración a precio accesible 469 PDRN Collagen Cream Crema regeneradora para sellar la rutina PDRN 509 anti-edad antiedad arrugas colageno crema de edad firmeza flacidez gallo gel hidratante humectante jabon jabón lavar limpiador limpiar lineas líneas madura patas sellar serum sérum tratamiento tratar">
       <summary><span class="cico">🌸</span>
         <div class="chead"><div class="cnom">PDRN Collagen <span class="cmarca">MIXSOON</span></div>
@@ -4208,7 +4325,13 @@ div.limg { background-size:contain; background-repeat:no-repeat; background-posi
           <div class="lprec"><b>$509</b><span>12 quincenas de $59</span></div></div></div>
       <div class="ltotal">
         <div>Rutina sugerida<span>⭐ los 3 productos marcados de los 4 de esta línea — lo que le armas a la clienta</span></div>
-        <div class="rtcifra">$1,223<span>ó 12 quincenas de $143</span></div></div></div>
+        <div class="rtcifra">$1,223<span>ó 12 quincenas de $143</span></div></div><div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">👑</span>
+          <span class="tnom">Rutina coreana completa<em>todo lo que la línea ofrece</em></span>
+          <span class="tprecio">$1,631<em>4 productos · 12 quincenas de $190</em></span></summary>
+          <div class="tbody"><div class="tsub">Los 3 de la rutina sugerida ⭐ más:</div><div class="trow"><img class="timg" src="p/B0FJFSTCHP.jpg" alt="PDRN Collagen Eye Serum" loading="lazy">
+          <div class="tinfo"><button class="pname" data-p="78">PDRN Collagen Eye Serum<span class="pver">ver ficha</span></button>
+            <div class="tchip">contorno de ojos · líneas finas y ojeras</div></div>
+          <div class="lprec"><b>$408</b><span>10 quincenas de $57</span></div></div></div></details></div></div>
       </div></details><details class="col"  data-buscar="MIXSOON Centella / Cica Calma esencial, sin adornos Centella en fórmula minimalista Piel irritada que además quiere sencillez. Centella Cleansing Foam 150ml Espuma suave de centella para piel delicada 367 Cica Hyal Deep Soothing Cream Crema calmante profunda: piel irritada y tirante 509 arde cara crema delicada deshidratada escamosa escuece espuma hidratacion hidratación hidratante humectante irritacion irritación irritada jabon jabón lavar limpiador limpiar piel reactiva reseca resequedad roja rojez rosacea rosácea seca sellar sensible tirante">
       <summary><span class="cico">🍃</span>
         <div class="chead"><div class="cnom">Centella / Cica <span class="cmarca">MIXSOON</span></div>
@@ -4334,7 +4457,13 @@ div.limg { background-size:contain; background-repeat:no-repeat; background-posi
           <div class="lprec"><b>$640</b><span>12 quincenas de $75</span></div></div></div>
       <div class="ltotal">
         <div>Rutina sugerida<span>⭐ los 3 productos marcados · 1 de otra línea de COSRX — lo que le armas a la clienta</span></div>
-        <div class="rtcifra">$1,485<span>ó 12 quincenas de $173</span></div></div></div>
+        <div class="rtcifra">$1,485<span>ó 12 quincenas de $173</span></div></div><div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">👑</span>
+          <span class="tnom">Rutina coreana completa<em>todo lo que la línea ofrece</em></span>
+          <span class="tprecio">$2,125<em>4 productos · 12 quincenas de $248</em></span></summary>
+          <div class="tbody"><div class="tsub">Los 3 de la rutina sugerida ⭐ más:</div><div class="trow"><img class="timg" src="p/B07ZRF416W.jpg" alt="Advanced Snail Peptide Eye Cream 25ml" loading="lazy">
+          <div class="tinfo"><button class="pname" data-p="20">Advanced Snail Peptide Eye Cream 25ml<span class="pver">ver ficha</span></button>
+            <div class="tchip">contorno de ojos · líneas finas y ojeras</div></div>
+          <div class="lprec"><b>$640</b><span>12 quincenas de $75</span></div></div></div></details></div></div>
       </div></details><details class="col"  data-buscar="COSRX Sérums Activos Los activos clásicos, bien hechos y sin misterio Péptidos, niacinamida 15% y parches de colágeno La que sabe lo que busca y quiere una marca reconocida. The 6 Peptide Booster Serum 150ml 6 péptidos: piel más elástica y descansada; tamaño jumbo 571 Peptide Collagen Eye Patch (60 pzas) 60 parches de hidrogel: ojos despiertos en 15 minutos 525 The Niacinamide 15 Serum Niacinamida al 15%: aclara marcas y afina el poro 571 bolsas cansada contorno hinchazon hinchazón mirada ojeras ojos parche parches parpado párpado serum sérum tratamiento tratar">
       <summary><span class="cico">💉</span>
         <div class="chead"><div class="cnom">Sérums Activos <span class="cmarca">COSRX</span></div>
@@ -4381,7 +4510,13 @@ div.limg { background-size:contain; background-repeat:no-repeat; background-posi
           <div class="lprec"><b>$594</b><span>12 quincenas de $69</span></div></div></div>
       <div class="ltotal">
         <div>Rutina sugerida<span>⭐ los 3 productos marcados · 2 de otra línea de COSRX — lo que le armas a la clienta</span></div>
-        <div class="rtcifra">$1,485<span>ó 12 quincenas de $173</span></div></div></div>
+        <div class="rtcifra">$1,485<span>ó 12 quincenas de $173</span></div></div><div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">👑</span>
+          <span class="tnom">Rutina coreana completa<em>todo lo que la línea ofrece</em></span>
+          <span class="tprecio">$2,010<em>4 productos · 12 quincenas de $235</em></span></summary>
+          <div class="tbody"><div class="tsub">Los 3 de la rutina sugerida ⭐ más:</div><div class="trow"><img class="timg" src="p/B0DLKCCPYZ.jpg" alt="Peptide Collagen Eye Patch (60 pzas)" loading="lazy">
+          <div class="tinfo"><button class="pname" data-p="16">Peptide Collagen Eye Patch (60 pzas)<span class="pver">ver ficha</span></button>
+            <div class="tchip">mascarilla / parches · 2-3 veces por semana</div></div>
+          <div class="lprec"><b>$525</b><span>12 quincenas de $61</span></div></div></div></details></div></div>
       </div></details><details class="col"  data-buscar="COSRX Protección Solar Bloqueador cómodo, incluso en barra para retocar Filtros ligeros con aloe calmante La que odia el bloqueador pegajoso, o necesita retocar sobre el maquillaje. Airy-Light Sunscreen Stick Bloqueador en barra: retoca en el día, hasta sobre el maquillaje 525 Aloe Soothing Sun Cream Bloqueador fresco con aloe: se siente como crema, no como bloqueador 366 barra bloqueador crema filtro pantalla proteccion protección protector sol solar spf stick">
       <summary><span class="cico">☀️</span>
         <div class="chead"><div class="cnom">Protección Solar <span class="cmarca">COSRX</span></div>
@@ -4512,7 +4647,22 @@ div.limg { background-size:contain; background-repeat:no-repeat; background-posi
           <div class="lprec"><b>$564</b><span>12 quincenas de $66</span></div></div></div><div class="lnota">ⓘ ANUA no vende crema. Para la rutina de 3 pasos, complétala con otra marca desde el buscador.</div>
       <div class="ltotal">
         <div>Lo que arma esta línea<span>⭐ los 2 productos marcados de los 4 de esta línea</span></div>
-        <div class="rtcifra">$1,199<span>ó 12 quincenas de $140</span></div></div></div>
+        <div class="rtcifra">$1,199<span>ó 12 quincenas de $140</span></div></div><div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">➕</span>
+          <span class="tnom">Rutina más completa<em>le suma tónico</em></span>
+          <span class="tprecio">$1,763<em>3 productos · 12 quincenas de $206</em></span></summary>
+          <div class="tbody"><div class="tsub">Los 2 de la rutina sugerida ⭐ más:</div><div class="trow"><img class="timg" src="p/B0DQKP3G4V.jpg" alt="PDRN Hyaluronic Glow Pad 180ml" loading="lazy">
+          <div class="tinfo"><button class="pname" data-p="6">PDRN Hyaluronic Glow Pad 180ml<span class="pver">ver ficha</span></button>
+            <div class="tchip">tónico / toallitas · después de lavar, antes del sérum</div></div>
+          <div class="lprec"><b>$564</b><span>12 quincenas de $66</span></div></div></div></details><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">👑</span>
+          <span class="tnom">Rutina coreana completa<em>todo lo que la línea ofrece</em></span>
+          <span class="tprecio">$2,681<em>4 productos · 12 quincenas de $313</em></span></summary>
+          <div class="tbody"><div class="tsub">Los 2 de la rutina sugerida ⭐ más:</div><div class="trow"><img class="timg" src="p/B0DQKP3G4V.jpg" alt="PDRN Hyaluronic Glow Pad 180ml" loading="lazy">
+          <div class="tinfo"><button class="pname" data-p="6">PDRN Hyaluronic Glow Pad 180ml<span class="pver">ver ficha</span></button>
+            <div class="tchip">tónico / toallitas · después de lavar, antes del sérum</div></div>
+          <div class="lprec"><b>$564</b><span>12 quincenas de $66</span></div></div><div class="trow"><img class="timg" src="p/B0DLB58CWR.jpg" alt="PDRN Hyaluronic Capsule 100 Serum 30ml" loading="lazy">
+          <div class="tinfo"><button class="pname" data-p="3">PDRN Hyaluronic Capsule 100 Serum 30ml<span class="pver">ver ficha</span></button>
+            <div class="tchip">sérum · el tratamiento</div></div>
+          <div class="lprec"><b>$918</b><span>12 quincenas de $107</span></div></div></div></details></div></div>
       </div></details><details class="col"  data-buscar="ANUA Heartleaf La doble limpieza viral que deja el poro impecable Heartleaf (hierba de la cola de lagarto), calmante y purificante Quien usa maquillaje o bloqueador a diario — o sea, casi todas. Heartleaf Pore Control Cleansing Oil 200ml Aceite desmaquillante: derrite maquillaje, bloqueador y puntos negros 564 Heartleaf Quercetinol Cleansing Foam 150ml Espuma de limpieza profunda del poro, sin resecar 329 aceite brillo brillosa cachetes espinillas espuma grasa grasosa jabon jabón lavar limpiador limpiar negros oleo poros puntos sebo t zona óleo">
       <summary><span class="cico">🌱</span>
         <div class="chead"><div class="cnom">Heartleaf <span class="cmarca">ANUA</span></div>
@@ -4548,7 +4698,13 @@ div.limg { background-size:contain; background-repeat:no-repeat; background-posi
           <div class="lprec"><b>$753</b><span>12 quincenas de $88</span></div></div></div><div class="lnota">ⓘ ANUA no vende crema. Para la rutina de 3 pasos, complétala con otra marca desde el buscador.</div>
       <div class="ltotal">
         <div>Lo que arma esta línea<span>⭐ los 2 productos marcados · 1 de otra línea de ANUA</span></div>
-        <div class="rtcifra">$1,082<span>ó 12 quincenas de $126</span></div></div></div>
+        <div class="rtcifra">$1,082<span>ó 12 quincenas de $126</span></div></div><div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">➕</span>
+          <span class="tnom">Rutina más completa<em>le suma aceite limpiador</em></span>
+          <span class="tprecio">$1,646<em>3 productos · 12 quincenas de $192</em></span></summary>
+          <div class="tbody"><div class="tsub">Los 2 de la rutina sugerida ⭐ más:</div><div class="trow"><img class="timg" src="p/B0BN2PX8V3.jpg" alt="Heartleaf Pore Control Cleansing Oil 200ml" loading="lazy">
+          <div class="tinfo"><button class="pname" data-p="4">Heartleaf Pore Control Cleansing Oil 200ml<span class="pver">ver ficha</span></button>
+            <div class="tchip">aceite limpiador · va primero: disuelve maquillaje y bloqueador</div></div>
+          <div class="lprec"><b>$564</b><span>12 quincenas de $66</span></div></div></div></details></div></div>
       </div></details><details class="col"  data-buscar="ANUA Niacinamide + TXA El sérum anti-manchas más vendido de la marca Niacinamida 10% + ácido tranexámico 4% Manchas, marcas de acné y tono disparejo. Niacinamide 10% + TXA 4% Serum 30ml Aclara manchas y empareja el tono; el favorito para marcas de granitos 753 decoloracion desigual hiperpigmentacion manchas marcas melasma oscuras paño pigmentacion pigmentación serum sérum tono tratamiento tratar">
       <summary><span class="cico">🎯</span>
         <div class="chead"><div class="cnom">Niacinamide + TXA <span class="cmarca">ANUA</span></div>
@@ -4859,7 +5015,13 @@ div.limg { background-size:contain; background-repeat:no-repeat; background-posi
           <div class="lprec"><b>$358</b><span>10 quincenas de $50</span></div></div></div><div class="lnota">ⓘ BIODANCE no vende limpiador ni crema. Para la rutina de 3 pasos, complétala con otra marca desde el buscador.</div>
       <div class="ltotal">
         <div>Lo que arma esta línea<span>⭐ 1 producto marcado de los 2 de esta línea</span></div>
-        <div class="rtcifra">$358<span>ó 10 quincenas de $50</span></div></div></div>
+        <div class="rtcifra">$358<span>ó 10 quincenas de $50</span></div></div><div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">👑</span>
+          <span class="tnom">Rutina coreana completa<em>todo lo que la línea ofrece</em></span>
+          <span class="tprecio">$833<em>2 productos · 12 quincenas de $97</em></span></summary>
+          <div class="tbody"><div class="tsub">Los 1 de la rutina sugerida ⭐ más:</div><div class="trow"><img class="timg" src="p/B0GD6R7CFJ.jpg" alt="Collagen Peptide Eye Patch (30 pares)" loading="lazy">
+          <div class="tinfo"><button class="pname" data-p="133">Collagen Peptide Eye Patch (30 pares)<span class="pver">ver ficha</span></button>
+            <div class="tchip">mascarilla / parches · 2-3 veces por semana</div></div>
+          <div class="lprec"><b>$475</b><span>12 quincenas de $56</span></div></div></div></details></div></div>
       </div></details></div></details><details class="marca" data-buscar="D'ALBA Lujo vegano con trufa blanca D'ALBA">
           <summary><span class="dot" style="background:#BD9A45"></span>
             <div><div class="mnom">D'ALBA</div><div class="mfrase">Lujo vegano con trufa blanca</div></div>
