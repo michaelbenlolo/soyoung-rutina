@@ -6,7 +6,7 @@
 <meta name="description" content="¿Qué producto estás viendo? Tómale foto, escanea su código de barras o escribe su nombre: te decimos qué es, cuánto cuesta y con qué rutina va.">
 <title>SO YOUNG · ¿Qué producto estás viendo?</title>
 <meta name="x-contenido" content="2bd469e6a5">
-<meta name="x-buscar" content="b6c710fb4c">
+<meta name="x-buscar" content="674163c818">
 <style>
 :root { --rosa:#D96C82; --rosad:#B94F66; --ink:#2A2226; --crema:#FBF6F4; --crema2:#FAEDEE;
   --mut:#8b7d82; --line:#F0DDE1; --texto:#584a4f; color-scheme: light; }
@@ -562,6 +562,85 @@ function candidatosPorTexto(texto) {
   return punt.slice(0, 3).map(x => x.i);
 }
 
+/* ---------- reconocimiento visual: compara tu foto con las fotos del catálogo ----------
+   Red neuronal ligera (MobileNet local): convierte cada foto en una «huella» de 512
+   números y busca la más parecida entre las 139 del corner. No necesita leer texto,
+   así que funciona con empaques en coreano, fotos de una pantalla, etc. */
+const SELLO_DATOS = document.querySelector('meta[name="x-contenido"]').content;
+let _vis = null;
+function cargarImagen(src) {
+  return new Promise((ok, mal) => { const im = new Image(); im.onload = () => ok(im); im.onerror = mal; im.src = src; });
+}
+async function motorVisual(progreso) {
+  await cargarScript("lib/tf.min.js");
+  if (_vis) return _vis;
+  const base = await tf.loadLayersModel("lib/visual/model.json");
+  const tronco = tf.model({ inputs: base.inputs, outputs: base.getLayer("conv_pw_13_relu").output });
+  tf.tidy(() => tronco.predict(tf.zeros([1, 224, 224, 3])));   // calienta el modelo
+  const embed = (fuente) => tf.tidy(() => {
+    let t = tf.image.resizeBilinear(tf.browser.fromPixels(fuente).toFloat(), [224, 224]);
+    t = t.div(127.5).sub(1).expandDims(0);
+    const f = tronco.predict(t).mean([1, 2]).squeeze();
+    return f.div(f.norm()).dataSync();
+  });
+  // huellas de las 139 fotos del catálogo — se calculan una vez y quedan guardadas
+  // en el teléfono (cambian de llave si cambian los datos del sitio)
+  const clave = "soyoung_vis1_" + SELLO_DATOS;
+  let refs = null;
+  try {
+    const raw = localStorage.getItem(clave);
+    if (raw) {
+      const bytes = Uint8Array.from(atob(raw), c => c.charCodeAt(0));
+      const todo = new Float32Array(bytes.buffer);
+      const dim = todo.length / PROD.length;
+      if (Number.isInteger(dim) && dim > 0)
+        refs = PROD.map((p, i) => p.th ? todo.slice(i * dim, (i + 1) * dim) : null);
+    }
+  } catch (e) {}
+  if (!refs) {
+    refs = [];
+    for (let i = 0; i < PROD.length; i++) {
+      if (progreso && i % 12 === 0) progreso(`Preparando el reconocimiento visual… ${i}/${PROD.length}<br><small>solo la primera vez; queda guardado en tu cel</small>`);
+      const p = PROD[i];
+      if (!p.th) { refs.push(null); continue; }
+      try { refs.push(embed(await cargarImagen("../p/" + p.th))); }
+      catch (e) { refs.push(null); }
+    }
+    try {
+      const dim = (refs.find(r => r) || []).length;
+      if (dim) {
+        const todo = new Float32Array(PROD.length * dim);
+        refs.forEach((r, i) => { if (r) todo.set(r, i * dim); });
+        let bin = ""; const by = new Uint8Array(todo.buffer);
+        for (let i = 0; i < by.length; i += 8192) bin += String.fromCharCode.apply(null, by.subarray(i, i + 8192));
+        localStorage.setItem(clave, btoa(bin));
+      }
+    } catch (e) {}
+  }
+  _vis = { embed, refs };
+  return _vis;
+}
+function recorteCentral(bitmap) {
+  const lado = Math.min(bitmap.width, bitmap.height);
+  const c = document.createElement("canvas"); c.width = c.height = 448;
+  c.getContext("2d").drawImage(bitmap, (bitmap.width - lado) / 2, (bitmap.height - lado) / 2,
+                               lado, lado, 0, 0, 448, 448);
+  return c;
+}
+async function candidatosVisuales(bitmap, progreso) {
+  const v = await motorVisual(progreso);
+  const e1 = v.embed(canvasDe(bitmap, 448, false));   // foto completa
+  const e2 = v.embed(recorteCentral(bitmap));          // y su centro, por si hay fondo
+  const cos = (a, b) => { let s = 0; for (let k = 0; k < a.length; k++) s += a[k] * b[k]; return s; };
+  return PROD.map((p, i) => v.refs[i] ? { i, s: Math.max(cos(e1, v.refs[i]), cos(e2, v.refs[i])) } : { i, s: 0 })
+    .sort((a, b) => b.s - a.s);
+}
+/* Umbrales calibrados con pruebas (30-jul): fotos de pantalla correctas dan 0.71–0.97;
+   un control negativo dio 0.563 y el PEOR falso positivo medido dio 0.827 — por eso
+   «seguro» exige 0.88: debajo de eso el texto (OCR) también opina antes de proponer. */
+const UMBRAL_VIS = 0.62;      // debajo de esto, el parecido no significa nada
+const UMBRAL_SEGURO = 0.88;   // arriba de esto, ni hace falta leer el texto
+
 /* ---------- flujo: foto tomada o subida ---------- */
 const inputFoto = document.getElementById("foto");
 document.getElementById("btnfoto").addEventListener("click", () => inputFoto.click());
@@ -586,15 +665,27 @@ async function procesarFoto(blob) {
             `¿Seguro que es del empaque? También puedes escribir el nombre abajo.`, "err");
       return;
     }
-    avisoProgreso("No se ve el código — leyendo el texto del empaque… <br><small>la primera vez tarda unos segundos</small>");
-    const ocr = await motorOCR();
-    const c = canvasDe(bitmap, 1800, false);
-    const { data } = await ocr.recognize(c);
-    // si el OCR leyó puro ruido (empaque en coreano, foto borrosa), mejor decirlo
-    // honestamente que proponer candidatos al azar
-    const cand = (data.confidence || 0) >= 35 ? candidatosPorTexto(data.text || "") : [];
+    avisoProgreso("No se ve el código — comparando con las fotos del catálogo…");
+    let vis = [];
+    try { vis = await candidatosVisuales(bitmap, avisoProgreso); } catch (e) { vis = []; }
+    const V = vis.slice(0, 3).filter(x => x.s >= UMBRAL_VIS);
+    let cand = V.map(x => x.i);
+    const seguro = V.length && V[0].s >= UMBRAL_SEGURO;
+    if (!seguro) {
+      // el parecido no fue concluyente: leer también el texto del empaque y fusionar
+      avisoProgreso("Leyendo el texto del empaque…<br><small>la primera vez tarda unos segundos</small>");
+      try {
+        const ocr = await motorOCR();
+        const { data } = await ocr.recognize(canvasDe(bitmap, 1800, false));
+        const candO = (data.confidence || 0) >= 35 ? candidatosPorTexto(data.text || "") : [];
+        const ambos = cand.filter(i => candO.includes(i));   // coincidir en foto Y texto manda
+        cand = [...new Set([...ambos, ...cand, ...candO])].slice(0, 3);
+      } catch (e) {}
+    }
     if (cand.length) {
-      aviso("🔍 <b>¿Es alguno de estos?</b> Toca el tuyo. Si no, tómale foto al <b>código de barras</b> (la cajita de rayas): con eso lo encontramos exacto.", "ok");
+      aviso(seguro
+        ? "📸 <b>¡Se parece mucho a tu foto!</b> Toca el tuyo — y si no es, foto al <b>código de barras</b> y lo encontramos exacto."
+        : "🔍 <b>¿Es alguno de estos?</b> Toca el tuyo. Si no, tómale foto al <b>código de barras</b> (la cajita de rayas): con eso lo encontramos exacto.", "ok");
       pintar(cand, "Lo que se parece a tu foto");
       rgrid.scrollIntoView({ behavior: "smooth", block: "nearest" });
     } else {
@@ -639,5 +730,5 @@ const hp = location.hash.match(/^#p=(\d+)$/);
 if (hp && PROD[+hp[1]]) abrirFicha(+hp[1]);
 
 /* gancho para pruebas automatizadas (no afecta el uso normal) */
-window._buscarTest = { buscar, procesarFoto, candidatosPorTexto, decodificarBarras, abrirFicha, PROD, UPCMAP };
+window._buscarTest = { buscar, procesarFoto, candidatosPorTexto, candidatosVisuales, decodificarBarras, abrirFicha, PROD, UPCMAP };
 </script></body></html>
