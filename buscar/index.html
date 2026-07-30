@@ -5,7 +5,7 @@
 <meta name="robots" content="noindex">
 <meta name="description" content="¿Qué producto estás viendo? Tómale foto, escanea su código de barras o escribe su nombre: te decimos qué es, cuánto cuesta y con qué rutina va.">
 <title>SO YOUNG · ¿Qué producto estás viendo?</title>
-<meta name="x-contenido" content="28a7187640">
+<meta name="x-contenido" content="2bd469e6a5">
 <style>
 :root { --rosa:#D96C82; --rosad:#B94F66; --ink:#2A2226; --crema:#FBF6F4; --crema2:#FAEDEE;
   --mut:#8b7d82; --line:#F0DDE1; --texto:#584a4f; color-scheme: light; }
@@ -245,6 +245,17 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
 .ltotal>div:first-child { font-size:12.5px; font-weight:700; }
 .ltotal span { display:block; font-weight:400; font-size:10px; color:#e7d3d8; }
 .vacio { text-align:center; color:var(--mut); font-size:13px; padding:20px 0; }
+/* enlace al buscador de productos (/buscar) */
+.scanban { display:flex; align-items:center; gap:11px; margin-top:16px; background:#fff;
+  border:1.5px solid var(--line); border-radius:16px; padding:12px 14px;
+  text-decoration:none; color:var(--ink); }
+.scanban:focus-visible { outline:2px solid var(--rosad); outline-offset:2px; }
+.sbico { font-size:22px; flex:none; }
+.sbtxt { min-width:0; }
+.sbtxt b { display:block; font-size:13.5px; }
+.sbtxt small { display:block; font-size:11.5px; color:var(--mut); margin-top:1px; line-height:1.35; }
+.sbfl { margin-left:auto; color:var(--rosad); font-weight:800; font-size:18px; flex:none; }
+.notabuscar a { color:var(--rosad); font-weight:700; }
 </style>
 <style>
 /* --- propio del buscador --- */
