@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Encuentra tu rutina coreana en 1 minuto: elige lo que quieres mejorar y te decimos qué llevar, con precio de contado y en quincenas con tu vale.">
 <title>SO YOUNG · Encuentra tu rutina coreana</title>
-<meta name="x-contenido" content="f10fdc6c7d">
+<meta name="x-contenido" content="2fa740d593">
 <style>
 :root { --rosa:#D96C82; --rosad:#B94F66; --ink:#2A2226; --crema:#FBF6F4; --crema2:#FAEDEE;
   --mut:#8b7d82; --line:#F0DDE1; --texto:#584a4f; color-scheme: light; }
@@ -6041,6 +6041,77 @@ const esFuerte = p => FUERTES.some(f => (p.d + " " + p.u).toLowerCase().includes
                    || EXOCULTOS.some(k => p.d.toLowerCase().includes(k));
 const money = v => "$" + v.toLocaleString("es-MX");
 
+/* ---------- niveles de la rutina combinada (espejo de rutinas.py) ---------- */
+const NEEDCOLS = {"manchas":[["Medicube","Kojic Acid Turmeric"],["SKIN1004","Tone Brightening"],["ANUA","Niacinamide + TXA"],["Medicube","TXA Niacinamide"],["Medicube","Deep Vita C"],["Medicube","Glutathione Glow"],["DR.ALTHEA","Esenciales"],["SKIN1004","Boosting Shot"]],"poros":[["Medicube","Zero Pore"],["SKIN1004","Poremizing"],["ANUA","Heartleaf"],["BIODANCE","Real Deep Masks"]],"granitos":[["SKIN1004","Tea-Trica"],["Medicube","Azelaic Acid"],["ANUA","Azelaic Acid"],["COSRX","Low pH / Limpieza"]],"sensible":[["SKIN1004","Centella Original"],["SKIN1004","Hyalu-Cica"],["DR.ALTHEA","345 Relief"],["DR.ALTHEA","147 Barrier"],["ANUA","PDRN"],["MIXSOON","Centella / Cica"],["Medicube","Hyaluronic"],["MIXSOON","Glacier Water"]],"edad":[["Medicube","PDRN Pink"],["Medicube","Collagen"],["CENTELLIAN24","Madeca Cream"],["CELIMAX","Retinal"],["SKIN1004","Probio-Cica"],["MIXSOON","PDRN Collagen"],["Medicube","NAD"]],"ojos":[["BIODANCE","Collagen Peptide"],["CENTELLIAN24","360 Shot PDRN"],["COSRX","Sérums Activos"],["Medicube","PDRN Pink"],["SKIN1004","Probio-Cica"]],"glow":[["COSRX","Advanced Snail"],["MIXSOON","Bean (fermentado)"],["BIODANCE","Real Deep Masks"],["COSRX","Low pH / Limpieza"],["Medicube","Hyaluronic"],["D'ALBA","White Truffle"]],"sol":[["SKIN1004","Air-Fit Sun"],["SKIN1004","Hyalu-Cica"],["COSRX","Protección Solar"],["D'ALBA","Waterfull Sun"],["Medicube","Zero Pore"],["SKIN1004","Tone Brightening"]],"mascarillas":[["BIODANCE","Real Deep Masks"],["BIODANCE","Collagen Peptide"],["Medicube","Kojic Acid Turmeric"],["Medicube","Collagen"],["SKIN1004","Poremizing"],["Medicube","PDRN Pink"],["Medicube","Zero Pore"]],"regalo":[["BIODANCE","Real Deep Masks"],["D'ALBA","White Truffle"],["CENTELLIAN24","Madeca Cream"],["SKIN1004","Centella Original"],["BIODANCE","Collagen Peptide"],["Medicube","PDRN Pink"]]};
+const SUB = {"NOM":{"aceite":"aceite limpiador · va primero: disuelve maquillaje y bloqueador","espuma":"espuma · termina la limpieza (2º paso de la doble limpieza)","tonico":"tónico / toallitas · después de lavar, antes del sérum","esencia":"esencia · la capa ligera antes del sérum","serum":"sérum · el tratamiento","bruma":"bruma · refresca y fija durante el día","contorno":"contorno de ojos · líneas finas y ojeras","crema":"crema · sella todo","noche":"mascarilla de noche · trabaja mientras duerme","mascarilla":"mascarilla / parches · 2-3 veces por semana","retoque":"bálsamo en barra · retoque en el día, sobre el maquillaje","sol":"bloqueador · todas las mañanas"},"CORTO":{"aceite":"aceite limpiador","espuma":"espuma","tonico":"tónico","esencia":"esencia","serum":"sérum","bruma":"bruma","contorno":"contorno de ojos","crema":"crema","noche":"mascarilla de noche","mascarilla":"mascarilla","retoque":"bálsamo retoque","sol":"bloqueador"}};
+const subrol = p => {
+  const n = p.d.toLowerCase();
+  if (["shampoo", "travel kit", "duo", "spot cream"].some(k => n.includes(k))) return null;
+  if (p.p === "SOL") return "sol";
+  if (p.p === "L") return n.includes("oil") ? "aceite" : "espuma";
+  if (n.includes("night") || n.includes("sleeping") || n.includes("wrapping")) return "noche";
+  if (n.includes("patch") || n.includes("mask") || n.includes("pack")) return "mascarilla";
+  if (n.includes("eye")) return "contorno";
+  if (n.includes("balm") || n.includes("stick")) return "retoque";
+  if (n.includes("mist")) return "bruma";
+  if (n.includes("peeling") || n.includes("exfolia") || n.includes("pad") || n.includes("toner")) return "tonico";
+  if (p.p === "S") return "crema";
+  if (n.includes("essence") && !n.includes("serum")) return "esencia";
+  return "serum";
+};
+
+function nivelesCombinada(rt, usados, fuertesYa) {
+  // agregados del MISMO pool curado de las necesidades elegidas, UNO por sub-rol;
+  // tónico/esencia/sérum extra deben atacar alguna de las preocupaciones; sensible
+  // sin activos potentes y nunca dos potentes (mismas reglas de siempre)
+  const sen = sel.includes("sensible");
+  const otras = sel.filter(x => x !== "mascarillas");
+  const okCol = new Set();
+  sel.forEach(f => (NEEDCOLS[f] || []).forEach(([m, c]) => okCol.add(m + "|" + c)));
+  const en = new Set(usados);
+  const roles = new Set([...en].map(i => subrol(PROD[i])).filter(Boolean));
+  let fz = fuertesYa;
+  const ACT = ["tonico", "esencia", "serum"];
+  const toma = quiere => {
+    const out = [];
+    quiere.forEach(rol => {
+      if (roles.has(rol)) return;
+      let cands = PROD.map((p, i) => ({p, i}))
+        .filter(({p, i}) => !en.has(i) && okCol.has(p.m + "|" + p.c) && subrol(p) === rol);
+      if (ACT.includes(rol)) cands = cands.filter(({p}) => otras.some(t => p.t.includes(t)));
+      cands = cands.filter(({p}) => !(esFuerte(p) && (sen || fz >= 1)));
+      if (!cands.length) return;
+      cands.sort((a, b) => (b.p.v - a.p.v) || (a.p.pc - b.p.pc) || (a.p.d < b.p.d ? -1 : 1));
+      const c = cands[0];
+      out.push(c); en.add(c.i); roles.add(rol);
+      if (esFuerte(c.p)) fz++;
+    });
+    return out;
+  };
+  const com = toma(["aceite", "espuma", "tonico"]);
+  const cor = toma(["esencia", "serum", "bruma", "contorno", "noche", "mascarilla", "retoque"]);
+  if (!com.length && !cor.length) return "";
+  const ventana = (icn, nom, sub, adds) => {
+    const idxs = rt.concat(adds.map(c => c.i));
+    const tc = idxs.reduce((a, i) => a + PROD[i].pc, 0);
+    const cr = idxs.reduce((a, i) => a + PROD[i].pc / 2.5 * 3.5, 0);
+    const q = cr <= 360 ? 8 : (cr <= 650 ? 10 : 12);
+    const filas = adds.map(({p, i}) => `<div class="trow">${imgHTML(p, "timg")}
+      <div class="tinfo"><button class="pname" data-p="${i}">${p.d}<span class="pver">ver ficha</span></button> <span class="cmarca2">${p.m}</span>
+        <div class="tchip">${SUB.NOM[subrol(p)]}</div></div>
+      <div class="lprec"><b>${money(p.pc)}</b><span>${p.q} quincenas de $${p.pq}</span></div></div>`).join("");
+    return `<details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">${icn}</span>
+      <span class="tnom">${nom}<em>${sub}</em></span>
+      <span class="tprecio">${money(tc)}<em>${idxs.length} productos · ${q} quincenas de $${Math.round(cr / q)}</em></span></summary>
+      <div class="tbody"><div class="tsub">Los ${rt.length} de la rutina combinada más:</div>${filas}</div></details>`;
+  };
+  let h = "";
+  if (com.length) h += ventana("➕", "Rutina más completa",
+    "le suma " + com.map(c => SUB.CORTO[subrol(c.p)]).join(" y "), com);
+  if (cor.length) h += ventana("👑", "Rutina coreana completa", "todo lo necesario para tu rutina", com.concat(cor));
+  return `<div class="tiers">${h}</div>`;
+}
+
 /* ---------- selección múltiple ---------- */
 let sel = [];
 const chips = [...document.querySelectorAll(".chip")];
@@ -6172,7 +6243,7 @@ function pintarCombinada() {
   for (const c of cand) {
     if (masc.length >= tope) break;
     if ((sensible || fuertesYa >= 1) && esFuerte(c.p)) continue;
-    masc.push(c);
+    masc.push(c); usados.add(c.i);   // los niveles no deben repetir lo ya sugerido
     if (esFuerte(c.p)) fuertesYa++;
   }
   if (masc.length) {
@@ -6190,15 +6261,17 @@ function pintarCombinada() {
          <div class="nota" style="margin-top:9px">La mascarilla es el extra más fácil: <b>el resultado se ve en una noche</b> y no interfiere con tu rutina. Perfecta para el domingo o antes de un evento.</div>`;
   }
 
+  const niveles = nivelesCombinada(rt, usados, fuertesYa);
   const titulo = sel.map(x => `<span class="selchip">${NEC[x].i} ${NEC[x].t}</span>`).join("");
   comb.innerHTML = `
     <div class="ptit">Tu rutina para estas ${sel.length} cosas</div>
     <div class="seltit">${titulo}</div>
     <div class="rutina">
-      <div class="rtit">Tu rutina combinada · ${rt.length} productos</div>
+      <div class="rtit">⭐ Tu rutina combinada · ${rt.length} productos</div>
       <div class="rlist">${pasos}</div>
       <div class="rtotal"><div>Rutina completa<span>${rt.length} productos</span></div>
         <div class="rtcifra">${money(totC)}<span>ó ${q} quincenas de $${Math.round(totCr/q)}</span></div></div>
+      ${niveles}
     </div>
     ${extra}
     ${sensible ? `<div class="nota suave" style="margin-top:12px">🌸 <b>Como marcaste piel sensible</b>, elegimos fórmulas suaves y dejamos fuera los activos fuertes (retinol, kójico, ácidos exfoliantes). Apilar varios activos sobre piel sensible irrita — mejor resolver de a poco.</div>` : ""}
