@@ -6,6 +6,7 @@
 <meta name="description" content="¿Qué producto estás viendo? Tómale foto, escanea su código de barras o escribe su nombre: te decimos qué es, cuánto cuesta y con qué rutina va.">
 <title>SO YOUNG · ¿Qué producto estás viendo?</title>
 <meta name="x-contenido" content="2bd469e6a5">
+<meta name="x-buscar" content="b6c710fb4c">
 <style>
 :root { --rosa:#D96C82; --rosad:#B94F66; --ink:#2A2226; --crema:#FBF6F4; --crema2:#FAEDEE;
   --mut:#8b7d82; --line:#F0DDE1; --texto:#584a4f; color-scheme: light; }
@@ -259,8 +260,14 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
 </style>
 <style>
 /* --- propio del buscador --- */
-.volver { display:inline-block; margin-top:14px; font-size:12.5px; font-weight:700; color:var(--rosad);
-  text-decoration:none; background:#fff; border:1.5px solid var(--line); border-radius:99px; padding:7px 14px; }
+.tback { width:32px; height:32px; flex:none; display:flex; align-items:center; justify-content:center;
+  background:#fff; border:1.5px solid var(--line); border-radius:50%; color:var(--ink);
+  text-decoration:none; font-size:15px; font-weight:700; }
+.tback:focus-visible { outline:2px solid var(--rosad); outline-offset:2px; }
+.volver { display:flex; align-items:center; justify-content:center; gap:8px; margin-top:20px;
+  background:#fff; border:1.5px solid var(--rosa); color:var(--rosad); border-radius:16px;
+  padding:13px 15px; font-size:13.5px; font-weight:700; text-decoration:none; }
+.volver:focus-visible { outline:2px solid var(--rosad); outline-offset:2px; }
 .acciones { display:flex; flex-direction:column; gap:9px; margin-top:18px; }
 .abtn { appearance:none; border:0; cursor:pointer; font:inherit; border-radius:16px; padding:15px 16px;
   display:flex; align-items:center; gap:11px; text-align:left; }
@@ -306,7 +313,7 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
 .cta { margin-top:14px; font-size:13px; line-height:1.5; background:var(--crema2);
   border:1.5px solid var(--rosa); border-radius:14px; padding:11px 14px; }
 </style></head><body>
-<div class="top"><div class="topin"><div class="logo">SO YOUNG <em>K-BEAUTY</em></div><div class="sello">🇰🇷 100% ORIGINAL</div></div></div>
+<div class="top"><div class="topin"><a class="tback" href="../" aria-label="Volver a armar tu rutina">←</a><div class="logo">SO YOUNG <em>K-BEAUTY</em></div><div class="sello">🇰🇷 100% ORIGINAL</div></div></div>
 <div class="wrap">
   <div class="hero">
     <h1>¿Qué producto <span>estás viendo</span>?</h1>
@@ -325,7 +332,7 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
   <div id="rgtit" class="rgtit">Los más buscados del corner</div>
   <div id="rgrid" class="rgrid"></div>
   <div class="vacio" id="vacio" hidden>No encontramos nada con eso. Prueba con la marca («Cosrx»), el formato («espuma», «bloqueador») o tómale foto al código de barras.</div>
-  <a class="volver" href="../">← Arma tu rutina completa aquí</a>
+  <a class="volver" href="../">← Volver a armar tu rutina completa</a>
   <div class="foot">
     <div class="glow">✨ El glow que sí vale</div>
     Precios de julio 2026 (contado / quincenas con vale) — confírmalos en tienda.<br>
