@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Encuentra tu rutina coreana en 1 minuto: elige lo que quieres mejorar y te decimos qué llevar, con precio de contado y en quincenas con tu vale.">
 <title>SO YOUNG · Encuentra tu rutina coreana</title>
-<meta name="x-contenido" content="28a7187640">
+<meta name="x-contenido" content="2bd469e6a5">
 <style>
 :root { --rosa:#D96C82; --rosad:#B94F66; --ink:#2A2226; --crema:#FBF6F4; --crema2:#FAEDEE;
   --mut:#8b7d82; --line:#F0DDE1; --texto:#584a4f; color-scheme: light; }
@@ -245,6 +245,17 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
 .ltotal>div:first-child { font-size:12.5px; font-weight:700; }
 .ltotal span { display:block; font-weight:400; font-size:10px; color:#e7d3d8; }
 .vacio { text-align:center; color:var(--mut); font-size:13px; padding:20px 0; }
+/* enlace al buscador de productos (/buscar) */
+.scanban { display:flex; align-items:center; gap:11px; margin-top:16px; background:#fff;
+  border:1.5px solid var(--line); border-radius:16px; padding:12px 14px;
+  text-decoration:none; color:var(--ink); }
+.scanban:focus-visible { outline:2px solid var(--rosad); outline-offset:2px; }
+.sbico { font-size:22px; flex:none; }
+.sbtxt { min-width:0; }
+.sbtxt b { display:block; font-size:13.5px; }
+.sbtxt small { display:block; font-size:11.5px; color:var(--mut); margin-top:1px; line-height:1.35; }
+.sbfl { margin-left:auto; color:var(--rosad); font-weight:800; font-size:18px; flex:none; }
+.notabuscar a { color:var(--rosad); font-weight:700; }
 </style></head><body>
 <style>
 
@@ -254,6 +265,10 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
   <div class="hero">
     <h1>Encuentra tu <span>rutina coreana</span> en 1 minuto</h1>
     <p class="sub">Elige lo que quieres mejorar y te armamos la <b>rutina completa</b>: qué usar en cada paso, para qué sirve y cuánto sale — de contado <b>o en quincenas con tu vale</b>.</p>
+    <a class="scanban" href="buscar/"><span class="sbico">📷</span>
+      <span class="sbtxt"><b>¿Ya tienes un producto en la mano?</b>
+      <small>Tómale foto o escanea su código — te decimos qué es, su precio y con qué rutina va.</small></span>
+      <span class="sbfl">→</span></a>
   </div>
   <div class="chips"><button class="chip" type="button" aria-pressed="false" data-need="manchas"><span class="chico">🎯</span>Manchas y tono disparejo</button><button class="chip" type="button" aria-pressed="false" data-need="poros"><span class="chico">✨</span>Poros abiertos, grasa y brillo</button><button class="chip" type="button" aria-pressed="false" data-need="granitos"><span class="chico">🌿</span>Granitos y brotes</button><button class="chip" type="button" aria-pressed="false" data-need="sensible"><span class="chico">🌸</span>Piel reseca, sensible o irritada</button><button class="chip" type="button" aria-pressed="false" data-need="edad"><span class="chico">⏳</span>Líneas, arrugas y flacidez</button><button class="chip" type="button" aria-pressed="false" data-need="ojos"><span class="chico">👁️</span>Ojeras, bolsas y contorno</button><button class="chip" type="button" aria-pressed="false" data-need="glow"><span class="chico">🫧</span>Quiere GLOW / empezar desde cero</button><button class="chip" type="button" aria-pressed="false" data-need="sol"><span class="chico">☀️</span>Protección de todos los días</button><button class="chip" type="button" aria-pressed="false" data-need="regalo"><span class="chico">🎁</span>Regalo o antojo</button><button class="chip" type="button" aria-pressed="false" data-need="mascarillas"><span class="chico">🎭</span>Mascarillas y consentirse</button></div>
   <div class="ayuda">Puedes elegir <b>hasta 3</b> — te armamos una sola rutina que las resuelva juntas.</div>
@@ -3035,6 +3050,7 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
     <h2>Todo el corner: 10 marcas · 40 colecciones · 139 productos</h2>
     <p class="nota">Abre una marca para ver sus colecciones, qué resuelve cada una y todos sus productos con precio.</p>
     <div class="buscador"><input id="q" type="search" placeholder="Busca: mascarilla, caracol, manchas, bloqueador…" autocomplete="off"></div>
+    <div class="nota notabuscar" style="margin-top:8px">📷 ¿Lo tienes enfrente? <a href="buscar/">Tómale foto o escanea su código</a> y te decimos qué es.</div>
     <div id="cat"><details class="marca" data-buscar="MEDICUBE Resultados por preocupación Medicube">
           <summary><span class="dot" style="background:#E8447A"></span>
             <div><div class="mnom">MEDICUBE</div><div class="mfrase">Resultados por preocupación</div></div>
