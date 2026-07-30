@@ -6,7 +6,7 @@
 <meta name="description" content="¿Qué producto estás viendo? Tómale foto, escanea su código de barras o escribe su nombre: te decimos qué es, cuánto cuesta y con qué rutina va.">
 <title>SO YOUNG · ¿Qué producto estás viendo?</title>
 <meta name="x-contenido" content="06b41027ba">
-<meta name="x-buscar" content="c9f8c9e9cf">
+<meta name="x-buscar" content="d7afd501c1">
 <style>
 :root { --rosa:#D96C82; --rosad:#B94F66; --ink:#2A2226; --crema:#FBF6F4; --crema2:#FAEDEE;
   --mut:#8b7d82; --line:#F0DDE1; --texto:#584a4f; color-scheme: light; }
@@ -303,8 +303,10 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
 .scanbox[hidden] { display:none; }
 .scanbox video { width:100%; max-width:480px; border-radius:16px; }
 .scanmsg { color:#fff; font-size:13px; margin-top:14px; text-align:center; line-height:1.5; }
-.scancerrar { margin-top:16px; appearance:none; border:0; font:inherit; font-weight:700; font-size:13px;
+.scanfila { display:flex; gap:10px; margin-top:16px; }
+.scancerrar, .scanluz { appearance:none; border:0; font:inherit; font-weight:700; font-size:13px;
   background:#fff; color:var(--ink); border-radius:99px; padding:10px 22px; cursor:pointer; }
+.scanluz { background:transparent; color:#fff; border:1.5px solid rgba(255,255,255,.7); }
 .progreso { display:flex; align-items:center; gap:9px; }
 .spin { width:16px; height:16px; border-radius:50%; border:2.5px solid var(--line);
   border-top-color:var(--rosa); animation:gira .8s linear infinite; flex:none; }
@@ -343,8 +345,11 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
 </div>
 <div class="scanbox" id="scanbox" hidden>
   <video id="scanvid" playsinline muted></video>
-  <div class="scanmsg">Apunta al <b>código de barras</b> — se lee solo, sin tomar foto.</div>
-  <button class="scancerrar" id="scancerrar" type="button">Cancelar</button>
+  <div class="scanmsg" id="scanmsg"></div>
+  <div class="scanfila">
+    <button class="scanluz" id="scanluz" type="button" hidden>💡 Prender luz</button>
+    <button class="scancerrar" id="scancerrar" type="button">Cancelar</button>
+  </div>
 </div>
 <div id="modal" hidden>
   <div class="mbg"></div>
@@ -699,27 +704,57 @@ async function procesarFoto(blob) {
 }
 
 /* ---------- flujo: escáner en vivo ---------- */
-const scanbox = document.getElementById("scanbox"), scanvid = document.getElementById("scanvid");
+const scanbox = document.getElementById("scanbox"), scanvid = document.getElementById("scanvid"),
+      scanmsg = document.getElementById("scanmsg"), scanluz = document.getElementById("scanluz");
+const SCAN_GUIA = "Apunta al <b>código de barras</b>: que las rayas llenen el ancho de la pantalla, " +
+                  "a unos 10–15 cm y con buena luz. También puedes escribir los 13 números en el buscador.";
 let escaneando = false;
 document.getElementById("btnvivo").addEventListener("click", async () => {
   try {
     const lector = await lectorBarras();
     scanbox.hidden = false; escaneando = true;
-    await lector.decodeFromConstraints({ video: { facingMode: "environment" } }, scanvid, (res) => {
-      if (!escaneando || !res) return;
-      const codigo = res.getText();
-      if (UPCMAP[codigo] !== undefined) {
-        cerrarEscaner();
-        abrirFicha(UPCMAP[codigo], "✅ <b>Encontrado por su código de barras.</b> Este es tu producto:");
-      }
-    });
+    scanmsg.innerHTML = SCAN_GUIA;
+    let ultimoDesconocido = "";
+    await lector.decodeFromConstraints(
+      { video: { facingMode: "environment", width: { ideal: 1920 }, height: { ideal: 1080 } } },
+      scanvid, (res) => {
+        if (!escaneando || !res) return;
+        const codigo = res.getText();
+        if (UPCMAP[codigo] !== undefined) {
+          try { navigator.vibrate && navigator.vibrate(80); } catch (e) {}
+          cerrarEscaner();
+          abrirFicha(UPCMAP[codigo], "✅ <b>Encontrado por su código de barras.</b> Este es tu producto:");
+        } else if (codigo !== ultimoDesconocido) {
+          // sí LEYÓ un código, pero no es de nuestro catálogo — decirlo, no quedarse mudo
+          ultimoDesconocido = codigo;
+          try { navigator.vibrate && navigator.vibrate([40, 60, 40]); } catch (e) {}
+          scanmsg.innerHTML = `Leí el código <b>${codigo}</b>, pero no coincide con ninguno del corner 🤔.<br>` +
+            `¿Es de la cajita del producto? Prueba con otro código del empaque, o escribe el nombre en el buscador.`;
+        }
+      });
+    prepararLuz();
   } catch (e) {
     cerrarEscaner();
     aviso("No pude abrir la cámara aquí. Usa <b>📷 Tómale una foto</b> (abre la cámara normal de tu cel) o escribe el nombre abajo.", "err");
   }
 });
+function prepararLuz() {   // linterna, si el teléfono la deja controlar (Android casi siempre)
+  setTimeout(() => {
+    try {
+      const track = scanvid.srcObject && scanvid.srcObject.getVideoTracks()[0];
+      if (track && track.getCapabilities && track.getCapabilities().torch) {
+        scanluz.hidden = false; let luzOn = false;
+        scanluz.onclick = () => {
+          luzOn = !luzOn;
+          track.applyConstraints({ advanced: [{ torch: luzOn }] }).catch(() => {});
+          scanluz.textContent = luzOn ? "💡 Apagar luz" : "💡 Prender luz";
+        };
+      }
+    } catch (e) {}
+  }, 800);
+}
 function cerrarEscaner() {
-  escaneando = false; scanbox.hidden = true;
+  escaneando = false; scanbox.hidden = true; scanluz.hidden = true;
   if (_lector) { try { _lector.reset(); } catch (e) {} }
 }
 document.getElementById("scancerrar").addEventListener("click", cerrarEscaner);
