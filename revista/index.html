@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <meta name="x-contenido" content="39996216ed">
-<meta name="x-revista" content="234c59d28e">
+<meta name="x-revista" content="a653266d0f">
 <title>SO YOUNG · Edición Revista</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -312,6 +312,28 @@ body { font-family:var(--sans); background:var(--vbg); color:var(--vink); line-h
 .rventr b { font-size:13px; letter-spacing:.02em; }
 .rventr small { font-size:10px; color:var(--vmut); }
 
+/* ---------- franja de promesas de compra ---------- */
+.rvpromesa { display:flex; flex-wrap:wrap; gap:4px 16px; margin-top:12px; padding:9px 2px;
+  border-top:1px solid var(--vline); border-bottom:1px solid var(--vline);
+  font-size:10px; font-weight:500; color:var(--vmut); letter-spacing:.02em; }
+.rvpromesa b { color:var(--vacc); font-weight:700; }
+
+/* ---------- estante «Lo más vendido» ---------- */
+.rvrail { display:flex; gap:10px; overflow-x:auto; margin:12px -20px 0; padding:4px 20px 14px;
+  scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; }
+.rvprod { appearance:none; flex:0 0 134px; scroll-snap-align:start; background:#fff;
+  border:1px solid var(--vline); border-radius:10px; padding:10px 10px 12px; text-align:left;
+  cursor:pointer; font-family:var(--sans); display:flex; flex-direction:column; gap:4px;
+  color:var(--vink); }
+.rvprod img { width:100%; height:96px; object-fit:contain; background:var(--vblush);
+  border-radius:8px; padding:6px; mix-blend-mode:multiply; }
+.rvprod b { font-size:10.8px; line-height:1.3; font-weight:600; display:-webkit-box;
+  -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; min-height:28px; }
+.rvprod small { font-size:8.5px; letter-spacing:.1em; color:var(--vmut); text-transform:uppercase; }
+.rvprod em { font-style:normal; font-family:var(--serif); font-weight:700; font-size:15px;
+  color:var(--vacc); }
+.rvvf { font-size:9px; font-weight:700; letter-spacing:.06em; color:var(--vgold); }
+
 /* ---------- secciones ---------- */
 .rvwrap { max-width:560px; margin:0 auto; padding:0 20px 40px; }
 .rvsec { margin-top:38px; }
@@ -441,7 +463,7 @@ details.tier { border:1px solid var(--vline); border-radius:8px; background:#fff
   <div class="rvmast"><small>LA REVISTA DE TU PIEL</small><b>SO YOUNG</b></div>
   <div class="rvlineas">
     <em>El secreto del <b>glass skin</b> está en la rutina.</em>
-    <span>MÉXICO · Nº 1 · 100% ORIGINAL DE COREA · DESLIZA ↓</span>
+    <span>MÉXICO · Nº 1 · 139 PRODUCTOS 100% ORIGINALES · DESLIZA ↓</span>
   </div>
 </header>
 
@@ -452,10 +474,19 @@ details.tier { border:1px solid var(--vline); border-radius:8px; background:#fff
     <a href="../buscar/"><span>📷</span><b>Escanear producto</b><small>Precio y rutina al instante</small></a>
   </div>
 
+  <div class="rvpromesa"><span><b>✓</b> 100% original de Corea</span><span><b>✓</b> De contado o en quincenas con tu vale</span><span><b>✓</b> Tu asesora te lo aparta hoy</span></div>
+
+  <section class="rvsec" id="rvtienda">
+    <div class="rveye">LO MÁS VENDIDO<i></i></div>
+    <h2>Los favoritos del corner</h2>
+    <p class="rvhint">Toca cualquiera para ver su ficha, precio y quincenas.</p>
+    <div class="rvrail"><button class="pname rvprod" data-p="1" type="button"><img src="../p/B0DG1DQ2S7.jpg" alt="Azelaic Acid 10 Serum 30ml" loading="lazy"><b>Azelaic Acid 10 Serum 30ml</b><small>ANUA</small><em>$753</em><span class="rvvf">ver ficha →</span></button><button class="pname rvprod" data-p="2" type="button"><img src="../p/B0FVT77ZLL.jpg" alt="PDRN Hyaluronic Capsule Mist 100ml" loading="lazy"><b>PDRN Hyaluronic Capsule Mist 100ml</b><small>ANUA</small><em>$823</em><span class="rvvf">ver ficha →</span></button><button class="pname rvprod" data-p="22" type="button"><img src="../p/B0FKGJYFC8.jpg" alt="345 Relief Cream 50ml" loading="lazy"><b>345 Relief Cream 50ml</b><small>DR.ALTHEA</small><em>$543</em><span class="rvvf">ver ficha →</span></button><button class="pname rvprod" data-p="28" type="button"><img src="../p/B09V7Z4TJG.jpg" alt="Zero Pore Pad 2.0 (toallitas)" loading="lazy"><b>Zero Pore Pad 2.0 (toallitas)</b><small>Medicube</small><em>$443</em><span class="rvvf">ver ficha →</span></button><button class="pname rvprod" data-p="39" type="button"><img src="../p/B0DBF65JYY.jpg" alt="PDRN Pink Peptide Serum 30ml" loading="lazy"><b>PDRN Pink Peptide Serum 30ml</b><small>Medicube</small><em>$402</em><span class="rvvf">ver ficha →</span></button><button class="pname rvprod" data-p="121" type="button"><img src="../p/B0B2RM68G2.jpg" alt="Bio-Collagen Real Deep Mask (1 pza)" loading="lazy"><b>Bio-Collagen Real Deep Mask (1 pza)</b><small>BIODANCE</small><em>$383</em><span class="rvvf">ver ficha →</span></button><button class="pname rvprod" data-p="132" type="button"><img src="../p/B0GHMZXX8Y.jpg" alt="PDRN Pink Collagen Multi Balm 10g" loading="lazy"><b>PDRN Pink Collagen Multi Balm 10g</b><small>Medicube</small><em>$483</em><span class="rvvf">ver ficha →</span></button><button class="pname rvprod" data-p="133" type="button"><img src="../p/B0GD6R7CFJ.jpg" alt="Collagen Peptide Eye Patch (30 pares)" loading="lazy"><b>Collagen Peptide Eye Patch (30 pares)</b><small>BIODANCE</small><em>$475</em><span class="rvvf">ver ficha →</span></button></div>
+  </section>
+
   <section class="rvsec" id="rvsel">
-    <div class="rveye">EN ESTE NÚMERO<i></i></div>
+    <div class="rveye">ARMA TU RUTINA<i></i></div>
     <h2>¿Qué quieres mejorar?</h2>
-    <p class="rvhint">Marca hasta <b>3</b> — tu rutina se arma sola, como selección de editora.</p>
+    <p class="rvhint">Marca hasta <b>3</b> — te armamos la rutina completa con precios, de contado o en quincenas con tu vale.</p>
     <div class="rvsum" id="rvsum"></div>
     <div class="avisomax" id="aviso-max" hidden>Elige las <b>2 o 3 que más te importan</b>: tu piel no puede tratarse todo a la vez, y la rutina se vuelve muy larga. Quita una para agregar otra.</div>
     <div id="rvoculto" hidden><div class="chips"><button class="chip" type="button" aria-pressed="false" data-need="manchas"><span class="chico">🎯</span>Manchas y tono disparejo</button><button class="chip" type="button" aria-pressed="false" data-need="poros"><span class="chico">✨</span>Poros abiertos, grasa y brillo</button><button class="chip" type="button" aria-pressed="false" data-need="granitos"><span class="chico">🌿</span>Granitos y brotes</button><button class="chip" type="button" aria-pressed="false" data-need="sensible"><span class="chico">🌸</span>Piel reseca, sensible o irritada</button><button class="chip" type="button" aria-pressed="false" data-need="edad"><span class="chico">⏳</span>Líneas, arrugas y flacidez</button><button class="chip" type="button" aria-pressed="false" data-need="ojos"><span class="chico">👁️</span>Ojeras, bolsas y contorno</button><button class="chip" type="button" aria-pressed="false" data-need="glow"><span class="chico">🫧</span>Quiere GLOW / empezar desde cero</button><button class="chip" type="button" aria-pressed="false" data-need="sol"><span class="chico">☀️</span>Protección de todos los días</button><button class="chip" type="button" aria-pressed="false" data-need="regalo"><span class="chico">🎁</span>Regalo o antojo</button><button class="chip" type="button" aria-pressed="false" data-need="mascarillas"><span class="chico">🎭</span>Mascarillas y consentirse</button></div></div>
@@ -463,10 +494,10 @@ details.tier { border:1px solid var(--vline); border-radius:8px; background:#fff
 
   <section class="rvsec" id="rvres">
     <div class="rveye">TU RUTINA<i></i></div>
-    <h2>La selección de la editora</h2>
+    <h2>Tu rutina, lista para llevar</h2>
     <div class="rvvacio" id="rvvacio">
-      <b>«Toda gran piel empieza en el sumario.»</b>
-      <span>Marca arriba lo que quieras mejorar y aquí aparece tu rutina completa.</span>
+      <b>Aún no eliges nada.</b>
+      <span>Marca arriba lo que quieras mejorar: aquí aparece tu rutina completa con precios y quincenas, lista para apartarla con tu asesora.</span>
     </div>
     <section class="panel" id="panel-combinado" hidden></section>
   <section class="panel" id="panel-manchas" hidden>
