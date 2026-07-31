@@ -6,7 +6,7 @@
 <meta name="description" content="Tómate una selfie —que no sale de tu celular— y te guiamos zona por zona para armar tu rutina coreana, con precios de contado o en quincenas.">
 <title>SO YOUNG · Tu rutina con tu propia foto</title>
 <meta name="x-contenido" content="f839bdbfde">
-<meta name="x-piel" content="467aac33af">
+<meta name="x-piel" content="caddc8e9b0">
 <style>
 :root { --rosa:#D96C82; --rosad:#B94F66; --ink:#2A2226; --crema:#FBF6F4; --crema2:#FAEDEE;
   --mut:#8b7d82; --line:#F0DDE1; --texto:#584a4f; color-scheme: light; }
@@ -297,6 +297,14 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
 .camtip { position:absolute; left:10px; right:10px; bottom:10px; background:rgba(36,29,32,.72);
   color:#fff; font-size:11.8px; line-height:1.4; border-radius:12px; padding:8px 11px;
   text-align:center; backdrop-filter:blur(4px); }
+.caraaqui { position:absolute; left:50%; transform:translateX(-50%); top:5.5%;
+  background:rgba(36,29,32,.62); color:#fff; font-size:11px; font-weight:700;
+  border-radius:99px; padding:4px 11px; white-space:nowrap; backdrop-filter:blur(3px); }
+.vzoom { position:absolute; left:50%; transform:translateX(-50%); bottom:10px;
+  background:rgba(36,29,32,.66); color:#fff; font-size:11px; font-weight:700;
+  border-radius:99px; padding:5px 12px; white-space:nowrap; pointer-events:none;
+  backdrop-filter:blur(3px); }
+#vfoto { touch-action:none; }
 .disparo { width:70px; height:70px; border-radius:50%; border:5px solid #fff; cursor:pointer;
   background:var(--rosa); box-shadow:0 0 0 3px var(--rosa), 0 4px 14px rgba(42,34,38,.28);
   margin:18px auto 0; display:block; }
@@ -354,11 +362,12 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
     <div class="camwrap">
       <video id="cam" playsinline autoplay muted></video>
       <svg class="guia" viewBox="0 0 300 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-        <defs><mask id="mg"><rect width="300" height="400" fill="#fff"/><ellipse cx="150" cy="176" rx="102" ry="120" fill="#000"/></mask></defs>
-        <rect width="300" height="400" fill="rgba(20,14,16,.34)" mask="url(#mg)"/>
-        <ellipse cx="150" cy="176" rx="102" ry="120" fill="none" stroke="rgba(255,255,255,.92)" stroke-width="2.4" stroke-dasharray="7 6"/>
+        <path d="M0 0 H300 V400 H0 Z M64 172 a86 104 0 1 0 172 0 a86 104 0 1 0 -172 0 Z"
+              fill="rgba(20,14,16,.38)" fill-rule="evenodd"/>
+        <ellipse cx="150" cy="172" rx="86" ry="104" fill="none" stroke="rgba(255,255,255,.95)" stroke-width="2.6" stroke-dasharray="7 6"/>
       </svg>
-      <div class="camtip">Acomoda tu cara dentro del óvalo · luz de frente · sin lentes</div>
+      <div class="caraaqui">👤 Tu cara aquí, dentro del óvalo</div>
+      <div class="camtip">💪 Estira el brazo (de cerquita la cámara deforma) · luz de frente · sin lentes</div>
     </div>
     <button class="disparo" id="disparo" type="button" aria-label="Tomar la foto"></button>
     <span class="subelink" id="subir1" role="button" tabindex="0">o sube una foto que ya tengas</span>
@@ -389,6 +398,7 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
   <div class="visor">
     <canvas id="vfoto" width="750" height="1000"></canvas>
     <div id="vcara" class="vcara" aria-hidden="true"></div>
+    <div class="vzoom" id="vzoom" hidden>🔍 Acércate: dos dedos o doble toque</div>
   </div>
   <div class="qcard">
     <div class="qtxt"><span class="qic" id="qic"></span><span id="qtx"></span></div>
@@ -3531,7 +3541,9 @@ const ZONAS = {
   barbilla:  [[0, .76, .28, .16]],
   cara:      [[0, .05, .95, .95]],
 };
-const OVALO = { cx:150, cy:176, rx:102, ry:120 };   // en el lienzo 300×400 del visor
+// óvalo-guía (en el lienzo 300×400): MÁS CHICO a propósito — obliga a estirar el
+// brazo, y de lejitos la cámara frontal deforma menos la cara (reporte de Michael)
+const OVALO = { cx:150, cy:172, rx:86, ry:104 };
 
 const PREG = [
  {k:"poros",    ic:"✨", z:["frente","nariz","mejillas"],
@@ -3570,7 +3582,8 @@ async function abrirCam() {
   $("camerr").hidden = true; $("camprev").hidden = true; $("camvivo").hidden = false;
   try {
     stream = await navigator.mediaDevices.getUserMedia(
-      { video: { facingMode: "user", width: { ideal: 1280 }, height: { ideal: 1280 } }, audio: false });
+      { video: { facingMode: "user", width: { ideal: 1080 }, height: { ideal: 1440 },
+                 aspectRatio: { ideal: 3 / 4 } }, audio: false });
     video.srcObject = stream; await video.play();
   } catch (e) { $("camvivo").hidden = true; $("camerr").hidden = false; }
 }
@@ -3588,20 +3601,27 @@ $("camback").addEventListener("click", () => { cerrarCam(); ir("sc-intro"); });
 $("subir1").addEventListener("click", () => $("archivo").click());
 $("subir2").addEventListener("click", () => $("archivo").click());
 
-function recorteCover(fuente, vw, vh) {
-  // recorta la fuente al 3:4 del visor (mismo encuadre que se ve en pantalla)
+function recorteCover(vw, vh) {
+  // recorta la fuente al 3:4 del visor (mismo encuadre que se ve en pantalla),
+  // SIEMPRE dentro de los límites: un rectángulo fuera de rango deforma la foto
   const AR = 3 / 4; let sw, sh, sx, sy;
   if (vw / vh > AR) { sh = vh; sw = vh * AR; sx = (vw - sw) / 2; sy = 0; }
   else { sw = vw; sh = vw / AR; sx = 0; sy = (vh - sh) / 2; }
+  sx = Math.max(0, Math.round(sx)); sy = Math.max(0, Math.round(sy));
+  sw = Math.min(Math.round(sw), vw - sx); sh = Math.min(Math.round(sh), vh - sy);
   return { sx, sy, sw, sh };
 }
 $("disparo").addEventListener("click", () => {
-  const vw = video.videoWidth, vh = video.videoHeight; if (!vw) return;
-  const r = recorteCover(video, vw, vh);
+  const vw = video.videoWidth, vh = video.videoHeight; if (!vw || !vh) return;
+  // 1º el cuadro COMPLETO a un lienzo intermedio: recortar directo del <video>
+  // deformaba la selfie en iPhone (reporte de Michael 30-jul)
+  const full = document.createElement("canvas"); full.width = vw; full.height = vh;
+  full.getContext("2d").drawImage(video, 0, 0);
+  const r = recorteCover(vw, vh);
   const c = document.createElement("canvas"); c.width = 900; c.height = 1200;
   const x = c.getContext("2d");
   x.translate(900, 0); x.scale(-1, 1);   // espejo: la foto queda como ella se ve
-  x.drawImage(video, r.sx, r.sy, r.sw, r.sh, 0, 0, 900, 1200);
+  x.drawImage(full, r.sx, r.sy, r.sw, r.sh, 0, 0, 900, 1200);
   FOTO = c; mostrarPrevia();
 });
 function mostrarPrevia() {
@@ -3620,7 +3640,7 @@ $("archivo").addEventListener("change", e => {
   const img = new Image();
   img.onload = () => {
     URL.revokeObjectURL(img.src);
-    const r = recorteCover(img, img.naturalWidth, img.naturalHeight);
+    const r = recorteCover(img.naturalWidth, img.naturalHeight);
     const c = document.createElement("canvas"); c.width = 900; c.height = 1200;
     c.getContext("2d").drawImage(img, r.sx, r.sy, r.sw, r.sh, 0, 0, 900, 1200);  // subida: sin espejo
     FOTO = c; ir("sc-cam"); mostrarPrevia();
@@ -3638,41 +3658,101 @@ function elipses(zonas) {
     x: (OVALO.cx + fx * OVALO.rx) * K, y: (OVALO.cy + fy * OVALO.ry) * K,
     rx: OVALO.rx * fr * K, ry: OVALO.ry * fry * K }));
 }
+let VZ = { z: 1, tx: 0, ty: 0 };   // zoom y paneo del visor
+let zonaActual = null, zoomUsado = false;
+function repintar() {
+  vctx.setTransform(1, 0, 0, 1, 0, 0); vctx.clearRect(0, 0, 750, 1000);
+  vctx.setTransform(VZ.z, 0, 0, VZ.z, VZ.tx, VZ.ty);
+  vctx.drawImage(FOTO, 0, 0, 750, 1000);
+  if (zonaActual) {
+    vctx.drawImage(ov, 0, 0);
+    vctx.strokeStyle = "rgba(217,108,130,.95)"; vctx.lineWidth = 3 / VZ.z;
+    vctx.setLineDash([12 / VZ.z, 9 / VZ.z]);
+    elipses(zonaActual).forEach(e => { vctx.beginPath(); vctx.ellipse(e.x, e.y, e.rx, e.ry, 0, 0, 7); vctx.stroke(); });
+    vctx.setLineDash([]);
+  }
+  vctx.setTransform(1, 0, 0, 1, 0, 0);
+}
+function fijarZoom(z, cx, cy) {   // acerca manteniendo el punto (cx,cy) en su lugar
+  z = Math.max(1, Math.min(4, z));
+  VZ.tx = cx - (cx - VZ.tx) * (z / VZ.z);
+  VZ.ty = cy - (cy - VZ.ty) * (z / VZ.z);
+  VZ.z = z;
+  VZ.tx = Math.min(0, Math.max(750 - 750 * z, VZ.tx));
+  VZ.ty = Math.min(0, Math.max(1000 - 1000 * z, VZ.ty));
+  if (z > 1 && !zoomUsado) { zoomUsado = true; $("vzoom").hidden = true; }
+  repintar();
+}
 function pintarVisor(p) {
   const conFoto = !!FOTO;
   vcan.hidden = !conFoto; $("vcara").hidden = conFoto;
+  $("vzoom").hidden = !conFoto || zoomUsado;
   if (!conFoto) { $("vcara").innerHTML = svgCara(p.z || []); return; }
-  vctx.setLineDash([]); vctx.clearRect(0, 0, 750, 1000);
-  vctx.drawImage(FOTO, 0, 0, 750, 1000);
-  if (!p.z) return;
-  const es = elipses(p.z);
-  const o = ov.getContext("2d");
-  o.globalCompositeOperation = "source-over"; o.clearRect(0, 0, 750, 1000);
-  o.fillStyle = "rgba(36,29,32,.52)"; o.fillRect(0, 0, 750, 1000);
-  o.globalCompositeOperation = "destination-out";
-  es.forEach(e => {   // hueco con borde suave (gradiente radial, compatible con Safari)
-    o.save(); o.translate(e.x, e.y); o.scale(e.rx, e.ry);
-    const g = o.createRadialGradient(0, 0, 0, 0, 0, 1);
-    g.addColorStop(0, "rgba(0,0,0,1)"); g.addColorStop(.72, "rgba(0,0,0,1)"); g.addColorStop(1, "rgba(0,0,0,0)");
-    o.fillStyle = g; o.beginPath(); o.arc(0, 0, 1, 0, 7); o.fill(); o.restore();
-  });
-  vctx.drawImage(ov, 0, 0);
-  vctx.strokeStyle = "rgba(217,108,130,.95)"; vctx.lineWidth = 3; vctx.setLineDash([12, 9]);
-  es.forEach(e => { vctx.beginPath(); vctx.ellipse(e.x, e.y, e.rx, e.ry, 0, 0, 7); vctx.stroke(); });
-  vctx.setLineDash([]);
+  zonaActual = p.z || null;
+  VZ = { z: 1, tx: 0, ty: 0 };   // cada pregunta arranca sin zoom
+  if (zonaActual) {
+    const es = elipses(zonaActual);
+    const o = ov.getContext("2d");
+    o.globalCompositeOperation = "source-over"; o.clearRect(0, 0, 750, 1000);
+    o.fillStyle = "rgba(36,29,32,.52)"; o.fillRect(0, 0, 750, 1000);
+    o.globalCompositeOperation = "destination-out";
+    es.forEach(e => {   // hueco con borde suave (gradiente radial, compatible con Safari)
+      o.save(); o.translate(e.x, e.y); o.scale(e.rx, e.ry);
+      const g = o.createRadialGradient(0, 0, 0, 0, 0, 1);
+      g.addColorStop(0, "rgba(0,0,0,1)"); g.addColorStop(.72, "rgba(0,0,0,1)"); g.addColorStop(1, "rgba(0,0,0,0)");
+      o.fillStyle = g; o.beginPath(); o.arc(0, 0, 1, 0, 7); o.fill(); o.restore();
+    });
+  }
+  repintar();
 }
+/* gestos del visor: pellizco = acercar · arrastre = moverse · doble toque = 2× · rueda en compu */
+const dedos = new Map(); let pinch0 = null, tapPrev = 0, movio = false;
+const enLienzo = ev => { const r = vcan.getBoundingClientRect();
+  return { x: (ev.clientX - r.left) * 750 / r.width, y: (ev.clientY - r.top) * 1000 / r.height }; };
+vcan.addEventListener("pointerdown", ev => {
+  vcan.setPointerCapture(ev.pointerId);
+  dedos.set(ev.pointerId, enLienzo(ev)); movio = false;
+  if (dedos.size === 2) { const [a, b] = [...dedos.values()];
+    pinch0 = { d: Math.hypot(a.x - b.x, a.y - b.y) || 1, z: VZ.z }; }
+});
+vcan.addEventListener("pointermove", ev => {
+  if (!dedos.has(ev.pointerId)) return;
+  const p = enLienzo(ev);
+  if (dedos.size === 2 && pinch0) {
+    dedos.set(ev.pointerId, p); movio = true;
+    const [a, b] = [...dedos.values()];
+    fijarZoom(pinch0.z * Math.hypot(a.x - b.x, a.y - b.y) / pinch0.d, (a.x + b.x) / 2, (a.y + b.y) / 2);
+  } else if (dedos.size === 1 && VZ.z > 1) {
+    const q = dedos.get(ev.pointerId);
+    if (Math.hypot(p.x - q.x, p.y - q.y) > 4) movio = true;
+    VZ.tx = Math.min(0, Math.max(750 - 750 * VZ.z, VZ.tx + (p.x - q.x)));
+    VZ.ty = Math.min(0, Math.max(1000 - 1000 * VZ.z, VZ.ty + (p.y - q.y)));
+    dedos.set(ev.pointerId, p); repintar();
+  }
+});
+vcan.addEventListener("pointerup", ev => {
+  if (dedos.size === 1 && !pinch0 && !movio) {   // fue un toque: ¿doble?
+    const ahora = performance.now();
+    if (ahora - tapPrev < 320) { const p = enLienzo(ev); fijarZoom(VZ.z > 1 ? 1 : 2.2, p.x, p.y); tapPrev = 0; }
+    else tapPrev = ahora;
+  }
+  dedos.delete(ev.pointerId); if (dedos.size < 2) pinch0 = null;
+});
+vcan.addEventListener("pointercancel", ev => { dedos.delete(ev.pointerId); pinch0 = null; });
+vcan.addEventListener("wheel", ev => { ev.preventDefault(); const p = enLienzo(ev);
+  fijarZoom(VZ.z * (ev.deltaY < 0 ? 1.15 : 1 / 1.15), p.x, p.y); }, { passive: false });
 function svgCara(zonas) {
   const zs = elipses(zonas).map(e =>
     `<ellipse cx="${e.x / K}" cy="${e.y / K}" rx="${e.rx / K}" ry="${e.ry / K}" fill="rgba(217,108,130,.20)" stroke="#D96C82" stroke-width="2" stroke-dasharray="6 5"/>`).join("");
   return `<svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <rect width="300" height="400" fill="#FAEDEE"/>
     <g fill="none" stroke="#C9AEB6" stroke-width="3" stroke-linecap="round">
-      <ellipse cx="150" cy="176" rx="102" ry="120"/>
-      <path d="M94 133 Q112 125 131 131"/><path d="M169 131 Q188 125 206 133"/>
-      <path d="M100 152 Q114 144 130 152 Q114 158 100 152 Z"/>
-      <path d="M170 152 Q186 144 200 152 Q186 158 170 152 Z"/>
-      <path d="M150 164 L146 202 Q150 209 157 203"/>
-      <path d="M122 236 Q150 248 178 236"/>
+      <ellipse cx="150" cy="172" rx="86" ry="104"/>
+      <path d="M103 135 Q118 128 134 133"/><path d="M166 133 Q182 128 197 135"/>
+      <path d="M108 151 Q120 144 133 151 Q120 156 108 151 Z"/>
+      <path d="M167 151 Q180 144 192 151 Q180 156 167 151 Z"/>
+      <path d="M150 162 L147 195 Q150 201 156 195"/>
+      <path d="M126 224 Q150 234 174 224"/>
     </g>${zs}</svg>`;
 }
 
@@ -3717,7 +3797,7 @@ function calcular() {
 }
 function miniFoto() {
   const c = document.createElement("canvas"); c.width = c.height = 160;
-  const sy = Math.max(0, FOTO.height * .44 - FOTO.width / 2);   // cuadro centrado en la cara
+  const sy = Math.max(0, FOTO.height * (OVALO.cy / 400) - FOTO.width / 2);   // cuadro centrado en la cara
   c.getContext("2d").drawImage(FOTO, 0, sy, FOTO.width, FOTO.width, 0, 0, 160, 160);
   return c.toDataURL("image/jpeg", .85);
 }
@@ -3742,5 +3822,6 @@ $("denuevo").addEventListener("click", () => location.reload());
 /* gancho para pruebas automatizadas (no afecta el uso normal) */
 window._pielTest = { PREG, ZONAS, calcular, empezarQuiz, terminar, ir,
   responder: (k, i) => { resp[k] = i; }, getResp: () => resp,
-  setFoto: c => { FOTO = c; }, getFoto: () => FOTO, pintarPregunta, pintarVisor };
+  setFoto: c => { FOTO = c; }, getFoto: () => FOTO, pintarPregunta, pintarVisor,
+  fijarZoom, getVZ: () => VZ };
 </script></body></html>
