@@ -6,7 +6,7 @@
 <meta name="description" content="¿Qué producto estás viendo? Tómale foto, escanea su código de barras o escribe su nombre: te decimos qué es, cuánto cuesta y con qué rutina va.">
 <title>SO YOUNG · ¿Qué producto estás viendo?</title>
 <meta name="x-contenido" content="f839bdbfde">
-<meta name="x-buscar" content="b2c3364ce3">
+<meta name="x-buscar" content="487331784b">
 <style>
 :root { --rosa:#D96C82; --rosad:#B94F66; --ink:#2A2226; --crema:#FBF6F4; --crema2:#FAEDEE;
   --mut:#8b7d82; --line:#F0DDE1; --texto:#584a4f; color-scheme: light; }
@@ -573,8 +573,20 @@ function candidatosPorTexto(texto) {
    así que funciona con empaques en coreano, fotos de una pantalla, etc. */
 const SELLO_DATOS = document.querySelector('meta[name="x-contenido"]').content;
 let _vis = null;
-function cargarImagen(src) {
-  return new Promise((ok, mal) => { const im = new Image(); im.onload = () => ok(im); im.onerror = mal; im.src = src; });
+function cargarImagen(src, intentos = 3) {
+  // con reintentos: si una foto no baja (señal débil) la huella de ese producto
+  // quedaría vacía y ese producto sería IRRECONOCIBLE en ese teléfono
+  return new Promise((ok, mal) => {
+    const intenta = (n) => {
+      const im = new Image();
+      im.onload = () => ok(im);
+      im.onerror = () => n > 1 ? setTimeout(() => intenta(n - 1), 400)
+                              : mal(new Error("no cargó " + src));
+      // en los reintentos se agrega ?r= para brincarse una respuesta de error cacheada
+      im.src = n === intentos ? src : src + (src.includes("?") ? "&" : "?") + "r=" + n;
+    };
+    intenta(intentos);
+  });
 }
 async function motorVisual(progreso) {
   await cargarScript("lib/tf.min.js");
@@ -600,20 +612,30 @@ async function motorVisual(progreso) {
       const dim = todo.length / PROD.length;
       if (Number.isInteger(dim) && dim > 0)
         refs = PROD.map((p, i) => p.th ? todo.slice(i * dim, (i + 1) * dim) : null);
+      // huella VACÍA (pura de ceros) = una foto falló al calcularse en este teléfono
+      // y quedó guardada rota: ese producto jamás se reconocería aquí. Se descarta
+      // todo el caché y se recalcula (lección del cel de Michael, 30-jul).
+      if (refs && PROD.some((p, i) => p.th && refs[i] && !refs[i].some(x => x !== 0))) {
+        refs = null;
+        try { localStorage.removeItem(clave); } catch (e) {}
+      }
     }
   } catch (e) {}
   if (!refs) {
     refs = [];
+    let fallos = 0;
     for (let i = 0; i < PROD.length; i++) {
       if (progreso && i % 12 === 0) progreso(`Preparando el reconocimiento visual… ${i}/${PROD.length}<br><small>solo la primera vez; queda guardado en tu cel</small>`);
       const p = PROD[i];
       if (!p.th) { refs.push(null); continue; }
       try { refs.push(embed(await cargarImagen("../p/" + p.th))); }
-      catch (e) { refs.push(null); }
+      catch (e) { refs.push(null); fallos++; }
     }
     try {
       const dim = (refs.find(r => r) || []).length;
-      if (dim) {
+      // solo se guarda si el juego quedó COMPLETO: guardar huellas incompletas
+      // dejaba productos irreconocibles para siempre en ese teléfono
+      if (dim && fallos === 0) {
         const todo = new Float32Array(PROD.length * dim);
         refs.forEach((r, i) => { if (r) todo.set(r, i * dim); });
         let bin = ""; const by = new Uint8Array(todo.buffer);
@@ -632,12 +654,26 @@ function recorteCentral(bitmap) {
                                lado, lado, 0, 0, 448, 448);
   return c;
 }
+function recorteCaja(bitmap, f) {
+  // caja central (fracción f por lado, mismo encuadre): acerca la mirada al producto
+  // cuando la foto trae un fondo decorativo grande — p. ej. las imágenes de listing
+  // con el círculo amarillo gigante detrás del frasco (caso Kojic de Michael, 30-jul:
+  // con foto completa ganaban otros ~0.71 y con esta caja el correcto da ~0.77)
+  const w = bitmap.width * f, h = bitmap.height * f;
+  const c = document.createElement("canvas");
+  c.width = 448; c.height = Math.max(1, Math.round(448 * h / w));
+  c.getContext("2d").drawImage(bitmap, (bitmap.width - w) / 2, (bitmap.height - h) / 2,
+                               w, h, 0, 0, c.width, c.height);
+  return c;
+}
 async function candidatosVisuales(bitmap, progreso) {
   const v = await motorVisual(progreso);
   const e1 = v.embed(canvasDe(bitmap, 448, false));   // foto completa
-  const e2 = v.embed(recorteCentral(bitmap));          // y su centro, por si hay fondo
+  const e2 = v.embed(recorteCentral(bitmap));          // su centro cuadrado, por si hay fondo
+  const e3 = v.embed(recorteCaja(bitmap, .6));         // y la caja central, por si el fondo domina
   const cos = (a, b) => { let s = 0; for (let k = 0; k < a.length; k++) s += a[k] * b[k]; return s; };
-  return PROD.map((p, i) => v.refs[i] ? { i, s: Math.max(cos(e1, v.refs[i]), cos(e2, v.refs[i])) } : { i, s: 0 })
+  return PROD.map((p, i) => v.refs[i]
+      ? { i, s: Math.max(cos(e1, v.refs[i]), cos(e2, v.refs[i]), cos(e3, v.refs[i])) } : { i, s: 0 })
     .sort((a, b) => b.s - a.s);
 }
 /* Umbrales calibrados con pruebas (30-jul): fotos de pantalla correctas dan 0.71–0.97;
