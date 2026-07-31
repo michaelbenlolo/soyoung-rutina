@@ -6,7 +6,7 @@
 <meta name="description" content="Tómate una selfie —que no sale de tu celular— y te guiamos zona por zona para armar tu rutina coreana, con precios de contado o en quincenas.">
 <title>SO YOUNG · Tu rutina con tu propia foto</title>
 <meta name="x-contenido" content="39996216ed">
-<meta name="x-piel" content="2942f55147">
+<meta name="x-piel" content="2924ac0493">
 <style>
 :root { --rosa:#D96C82; --rosad:#B94F66; --ink:#2A2226; --crema:#FBF6F4; --crema2:#FAEDEE;
   --mut:#8b7d82; --line:#F0DDE1; --texto:#584a4f; color-scheme: light; }
@@ -4008,6 +4008,20 @@ function actualizarUnPoco() {
 }
 chips.forEach(c => c.addEventListener("click", () => setTimeout(actualizarUnPoco, 0)));
 $("denuevo").addEventListener("click", () => location.reload());
+
+/* volver inteligente: si llegaste desde otra página del sitio (la de clientes
+   /tienda o la de la vendedora), el ← te regresa AHÍ; si llegaste directo, va a
+   la portada como siempre (reporte de Michael 31-jul). OJO: solo los ENLACES
+   href="../" — los botones .tback internos (cámara, quiz) no se tocan */
+document.querySelectorAll('a.tback[href="../"], a.volver[href="../"]').forEach(a => {
+  a.addEventListener("click", e => {
+    try {
+      const ref = document.referrer && new URL(document.referrer);
+      if (ref && ref.origin === location.origin && ref.pathname !== location.pathname
+          && history.length > 1) { e.preventDefault(); history.back(); }
+    } catch (err) {}
+  });
+});
 
 /* ¿hay versión nueva publicada? El navegador a veces se queda con la página VIEJA
    (caché) y los arreglos «no llegan»: se compara el sello propio contra el publicado
