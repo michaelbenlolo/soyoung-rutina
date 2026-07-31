@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <meta name="x-contenido" content="39996216ed">
-<meta name="x-revista" content="d4da40d698">
+<meta name="x-revista" content="234c59d28e">
 <title>SO YOUNG · Edición Revista</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -287,18 +287,18 @@ body { font-family:var(--sans); background:var(--vbg); color:var(--vink); line-h
   border-radius:99px; padding:5px 11px; letter-spacing:.08em; font-weight:500; background:#fff; }
 
 /* ---------- portada ---------- */
-.rvcover { position:relative; max-width:560px; margin:0 auto; height:74vh; min-height:480px;
-  max-height:640px; overflow:hidden; }
+.rvcover { position:relative; max-width:560px; margin:0 auto; height:46vh; min-height:340px;
+  max-height:430px; overflow:hidden; }
 .rvcover img { width:100%; height:100%; object-fit:cover; display:block; }
 .rvcover::after { content:""; position:absolute; inset:0;
   background:linear-gradient(180deg, rgba(253,252,250,.25), transparent 28%, transparent 60%, rgba(253,252,250,.92)); }
 .rvmast { position:absolute; top:16px; left:0; right:0; text-align:center; z-index:2; }
 .rvmast small { display:block; font-size:8.5px; font-weight:700; letter-spacing:.4em; color:var(--vink); }
-.rvmast b { font-family:var(--serif); font-weight:900; font-size:52px; letter-spacing:.06em;
+.rvmast b { font-family:var(--serif); font-weight:900; font-size:38px; letter-spacing:.06em;
   line-height:1; color:var(--vink); }
 .rvlineas { position:absolute; left:20px; right:20px; bottom:18px; z-index:2; }
 .rvlineas em { display:block; font-family:var(--serif); font-style:italic; font-weight:700;
-  font-size:26px; line-height:1.25; max-width:17ch; }
+  font-size:19px; line-height:1.3; max-width:20ch; }
 .rvlineas em b { color:var(--vacc); font-style:italic; }
 .rvlineas span { display:inline-block; margin-top:8px; font-size:9px; font-weight:700;
   letter-spacing:.3em; color:var(--vink); }
@@ -325,7 +325,7 @@ body { font-family:var(--sans); background:var(--vbg); color:var(--vink); line-h
 /* ---------- sumario (UI propia: opera los chips ocultos) ---------- */
 .rvsum { border-top:1px solid var(--vline); }
 .rvrow { display:flex; align-items:baseline; gap:9px; width:100%; text-align:left; background:none;
-  border:0; border-bottom:1px solid var(--vline); padding:13px 4px; cursor:pointer;
+  border:0; border-bottom:1px solid var(--vline); padding:10px 4px; cursor:pointer;
   font-family:var(--sans); color:var(--vink); transition:background .15s, padding .15s; }
 .rvnum { font-family:var(--serif); font-style:italic; font-size:14px; color:var(--vgold); min-width:24px; }
 .rvtitu { font-size:13px; font-weight:600; }
@@ -342,9 +342,11 @@ body { font-family:var(--sans); background:var(--vbg); color:var(--vink); line-h
   border-radius:0 10px 10px 0; padding:12px 14px; font-size:12px; color:var(--vink);
   font-family:var(--serif); font-style:italic; }
 
-/* ---------- foto editorial entre secciones ---------- */
+/* ---------- fotos editoriales (al FINAL, fuera del flujo de uso) ---------- */
 .rvfoto { margin:34px -20px 0; position:relative; }
 .rvfoto img { width:100%; height:340px; object-fit:cover; display:block; }
+.rvgal { display:grid; grid-template-columns:1fr 1fr; gap:2px; }
+.rvgal img { height:250px; }
 .rvpie { display:flex; align-items:baseline; gap:9px; padding:9px 20px 0; }
 .rvpie b { font-size:9px; font-weight:700; letter-spacing:.3em; color:var(--vacc); }
 .rvpie span { font-family:var(--serif); font-style:italic; font-size:13px; color:var(--vmut); }
@@ -402,7 +404,7 @@ details.tier { border:1px solid var(--vline); border-radius:8px; background:#fff
   text-decoration:none; border-bottom:1.5px solid var(--vacc); padding-bottom:1px; margin-right:14px; }
 
 /* ---------- colofón ---------- */
-.rvfoot { max-width:560px; margin:38px auto 0; padding:24px 20px 46px; border-top:2px solid var(--vink); }
+.rvfoot { max-width:560px; margin:38px auto 0; padding:24px 20px 96px; border-top:2px solid var(--vink); }
 .rvfoot b { font-family:var(--serif); font-weight:900; font-size:22px; letter-spacing:.06em; }
 .rvfoot small { display:block; font-size:9.5px; letter-spacing:.22em; color:var(--vmut); margin-top:4px;
   font-weight:700; }
@@ -411,8 +413,20 @@ details.tier { border:1px solid var(--vline); border-radius:8px; background:#fff
 .rvfoot .rvvlinks a { display:inline-block; margin:0 10px 6px 0; font-size:10.5px; color:var(--vink);
   text-decoration:none; border:1px solid var(--vline); border-radius:99px; padding:6px 12px; background:#fff; }
 
-/* botón de versión nueva */
-#vnueva { position:fixed; left:12px; right:12px; bottom:12px; z-index:90; appearance:none; border:0;
+/* ---------- barra flotante de selección (funcional, look editorial) ---------- */
+#rvdock { position:fixed; left:12px; right:12px; bottom:12px; z-index:60; display:flex;
+  align-items:center; gap:10px; background:rgba(255,255,255,.94);
+  backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+  border:1px solid var(--vline); border-radius:12px; padding:9px 14px;
+  box-shadow:0 12px 34px rgba(60,40,30,.16); max-width:532px; margin:0 auto; }
+.rvdn { font-size:11.5px; color:var(--vmut); }
+.rvdn b { font-family:var(--serif); font-style:italic; font-size:17px; color:var(--vacc); }
+#rvdock button { margin-left:auto; appearance:none; border:0; background:var(--vink); color:#fff;
+  font-family:var(--sans); font-weight:700; font-size:11.5px; letter-spacing:.03em;
+  border-radius:9px; padding:10px 14px; cursor:pointer; }
+
+/* botón de versión nueva — arriba de la barra */
+#vnueva { position:fixed; left:12px; right:12px; bottom:70px; z-index:90; appearance:none; border:0;
   background:var(--vink); color:#fff; border-radius:10px; padding:13px 16px; font-size:12.5px;
   font-family:var(--sans); box-shadow:0 10px 30px rgba(0,0,0,.25); cursor:pointer; }
 #vnueva b { color:#F3C3CD; }
@@ -446,11 +460,6 @@ details.tier { border:1px solid var(--vline); border-radius:8px; background:#fff
     <div class="avisomax" id="aviso-max" hidden>Elige las <b>2 o 3 que más te importan</b>: tu piel no puede tratarse todo a la vez, y la rutina se vuelve muy larga. Quita una para agregar otra.</div>
     <div id="rvoculto" hidden><div class="chips"><button class="chip" type="button" aria-pressed="false" data-need="manchas"><span class="chico">🎯</span>Manchas y tono disparejo</button><button class="chip" type="button" aria-pressed="false" data-need="poros"><span class="chico">✨</span>Poros abiertos, grasa y brillo</button><button class="chip" type="button" aria-pressed="false" data-need="granitos"><span class="chico">🌿</span>Granitos y brotes</button><button class="chip" type="button" aria-pressed="false" data-need="sensible"><span class="chico">🌸</span>Piel reseca, sensible o irritada</button><button class="chip" type="button" aria-pressed="false" data-need="edad"><span class="chico">⏳</span>Líneas, arrugas y flacidez</button><button class="chip" type="button" aria-pressed="false" data-need="ojos"><span class="chico">👁️</span>Ojeras, bolsas y contorno</button><button class="chip" type="button" aria-pressed="false" data-need="glow"><span class="chico">🫧</span>Quiere GLOW / empezar desde cero</button><button class="chip" type="button" aria-pressed="false" data-need="sol"><span class="chico">☀️</span>Protección de todos los días</button><button class="chip" type="button" aria-pressed="false" data-need="regalo"><span class="chico">🎁</span>Regalo o antojo</button><button class="chip" type="button" aria-pressed="false" data-need="mascarillas"><span class="chico">🎭</span>Mascarillas y consentirse</button></div></div>
   </section>
-
-  <div class="rvfoto">
-    <img src="img/crema.jpg" alt="Close-up de una mejilla con un brochazo de crema" loading="lazy">
-    <div class="rvpie"><b>BELLEZA</b><span>El paso que lo cambia todo empieza en tu mejilla.</span></div>
-  </div>
 
   <section class="rvsec" id="rvres">
     <div class="rveye">TU RUTINA<i></i></div>
@@ -3218,10 +3227,11 @@ details.tier { border:1px solid var(--vline); border-radius:8px; background:#fff
         </section>
   </section>
 
-  <div class="rvfoto">
+  <div class="rvfoto rvgal">
+    <img src="img/crema.jpg" alt="Close-up de una mejilla con un brochazo de crema" loading="lazy">
     <img src="img/mascarilla.jpg" alt="Modelo aplicándose una sheet mask con toalla en el cabello" loading="lazy">
-    <div class="rvpie"><b>RITUAL</b><span>La mascarilla: la página favorita de este número.</span></div>
   </div>
+  <div class="rvpie" style="padding:9px 0 0"><b>BELLEZA & RITUAL</b><span>La rutina es el ritual — y el ritual se nota.</span></div>
 
   <section class="rvsec">
     <div class="rveye">EL EXTRA<i></i></div>
@@ -3247,6 +3257,11 @@ details.tier { border:1px solid var(--vline); border-radius:8px; background:#fff
     <a href="../k/">Edición Seúl</a>
   </div>
 </footer>
+
+<div id="rvdock" hidden>
+  <span class="rvdn"><b id="rvdcuenta">0</b> /3 en tu rutina</span>
+  <button type="button" id="rvdver">Ver mi rutina ↓</button>
+</div>
 
 <div id="modal" hidden>
   <div class="mbg"></div>
@@ -3723,7 +3738,17 @@ q.addEventListener("input", () => {
       sum.children[i].setAttribute("aria-pressed", on ? "true" : "false");
     });
     vacio.hidden = n > 0;
+    document.getElementById("rvdock").hidden = n === 0;
+    document.getElementById("rvdcuenta").textContent = n;
   }
+  document.getElementById("rvdver").addEventListener("click", () => {
+    const abierto = [...document.querySelectorAll("section.panel")].find(p => !p.hidden);
+    const el = abierto || document.getElementById("rvres");
+    const y = el.getBoundingClientRect().top + scrollY - 8;
+    scrollTo({ top: y, behavior: "smooth" });
+    // algunos navegadores ignoran el scroll suave programático: asegurar el salto
+    setTimeout(() => { if (Math.abs(scrollY - y) > 200) scrollTo({ top: y, behavior: "instant" }); }, 650);
+  });
   sincronizar();
   window._revistaTest = { sincronizar, nFilas: () => sum.children.length };
 })();
