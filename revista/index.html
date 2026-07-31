@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <meta name="x-contenido" content="39996216ed">
-<meta name="x-revista" content="052e4586e4">
+<meta name="x-revista" content="d4da40d698">
 <title>SO YOUNG · Edición Revista</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -303,6 +303,15 @@ body { font-family:var(--sans); background:var(--vbg); color:var(--vink); line-h
 .rvlineas span { display:inline-block; margin-top:8px; font-size:9px; font-weight:700;
   letter-spacing:.3em; color:var(--vink); }
 
+/* ---------- accesos principales bajo la portada ---------- */
+.rventr { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:16px; }
+.rventr a { display:flex; flex-direction:column; align-items:center; gap:3px; text-align:center;
+  text-decoration:none; color:var(--vink); background:#fff; border:1px solid var(--vline);
+  border-radius:10px; padding:14px 10px 12px; }
+.rventr span { font-size:22px; line-height:1; }
+.rventr b { font-size:13px; letter-spacing:.02em; }
+.rventr small { font-size:10px; color:var(--vmut); }
+
 /* ---------- secciones ---------- */
 .rvwrap { max-width:560px; margin:0 auto; padding:0 20px 40px; }
 .rvsec { margin-top:38px; }
@@ -389,7 +398,7 @@ details.tier { border:1px solid var(--vline); border-radius:8px; background:#fff
 .rvritual img { width:100%; height:280px; object-fit:cover; display:block; border-radius:10px; }
 .rvritual h3 { font-family:var(--serif); font-weight:700; font-size:20px; margin-bottom:6px; }
 .rvritual p { font-size:12.5px; color:var(--vmut); margin-bottom:10px; }
-.rvlink { display:inline-block; font-size:12px; font-weight:700; color:var(--vacc);
+.rvlink { display:inline-block; font-size:13.5px; font-weight:700; color:var(--vacc);
   text-decoration:none; border-bottom:1.5px solid var(--vacc); padding-bottom:1px; margin-right:14px; }
 
 /* ---------- colofón ---------- */
@@ -423,6 +432,11 @@ details.tier { border:1px solid var(--vline); border-radius:8px; background:#fff
 </header>
 
 <main class="rvwrap">
+
+  <div class="rventr">
+    <a href="../piel/"><span>🤳</span><b>Análisis con selfie</b><small>Tu piel, zona por zona</small></a>
+    <a href="../buscar/"><span>📷</span><b>Escanear producto</b><small>Precio y rutina al instante</small></a>
+  </div>
 
   <section class="rvsec" id="rvsel">
     <div class="rveye">EN ESTE NÚMERO<i></i></div>
