@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Encuentra tu rutina coreana en 1 minuto: elige lo que quieres mejorar y te decimos qué llevar, con precio de contado y en quincenas con tu vale.">
 <title>SO YOUNG · Encuentra tu rutina coreana</title>
-<meta name="x-contenido" content="bb4f05dc91">
+<meta name="x-contenido" content="54477112f2">
 <style>
 :root { --rosa:#D96C82; --rosad:#B94F66; --ink:#2A2226; --crema:#FBF6F4; --crema2:#FAEDEE;
   --mut:#8b7d82; --line:#F0DDE1; --texto:#584a4f; color-scheme: light; }
@@ -5307,6 +5307,19 @@ function mejorPaso(paso, s) {
   return best;
 }
 
+/* el específico más vendido SIN activos fuertes — para las señales leves («un poco»)
+   del análisis con foto cuando hay UNA sola categoría elegida (/piel lo llama; así
+   el quiz nunca elige productos por su cuenta) */
+function elegirSuave(f) {
+  let best = null, bs = null;
+  PROD.forEach((p, i) => {
+    if (!p.t.includes(f) || esFuerte(p)) return;   // sin exigir p.ok: es un agregado, no un paso
+    const sc = [p.p === "T" ? 1 : 0, p.v];
+    if (!bs || sc[0] > bs[0] || (sc[0] === bs[0] && sc[1] > bs[1])) { best = i; bs = sc; }
+  });
+  return best;
+}
+
 function fila(i, etiquetas) {
   const p = PROD[i];
   return `<div class="crow">${imgHTML(p, "cimg")}
@@ -5387,6 +5400,33 @@ function pintarCombinada() {
     }).join("");
     extra = `<div class="plabel">Súmale esto para lo que falta</div>
       <div class="compl">${filas}</div>`;
+  }
+
+  // ---- lo que notó «un poco» en el análisis con foto (/piel) ----
+  // window.EXTRAS_PIEL la define SOLO esa página (señales leves que no entraron a la
+  // selección); aquí normalmente no existe y no pinta nada. Va ANTES de las
+  // mascarillas (pedido de Michael 31-jul) y con seguridad DURA: jamás introduce
+  // un activo fuerte si la piel es sensible o si la rutina ya trae uno.
+  const extrasPiel = (window.EXTRAS_PIEL || []).filter(f => !sel.includes(f) && NEC[f]);
+  if (extrasPiel.length) {
+    const filasE = extrasPiel.map(f => {
+      let best = null, bs = null;
+      PROD.forEach((p, i) => {
+        // sin exigir p.ok: igual que en «Súmale» — esto es un agregado, no un paso de
+        // rutina, y los de ojos (parches, contornos) viven justamente fuera de los pasos
+        if (usados.has(i) || !p.t.includes(f)) return;
+        if (esFuerte(p) && (sensible || fuertesYa >= 1)) return;
+        const sc = [p.p === "T" ? 1 : 0, p.v];   // de preferencia un tratamiento, el más vendido
+        if (!bs || sc[0] > bs[0] || (sc[0] === bs[0] && sc[1] > bs[1])) { best = i; bs = sc; }
+      });
+      if (best === null) return "";
+      usados.add(best);
+      if (esFuerte(PROD[best])) fuertesYa++;
+      return fila(best, `<span class="cob">${NEC[f].i} ${NEC[f].t}</span>`);
+    }).join("");
+    if (filasE) extra += `<div class="plabel">🔎 Para lo que notaste «un poco»</div>
+      <div class="compl">${filasE}</div>
+      <div class="nota" style="margin-top:9px">Señales tempranas: un producto específico las frena <b>antes de que crezcan</b> — sin cambiarte toda la rutina.</div>`;
   }
 
   // ---- mascarillas: se eligen por lo que le sirven a ESTA rutina, no por ventas ----
