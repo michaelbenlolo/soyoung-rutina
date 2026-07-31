@@ -6,7 +6,7 @@
 <meta name="description" content="Tómate una selfie —que no sale de tu celular— y te guiamos zona por zona para armar tu rutina coreana, con precios de contado o en quincenas.">
 <title>SO YOUNG · Tu rutina con tu propia foto</title>
 <meta name="x-contenido" content="7616303ec8">
-<meta name="x-piel" content="02eb919f1b">
+<meta name="x-piel" content="7652ae2be0">
 <style>
 :root { --rosa:#D96C82; --rosad:#B94F66; --ink:#2A2226; --crema:#FBF6F4; --crema2:#FAEDEE;
   --mut:#8b7d82; --line:#F0DDE1; --texto:#584a4f; color-scheme: light; }
@@ -377,7 +377,7 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
     <span class="subelink" id="subir1" role="button" tabindex="0">o sube una foto que ya tengas</span>
   </div>
   <div id="camprev" hidden>
-    <div class="camwrap"><img id="prevista" alt="Tu selfie"></div>
+    <div class="camwrap"><img id="prevista" alt="Tu selfie"><div class="camtip" id="caraok" hidden></div></div>
     <div class="camfila">
       <button class="pqsec" id="repetir" type="button">↺ Repetir</button>
       <button class="pqmain" id="usar" type="button">Se ve bien →</button>
@@ -3550,6 +3550,52 @@ const ZONAS = {
 // brazo, y de lejitos la cámara frontal deforma menos la cara (reporte de Michael)
 const OVALO = { cx:150, cy:172, rx:86, ry:104 };
 
+/* ---------- la cara REAL: cada cara es diferente (Michael, 30-jul) ----------
+   Al confirmar la selfie se buscan los puntos de la cara (ojos, cejas, nariz,
+   mandíbula) AQUÍ MISMO en el celular con face-api (en lib/, sin internet) y las
+   zonas se calculan desde ESOS puntos — ya no desde un óvalo fijo. Si no se
+   encuentra la cara (poca luz, muy de lado), se avisa y se usa el óvalo. */
+let CARA = null, caraJob = null;   // elipses por cara detectada, en coords de FOTO (900×1200)
+function cargarScript(src) {
+  return new Promise((ok, mal) => { const s = document.createElement("script");
+    s.src = src; s.onload = ok; s.onerror = mal; document.head.appendChild(s); });
+}
+async function detectarCara() {
+  try {
+    await cargarScript("lib/face-api.min.js");
+    if (!faceapi.nets.tinyFaceDetector.params) await faceapi.nets.tinyFaceDetector.loadFromUri("lib");
+    if (!faceapi.nets.faceLandmark68TinyNet.params) await faceapi.nets.faceLandmark68TinyNet.loadFromUri("lib");
+    const d = await faceapi.detectSingleFace(FOTO,
+      new faceapi.TinyFaceDetectorOptions({ inputSize: 320, scoreThreshold: .3 })).withFaceLandmarks(true);
+    return d ? zonasDeLandmarks(d.landmarks.positions) : null;
+  } catch (e) { return null; }
+}
+function zonasDeLandmarks(P) {
+  // índices iBUG-68: 0-16 mandíbula (8=barbilla) · 17-26 cejas · 27-35 nariz ·
+  // 36-41 ojo izq (36=esquina externa) · 42-47 ojo der (45=esquina externa)
+  const cen = ii => { let x = 0, y = 0; ii.forEach(i => { x += P[i].x; y += P[i].y; });
+    return { x: x / ii.length, y: y / ii.length }; };
+  const oI = cen([36, 37, 38, 39, 40, 41]), oD = cen([42, 43, 44, 45, 46, 47]);
+  const rot = Math.atan2(oD.y - oI.y, oD.x - oI.x);     // inclinación de la cabeza
+  const u = Math.hypot(oD.x - oI.x, oD.y - oI.y);       // distancia entre ojos = unidad
+  const entre = { x: (P[21].x + P[22].x) / 2, y: (P[21].y + P[22].y) / 2 };
+  const cejaY = Math.min(P[19].y, P[24].y);
+  const alto = P[8].y - cejaY;                          // de cejas a barbilla
+  const el = (x, y, rx, ry) => ({ x, y, rx, ry, rot });
+  return {
+    frente:    [el(entre.x, cejaY - alto * .26, u * 1.15, alto * .22)],
+    entrecejo: [el(entre.x, entre.y - u * .02, u * .30, u * .28)],
+    nariz:     [el((P[27].x + P[33].x) / 2, (P[27].y + P[33].y) / 2 + u * .06, u * .32, (P[33].y - P[27].y) * .74)],
+    mejillas:  [el((P[31].x + P[3].x) / 2, (oI.y + P[4].y) / 2 + u * .18, u * .48, u * .52),
+                el((P[35].x + P[13].x) / 2, (oD.y + P[12].y) / 2 + u * .18, u * .48, u * .52)],
+    ojeras:    [el(oI.x, oI.y + u * .35, u * .42, u * .22), el(oD.x, oD.y + u * .35, u * .42, u * .22)],
+    patas:     [el(P[36].x - u * .28, P[36].y + u * .04, u * .22, u * .20),
+                el(P[45].x + u * .28, P[45].y + u * .04, u * .22, u * .20)],
+    barbilla:  [el(P[8].x, P[8].y - u * .34, u * .55, u * .34)],
+    cara:      [el((oI.x + oD.x) / 2, (cejaY + P[8].y) / 2, (P[16].x - P[0].x) * .54, alto * .74)],
+  };
+}
+
 const PREG = [
  {k:"poros",    ic:"✨", z:["frente","nariz","mejillas"],
   t:"Mírate la frente y la nariz: ¿ves brillo (grasita) o poros abiertos?",
@@ -3600,8 +3646,8 @@ addEventListener("beforeunload", cerrarCam);
 addEventListener("pagehide", cerrarCam);
 
 $("btnfoto").addEventListener("click", () => { ir("sc-cam"); abrirCam(); });
-$("btnsin").addEventListener("click", () => { FOTO = null; cerrarCam(); empezarQuiz(); });
-$("btnsin2").addEventListener("click", () => { FOTO = null; cerrarCam(); empezarQuiz(); });
+$("btnsin").addEventListener("click", () => { FOTO = null; CARA = null; cerrarCam(); empezarQuiz(); });
+$("btnsin2").addEventListener("click", () => { FOTO = null; CARA = null; cerrarCam(); empezarQuiz(); });
 $("camback").addEventListener("click", () => { cerrarCam(); ir("sc-intro"); });
 $("subir1").addEventListener("click", () => $("archivo").click());
 $("subir2").addEventListener("click", () => $("archivo").click());
@@ -3632,13 +3678,26 @@ $("disparo").addEventListener("click", () => {
 function mostrarPrevia() {
   $("camvivo").hidden = true; $("camerr").hidden = true; $("camprev").hidden = false;
   $("prevista").src = FOTO.toDataURL("image/jpeg", .9);
+  // buscar la cara en fondo, para que las zonas se acomoden a ELLA
+  CARA = null; $("caraok").hidden = true;
+  caraJob = detectarCara().then(z => {
+    CARA = z; $("caraok").hidden = false;
+    $("caraok").textContent = z ? "✅ Encontré tu cara — las guías se acomodan a ti"
+                                : "ℹ️ No distinguí bien tu cara: te guío con el óvalo";
+    return z;
+  });
 }
 $("repetir").addEventListener("click", () => {
-  FOTO = null;
+  FOTO = null; CARA = null;
   if (stream && stream.active) { $("camprev").hidden = true; $("camvivo").hidden = false; }
   else $("archivo").click();
 });
-$("usar").addEventListener("click", () => { cerrarCam(); empezarQuiz(); });
+$("usar").addEventListener("click", async () => {
+  $("usar").disabled = true;
+  try { await Promise.race([caraJob, new Promise(r => setTimeout(r, 5000))]); } catch (e) {}
+  $("usar").disabled = false;
+  cerrarCam(); empezarQuiz();
+});
 
 $("archivo").addEventListener("change", e => {
   const f = e.target.files && e.target.files[0]; if (!f) return;
@@ -3659,9 +3718,12 @@ const vcan = $("vfoto"), vctx = vcan.getContext("2d");
 const ov = document.createElement("canvas"); ov.width = 750; ov.height = 1000;
 const K = 2.5;   // 300×400 de la guía → 750×1000 del visor
 function elipses(zonas) {
+  if (CARA)   // zonas ancladas a la cara detectada (FOTO 900×1200 → visor 750×1000)
+    return zonas.flatMap(z => CARA[z] || []).map(e => ({
+      x: e.x * 5 / 6, y: e.y * 5 / 6, rx: e.rx * 5 / 6, ry: e.ry * 5 / 6, rot: e.rot || 0 }));
   return zonas.flatMap(z => ZONAS[z] || []).map(([fx, fy, fr, fry]) => ({
     x: (OVALO.cx + fx * OVALO.rx) * K, y: (OVALO.cy + fy * OVALO.ry) * K,
-    rx: OVALO.rx * fr * K, ry: OVALO.ry * fry * K }));
+    rx: OVALO.rx * fr * K, ry: OVALO.ry * fry * K, rot: 0 }));
 }
 let VZ = { z: 1, tx: 0, ty: 0 };   // zoom y paneo del visor
 let zonaActual = null, zoomUsado = false;
@@ -3673,7 +3735,7 @@ function repintar() {
     vctx.drawImage(ov, 0, 0);
     vctx.strokeStyle = "rgba(217,108,130,.95)"; vctx.lineWidth = 3 / VZ.z;
     vctx.setLineDash([12 / VZ.z, 9 / VZ.z]);
-    elipses(zonaActual).forEach(e => { vctx.beginPath(); vctx.ellipse(e.x, e.y, e.rx, e.ry, 0, 0, 7); vctx.stroke(); });
+    elipses(zonaActual).forEach(e => { vctx.beginPath(); vctx.ellipse(e.x, e.y, e.rx, e.ry, e.rot, 0, 7); vctx.stroke(); });
     vctx.setLineDash([]);
   }
   vctx.setTransform(1, 0, 0, 1, 0, 0);
@@ -3702,7 +3764,7 @@ function pintarVisor(p) {
     o.fillStyle = "rgba(36,29,32,.52)"; o.fillRect(0, 0, 750, 1000);
     o.globalCompositeOperation = "destination-out";
     es.forEach(e => {   // hueco con borde suave (gradiente radial, compatible con Safari)
-      o.save(); o.translate(e.x, e.y); o.scale(e.rx, e.ry);
+      o.save(); o.translate(e.x, e.y); o.rotate(e.rot || 0); o.scale(e.rx, e.ry);
       const g = o.createRadialGradient(0, 0, 0, 0, 0, 1);
       g.addColorStop(0, "rgba(0,0,0,1)"); g.addColorStop(.72, "rgba(0,0,0,1)"); g.addColorStop(1, "rgba(0,0,0,0)");
       o.fillStyle = g; o.beginPath(); o.arc(0, 0, 1, 0, 7); o.fill(); o.restore();
@@ -3846,5 +3908,6 @@ $("denuevo").addEventListener("click", () => location.reload());
 window._pielTest = { PREG, ZONAS, calcular, empezarQuiz, terminar, ir,
   responder: (k, i) => { resp[k] = i; }, getResp: () => resp,
   setFoto: c => { FOTO = c; }, getFoto: () => FOTO, pintarPregunta, pintarVisor,
-  fijarZoom, getVZ: () => VZ };
+  fijarZoom, getVZ: () => VZ,
+  zonasDeLandmarks, detectarCara, setCara: z => { CARA = z; }, getCara: () => CARA };
 </script></body></html>
