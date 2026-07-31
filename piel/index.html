@@ -5,8 +5,8 @@
 <meta name="robots" content="noindex">
 <meta name="description" content="Tómate una selfie —que no sale de tu celular— y te guiamos zona por zona para armar tu rutina coreana, con precios de contado o en quincenas.">
 <title>SO YOUNG · Tu rutina con tu propia foto</title>
-<meta name="x-contenido" content="54477112f2">
-<meta name="x-piel" content="724881afe3">
+<meta name="x-contenido" content="6c193efb8d">
+<meta name="x-piel" content="a5f1a0effb">
 <style>
 :root { --rosa:#D96C82; --rosad:#B94F66; --ink:#2A2226; --crema:#FBF6F4; --crema2:#FAEDEE;
   --mut:#8b7d82; --line:#F0DDE1; --texto:#584a4f; color-scheme: light; }
@@ -3389,20 +3389,8 @@ function pintarCombinada() {
   const totCr = rt.reduce((a,i) => a + PROD[i].pc / 2.5 * 3.5, 0);
   const q = totCr <= 360 ? 8 : (totCr <= 650 ? 10 : 12);
 
-  const pasos = rt.map(i => {
-    const p = PROD[i];
-    const badges = sel.filter(x => p.t.includes(x))
-      .map(x => `<span class="cob">${NEC[x].i} ${NEC[x].t}</span>`).join("");
-    return `<div class="rp">
-      <div class="rpaso"><span>${PICO[p.p]}</span>${PNOM[p.p]}</div>
-      ${imgHTML(p, "rimg")}
-      <div class="rinfo">
-        <button class="pname" data-p="${i}">${p.d}<span class="pver">ver ficha</span></button>
-        <div class="ruso">${p.u}</div>
-        <div class="rprec">${money(p.pc)} <span>ó ${p.q} quincenas de $${p.pq}</span></div>
-        ${badges ? `<div class="cobs">${badges}</div>` : `<div class="cobs"><span class="cob base">base de la rutina</span></div>`}
-      </div></div>`;
-  }).join("");
+  // los pasos se pintan al FINAL (tras elegir refuerzos y mascarillas): así los
+  // sustitutos «si no hay» de cada paso pueden excluir todo lo ya mostrado
 
   let extra = "";
   const sensible = sel.includes("sensible");
@@ -3489,6 +3477,54 @@ function pintarCombinada() {
          <div class="compl">${filasM}</div>
          <div class="nota" style="margin-top:9px">La mascarilla es el extra más fácil: <b>el resultado se ve en una noche</b> y no interfiere con tu rutina. Perfecta para el domingo o antes de un evento.</div>`;
   }
+
+  /* ---- sustitutos «si no hay» por paso (Michael 31-jul: en los paneles de una
+     categoría sí salen, en la combinada no salían) — mismas garantías que la
+     rutina: el sustituto ataca lo mismo que su paso, jamás deja la pantalla con
+     dos activos fuertes ni mete uno en piel sensible, y nunca repite algo ya
+     mostrado (rutina, refuerzos o mascarillas) */
+  const NOSUG = ["travel kit", "duo", "shampoo"];
+  const sugeridos = new Set();
+  const altsDe = i => {
+    const p = PROD[i];
+    const focos = sel.filter(x => p.t.includes(x));
+    const puedeF = !sensible && fuertesYa - (esFuerte(p) ? 1 : 0) < 1;
+    const cands = [];
+    PROD.forEach((o, j) => {
+      if (usados.has(j) || sugeridos.has(j) || o.p !== p.p || !o.ok) return;
+      if (NOSUG.some(k => o.d.toLowerCase().includes(k))) return;
+      if (esFuerte(o) && !puedeF) return;
+      const cubre = (focos.length ? focos : sel).filter(x => o.t.includes(x)).length;
+      if (focos.length && !cubre) return;   // debe atacar lo mismo que el paso que suple
+      cands.push({ j, cubre });
+    });
+    cands.sort((a, b) => b.cubre - a.cubre || PROD[b.j].v - PROD[a.j].v);
+    const out = [];   // variedad de marca mientras se pueda, como en los paneles de una categoría
+    cands.forEach(c => { if (out.length < 2 && !out.some(x => PROD[x].m === PROD[c.j].m)) out.push(c.j); });
+    cands.forEach(c => { if (out.length < 2 && !out.includes(c.j)) out.push(c.j); });
+    out.forEach(j => sugeridos.add(j));
+    return out;
+  };
+
+  const pasos = rt.map(i => {
+    const p = PROD[i];
+    const badges = sel.filter(x => p.t.includes(x))
+      .map(x => `<span class="cob">${NEC[x].i} ${NEC[x].t}</span>`).join("");
+    const alts = altsDe(i);
+    const ralt = alts.length
+      ? `<div class="ralt"><b>🔄 Si no hay:</b> ${alts.map(j =>
+          `${PROD[j].d} <span>(${PROD[j].m} · ${money(PROD[j].pc)})</span>`).join(" · ")}</div>`
+      : "";
+    return `<div class="rp">
+      <div class="rpaso"><span>${PICO[p.p]}</span>${PNOM[p.p]}</div>
+      ${imgHTML(p, "rimg")}
+      <div class="rinfo">
+        <button class="pname" data-p="${i}">${p.d}<span class="pver">ver ficha</span></button>
+        <div class="ruso">${p.u}</div>
+        <div class="rprec">${money(p.pc)} <span>ó ${p.q} quincenas de $${p.pq}</span></div>
+        ${badges ? `<div class="cobs">${badges}</div>` : `<div class="cobs"><span class="cob base">base de la rutina</span></div>`}${ralt}
+      </div></div>`;
+  }).join("");
 
   const niveles = nivelesCombinada(rt, usados, fuertesYa);
   const titulo = sel.map(x => `<span class="selchip">${NEC[x].i} ${NEC[x].t}</span>`).join("");
