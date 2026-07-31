@@ -6,7 +6,7 @@
 <meta name="description" content="Tómate una selfie —que no sale de tu celular— y te guiamos zona por zona para armar tu rutina coreana, con precios de contado o en quincenas.">
 <title>SO YOUNG · Tu rutina con tu propia foto</title>
 <meta name="x-contenido" content="39996216ed">
-<meta name="x-piel" content="210fa751f7">
+<meta name="x-piel" content="cc4b0e2f37">
 <style>
 :root { --rosa:#D96C82; --rosad:#B94F66; --ink:#2A2226; --crema:#FBF6F4; --crema2:#FAEDEE;
   --mut:#8b7d82; --line:#F0DDE1; --texto:#584a4f; color-scheme: light; }
@@ -378,6 +378,7 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
       <div class="camtip">📏 Ni pegada ni lejos: que tu cara LLENE el óvalo · luz de frente · sin lentes</div>
     </div>
     <button class="disparo" id="disparo" type="button" aria-label="Tomar la foto"></button>
+    <button class="pqsec" id="nativo1" type="button">📸 Máxima calidad: con la cámara del teléfono</button>
     <span class="subelink" id="subir1" role="button" tabindex="0">o sube una foto que ya tengas</span>
   </div>
   <div id="camprev" hidden>
@@ -395,6 +396,7 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
     </div>
   </div>
   <input type="file" id="archivo" accept="image/*" hidden>
+  <input type="file" id="archivonativo" accept="image/*" capture="user" hidden>
 </section>
 
 <section id="sc-quiz" hidden>
@@ -3777,10 +3779,13 @@ $("disparo").addEventListener("click", () => {
   const full = document.createElement("canvas"); full.width = vw; full.height = vh;
   full.getContext("2d").drawImage(video, 0, 0);
   const r = recorteCover(vw, vh);
-  const c = document.createElement("canvas"); c.width = 1200; c.height = 1600;
+  // usar la resolución REAL que entregó la cámara (hasta 1800×2400): si el
+  // teléfono da 2160 de ancho, reducir a un tamaño fijo tiraba pixeles de piel
+  const W = Math.min(1800, Math.max(1200, r.sw)), H = Math.round(W * 4 / 3);
+  const c = document.createElement("canvas"); c.width = W; c.height = H;
   const x = c.getContext("2d");
-  x.translate(1200, 0); x.scale(-1, 1);   // espejo: la foto queda como ella se ve
-  x.drawImage(full, r.sx, r.sy, r.sw, r.sh, 0, 0, 1200, 1600);
+  x.translate(W, 0); x.scale(-1, 1);   // espejo: la foto queda como ella se ve
+  x.drawImage(full, r.sx, r.sy, r.sw, r.sh, 0, 0, W, H);
   FOTO = c; mostrarPrevia();
 });
 function mostrarPrevia() {
@@ -3809,19 +3814,27 @@ $("usar").addEventListener("click", async () => {
   cerrarCam(); empezarQuiz();
 });
 
-$("archivo").addEventListener("change", e => {
+function cargarArchivo(e) {
   const f = e.target.files && e.target.files[0]; if (!f) return;
   const img = new Image();
   img.onload = () => {
     URL.revokeObjectURL(img.src);
     const r = recorteCover(img.naturalWidth, img.naturalHeight);
-    const c = document.createElement("canvas"); c.width = 1200; c.height = 1600;
-    c.getContext("2d").drawImage(img, r.sx, r.sy, r.sw, r.sh, 0, 0, 1200, 1600);  // subida: sin espejo
+    // la cámara nativa entrega 12-24MP: conservar hasta 1800×2400 de detalle
+    const W = Math.min(1800, Math.max(1200, r.sw)), H = Math.round(W * 4 / 3);
+    const c = document.createElement("canvas"); c.width = W; c.height = H;
+    c.getContext("2d").drawImage(img, r.sx, r.sy, r.sw, r.sh, 0, 0, W, H);  // subida/nativa: sin espejo
     FOTO = c; ir("sc-cam"); mostrarPrevia();
   };
   img.src = URL.createObjectURL(f);
   e.target.value = "";
-});
+}
+$("archivo").addEventListener("change", cargarArchivo);
+// «máxima calidad»: abre la cámara NATIVA del teléfono (capture="user") — su foto
+// pasa por todo el procesamiento del iPhone (HDR, luz, nitidez), algo que el video
+// de getUserMedia no puede dar; las zonas se anclan a la cara detectada igual
+$("archivonativo").addEventListener("change", cargarArchivo);
+$("nativo1").addEventListener("click", () => { cerrarCam(); $("archivonativo").click(); });
 
 /* ---------- visor: la foto con la zona iluminada (o carita dibujada) ---------- */
 const vcan = $("vfoto"), vctx = vcan.getContext("2d");
