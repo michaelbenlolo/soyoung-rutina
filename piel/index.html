@@ -6,7 +6,7 @@
 <meta name="description" content="Tómate una selfie —que no sale de tu celular— y te guiamos zona por zona para armar tu rutina coreana, con precios de contado o en quincenas.">
 <title>SO YOUNG · Tu rutina con tu propia foto</title>
 <meta name="x-contenido" content="54477112f2">
-<meta name="x-piel" content="ce0eb48ad1">
+<meta name="x-piel" content="a8d0f5ae6a">
 <style>
 :root { --rosa:#D96C82; --rosad:#B94F66; --ink:#2A2226; --crema:#FBF6F4; --crema2:#FAEDEE;
   --mut:#8b7d82; --line:#F0DDE1; --texto:#584a4f; color-scheme: light; }
@@ -352,6 +352,7 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
     <p class="sub">Tómate una selfie y te guiamos <b>zona por zona</b>, como un espejo con lupa: tú te miras, tú decides — y al final te armamos tu <b>rutina coreana</b> con precio de contado o en quincenas con tu vale.</p>
   </div>
   <div class="pqcard pqpriv"><span class="ico">🔒</span><div><b>Tu foto es solo tuya.</b> No se sube a ningún lado ni se guarda: se queda en tu celular y desaparece al salir de la página. La usamos únicamente como espejo, aquí mismo.</div></div>
+  <div class="pqcard pqpriv"><span class="ico">💡</span><div><b>Para que salga bien:</b> búscate luz pareja de frente — una ventana funciona perfecto —, sin lentes y con el cabello fuera de la cara.</div></div>
   <div class="pqbtns">
     <button class="pqmain" id="btnfoto" type="button">📷 Tomarme la selfie</button>
     <button class="pqsec" id="btnsin" type="button">Seguir sin foto →</button>
@@ -3643,11 +3644,14 @@ function zonasDeLandmarks(P) {
   const alto = P[8].y - cejaY;                          // de cejas a barbilla
   const el = (x, y, rx, ry) => ({ x, y, rx, ry, rot });
   return {
-    frente:    [el(entre.x, cejaY - alto * .26, u * 1.15, alto * .22)],
+    // frente y mejillas en unidades de distancia-entre-ojos (u), NO de cejas-a-barbilla:
+    // la BARBA corre la barbilla detectada hacia abajo, inflaba `alto` y la frente se
+    // iba al pelo (captura de Michael 31-jul)
+    frente:    [el(entre.x, cejaY - u * .48, u * 1.10, u * .36)],
     entrecejo: [el(entre.x, entre.y - u * .02, u * .30, u * .28)],
     nariz:     [el((P[27].x + P[33].x) / 2, (P[27].y + P[33].y) / 2 + u * .06, u * .32, (P[33].y - P[27].y) * .74)],
-    mejillas:  [el((P[31].x + P[3].x) / 2, (oI.y + P[4].y) / 2 + u * .18, u * .48, u * .52),
-                el((P[35].x + P[13].x) / 2, (oD.y + P[12].y) / 2 + u * .18, u * .48, u * .52)],
+    mejillas:  [el((P[31].x + P[3].x) / 2, oI.y + u * .82, u * .48, u * .45),
+                el((P[35].x + P[13].x) / 2, oD.y + u * .82, u * .48, u * .45)],
     ojeras:    [el(oI.x, oI.y + u * .35, u * .42, u * .22), el(oD.x, oD.y + u * .35, u * .42, u * .22)],
     patas:     [el(P[36].x - u * .28, P[36].y + u * .04, u * .22, u * .20),
                 el(P[45].x + u * .28, P[45].y + u * .04, u * .22, u * .20)],
