@@ -6,7 +6,7 @@
 <meta name="description" content="Tómate una selfie —que no sale de tu celular— y te guiamos zona por zona para armar tu rutina coreana, con precios de contado o en quincenas.">
 <title>SO YOUNG · Tu rutina con tu propia foto</title>
 <meta name="x-contenido" content="39996216ed">
-<meta name="x-piel" content="2924ac0493">
+<meta name="x-piel" content="210fa751f7">
 <style>
 :root { --rosa:#D96C82; --rosad:#B94F66; --ink:#2A2226; --crema:#FBF6F4; --crema2:#FAEDEE;
   --mut:#8b7d82; --line:#F0DDE1; --texto:#584a4f; color-scheme: light; }
@@ -370,12 +370,12 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
     <div class="camwrap">
       <video id="cam" playsinline autoplay muted></video>
       <svg class="guia" viewBox="0 0 300 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-        <path d="M0 0 H300 V400 H0 Z M64 172 a86 104 0 1 0 172 0 a86 104 0 1 0 -172 0 Z"
+        <path d="M0 0 H300 V400 H0 Z M54 172 a96 116 0 1 0 192 0 a96 116 0 1 0 -192 0 Z"
               fill="rgba(20,14,16,.38)" fill-rule="evenodd"/>
-        <ellipse cx="150" cy="172" rx="86" ry="104" fill="none" stroke="rgba(255,255,255,.95)" stroke-width="2.6" stroke-dasharray="7 6"/>
+        <ellipse cx="150" cy="172" rx="96" ry="116" fill="none" stroke="rgba(255,255,255,.95)" stroke-width="2.6" stroke-dasharray="7 6"/>
       </svg>
-      <div class="caraaqui">👤 Tu cara aquí, dentro del óvalo</div>
-      <div class="camtip">💪 Estira el brazo (de cerquita la cámara deforma) · luz de frente · sin lentes</div>
+      <div class="caraaqui">👤 Llena el óvalo con tu cara</div>
+      <div class="camtip">📏 Ni pegada ni lejos: que tu cara LLENE el óvalo · luz de frente · sin lentes</div>
     </div>
     <button class="disparo" id="disparo" type="button" aria-label="Tomar la foto"></button>
     <span class="subelink" id="subir1" role="button" tabindex="0">o sube una foto que ya tengas</span>
@@ -3648,14 +3648,17 @@ const ZONAS = {
 };
 // óvalo-guía (en el lienzo 300×400): MÁS CHICO a propósito — obliga a estirar el
 // brazo, y de lejitos la cámara frontal deforma menos la cara (reporte de Michael)
-const OVALO = { cx:150, cy:172, rx:86, ry:104 };
+/* v7.4 (Michael, iPhone 17 Pro Max): el óvalo chico obligaba a alejarse tanto que
+   la cara perdía luz y detalle. Tamaño medio: más cara en el cuadro sin la
+   deformación de tenerla pegada a la lente. */
+const OVALO = { cx:150, cy:172, rx:96, ry:116 };
 
 /* ---------- la cara REAL: cada cara es diferente (Michael, 30-jul) ----------
    Al confirmar la selfie se buscan los puntos de la cara (ojos, cejas, nariz,
    mandíbula) AQUÍ MISMO en el celular con face-api (en lib/, sin internet) y las
    zonas se calculan desde ESOS puntos — ya no desde un óvalo fijo. Si no se
    encuentra la cara (poca luz, muy de lado), se avisa y se usa el óvalo. */
-let CARA = null, caraJob = null;   // elipses por cara detectada, en coords de FOTO (900×1200)
+let CARA = null, caraJob = null;   // elipses por cara detectada, en coords de FOTO
 function cargarScript(src) {
   return new Promise((ok, mal) => { const s = document.createElement("script");
     s.src = src; s.onload = ok; s.onerror = mal; document.head.appendChild(s); });
@@ -3725,7 +3728,7 @@ const PREG = [
    reglas suaves del motor); el resto se ofrece como ajuste manual */
 const PRIOR = ["sensible", "granitos", "manchas", "edad", "poros", "ojos", "sol"];
 
-let FOTO = null;      // canvas 900×1200 con la selfie — SOLO en memoria
+let FOTO = null;      // canvas 1200×1600 con la selfie — SOLO en memoria
 let resp = {};        // clave de pregunta → índice de respuesta
 let idx = 0;
 let stream = null;
@@ -3736,7 +3739,9 @@ async function abrirCam() {
   $("camerr").hidden = true; $("camprev").hidden = true; $("camvivo").hidden = false;
   try {
     stream = await navigator.mediaDevices.getUserMedia(
-      { video: { facingMode: "user", width: { ideal: 1080 }, height: { ideal: 1440 },
+      // pedir la resolución más alta posible (iPhones modernos dan mucho más de
+      // 1080): «ideal» negocia hacia abajo solo si el equipo no la tiene
+      { video: { facingMode: "user", width: { ideal: 2160 }, height: { ideal: 2880 },
                  aspectRatio: { ideal: 3 / 4 } }, audio: false });
     video.srcObject = stream; await video.play();
   } catch (e) { $("camvivo").hidden = true; $("camerr").hidden = false; }
@@ -3772,10 +3777,10 @@ $("disparo").addEventListener("click", () => {
   const full = document.createElement("canvas"); full.width = vw; full.height = vh;
   full.getContext("2d").drawImage(video, 0, 0);
   const r = recorteCover(vw, vh);
-  const c = document.createElement("canvas"); c.width = 900; c.height = 1200;
+  const c = document.createElement("canvas"); c.width = 1200; c.height = 1600;
   const x = c.getContext("2d");
-  x.translate(900, 0); x.scale(-1, 1);   // espejo: la foto queda como ella se ve
-  x.drawImage(full, r.sx, r.sy, r.sw, r.sh, 0, 0, 900, 1200);
+  x.translate(1200, 0); x.scale(-1, 1);   // espejo: la foto queda como ella se ve
+  x.drawImage(full, r.sx, r.sy, r.sw, r.sh, 0, 0, 1200, 1600);
   FOTO = c; mostrarPrevia();
 });
 function mostrarPrevia() {
@@ -3810,8 +3815,8 @@ $("archivo").addEventListener("change", e => {
   img.onload = () => {
     URL.revokeObjectURL(img.src);
     const r = recorteCover(img.naturalWidth, img.naturalHeight);
-    const c = document.createElement("canvas"); c.width = 900; c.height = 1200;
-    c.getContext("2d").drawImage(img, r.sx, r.sy, r.sw, r.sh, 0, 0, 900, 1200);  // subida: sin espejo
+    const c = document.createElement("canvas"); c.width = 1200; c.height = 1600;
+    c.getContext("2d").drawImage(img, r.sx, r.sy, r.sw, r.sh, 0, 0, 1200, 1600);  // subida: sin espejo
     FOTO = c; ir("sc-cam"); mostrarPrevia();
   };
   img.src = URL.createObjectURL(f);
@@ -3823,9 +3828,11 @@ const vcan = $("vfoto"), vctx = vcan.getContext("2d");
 const ov = document.createElement("canvas"); ov.width = 750; ov.height = 1000;
 const K = 2.5;   // 300×400 de la guía → 750×1000 del visor
 function elipses(zonas) {
-  if (CARA)   // zonas ancladas a la cara detectada (FOTO 900×1200 → visor 750×1000)
+  if (CARA) {  // zonas ancladas a la cara detectada (coords de FOTO → visor 750×1000)
+    const f = 750 / FOTO.width;   // el ancho de FOTO puede variar: factor calculado
     return zonas.flatMap(z => CARA[z] || []).map(e => ({
-      x: e.x * 5 / 6, y: e.y * 5 / 6, rx: e.rx * 5 / 6, ry: e.ry * 5 / 6, rot: e.rot || 0 }));
+      x: e.x * f, y: e.y * f, rx: e.rx * f, ry: e.ry * f, rot: e.rot || 0 }));
+  }
   return zonas.flatMap(z => ZONAS[z] || []).map(([fx, fy, fr, fry]) => ({
     x: (OVALO.cx + fx * OVALO.rx) * K, y: (OVALO.cy + fy * OVALO.ry) * K,
     rx: OVALO.rx * fr * K, ry: OVALO.ry * fry * K, rot: 0 }));
@@ -3918,7 +3925,9 @@ function svgCara(zonas) {
     `<ellipse cx="${e.x / K}" cy="${e.y / K}" rx="${e.rx / K}" ry="${e.ry / K}" fill="rgba(217,108,130,.20)" stroke="#D96C82" stroke-width="2" stroke-dasharray="6 5"/>`).join("");
   return `<svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <rect width="300" height="400" fill="#FAEDEE"/>
-    <g fill="none" stroke="#C9AEB6" stroke-width="3" stroke-linecap="round">
+    <g fill="none" stroke="#C9AEB6" stroke-width="3" stroke-linecap="round"
+       transform="translate(150 172) scale(1.116) translate(-150 -172)"><!-- rasgos dibujados
+       para el óvalo 86×104: el transform los lleva al óvalo actual 96×116 -->
       <ellipse cx="150" cy="172" rx="86" ry="104"/>
       <path d="M103 135 Q118 128 134 133"/><path d="M166 133 Q182 128 197 135"/>
       <path d="M108 151 Q120 144 133 151 Q120 156 108 151 Z"/>
