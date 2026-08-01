@@ -6,7 +6,7 @@
 <meta name="description" content="Contesta 7 preguntas (1 minuto) y te armamos tu rutina coreana con precios de contado o en quincenas. Si quieres, te guiamos zona por zona sobre tu propia selfie — que nunca sale de tu celular.">
 <title>SO YOUNG · ¿Qué necesita tu piel?</title>
 <meta name="x-contenido" content="74e7bcb46f">
-<meta name="x-piel" content="e3aac6589a">
+<meta name="x-piel" content="7e7e725fe5">
 <style>
 :root { --rosa:#D96C82; --rosad:#B94F66; --ink:#2A2226; --crema:#FBF6F4; --crema2:#FAEDEE;
   --mut:#8b7d82; --line:#F0DDE1; --texto:#584a4f; color-scheme: light; }
@@ -302,8 +302,12 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
 /* cámara */
 .qbar { display:flex; align-items:center; gap:10px; margin-top:8px; }
 .qtit2 { font-size:15px; font-weight:800; }
-.camwrap { position:relative; margin-top:12px; border-radius:20px; overflow:hidden;
-  background:#241d20; aspect-ratio:3/4; }
+/* la cámara también se adapta al alto real del teléfono: en celulares chicos se
+   angosta lo justo para que el botón de disparo quede siempre a la vista */
+.camwrap { position:relative; margin:12px auto 0; border-radius:20px; overflow:hidden;
+  background:#241d20; aspect-ratio:3/4;
+  width:min(100%, max(212px, calc((100vh - 270px) * .75)));
+  width:min(100%, max(212px, calc((100svh - 270px) * .75))); }
 .camwrap video, .camwrap img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
 .camwrap video { transform:scaleX(-1); }
 .guia { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
@@ -335,8 +339,8 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
 .qprog { flex:1; height:6px; background:var(--crema2); border-radius:99px; overflow:hidden; }
 .qprog i { display:block; height:100%; width:0; background:var(--rosa); border-radius:99px; transition:width .25s; }
 .qnum { font-size:11px; font-weight:700; color:var(--mut); white-space:nowrap; }
-/* 51vh (antes 46) + márgenes recortados alrededor: la foto se ve ~un cuarto más
-   grande para revisar imperfecciones y las 7 preguntas siguen cabiendo enteras */
+/* respaldo sin JS: 51vh; con JS, ajustarVisor() la hace A LA MEDIDA del teléfono
+   (todo el alto real menos la tarjeta de la pregunta) — lo más grande posible */
 .visor { position:relative; margin:8px auto 0; border-radius:20px; overflow:hidden;
   aspect-ratio:3/4; background:var(--crema2); width:min(100%, calc(51vh * .75)); }
 .visor canvas, .vcara, .vcara svg { position:absolute; inset:0; width:100%; height:100%; }
@@ -516,7 +520,7 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
   <div class="visor">
     <canvas id="vfoto" width="750" height="1000"></canvas>
     <div id="vcara" class="vcara" aria-hidden="true"></div>
-    <div class="vzoom" id="vzoom" hidden>🔍 Acércate: dos dedos o doble toque</div>
+    <div class="vzoom" id="vzoom" hidden>🔍 Dos dedos o doble toque para acercar o alejar</div>
   </div>
   <div class="qcard">
     <div class="qtxt"><span class="qic" id="qic"></span><span id="qtx"></span></div>
@@ -4211,13 +4215,26 @@ function fijarZoom(z, cx, cy) {   // acerca manteniendo el punto (cx,cy) en su l
   if (z > 1 && !zoomUsado) { zoomUsado = true; $("vzoom").hidden = true; }
   repintar();
 }
+function centrarZona(es) {
+  /* arranca la pregunta ACERCADA a su zona (Michael 1-ago: que las imperfecciones
+     se vean): hasta 1.6x, centrada y con los mismos topes de paneo del pellizco.
+     El doble toque regresa a la cara completa; los gestos siguen mandando. */
+  if (!es.length) return;
+  const x1 = Math.min(...es.map(e => e.x - e.rx)), x2 = Math.max(...es.map(e => e.x + e.rx));
+  const y1 = Math.min(...es.map(e => e.y - e.ry)), y2 = Math.max(...es.map(e => e.y + e.ry));
+  const z = Math.max(1, Math.min(1.6, Math.min(750 / (x2 - x1 + 170), 1000 / (y2 - y1 + 230))));
+  VZ.z = z;
+  VZ.tx = Math.min(0, Math.max(750 - 750 * z, 375 - (x1 + x2) / 2 * z));
+  VZ.ty = Math.min(0, Math.max(1000 - 1000 * z, 500 - (y1 + y2) / 2 * z));
+}
 function pintarVisor(p) {
   const conFoto = !!FOTO;
   vcan.hidden = !conFoto; $("vcara").hidden = conFoto;
   $("vzoom").hidden = !conFoto || zoomUsado;
   if (!conFoto) { $("vcara").innerHTML = svgCara(p.z || []); return; }
   zonaActual = p.z || null;
-  VZ = { z: 1, tx: 0, ty: 0 };   // cada pregunta arranca sin zoom
+  VZ = { z: 1, tx: 0, ty: 0 };
+  if (zonaActual) centrarZona(elipses(zonaActual));   // acercada a lo que pregunta
   if (zonaActual) {
     const es = elipses(zonaActual);
     const o = ov.getContext("2d");
@@ -4298,7 +4315,25 @@ function pintarPregunta() {
   const ops = p.ops || ["Sí", "Un poco", "No"];
   $("qops").innerHTML = ops.map((o, i) =>
     `<button type="button" class="qop${resp[p.k] === i ? " on" : ""}" data-i="${i}">${o}</button>`).join("");
+  ajustarVisor();
+  if (scrollY) scrollTo(0, 0);
 }
+/* la foto toma TODO el alto que este teléfono tenga de verdad (visualViewport
+   cuenta las barras de Safari/Chrome) menos lo que mide la tarjeta de ESTA
+   pregunta — lo más grande posible en cada celular, sin esconder los botones */
+function ajustarVisor() {
+  const vis = document.querySelector("#sc-quiz .visor"), card = document.querySelector("#sc-quiz .qcard");
+  if (!vis || !card) return;
+  const alto = window.visualViewport ? visualViewport.height : innerHeight;
+  const pc = vis.parentElement, cs = getComputedStyle(pc);
+  const maxw = pc.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+  const libre = alto - vis.offsetTop - card.getBoundingClientRect().height - 26;
+  vis.style.width = Math.min(maxw, Math.max(212, libre * .75)) + "px";
+}
+let _avT = null;
+const _avLento = () => { clearTimeout(_avT); _avT = setTimeout(ajustarVisor, 150); };
+addEventListener("resize", _avLento);
+if (window.visualViewport) visualViewport.addEventListener("resize", _avLento);
 $("qops").addEventListener("click", e => {
   const b = e.target.closest(".qop"); if (!b) return;
   resp[PREG[idx].k] = +b.dataset.i;
