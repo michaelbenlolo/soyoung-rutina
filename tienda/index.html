@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Tu asesora K-beauty de bolsillo en el corner SO YOUNG: entiende cualquier producto del estante, arma tu rutina coreana y conoce precios de contado o en quincenas con tu vale.">
 <meta name="x-contenido" content="5179d084b0">
-<meta name="x-tienda" content="65f1cb071a">
+<meta name="x-tienda" content="a5012f8147">
 <meta name="theme-color" content="#FAF5F2">
 <title>SO YOUNG · Tu asesora de bolsillo</title>
 <style>
@@ -286,7 +286,10 @@ body { font-family:-apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, s
   background:var(--tbg); color:var(--tink); line-height:1.5; }
 
 .twrap { max-width:560px; margin:0 auto; padding:0 18px 40px; }
-.thead { display:flex; align-items:center; gap:10px; padding:14px 0 10px; }
+/* encabezado PEGAJOSO: el carrito acompaña sin flotar ni tapar nada (Michael 1-ago:
+   «similar al checkout de un website — no tiene que molestar, solo ayudar») */
+.thead { display:flex; align-items:center; gap:10px; padding:14px 0 10px;
+  position:sticky; top:0; z-index:70; background:var(--tbg); }
 .tlogo { font-weight:800; letter-spacing:.08em; font-size:14.5px; }
 .tlogo em { font-style:normal; color:var(--trosa); }
 .tpaso { margin-left:auto; font-size:10.5px; font-weight:700; color:var(--tmut);
@@ -361,16 +364,6 @@ body { font-family:-apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, s
   border-radius:15px; padding:16px; cursor:pointer; box-shadow:0 12px 30px rgba(185,79,102,.4); }
 .tcta:disabled { background:#D9C9CC; box-shadow:none; color:#fff; }
 
-/* ---------- pantalla 3: rutina + barra de total ---------- */
-#tbar { position:fixed; left:14px; right:14px; bottom:14px; z-index:60; max-width:532px;
-  margin:0 auto; display:flex; align-items:center; gap:10px; background:var(--tink);
-  color:#fff; border-radius:15px; padding:11px 14px; box-shadow:0 14px 34px rgba(0,0,0,.3); }
-#tbar .tb1 { font-size:11px; color:#D9C6CB; line-height:1.3; }
-#tbar .tb1 b { display:block; font-size:15.5px; color:#fff; }
-#tbar button { margin-left:auto; appearance:none; border:0; background:var(--trosa); color:#fff;
-  font-family:inherit; font-weight:800; font-size:11.5px; border-radius:11px; padding:11px 13px;
-  cursor:pointer; flex:none; }
-
 /* resumen para la asesora */
 #tases { position:fixed; inset:0; z-index:80; }
 #tases .tfondo { position:absolute; inset:0; background:rgba(30,22,25,.6); }
@@ -394,9 +387,42 @@ body { font-family:-apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, s
 
 .tespacio { height:78px; }   /* aire para que la barra fija no tape el final */
 
-/* ---------- el cierre: barra siempre visible + código SY (Michael 1-ago) ---------- */
-#tbar.arriba { bottom:82px; }              /* en elegir sube: no tapa el CTA fijo */
-#t-elegir .tespacio { height:152px; }
+/* ---------- el cierre: CARRITO + código SY (Michael 1-ago) ---------- */
+/* el carrito del encabezado: chico, sutil, siempre a la mano */
+.tcart { margin-left:auto; appearance:none; cursor:pointer; font-family:inherit; display:flex;
+  align-items:center; gap:5px; background:var(--tcard); border:1.5px solid var(--trosa);
+  border-radius:99px; padding:5px 12px; font-size:13px; font-weight:800; color:var(--trosa); }
+.tcart + .tpaso { margin-left:8px; }
+.tcart[hidden] + .tpaso { margin-left:auto; }
+.tifoto { width:46px; height:46px; object-fit:contain; background:var(--tsuave);
+  border-radius:10px; padding:3px; flex:none; mix-blend-mode:multiply; cursor:pointer; }
+.addficha { display:block; width:100%; margin:12px 0 2px; padding:12px; font-size:12.5px;
+  text-align:center; }
+.tguia { display:flex; align-items:center; justify-content:center; gap:8px; margin:10px 0 2px;
+  border:1.5px solid #bfe3c5; background:#f2faf3; color:var(--tverde); border-radius:13px;
+  padding:13px; font-size:12.5px; font-weight:800; text-decoration:none; }
+/* botón «lo quiero» inyectado en cada producto de la rutina y en la ficha */
+.addbtn { appearance:none; font-family:inherit; cursor:pointer; margin-top:7px;
+  border:1.5px solid var(--trosa); background:#fff; color:var(--trosa);
+  border-radius:99px; padding:7px 13px; font-size:11.5px; font-weight:800; display:inline-block; }
+.addbtn.enlista { background:var(--trosa); color:#fff; }
+.agtodo { appearance:none; font-family:inherit; cursor:pointer; width:100%; margin:10px 0 2px;
+  border:1.5px dashed var(--trosa); background:var(--tsuave); color:var(--trosa);
+  border-radius:13px; padding:12px; font-size:12.5px; font-weight:800; }
+/* renglones del carrito en la hoja */
+.titem { display:flex; gap:10px; align-items:center; padding:10px 0 8px; font-size:13px; }
+.titem .tinom { flex:1; min-width:0; }
+.titem .tinom b { font-weight:700; display:block; line-height:1.3; }
+.titem .tinom small { color:var(--tmut); font-size:10.5px; }
+.tiprecio { color:var(--trosa); font-weight:800; white-space:nowrap; }
+.tix { appearance:none; border:1px solid var(--tline); background:#fff; color:var(--tmut);
+  width:26px; height:26px; border-radius:50%; cursor:pointer; font-size:12px; flex:none; }
+.tialts { padding:0 0 10px; border-bottom:1px dashed var(--tline); font-size:10.5px; color:var(--tmut); }
+.titem + .titem, .tialts + .titem { border-top:1px dashed var(--tline); }
+.trpl { appearance:none; font-family:inherit; cursor:pointer; border:1px solid var(--tline);
+  background:#fff; color:var(--tink); border-radius:99px; padding:5px 10px; font-size:10.5px;
+  font-weight:700; margin:4px 4px 0 0; }
+.trpl b { color:var(--trosa); }
 .tcodline { background:#fff; border:1.5px dashed var(--trosa); border-radius:12px;
   padding:11px 13px; font-size:11.5px; line-height:1.55; margin-bottom:11px; color:var(--tmut); }
 .tcodline b { font-size:19px; letter-spacing:.1em; color:var(--trosa); font-weight:800; }
@@ -419,7 +445,7 @@ body { font-family:-apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, s
 </style></head><body>
 
 <div class="twrap">
-  <div class="thead"><div class="tlogo">SO YOUNG <em>K-BEAUTY</em></div><div class="tpaso" id="tmiga">🇰🇷 100% original</div></div>
+  <div class="thead"><div class="tlogo">SO YOUNG <em>K-BEAUTY</em></div><button class="tcart" id="tcart" type="button" hidden aria-label="Ver mi lista">👜 <b id="tcartn">0</b></button><div class="tpaso" id="tmiga">🇰🇷 100% original</div></div>
 
   <!-- ===== pantalla 1 · misiones ===== -->
   <section id="t-home">
@@ -3241,22 +3267,18 @@ body { font-family:-apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, s
   <div hidden aria-hidden="true"><input id="q" type="search" tabindex="-1"><div id="cat"></div><div id="vacio"></div></div>
 </div>
 
-<div id="tbar" hidden>
-  <span class="tb1" id="tbartxt"><b>$0</b>tu lista</span>
-  <button type="button" id="tbases">👜 Ver mi lista</button>
-</div>
-
 <div id="tases" hidden>
   <div class="tfondo" id="tfondo"></div>
   <div class="thoja">
-    <h3>Enséñale esta pantalla a tu asesora 👇</h3>
-    <p class="tsm">Ella baja todo del estante y te lo aparta hoy mismo.</p>
+    <h3>Tu lista 👜 — enséñasela a tu asesora</h3>
+    <p class="tsm">Ella baja todo del estante y te lo aparta hoy mismo. Toca la foto de un producto para ver su ficha.</p>
     <div class="tcodline">🔑 El código de tu lista: <b id="tcodigo">—</b><br>
       Apúntalo o díctaselo a tu asesora: con él tu lista aparece en cualquier teléfono de la tienda — aunque el tuyo se bloquee, se quede sin pila, o venga tu mamá a pagarla por ti.</div>
     <div id="tlista"></div>
     <div class="ttotal"><b>Total de contado</b><span id="ttotal">—</span></div>
     <div class="tquin" id="tquin"></div>
     <div class="tnota">💕 <b>Lo pagas con tu vale en quincenas</b> — pregúntale a tu asesora por el plazo.</div>
+    <a class="tguia" id="tguia" href="../guia/">✅ Ya los compré — dame mi guía de uso en PDF</a>
     <button class="tcerrar" id="tcerrar" type="button">Cerrar</button>
   </div>
 </div>
@@ -3862,10 +3884,6 @@ q.addEventListener("input", () => {
     // llegar a la rutina sin haber elegido nada → mejor a elegir
     if (id === "t-rutina" && !panelVisible()) { location.replace("#t-elegir"); return; }
     PANTS.forEach(p => { $(p).hidden = p !== id; });
-    // la barra vive en TODAS las pantallas (Michael 1-ago: que nunca tenga que
-    // buscar dónde está su selección); en elegir sube para no tapar el CTA
-    $("tbar").classList.toggle("arriba", id === "t-elegir");
-    pintarBarra();
     $("tmiga").textContent = id === "t-home" ? "🇰🇷 100% original"
       : (id === "t-elegir" ? "paso 1 de 2" : "paso 2 de 2");
     scrollTo({ top: 0, behavior: "instant" });
@@ -3875,8 +3893,27 @@ q.addEventListener("input", () => {
   /* las opciones ya vienen pintadas en el HTML (desde NEEDS, en Python); aquí
      solo se les conecta el click al chip del motor con el MISMO índice */
   [...ops.children].forEach((b, i) => {
-    b.addEventListener("click", () => { interactuado = true; chipsMotor[i].click(); sincronizar(); });
+    b.addEventListener("click", () => { chipsMotor[i].click(); sincronizar(); });
   });
+
+  /* los «volver» regresan DE VERDAD (history.back) para que el botón atrás del
+     teléfono nunca acumule pasos fantasmas. Cada pantalla que NOSOTROS apilamos
+     lleva su profundidad en history.state (tprof): volver con profundidad = back
+     real; sin profundidad (llegada directa por ancla) = reemplazo, sin apilar.
+     OJO: un contador simple no sirve — el click a un ancla dispara TAMBIÉN
+     popstate en Chrome/Safari; el estado por entrada es inmune a eso. */
+  const prof = () => (history.state && history.state.tprof) || 0;
+  const irApilando = h => { history.pushState({ tprof: prof() + 1 }, "", h); ir(pantalla()); };
+  document.querySelectorAll('a.tmision[href^="#"]').forEach(a =>
+    a.addEventListener("click", e => { e.preventDefault(); irApilando(a.getAttribute("href")); }));
+  document.querySelectorAll("a.tvolver").forEach(a =>
+    a.addEventListener("click", e => {
+      e.preventDefault();
+      if (prof() > 0) history.back();
+      else location.replace(a.getAttribute("href"));
+    }));
+  window.addEventListener("popstate", () => ir(pantalla()));
+  $("tarmar").addEventListener("click", () => irApilando("#t-rutina"));
 
   function panelVisible() {
     return [...document.querySelectorAll("section.panel")].find(p => !p.hidden) || null;
@@ -3894,31 +3931,54 @@ q.addEventListener("input", () => {
     cta.disabled = n === 0;
     cta.textContent = n === 0 ? "Elige al menos 1"
       : (n === 1 ? "ARMAR MI RUTINA →" : `ARMAR MI RUTINA (${n}) →`);
-    capturarLista();
+    decorarRutina();
   }
 
-  /* ---------- LA LISTA: el cierre de la venta (Michael 1-ago) ----------
-     Lo que el motor pintó se CAPTURA (solo lectura del DOM) en un modelo que
-     vive en localStorage: la barra fija aparece desde el primer producto y en
-     TODAS las pantallas, la hoja de la asesora se llena del modelo (nunca un
-     total vacío) y sobrevive a que el teléfono se bloquee o se recargue. */
+  /* ---------- EL CARRITO (Michael 1-ago): nada entra sin elegirse ----------
+     La clienta AGREGA productos — desde la rutina (boton por producto o toda
+     completa) o desde cualquier ficha — y su lista es un carrito de verdad:
+     con foto, quitar, cambiar por otro (sin stock o sin gusto) y un codigo SY
+     dictable. Del motor SOLO se leen el DOM pintado y los datos de pintura por
+     indice (PROD[i], money) — aqui no se recomienda nada (regla T5). */
   const SELLO = document.querySelector('meta[name="x-contenido"]').content;
-  const LSK = "tienda_lista";
-  let LISTA = null, interactuado = false;
+  const LSK = "tienda_carrito";
+  let CARRITO = [];
   try {
     const g = JSON.parse(localStorage.getItem(LSK) || "null");
-    if (g && g.sello === SELLO && g.filas && g.filas.length) LISTA = g;
+    if (g && g.sello === SELLO && Array.isArray(g.items)) CARRITO = g.items.filter(x => x && PROD[x.i]);
     else localStorage.removeItem(LSK);
   } catch (e) {}
-
-  /* código corto SY-: la lista viaja SIN internet y SIN servidor — codifica las
-     necesidades elegidas (10 bits) y cada trueque «si no hay» (par original→
-     sustituto), con un caracter de control contra errores de dedo. La asesora
-     lo teclea en CUALQUIER teléfono y el mismo motor reconstruye la lista. */
+  const guardar = () => { try { localStorage.setItem(LSK, JSON.stringify({ sello: SELLO, items: CARRITO })); } catch (e) {} };
+  const enCarrito = i => CARRITO.some(x => x.i === i);
+  const totalCarrito = () => CARRITO.reduce((s, x) => s + PROD[x.i].pc, 0);
   const B36 = n => n.toString(36).toUpperCase().padStart(2, "0");
-  // SOLO la rutina principal del panel: el primer bloque div.rutina VISIBLE
-  // (sin ningún <details> cerrado en su cadena). Ni el mezclador (.mzbody), ni
-  // las líneas alternativas cerradas, ni las ventanas de niveles cuentan aquí.
+
+  function pintarCarrito() {
+    $("tcart").hidden = !CARRITO.length;
+    $("tcartn").textContent = CARRITO.length;
+    decorarRutina();
+    if (!$("tases").hidden) llenarHoja();   // la hoja abierta se refresca sola
+  }
+  function agregar(i, alts) {
+    if (!PROD[i] || enCarrito(i)) return;
+    CARRITO.push({ i, alts: (alts || []).filter(j => PROD[j] && j !== i) });
+    guardar(); pintarCarrito();
+  }
+  function quitar(i) {
+    CARRITO = CARRITO.filter(x => x.i !== i);
+    guardar(); pintarCarrito();
+  }
+  function reemplazar(i, j) {
+    const it = CARRITO.find(x => x.i === i);
+    if (!it || !PROD[j] || enCarrito(j)) return;
+    it.alts = [i, ...it.alts.filter(k => k !== j && k !== i)];   // el original queda como opcion de regreso
+    it.i = j;
+    guardar(); pintarCarrito();
+  }
+
+  /* SOLO la rutina principal del panel: el primer bloque div.rutina VISIBLE
+     (sin ningun <details> cerrado en su cadena) — ni el mezclador (.mzbody) ni
+     las lineas alternativas cerradas ni las ventanas de niveles */
   function bloquePrincipal(p) {
     const bloque = [...p.querySelectorAll(".rutina")].find(b => {
       let d = b.closest("details");
@@ -3926,39 +3986,98 @@ q.addEventListener("input", () => {
       return true;
     });
     if (!bloque) return null;
-    const lista = bloque.querySelector(".rlist"), cifra = bloque.querySelector(".rtcifra");
-    return lista && cifra ? { cifra, lista } : null;
+    const lista = bloque.querySelector(".rlist");
+    return lista ? { bloque, lista } : null;
   }
-  function filasRutina(lista) {
-    return [...lista.querySelectorAll(".rp[data-org], .rp[data-cur]")];
-  }
-  function paresDeLista(lista) {
-    const pares = [];
-    filasRutina(lista).forEach(rp => {
-      if (rp.dataset.org !== undefined) {
-        // combinada: la fila lleva data-org (original) y el pname lleva el actual
-        const o = +rp.dataset.org, b = rp.querySelector(".pname");
-        const i = b ? +b.dataset.p : o;
-        if (i !== o) pares.push([o, i]);
-      } else {
-        // panel de 1 categoría: la fila cambiada lleva data-cur nuevo y su «volver» el original
-        const v = rp.querySelector(".volverp");
-        if (v) pares.push([+v.dataset.o, +rp.dataset.cur]);
+  const filasRutina = lista => [...lista.querySelectorAll(".rp[data-org], .rp[data-cur]")];
+
+  /* botones «lo quiero» inyectados en cada fila de la rutina pintada + boton
+     «agregar toda la rutina»; idempotente — corre tras cada pintada del motor */
+  function decorarRutina() {
+    const p = panelVisible(); if (!p) return;
+    const b = bloquePrincipal(p); if (!b) return;
+    filasRutina(b.lista).forEach(rp => {
+      const nom = rp.querySelector(".pname"); if (!nom) return;
+      const i = +(rp.dataset.org !== undefined ? nom.dataset.p : (rp.dataset.cur ?? nom.dataset.p));
+      let btn = rp.querySelector(".addbtn");
+      if (!btn) {
+        btn = document.createElement("button");
+        btn.type = "button"; btn.className = "addbtn";
+        btn.addEventListener("click", () => {
+          const k = +btn.dataset.i;
+          if (enCarrito(k)) { quitar(k); return; }
+          const alts = [...rp.querySelectorAll(".altp")].map(a => +a.dataset.a);
+          agregar(k, alts);
+        });
+        (rp.querySelector(".rinfo") || rp).appendChild(btn);
       }
+      btn.dataset.i = i;
+      btn.classList.toggle("enlista", enCarrito(i));
+      btn.textContent = enCarrito(i) ? "\u2713 En mi lista" : "\u2795 Lo quiero";
     });
-    return pares;
+    let todo = b.bloque.querySelector(".agtodo");
+    if (!todo) {
+      todo = document.createElement("button");
+      todo.type = "button"; todo.className = "agtodo";
+      todo.addEventListener("click", agregarTodaLaRutina);
+      const tot = b.bloque.querySelector(".rtotal");
+      (tot || b.lista).insertAdjacentElement("afterend", todo);
+    }
+    const faltan = filasRutina(b.lista).filter(rp => {
+      const nom = rp.querySelector(".pname");
+      return nom && !enCarrito(+nom.dataset.p);
+    }).length;
+    todo.hidden = faltan === 0;
+    todo.textContent = `\ud83d\udecd\ufe0f Agregar toda la rutina a mi lista (${faltan})`;
   }
-  // el código guarda la selección EN ORDEN (el orden de los toques acomoda la
-  // rutina): n + índices de chip + n de trueques + pares original→sustituto + control
-  function codigoDeLista(lista) {
-    const orden = (typeof sel !== "undefined" ? sel : [])
-      .map(k => chipsMotor.findIndex(c => c.dataset.need === k)).filter(i => i >= 0);
-    if (!orden.length) return "";
-    const pares = paresDeLista(lista);
-    let cuerpo = orden.length.toString(36).toUpperCase()
-      + orden.map(i => i.toString(36).toUpperCase()).join("")
-      + pares.length.toString(36).toUpperCase();
-    pares.forEach(([o, a]) => { cuerpo += B36(o) + B36(a); });
+  function agregarTodaLaRutina() {
+    const p = panelVisible(); if (!p) return;
+    const b = bloquePrincipal(p); if (!b) return;
+    filasRutina(b.lista).forEach(rp => {
+      const nom = rp.querySelector(".pname"); if (!nom) return;
+      agregar(+nom.dataset.p, [...rp.querySelectorAll(".altp")].map(a => +a.dataset.a));
+    });
+  }
+
+  /* la hoja: foto + quitar + «cambialo» por renglon (sin stock O sin gusto),
+     total del carrito y el codigo — siempre desde el MODELO */
+  function llenarHoja() {
+    if (!CARRITO.length) {
+      $("tlista").innerHTML = '<p class="tsm" style="padding:10px 0">Tu lista quedo vacia — agrega productos con \u2795 Lo quiero.</p>';
+      $("ttotal").textContent = "$0"; $("tquin").textContent = "";
+      $("tcodigo").textContent = "\u2014"; $("tguia").hidden = true;
+      return;
+    }
+    $("tlista").innerHTML = CARRITO.map(it => {
+      const p = PROD[it.i];
+      const alts = it.alts.filter(j => !enCarrito(j)).slice(0, 3);
+      return `<div class="titem">
+        ${p.th ? `<img class="tifoto" src="../p/${p.th}" alt="" loading="lazy" data-ficha="${it.i}">` : ""}
+        <div class="tinom" data-ficha="${it.i}"><b>${p.d}</b><small>o ${p.q} quincenas de $${p.pq} con tu vale</small></div>
+        <span class="tiprecio">${money(p.pc)}</span>
+        <button class="tix" data-quitar="${it.i}" type="button" aria-label="Quitar de mi lista">\u2715</button>
+      </div>
+      <div class="tialts">\u21c4 \u00bfNo hay en el estante, o no te late? C\u00e1mbialo:
+        ${alts.map(j => `<button class="trpl" type="button" data-de="${it.i}" data-a="${j}">${PROD[j].d} <b>${money(PROD[j].pc)}</b></button>`).join("")}
+        <button class="trpl" type="button" data-ficha="${it.i}">\ud83d\udd0d ver ficha</button>
+      </div>`;
+    }).join("");
+    $("ttotal").textContent = money(totalCarrito());
+    $("tquin").textContent = `${CARRITO.length} producto${CARRITO.length === 1 ? "" : "s"} — cada rengl\u00f3n muestra sus quincenas`;
+    $("tcodigo").textContent = codigoDeLista();
+    $("tguia").hidden = false;
+  }
+  $("tlista").addEventListener("click", e => {
+    const q = e.target.closest("[data-quitar]"); if (q) { quitar(+q.dataset.quitar); return; }
+    const r = e.target.closest(".trpl[data-a]"); if (r) { reemplazar(+r.dataset.de, +r.dataset.a); return; }
+    const f = e.target.closest("[data-ficha]"); if (f) { cerrarAses(); abrirFicha(+f.dataset.ficha); }
+  });
+
+  /* codigo SY: la lista viaja SIN internet y SIN servidor — n + indices del
+     carrito (2 caracteres base36 cada uno) + caracter de control */
+  function codigoDeLista() {
+    if (!CARRITO.length) return "\u2014";
+    let cuerpo = CARRITO.length.toString(36).toUpperCase() + CARRITO.map(x => B36(x.i)).join("");
     let s = 0; for (const ch of cuerpo) s += parseInt(ch, 36);
     return "SY-" + cuerpo + (s % 36).toString(36).toUpperCase();
   }
@@ -3969,107 +4088,56 @@ q.addEventListener("input", () => {
     let s = 0; for (const ch of cuerpo) s += parseInt(ch, 36);
     if ((s % 36).toString(36).toUpperCase() !== chk) return null;
     const n = parseInt(cuerpo[0], 36);
-    if (!n || n > 3 || cuerpo.length < 2 + n) return null;
-    const orden = [];
+    if (!n || cuerpo.length !== 1 + n * 2) return null;
+    const items = [];
     for (let k = 0; k < n; k++) {
-      const i = parseInt(cuerpo[1 + k], 36);
-      if (isNaN(i) || i >= chipsMotor.length) return null;
-      orden.push(i);
+      const i = parseInt(cuerpo.slice(1 + k * 2, 3 + k * 2), 36);
+      if (!PROD[i] || items.some(x => x.i === i)) return null;
+      items.push({ i, alts: [] });
     }
-    const nsw = parseInt(cuerpo[1 + n], 36);
-    if (isNaN(nsw) || cuerpo.length !== 2 + n + nsw * 4) return null;
-    const pares = [];
-    for (let k = 0; k < nsw; k++)
-      pares.push([parseInt(cuerpo.slice(2 + n + k * 4, 4 + n + k * 4), 36),
-                  parseInt(cuerpo.slice(4 + n + k * 4, 6 + n + k * 4), 36)]);
-    return { orden, pares };
+    return items;
   }
-  function aplicarCodigo(d) {
-    interactuado = true;
-    // apagar lo que hubiera y encender los chips EN EL MISMO ORDEN del código —
-    // todo vía clicks del motor (sus reglas de seguridad se re-aplican solas)
-    chipsMotor.forEach(c => { if (c.getAttribute("aria-pressed") === "true") c.click(); });
-    d.orden.forEach(i => chipsMotor[i].click());
-    sincronizar();
-    let faltan = 0;
-    d.pares.forEach(([o, a]) => {
-      const pill = document.querySelector(`section.panel:not([hidden]) .altp[data-o="${o}"][data-a="${a}"]`);
-      if (pill && !pill.classList.contains("off")) pill.click(); else faltan++;
-    });
-    capturarLista();
-    return faltan;
-  }
+  function aplicarCodigo(items) { CARRITO = items; guardar(); pintarCarrito(); }
 
-  function capturarLista() {
-    const p = panelVisible();
-    const b = p && bloquePrincipal(p);
-    if (!b) {
-      // sin nada pintado: solo si la clienta APAGÓ todo se borra lo guardado —
-      // al abrir la página en frío, la lista guardada sobrevive (es el punto)
-      if (interactuado) { LISTA = null; try { localStorage.removeItem(LSK); } catch (e) {} }
-      pintarBarra(); return;
-    }
-    const filas = filasRutina(b.lista).map(rp => ({
-      n: rp.querySelector(".pname") ? rp.querySelector(".pname").childNodes[0].textContent.trim() : "",
-      p: rp.querySelector(".rprec") ? rp.querySelector(".rprec").childNodes[0].textContent.trim() : ""
-    })).filter(f => f.n);
-    if (!filas.length) { pintarBarra(); return; }
-    LISTA = { sello: SELLO, filas,
-              total: b.cifra.childNodes[0].textContent.trim(),
-              quin: b.cifra.querySelector("span") ? b.cifra.querySelector("span").textContent.trim() : "",
-              cod: codigoDeLista(b.lista) };
-    try { localStorage.setItem(LSK, JSON.stringify(LISTA)); } catch (e) {}
-    pintarBarra();
-  }
-  function pintarBarra() {
-    const hay = LISTA && LISTA.filas && LISTA.filas.length;
-    $("tbar").hidden = !hay;
-    if (hay) $("tbartxt").innerHTML =
-      `<b>${LISTA.total}</b>${LISTA.filas.length} producto${LISTA.filas.length === 1 ? "" : "s"} en tu lista`;
-  }
-  function llenarHoja() {
-    if (!LISTA) return;
-    $("tlista").innerHTML = LISTA.filas.map(f =>
-      `<div class="tfila"><b>${f.n}</b><span>${f.p}</span></div>`).join("");
-    $("ttotal").textContent = LISTA.total;
-    $("tquin").textContent = LISTA.quin;
-    $("tcodigo").textContent = LISTA.cod || "—";
-  }
-
-  /* los «volver» regresan DE VERDAD (history.back) para que el botón atrás del
-     teléfono nunca acumule pasos fantasmas (reporte de Michael 1-ago en /buscar,
-     aplicado aquí también). Cada pantalla que NOSOTROS apilamos lleva su
-     profundidad en history.state (tprof): volver con profundidad = back real;
-     sin profundidad (llegada directa por ancla) = reemplazo, sin apilar.
-     OJO: un contador simple no sirve — el click a un ancla dispara TAMBIÉN
-     popstate en Chrome/Safari y lo descontaba solo. El estado por entrada es
-     inmune a eso y al botón adelante. */
-  const prof = () => (history.state && history.state.tprof) || 0;
-  const irApilando = h => { history.pushState({ tprof: prof() + 1 }, "", h); ir(pantalla()); };
-  document.querySelectorAll('a.tmision[href^="#"]').forEach(a =>
-    a.addEventListener("click", e => { e.preventDefault(); irApilando(a.getAttribute("href")); }));
-  document.querySelectorAll("a.tvolver").forEach(a =>
-    a.addEventListener("click", e => {
-      e.preventDefault();
-      if (prof() > 0) history.back();
-      else location.replace(a.getAttribute("href"));
-    }));
-  window.addEventListener("popstate", () => ir(pantalla()));
-  $("tarmar").addEventListener("click", () => irApilando("#t-rutina"));
-
-  // la hoja de la asesora se llena del MODELO (nunca del DOM al momento del tap:
-  // así jamás sale con el total vacío, ni depende de en qué pantalla estés)
-  $("tbases").addEventListener("click", () => {
-    if (!LISTA) return;
-    llenarHoja();
-    $("tases").hidden = false;
-    document.body.style.overflow = "hidden";
+  // el carrito del encabezado abre la hoja; cerrar la regresa a donde estaba
+  $("tcart").addEventListener("click", () => {
+    llenarHoja(); $("tases").hidden = false; document.body.style.overflow = "hidden";
   });
   const cerrarAses = () => { $("tases").hidden = true; document.body.style.overflow = ""; };
   $("tcerrar").addEventListener("click", cerrarAses);
   $("tfondo").addEventListener("click", cerrarAses);
 
-  // la asesora teclea un código SY → la lista de la clienta aparece tal cual
+  // «ya los comprE» → los indices del carrito pasan al almacEn de /guia
+  // (guia_mios usa el MISMO orden de skus) y la guia abre ya cargada
+  $("tguia").addEventListener("click", () => {
+    try { localStorage.setItem("guia_mios", JSON.stringify(CARRITO.map(x => x.i))); } catch (e) {}
+  });
+
+  // en la FICHA (estante, catalogo de /buscar no — solo esta pagina) tambien se
+  // puede agregar: se inyecta el boton cuando el motor pinta el modal
+  let ultimaFichaP = null;
+  document.addEventListener("click", e => {
+    const b = e.target.closest(".pname");
+    if (b && b.dataset.p !== undefined) ultimaFichaP = +b.dataset.p;
+  }, true);
+  new MutationObserver(() => {
+    const mb = $("mbody");
+    if (document.getElementById("modal").hidden || ultimaFichaP === null) return;
+    if (mb.querySelector(".addbtn")) return;
+    const i = ultimaFichaP;
+    const btn = document.createElement("button");
+    btn.type = "button"; btn.className = "addbtn addficha";
+    const pinta = () => {
+      btn.classList.toggle("enlista", enCarrito(i));
+      btn.textContent = enCarrito(i) ? "\u2713 En mi lista — tocar para quitar" : "\u2795 Agregar a mi lista";
+    };
+    btn.addEventListener("click", () => { enCarrito(i) ? quitar(i) : agregar(i, []); pinta(); });
+    pinta();
+    const prec = mb.querySelector(".mprec");
+    (prec || mb.firstElementChild || mb).insertAdjacentElement("afterend", btn);
+  }).observe($("mbody"), { childList: true });
+
+  // la asesora teclea un codigo SY → la lista de la clienta aparece tal cual
   const cerrarCod = () => { $("tcod").hidden = true; document.body.style.overflow = ""; };
   $("tcodbtn").addEventListener("click", () => {
     $("tcoderr").hidden = true; $("tcodin").value = "";
@@ -4079,27 +4147,29 @@ q.addEventListener("input", () => {
   $("tcodcerrar").addEventListener("click", cerrarCod);
   $("tcodfondo").addEventListener("click", cerrarCod);
   $("tcodver").addEventListener("click", () => {
-    const d = decodificarCodigo($("tcodin").value);
-    if (!d) { $("tcoderr").hidden = false; return; }
+    const items = decodificarCodigo($("tcodin").value);
+    if (!items) { $("tcoderr").hidden = false; return; }
     cerrarCod();
-    aplicarCodigo(d);
+    aplicarCodigo(items);
     llenarHoja();
     $("tases").hidden = false;
     document.body.style.overflow = "hidden";
   });
   $("tcodin").addEventListener("keydown", e => { if (e.key === "Enter") $("tcodver").click(); });
 
-  // los trueques «si no hay» del motor cambian el total pintado: la lista se
-  // re-captura (solo LEE el DOM — jamás toca PROD; setTimeout y no rAF: corre
-  // aunque la pestaña esté en segundo plano)
+  // los trueques «si no hay» del motor REPINTAN filas: los botones se re-inyectan
+  // (solo LEE el DOM — jamas toca PROD; setTimeout y no rAF: corre aunque la
+  // pestana este en segundo plano)
   document.addEventListener("click", e => {
-    if (e.target.closest(".altp, .volverp")) { interactuado = true; setTimeout(capturarLista, 0); }
+    if (e.target.closest(".altp, .volverp")) setTimeout(decorarRutina, 0);
   });
 
   sincronizar();
   ir(pantalla());   // respeta el ancla si llegas con #t-elegir en la URL
+  pintarCarrito();
   window._tiendaTest = { ir, sincronizar, nOpciones: () => ops.children.length,
-    capturarLista, codigoDeLista, decodificarCodigo, aplicarCodigo, lista: () => LISTA };
+    agregar, quitar, reemplazar, codigoDeLista, decodificarCodigo, aplicarCodigo,
+    carrito: () => CARRITO };
 })();
 
 /* ¿hay versión nueva publicada? (misma protección que /buscar, /piel y /k) */
