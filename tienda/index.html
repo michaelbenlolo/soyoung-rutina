@@ -5,7 +5,7 @@
 <meta name="description" content="Tu asesora K-beauty de bolsillo en el corner SO YOUNG: entiende cualquier producto del estante, arma tu rutina coreana y conoce precios de contado o en quincenas con tu vale.">
 <meta name="robots" content="noindex">
 <meta name="x-contenido" content="74e7bcb46f">
-<meta name="x-tienda" content="bf51e1ffda">
+<meta name="x-tienda" content="0adfaa1603">
 <meta name="theme-color" content="#FAF5F2">
 <title>SO YOUNG · Tu asesora de bolsillo</title>
 <style>
@@ -435,6 +435,12 @@ body { font-family:-apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, s
 .tcodline { background:#fff; border:1.5px dashed var(--rosad); border-radius:12px;
   padding:11px 13px; font-size:11.5px; line-height:1.55; margin-bottom:11px; color:var(--mut); }
 .tcodline b { font-size:19px; letter-spacing:.1em; color:var(--rosad); font-weight:800; }
+/* choque de activos potentes EN LA LISTA: avisar mientras arma la compra, no
+   después de pagar (la /guia repite la regla, pero ya es tarde para cambiar) */
+.tchoque { background:#FDECEA; border:1.5px solid #E8A79E; color:#7C2B22; border-radius:12px;
+  padding:11px 13px; font-size:12px; line-height:1.55; margin-bottom:11px; }
+.tchoque b { color:#B3261E; }
+.tchoque[hidden] { display:none !important; }
 .titem { display:flex; gap:10px; align-items:center; padding:10px 0 8px; font-size:13px; }
 .titem .tinom { flex:1; min-width:0; cursor:pointer; }
 .titem .tinom b { font-weight:700; display:block; line-height:1.3; }
@@ -3368,6 +3374,7 @@ body { font-family:-apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, s
     <p class="tsm">Ella baja todo del estante y te lo aparta hoy mismo. Toca la foto de un producto para ver su ficha.</p>
     <div class="tcodline">🔑 El código de tu lista: <b id="tcodigo">—</b><br>
       Apúntalo o díctaselo a tu asesora: con él tu lista aparece en cualquier teléfono de la tienda — aunque el tuyo se bloquee, se quede sin pila, o venga tu mamá a pagarla por ti.</div>
+    <div class="tchoque" id="tchoque" hidden></div>
     <div id="tlista"></div>
     <div class="ttotal"><b>Total de contado</b><span id="ttotal">—</span></div>
     <div class="tquin" id="tquin"></div>
@@ -4181,9 +4188,18 @@ q.addEventListener("input", () => {
       $c("tlista").innerHTML = '<p class="tsm" style="padding:10px 0">Tu lista quedó vacía — agrega productos con el botoncito «+».</p>';
       $c("ttotal").textContent = "$0"; $c("tquin").textContent = "";
       $c("tcodigo").textContent = "—"; $c("tguia").hidden = true;
-      $c("tvaciar").hidden = true;
+      $c("tvaciar").hidden = true; $c("tchoque").hidden = true;
       return;
     }
+    // dos activos potentes en la MISMA compra chocan (retinol + exfoliante, etc.):
+    // el aviso va aquí, mientras arma la lista — no después de pagar
+    const fuertes = typeof esFuerte === "function"
+      ? CARRITO.filter(x => esFuerte(PROD[x.i])).map(x => PROD[x.i].d) : [];
+    $c("tchoque").hidden = fuertes.length < 2;
+    if (fuertes.length >= 2) $c("tchoque").innerHTML =
+      `⚠️ <b>${fuertes.join("</b> y <b>")}</b> son activos potentes y <b>no van la misma noche</b> ` +
+      `(irritan si se enciman). Puedes llevarlos y alternarlos por noches — tu guía de uso te dice cómo — ` +
+      `o cambiar uno con el ⇄ de abajo. Ante la duda, tu asesora 💕.`;
     $c("tlista").innerHTML = CARRITO.map(it => {
       const p = PROD[it.i];
       // si el renglón llegó sin alternativas (mini de catálogo, búsqueda, ficha,

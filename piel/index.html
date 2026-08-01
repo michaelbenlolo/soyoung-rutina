@@ -6,7 +6,7 @@
 <meta name="description" content="Contesta 7 preguntas (1 minuto) y te armamos tu rutina coreana con precios de contado o en quincenas. Si quieres, te guiamos zona por zona sobre tu propia selfie — que nunca sale de tu celular.">
 <title>SO YOUNG · ¿Qué necesita tu piel?</title>
 <meta name="x-contenido" content="74e7bcb46f">
-<meta name="x-piel" content="bed11face5">
+<meta name="x-piel" content="de13e35453">
 <style>
 :root { --rosa:#D96C82; --rosad:#B94F66; --ink:#2A2226; --crema:#FBF6F4; --crema2:#FAEDEE;
   --mut:#8b7d82; --line:#F0DDE1; --texto:#584a4f; color-scheme: light; }
@@ -414,6 +414,12 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
 .tcodline { background:#fff; border:1.5px dashed var(--rosad); border-radius:12px;
   padding:11px 13px; font-size:11.5px; line-height:1.55; margin-bottom:11px; color:var(--mut); }
 .tcodline b { font-size:19px; letter-spacing:.1em; color:var(--rosad); font-weight:800; }
+/* choque de activos potentes EN LA LISTA: avisar mientras arma la compra, no
+   después de pagar (la /guia repite la regla, pero ya es tarde para cambiar) */
+.tchoque { background:#FDECEA; border:1.5px solid #E8A79E; color:#7C2B22; border-radius:12px;
+  padding:11px 13px; font-size:12px; line-height:1.55; margin-bottom:11px; }
+.tchoque b { color:#B3261E; }
+.tchoque[hidden] { display:none !important; }
 .titem { display:flex; gap:10px; align-items:center; padding:10px 0 8px; font-size:13px; }
 .titem .tinom { flex:1; min-width:0; cursor:pointer; }
 .titem .tinom b { font-weight:700; display:block; line-height:1.3; }
@@ -547,6 +553,7 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
   <div class="seltit" id="reschips" style="margin-top:12px"></div>
   <div class="pqajusta" id="resextra" hidden></div>
   <div class="nota suave" id="notasol" hidden style="margin-top:12px">☀️ <b>Marcaste que casi no usas bloqueador:</b> es el paso que más previene manchas y arrugas — en tu rutina de abajo ya viene incluido. Úsalo diario, aunque esté nublado.</div>
+  <div class="nota suave" id="resemb" hidden style="margin-top:12px">🤰 <b>Marcaste embarazo o lactancia:</b> tu rutina va solo con fórmulas suaves — sin retinol, sin kójico, sin exfoliantes fuertes. Si aparece <b>ácido azelaico</b>, es de los que los dermatólogos sí usan en esta etapa. Aun así, antes de estrenar, enséñale tu rutina a tu médico 💕.</div>
   <div class="pqajusta">Abajo está tu rutina 👇 Si algo no cuadra, <b>toca los botones para ajustar</b> — tú te conoces mejor que nadie (puedes elegir hasta 3).</div>
   <div class="chips"><button class="chip" type="button" aria-pressed="false" data-need="manchas"><span class="chico">🎯</span>Manchas y tono disparejo</button><button class="chip" type="button" aria-pressed="false" data-need="poros"><span class="chico">✨</span>Poros abiertos, grasa y brillo</button><button class="chip" type="button" aria-pressed="false" data-need="granitos"><span class="chico">🌿</span>Granitos y brotes</button><button class="chip" type="button" aria-pressed="false" data-need="sensible"><span class="chico">🌸</span>Piel reseca, sensible o irritada</button><button class="chip" type="button" aria-pressed="false" data-need="edad"><span class="chico">⏳</span>Líneas, arrugas y flacidez</button><button class="chip" type="button" aria-pressed="false" data-need="ojos"><span class="chico">👁️</span>Ojeras, bolsas y contorno</button><button class="chip" type="button" aria-pressed="false" data-need="glow"><span class="chico">🫧</span>Quiere GLOW / empezar desde cero</button><button class="chip" type="button" aria-pressed="false" data-need="sol"><span class="chico">☀️</span>Protección de todos los días</button><button class="chip" type="button" aria-pressed="false" data-need="regalo"><span class="chico">🎁</span>Regalo o antojo</button><button class="chip" type="button" aria-pressed="false" data-need="mascarillas"><span class="chico">🎭</span>Mascarillas y consentirse</button></div>
   <div class="avisomax" id="aviso-max" hidden>Elige las <b>2 o 3 que más te importan</b>: tu piel no puede tratarse todo a la vez, y la rutina se vuelve muy larga. Quita una para agregar otra.</div>
@@ -3373,6 +3380,7 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
           <div class="cta">💕 <b>Pídeselo a tu asesora:</b> te arma la rutina completa, te la aparta hoy y la pagas con tu vale en quincenas.</div>
         </section>
   <div id="unpoco"></div>
+  <div class="pqajusta" id="respatch" style="margin-top:14px">🧴 <b>Antes de estrenar: prueba de parche</b> (para todas, no solo piel sensible). Estrena UN producto a la vez: ponte un poquito detrás de la oreja o en la muñeca y espera 24 horas. ¿Ardor, rojez o comezón? Ese no es para ti — tu asesora te lo cambia.</div>
   <button class="pqsec" id="denuevo" type="button" style="width:100%;margin-top:18px">🔁 Empezar de nuevo</button>
   <a class="volver" href="../">← Volver a la portada</a>
   <div class="pqlegal">🔒 Tu foto nunca salió de tu celular — al recargar o cerrar la página, desaparece.<br>Precios de julio 2026 — confírmalos en tienda. Orientación cosmética; no sustituye la opinión de un dermatólogo.</div>
@@ -3395,6 +3403,7 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
     <p class="tsm">Ella baja todo del estante y te lo aparta hoy mismo. Toca la foto de un producto para ver su ficha.</p>
     <div class="tcodline">🔑 El código de tu lista: <b id="tcodigo">—</b><br>
       Apúntalo o díctaselo a tu asesora: con él tu lista aparece en cualquier teléfono de la tienda — aunque el tuyo se bloquee, se quede sin pila, o venga tu mamá a pagarla por ti.</div>
+    <div class="tchoque" id="tchoque" hidden></div>
     <div id="tlista"></div>
     <div class="ttotal"><b>Total de contado</b><span id="ttotal">—</span></div>
     <div class="tquin" id="tquin"></div>
@@ -4067,6 +4076,10 @@ const PREG = [
  {k:"sensible", ic:"🌸", z:["cara"],
   t:"Ahora de sentir, no de ver: ¿tu piel se irrita fácil? (rojez, ardor con productos, resequedad)",
   a:"Si marcas «sí», dejamos fuera los activos fuertes — tu piel primero."},
+ {k:"embarazo", ic:"🤰", z:null,
+  t:"Casi terminamos — una para cuidarte: ¿estás embarazada o lactando?",
+  a:"Si marcas «sí», tu rutina va solo con fórmulas suaves: sin retinol, sin kójico, sin exfoliantes fuertes.",
+  ops:["Sí","No"]},
  {k:"sol",      ic:"☀️", z:null,
   t:"La última: ¿usas bloqueador todos los días?",
   a:"El sol causa la mayoría de manchas y arrugas — por eso importa tanto.",
@@ -4359,14 +4372,18 @@ $("qatras").addEventListener("click", () => {
 function calcular() {
   const peso = {};
   PREG.forEach(p => {
-    const r = resp[p.k]; if (r === undefined) return;
+    const r = resp[p.k]; if (r === undefined || p.k === "embarazo") return;
     peso[p.k] = p.k === "sol" ? (r === 2 ? 2 : r === 1 ? 1 : 0)   // «casi nunca» pesa más
                               : (r === 0 ? 2 : r === 1 ? 1 : 0);  // «sí» pesa más que «un poco»
   });
-  const cand = PRIOR.filter(k => peso[k] === 2).concat(PRIOR.filter(k => peso[k] === 1));
+  const emb = resp.embarazo === 0;
+  let cand = PRIOR.filter(k => peso[k] === 2).concat(PRIOR.filter(k => peso[k] === 1));
+  // embarazo/lactancia ⇒ el chip «sensible» va SIEMPRE y primero: es el camino del
+  // motor auditado (R1) sin retinol, kójico, exfoliantes fuertes ni glutatión
+  if (emb) cand = ["sensible"].concat(cand.filter(k => k !== "sensible"));
   const sel3 = cand.slice(0, 3);
-  return { sel3: sel3.length ? sel3 : ["glow"],   // piel en paz → rutina para empezar / glow
-           extras: cand.slice(3),
+  return { sel3: sel3.length ? sel3 : (emb ? ["sensible"] : ["glow"]),
+           extras: cand.slice(3), emb,
            solPend: (peso.sol || 0) > 0 && !sel3.includes("sol") };
 }
 function miniFoto() {
@@ -4385,6 +4402,7 @@ function terminar() {
     r.extras.map(k => `<b>${NEC[k].t.toLowerCase()}</b>`).join(" y ") +
     " — abajo, después de tu rutina, te dejamos algo específico para eso. Y si prefieres enfocarte ahí, cámbialo con un toque.";
   $("notasol").hidden = !r.solPend;
+  $("resemb").hidden = !r.emb;
   // las señales leves («un poco») se pasan al motor: con 2-3 categorías, él pinta el
   // bloque «Para lo que notaste un poco» dentro del panel, antes de las mascarillas
   window.EXTRAS_PIEL = r.extras;
@@ -4569,9 +4587,18 @@ window._pielTest = { PREG, ZONAS, calcular, empezarQuiz, terminar, ir,
       $c("tlista").innerHTML = '<p class="tsm" style="padding:10px 0">Tu lista quedó vacía — agrega productos con el botoncito «+».</p>';
       $c("ttotal").textContent = "$0"; $c("tquin").textContent = "";
       $c("tcodigo").textContent = "—"; $c("tguia").hidden = true;
-      $c("tvaciar").hidden = true;
+      $c("tvaciar").hidden = true; $c("tchoque").hidden = true;
       return;
     }
+    // dos activos potentes en la MISMA compra chocan (retinol + exfoliante, etc.):
+    // el aviso va aquí, mientras arma la lista — no después de pagar
+    const fuertes = typeof esFuerte === "function"
+      ? CARRITO.filter(x => esFuerte(PROD[x.i])).map(x => PROD[x.i].d) : [];
+    $c("tchoque").hidden = fuertes.length < 2;
+    if (fuertes.length >= 2) $c("tchoque").innerHTML =
+      `⚠️ <b>${fuertes.join("</b> y <b>")}</b> son activos potentes y <b>no van la misma noche</b> ` +
+      `(irritan si se enciman). Puedes llevarlos y alternarlos por noches — tu guía de uso te dice cómo — ` +
+      `o cambiar uno con el ⇄ de abajo. Ante la duda, tu asesora 💕.`;
     $c("tlista").innerHTML = CARRITO.map(it => {
       const p = PROD[it.i];
       // si el renglón llegó sin alternativas (mini de catálogo, búsqueda, ficha,
