@@ -4,8 +4,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Tu asesora K-beauty de bolsillo en el corner SO YOUNG: entiende cualquier producto del estante, arma tu rutina coreana y conoce precios de contado o en quincenas con tu vale.">
 <meta name="robots" content="noindex">
-<meta name="x-contenido" content="9d31e0967f">
-<meta name="x-tienda" content="85c10f4498">
+<meta name="x-contenido" content="f59cad7e1f">
+<meta name="x-tienda" content="b313d07481">
 <meta name="theme-color" content="#FAF5F2">
 <title>SO YOUNG · Tu asesora de bolsillo</title>
 <style>
@@ -128,7 +128,57 @@ h2 { font-size:20px; font-weight:800; letter-spacing:-.01em; text-wrap:balance; 
 .mbody { padding:0 10px 12px; }
 .mstory { font-size:12.3px; color:var(--texto); line-height:1.45; padding:0 4px 10px; }
 .dot { width:11px; height:11px; border-radius:50%; flex:none; }
-.buscador { margin:10px 0 14px; }
+/* buscador PEGAJOSO (revisor 1-ago): mientras la asesora scrollea el catálogo con
+   la clienta enfrente, la caja de búsqueda se queda a la mano bajo la barra */
+.buscador { margin:10px 0 14px; position:sticky; top:46px; z-index:15; background:var(--crema);
+  padding:6px 0; }
+
+/* ---------- ⚡ MODO VENTA (backstage de la asesora, solo en la raíz) ---------- */
+.mv { margin-top:18px; border:1.5px solid var(--rosad); border-radius:18px; background:#fff; padding:13px 13px 11px; }
+.mvtit { font-size:15.5px; font-weight:800; letter-spacing:-.01em; }
+.mvtit em { display:block; font-style:normal; font-size:11.5px; font-weight:500; color:var(--mut); margin-top:1px; }
+.mvrow { display:flex; gap:6px; overflow-x:auto; margin:10px -13px 0; padding:2px 13px 6px; -webkit-overflow-scrolling:touch; scrollbar-width:none; }
+.mvrow::-webkit-scrollbar { display:none; }
+.mvn { appearance:none; flex:0 0 auto; border:1.5px solid var(--line); background:var(--crema); border-radius:99px;
+  padding:7px 12px; font:inherit; font-size:12px; font-weight:600; color:var(--ink); display:flex; align-items:center; gap:5px; cursor:pointer; }
+.mvn.on { border-color:var(--rosad); background:var(--crema2); }
+.mvfil { display:flex; align-items:center; flex-wrap:wrap; gap:5px; margin-top:9px; }
+.mvflab { font-size:10.5px; font-weight:700; color:var(--mut); }
+.mvb, .mvsen { appearance:none; border:1px solid var(--line); background:#fff; border-radius:99px; padding:4px 9px;
+  font:inherit; font-size:10.5px; font-weight:600; color:var(--texto); cursor:pointer; }
+.mvb.on { border-color:var(--rosad); background:var(--crema2); color:var(--rosad); }
+.mvsen { margin-left:auto; }
+.mvsen[aria-pressed="true"] { border-color:var(--rosad); background:var(--crema2); color:var(--rosad); }
+.mvbloque { margin-top:10px; }
+.mvcard { border:1px solid var(--line); border-radius:14px; padding:10px 11px; margin-top:8px; }
+.mvcard.fuera { display:none; }
+.mvtag { font-size:10px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:var(--rosad); }
+.mvnom { display:block; font-size:13.5px; margin-top:3px; }
+.mvdif { font-size:11px; color:var(--texto); line-height:1.4; margin-top:2px; }
+.mvprecio { font-size:15px; font-weight:800; color:var(--rosad); margin-top:5px; }
+.mvprecio em { font-style:normal; font-size:10.5px; font-weight:600; color:var(--mut); }
+.mvguion { font-size:11px; background:var(--crema); border-radius:9px; padding:6px 8px; margin-top:6px; line-height:1.45; }
+.mvver { appearance:none; border:none; background:none; font:inherit; font-size:11px; font-weight:700; color:var(--rosad);
+  padding:6px 0 0; cursor:pointer; }
+.mvarr { font-size:11px; line-height:1.5; background:var(--crema); border-radius:12px; padding:8px 10px; margin-top:9px; }
+.mvarr .pname { font-size:11px; }
+.mvarrp { font-weight:800; color:var(--rosad); white-space:nowrap; }
+.mvarrp em { font-style:normal; font-weight:600; font-size:10px; color:var(--mut); }
+.mvnada { font-size:11px; color:var(--mut); background:var(--crema); border-radius:10px; padding:7px 9px; margin-top:7px; }
+.mvsep { margin-top:26px; font-size:12.5px; color:var(--texto); }
+.scanban.tiendaban { border:1.5px solid var(--rosad); }
+
+/* ---------- 💬 objeciones (backstage, solo raíz) ---------- */
+.objs .obj { border:1px solid var(--line); border-radius:12px; background:#fff; margin-top:8px; }
+.objs .obj summary { list-style:none; cursor:pointer; padding:10px 12px; font-size:13px; font-weight:700; display:flex; align-items:center; gap:6px; }
+.objs .obj summary::-webkit-details-marker { display:none; }
+.objs .obj[open] .tcaret { transform:rotate(90deg); }
+.objs .obj p { padding:0 12px 11px; font-size:12px; line-height:1.55; color:var(--texto); }
+.otit2 { margin-top:16px; font-size:13px; font-weight:800; }
+.orow2 { display:grid; grid-template-columns:auto auto; gap:1px 10px; border-bottom:1px dashed var(--line); padding:7px 2px; font-size:11.5px; }
+.orow2 b { font-size:12px; }
+.orow2 .ocua { justify-self:end; font-weight:800; color:var(--rosad); white-space:nowrap; }
+.orow2 i { grid-column:1 / -1; font-style:normal; color:var(--mut); line-height:1.4; }
 .buscador input { width:100%; font:inherit; font-size:15px; padding:12px 14px; border:1.5px solid var(--line);
   border-radius:13px; background:#fff; color:var(--ink); }
 .buscador input:focus { outline:none; border-color:var(--rosad); }
@@ -657,7 +707,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
             <div class="cuso">Vitamina C suave: ilumina sin irritar, apta piel sensible</div></div>
           <div class="cprec"><b>$420</b><span>10 quincenas de $59</span></div></div></div></details>
       </div></details>
-          <div class="plabel">⭐ Tu rutina recomendada</div><details class="col" open data-marca="Medicube" data-col="Kojic Acid Turmeric" data-buscar="Medicube Kojic Acid Turmeric Contra las manchas más difíciles y el paño Ácido kójico + cúrcuma, la dupla clásica para aclarar Manchas de embarazo, de sol o marcas viejas que no se van con nada. Kojic Acid Turmeric Niacinamide Serum 30ml Kójico + cúrcuma: para manchas difíciles y paño 382 Kojic Turmeric Night Mask 75ml Duerme con ella y amanece con tono más parejo 543 Kojic Turmeric Gel Mask (4 pzas) 4 mascarillas iluminadoras: el plan de domingo 402 Kojic Turmeric Vita Eye Gel 30ml Para ojeras oscuras: aclara la mirada 342 Kojic Turmeric Vita Capsule Cream 53g Crema aclaradora para sellar la rutina anti-manchas 563 crema decoloracion desigual gel hidratante hiperpigmentacion humectante manchas marcas mascarilla mascarillas mask melasma oscuras overnight parche parches paño pigmentacion pigmentación sellar serum sheet sérum tono tratamiento tratar">
+          <div class="plabel">⭐ Tu rutina recomendada</div><details class="col" open data-marca="Medicube" data-col="Kojic Acid Turmeric" data-buscar="Medicube Kojic Acid Turmeric Contra las manchas más difíciles y el paño Ácido kójico + cúrcuma, la dupla clásica para aclarar Manchas de embarazo, de sol o marcas viejas que no se van con nada. Kojic Acid Turmeric Niacinamide Serum 30ml Kójico + cúrcuma: para manchas difíciles y paño 382 Kojic Turmeric Night Mask 75ml Duerme con ella y amanece con tono más parejo 543 Kojic Turmeric Gel Mask (4 pzas) 4 mascarillas iluminadoras: el plan de domingo 402 Kojic Turmeric Vita Eye Gel 30ml Para ojeras oscuras: aclara la mirada 342 Kojic Turmeric Vita Capsule Cream 53g Crema aclaradora para sellar la rutina anti-manchas 563 arroz crema decoloracion desigual gel hidratante hiperpigmentacion humectante kojico kójico manchas marcas mascarilla mascarillas mask melasma oscuras overnight parche parches paño pigmentacion pigmentación sellar serum sheet sérum tono tratamiento tratar">
       <summary><span class="cico">🎯</span>
         <div class="chead"><div class="cnom">⭐ Kojic Acid Turmeric <span class="cmarca">Medicube</span></div>
           <div class="cprom">Contra las manchas más difíciles y el paño</div></div>
@@ -672,12 +722,12 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
         <div class="cgancho">💬 «Esta es la artillería pesada para manchas — y sin bloqueador no funciona.»</div>
         <div class="rutina">
       <div class="rtit">La rutina completa · 3 productos</div>
-      <div class="rlist"><div class="rp" data-cur="29">
+      <div class="rlist"><div class="rp" data-cur="43">
       <div class="rpaso"><span>🧼</span>LIMPIA</div>
-      <img class="rimg" src="../p/B09C1B7BH5.jpg" alt="Zero Foam Cleanser 120ml" loading="lazy">
-      <div class="rinfo"><button class="pname" data-p="29">Zero Foam Cleanser 120ml<span class="pver">ver ficha</span></button> <span class="cmarca2">Medicube</span><span class="otra">de otra línea</span>
-        <div class="ruso">Espuma para piel grasa: limpia profundo sin apretar</div>
-        <div class="rprec">$302 <span>ó 10 quincenas de $42</span></div><details class="ralt"><summary class="raltt">🔄 ¿Si no hay?<em>ver 2 reemplazos</em><span class="rcar">▾</span></summary><div class="raltb"><button class="altp" data-o="29" data-a="112">Tone Brightening Cleansing Gel 125ml <span>(SKIN1004 · $309)</span></button><button class="altp" data-o="29" data-a="4">Heartleaf Pore Control Cleansing Oil 200ml <span>(ANUA · $564)</span></button><i class="rtip">toca uno y la rutina cambia con él</i></div></details></div></div><div class="rp" data-cur="63">
+      <img class="rimg" src="../p/B0F83N244B.jpg" alt="PDRN Hydrating Gel Cleanser 200ml" loading="lazy">
+      <div class="rinfo"><button class="pname" data-p="43">PDRN Hydrating Gel Cleanser 200ml<span class="pver">ver ficha</span></button> <span class="cmarca2">Medicube</span><span class="otra">de otra línea</span>
+        <div class="ruso">Gel limpiador que no reseca</div>
+        <div class="rprec">$443 <span>ó 10 quincenas de $62</span></div><details class="ralt"><summary class="raltt">🔄 ¿Si no hay?<em>ver 2 reemplazos</em><span class="rcar">▾</span></summary><div class="raltb"><button class="altp" data-o="43" data-a="112">Tone Brightening Cleansing Gel 125ml <span>(SKIN1004 · $309)</span></button><button class="altp" data-o="43" data-a="4">Heartleaf Pore Control Cleansing Oil 200ml <span>(ANUA · $564)</span></button><i class="rtip">toca uno y la rutina cambia con él</i></div></details></div></div><div class="rp" data-cur="63">
       <div class="rpaso"><span>💧</span>TRATA</div>
       <img class="rimg" src="../p/B0FG7VLJKG.jpg" alt="Kojic Acid Turmeric Niacinamide Serum 30ml" loading="lazy">
       <div class="rinfo"><button class="pname" data-p="63">Kojic Acid Turmeric Niacinamide Serum 30ml<span class="pver">ver ficha</span></button> <span class="cmarca2">Medicube</span>
@@ -689,9 +739,9 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
         <div class="ruso">Crema aclaradora para sellar la rutina anti-manchas</div>
         <div class="rprec">$563 <span>ó 12 quincenas de $66</span></div><details class="ralt"><summary class="raltt">🔄 ¿Si no hay?<em>ver 2 reemplazos</em><span class="rcar">▾</span></summary><div class="raltb"><button class="altp" data-o="66" data-a="127">Tone Brightening Capsule Cream 75ml <span>(SKIN1004 · $508)</span></button><button class="altp" data-o="66" data-a="52">TXA Niacinamide Capsule Cream 55g <span>(Medicube · $563)</span></button><i class="rtip">toca uno y la rutina cambia con él</i></div></details></div></div></div>
       <div class="rtotal"><div>Rutina completa<span>3 productos</span></div>
-        <div class="rtcifra">$1,247<span>ó 12 quincenas de $146</span></div></div><div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">➕</span>
+        <div class="rtcifra">$1,388<span>ó 12 quincenas de $162</span></div></div><div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">➕</span>
           <span class="tnom">Rutina más completa<em>le suma aceite limpiador y tónico</em></span>
-          <span class="tprecio" data-tc="1971" data-tcr="2761">$1,971<em>5 productos · 12 quincenas de $230</em></span></summary>
+          <span class="tprecio" data-tc="2112" data-tcr="2958">$2,112<em>5 productos · 12 quincenas de $246</em></span></summary>
           <div class="tbody"><div class="tsub">Los 3 de la rutina de arriba más:</div><div class="trow"><img class="timg" src="../p/B0FP176X2H.jpg" alt="Zero Pore Blackhead Cleansing Oil 205ml" loading="lazy">
           <div class="tinfo"><button class="pname" data-p="33">Zero Pore Blackhead Cleansing Oil 205ml<span class="pver">ver ficha</span></button> <span class="cmarca2">Medicube</span>
             <div class="tuso">Aceite que disuelve puntos negros al masajear</div>
@@ -702,7 +752,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
             <div class="tchip">tónico / toallitas · después de lavar, antes del sérum</div><details class="ralt"><summary class="raltt">🔄 ¿Si no hay?<em>ver 2 reemplazos</em><span class="rcar">▾</span></summary><div class="raltb"><button class="vera" data-p="100">Poremizing Clear Toner 210ml <span>(SKIN1004 · $400)</span></button><button class="vera" data-p="73">Bean Toner 300ml <span>(MIXSOON · $553)</span></button></div></details></div>
           <div class="lprec"><b>$342</b><span>10 quincenas de $48</span></div></div></div></details><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">👑</span>
           <span class="tnom">Rutina coreana completa<em>todo lo necesario para la rutina</em></span>
-          <span class="tprecio" data-tc="2897" data-tcr="4057">$2,897<em>7 productos · 12 quincenas de $338</em></span></summary>
+          <span class="tprecio" data-tc="3038" data-tcr="4254">$3,038<em>7 productos · 12 quincenas de $354</em></span></summary>
           <div class="tbody"><div class="tsub">Los 3 de la rutina de arriba más:</div><div class="trow"><img class="timg" src="../p/B0FP176X2H.jpg" alt="Zero Pore Blackhead Cleansing Oil 205ml" loading="lazy">
           <div class="tinfo"><button class="pname" data-p="33">Zero Pore Blackhead Cleansing Oil 205ml<span class="pver">ver ficha</span></button> <span class="cmarca2">Medicube</span>
             <div class="tuso">Aceite que disuelve puntos negros al masajear</div>
@@ -1085,7 +1135,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
             <div class="ouso">Mascarilla de barro: puntos negros y nariz brillosa</div></div>
           <div class="oprec"><b>$322</b><span>10 quincenas de $45</span></div></div></div></details>
       </div></details>
-          <div class="plabel">Súmale, según lo que busques</div><details class="col" data-marca="ANUA" data-col="Heartleaf" data-buscar="ANUA Heartleaf La doble limpieza viral que deja el poro impecable Heartleaf (hierba de la cola de lagarto), calmante y purificante Quien usa maquillaje o bloqueador a diario — o sea, casi todas. Heartleaf Pore Control Cleansing Oil 200ml Aceite desmaquillante: derrite maquillaje, bloqueador y puntos negros 564 Heartleaf Quercetinol Cleansing Foam 150ml Espuma de limpieza profunda del poro, sin resecar 329 aceite brillo brillosa cachetes espinillas espuma grasa grasosa jabon jabón lavar limpiador limpiar negros oleo poros puntos sebo t zona óleo">
+          <div class="plabel">Súmale, según lo que busques</div><details class="col" data-marca="ANUA" data-col="Heartleaf" data-buscar="ANUA Heartleaf La doble limpieza viral que deja el poro impecable Heartleaf (hierba de la cola de lagarto), calmante y purificante Quien usa maquillaje o bloqueador a diario — o sea, casi todas. Heartleaf Pore Control Cleansing Oil 200ml Aceite desmaquillante: derrite maquillaje, bloqueador y puntos negros 564 Heartleaf Quercetinol Cleansing Foam 150ml Espuma de limpieza profunda del poro, sin resecar 329 aceite brillo brillosa cachetes calmante espinillas espuma grasa grasosa hierba jabon jabón lavar limpiador limpiar negros oleo poros puntos sebo t zona óleo">
       <summary><span class="cico">🌱</span>
         <div class="chead"><div class="cnom">Heartleaf <span class="cmarca">ANUA</span></div>
           <div class="cprom">La doble limpieza viral que deja el poro impecable</div></div>
@@ -1567,7 +1617,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
       <summary><span class="cico">💧</span>
         <div class="chead"><div class="cnom">Rutina <span class="cmarca">Medicube</span></div>
           <div class="cprom">con su línea Hyaluronic · Hidratación profunda que dura todo el día</div></div>
-        <span class="aprecio">$1,066<em>12 quincenas de $124</em></span></summary>
+        <span class="aprecio">$1,207<em>12 quincenas de $141</em></span></summary>
       <div class="cbody">
         <div class="cficha">
           <div><b>¿Qué tiene?</b> Ácido hialurónico + ceramidas, que retienen agua y reparan la barrera</div>
@@ -1577,12 +1627,12 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
         <div class="cgancho">💬 «Esta le queda a todas — la hidratación es la base de todo lo demás.»</div>
         <div class="rutina">
       <div class="rtit">La rutina completa · 3 productos</div>
-      <div class="rlist"><div class="rp" data-cur="29">
+      <div class="rlist"><div class="rp" data-cur="43">
       <div class="rpaso"><span>🧼</span>LIMPIA</div>
-      <img class="rimg" src="../p/B09C1B7BH5.jpg" alt="Zero Foam Cleanser 120ml" loading="lazy">
-      <div class="rinfo"><button class="pname" data-p="29">Zero Foam Cleanser 120ml<span class="pver">ver ficha</span></button> <span class="cmarca2">Medicube</span><span class="otra">de otra línea</span>
-        <div class="ruso">Espuma para piel grasa: limpia profundo sin apretar</div>
-        <div class="rprec">$302 <span>ó 10 quincenas de $42</span></div><details class="ralt"><summary class="raltt">🔄 ¿Si no hay?<em>ver 2 reemplazos</em><span class="rcar">▾</span></summary><div class="raltb"><button class="altp" data-o="29" data-a="4">Heartleaf Pore Control Cleansing Oil 200ml <span>(ANUA · $564)</span></button><button class="altp" data-o="29" data-a="109">Centella Light Cleansing Oil 200ml <span>(SKIN1004 · $410)</span></button><i class="rtip">toca uno y la rutina cambia con él</i></div></details></div></div><div class="rp" data-cur="39">
+      <img class="rimg" src="../p/B0F83N244B.jpg" alt="PDRN Hydrating Gel Cleanser 200ml" loading="lazy">
+      <div class="rinfo"><button class="pname" data-p="43">PDRN Hydrating Gel Cleanser 200ml<span class="pver">ver ficha</span></button> <span class="cmarca2">Medicube</span><span class="otra">de otra línea</span>
+        <div class="ruso">Gel limpiador que no reseca</div>
+        <div class="rprec">$443 <span>ó 10 quincenas de $62</span></div><details class="ralt"><summary class="raltt">🔄 ¿Si no hay?<em>ver 2 reemplazos</em><span class="rcar">▾</span></summary><div class="raltb"><button class="altp" data-o="43" data-a="4">Heartleaf Pore Control Cleansing Oil 200ml <span>(ANUA · $564)</span></button><button class="altp" data-o="43" data-a="109">Centella Light Cleansing Oil 200ml <span>(SKIN1004 · $410)</span></button><i class="rtip">toca uno y la rutina cambia con él</i></div></details></div></div><div class="rp" data-cur="39">
       <div class="rpaso"><span>💧</span>TRATA</div>
       <img class="rimg" src="../p/B0DBF65JYY.jpg" alt="PDRN Pink Peptide Serum 30ml" loading="lazy">
       <div class="rinfo"><button class="pname" data-p="39">PDRN Pink Peptide Serum 30ml<span class="pver">ver ficha</span></button> <span class="cmarca2">Medicube</span><span class="otra">de otra línea</span>
@@ -1594,16 +1644,16 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
         <div class="ruso">Gel-crema jugoso: hidratación + barrera reparada</div>
         <div class="rprec">$362 <span>ó 10 quincenas de $51</span></div><details class="ralt"><summary class="raltt">🔄 ¿Si no hay?<em>ver 2 reemplazos</em><span class="rcar">▾</span></summary><div class="raltb"><button class="altp" data-o="55" data-a="23">345 Relief Cream 15ml <span>(DR.ALTHEA · $225)</span></button><button class="altp" data-o="55" data-a="17">Advanced Snail 92 All In One Cream 100ml <span>(COSRX · $594)</span></button><i class="rtip">toca uno y la rutina cambia con él</i></div></details></div></div></div>
       <div class="rtotal"><div>Rutina completa<span>3 productos</span></div>
-        <div class="rtcifra">$1,066<span>ó 12 quincenas de $124</span></div></div><div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">➕</span>
+        <div class="rtcifra">$1,207<span>ó 12 quincenas de $141</span></div></div><div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">➕</span>
           <span class="tnom">Rutina más completa<em>le suma aceite limpiador</em></span>
-          <span class="tprecio" data-tc="1448" data-tcr="2028">$1,448<em>4 productos · 12 quincenas de $169</em></span></summary>
+          <span class="tprecio" data-tc="1589" data-tcr="2225">$1,589<em>4 productos · 12 quincenas de $185</em></span></summary>
           <div class="tbody"><div class="tsub">Los 3 de la rutina de arriba más:</div><div class="trow"><img class="timg" src="../p/B0FP176X2H.jpg" alt="Zero Pore Blackhead Cleansing Oil 205ml" loading="lazy">
           <div class="tinfo"><button class="pname" data-p="33">Zero Pore Blackhead Cleansing Oil 205ml<span class="pver">ver ficha</span></button> <span class="cmarca2">Medicube</span>
             <div class="tuso">Aceite que disuelve puntos negros al masajear</div>
             <div class="tchip">aceite limpiador · va primero: disuelve maquillaje y bloqueador</div><details class="ralt"><summary class="raltt">🔄 ¿Si no hay?<em>ver 2 reemplazos</em><span class="rcar">▾</span></summary><div class="raltb"><button class="vera" data-p="4">Heartleaf Pore Control Cleansing Oil 200ml <span>(ANUA · $564)</span></button><button class="vera" data-p="109">Centella Light Cleansing Oil 200ml <span>(SKIN1004 · $410)</span></button></div></details></div>
           <div class="lprec"><b>$382</b><span>10 quincenas de $54</span></div></div></div></details><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">👑</span>
           <span class="tnom">Rutina coreana completa<em>todo lo necesario para la rutina</em></span>
-          <span class="tprecio" data-tc="3582" data-tcr="5015">$3,582<em>9 productos · 12 quincenas de $418</em></span></summary>
+          <span class="tprecio" data-tc="3723" data-tcr="5212">$3,723<em>9 productos · 12 quincenas de $434</em></span></summary>
           <div class="tbody"><div class="tsub">Los 3 de la rutina de arriba más:</div><div class="trow"><img class="timg" src="../p/B0FP176X2H.jpg" alt="Zero Pore Blackhead Cleansing Oil 205ml" loading="lazy">
           <div class="tinfo"><button class="pname" data-p="33">Zero Pore Blackhead Cleansing Oil 205ml<span class="pver">ver ficha</span></button> <span class="cmarca2">Medicube</span>
             <div class="tuso">Aceite que disuelve puntos negros al masajear</div>
@@ -1814,7 +1864,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
       <summary><span class="cico">✨</span>
         <div class="chead"><div class="cnom">Rutina <span class="cmarca">Medicube</span> · Collagen</div>
           <div class="cprom">Piel que rebota: firmeza y efecto lifting</div></div>
-        <span class="aprecio">$1,671<em>12 quincenas de $195</em></span></summary>
+        <span class="aprecio">$1,812<em>12 quincenas de $211</em></span></summary>
       <div class="cbody">
         <div class="cficha">
           <div><b>¿Qué tiene?</b> Colágeno triple, en textura de gelatina que se derrite en la piel</div>
@@ -1824,12 +1874,12 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
         <div class="cgancho">💬 «Toca la textura — es una gelatina. Por eso se volvió viral.»</div>
         <div class="rutina">
       <div class="rtit">La rutina completa · 4 productos</div>
-      <div class="rlist"><div class="rp" data-cur="29">
+      <div class="rlist"><div class="rp" data-cur="43">
       <div class="rpaso"><span>🧼</span>LIMPIA</div>
-      <img class="rimg" src="../p/B09C1B7BH5.jpg" alt="Zero Foam Cleanser 120ml" loading="lazy">
-      <div class="rinfo"><button class="pname" data-p="29">Zero Foam Cleanser 120ml<span class="pver">ver ficha</span></button> <span class="cmarca2">Medicube</span><span class="otra">de otra línea</span>
-        <div class="ruso">Espuma para piel grasa: limpia profundo sin apretar</div>
-        <div class="rprec">$302 <span>ó 10 quincenas de $42</span></div><details class="ralt"><summary class="raltt">🔄 ¿Si no hay?<em>ver 2 reemplazos</em><span class="rcar">▾</span></summary><div class="raltb"><button class="altp" data-o="29" data-a="76">PDRN Collagen Gel Cleanser <span>(MIXSOON · $245)</span></button><button class="altp" data-o="29" data-a="4">Heartleaf Pore Control Cleansing Oil 200ml <span>(ANUA · $564)</span></button><i class="rtip">toca uno y la rutina cambia con él</i></div></details></div></div><div class="rp" data-cur="62">
+      <img class="rimg" src="../p/B0F83N244B.jpg" alt="PDRN Hydrating Gel Cleanser 200ml" loading="lazy">
+      <div class="rinfo"><button class="pname" data-p="43">PDRN Hydrating Gel Cleanser 200ml<span class="pver">ver ficha</span></button> <span class="cmarca2">Medicube</span><span class="otra">de otra línea</span>
+        <div class="ruso">Gel limpiador que no reseca</div>
+        <div class="rprec">$443 <span>ó 10 quincenas de $62</span></div><details class="ralt"><summary class="raltt">🔄 ¿Si no hay?<em>ver 2 reemplazos</em><span class="rcar">▾</span></summary><div class="raltb"><button class="altp" data-o="43" data-a="76">PDRN Collagen Gel Cleanser <span>(MIXSOON · $245)</span></button><button class="altp" data-o="43" data-a="4">Heartleaf Pore Control Cleansing Oil 200ml <span>(ANUA · $564)</span></button><i class="rtip">toca uno y la rutina cambia con él</i></div></details></div></div><div class="rp" data-cur="62">
       <div class="rpaso"><span>💧</span>TRATA</div>
       <img class="rimg" src="../p/B085VWWJJT.jpg" alt="Triple Collagen Serum 4.0 55ml" loading="lazy">
       <div class="rinfo"><button class="pname" data-p="62">Triple Collagen Serum 4.0 55ml<span class="pver">ver ficha</span></button> <span class="cmarca2">Medicube</span>
@@ -1846,16 +1896,16 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
         <div class="ruso">Bloqueador reafirmante: sin capa blanca, puro glow</div>
         <div class="rprec">$463 <span>ó 10 quincenas de $65</span></div><details class="ralt"><summary class="raltt">🔄 ¿Si no hay?<em>ver 2 reemplazos</em><span class="rcar">▾</span></summary><div class="raltb"><button class="altp" data-o="137" data-a="103">Hyalu-Cica Water-Fit Sun Serum 50ml <span>(SKIN1004 · $401)</span></button><button class="altp" data-o="137" data-a="12">Airy-Light Sunscreen Stick <span>(COSRX · $525)</span></button><i class="rtip">toca uno y la rutina cambia con él</i></div></details></div></div></div>
       <div class="rtotal"><div>Rutina completa<span>4 productos</span></div>
-        <div class="rtcifra">$1,671<span>ó 12 quincenas de $195</span></div></div><div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">➕</span>
+        <div class="rtcifra">$1,812<span>ó 12 quincenas de $211</span></div></div><div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">➕</span>
           <span class="tnom">Rutina más completa<em>le suma aceite limpiador</em></span>
-          <span class="tprecio" data-tc="2053" data-tcr="2874">$2,053<em>5 productos · 12 quincenas de $240</em></span></summary>
+          <span class="tprecio" data-tc="2194" data-tcr="3071">$2,194<em>5 productos · 12 quincenas de $256</em></span></summary>
           <div class="tbody"><div class="tsub">Los 4 de la rutina de arriba más:</div><div class="trow"><img class="timg" src="../p/B0FP176X2H.jpg" alt="Zero Pore Blackhead Cleansing Oil 205ml" loading="lazy">
           <div class="tinfo"><button class="pname" data-p="33">Zero Pore Blackhead Cleansing Oil 205ml<span class="pver">ver ficha</span></button> <span class="cmarca2">Medicube</span>
             <div class="tuso">Aceite que disuelve puntos negros al masajear</div>
             <div class="tchip">aceite limpiador · va primero: disuelve maquillaje y bloqueador</div><details class="ralt"><summary class="raltt">🔄 ¿Si no hay?<em>ver 2 reemplazos</em><span class="rcar">▾</span></summary><div class="raltb"><button class="vera" data-p="4">Heartleaf Pore Control Cleansing Oil 200ml <span>(ANUA · $564)</span></button><button class="vera" data-p="109">Centella Light Cleansing Oil 200ml <span>(SKIN1004 · $410)</span></button></div></details></div>
           <div class="lprec"><b>$382</b><span>10 quincenas de $54</span></div></div></div></details><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">👑</span>
           <span class="tnom">Rutina coreana completa<em>todo lo necesario para la rutina</em></span>
-          <span class="tprecio" data-tc="4187" data-tcr="5861">$4,187<em>10 productos · 12 quincenas de $488</em></span></summary>
+          <span class="tprecio" data-tc="4328" data-tcr="6058">$4,328<em>10 productos · 12 quincenas de $505</em></span></summary>
           <div class="tbody"><div class="tsub">Los 4 de la rutina de arriba más:</div><div class="trow"><img class="timg" src="../p/B0FP176X2H.jpg" alt="Zero Pore Blackhead Cleansing Oil 205ml" loading="lazy">
           <div class="tinfo"><button class="pname" data-p="33">Zero Pore Blackhead Cleansing Oil 205ml<span class="pver">ver ficha</span></button> <span class="cmarca2">Medicube</span>
             <div class="tuso">Aceite que disuelve puntos negros al masajear</div>
@@ -2064,7 +2114,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
             <div class="ouso">Sérum de ojos regenerador</div></div>
           <div class="oprec"><b>$408</b><span>10 quincenas de $57</span></div></div></div></details>
       </div></details>
-          <div class="plabel">⭐ Tu rutina recomendada</div><details class="col" open data-marca="Medicube" data-col="PDRN Pink" data-buscar="Medicube PDRN Pink Piel de porcelana: firmeza, glow y poro cerrado PDRN, un regenerador que ayuda a la piel a repararse sola, con péptidos rosados La que vio el sérum rosa en TikTok y quiere ese efecto «piel de vidrio». De los 25 en adelante. PDRN Hydrating Gel Cleanser 200ml Gel limpiador que no reseca 443 Rosemary PDRN Shampoo 400ml Champú de romero: frescura y cabello con más cuerpo 543 PDRN Pink Niacinamide Whip Cleanser Espuma cremosa tipo mousse: limpia con cariño 322 PDRN Pink Glutathione Cleansing Foam 120g Espuma iluminadora con glutatión 322 PDRN Pink Peptide Serum 30ml EL sérum rosa viral de TikTok: firmeza, glow y piel de porcelana 402 PDRN Pink Peptide Eye Serum 30ml Sérum de ojos con rodillo: líneas, ojeras y bolsas 342 PDRN Pink Caffeine Night Mask 75ml Mascarilla de noche con cafeína: amaneces desinflamada 483 PDRN Pink Glow Jelly Mist 100ml Bruma gelatinosa: glow inmediato, hasta sobre maquillaje 443 PDRN Pink Toning Gel Toner Pad Toallitas tonificantes de colágeno rosa 463 PDRN Pink Exosome Shot Serum 30ml Sérum regenerador premium: la versión más avanzada del rosa 483 PDRN Pink Niacinamide Milky Toner 150ml Tóner lechoso: suaviza y aclara poco a poco 342 PDRN Pink Collagen Bubble Serum 95ml Sérum en burbujas de colágeno: firmeza divertida de usar 402 PDRN Pink Collagen Multi Balm 10g Barra de colágeno rosa: rellena labios, pómulos y arruguitas al instante 483 PDRN Pink Collagen Capsule Cream La crema rosa de colágeno: piel que rebota 563 PDRN Pink Hyaluronic Cream 50ml Hidratación ligera diaria con toque rosa 342 algodones anti-edad antiedad arrugas balsamo barra bolsas bruma bálsamo cabello caida cansada caída champu champú colageno contorno crema de detalle discos edad espuma firmeza flacidez gallo gel hidratante hinchazon hinchazón humectante jabon jabón kit lavar leche limpiador limpiar lineas locion loción líneas madura mascarilla mascarillas mask mirada obsequio ojeras ojos overnight parche parches parpado patas pelo presente párpado regalar regalo rocio rocío sellar serum sheet spray stick sérum toallita toallitas tonico tratamiento tratar tónico vaporizador">
+          <div class="plabel">⭐ Tu rutina recomendada</div><details class="col" open data-marca="Medicube" data-col="PDRN Pink" data-buscar="Medicube PDRN Pink Piel de porcelana: firmeza, glow y poro cerrado PDRN, un regenerador que ayuda a la piel a repararse sola, con péptidos rosados La que vio el sérum rosa en TikTok y quiere ese efecto «piel de vidrio». De los 25 en adelante. PDRN Hydrating Gel Cleanser 200ml Gel limpiador que no reseca 443 Rosemary PDRN Shampoo 400ml Champú de romero: frescura y cabello con más cuerpo 543 PDRN Pink Niacinamide Whip Cleanser Espuma cremosa tipo mousse: limpia con cariño 322 PDRN Pink Glutathione Cleansing Foam 120g Espuma iluminadora con glutatión 322 PDRN Pink Peptide Serum 30ml EL sérum rosa viral de TikTok: firmeza, glow y piel de porcelana 402 PDRN Pink Peptide Eye Serum 30ml Sérum de ojos con rodillo: líneas, ojeras y bolsas 342 PDRN Pink Caffeine Night Mask 75ml Mascarilla de noche con cafeína: amaneces desinflamada 483 PDRN Pink Glow Jelly Mist 100ml Bruma gelatinosa: glow inmediato, hasta sobre maquillaje 443 PDRN Pink Toning Gel Toner Pad Toallitas tonificantes de colágeno rosa 463 PDRN Pink Exosome Shot Serum 30ml Sérum regenerador premium: la versión más avanzada del rosa 483 PDRN Pink Niacinamide Milky Toner 150ml Tóner lechoso: suaviza y aclara poco a poco 342 PDRN Pink Collagen Bubble Serum 95ml Sérum en burbujas de colágeno: firmeza divertida de usar 402 PDRN Pink Collagen Multi Balm 10g Barra de colágeno rosa: rellena labios, pómulos y arruguitas al instante 483 PDRN Pink Collagen Capsule Cream La crema rosa de colágeno: piel que rebota 563 PDRN Pink Hyaluronic Cream 50ml Hidratación ligera diaria con toque rosa 342 algodones anti-edad antiedad arrugas balsamo barra bolsas bruma bálsamo cabello caida cansada caída champu champú colageno contorno crema de detalle discos edad espuma firmeza flacidez gallo gel hidratante hinchazon hinchazón humectante jabon jabón kit lavar leche limpiador limpiar lineas locion loción líneas madura mascarilla mascarillas mask mirada obsequio ojeras ojos overnight parche parches parpado patas pelo presente párpado regalar regalo rocio rocío rosa rosita sellar serum sheet spray stick sérum toallita toallitas tonico tratamiento tratar tónico vaporizador">
       <summary><span class="cico">🌸</span>
         <div class="chead"><div class="cnom">⭐ PDRN Pink <span class="cmarca">Medicube</span></div>
           <div class="cprom">Piel de porcelana: firmeza, glow y poro cerrado</div></div>
@@ -2209,7 +2259,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
       <div><button class="pname" data-p="7">Madeca Cream Time Reverse 50ml<span class="pver">ver ficha</span></button> <span class="opaso">SELLA</span>
         <div class="ouso">Crema anti-edad con herencia farmacéutica: firmeza y nutrición</div></div>
       <div class="oprec"><b>$309</b><span>10 quincenas de $43</span></div></div></div>
-      </div></details><details class="col" data-marca="CELIMAX" data-col="Retinal" data-buscar="CELIMAX Retinal El anti-arrugas más potente del corner Retinal, la versión más fuerte y rápida del retinol La que ya usa anti-edad y quiere resultados de verdad. Vita-A Retinal Shot Booster 15ml Retinal: más potente que el retinol, para arrugas y firmeza 445 anti-edad antiedad arrugas colageno de edad firmeza flacidez gallo lineas líneas madura patas tratamiento tratar">
+      </div></details><details class="col" data-marca="CELIMAX" data-col="Retinal" data-buscar="CELIMAX Retinal El anti-arrugas más potente del corner Retinal, la versión más fuerte y rápida del retinol La que ya usa anti-edad y quiere resultados de verdad. Vita-A Retinal Shot Booster 15ml Retinal: más potente que el retinol, para arrugas y firmeza 445 anti-edad antiedad arrugas colageno de edad firmeza flacidez gallo lineas líneas madura patas retinal retinol tratamiento tratar">
       <summary><span class="cico">⏳</span>
         <div class="chead"><div class="cnom">Retinal <span class="cmarca">CELIMAX</span></div>
           <div class="cprom">El anti-arrugas más potente del corner</div></div>
@@ -2319,7 +2369,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
           <div><button class="pname" data-p="15">The Niacinamide 15 Serum<span class="pver">ver ficha</span></button> <span class="opaso">TRATA</span>
             <div class="ouso">Niacinamida al 15%: aclara marcas y afina el poro</div></div>
           <div class="oprec"><b>$571</b><span>12 quincenas de $67</span></div></div></div></details>
-      </div></details><details class="col alt"  data-marca="Medicube" data-col="PDRN Pink" data-buscar="Medicube PDRN Pink Piel de porcelana: firmeza, glow y poro cerrado PDRN, un regenerador que ayuda a la piel a repararse sola, con péptidos rosados La que vio el sérum rosa en TikTok y quiere ese efecto «piel de vidrio». De los 25 en adelante. PDRN Hydrating Gel Cleanser 200ml Gel limpiador que no reseca 443 Rosemary PDRN Shampoo 400ml Champú de romero: frescura y cabello con más cuerpo 543 PDRN Pink Niacinamide Whip Cleanser Espuma cremosa tipo mousse: limpia con cariño 322 PDRN Pink Glutathione Cleansing Foam 120g Espuma iluminadora con glutatión 322 PDRN Pink Peptide Serum 30ml EL sérum rosa viral de TikTok: firmeza, glow y piel de porcelana 402 PDRN Pink Peptide Eye Serum 30ml Sérum de ojos con rodillo: líneas, ojeras y bolsas 342 PDRN Pink Caffeine Night Mask 75ml Mascarilla de noche con cafeína: amaneces desinflamada 483 PDRN Pink Glow Jelly Mist 100ml Bruma gelatinosa: glow inmediato, hasta sobre maquillaje 443 PDRN Pink Toning Gel Toner Pad Toallitas tonificantes de colágeno rosa 463 PDRN Pink Exosome Shot Serum 30ml Sérum regenerador premium: la versión más avanzada del rosa 483 PDRN Pink Niacinamide Milky Toner 150ml Tóner lechoso: suaviza y aclara poco a poco 342 PDRN Pink Collagen Bubble Serum 95ml Sérum en burbujas de colágeno: firmeza divertida de usar 402 PDRN Pink Collagen Multi Balm 10g Barra de colágeno rosa: rellena labios, pómulos y arruguitas al instante 483 PDRN Pink Collagen Capsule Cream La crema rosa de colágeno: piel que rebota 563 PDRN Pink Hyaluronic Cream 50ml Hidratación ligera diaria con toque rosa 342 algodones anti-edad antiedad arrugas balsamo barra bolsas bruma bálsamo cabello caida cansada caída champu champú colageno contorno crema de detalle discos edad espuma firmeza flacidez gallo gel hidratante hinchazon hinchazón humectante jabon jabón kit lavar leche limpiador limpiar lineas locion loción líneas madura mascarilla mascarillas mask mirada obsequio ojeras ojos overnight parche parches parpado patas pelo presente párpado regalar regalo rocio rocío sellar serum sheet spray stick sérum toallita toallitas tonico tratamiento tratar tónico vaporizador">
+      </div></details><details class="col alt"  data-marca="Medicube" data-col="PDRN Pink" data-buscar="Medicube PDRN Pink Piel de porcelana: firmeza, glow y poro cerrado PDRN, un regenerador que ayuda a la piel a repararse sola, con péptidos rosados La que vio el sérum rosa en TikTok y quiere ese efecto «piel de vidrio». De los 25 en adelante. PDRN Hydrating Gel Cleanser 200ml Gel limpiador que no reseca 443 Rosemary PDRN Shampoo 400ml Champú de romero: frescura y cabello con más cuerpo 543 PDRN Pink Niacinamide Whip Cleanser Espuma cremosa tipo mousse: limpia con cariño 322 PDRN Pink Glutathione Cleansing Foam 120g Espuma iluminadora con glutatión 322 PDRN Pink Peptide Serum 30ml EL sérum rosa viral de TikTok: firmeza, glow y piel de porcelana 402 PDRN Pink Peptide Eye Serum 30ml Sérum de ojos con rodillo: líneas, ojeras y bolsas 342 PDRN Pink Caffeine Night Mask 75ml Mascarilla de noche con cafeína: amaneces desinflamada 483 PDRN Pink Glow Jelly Mist 100ml Bruma gelatinosa: glow inmediato, hasta sobre maquillaje 443 PDRN Pink Toning Gel Toner Pad Toallitas tonificantes de colágeno rosa 463 PDRN Pink Exosome Shot Serum 30ml Sérum regenerador premium: la versión más avanzada del rosa 483 PDRN Pink Niacinamide Milky Toner 150ml Tóner lechoso: suaviza y aclara poco a poco 342 PDRN Pink Collagen Bubble Serum 95ml Sérum en burbujas de colágeno: firmeza divertida de usar 402 PDRN Pink Collagen Multi Balm 10g Barra de colágeno rosa: rellena labios, pómulos y arruguitas al instante 483 PDRN Pink Collagen Capsule Cream La crema rosa de colágeno: piel que rebota 563 PDRN Pink Hyaluronic Cream 50ml Hidratación ligera diaria con toque rosa 342 algodones anti-edad antiedad arrugas balsamo barra bolsas bruma bálsamo cabello caida cansada caída champu champú colageno contorno crema de detalle discos edad espuma firmeza flacidez gallo gel hidratante hinchazon hinchazón humectante jabon jabón kit lavar leche limpiador limpiar lineas locion loción líneas madura mascarilla mascarillas mask mirada obsequio ojeras ojos overnight parche parches parpado patas pelo presente párpado regalar regalo rocio rocío rosa rosita sellar serum sheet spray stick sérum toallita toallitas tonico tratamiento tratar tónico vaporizador">
       <summary><span class="cico">🌸</span>
         <div class="chead"><div class="cnom">Rutina <span class="cmarca">Medicube</span></div>
           <div class="cprom">con su línea PDRN Pink · Piel de porcelana: firmeza, glow y poro cerrado</div></div>
@@ -2547,14 +2597,14 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
         <div class="rtcifra">$358<span>ó 10 quincenas de $50</span></div></div><div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">➕</span>
           <span class="tnom">Rutina más completa<em>le suma espuma</em></span>
           <span class="tprecio" data-tc="801" data-tcr="1121">$801<em>2 productos · 12 quincenas de $93</em></span></summary>
-          <div class="tbody"><div class="tsub">Los 1 de la rutina de arriba más:</div><div class="trow"><img class="timg" src="../p/B0F83N244B.jpg" alt="PDRN Hydrating Gel Cleanser 200ml" loading="lazy">
+          <div class="tbody"><div class="tsub">El producto de la rutina de arriba más:</div><div class="trow"><img class="timg" src="../p/B0F83N244B.jpg" alt="PDRN Hydrating Gel Cleanser 200ml" loading="lazy">
           <div class="tinfo"><button class="pname" data-p="43">PDRN Hydrating Gel Cleanser 200ml<span class="pver">ver ficha</span></button> <span class="cmarca2">Medicube</span>
             <div class="tuso">Gel limpiador que no reseca</div>
             <div class="tchip">espuma · termina la limpieza (2º paso de la doble limpieza)</div><details class="ralt"><summary class="raltt">🔄 ¿Si no hay?<em>ver 2 reemplazos</em><span class="rcar">▾</span></summary><div class="raltb"><button class="vera" data-p="134">Heartleaf Quercetinol Cleansing Foam 150ml <span>(ANUA · $329)</span></button><button class="vera" data-p="29">Zero Foam Cleanser 120ml <span>(Medicube · $302)</span></button></div></details></div>
           <div class="lprec"><b>$443</b><span>10 quincenas de $62</span></div></div></div></details><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">👑</span>
           <span class="tnom">Rutina coreana completa<em>todo lo necesario para la rutina</em></span>
           <span class="tprecio" data-tc="2584" data-tcr="3618">$2,584<em>6 productos · 12 quincenas de $302</em></span></summary>
-          <div class="tbody"><div class="tsub">Los 1 de la rutina de arriba más:</div><div class="trow"><img class="timg" src="../p/B0F83N244B.jpg" alt="PDRN Hydrating Gel Cleanser 200ml" loading="lazy">
+          <div class="tbody"><div class="tsub">El producto de la rutina de arriba más:</div><div class="trow"><img class="timg" src="../p/B0F83N244B.jpg" alt="PDRN Hydrating Gel Cleanser 200ml" loading="lazy">
           <div class="tinfo"><button class="pname" data-p="43">PDRN Hydrating Gel Cleanser 200ml<span class="pver">ver ficha</span></button> <span class="cmarca2">Medicube</span>
             <div class="tuso">Gel limpiador que no reseca</div>
             <div class="tchip">espuma · termina la limpieza (2º paso de la doble limpieza)</div><details class="ralt"><summary class="raltt">🔄 ¿Si no hay?<em>ver 2 reemplazos</em><span class="rcar">▾</span></summary><div class="raltb"><button class="vera" data-p="134">Heartleaf Quercetinol Cleansing Foam 150ml <span>(ANUA · $329)</span></button><button class="vera" data-p="29">Zero Foam Cleanser 120ml <span>(Medicube · $302)</span></button></div></details></div>
@@ -2807,7 +2857,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
       <summary><span class="cico">💧</span>
         <div class="chead"><div class="cnom">Rutina <span class="cmarca">Medicube</span></div>
           <div class="cprom">con su línea Hyaluronic · Hidratación profunda que dura todo el día</div></div>
-        <span class="aprecio">$1,066<em>12 quincenas de $124</em></span></summary>
+        <span class="aprecio">$1,207<em>12 quincenas de $141</em></span></summary>
       <div class="cbody">
         <div class="cficha">
           <div><b>¿Qué tiene?</b> Ácido hialurónico + ceramidas, que retienen agua y reparan la barrera</div>
@@ -2817,12 +2867,12 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
         <div class="cgancho">💬 «Esta le queda a todas — la hidratación es la base de todo lo demás.»</div>
         <div class="rutina">
       <div class="rtit">La rutina completa · 3 productos</div>
-      <div class="rlist"><div class="rp" data-cur="29">
+      <div class="rlist"><div class="rp" data-cur="43">
       <div class="rpaso"><span>🧼</span>LIMPIA</div>
-      <img class="rimg" src="../p/B09C1B7BH5.jpg" alt="Zero Foam Cleanser 120ml" loading="lazy">
-      <div class="rinfo"><button class="pname" data-p="29">Zero Foam Cleanser 120ml<span class="pver">ver ficha</span></button> <span class="cmarca2">Medicube</span><span class="otra">de otra línea</span>
-        <div class="ruso">Espuma para piel grasa: limpia profundo sin apretar</div>
-        <div class="rprec">$302 <span>ó 10 quincenas de $42</span></div><details class="ralt"><summary class="raltt">🔄 ¿Si no hay?<em>ver 2 reemplazos</em><span class="rcar">▾</span></summary><div class="raltb"><button class="altp" data-o="29" data-a="4">Heartleaf Pore Control Cleansing Oil 200ml <span>(ANUA · $564)</span></button><button class="altp" data-o="29" data-a="109">Centella Light Cleansing Oil 200ml <span>(SKIN1004 · $410)</span></button><i class="rtip">toca uno y la rutina cambia con él</i></div></details></div></div><div class="rp" data-cur="39">
+      <img class="rimg" src="../p/B0F83N244B.jpg" alt="PDRN Hydrating Gel Cleanser 200ml" loading="lazy">
+      <div class="rinfo"><button class="pname" data-p="43">PDRN Hydrating Gel Cleanser 200ml<span class="pver">ver ficha</span></button> <span class="cmarca2">Medicube</span><span class="otra">de otra línea</span>
+        <div class="ruso">Gel limpiador que no reseca</div>
+        <div class="rprec">$443 <span>ó 10 quincenas de $62</span></div><details class="ralt"><summary class="raltt">🔄 ¿Si no hay?<em>ver 2 reemplazos</em><span class="rcar">▾</span></summary><div class="raltb"><button class="altp" data-o="43" data-a="4">Heartleaf Pore Control Cleansing Oil 200ml <span>(ANUA · $564)</span></button><button class="altp" data-o="43" data-a="109">Centella Light Cleansing Oil 200ml <span>(SKIN1004 · $410)</span></button><i class="rtip">toca uno y la rutina cambia con él</i></div></details></div></div><div class="rp" data-cur="39">
       <div class="rpaso"><span>💧</span>TRATA</div>
       <img class="rimg" src="../p/B0DBF65JYY.jpg" alt="PDRN Pink Peptide Serum 30ml" loading="lazy">
       <div class="rinfo"><button class="pname" data-p="39">PDRN Pink Peptide Serum 30ml<span class="pver">ver ficha</span></button> <span class="cmarca2">Medicube</span><span class="otra">de otra línea</span>
@@ -2834,9 +2884,9 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
         <div class="ruso">Gel-crema jugoso: hidratación + barrera reparada</div>
         <div class="rprec">$362 <span>ó 10 quincenas de $51</span></div><details class="ralt"><summary class="raltt">🔄 ¿Si no hay?<em>ver 2 reemplazos</em><span class="rcar">▾</span></summary><div class="raltb"><button class="altp" data-o="55" data-a="23">345 Relief Cream 15ml <span>(DR.ALTHEA · $225)</span></button><button class="altp" data-o="55" data-a="17">Advanced Snail 92 All In One Cream 100ml <span>(COSRX · $594)</span></button><i class="rtip">toca uno y la rutina cambia con él</i></div></details></div></div></div>
       <div class="rtotal"><div>Rutina completa<span>3 productos</span></div>
-        <div class="rtcifra">$1,066<span>ó 12 quincenas de $124</span></div></div><div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">➕</span>
+        <div class="rtcifra">$1,207<span>ó 12 quincenas de $141</span></div></div><div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">➕</span>
           <span class="tnom">Rutina más completa<em>le suma aceite limpiador y tónico</em></span>
-          <span class="tprecio" data-tc="1891" data-tcr="2648">$1,891<em>5 productos · 12 quincenas de $221</em></span></summary>
+          <span class="tprecio" data-tc="2032" data-tcr="2845">$2,032<em>5 productos · 12 quincenas de $237</em></span></summary>
           <div class="tbody"><div class="tsub">Los 3 de la rutina de arriba más:</div><div class="trow"><img class="timg" src="../p/B0FP176X2H.jpg" alt="Zero Pore Blackhead Cleansing Oil 205ml" loading="lazy">
           <div class="tinfo"><button class="pname" data-p="33">Zero Pore Blackhead Cleansing Oil 205ml<span class="pver">ver ficha</span></button> <span class="cmarca2">Medicube</span>
             <div class="tuso">Aceite que disuelve puntos negros al masajear</div>
@@ -2847,7 +2897,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
             <div class="tchip">tónico / toallitas · después de lavar, antes del sérum</div><details class="ralt"><summary class="raltt">🔄 ¿Si no hay?<em>ver 2 reemplazos</em><span class="rcar">▾</span></summary><div class="raltb"><button class="vera" data-p="51">PDRN Pink Toning Gel Toner Pad <span>(Medicube · $463)</span></button><button class="vera" data-p="6">PDRN Hyaluronic Glow Pad 180ml <span>(ANUA · $564)</span></button></div></details></div>
           <div class="lprec"><b>$443</b><span>10 quincenas de $62</span></div></div></div></details><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">👑</span>
           <span class="tnom">Rutina coreana completa<em>todo lo necesario para la rutina</em></span>
-          <span class="tprecio" data-tc="4596" data-tcr="6435">$4,596<em>11 productos · 12 quincenas de $536</em></span></summary>
+          <span class="tprecio" data-tc="4737" data-tcr="6632">$4,737<em>11 productos · 12 quincenas de $553</em></span></summary>
           <div class="tbody"><div class="tsub">Los 3 de la rutina de arriba más:</div><div class="trow"><img class="timg" src="../p/B0FP176X2H.jpg" alt="Zero Pore Blackhead Cleansing Oil 205ml" loading="lazy">
           <div class="tinfo"><button class="pname" data-p="33">Zero Pore Blackhead Cleansing Oil 205ml<span class="pver">ver ficha</span></button> <span class="cmarca2">Medicube</span>
             <div class="tuso">Aceite que disuelve puntos negros al masajear</div>
@@ -2894,7 +2944,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
             <div class="ouso">Hidratación profunda en crema con cápsulas</div></div>
           <div class="oprec"><b>$563</b><span>12 quincenas de $66</span></div></div></div></details>
       </div></details>
-          <div class="plabel">⭐ Tu rutina recomendada</div><details class="col" open data-marca="COSRX" data-col="Advanced Snail" data-buscar="COSRX Advanced Snail La baba de caracol que hizo famosa a la K-beauty 96% de mucina de caracol: repara, hidrata y da glow TODAS. Es el producto que valida el corner y con el que abres la plática. Advanced Snail 96 Mucin Essence 100ml LA baba de caracol viral: repara, hidrata y da glow a cualquier piel 571 Advanced Snail Radiance Dual Essence 80ml Doble esencia: caracol + niacinamida para iluminar 640 Advanced Snail 92 All In One Cream 100ml Crema de caracol todo-en-uno: repara y suaviza 594 Advanced Snail Peptide Eye Cream 25ml Contorno de caracol + péptidos: líneas finas y ojeras 640 apagada basico brillo básico crema de empezar esencia facil fácil glow hidratante humectante iluminar jugosa luminosidad opaca piel primera principiante radiante rutina sellar sencillo tratamiento tratar vez vidrio">
+          <div class="plabel">⭐ Tu rutina recomendada</div><details class="col" open data-marca="COSRX" data-col="Advanced Snail" data-buscar="COSRX Advanced Snail La baba de caracol que hizo famosa a la K-beauty 96% de mucina de caracol: repara, hidrata y da glow TODAS. Es el producto que valida el corner y con el que abres la plática. Advanced Snail 96 Mucin Essence 100ml LA baba de caracol viral: repara, hidrata y da glow a cualquier piel 571 Advanced Snail Radiance Dual Essence 80ml Doble esencia: caracol + niacinamida para iluminar 640 Advanced Snail 92 All In One Cream 100ml Crema de caracol todo-en-uno: repara y suaviza 594 Advanced Snail Peptide Eye Cream 25ml Contorno de caracol + péptidos: líneas finas y ojeras 640 apagada baba basico brillo básico caracol crema de empezar esencia facil fácil glow hidratante humectante iluminar jugosa luminosidad mucina opaca piel primera principiante radiante rutina sellar sencillo tratamiento tratar vez vidrio">
       <summary><span class="cico">🐌</span>
         <div class="chead"><div class="cnom">⭐ Advanced Snail <span class="cmarca">COSRX</span></div>
           <div class="cprom">La baba de caracol que hizo famosa a la K-beauty</div></div>
@@ -3531,7 +3581,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
           <div><button class="pname" data-p="115">Centella Cream 30ml (mini)<span class="pver">ver ficha</span></button> <span class="opaso">SELLA</span>
             <div class="ouso">La crema de centella en mini: primera compra ideal</div></div>
           <div class="oprec"><b>$196</b><span>8 quincenas de $34</span></div></div></div></details>
-      </div></details><details class="col alt"  data-marca="Medicube" data-col="PDRN Pink" data-buscar="Medicube PDRN Pink Piel de porcelana: firmeza, glow y poro cerrado PDRN, un regenerador que ayuda a la piel a repararse sola, con péptidos rosados La que vio el sérum rosa en TikTok y quiere ese efecto «piel de vidrio». De los 25 en adelante. PDRN Hydrating Gel Cleanser 200ml Gel limpiador que no reseca 443 Rosemary PDRN Shampoo 400ml Champú de romero: frescura y cabello con más cuerpo 543 PDRN Pink Niacinamide Whip Cleanser Espuma cremosa tipo mousse: limpia con cariño 322 PDRN Pink Glutathione Cleansing Foam 120g Espuma iluminadora con glutatión 322 PDRN Pink Peptide Serum 30ml EL sérum rosa viral de TikTok: firmeza, glow y piel de porcelana 402 PDRN Pink Peptide Eye Serum 30ml Sérum de ojos con rodillo: líneas, ojeras y bolsas 342 PDRN Pink Caffeine Night Mask 75ml Mascarilla de noche con cafeína: amaneces desinflamada 483 PDRN Pink Glow Jelly Mist 100ml Bruma gelatinosa: glow inmediato, hasta sobre maquillaje 443 PDRN Pink Toning Gel Toner Pad Toallitas tonificantes de colágeno rosa 463 PDRN Pink Exosome Shot Serum 30ml Sérum regenerador premium: la versión más avanzada del rosa 483 PDRN Pink Niacinamide Milky Toner 150ml Tóner lechoso: suaviza y aclara poco a poco 342 PDRN Pink Collagen Bubble Serum 95ml Sérum en burbujas de colágeno: firmeza divertida de usar 402 PDRN Pink Collagen Multi Balm 10g Barra de colágeno rosa: rellena labios, pómulos y arruguitas al instante 483 PDRN Pink Collagen Capsule Cream La crema rosa de colágeno: piel que rebota 563 PDRN Pink Hyaluronic Cream 50ml Hidratación ligera diaria con toque rosa 342 algodones anti-edad antiedad arrugas balsamo barra bolsas bruma bálsamo cabello caida cansada caída champu champú colageno contorno crema de detalle discos edad espuma firmeza flacidez gallo gel hidratante hinchazon hinchazón humectante jabon jabón kit lavar leche limpiador limpiar lineas locion loción líneas madura mascarilla mascarillas mask mirada obsequio ojeras ojos overnight parche parches parpado patas pelo presente párpado regalar regalo rocio rocío sellar serum sheet spray stick sérum toallita toallitas tonico tratamiento tratar tónico vaporizador">
+      </div></details><details class="col alt"  data-marca="Medicube" data-col="PDRN Pink" data-buscar="Medicube PDRN Pink Piel de porcelana: firmeza, glow y poro cerrado PDRN, un regenerador que ayuda a la piel a repararse sola, con péptidos rosados La que vio el sérum rosa en TikTok y quiere ese efecto «piel de vidrio». De los 25 en adelante. PDRN Hydrating Gel Cleanser 200ml Gel limpiador que no reseca 443 Rosemary PDRN Shampoo 400ml Champú de romero: frescura y cabello con más cuerpo 543 PDRN Pink Niacinamide Whip Cleanser Espuma cremosa tipo mousse: limpia con cariño 322 PDRN Pink Glutathione Cleansing Foam 120g Espuma iluminadora con glutatión 322 PDRN Pink Peptide Serum 30ml EL sérum rosa viral de TikTok: firmeza, glow y piel de porcelana 402 PDRN Pink Peptide Eye Serum 30ml Sérum de ojos con rodillo: líneas, ojeras y bolsas 342 PDRN Pink Caffeine Night Mask 75ml Mascarilla de noche con cafeína: amaneces desinflamada 483 PDRN Pink Glow Jelly Mist 100ml Bruma gelatinosa: glow inmediato, hasta sobre maquillaje 443 PDRN Pink Toning Gel Toner Pad Toallitas tonificantes de colágeno rosa 463 PDRN Pink Exosome Shot Serum 30ml Sérum regenerador premium: la versión más avanzada del rosa 483 PDRN Pink Niacinamide Milky Toner 150ml Tóner lechoso: suaviza y aclara poco a poco 342 PDRN Pink Collagen Bubble Serum 95ml Sérum en burbujas de colágeno: firmeza divertida de usar 402 PDRN Pink Collagen Multi Balm 10g Barra de colágeno rosa: rellena labios, pómulos y arruguitas al instante 483 PDRN Pink Collagen Capsule Cream La crema rosa de colágeno: piel que rebota 563 PDRN Pink Hyaluronic Cream 50ml Hidratación ligera diaria con toque rosa 342 algodones anti-edad antiedad arrugas balsamo barra bolsas bruma bálsamo cabello caida cansada caída champu champú colageno contorno crema de detalle discos edad espuma firmeza flacidez gallo gel hidratante hinchazon hinchazón humectante jabon jabón kit lavar leche limpiador limpiar lineas locion loción líneas madura mascarilla mascarillas mask mirada obsequio ojeras ojos overnight parche parches parpado patas pelo presente párpado regalar regalo rocio rocío rosa rosita sellar serum sheet spray stick sérum toallita toallitas tonico tratamiento tratar tónico vaporizador">
       <summary><span class="cico">🌸</span>
         <div class="chead"><div class="cnom">Rutina <span class="cmarca">Medicube</span></div>
           <div class="cprom">con su línea PDRN Pink · Piel de porcelana: firmeza, glow y poro cerrado</div></div>
@@ -3676,7 +3726,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
         <div class="rtcifra">$383<span>ó 10 quincenas de $54</span></div></div><div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">➕</span>
           <span class="tnom">Rutina más completa<em>le suma aceite limpiador y espuma</em></span>
           <span class="tprecio" data-tc="1130" data-tcr="1582">$1,130<em>3 productos · 12 quincenas de $132</em></span></summary>
-          <div class="tbody"><div class="tsub">Los 1 de la rutina de arriba más:</div><div class="trow"><img class="timg" src="../p/B07T5BN3P2.jpg" alt="Centella Light Cleansing Oil 200ml" loading="lazy">
+          <div class="tbody"><div class="tsub">El producto de la rutina de arriba más:</div><div class="trow"><img class="timg" src="../p/B07T5BN3P2.jpg" alt="Centella Light Cleansing Oil 200ml" loading="lazy">
           <div class="tinfo"><button class="pname" data-p="109">Centella Light Cleansing Oil 200ml<span class="pver">ver ficha</span></button> <span class="cmarca2">SKIN1004</span>
             <div class="tuso">Aceite ligero que desmaquilla sin tapar poros</div>
             <div class="tchip">aceite limpiador · va primero: disuelve maquillaje y bloqueador</div><details class="ralt"><summary class="raltt">🔄 ¿Si no hay?<em>ver 2 reemplazos</em><span class="rcar">▾</span></summary><div class="raltb"><button class="vera" data-p="4">Heartleaf Pore Control Cleansing Oil 200ml <span>(ANUA · $564)</span></button><button class="vera" data-p="33">Zero Pore Blackhead Cleansing Oil 205ml <span>(Medicube · $382)</span></button></div></details></div>
@@ -3687,7 +3737,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
           <div class="lprec"><b>$337</b><span>10 quincenas de $47</span></div></div></div></details><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">👑</span>
           <span class="tnom">Rutina coreana completa<em>todo lo necesario para la rutina</em></span>
           <span class="tprecio" data-tc="3198" data-tcr="4477">$3,198<em>8 productos · 12 quincenas de $373</em></span></summary>
-          <div class="tbody"><div class="tsub">Los 1 de la rutina de arriba más:</div><div class="trow"><img class="timg" src="../p/B07T5BN3P2.jpg" alt="Centella Light Cleansing Oil 200ml" loading="lazy">
+          <div class="tbody"><div class="tsub">El producto de la rutina de arriba más:</div><div class="trow"><img class="timg" src="../p/B07T5BN3P2.jpg" alt="Centella Light Cleansing Oil 200ml" loading="lazy">
           <div class="tinfo"><button class="pname" data-p="109">Centella Light Cleansing Oil 200ml<span class="pver">ver ficha</span></button> <span class="cmarca2">SKIN1004</span>
             <div class="tuso">Aceite ligero que desmaquilla sin tapar poros</div>
             <div class="tchip">aceite limpiador · va primero: disuelve maquillaje y bloqueador</div><details class="ralt"><summary class="raltt">🔄 ¿Si no hay?<em>ver 2 reemplazos</em><span class="rcar">▾</span></summary><div class="raltb"><button class="vera" data-p="4">Heartleaf Pore Control Cleansing Oil 200ml <span>(ANUA · $564)</span></button><button class="vera" data-p="33">Zero Pore Blackhead Cleansing Oil 205ml <span>(Medicube · $382)</span></button></div></details></div>
@@ -3847,11 +3897,11 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
           <div class="cta">💕 <b>Pídeselo a tu asesora:</b> te arma la rutina completa, te la aparta hoy y la pagas con tu vale en quincenas.</div>
         </section><section class="panel" id="panel-mascarillas" hidden>
           <div class="ptit">🎭 Mascarillas y consentirse</div>
-          <div class="plabel">La misma rutina, con otra marca — toca la que prefiera</div><details class="col alt"  data-marca="Medicube" data-col="Kojic Acid Turmeric" data-buscar="Medicube Kojic Acid Turmeric Contra las manchas más difíciles y el paño Ácido kójico + cúrcuma, la dupla clásica para aclarar Manchas de embarazo, de sol o marcas viejas que no se van con nada. Kojic Acid Turmeric Niacinamide Serum 30ml Kójico + cúrcuma: para manchas difíciles y paño 382 Kojic Turmeric Night Mask 75ml Duerme con ella y amanece con tono más parejo 543 Kojic Turmeric Gel Mask (4 pzas) 4 mascarillas iluminadoras: el plan de domingo 402 Kojic Turmeric Vita Eye Gel 30ml Para ojeras oscuras: aclara la mirada 342 Kojic Turmeric Vita Capsule Cream 53g Crema aclaradora para sellar la rutina anti-manchas 563 crema decoloracion desigual gel hidratante hiperpigmentacion humectante manchas marcas mascarilla mascarillas mask melasma oscuras overnight parche parches paño pigmentacion pigmentación sellar serum sheet sérum tono tratamiento tratar">
+          <div class="plabel">La misma rutina, con otra marca — toca la que prefiera</div><details class="col alt"  data-marca="Medicube" data-col="Kojic Acid Turmeric" data-buscar="Medicube Kojic Acid Turmeric Contra las manchas más difíciles y el paño Ácido kójico + cúrcuma, la dupla clásica para aclarar Manchas de embarazo, de sol o marcas viejas que no se van con nada. Kojic Acid Turmeric Niacinamide Serum 30ml Kójico + cúrcuma: para manchas difíciles y paño 382 Kojic Turmeric Night Mask 75ml Duerme con ella y amanece con tono más parejo 543 Kojic Turmeric Gel Mask (4 pzas) 4 mascarillas iluminadoras: el plan de domingo 402 Kojic Turmeric Vita Eye Gel 30ml Para ojeras oscuras: aclara la mirada 342 Kojic Turmeric Vita Capsule Cream 53g Crema aclaradora para sellar la rutina anti-manchas 563 arroz crema decoloracion desigual gel hidratante hiperpigmentacion humectante kojico kójico manchas marcas mascarilla mascarillas mask melasma oscuras overnight parche parches paño pigmentacion pigmentación sellar serum sheet sérum tono tratamiento tratar">
       <summary><span class="cico">🎯</span>
         <div class="chead"><div class="cnom">Rutina <span class="cmarca">Medicube</span></div>
           <div class="cprom">con su línea Kojic Acid Turmeric · Contra las manchas más difíciles y el paño</div></div>
-        <span class="aprecio">$1,247<em>12 quincenas de $146</em></span></summary>
+        <span class="aprecio">$1,388<em>12 quincenas de $162</em></span></summary>
       <div class="cbody">
         <div class="cficha">
           <div><b>¿Qué tiene?</b> Ácido kójico + cúrcuma, la dupla clásica para aclarar</div>
@@ -3861,12 +3911,12 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
         <div class="cgancho">💬 «Esta es la artillería pesada para manchas — y sin bloqueador no funciona.»</div>
         <div class="rutina">
       <div class="rtit">La rutina completa · 3 productos</div>
-      <div class="rlist"><div class="rp" data-cur="29">
+      <div class="rlist"><div class="rp" data-cur="43">
       <div class="rpaso"><span>🧼</span>LIMPIA</div>
-      <img class="rimg" src="../p/B09C1B7BH5.jpg" alt="Zero Foam Cleanser 120ml" loading="lazy">
-      <div class="rinfo"><button class="pname" data-p="29">Zero Foam Cleanser 120ml<span class="pver">ver ficha</span></button> <span class="cmarca2">Medicube</span><span class="otra">de otra línea</span>
-        <div class="ruso">Espuma para piel grasa: limpia profundo sin apretar</div>
-        <div class="rprec">$302 <span>ó 10 quincenas de $42</span></div><details class="ralt"><summary class="raltt">🔄 ¿Si no hay?<em>ver 2 reemplazos</em><span class="rcar">▾</span></summary><div class="raltb"><button class="altp" data-o="29" data-a="112">Tone Brightening Cleansing Gel 125ml <span>(SKIN1004 · $309)</span></button><button class="altp" data-o="29" data-a="4">Heartleaf Pore Control Cleansing Oil 200ml <span>(ANUA · $564)</span></button><i class="rtip">toca uno y la rutina cambia con él</i></div></details></div></div><div class="rp" data-cur="63">
+      <img class="rimg" src="../p/B0F83N244B.jpg" alt="PDRN Hydrating Gel Cleanser 200ml" loading="lazy">
+      <div class="rinfo"><button class="pname" data-p="43">PDRN Hydrating Gel Cleanser 200ml<span class="pver">ver ficha</span></button> <span class="cmarca2">Medicube</span><span class="otra">de otra línea</span>
+        <div class="ruso">Gel limpiador que no reseca</div>
+        <div class="rprec">$443 <span>ó 10 quincenas de $62</span></div><details class="ralt"><summary class="raltt">🔄 ¿Si no hay?<em>ver 2 reemplazos</em><span class="rcar">▾</span></summary><div class="raltb"><button class="altp" data-o="43" data-a="112">Tone Brightening Cleansing Gel 125ml <span>(SKIN1004 · $309)</span></button><button class="altp" data-o="43" data-a="4">Heartleaf Pore Control Cleansing Oil 200ml <span>(ANUA · $564)</span></button><i class="rtip">toca uno y la rutina cambia con él</i></div></details></div></div><div class="rp" data-cur="63">
       <div class="rpaso"><span>💧</span>TRATA</div>
       <img class="rimg" src="../p/B0FG7VLJKG.jpg" alt="Kojic Acid Turmeric Niacinamide Serum 30ml" loading="lazy">
       <div class="rinfo"><button class="pname" data-p="63">Kojic Acid Turmeric Niacinamide Serum 30ml<span class="pver">ver ficha</span></button> <span class="cmarca2">Medicube</span>
@@ -3878,16 +3928,16 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
         <div class="ruso">Crema aclaradora para sellar la rutina anti-manchas</div>
         <div class="rprec">$563 <span>ó 12 quincenas de $66</span></div><details class="ralt"><summary class="raltt">🔄 ¿Si no hay?<em>ver 2 reemplazos</em><span class="rcar">▾</span></summary><div class="raltb"><button class="altp" data-o="66" data-a="127">Tone Brightening Capsule Cream 75ml <span>(SKIN1004 · $508)</span></button><button class="altp" data-o="66" data-a="52">TXA Niacinamide Capsule Cream 55g <span>(Medicube · $563)</span></button><i class="rtip">toca uno y la rutina cambia con él</i></div></details></div></div></div>
       <div class="rtotal"><div>Rutina completa<span>3 productos</span></div>
-        <div class="rtcifra">$1,247<span>ó 12 quincenas de $146</span></div></div><div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">➕</span>
+        <div class="rtcifra">$1,388<span>ó 12 quincenas de $162</span></div></div><div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">➕</span>
           <span class="tnom">Rutina más completa<em>le suma aceite limpiador</em></span>
-          <span class="tprecio" data-tc="1629" data-tcr="2282">$1,629<em>4 productos · 12 quincenas de $190</em></span></summary>
+          <span class="tprecio" data-tc="1770" data-tcr="2479">$1,770<em>4 productos · 12 quincenas de $207</em></span></summary>
           <div class="tbody"><div class="tsub">Los 3 de la rutina de arriba más:</div><div class="trow"><img class="timg" src="../p/B0FP176X2H.jpg" alt="Zero Pore Blackhead Cleansing Oil 205ml" loading="lazy">
           <div class="tinfo"><button class="pname" data-p="33">Zero Pore Blackhead Cleansing Oil 205ml<span class="pver">ver ficha</span></button> <span class="cmarca2">Medicube</span>
             <div class="tuso">Aceite que disuelve puntos negros al masajear</div>
             <div class="tchip">aceite limpiador · va primero: disuelve maquillaje y bloqueador</div><details class="ralt"><summary class="raltt">🔄 ¿Si no hay?<em>ver 2 reemplazos</em><span class="rcar">▾</span></summary><div class="raltb"><button class="vera" data-p="4">Heartleaf Pore Control Cleansing Oil 200ml <span>(ANUA · $564)</span></button><button class="vera" data-p="109">Centella Light Cleansing Oil 200ml <span>(SKIN1004 · $410)</span></button></div></details></div>
           <div class="lprec"><b>$382</b><span>10 quincenas de $54</span></div></div></div></details><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">👑</span>
           <span class="tnom">Rutina coreana completa<em>todo lo necesario para la rutina</em></span>
-          <span class="tprecio" data-tc="2555" data-tcr="3578">$2,555<em>6 productos · 12 quincenas de $298</em></span></summary>
+          <span class="tprecio" data-tc="2696" data-tcr="3775">$2,696<em>6 productos · 12 quincenas de $315</em></span></summary>
           <div class="tbody"><div class="tsub">Los 3 de la rutina de arriba más:</div><div class="trow"><img class="timg" src="../p/B0FP176X2H.jpg" alt="Zero Pore Blackhead Cleansing Oil 205ml" loading="lazy">
           <div class="tinfo"><button class="pname" data-p="33">Zero Pore Blackhead Cleansing Oil 205ml<span class="pver">ver ficha</span></button> <span class="cmarca2">Medicube</span>
             <div class="tuso">Aceite que disuelve puntos negros al masajear</div>
@@ -4039,7 +4089,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
         <div class="rtcifra">$383<span>ó 10 quincenas de $54</span></div></div><div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">➕</span>
           <span class="tnom">Rutina más completa<em>le suma aceite limpiador y espuma</em></span>
           <span class="tprecio" data-tc="1067" data-tcr="1494">$1,067<em>3 productos · 12 quincenas de $124</em></span></summary>
-          <div class="tbody"><div class="tsub">Los 1 de la rutina de arriba más:</div><div class="trow"><img class="timg" src="../p/B0FP176X2H.jpg" alt="Zero Pore Blackhead Cleansing Oil 205ml" loading="lazy">
+          <div class="tbody"><div class="tsub">El producto de la rutina de arriba más:</div><div class="trow"><img class="timg" src="../p/B0FP176X2H.jpg" alt="Zero Pore Blackhead Cleansing Oil 205ml" loading="lazy">
           <div class="tinfo"><button class="pname" data-p="33">Zero Pore Blackhead Cleansing Oil 205ml<span class="pver">ver ficha</span></button> <span class="cmarca2">Medicube</span>
             <div class="tuso">Aceite que disuelve puntos negros al masajear</div>
             <div class="tchip">aceite limpiador · va primero: disuelve maquillaje y bloqueador</div><details class="ralt"><summary class="raltt">🔄 ¿Si no hay?<em>ver 2 reemplazos</em><span class="rcar">▾</span></summary><div class="raltb"><button class="vera" data-p="4">Heartleaf Pore Control Cleansing Oil 200ml <span>(ANUA · $564)</span></button><button class="vera" data-p="109">Centella Light Cleansing Oil 200ml <span>(SKIN1004 · $410)</span></button></div></details></div>
@@ -4050,7 +4100,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
           <div class="lprec"><b>$302</b><span>10 quincenas de $42</span></div></div></div></details><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">👑</span>
           <span class="tnom">Rutina coreana completa<em>todo lo necesario para la rutina</em></span>
           <span class="tprecio" data-tc="2793" data-tcr="3911">$2,793<em>7 productos · 12 quincenas de $326</em></span></summary>
-          <div class="tbody"><div class="tsub">Los 1 de la rutina de arriba más:</div><div class="trow"><img class="timg" src="../p/B0FP176X2H.jpg" alt="Zero Pore Blackhead Cleansing Oil 205ml" loading="lazy">
+          <div class="tbody"><div class="tsub">El producto de la rutina de arriba más:</div><div class="trow"><img class="timg" src="../p/B0FP176X2H.jpg" alt="Zero Pore Blackhead Cleansing Oil 205ml" loading="lazy">
           <div class="tinfo"><button class="pname" data-p="33">Zero Pore Blackhead Cleansing Oil 205ml<span class="pver">ver ficha</span></button> <span class="cmarca2">Medicube</span>
             <div class="tuso">Aceite que disuelve puntos negros al masajear</div>
             <div class="tchip">aceite limpiador · va primero: disuelve maquillaje y bloqueador</div><details class="ralt"><summary class="raltt">🔄 ¿Si no hay?<em>ver 2 reemplazos</em><span class="rcar">▾</span></summary><div class="raltb"><button class="vera" data-p="4">Heartleaf Pore Control Cleansing Oil 200ml <span>(ANUA · $564)</span></button><button class="vera" data-p="109">Centella Light Cleansing Oil 200ml <span>(SKIN1004 · $410)</span></button></div></details></div>
@@ -4115,7 +4165,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
         <div class="rtcifra">$358<span>ó 10 quincenas de $50</span></div></div><div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">➕</span>
           <span class="tnom">Rutina más completa<em>le suma aceite limpiador y espuma</em></span>
           <span class="tprecio" data-tc="1042" data-tcr="1459">$1,042<em>3 productos · 12 quincenas de $122</em></span></summary>
-          <div class="tbody"><div class="tsub">Los 1 de la rutina de arriba más:</div><div class="trow"><img class="timg" src="../p/B0FP176X2H.jpg" alt="Zero Pore Blackhead Cleansing Oil 205ml" loading="lazy">
+          <div class="tbody"><div class="tsub">El producto de la rutina de arriba más:</div><div class="trow"><img class="timg" src="../p/B0FP176X2H.jpg" alt="Zero Pore Blackhead Cleansing Oil 205ml" loading="lazy">
           <div class="tinfo"><button class="pname" data-p="33">Zero Pore Blackhead Cleansing Oil 205ml<span class="pver">ver ficha</span></button> <span class="cmarca2">Medicube</span>
             <div class="tuso">Aceite que disuelve puntos negros al masajear</div>
             <div class="tchip">aceite limpiador · va primero: disuelve maquillaje y bloqueador</div><details class="ralt"><summary class="raltt">🔄 ¿Si no hay?<em>ver 2 reemplazos</em><span class="rcar">▾</span></summary><div class="raltb"><button class="vera" data-p="4">Heartleaf Pore Control Cleansing Oil 200ml <span>(ANUA · $564)</span></button><button class="vera" data-p="109">Centella Light Cleansing Oil 200ml <span>(SKIN1004 · $410)</span></button></div></details></div>
@@ -4126,7 +4176,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
           <div class="lprec"><b>$302</b><span>10 quincenas de $42</span></div></div></div></details><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">👑</span>
           <span class="tnom">Rutina coreana completa<em>todo lo necesario para la rutina</em></span>
           <span class="tprecio" data-tc="2885" data-tcr="4041">$2,885<em>7 productos · 12 quincenas de $337</em></span></summary>
-          <div class="tbody"><div class="tsub">Los 1 de la rutina de arriba más:</div><div class="trow"><img class="timg" src="../p/B0FP176X2H.jpg" alt="Zero Pore Blackhead Cleansing Oil 205ml" loading="lazy">
+          <div class="tbody"><div class="tsub">El producto de la rutina de arriba más:</div><div class="trow"><img class="timg" src="../p/B0FP176X2H.jpg" alt="Zero Pore Blackhead Cleansing Oil 205ml" loading="lazy">
           <div class="tinfo"><button class="pname" data-p="33">Zero Pore Blackhead Cleansing Oil 205ml<span class="pver">ver ficha</span></button> <span class="cmarca2">Medicube</span>
             <div class="tuso">Aceite que disuelve puntos negros al masajear</div>
             <div class="tchip">aceite limpiador · va primero: disuelve maquillaje y bloqueador</div><details class="ralt"><summary class="raltt">🔄 ¿Si no hay?<em>ver 2 reemplazos</em><span class="rcar">▾</span></summary><div class="raltb"><button class="vera" data-p="4">Heartleaf Pore Control Cleansing Oil 200ml <span>(ANUA · $564)</span></button><button class="vera" data-p="109">Centella Light Cleansing Oil 200ml <span>(SKIN1004 · $410)</span></button></div></details></div>
@@ -4185,7 +4235,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
       <div><button class="pname" data-p="58">Collagen Night Wrapping Mask 75ml<span class="pver">ver ficha</span></button> <span class="opaso">TRATA</span>
         <div class="ouso">Te la pones y duermes: amaneces con piel firme</div></div>
       <div class="oprec"><b>$483</b><span>12 quincenas de $56</span></div></div></div>
-      </div></details><details class="col" data-marca="Medicube" data-col="PDRN Pink" data-buscar="Medicube PDRN Pink Piel de porcelana: firmeza, glow y poro cerrado PDRN, un regenerador que ayuda a la piel a repararse sola, con péptidos rosados La que vio el sérum rosa en TikTok y quiere ese efecto «piel de vidrio». De los 25 en adelante. PDRN Hydrating Gel Cleanser 200ml Gel limpiador que no reseca 443 Rosemary PDRN Shampoo 400ml Champú de romero: frescura y cabello con más cuerpo 543 PDRN Pink Niacinamide Whip Cleanser Espuma cremosa tipo mousse: limpia con cariño 322 PDRN Pink Glutathione Cleansing Foam 120g Espuma iluminadora con glutatión 322 PDRN Pink Peptide Serum 30ml EL sérum rosa viral de TikTok: firmeza, glow y piel de porcelana 402 PDRN Pink Peptide Eye Serum 30ml Sérum de ojos con rodillo: líneas, ojeras y bolsas 342 PDRN Pink Caffeine Night Mask 75ml Mascarilla de noche con cafeína: amaneces desinflamada 483 PDRN Pink Glow Jelly Mist 100ml Bruma gelatinosa: glow inmediato, hasta sobre maquillaje 443 PDRN Pink Toning Gel Toner Pad Toallitas tonificantes de colágeno rosa 463 PDRN Pink Exosome Shot Serum 30ml Sérum regenerador premium: la versión más avanzada del rosa 483 PDRN Pink Niacinamide Milky Toner 150ml Tóner lechoso: suaviza y aclara poco a poco 342 PDRN Pink Collagen Bubble Serum 95ml Sérum en burbujas de colágeno: firmeza divertida de usar 402 PDRN Pink Collagen Multi Balm 10g Barra de colágeno rosa: rellena labios, pómulos y arruguitas al instante 483 PDRN Pink Collagen Capsule Cream La crema rosa de colágeno: piel que rebota 563 PDRN Pink Hyaluronic Cream 50ml Hidratación ligera diaria con toque rosa 342 algodones anti-edad antiedad arrugas balsamo barra bolsas bruma bálsamo cabello caida cansada caída champu champú colageno contorno crema de detalle discos edad espuma firmeza flacidez gallo gel hidratante hinchazon hinchazón humectante jabon jabón kit lavar leche limpiador limpiar lineas locion loción líneas madura mascarilla mascarillas mask mirada obsequio ojeras ojos overnight parche parches parpado patas pelo presente párpado regalar regalo rocio rocío sellar serum sheet spray stick sérum toallita toallitas tonico tratamiento tratar tónico vaporizador">
+      </div></details><details class="col" data-marca="Medicube" data-col="PDRN Pink" data-buscar="Medicube PDRN Pink Piel de porcelana: firmeza, glow y poro cerrado PDRN, un regenerador que ayuda a la piel a repararse sola, con péptidos rosados La que vio el sérum rosa en TikTok y quiere ese efecto «piel de vidrio». De los 25 en adelante. PDRN Hydrating Gel Cleanser 200ml Gel limpiador que no reseca 443 Rosemary PDRN Shampoo 400ml Champú de romero: frescura y cabello con más cuerpo 543 PDRN Pink Niacinamide Whip Cleanser Espuma cremosa tipo mousse: limpia con cariño 322 PDRN Pink Glutathione Cleansing Foam 120g Espuma iluminadora con glutatión 322 PDRN Pink Peptide Serum 30ml EL sérum rosa viral de TikTok: firmeza, glow y piel de porcelana 402 PDRN Pink Peptide Eye Serum 30ml Sérum de ojos con rodillo: líneas, ojeras y bolsas 342 PDRN Pink Caffeine Night Mask 75ml Mascarilla de noche con cafeína: amaneces desinflamada 483 PDRN Pink Glow Jelly Mist 100ml Bruma gelatinosa: glow inmediato, hasta sobre maquillaje 443 PDRN Pink Toning Gel Toner Pad Toallitas tonificantes de colágeno rosa 463 PDRN Pink Exosome Shot Serum 30ml Sérum regenerador premium: la versión más avanzada del rosa 483 PDRN Pink Niacinamide Milky Toner 150ml Tóner lechoso: suaviza y aclara poco a poco 342 PDRN Pink Collagen Bubble Serum 95ml Sérum en burbujas de colágeno: firmeza divertida de usar 402 PDRN Pink Collagen Multi Balm 10g Barra de colágeno rosa: rellena labios, pómulos y arruguitas al instante 483 PDRN Pink Collagen Capsule Cream La crema rosa de colágeno: piel que rebota 563 PDRN Pink Hyaluronic Cream 50ml Hidratación ligera diaria con toque rosa 342 algodones anti-edad antiedad arrugas balsamo barra bolsas bruma bálsamo cabello caida cansada caída champu champú colageno contorno crema de detalle discos edad espuma firmeza flacidez gallo gel hidratante hinchazon hinchazón humectante jabon jabón kit lavar leche limpiador limpiar lineas locion loción líneas madura mascarilla mascarillas mask mirada obsequio ojeras ojos overnight parche parches parpado patas pelo presente párpado regalar regalo rocio rocío rosa rosita sellar serum sheet spray stick sérum toallita toallitas tonico tratamiento tratar tónico vaporizador">
       <summary><span class="cico">🌸</span>
         <div class="chead"><div class="cnom">PDRN Pink <span class="cmarca">Medicube</span></div>
           <div class="cprom">Piel de porcelana: firmeza, glow y poro cerrado</div></div>
