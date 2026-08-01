@@ -3,10 +3,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<meta name="description" content="Tómate una selfie —que no sale de tu celular— y te guiamos zona por zona para armar tu rutina coreana, con precios de contado o en quincenas.">
-<title>SO YOUNG · Tu rutina con tu propia foto</title>
+<meta name="description" content="Contesta 7 preguntas (1 minuto) y te armamos tu rutina coreana con precios de contado o en quincenas. Si quieres, te guiamos zona por zona sobre tu propia selfie — que nunca sale de tu celular.">
+<title>SO YOUNG · ¿Qué necesita tu piel?</title>
 <meta name="x-contenido" content="5179d084b0">
-<meta name="x-piel" content="345b92b60f">
+<meta name="x-piel" content="10345757d8">
 <style>
 :root { --rosa:#D96C82; --rosad:#B94F66; --ink:#2A2226; --crema:#FBF6F4; --crema2:#FAEDEE;
   --mut:#8b7d82; --line:#F0DDE1; --texto:#584a4f; color-scheme: light; }
@@ -358,19 +358,34 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
 <div class="top"><div class="topin"><a class="tback" href="../" aria-label="Volver a la portada">←</a><div class="logo">SO YOUNG <em>K-BEAUTY</em></div><div class="sello"><span class="kfl">🇰🇷</span> 100% ORIGINAL</div></div></div>
 <div class="wrap">
 
+<!-- Jerarquía invertida (Michael 1-ago): el CTA grande es EMPEZAR el quiz; la
+     selfie es un paso OPCIONAL adentro. En el pasillo de la tienda la selfie da
+     PENA (no es tema de privacidad) — que nadie se quede afuera por eso. -->
 <section id="sc-intro">
   <div class="pqhero">
-    <h1>Tu rutina, <span>con tu propia foto</span></h1>
-    <p class="sub">Tómate una selfie y te guiamos <b>zona por zona</b>, como un espejo con lupa: tú te miras, tú decides — y al final te armamos tu <b>rutina coreana</b> con precio de contado o en quincenas con tu vale.</p>
+    <h1>¿Qué necesita <span>tu piel</span>?</h1>
+    <p class="sub">Te pregunto lo que una buena asesora te preguntaría, <b>zona por zona</b> — y al final te armo tu <b>rutina coreana</b> con precio de contado o en quincenas con tu vale.</p>
   </div>
-  <div class="pqcard pqpriv"><span class="ico">🔒</span><div><b>Tu foto es solo tuya.</b> No se sube a ningún lado ni se guarda: se queda en tu celular y desaparece al salir de la página. La usamos únicamente como espejo, aquí mismo.</div></div>
-  <div class="pqcard pqpriv"><span class="ico">💡</span><div><b>Para que salga bien:</b> búscate luz pareja de frente — una ventana funciona perfecto —, sin lentes y con el cabello fuera de la cara.</div></div>
   <div class="pqbtns">
-    <button class="pqmain" id="btnfoto" type="button">📷 Tomarme la selfie</button>
+    <button class="pqmain" id="btnempezar" type="button">✨ Empezar — 7 preguntas, 1 minuto</button>
+  </div>
+  <div class="pqmeta">⏱️ Menos de 1 minuto · sin registrarte · tu rutina con precios al final</div>
+  <div class="pqlegal">Orientación cosmética para elegir productos — no es un diagnóstico ni sustituye la opinión de un dermatólogo.</div>
+</section>
+
+<section id="sc-espejo" hidden>
+  <div class="qbar"><button class="tback" id="espback" type="button" aria-label="Regresar">←</button><div class="qtit2">Una cosita antes de empezar</div></div>
+  <div class="pqhero">
+    <h1>¿Quieres que además te guíe <span>con el espejo</span>?</h1>
+    <p class="sub">Es <b>opcional</b>: con una selfie, tu propia cara se vuelve el mapa — en cada pregunta ilumino la zona exacta para que te mires y decidas. Sin foto te guío igual de bien, con un dibujo.</p>
+  </div>
+  <div class="pqbtns">
+    <button class="pqmain" id="btnfoto" type="button">📷 Sí, tomarme la selfie</button>
     <button class="pqsec" id="btnsin" type="button">Seguir sin foto →</button>
   </div>
-  <div class="pqmeta">⏱️ Menos de 1 minuto · 7 preguntas · 1 sola foto de frente</div>
-  <div class="pqlegal">Orientación cosmética para elegir productos — no es un diagnóstico ni sustituye la opinión de un dermatólogo.</div>
+  <span class="subelink" id="subir0" role="button" tabindex="0">…o usa una foto que ya tengas en tu celular</span>
+  <div class="pqcard pqpriv"><span class="ico">🔒</span><div><b>Tu foto es solo tuya.</b> No se sube a ningún lado ni se guarda: se queda en tu celular y desaparece al salir de la página. La usamos únicamente como espejo, aquí mismo.</div></div>
+  <div class="pqcard pqpriv"><span class="ico">💡</span><div><b>Para que salga bien:</b> búscate luz pareja de frente — una ventana funciona perfecto —, sin lentes y con el cabello fuera de la cara.</div></div>
 </section>
 
 <section id="sc-cam" hidden>
@@ -3773,7 +3788,7 @@ q.addEventListener("input", () => {
    de red: nada se sube, nada se guarda. El resultado lo arma el motor del
    sitio principal (script de arriba): aquí solo se hace click en sus chips. */
 const $ = id => document.getElementById(id);
-const PANTS = ["sc-intro", "sc-cam", "sc-quiz", "sc-res"];
+const PANTS = ["sc-intro", "sc-espejo", "sc-cam", "sc-quiz", "sc-res"];
 function ir(id) { PANTS.forEach(p => $(p).hidden = p !== id); window.scrollTo(0, 0); }
 
 /* zonas de la cara: [x, y, rx, ry] relativos al óvalo-guía (mismo de la cámara) */
@@ -3894,10 +3909,13 @@ function cerrarCam() {
 addEventListener("beforeunload", cerrarCam);
 addEventListener("pagehide", cerrarCam);
 
+$("btnempezar").addEventListener("click", () => ir("sc-espejo"));
+$("espback").addEventListener("click", () => ir("sc-intro"));
 $("btnfoto").addEventListener("click", () => { ir("sc-cam"); abrirCam(); });
 $("btnsin").addEventListener("click", () => { FOTO = null; CARA = null; cerrarCam(); empezarQuiz(); });
 $("btnsin2").addEventListener("click", () => { FOTO = null; CARA = null; cerrarCam(); empezarQuiz(); });
-$("camback").addEventListener("click", () => { cerrarCam(); ir("sc-intro"); });
+$("camback").addEventListener("click", () => { cerrarCam(); ir("sc-espejo"); });
+$("subir0").addEventListener("click", () => $("archivo").click());
 $("subir1").addEventListener("click", () => $("archivo").click());
 $("subir2").addEventListener("click", () => $("archivo").click());
 
@@ -4111,7 +4129,7 @@ $("qops").addEventListener("click", e => {
 $("qatras").addEventListener("click", () => {
   if (idx > 0) { idx--; pintarPregunta(); }
   else if (FOTO) { ir("sc-cam"); mostrarPrevia(); }
-  else ir("sc-intro");
+  else ir("sc-espejo");
 });
 
 /* ---------- resultado: encender los chips del motor de siempre ---------- */
