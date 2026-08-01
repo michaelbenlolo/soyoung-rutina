@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Tu asesora K-beauty de bolsillo en el corner SO YOUNG: entiende cualquier producto del estante, arma tu rutina coreana y conoce precios de contado o en quincenas con tu vale.">
 <meta name="x-contenido" content="5179d084b0">
-<meta name="x-tienda" content="9d2b283401">
+<meta name="x-tienda" content="96cf3135a4">
 <meta name="theme-color" content="#FAF5F2">
 <title>SO YOUNG · Tu asesora de bolsillo</title>
 <style>
@@ -3875,7 +3875,26 @@ q.addEventListener("input", () => {
     }
   }
 
-  $("tarmar").addEventListener("click", () => { location.hash = "#t-rutina"; });
+  /* los «volver» regresan DE VERDAD (history.back) para que el botón atrás del
+     teléfono nunca acumule pasos fantasmas (reporte de Michael 1-ago en /buscar,
+     aplicado aquí también). Cada pantalla que NOSOTROS apilamos lleva su
+     profundidad en history.state (tprof): volver con profundidad = back real;
+     sin profundidad (llegada directa por ancla) = reemplazo, sin apilar.
+     OJO: un contador simple no sirve — el click a un ancla dispara TAMBIÉN
+     popstate en Chrome/Safari y lo descontaba solo. El estado por entrada es
+     inmune a eso y al botón adelante. */
+  const prof = () => (history.state && history.state.tprof) || 0;
+  const irApilando = h => { history.pushState({ tprof: prof() + 1 }, "", h); ir(pantalla()); };
+  document.querySelectorAll('a.tmision[href^="#"]').forEach(a =>
+    a.addEventListener("click", e => { e.preventDefault(); irApilando(a.getAttribute("href")); }));
+  document.querySelectorAll("a.tvolver").forEach(a =>
+    a.addEventListener("click", e => {
+      e.preventDefault();
+      if (prof() > 0) history.back();
+      else location.replace(a.getAttribute("href"));
+    }));
+  window.addEventListener("popstate", () => ir(pantalla()));
+  $("tarmar").addEventListener("click", () => irApilando("#t-rutina"));
 
   // resumen para la asesora: se CLONA lo que el motor pintó en el panel visible
   $("tbases").addEventListener("click", () => {
