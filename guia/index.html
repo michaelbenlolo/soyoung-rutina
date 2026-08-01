@@ -6,8 +6,8 @@
 <title>SO YOUNG · Guía de uso de tus productos</title>
 <meta name="description" content="Escanea los productos que compraste y llévate tu guía de uso en PDF: cuándo va cada uno, en qué orden, cuánto esperar entre capas y sus precauciones.">
 <meta name="robots" content="noindex">
-<meta name="x-contenido" content="74e7bcb46f">
-<meta name="x-guia" content="e552a2bb9d">
+<meta name="x-contenido" content="6c782fae61">
+<meta name="x-guia" content="d8af2632c2">
 <style>
 :root { --rosa:#D96C82; --rosad:#B94F66; --ink:#2A2226; --crema:#FBF6F4; --crema2:#FAEDEE;
   --mut:#8b7d82; --line:#F0DDE1; --texto:#584a4f; --am:#B98A2F; --pm:#4A5A8A; color-scheme: light; }
@@ -411,6 +411,11 @@ function pintaGuia() {
 
   /* avisos cruzados — solo LEEN las banderas que trae cada producto elegido */
   const avisos = [];
+  // SIEMPRE, como primer consejo de uso (Michael 1-ago: la prueba de parche va
+  // aquí, post-compra — es recomendación de uso, no de venta)
+  avisos.push(`<b>Antes de estrenar: prueba de parche.</b> Un producto nuevo a la vez: ` +
+    `un poquito detrás de la oreja o en la muñeca y espera 24 horas. ` +
+    `¿Ardor, rojez o comezón? No lo uses en la cara — coméntalo con tu asesora.`);
   const con = fl => orden.filter(i => GP[i].fl[fl]);
   const fuertes = con("f");
   if (fuertes.length >= 2)
