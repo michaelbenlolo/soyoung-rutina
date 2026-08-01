@@ -5,8 +5,8 @@
 <meta name="robots" content="noindex">
 <meta name="description" content="¿Qué producto estás viendo? Escanea su código de barras, tómale foto o escribe su nombre: te decimos qué es, cuánto cuesta y con qué rutina va.">
 <title>SO YOUNG · ¿Qué producto estás viendo?</title>
-<meta name="x-contenido" content="6a9fac2d9f">
-<meta name="x-buscar" content="4c96f6c2ef">
+<meta name="x-contenido" content="de6cfdaa21">
+<meta name="x-buscar" content="6be2f4e67f">
 <style>
 :root { --rosa:#D96C82; --rosad:#B94F66; --ink:#2A2226; --crema:#FBF6F4; --crema2:#FAEDEE;
   --mut:#8b7d82; --line:#F0DDE1; --texto:#584a4f; color-scheme: light; }
@@ -164,6 +164,14 @@ details.col, .mv { scroll-margin-top:58px; }   /* la barra fija no tapa el desti
 .mvguion { font-size:11px; background:var(--crema); border-radius:9px; padding:6px 8px; margin-top:6px; line-height:1.45; }
 .mvver { appearance:none; border:none; background:none; font:inherit; font-size:11px; font-weight:700; color:var(--rosad);
   padding:6px 0 0; cursor:pointer; }
+/* sello de oferta: el aterrizaje de «Ver la rutina armada» — repite el precio
+   EXACTO de la carta 💰/⭐/👑 justo arriba de la rutina que lo arma */
+.mvland { display:flex; flex-wrap:wrap; align-items:baseline; gap:6px; margin:12px 0 2px;
+  background:var(--crema2); border:1.5px solid var(--rosad); border-radius:12px;
+  padding:10px 12px; font-size:14px; font-weight:800; scroll-margin-top:58px; }
+.mvland b { color:var(--rosad); font-weight:800; }
+.mvland em { font-style:normal; font-size:11px; font-weight:700; color:var(--mut); }
+.mvland span { flex-basis:100%; font-size:10.5px; font-weight:400; color:var(--mut); }
 /* ⚖️ comparador de opciones — plegable discreto, hechos alineados */
 .mvcomp { margin-top:9px; border:1px solid var(--line); border-radius:12px; background:#fff; }
 .mvcomp .mvct { list-style:none; cursor:pointer; padding:8px 10px; display:flex; align-items:center; gap:5px;
@@ -593,7 +601,7 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
 <div class="wrap">
   <div class="hero">
     <h1>¿Qué producto <span>estás viendo</span>?</h1>
-    <p class="sub">Escanea su <b>código de barras</b>, tómale <b>foto</b> o escribe su nombre — te decimos qué es, para qué sirve, su precio <b>de contado o en quincenas</b> y con qué rutina va. ¿Solo quieres curiosear? Abajo está <b>todo el corner</b>, marca por marca.</p>
+    <p class="sub">Aquí puedes hacer tres cosas:<br>📷 <b>Identificar un producto</b> — escanéale el código de barras, tómale foto o escribe su nombre: qué es, para qué sirve y su precio de contado o en quincenas.<br>⚖️ <b>Comparar</b> — dos productos frente a frente, o todos los de un mismo uso.<br>🏬 <b>Ver el corner completo</b> — marca por marca, con precios.</p>
   </div>
   <nav class="pest" aria-label="Qué quieres hacer">
     <a class="pesta pon" href="#identifica">📷 Identifica</a>
