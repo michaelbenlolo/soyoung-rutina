@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="La herramienta de la asesora SO YOUNG: arma la rutina de tu clienta en 1 minuto, con guiones, precios de contado y quincenas con el vale.">
 <title>SO YOUNG · La herramienta de la asesora</title>
-<meta name="x-contenido" content="f59cad7e1f">
+<meta name="x-contenido" content="f7d658a2df">
 <style>
 :root { --rosa:#D96C82; --rosad:#B94F66; --ink:#2A2226; --crema:#FBF6F4; --crema2:#FAEDEE;
   --mut:#8b7d82; --line:#F0DDE1; --texto:#584a4f; color-scheme: light; }
@@ -34,6 +34,11 @@ h2 { font-size:20px; font-weight:800; letter-spacing:-.01em; text-wrap:balance; 
 .chip:focus-visible { outline:2px solid var(--rosad); outline-offset:2px; }
 .chico { font-size:18px; }
 .panel { margin-top:16px; scroll-margin-top:58px; }
+details.col, .mv { scroll-margin-top:58px; }   /* la barra fija no tapa el destino del salto */
+.mvup { position:fixed; left:50%; transform:translateX(-50%); bottom:14px; z-index:18;
+  appearance:none; border:none; border-radius:99px; background:var(--ink); color:#fff;
+  font:inherit; font-size:12px; font-weight:700; padding:10px 16px; cursor:pointer;
+  box-shadow:0 4px 14px rgba(42,34,38,.25); }
 .ptit { font-size:21px; font-weight:800; margin-bottom:4px; }
 .plabel { font-size:10px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--mut); margin:16px 0 7px; }
 .col { background:#fff; border:1px solid var(--line); border-radius:16px; margin-bottom:9px; overflow:hidden; }
@@ -7156,7 +7161,11 @@ q.addEventListener("input", () => {
     sen.setAttribute("aria-pressed", sen.getAttribute("aria-pressed") === "true" ? "false" : "true");
     aplica();
   });
-  /* «Ver la rutina armada»: prende el chip del motor y aterriza en la colección exacta */
+  /* «Ver la rutina armada»: prende el chip del motor y aterriza en la colección
+     EXACTA. OJO: el motor scrollea al panel DESPUÉS del click del chip — hay que
+     llegar más tarde que él y quedarse (Michael 1-ago: «le está abriendo en otro
+     lugar»). También se cierra la alternativa que un toque anterior dejó abierta
+     (era lo del «solo se abre el Boosting Shot»). */
   mv.addEventListener("click", e => {
     const v = e.target.closest(".mvver");
     if (!v) return;
@@ -7166,9 +7175,31 @@ q.addEventListener("input", () => {
       chip.click();
     }
     const panel = document.getElementById("panel-" + v.dataset.need);
-    const col = panel && panel.querySelector(`details.col[data-marca="${v.dataset.marca}"][data-col="${v.dataset.col}"]`);
-    if (col) { col.open = true; setTimeout(() => col.scrollIntoView({ behavior: "smooth", block: "start" }), 60); }
-    else if (panel) setTimeout(() => panel.scrollIntoView({ behavior: "smooth", block: "start" }), 60);
+    if (!panel) return;
+    const col = panel.querySelector(`details.col[data-marca="${v.dataset.marca}"][data-col="${v.dataset.col}"]`);
+    panel.querySelectorAll("details.col.alt[open]").forEach(x => { if (x !== col) x.open = false; });
+    if (col) col.open = true;
+    const destino = col || panel;
+    /* aterrizaje INSTANTÁNEO cuando el scroll suave del motor ya terminó: en
+       iPhone dos scrolls suaves encimados se ignoran — el brinco seco siempre gana */
+    setTimeout(() => destino.scrollIntoView({ behavior: "auto", block: "start" }), 550);
+    subir.hidden = false;
   });
+
+  /* botón flotante «⚡ venta en vivo»: la asesora baja a enseñar la rutina y
+     con un toque regresa arriba a seguir vendiendo (Michael 1-ago) */
+  const subir = document.createElement("button");
+  subir.type = "button"; subir.className = "mvup"; subir.hidden = true;
+  subir.innerHTML = "↑ ⚡ venta en vivo";
+  document.body.appendChild(subir);
+  subir.addEventListener("click", () => {
+    mv.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+  addEventListener("scroll", () => {
+    /* visible solo cuando el modo venta quedó atrás Y hay una necesidad elegida */
+    const lejos = mv.getBoundingClientRect().bottom < 0;
+    const activo = !!mv.querySelector(".mvn.on");
+    subir.hidden = !(lejos && activo);
+  }, { passive: true });
 })();
 </script>

@@ -5,8 +5,8 @@
 <meta name="robots" content="noindex">
 <meta name="description" content="¿Qué producto estás viendo? Escanea su código de barras, tómale foto o escribe su nombre: te decimos qué es, cuánto cuesta y con qué rutina va.">
 <title>SO YOUNG · ¿Qué producto estás viendo?</title>
-<meta name="x-contenido" content="f59cad7e1f">
-<meta name="x-buscar" content="40f7cbd54f">
+<meta name="x-contenido" content="f7d658a2df">
+<meta name="x-buscar" content="2e596d3e5d">
 <style>
 :root { --rosa:#D96C82; --rosad:#B94F66; --ink:#2A2226; --crema:#FBF6F4; --crema2:#FAEDEE;
   --mut:#8b7d82; --line:#F0DDE1; --texto:#584a4f; color-scheme: light; }
@@ -35,6 +35,11 @@ h2 { font-size:20px; font-weight:800; letter-spacing:-.01em; text-wrap:balance; 
 .chip:focus-visible { outline:2px solid var(--rosad); outline-offset:2px; }
 .chico { font-size:18px; }
 .panel { margin-top:16px; scroll-margin-top:58px; }
+details.col, .mv { scroll-margin-top:58px; }   /* la barra fija no tapa el destino del salto */
+.mvup { position:fixed; left:50%; transform:translateX(-50%); bottom:14px; z-index:18;
+  appearance:none; border:none; border-radius:99px; background:var(--ink); color:#fff;
+  font:inherit; font-size:12px; font-weight:700; padding:10px 16px; cursor:pointer;
+  box-shadow:0 4px 14px rgba(42,34,38,.25); }
 .ptit { font-size:21px; font-weight:800; margin-bottom:4px; }
 .plabel { font-size:10px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--mut); margin:16px 0 7px; }
 .col { background:#fff; border:1px solid var(--line); border-radius:16px; margin-bottom:9px; overflow:hidden; }
