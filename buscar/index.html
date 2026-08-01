@@ -5,8 +5,8 @@
 <meta name="robots" content="noindex">
 <meta name="description" content="¿Qué producto estás viendo? Escanea su código de barras, tómale foto o escribe su nombre: te decimos qué es, cuánto cuesta y con qué rutina va.">
 <title>SO YOUNG · ¿Qué producto estás viendo?</title>
-<meta name="x-contenido" content="b8f15c4e89">
-<meta name="x-buscar" content="fbba9a0745">
+<meta name="x-contenido" content="7f33291e29">
+<meta name="x-buscar" content="0c0084b006">
 <style>
 :root { --rosa:#D96C82; --rosad:#B94F66; --ink:#2A2226; --crema:#FBF6F4; --crema2:#FAEDEE;
   --mut:#8b7d82; --line:#F0DDE1; --texto:#584a4f; color-scheme: light; }
@@ -245,6 +245,7 @@ details.col, .mv { scroll-margin-top:58px; }   /* la barra fija no tapa el desti
   vertical-align:1.5px; letter-spacing:.03em; }
 .pname.alt { font-size:12.5px; }
 .msub { font-size:11.5px; color:var(--mut); }
+.mdif { font-size:10px; color:var(--mut); margin-top:4px; }
 /* --- ficha emergente --- */
 #modal { position:fixed; inset:0; z-index:60; display:flex; align-items:flex-end; justify-content:center; }
 #modal[hidden] { display:none; }
@@ -429,7 +430,60 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
   font-size:13px; font-weight:700; color:var(--ink); text-decoration:none; }
 .pesta.pon { border-color:var(--rosa); background:var(--crema2); color:var(--rosad); }
 .pesta:focus-visible { outline:2px solid var(--rosad); outline-offset:2px; }
-#identifica, #catalogo { scroll-margin-top:12px; }
+#identifica, #catalogo, #comparar { scroll-margin-top:12px; }
+
+/* --- ⚖️ comparador (backstage de la asesora) --- */
+.ctit0 { margin-top:18px; font-size:17px; font-weight:800; }
+.ctit0 span { display:block; font-size:11.5px; font-weight:500; color:var(--mut); margin-top:1px; }
+.dwrap, .cwrap { margin-top:12px; border:1.5px solid var(--line); border-radius:16px; background:#fff; padding:12px; }
+.dtit { font-size:13.5px; font-weight:800; }
+.dsub { font-size:11px; color:var(--mut); line-height:1.45; margin-top:2px; }
+.dslots { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:9px; }
+.dslot { position:relative; border:1.5px dashed var(--line); border-radius:12px; min-height:56px; padding:7px 8px;
+  display:flex; align-items:center; gap:7px; }
+.dslot.lleno { border-style:solid; border-color:var(--rosad); }
+.dnum { font-size:11px; font-weight:800; color:var(--rosad); }
+.dvacio { font-size:10px; color:var(--mut); line-height:1.35; }
+.dimg { width:34px; height:34px; object-fit:contain; flex:none; }
+.dnom { min-width:0; font-size:10.5px; font-weight:700; line-height:1.25; }
+.dnom em { display:block; font-style:normal; font-weight:500; font-size:9.5px; color:var(--mut); }
+.dx { position:absolute; top:-7px; right:-7px; width:20px; height:20px; border-radius:50%; border:none;
+  background:var(--ink); color:#fff; font-size:10px; cursor:pointer; }
+.daviso { margin-top:9px; font-size:11px; line-height:1.45; background:#FFF6E5; border:1px solid #E8B84B;
+  border-radius:10px; padding:7px 9px; }
+.dtab { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:9px; }
+.dcol { border:1px solid var(--line); border-radius:12px; padding:8px 9px; min-width:0; }
+.dcol .dn { display:block; font-size:11.5px; line-height:1.3; }
+.dcol .cmarca2 { display:inline-block; margin-top:1px; }
+.df { border-top:1px dashed var(--line); margin-top:6px; padding-top:5px; font-size:10.5px; line-height:1.4; }
+.df i { display:block; font-style:normal; font-size:9px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:var(--mut); }
+.df em { font-style:normal; color:var(--mut); }
+.cnecs { display:flex; flex-wrap:wrap; gap:5px; margin-top:9px; }
+.cnec { appearance:none; border:1.5px solid var(--line); background:var(--crema); border-radius:99px; padding:6px 10px;
+  font:inherit; font-size:11px; font-weight:600; color:var(--ink); cursor:pointer; }
+.cnec.on { border-color:var(--rosad); background:var(--crema2); }
+.cpasos { display:flex; flex-wrap:wrap; gap:5px; margin-top:7px; }
+.cpaso { appearance:none; border:1px solid var(--line); background:#fff; border-radius:99px; padding:4px 9px;
+  font:inherit; font-size:10.5px; font-weight:600; color:var(--texto); cursor:pointer; }
+.cpaso.on { border-color:var(--rosad); background:var(--crema2); color:var(--rosad); }
+.cmptit { margin-top:10px; font-size:11px; font-weight:800; color:var(--mut); }
+.crow2 { appearance:none; border:none; background:none; font:inherit; text-align:left; cursor:pointer;
+  display:flex; gap:8px; align-items:flex-start; width:100%; border-top:1px dashed var(--line); padding:9px 2px; }
+.cimg2 { width:38px; height:38px; object-fit:contain; flex:none; }
+.cmain2 { min-width:0; flex:1; }
+.cmain2 b { font-size:12px; line-height:1.3; display:block; }
+.cmain2 em { font-style:normal; font-size:10px; color:var(--mut); display:block; }
+.cmain2 i { font-style:normal; font-size:10.5px; color:var(--texto); line-height:1.4; display:block; margin-top:1px; }
+.cside2 { flex:0 0 auto; text-align:right; }
+.cside2 u { display:block; text-decoration:none; font-size:11px; }
+.cside2 b { font-size:12.5px; font-weight:800; color:var(--rosad); display:block; }
+.cside2 em { font-style:normal; font-size:9.5px; color:var(--mut); }
+.mctop { display:inline-block; font-size:9px; font-weight:800; color:var(--rosad); background:var(--crema2);
+  border-radius:99px; padding:1px 7px; margin-top:2px; }
+.cmpnota { margin-top:10px; font-size:11px; color:var(--mut); background:var(--crema); border-radius:10px; padding:8px 10px; }
+.mcompbtn { display:block; width:100%; margin-top:12px; appearance:none; border:1.5px solid var(--rosad); background:#fff;
+  border-radius:12px; padding:10px; font:inherit; font-size:12.5px; font-weight:700; color:var(--rosad); cursor:pointer; }
+.mdif { font-size:10px; color:var(--mut); margin-top:4px; }
 #catalogo .strip { margin-top:8px; }
 .pestup { display:flex; align-items:center; justify-content:center; gap:8px; margin-top:14px;
   background:#fff; border:1.5px solid var(--line); border-radius:14px; padding:12px;
@@ -530,8 +584,9 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
     <p class="sub">Escanea su <b>código de barras</b>, tómale <b>foto</b> o escribe su nombre — te decimos qué es, para qué sirve, su precio <b>de contado o en quincenas</b> y con qué rutina va. ¿Solo quieres curiosear? Abajo está <b>todo el corner</b>, marca por marca.</p>
   </div>
   <nav class="pest" aria-label="Qué quieres hacer">
-    <a class="pesta pon" href="#identifica">📷 Identifícalo</a>
-    <a class="pesta" href="#catalogo">🏬 Todo el corner</a>
+    <a class="pesta pon" href="#identifica">📷 Identifica</a>
+    <a class="pesta" href="#comparar">⚖️ Compara</a>
+    <a class="pesta" href="#catalogo">🏬 El corner</a>
   </nav>
   <section id="identifica">
   <div class="acciones">
@@ -547,6 +602,31 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
   <div id="rgtit" class="rgtit" hidden></div>
   <div id="rgrid" class="rgrid"></div>
   <div class="vacio" id="vacio" hidden>No encontramos nada con eso. Prueba con la marca («Cosrx»), el formato («espuma», «bloqueador») o tómale foto al código de barras.</div>
+  </section>
+  <section id="comparar">
+    <div class="ctit0">⚖️ Comparador <span>responde «¿cuál me conviene?» con hechos, no con opiniones</span></div>
+    <div class="dwrap">
+      <div class="dtit">🥊 Frente a frente</div>
+      <div class="dsub">Escanea el código o busca el producto, y en su ficha toca <b>⚖️ Comparar</b> — dos veces, uno por lado.</div>
+      <div class="dslots">
+        <div class="dslot" id="dslot0"></div>
+        <div class="dslot" id="dslot1"></div>
+      </div>
+      <div id="dresult"></div>
+    </div>
+    <div class="cwrap">
+      <div class="dtit">📚 Por categoría y uso</div>
+      <div class="dsub">Todo lo que ataca una necesidad, paso por paso — ordenado por lo que más piden. Toca uno y sale su ficha.</div>
+      <div class="cnecs"><button class="cnec" type="button" data-need="manchas">🎯 Manchas y tono disparejo</button><button class="cnec" type="button" data-need="poros">✨ Poros abiertos, grasa y brillo</button><button class="cnec" type="button" data-need="granitos">🌿 Granitos y brotes</button><button class="cnec" type="button" data-need="sensible">🌸 Piel reseca, sensible o irritada</button><button class="cnec" type="button" data-need="edad">⏳ Líneas, arrugas y flacidez</button><button class="cnec" type="button" data-need="ojos">👁️ Ojeras, bolsas y contorno</button><button class="cnec" type="button" data-need="glow">🫧 Quiere GLOW / empezar desde cero</button><button class="cnec" type="button" data-need="sol">☀️ Protección de todos los días</button><button class="cnec" type="button" data-need="regalo">🎁 Regalo o antojo</button><button class="cnec" type="button" data-need="mascarillas">🎭 Mascarillas y consentirse</button></div>
+      <div class="cpasos">
+        <button class="cpaso on" type="button" data-paso="">todos</button>
+        <button class="cpaso" type="button" data-paso="L">🧼 limpian</button>
+        <button class="cpaso" type="button" data-paso="T">💧 tratan</button>
+        <button class="cpaso" type="button" data-paso="S">🧴 sellan</button>
+        <button class="cpaso" type="button" data-paso="SOL">☀️ protegen</button>
+      </div>
+      <div id="cmpout"></div>
+    </div>
   </section>
   <section id="catalogo">
 <div class="strip">
@@ -2941,11 +3021,12 @@ function abrirFicha(i, origen) {
     ${tags ? `<div class="mrow"><div class="mlab">¿Qué resuelve?</div><div class="cobs">${tags}</div></div>` : ""}
     <div class="mrow"><div class="mlab">¿Cómo se usa?</div><div>${COMO[p.p]}</div></div>
     <div class="mrow"><div class="mlab">Su colección</div><div><b>${p.c}</b> — ${p.cp}</div></div>
-    ${subs.length ? `<div class="mrow"><div class="mlab">🔄 Si no hay stock</div><div>${
-      subs.map(({ o, j }) => `<button class="pname alt" data-p="${j}">${o.d}</button> <span class="msub">${o.m} · ${money(o.pc)}</span>`).join("<br>")
-    }</div></div>` : ""}
+    ${subs.length ? `<div class="mrow"><div class="mlab">🔄 Si no hay — y en qué cambian</div><div>${
+      subs.map(({ o, j }) => `<button class="pname alt" data-p="${j}">${o.d}</button> <span class="msub">${esFuerte(o) ? "🔥" : "🌿"} ${o.m} · ${money(o.pc)} · $${o.pq}/q</span>`).join("<br>")
+    }<div class="mdif">Este: ${esFuerte(p) ? "🔥 activo potente" : "🌿 suave"} · $${p.pq}/q — mismo paso (${PNOM[p.p]}), cambia fórmula y precio.</div></div></div>` : ""}
     ${niv ? `<div class="mrow"><div class="mlab">💗 Su rutina recomendada</div>
       <div class="linea"><div class="ltit">${p.ci} La rutina de su línea ${p.c}</div><div style="padding:0 11px">${niv}</div></div></div>` : ""}
+    <button class="mcompbtn" type="button" data-i="${i}">⚖️ Comparar este producto</button>
     <div class="cta">💕 <b>Pídeselo a tu asesora:</b> te lo aparta hoy, te arma la rutina completa si quieres, y lo pagas con tu vale en quincenas.</div>
     ${p.upc ? `<div class="mupc">Código: ${p.upc}</div>` : ""}`;
   modal.hidden = false;
@@ -3311,8 +3392,10 @@ if (hp && PROD[+hp[1]]) abrirFicha(+hp[1]);
    sin JavaScript; aquí SOLO se ilumina la activa según lo que se ve en pantalla */
 const _tabs = document.querySelectorAll(".pesta");
 function marcaTab() {
-  const enCat = document.getElementById("catalogo").getBoundingClientRect().top < innerHeight * 0.4;
-  _tabs.forEach((a, i) => a.classList.toggle("pon", i === (enCat ? 1 : 0)));
+  const secs = ["identifica", "comparar", "catalogo"].map(id => document.getElementById(id));
+  let idx = 0;
+  secs.forEach((s, i) => { if (s && s.getBoundingClientRect().top < innerHeight * 0.4) idx = i; });
+  _tabs.forEach((a, i) => a.classList.toggle("pon", i === idx));
 }
 addEventListener("scroll", marcaTab, { passive: true });
 marcaTab();
@@ -3321,7 +3404,7 @@ marcaTab();
    REEMPLAZA la entrada en vez de apilar otra; y tocar «Todo el corner» limpia
    cualquier búsqueda o candidatos (que esconden el catálogo) para llegar siempre.
    Sin JavaScript siguen siendo anclas normales. */
-document.querySelectorAll('a[href="#catalogo"], a[href="#identifica"]').forEach(a => {
+document.querySelectorAll('a[href="#catalogo"], a[href="#identifica"], a[href="#comparar"]').forEach(a => {
   a.addEventListener("click", e => {
     e.preventDefault();
     const destino = a.getAttribute("href");
@@ -3331,6 +3414,91 @@ document.querySelectorAll('a[href="#catalogo"], a[href="#identifica"]').forEach(
     if (el) el.scrollIntoView({ block: "start" });
   });
 });
+
+/* ---------- ⚖️ COMPARADOR (Michael 1-ago) ----------
+   Dos caminos: FRENTE A FRENTE (escanea/busca dos productos y toca ⚖️ en cada
+   ficha — sirve con dos códigos de barras seguidos) y POR CATEGORÍA Y USO
+   (necesidad × paso: «todos los que tratan manchas»). Puros HECHOS del catálogo:
+   uso, potencia 🔥/🌿 (esFuerte del motor), rotación 🏆 y precio/quincena. */
+const DUELO = [null, null];
+const dnums = ["①", "②"];
+function pintaSlot(k) {
+  const el = document.getElementById("dslot" + k);
+  const i = DUELO[k];
+  el.classList.toggle("lleno", i !== null);
+  el.innerHTML = i === null
+    ? `<span class="dnum">${dnums[k]}</span><span class="dvacio">esperando producto — escanéalo o búscalo y toca ⚖️ en su ficha</span>`
+    : `<span class="dnum">${dnums[k]}</span>${imgP(PROD[i], "dimg")}<span class="dnom">${PROD[i].d}<em>${PROD[i].m}</em></span><button class="dx" type="button" data-k="${k}" aria-label="Quitar">✕</button>`;
+}
+function pintaDuelo() {
+  pintaSlot(0); pintaSlot(1);
+  const out = document.getElementById("dresult");
+  if (DUELO[0] === null || DUELO[1] === null) { out.innerHTML = ""; return; }
+  const pares = DUELO.map(i => PROD[i]);
+  const [a, b] = pares;
+  const topv = Math.max(a.v, b.v);
+  const filas = [
+    ["Qué es", x => `${PICO[x.p]} ${PNOM[x.p]} · ${x.c}`],
+    ["Para qué", x => x.u],
+    ["Potencia", x => esFuerte(x) ? "🔥 activo potente" : "🌿 suave"],
+    ["Precio", x => `${money(x.pc)}<em> · $${x.pq}/q</em>`],
+  ];
+  out.innerHTML = (a.p !== b.p
+    ? `<div class="daviso">⚠️ No son lo mismo: uno ${PNOM[a.p]} y el otro ${PNOM[b.p]} — se <b>complementan</b> en la rutina, no se reemplazan.</div>` : "")
+    + `<div class="dtab">` + pares.map(x =>
+      `<div class="dcol"><b class="dn">${x.d}</b><span class="cmarca2">${x.m}</span>`
+      + (x.v === topv && topv > 0 ? '<span class="mctop">🏆 la que más piden</span>' : "")
+      + filas.map(([lab, f]) => `<div class="df"><i>${lab}</i>${f(x)}</div>`).join("")
+      + `</div>`).join("") + `</div>`;
+}
+pintaDuelo();
+document.addEventListener("click", e => {
+  const mb = e.target.closest(".mcompbtn");
+  if (mb) {
+    const i = +mb.dataset.i;
+    if (!DUELO.includes(i)) DUELO[DUELO[0] === null ? 0 : (DUELO[1] === null ? 1 : 1)] = i;
+    cerrarFicha();
+    pintaDuelo();
+    location.replace("#comparar");
+    document.getElementById("comparar").scrollIntoView({ block: "start" });
+    return;
+  }
+  const dx = e.target.closest(".dx");
+  if (dx) { DUELO[+dx.dataset.k] = null; pintaDuelo(); return; }
+  const cr = e.target.closest(".crow2");   // fila del listado → su ficha
+  if (cr) abrirFicha(+cr.dataset.p);
+});
+
+let CNEED = null, CPASO = "";
+function pintaCmp() {
+  const out = document.getElementById("cmpout");
+  if (!CNEED) { out.innerHTML = `<div class="cmpnota">Elige arriba una necesidad para ver sus productos comparados.</div>`; return; }
+  let l = PROD.map((p, i) => ({ p, i })).filter(({ p }) => p.t.includes(CNEED));
+  if (CPASO) l = l.filter(({ p }) => p.p === CPASO);
+  l.sort((x, y) => y.p.v - x.p.v || x.p.pc - y.p.pc);
+  const topv = l.length ? Math.max(...l.map(({ p }) => p.v)) : 0;
+  out.innerHTML = l.length
+    ? `<div class="cmptit">${l.length} producto${l.length === 1 ? "" : "s"} — toca uno para su ficha</div>`
+      + l.map(({ p, i }) =>
+        `<button class="crow2" type="button" data-p="${i}">${imgP(p, "cimg2")}
+          <span class="cmain2"><b>${p.d}</b><em>${p.m} · ${PICO[p.p]} ${PNOM[p.p].toLowerCase()}</em><i>${p.u}</i>${p.v === topv && topv > 0 ? '<span class="mctop">🏆 la que más piden</span>' : ""}</span>
+          <span class="cside2"><u>${esFuerte(p) ? "🔥" : "🌿"}</u><b>${money(p.pc)}</b><em>$${p.pq}/q</em></span></button>`).join("")
+    : `<div class="cmpnota">Para esa necesidad no hay productos en ese paso — prueba con «todos».</div>`;
+}
+pintaCmp();
+document.querySelectorAll(".cnec").forEach(b => b.addEventListener("click", () => {
+  const ya = b.classList.contains("on");
+  document.querySelectorAll(".cnec").forEach(x => x.classList.remove("on"));
+  CNEED = ya ? null : b.dataset.need;
+  if (!ya) b.classList.add("on");
+  pintaCmp();
+}));
+document.querySelectorAll(".cpaso").forEach(b => b.addEventListener("click", () => {
+  document.querySelectorAll(".cpaso").forEach(x => x.classList.remove("on"));
+  b.classList.add("on");
+  CPASO = b.dataset.paso;
+  pintaCmp();
+}));
 
 /* volver inteligente: si llegaste desde otra página del sitio (la de clientes
    /tienda o la de la vendedora), el ← te regresa AHÍ; si llegaste directo, va a

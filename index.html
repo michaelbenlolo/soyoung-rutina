@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="La herramienta de la asesora SO YOUNG: arma la rutina de tu clienta en 1 minuto, con guiones, precios de contado y quincenas con el vale.">
 <title>SO YOUNG · La herramienta de la asesora</title>
-<meta name="x-contenido" content="b8f15c4e89">
+<meta name="x-contenido" content="7f33291e29">
 <style>
 :root { --rosa:#D96C82; --rosad:#B94F66; --ink:#2A2226; --crema:#FBF6F4; --crema2:#FAEDEE;
   --mut:#8b7d82; --line:#F0DDE1; --texto:#584a4f; color-scheme: light; }
@@ -244,6 +244,7 @@ details.col, .mv { scroll-margin-top:58px; }   /* la barra fija no tapa el desti
   vertical-align:1.5px; letter-spacing:.03em; }
 .pname.alt { font-size:12.5px; }
 .msub { font-size:11.5px; color:var(--mut); }
+.mdif { font-size:10px; color:var(--mut); margin-top:4px; }
 /* --- ficha emergente --- */
 #modal { position:fixed; inset:0; z-index:60; display:flex; align-items:flex-end; justify-content:center; }
 #modal[hidden] { display:none; }
@@ -7251,9 +7252,9 @@ function abrirFicha(i) {
     ${tags ? `<div class="mrow"><div class="mlab">¿Qué resuelve?</div><div class="cobs">${tags}</div></div>` : ""}
     <div class="mrow"><div class="mlab">¿Cómo se usa?</div><div>${COMO[p.p]}</div></div>
     <div class="mrow"><div class="mlab">Su colección</div><div><b>${p.c}</b> — ${p.cp}</div></div>
-    ${subs.length ? `<div class="mrow"><div class="mlab">🔄 Si no hay stock</div><div>${
-      subs.map(({o, j}) => `<button class="pname alt" data-p="${j}">${o.d}</button> <span class="msub">${o.m} · ${money(o.pc)}</span>`).join("<br>")
-    }</div></div>` : ""}`;
+    ${subs.length ? `<div class="mrow"><div class="mlab">🔄 Si no hay — y en qué cambian</div><div>${
+      subs.map(({o, j}) => `<button class="pname alt" data-p="${j}">${o.d}</button> <span class="msub">${esFuerte(o) ? "🔥" : "🌿"} ${o.m} · ${money(o.pc)} · $${o.pq}/q</span>`).join("<br>")
+    }<div class="mdif">Este: ${esFuerte(p) ? "🔥 activo potente" : "🌿 fórmula suave"} · $${p.pq}/q — mismo paso, cambia fórmula y precio.</div></div></div>` : ""}`;
   modal.hidden = false;
   document.body.style.overflow = "hidden";
   modal.querySelector(".mclose").focus();
