@@ -6,7 +6,7 @@
 <meta name="description" content="¿Qué producto estás viendo? Escanea su código de barras, tómale foto o escribe su nombre: te decimos qué es, cuánto cuesta y con qué rutina va.">
 <title>SO YOUNG · ¿Qué producto estás viendo?</title>
 <meta name="x-contenido" content="77aa42b2aa">
-<meta name="x-buscar" content="16adfd2986">
+<meta name="x-buscar" content="967c0c10f2">
 <style>
 :root { --rosa:#D96C82; --rosad:#B94F66; --ink:#2A2226; --crema:#FBF6F4; --crema2:#FAEDEE;
   --mut:#8b7d82; --line:#F0DDE1; --texto:#584a4f; color-scheme: light; }
@@ -450,6 +450,8 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
 .dx { position:absolute; top:-7px; right:-7px; width:20px; height:20px; border-radius:50%; border:none;
   background:var(--ink); color:#fff; font-size:10px; cursor:pointer; }
 .daviso { margin-top:9px; font-size:11px; line-height:1.45; background:#FFF6E5; border:1px solid #E8B84B;
+  border-radius:10px; padding:7px 9px; }
+.dinfo { margin-top:9px; font-size:11px; line-height:1.45; background:var(--crema); border:1px solid var(--line);
   border-radius:10px; padding:7px 9px; }
 .dtab { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:9px; }
 .dcol { border:1px solid var(--line); border-radius:12px; padding:8px 9px; min-width:0; }
@@ -3442,6 +3444,23 @@ const ataca = p => {
   const t = p.t.filter(x => NEC[x]);
   return t.length ? t.slice(0, 3).join(" · ") + (t.length > 3 ? " +" : "") : "uso general";
 };
+/* FORMATO real por nombre (Michael 1-ago: al gel le decíamos «espuma» — el
+   sub-rol agrupa limpiadores al agua juntos porque SÍ se reemplazan, pero al
+   mostrarlo hay que decir la textura verdadera) */
+const formato = x => {
+  const n = x.d.toLowerCase();
+  if (n.includes("oil")) return "aceite limpiador";
+  if (n.includes("gel") && x.p === "L") return "gel limpiador";
+  if (x.p === "L" && (n.includes("foam") || n.includes("whip") || n.includes("cleanser"))) return "espuma / mousse";
+  if (n.includes("pad")) return "toallitas";
+  if (n.includes("stick")) return "barra";
+  return SUBN[x.sr] || PNOM[x.p];
+};
+/* tamaño del empaque, del propio nombre (200ml, 120g, 4 pzas…) */
+const tam = x => {
+  const m = x.d.match(/(\d+(?:\.\d+)?)\s?(ml|g)\b/i);
+  return m ? { n: +m[1], u: m[2].toLowerCase() } : null;
+};
 function pintaSlot(k) {
   const el = document.getElementById("dslot" + k);
   const i = DUELO[k];
@@ -3485,19 +3504,28 @@ function pintaDuelo() {
   const pares = DUELO.map(i => PROD[i]);
   const [a, b] = pares;
   const topv = Math.max(a.v, b.v);
+  /* el $/ml solo cuando LOS DOS traen tamaño en la misma unidad — comparar
+     peras con peras (Michael 1-ago: «¿son realmente comparables?») */
+  const tt = pares.map(tam);
+  const porUnidad = tt[0] && tt[1] && tt[0].u === tt[1].u;
   const filas = [
-    ["Qué es", x => `${PICO[x.p]} ${SUBN[x.sr] || PNOM[x.p]} · ${x.c}`],
+    ["Qué es", x => `${PICO[x.p]} ${formato(x)} · ${x.c}`],
     ["Para qué", x => x.u],
     ["Ataca", x => ataca(x)],
     ["Potencia", x => esFuerte(x) ? "🔥 activo potente — no para sensibles ni embarazo" : "🌿 suave — apta piel sensible"],
+    ["Tamaño", x => { const t = tam(x);
+      return t ? `${t.n} ${t.u}` + (porUnidad ? `<em> · $${(x.pc / t.n).toFixed(1)} por ${t.u}</em>` : "") : "—"; }],
     ["Precio", x => `${money(x.pc)}<em> · $${x.pq}/q</em>`],
   ];
   /* aviso por TIPO, no solo por paso (Michael 1-ago: una mascarilla y un sérum
-     comparten paso pero NO son reemplazables — hacen trabajos distintos) */
+     comparten paso pero NO son reemplazables — hacen trabajos distintos);
+     y si son HERMANOS de la misma línea, decirlo: mismo trabajo, otra textura */
   out.innerHTML = (a.p !== b.p
     ? `<div class="daviso">⚠️ No son lo mismo: uno ${PNOM[a.p]} y el otro ${PNOM[b.p]} — se <b>complementan</b> en la rutina, no se reemplazan.</div>`
     : (a.sr !== b.sr
-    ? `<div class="daviso">⚠️ Hacen trabajos distintos: ${SUBN[a.sr] || "uno"} vs ${SUBN[b.sr] || "otro"} — se <b>complementan</b>, no se reemplazan uno por otro.</div>` : ""))
+    ? `<div class="daviso">⚠️ Hacen trabajos distintos: ${SUBN[a.sr] || "uno"} vs ${SUBN[b.sr] || "otro"} — se <b>complementan</b>, no se reemplazan uno por otro.</div>`
+    : (a.m === b.m && a.c === b.c
+    ? `<div class="dinfo">ℹ️ Son <b>hermanos de la misma línea</b> (${a.c} de ${a.m}): hacen el mismo trabajo con otra textura y tamaño — se elige por gusto, tamaño y presupuesto.</div>` : "")))
     + `<div class="dtab">` + pares.map(x =>
       `<div class="dcol"><b class="dn">${x.d}</b><span class="cmarca2">${x.m}</span>`
       + (x.v === topv && topv > 0 ? '<span class="mctop">🏆 la que más piden</span>' : "")
@@ -3553,7 +3581,7 @@ function pintaCmp() {
     + orden.map(g => {
       const gl = grupos.get(g).sort((x, y) => y.p.v - x.p.v || x.p.pc - y.p.pc);
       const topv = Math.max(...gl.map(({ p }) => p.v));
-      return `<div class="cgrp">${SUBN[g] ? SUBN[g].toUpperCase() : "OTROS"} · ${gl.length}${gl.length > 1 ? " — comparables entre sí" : ""}</div>`
+      return `<div class="cgrp">${g === "espuma" ? "LIMPIADOR AL AGUA (GEL O ESPUMA)" : (SUBN[g] ? SUBN[g].toUpperCase() : "OTROS")} · ${gl.length}${gl.length > 1 ? " — comparables entre sí" : ""}</div>`
         + gl.map(({ p, i }) =>
           `<button class="crow2" type="button" data-p="${i}">${imgP(p, "cimg2")}
             <span class="cmain2"><b>${p.d}</b><em>${p.m}</em><i>${p.u}</i><span class="cataca">ataca: ${ataca(p)}</span>${p.v === topv && topv > 0 && gl.length > 1 ? '<span class="mctop">🏆 el que más piden de su tipo</span>' : ""}</span>
