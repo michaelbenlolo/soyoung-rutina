@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Tu asesora K-beauty de bolsillo en el corner SO YOUNG: entiende cualquier producto del estante, arma tu rutina coreana y conoce precios de contado o en quincenas con tu vale.">
 <meta name="x-contenido" content="5179d084b0">
-<meta name="x-tienda" content="54a5227091">
+<meta name="x-tienda" content="65f1cb071a">
 <meta name="theme-color" content="#FAF5F2">
 <title>SO YOUNG · Tu asesora de bolsillo</title>
 <style>
@@ -394,6 +394,23 @@ body { font-family:-apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, s
 
 .tespacio { height:78px; }   /* aire para que la barra fija no tape el final */
 
+/* ---------- el cierre: barra siempre visible + código SY (Michael 1-ago) ---------- */
+#tbar.arriba { bottom:82px; }              /* en elegir sube: no tapa el CTA fijo */
+#t-elegir .tespacio { height:152px; }
+.tcodline { background:#fff; border:1.5px dashed var(--trosa); border-radius:12px;
+  padding:11px 13px; font-size:11.5px; line-height:1.55; margin-bottom:11px; color:var(--tmut); }
+.tcodline b { font-size:19px; letter-spacing:.1em; color:var(--trosa); font-weight:800; }
+.tcodin { width:100%; font:inherit; font-size:16px; letter-spacing:.08em; text-transform:uppercase;
+  padding:12px 14px; border:1.5px solid var(--tline); border-radius:12px; margin:2px 0 8px;
+  background:#fff; color:var(--tink); }
+.tcodin:focus { outline:2px solid var(--trosa); border-color:var(--trosa); }
+.terr { color:#B3372F; font-weight:700; }
+.tcodver { background:var(--trosa) !important; color:#fff !important; border:0 !important;
+  font-weight:800 !important; }
+.tpieas { appearance:none; cursor:pointer; font-family:inherit; display:inline-block;
+  margin:10px 8px 0 0; font-size:10.5px; color:var(--tink); border:1px solid var(--tline);
+  border-radius:99px; padding:6px 12px; background:var(--tcard); }
+
 /* botón de versión nueva — arriba de la barra */
 #vnueva { position:fixed; left:12px; right:12px; bottom:78px; z-index:90; appearance:none; border:0;
   background:var(--tink); color:#fff; border-radius:12px; padding:13px 16px; font-size:12.5px;
@@ -428,6 +445,7 @@ body { font-family:-apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, s
 
     <div class="tpie">
       <p class="tlegal">Precios en pesos, de contado o en quincenas con tu vale. Esta guía sugiere cosméticos por lo que quieres mejorar; no es un diagnóstico ni sustituye la opinión de un dermatólogo. Skincare coreano 100% original, solo en tiendas BHermanos participantes.</p>
+      <button class="tpieas" id="tcodbtn" type="button">👩‍🦰 Soy asesora: tengo un código SY</button>
     </div>
   </section>
 
@@ -3224,8 +3242,8 @@ body { font-family:-apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, s
 </div>
 
 <div id="tbar" hidden>
-  <span class="tb1" id="tbartxt"><b>$0</b>tu rutina</span>
-  <button type="button" id="tbases">👩‍🦰 Muéstraselo a tu asesora</button>
+  <span class="tb1" id="tbartxt"><b>$0</b>tu lista</span>
+  <button type="button" id="tbases">👜 Ver mi lista</button>
 </div>
 
 <div id="tases" hidden>
@@ -3233,11 +3251,25 @@ body { font-family:-apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, s
   <div class="thoja">
     <h3>Enséñale esta pantalla a tu asesora 👇</h3>
     <p class="tsm">Ella baja todo del estante y te lo aparta hoy mismo.</p>
+    <div class="tcodline">🔑 El código de tu lista: <b id="tcodigo">—</b><br>
+      Apúntalo o díctaselo a tu asesora: con él tu lista aparece en cualquier teléfono de la tienda — aunque el tuyo se bloquee, se quede sin pila, o venga tu mamá a pagarla por ti.</div>
     <div id="tlista"></div>
     <div class="ttotal"><b>Total de contado</b><span id="ttotal">—</span></div>
     <div class="tquin" id="tquin"></div>
     <div class="tnota">💕 <b>Lo pagas con tu vale en quincenas</b> — pregúntale a tu asesora por el plazo.</div>
     <button class="tcerrar" id="tcerrar" type="button">Cerrar</button>
+  </div>
+</div>
+
+<div id="tcod" hidden>
+  <div class="tfondo" id="tcodfondo"></div>
+  <div class="thoja">
+    <h3>Teclea el código de la clienta 🔑</h3>
+    <p class="tsm">Es el que empieza con <b>SY</b> — su lista aparece tal cual la armó, con su total.</p>
+    <input id="tcodin" class="tcodin" type="text" autocomplete="off" spellcheck="false" placeholder="SY-" maxlength="28">
+    <p class="tsm terr" id="tcoderr" hidden>No reconozco ese código — revísalo caracter por caracter.</p>
+    <button class="tcerrar tcodver" id="tcodver" type="button">Ver la lista</button>
+    <button class="tcerrar" id="tcodcerrar" type="button">Cerrar</button>
   </div>
 </div>
 
@@ -3830,18 +3862,20 @@ q.addEventListener("input", () => {
     // llegar a la rutina sin haber elegido nada → mejor a elegir
     if (id === "t-rutina" && !panelVisible()) { location.replace("#t-elegir"); return; }
     PANTS.forEach(p => { $(p).hidden = p !== id; });
-    $("tbar").hidden = id !== "t-rutina";
+    // la barra vive en TODAS las pantallas (Michael 1-ago: que nunca tenga que
+    // buscar dónde está su selección); en elegir sube para no tapar el CTA
+    $("tbar").classList.toggle("arriba", id === "t-elegir");
+    pintarBarra();
     $("tmiga").textContent = id === "t-home" ? "🇰🇷 100% original"
       : (id === "t-elegir" ? "paso 1 de 2" : "paso 2 de 2");
     scrollTo({ top: 0, behavior: "instant" });
-    if (id === "t-rutina") actualizarBarra();
   }
   window.addEventListener("hashchange", () => ir(pantalla()));
 
   /* las opciones ya vienen pintadas en el HTML (desde NEEDS, en Python); aquí
      solo se les conecta el click al chip del motor con el MISMO índice */
   [...ops.children].forEach((b, i) => {
-    b.addEventListener("click", () => { chipsMotor[i].click(); sincronizar(); });
+    b.addEventListener("click", () => { interactuado = true; chipsMotor[i].click(); sincronizar(); });
   });
 
   function panelVisible() {
@@ -3860,19 +3894,146 @@ q.addEventListener("input", () => {
     cta.disabled = n === 0;
     cta.textContent = n === 0 ? "Elige al menos 1"
       : (n === 1 ? "ARMAR MI RUTINA →" : `ARMAR MI RUTINA (${n}) →`);
-    actualizarBarra();
+    capturarLista();
   }
 
-  function actualizarBarra() {
-    const p = panelVisible();
-    const cifra = p && p.querySelector(".rtcifra");
-    if (cifra) {
-      const monto = cifra.childNodes[0].textContent.trim();
-      const quin = cifra.querySelector("span") ? cifra.querySelector("span").textContent.trim() : "";
-      $("tbartxt").innerHTML = `<b>${monto}</b>${quin || "tu rutina completa"}`;
-    } else {
-      $("tbartxt").innerHTML = `<b>Tu selección</b>lista para tu asesora`;
+  /* ---------- LA LISTA: el cierre de la venta (Michael 1-ago) ----------
+     Lo que el motor pintó se CAPTURA (solo lectura del DOM) en un modelo que
+     vive en localStorage: la barra fija aparece desde el primer producto y en
+     TODAS las pantallas, la hoja de la asesora se llena del modelo (nunca un
+     total vacío) y sobrevive a que el teléfono se bloquee o se recargue. */
+  const SELLO = document.querySelector('meta[name="x-contenido"]').content;
+  const LSK = "tienda_lista";
+  let LISTA = null, interactuado = false;
+  try {
+    const g = JSON.parse(localStorage.getItem(LSK) || "null");
+    if (g && g.sello === SELLO && g.filas && g.filas.length) LISTA = g;
+    else localStorage.removeItem(LSK);
+  } catch (e) {}
+
+  /* código corto SY-: la lista viaja SIN internet y SIN servidor — codifica las
+     necesidades elegidas (10 bits) y cada trueque «si no hay» (par original→
+     sustituto), con un caracter de control contra errores de dedo. La asesora
+     lo teclea en CUALQUIER teléfono y el mismo motor reconstruye la lista. */
+  const B36 = n => n.toString(36).toUpperCase().padStart(2, "0");
+  // SOLO la rutina principal del panel: el primer bloque div.rutina VISIBLE
+  // (sin ningún <details> cerrado en su cadena). Ni el mezclador (.mzbody), ni
+  // las líneas alternativas cerradas, ni las ventanas de niveles cuentan aquí.
+  function bloquePrincipal(p) {
+    const bloque = [...p.querySelectorAll(".rutina")].find(b => {
+      let d = b.closest("details");
+      while (d) { if (!d.open) return false; d = d.parentElement && d.parentElement.closest("details"); }
+      return true;
+    });
+    if (!bloque) return null;
+    const lista = bloque.querySelector(".rlist"), cifra = bloque.querySelector(".rtcifra");
+    return lista && cifra ? { cifra, lista } : null;
+  }
+  function filasRutina(lista) {
+    return [...lista.querySelectorAll(".rp[data-org], .rp[data-cur]")];
+  }
+  function paresDeLista(lista) {
+    const pares = [];
+    filasRutina(lista).forEach(rp => {
+      if (rp.dataset.org !== undefined) {
+        // combinada: la fila lleva data-org (original) y el pname lleva el actual
+        const o = +rp.dataset.org, b = rp.querySelector(".pname");
+        const i = b ? +b.dataset.p : o;
+        if (i !== o) pares.push([o, i]);
+      } else {
+        // panel de 1 categoría: la fila cambiada lleva data-cur nuevo y su «volver» el original
+        const v = rp.querySelector(".volverp");
+        if (v) pares.push([+v.dataset.o, +rp.dataset.cur]);
+      }
+    });
+    return pares;
+  }
+  // el código guarda la selección EN ORDEN (el orden de los toques acomoda la
+  // rutina): n + índices de chip + n de trueques + pares original→sustituto + control
+  function codigoDeLista(lista) {
+    const orden = (typeof sel !== "undefined" ? sel : [])
+      .map(k => chipsMotor.findIndex(c => c.dataset.need === k)).filter(i => i >= 0);
+    if (!orden.length) return "";
+    const pares = paresDeLista(lista);
+    let cuerpo = orden.length.toString(36).toUpperCase()
+      + orden.map(i => i.toString(36).toUpperCase()).join("")
+      + pares.length.toString(36).toUpperCase();
+    pares.forEach(([o, a]) => { cuerpo += B36(o) + B36(a); });
+    let s = 0; for (const ch of cuerpo) s += parseInt(ch, 36);
+    return "SY-" + cuerpo + (s % 36).toString(36).toUpperCase();
+  }
+  function decodificarCodigo(txt) {
+    const t = (txt || "").trim().toUpperCase().replace(/^SY[-\s]*/, "").replace(/[^0-9A-Z]/g, "");
+    if (t.length < 4) return null;
+    const cuerpo = t.slice(0, -1), chk = t.slice(-1);
+    let s = 0; for (const ch of cuerpo) s += parseInt(ch, 36);
+    if ((s % 36).toString(36).toUpperCase() !== chk) return null;
+    const n = parseInt(cuerpo[0], 36);
+    if (!n || n > 3 || cuerpo.length < 2 + n) return null;
+    const orden = [];
+    for (let k = 0; k < n; k++) {
+      const i = parseInt(cuerpo[1 + k], 36);
+      if (isNaN(i) || i >= chipsMotor.length) return null;
+      orden.push(i);
     }
+    const nsw = parseInt(cuerpo[1 + n], 36);
+    if (isNaN(nsw) || cuerpo.length !== 2 + n + nsw * 4) return null;
+    const pares = [];
+    for (let k = 0; k < nsw; k++)
+      pares.push([parseInt(cuerpo.slice(2 + n + k * 4, 4 + n + k * 4), 36),
+                  parseInt(cuerpo.slice(4 + n + k * 4, 6 + n + k * 4), 36)]);
+    return { orden, pares };
+  }
+  function aplicarCodigo(d) {
+    interactuado = true;
+    // apagar lo que hubiera y encender los chips EN EL MISMO ORDEN del código —
+    // todo vía clicks del motor (sus reglas de seguridad se re-aplican solas)
+    chipsMotor.forEach(c => { if (c.getAttribute("aria-pressed") === "true") c.click(); });
+    d.orden.forEach(i => chipsMotor[i].click());
+    sincronizar();
+    let faltan = 0;
+    d.pares.forEach(([o, a]) => {
+      const pill = document.querySelector(`section.panel:not([hidden]) .altp[data-o="${o}"][data-a="${a}"]`);
+      if (pill && !pill.classList.contains("off")) pill.click(); else faltan++;
+    });
+    capturarLista();
+    return faltan;
+  }
+
+  function capturarLista() {
+    const p = panelVisible();
+    const b = p && bloquePrincipal(p);
+    if (!b) {
+      // sin nada pintado: solo si la clienta APAGÓ todo se borra lo guardado —
+      // al abrir la página en frío, la lista guardada sobrevive (es el punto)
+      if (interactuado) { LISTA = null; try { localStorage.removeItem(LSK); } catch (e) {} }
+      pintarBarra(); return;
+    }
+    const filas = filasRutina(b.lista).map(rp => ({
+      n: rp.querySelector(".pname") ? rp.querySelector(".pname").childNodes[0].textContent.trim() : "",
+      p: rp.querySelector(".rprec") ? rp.querySelector(".rprec").childNodes[0].textContent.trim() : ""
+    })).filter(f => f.n);
+    if (!filas.length) { pintarBarra(); return; }
+    LISTA = { sello: SELLO, filas,
+              total: b.cifra.childNodes[0].textContent.trim(),
+              quin: b.cifra.querySelector("span") ? b.cifra.querySelector("span").textContent.trim() : "",
+              cod: codigoDeLista(b.lista) };
+    try { localStorage.setItem(LSK, JSON.stringify(LISTA)); } catch (e) {}
+    pintarBarra();
+  }
+  function pintarBarra() {
+    const hay = LISTA && LISTA.filas && LISTA.filas.length;
+    $("tbar").hidden = !hay;
+    if (hay) $("tbartxt").innerHTML =
+      `<b>${LISTA.total}</b>${LISTA.filas.length} producto${LISTA.filas.length === 1 ? "" : "s"} en tu lista`;
+  }
+  function llenarHoja() {
+    if (!LISTA) return;
+    $("tlista").innerHTML = LISTA.filas.map(f =>
+      `<div class="tfila"><b>${f.n}</b><span>${f.p}</span></div>`).join("");
+    $("ttotal").textContent = LISTA.total;
+    $("tquin").textContent = LISTA.quin;
+    $("tcodigo").textContent = LISTA.cod || "—";
   }
 
   /* los «volver» regresan DE VERDAD (history.back) para que el botón atrás del
@@ -3896,19 +4057,11 @@ q.addEventListener("input", () => {
   window.addEventListener("popstate", () => ir(pantalla()));
   $("tarmar").addEventListener("click", () => irApilando("#t-rutina"));
 
-  // resumen para la asesora: se CLONA lo que el motor pintó en el panel visible
+  // la hoja de la asesora se llena del MODELO (nunca del DOM al momento del tap:
+  // así jamás sale con el total vacío, ni depende de en qué pantalla estés)
   $("tbases").addEventListener("click", () => {
-    const p = panelVisible(); if (!p) return;
-    const filas = [...p.querySelectorAll(".rp")].map(rp => {
-      const nom = rp.querySelector(".pname").childNodes[0].textContent.trim();
-      const prec = rp.querySelector(".rprec");
-      const monto = prec ? prec.childNodes[0].textContent.trim() : "";
-      return `<div class="tfila"><b>${nom}</b><span>${monto}</span></div>`;
-    }).join("");
-    $("tlista").innerHTML = filas || "<div class='tsm'>Abre una rutina primero.</div>";
-    const cifra = p.querySelector(".rtcifra");
-    $("ttotal").textContent = cifra ? cifra.childNodes[0].textContent.trim() : "—";
-    $("tquin").textContent = cifra && cifra.querySelector("span") ? cifra.querySelector("span").textContent.trim() : "";
+    if (!LISTA) return;
+    llenarHoja();
     $("tases").hidden = false;
     document.body.style.overflow = "hidden";
   });
@@ -3916,16 +4069,37 @@ q.addEventListener("input", () => {
   $("tcerrar").addEventListener("click", cerrarAses);
   $("tfondo").addEventListener("click", cerrarAses);
 
-  // los trueques «si no hay» del motor cambian el total pintado: la barra se relee
-  // (solo LEE el DOM — jamás toca PROD; setTimeout y no rAF: corre aunque la
-  // pestaña esté en segundo plano)
+  // la asesora teclea un código SY → la lista de la clienta aparece tal cual
+  const cerrarCod = () => { $("tcod").hidden = true; document.body.style.overflow = ""; };
+  $("tcodbtn").addEventListener("click", () => {
+    $("tcoderr").hidden = true; $("tcodin").value = "";
+    $("tcod").hidden = false; document.body.style.overflow = "hidden";
+    setTimeout(() => $("tcodin").focus(), 60);
+  });
+  $("tcodcerrar").addEventListener("click", cerrarCod);
+  $("tcodfondo").addEventListener("click", cerrarCod);
+  $("tcodver").addEventListener("click", () => {
+    const d = decodificarCodigo($("tcodin").value);
+    if (!d) { $("tcoderr").hidden = false; return; }
+    cerrarCod();
+    aplicarCodigo(d);
+    llenarHoja();
+    $("tases").hidden = false;
+    document.body.style.overflow = "hidden";
+  });
+  $("tcodin").addEventListener("keydown", e => { if (e.key === "Enter") $("tcodver").click(); });
+
+  // los trueques «si no hay» del motor cambian el total pintado: la lista se
+  // re-captura (solo LEE el DOM — jamás toca PROD; setTimeout y no rAF: corre
+  // aunque la pestaña esté en segundo plano)
   document.addEventListener("click", e => {
-    if (e.target.closest(".altp, .volverp")) setTimeout(actualizarBarra, 0);
+    if (e.target.closest(".altp, .volverp")) { interactuado = true; setTimeout(capturarLista, 0); }
   });
 
   sincronizar();
   ir(pantalla());   // respeta el ancla si llegas con #t-elegir en la URL
-  window._tiendaTest = { ir, sincronizar, nOpciones: () => ops.children.length };
+  window._tiendaTest = { ir, sincronizar, nOpciones: () => ops.children.length,
+    capturarLista, codigoDeLista, decodificarCodigo, aplicarCodigo, lista: () => LISTA };
 })();
 
 /* ¿hay versión nueva publicada? (misma protección que /buscar, /piel y /k) */
