@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="La herramienta de la asesora SO YOUNG: arma la rutina de tu clienta en 1 minuto, con guiones, precios de contado y quincenas con el vale.">
 <title>SO YOUNG · La herramienta de la asesora</title>
-<meta name="x-contenido" content="77aa42b2aa">
+<meta name="x-contenido" content="6a9fac2d9f">
 <style>
 :root { --rosa:#D96C82; --rosad:#B94F66; --ink:#2A2226; --crema:#FBF6F4; --crema2:#FAEDEE;
   --mut:#8b7d82; --line:#F0DDE1; --texto:#584a4f; color-scheme: light; }
@@ -364,7 +364,120 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
 <style>
 
 </style>
-<div class="top"><div class="topin"><div class="logo">SO YOUNG <em>K-BEAUTY</em></div><div class="sello"><span class="kfl">🇰🇷</span> 100% ORIGINAL</div></div></div>
+<style>/* ============ EL CARRITO COMPARTIDO (tienda · piel · buscar) ============ */
+.tcart { appearance:none; cursor:pointer; font-family:inherit; display:inline-flex;
+  align-items:center; gap:5px; background:#fff; border:1.5px solid var(--rosad);
+  border-radius:99px; padding:5px 12px; font-size:13px; font-weight:800;
+  color:var(--rosad); flex:none; margin-left:10px; }
+/* en headers angostos (topin de piel/buscar) el chip SIEMPRE entra: el sello
+   decorativo es quien cede, con «…» — a 375px el chip quedaba medio fuera */
+.topin { min-width:0; }
+.topin .logo { min-width:0; }
+.topin .sello { min-width:0; flex:0 4 auto; overflow:hidden; text-overflow:ellipsis;
+  white-space:nowrap; }
+/* proporcional al texto del renglón (Michael 1-ago: a 22px se veía grande) */
+.mini { display:inline-flex; align-items:center; justify-content:center; width:18px;
+  height:18px; border-radius:50%; border:1.2px solid var(--rosad); color:var(--rosad);
+  background:#fff; font-size:12px; font-weight:800; line-height:1; margin-left:6px;
+  vertical-align:middle; cursor:pointer; flex:none; }
+.mini.en { background:var(--rosad); color:#fff; }
+.tprod, .pcard { position:relative; }
+.tprod .mini, .pcard .mini { position:absolute; top:7px; right:7px; margin:0;
+  background:#fff; box-shadow:0 2px 8px rgba(90,60,60,.14); }
+.addbtn { appearance:none; font-family:inherit; cursor:pointer; margin-top:7px;
+  border:1.5px solid var(--rosad); background:#fff; color:var(--rosad);
+  border-radius:99px; padding:7px 13px; font-size:11.5px; font-weight:800;
+  display:inline-block; }
+.addbtn.enlista { background:var(--rosad); color:#fff; }
+.addficha { display:block; width:100%; margin:12px 0 2px; padding:12px;
+  font-size:12.5px; text-align:center; }
+.agtodo { appearance:none; font-family:inherit; cursor:pointer; width:100%;
+  margin:10px 0 2px; border:1.5px dashed var(--rosad); background:var(--crema2);
+  color:var(--rosad); border-radius:13px; padding:12px; font-size:12.5px; font-weight:800; }
+/* la hoja de la lista */
+#tases { position:fixed; inset:0; z-index:95; }
+.tfondo { position:absolute; inset:0; background:rgba(30,22,25,.6); }
+.thoja { position:absolute; left:12px; right:12px; bottom:12px; top:auto; max-height:84vh;
+  overflow:auto; background:#fff; border-radius:20px 20px 16px 16px; padding:18px 16px 16px;
+  max-width:532px; margin:0 auto; color:var(--ink); line-height:1.5; }
+.thoja h3 { font-size:17px; font-weight:800; margin-bottom:2px; }
+.thoja .tsm { font-size:11.5px; color:var(--mut); margin-bottom:12px; }
+.thx { position:absolute; top:12px; right:14px; appearance:none; border:1px solid var(--line);
+  background:#fff; color:var(--mut); width:30px; height:30px; border-radius:50%;
+  cursor:pointer; font-size:13px; z-index:2; }
+.tcodline { background:#fff; border:1.5px dashed var(--rosad); border-radius:12px;
+  padding:11px 13px; font-size:11.5px; line-height:1.55; margin-bottom:11px; color:var(--mut); }
+.tcodline b { font-size:19px; letter-spacing:.1em; color:var(--rosad); font-weight:800; }
+/* choque de activos potentes EN LA LISTA: avisar mientras arma la compra, no
+   después de pagar (la /guia repite la regla, pero ya es tarde para cambiar) */
+.tchoque { background:#FDECEA; border:1.5px solid #E8A79E; color:#7C2B22; border-radius:12px;
+  padding:11px 13px; font-size:12px; line-height:1.55; margin-bottom:11px; }
+.tchoque b { color:#B3261E; }
+.tchoque[hidden] { display:none !important; }
+.titem { display:flex; gap:10px; align-items:center; padding:10px 0 8px; font-size:13px; }
+.titem .tinom { flex:1; min-width:0; cursor:pointer; }
+.titem .tinom b { font-weight:700; display:block; line-height:1.3; }
+.titem .tinom small { color:var(--mut); font-size:10.5px; }
+.tifoto { width:46px; height:46px; object-fit:contain; background:var(--crema2);
+  border-radius:10px; padding:3px; flex:none; mix-blend-mode:multiply; cursor:pointer; }
+.tiprecio { color:var(--rosad); font-weight:800; white-space:nowrap; }
+.tix { appearance:none; border:1px solid var(--line); background:#fff; color:var(--mut);
+  width:26px; height:26px; border-radius:50%; cursor:pointer; font-size:12px; flex:none; }
+.tialts { padding:0 0 10px; border-bottom:1px dashed var(--line); font-size:10.5px;
+  color:var(--mut); }
+.titem + .titem, .tialts + .titem { border-top:1px dashed var(--line); }
+.trpl { appearance:none; font-family:inherit; cursor:pointer; border:1px solid var(--line);
+  background:#fff; color:var(--ink); border-radius:99px; padding:5px 10px; font-size:10.5px;
+  font-weight:700; margin:4px 4px 0 0; }
+.trpl b { color:var(--rosad); }
+.thoja .ttotal { display:flex; gap:10px; align-items:baseline; padding:12px 2px 4px; font-size:14px; }
+.thoja .ttotal b { flex:1; font-weight:800; }
+.thoja .ttotal span { color:var(--rosad); font-weight:800; font-size:17px; }
+.thoja .tquin { font-size:11.5px; color:var(--mut); padding:0 2px 10px; }
+.thoja .tnota { background:var(--crema2); border-radius:12px; padding:11px 13px; font-size:12px; }
+.tguia { display:flex; align-items:center; justify-content:center; gap:8px; margin:10px 0 2px;
+  border:1.5px solid #bfe3c5; background:#f2faf3; color:#2E7D5B; border-radius:13px;
+  padding:13px; font-size:12.5px; font-weight:800; text-decoration:none; }
+.tcerrar { margin-top:12px; width:100%; appearance:none; border:1px solid var(--line);
+  background:#fff; font-family:inherit; font-weight:700; font-size:13px; border-radius:12px;
+  padding:12px; cursor:pointer; color:var(--ink); }
+/* vaciar todo: discreto, con doble toque de confirmación */
+.tvaciar { display:block; margin:10px auto 0; appearance:none; border:none; background:none;
+  font-family:inherit; font-size:11.5px; font-weight:700; color:var(--mut); cursor:pointer;
+  text-decoration:underline; padding:4px 10px; }
+.tvaciar.seguro { color:#b3261e; }
+/* blindaje: reglas de display de autor le ganan al [hidden] del user-agent */
+.tcart[hidden], #tases[hidden], .agtodo[hidden], .tguia[hidden], .mini[hidden], .tvaciar[hidden] { display:none !important; }
+
+.sybtn { display:block; width:100%; appearance:none; border:1.5px solid var(--rosad); background:#fff;
+  border-radius:14px; padding:13px; font:inherit; font-size:13.5px; font-weight:700; color:var(--rosad);
+  cursor:pointer; margin-top:10px; }
+.tcodin { width:100%; font:inherit; font-size:16px; letter-spacing:.08em; text-transform:uppercase;
+  padding:12px 14px; border:1.5px solid var(--line); border-radius:12px; margin:2px 0 8px;
+  background:#fff; color:var(--ink); }
+.tcodin:focus { outline:2px solid var(--rosad); border-color:var(--rosad); }
+.terr { color:#B3372F; font-weight:700; }
+.tcodver { background:var(--rosad) !important; color:#fff !important; border:0 !important; font-weight:800 !important; }
+</style>
+<div class="top"><div class="topin"><div class="logo">SO YOUNG <em>K-BEAUTY</em></div><div class="sello"><span class="kfl">🇰🇷</span> 100% ORIGINAL</div><button class="tcart" id="tcart" type="button" hidden aria-label="Ver mi lista">👜 <b id="tcartn">0</b></button></div></div>
+<div id="tases" hidden>
+  <div class="tfondo" id="tfondo"></div>
+  <div class="thoja">
+    <button class="thx" id="tasesx" type="button" aria-label="Cerrar mi lista">✕</button>
+    <h3>Tu lista 👜 — enséñasela a tu asesora</h3>
+    <p class="tsm">Ella baja todo del estante y te lo aparta hoy mismo. Toca la foto de un producto para ver su ficha.</p>
+    <div class="tcodline">🔑 El código de tu lista: <b id="tcodigo">—</b><br>
+      Apúntalo o díctaselo a tu asesora: con él tu lista aparece en cualquier teléfono de la tienda — aunque el tuyo se bloquee, se quede sin pila, o venga tu mamá a pagarla por ti.</div>
+    <div class="tchoque" id="tchoque" hidden></div>
+    <div id="tlista"></div>
+    <div class="ttotal"><b>Total de contado</b><span id="ttotal">—</span></div>
+    <div class="tquin" id="tquin"></div>
+    <div class="tnota">💕 <b>Lo pagas con tu vale en quincenas</b> — pregúntale a tu asesora por el plazo.</div>
+    <a class="tguia" id="tguia" href="guia/">✅ Ya los compré — dame mi guía de uso en PDF</a>
+    <button class="tcerrar" id="tcerrar" type="button">Cerrar</button>
+    <button class="tvaciar" id="tvaciar" type="button" hidden>🗑 Vaciar mi lista</button>
+  </div>
+</div>
 <div class="wrap">
   <div class="hero">
     <h1>Arma la <span>rutina de tu clienta</span> en 1 minuto</h1>
@@ -6705,6 +6818,22 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
     <div class="orow2"><b>💧 Hidratación / centella</b><span class="ocua">2–7 días</span><i>«La calma y lo jugoso se sienten casi de inmediato.»</i></div><div class="orow2"><b>🧊 Niacinamida</b><span class="ocua">2–4 semanas</span><i>«El poro y el brillo se controlan en un par de semanas.»</i></div><div class="orow2"><b>🍊 Vitamina C</b><span class="ocua">4–8 semanas</span><i>«Ilumina poco a poco — y de día siempre con bloqueador.»</i></div><div class="orow2"><b>🌾 Kójico (manchas)</b><span class="ocua">4–8 semanas</span><i>«Se nota entre la semana 4 y 8. Sin bloqueador no funciona.»</i></div><div class="orow2"><b>🌰 Azelaico</b><span class="ocua">8–12 semanas</span><i>«Es suave pero constante: dale 2–3 meses.»</i></div><div class="orow2"><b>🌙 Retinal / retinol</b><span class="ocua">8–12 semanas</span><i>«Empieza 2 noches por semana; una resequedad ligera al inicio es normal.»</i></div><div class="orow2"><b>🫧 Colágeno / PDRN</b><span class="ocua">4–8 semanas</span><i>«Firmeza y rebote se ven al mes, mes y medio.»</i></div>
     <p class="nota" style="margin-top:8px">Regla de oro: <b>foto de antes</b> el día 1 y cita a las 4 semanas — la clienta que SE VE el cambio, vuelve.</p>
   </div>
+  <div class="strip">
+    <h2>🔑 ¿Tu clienta te dio un código SY?</h2>
+    <p class="nota">Su lista aparece tal cual la armó — con productos y total — en cualquier teléfono. El código sale en su 👜 lista del Modo Tienda.</p>
+    <button class="sybtn" id="sybtn" type="button">👩‍🦰 Soy asesora: teclear el código SY</button>
+  </div>
+  <div id="tcod" hidden>
+    <div class="tfondo" id="tcodfondo"></div>
+    <div class="thoja">
+      <h3>Teclea el código de la clienta 🔑</h3>
+      <p class="tsm">Es el que empieza con <b>SY</b> — su lista aparece tal cual la armó, con su total.</p>
+      <input id="tcodin" class="tcodin" type="text" autocomplete="off" spellcheck="false" placeholder="SY-" maxlength="28">
+      <p class="tsm terr" id="tcoderr" hidden>No reconozco ese código — revísalo caracter por caracter.</p>
+      <button class="tcerrar tcodver" id="tcodver" type="button">Ver la lista</button>
+      <button class="tcerrar" id="tcodcerrar" type="button">Cerrar</button>
+    </div>
+  </div>
   <div class="foot">
     <div class="glow">✨ El glow que sí vale</div>
     #SoYoungMx · #SkincareCoreano · #ElGlowQueSíVale<br>
@@ -7388,5 +7517,297 @@ q.addEventListener("input", () => {
     const activo = !!mv.querySelector(".mvn.on");
     subir.hidden = !(lejos && activo);
   }, { passive: true });
+})();
+</script>
+<script>window.CARRITO_RUTA_P = "p/";</script><script>/* ============ EL CARRITO COMPARTIDO — ver carrito.py ============ */
+(() => {
+  const $c = id => document.getElementById(id);
+  if (!$c("tcart") || !$c("tases") || typeof PROD === "undefined") return;
+  const SELLO = document.querySelector('meta[name="x-contenido"]').content;
+  const LSK = "tienda_carrito";
+  const SELS = window.CARRITO_SELS || ".pname[data-p]";
+  /* las 3 herramientas viven en subcarpeta (fotos en ../p/); el backstage raíz
+     define window.CARRITO_RUTA_P = "p/" antes de cargar este módulo */
+  const RUTA_P = window.CARRITO_RUTA_P || "../p/";
+  let CARRITO = [];
+  try {
+    const g = JSON.parse(localStorage.getItem(LSK) || "null");
+    if (g && g.sello === SELLO && Array.isArray(g.items)) CARRITO = g.items.filter(x => x && PROD[x.i]);
+    else localStorage.removeItem(LSK);
+  } catch (e) {}
+  const guardar = () => { try { localStorage.setItem(LSK, JSON.stringify({ sello: SELLO, items: CARRITO })); } catch (e) {} };
+  const enCarrito = i => CARRITO.some(x => x.i === i);
+  const totalCarrito = () => CARRITO.reduce((s, x) => s + PROD[x.i].pc, 0);
+  const B36 = n => n.toString(36).toUpperCase().padStart(2, "0");
+
+  function pintarCarrito() {
+    $c("tcart").hidden = !CARRITO.length;
+    $c("tcartn").textContent = CARRITO.length;
+    decorarPagina();
+    if (!$c("tases").hidden) llenarHoja();
+  }
+  function agregar(i, alts) {
+    if (!PROD[i] || enCarrito(i)) return;
+    CARRITO.push({ i, alts: (alts || []).filter(j => PROD[j] && j !== i) });
+    guardar(); pintarCarrito();
+  }
+  function quitar(i) {
+    CARRITO = CARRITO.filter(x => x.i !== i);
+    guardar(); pintarCarrito();
+  }
+  function reemplazar(i, j) {
+    const it = CARRITO.find(x => x.i === i);
+    if (!it || !PROD[j]) return;
+    // si el sustituto YA está en la lista, la intención es «quédate con ese»:
+    // se quita el original — nunca un toque que no haga nada
+    if (enCarrito(j)) { quitar(i); return; }
+    it.alts = [i, ...it.alts.filter(k => k !== j && k !== i)];
+    it.i = j;
+    guardar(); pintarCarrito();
+  }
+
+  /* la rutina principal del panel visible (tienda y piel; en buscar no hay) */
+  const panelVis = () => [...document.querySelectorAll("section.panel")].find(p => !p.hidden) || null;
+  function bloquePrincipal(p) {
+    const bloque = [...p.querySelectorAll(".rutina")].find(b => {
+      let d = b.closest("details");
+      while (d) { if (!d.open) return false; d = d.parentElement && d.parentElement.closest("details"); }
+      return true;
+    });
+    if (!bloque) return null;
+    const lista = bloque.querySelector(".rlist");
+    return lista ? { bloque, lista } : null;
+  }
+  const filasRutina = lista => [...lista.querySelectorAll(".rp[data-org], .rp[data-cur]")];
+  function altsDeFila(nom) {
+    const rp = nom.closest(".rp");
+    return rp ? [...rp.querySelectorAll(".altp")].map(a => +a.dataset.a) : [];
+  }
+
+  /* el MINI + universal: TODO producto pintado en la página recibe su botón */
+  function decorarPagina() {
+    document.querySelectorAll(SELS).forEach(nom => {
+      let m = nom.querySelector(".mini");
+      if (!m) {
+        m = document.createElement("span");
+        m.className = "mini"; m.setAttribute("role", "button"); m.setAttribute("tabindex", "0");
+        m.addEventListener("click", e => {
+          e.stopPropagation(); e.preventDefault();
+          const k = +nom.dataset.p;
+          if (enCarrito(k)) quitar(k); else agregar(k, altsDeFila(nom));
+        });
+        nom.appendChild(m);
+      }
+      // OJO: solo escribir cuando CAMBIA — el vigía de mutaciones re-decora, y
+      // escribir siempre lo mismo armaría un ciclo infinito de mutaciones
+      const k = +nom.dataset.p, en = enCarrito(k);
+      if (m.classList.contains("en") !== en) m.classList.toggle("en", en);
+      const t = en ? "✓" : "+";
+      if (m.textContent !== t) m.textContent = t;
+      const aria = en ? "Quitar de mi lista" : "Agregar a mi lista";
+      if (m.getAttribute("aria-label") !== aria) m.setAttribute("aria-label", aria);
+    });
+    const p = panelVis(); if (!p) return;
+    const b = bloquePrincipal(p); if (!b) return;
+    let todo = b.bloque.querySelector(".agtodo");
+    if (!todo) {
+      todo = document.createElement("button");
+      todo.type = "button"; todo.className = "agtodo";
+      todo.addEventListener("click", agregarTodaLaRutina);
+      const tot = b.bloque.querySelector(".rtotal");
+      (tot || b.lista).insertAdjacentElement("afterend", todo);
+    }
+    const faltan = filasRutina(b.lista).filter(rp => {
+      const nom = rp.querySelector(".pname");
+      return nom && !enCarrito(+nom.dataset.p);
+    }).length;
+    if (todo.hidden !== (faltan === 0)) todo.hidden = faltan === 0;
+    const txt = `🛍️ Agregar toda la rutina a mi lista (${faltan})`;
+    if (todo.textContent !== txt) todo.textContent = txt;
+  }
+  function agregarTodaLaRutina() {
+    const p = panelVis(); if (!p) return;
+    const b = bloquePrincipal(p); if (!b) return;
+    filasRutina(b.lista).forEach(rp => {
+      const nom = rp.querySelector(".pname"); if (!nom) return;
+      agregar(+nom.dataset.p, [...rp.querySelectorAll(".altp")].map(a => +a.dataset.a));
+    });
+  }
+
+  /* la hoja: foto · quitar · «cámbialo» (sin stock o sin gusto) · código · guía */
+  function llenarHoja() {
+    if (!CARRITO.length) {
+      $c("tlista").innerHTML = '<p class="tsm" style="padding:10px 0">Tu lista quedó vacía — agrega productos con el botoncito «+».</p>';
+      $c("ttotal").textContent = "$0"; $c("tquin").textContent = "";
+      $c("tcodigo").textContent = "—"; $c("tguia").hidden = true;
+      $c("tvaciar").hidden = true; $c("tchoque").hidden = true;
+      return;
+    }
+    // dos activos potentes en la MISMA compra chocan (retinol + exfoliante, etc.):
+    // el aviso va aquí, mientras arma la lista — no después de pagar
+    const fuertes = typeof esFuerte === "function"
+      ? CARRITO.filter(x => esFuerte(PROD[x.i])).map(x => PROD[x.i].d) : [];
+    $c("tchoque").hidden = fuertes.length < 2;
+    if (fuertes.length >= 2) $c("tchoque").innerHTML =
+      `⚠️ <b>${fuertes.join("</b> y <b>")}</b> son activos potentes y <b>no van la misma noche</b> ` +
+      `(irritan si se enciman). Puedes llevarlos y alternarlos por noches — tu guía de uso te dice cómo — ` +
+      `o cambiar uno con el ⇄ de abajo. Ante la duda, tu asesora 💕.`;
+    $c("tlista").innerHTML = CARRITO.map(it => {
+      const p = PROD[it.i];
+      // si el renglón llegó sin alternativas (mini de catálogo, búsqueda, ficha,
+      // código SY), se las pedimos al motor: mismo paso, ataca lo mismo (subsDe)
+      const cand = it.alts.length ? it.alts
+        : (typeof subsDe === "function" ? subsDe(it.i) : []);
+      const alts = cand.filter(j => PROD[j] && !enCarrito(j)).slice(0, 3);
+      const yaEn = !alts.length && cand.length
+        ? '<i>sus alternativas ya están en tu lista ✓</i> ' : "";
+      return `<div class="titem">
+        ${p.th ? `<img class="tifoto" src="${RUTA_P}${p.th}" alt="" loading="lazy" data-ficha="${it.i}">` : ""}
+        <div class="tinom" data-ficha="${it.i}"><b>${p.d}</b><small>ó ${p.q} quincenas de $${p.pq} con tu vale</small></div>
+        <span class="tiprecio">${money(p.pc)}</span>
+        <button class="tix" data-quitar="${it.i}" type="button" aria-label="Quitar de mi lista">✕</button>
+      </div>
+      <div class="tialts">⇄ ¿No hay en el estante, o no te late? Cámbialo:
+        ${yaEn}${alts.map(j => `<button class="trpl" type="button" data-de="${it.i}" data-a="${j}">${PROD[j].d} <b>${money(PROD[j].pc)}</b></button>`).join("")}
+        <button class="trpl" type="button" data-ficha="${it.i}">🔍 ver ficha</button>
+      </div>`;
+    }).join("");
+    $c("ttotal").textContent = money(totalCarrito());
+    $c("tquin").textContent = `${CARRITO.length} producto${CARRITO.length === 1 ? "" : "s"} — cada renglón muestra sus quincenas`;
+    $c("tcodigo").textContent = codigoDeLista();
+    $c("tguia").hidden = false;
+    $c("tvaciar").hidden = false;
+  }
+  $c("tlista").addEventListener("click", e => {
+    const q = e.target.closest("[data-quitar]"); if (q) { quitar(+q.dataset.quitar); return; }
+    const r = e.target.closest(".trpl[data-a]"); if (r) { reemplazar(+r.dataset.de, +r.dataset.a); return; }
+    const f = e.target.closest("[data-ficha]");
+    if (f && typeof abrirFicha === "function") {
+      ultimaFichaP = +f.dataset.ficha;   // el botón grande de la ficha apunta a ESTE producto
+      cerrarHoja(); abrirFicha(+f.dataset.ficha);
+    }
+  });
+
+  /* vaciar toda la lista: discreto y con confirmación de doble toque */
+  let _vaciarT = null;
+  $c("tvaciar").addEventListener("click", () => {
+    const b = $c("tvaciar");
+    if (!b.classList.contains("seguro")) {
+      b.classList.add("seguro");
+      b.textContent = "¿Segura? Toca otra vez y se vacía toda la lista";
+      _vaciarT = setTimeout(() => {
+        b.classList.remove("seguro"); b.textContent = "🗑 Vaciar mi lista";
+      }, 3500);
+      return;
+    }
+    clearTimeout(_vaciarT);
+    b.classList.remove("seguro"); b.textContent = "🗑 Vaciar mi lista";
+    CARRITO = []; guardar(); pintarCarrito();
+  });
+
+  /* código SY: n + índices del carrito (2 caracteres base36 c/u) + control */
+  function codigoDeLista() {
+    if (!CARRITO.length) return "—";
+    let cuerpo = CARRITO.length.toString(36).toUpperCase() + CARRITO.map(x => B36(x.i)).join("");
+    let s = 0; for (const ch of cuerpo) s += parseInt(ch, 36);
+    return "SY-" + cuerpo + (s % 36).toString(36).toUpperCase();
+  }
+  function decodificarCodigo(txt) {
+    const t = (txt || "").trim().toUpperCase().replace(/^SY[-\s]*/, "").replace(/[^0-9A-Z]/g, "");
+    if (t.length < 4) return null;
+    const cuerpo = t.slice(0, -1), chk = t.slice(-1);
+    let s = 0; for (const ch of cuerpo) s += parseInt(ch, 36);
+    if ((s % 36).toString(36).toUpperCase() !== chk) return null;
+    const n = parseInt(cuerpo[0], 36);
+    if (!n || cuerpo.length !== 1 + n * 2) return null;
+    const items = [];
+    for (let k = 0; k < n; k++) {
+      const i = parseInt(cuerpo.slice(1 + k * 2, 3 + k * 2), 36);
+      if (!PROD[i] || items.some(x => x.i === i)) return null;
+      items.push({ i, alts: [] });
+    }
+    return items;
+  }
+  function aplicarCodigo(items) { CARRITO = items; guardar(); pintarCarrito(); }
+
+  const abrirHoja = () => { llenarHoja(); $c("tases").hidden = false; document.body.style.overflow = "hidden"; };
+  const cerrarHoja = () => { $c("tases").hidden = true; document.body.style.overflow = ""; };
+  $c("tcart").addEventListener("click", abrirHoja);
+  $c("tcerrar").addEventListener("click", cerrarHoja);
+  $c("tasesx").addEventListener("click", cerrarHoja);
+  $c("tfondo").addEventListener("click", cerrarHoja);
+
+  /* «ya los compré» → los índices pasan al almacén de /guia (mismo orden de skus) */
+  $c("tguia").addEventListener("click", () => {
+    try { localStorage.setItem("guia_mios", JSON.stringify(CARRITO.map(x => x.i))); } catch (e) {}
+  });
+
+  /* la FICHA: botón grande para su producto principal (por click o deep-link #p=N)
+     y minis en sus sustitutos/rutinas sugeridas (los pinta el decorador) */
+  let ultimaFichaP = null;
+  document.addEventListener("click", e => {
+    const b = e.target.closest(".pname, .pcard, .vera");
+    if (b && b.dataset.p !== undefined) ultimaFichaP = +b.dataset.p;
+  }, true);
+  const idxFicha = () => {
+    const m = location.hash.match(/^#p=(\d+)$/);
+    return m ? +m[1] : ultimaFichaP;
+  };
+  const modal = document.getElementById("modal"), mbody = document.getElementById("mbody");
+  if (modal && mbody) new MutationObserver(() => {
+    if (modal.hidden) return;
+    setTimeout(decorarPagina, 0);
+    const i = idxFicha();
+    if (i === null || !PROD[i] || mbody.querySelector(".addficha")) return;
+    const btn = document.createElement("button");
+    btn.type = "button"; btn.className = "addbtn addficha";
+    const pinta = () => {
+      btn.classList.toggle("enlista", enCarrito(i));
+      btn.textContent = enCarrito(i) ? "✓ En mi lista — tocar para quitar" : "➕ Agregar a mi lista";
+    };
+    btn.addEventListener("click", () => { enCarrito(i) ? quitar(i) : agregar(i, []); pinta(); });
+    pinta();
+    const prec = mbody.querySelector(".mprec");
+    (prec || mbody.firstElementChild || mbody).insertAdjacentElement("afterend", btn);
+  }).observe(mbody, { childList: true });
+
+  /* TODO producto que se PINTE en cualquier momento y por cualquier flujo recibe
+     su mini: un vigía de mutaciones con debounce cubre repintadas del motor,
+     resultados de búsqueda, candidatos de foto y lo que venga en el futuro.
+     (Las escrituras del decorador van con guardas de «solo si cambia» para que
+     el vigía no se cicle; setTimeout y no rAF: corre en segundo plano.) */
+  let _debounce = null;
+  new MutationObserver(() => {
+    clearTimeout(_debounce);
+    _debounce = setTimeout(decorarPagina, 80);
+  }).observe(document.body, { childList: true, subtree: true });
+
+  decorarPagina();
+  pintarCarrito();
+  window._carrito = { agregar, quitar, reemplazar, carrito: () => CARRITO,
+    codigoDeLista, decodificarCodigo, aplicarCodigo, decorar: decorarPagina,
+    abrirHoja, cerrarHoja };
+})();</script>
+<script>
+(() => {
+  const $g = id => document.getElementById(id);
+  if (!$g("sybtn")) return;
+  const cerrarCod = () => { $g("tcod").hidden = true; document.body.style.overflow = ""; };
+  $g("sybtn").addEventListener("click", () => {
+    $g("tcoderr").hidden = true; $g("tcodin").value = "";
+    $g("tcod").hidden = false; document.body.style.overflow = "hidden";
+    setTimeout(() => $g("tcodin").focus(), 60);
+  });
+  $g("tcodcerrar").addEventListener("click", cerrarCod);
+  $g("tcodfondo").addEventListener("click", cerrarCod);
+  $g("tcodver").addEventListener("click", () => {
+    const C = window._carrito;
+    const items = C && C.decodificarCodigo($g("tcodin").value);
+    if (!items) { $g("tcoderr").hidden = false; return; }
+    cerrarCod();
+    C.aplicarCodigo(items);
+    C.abrirHoja();
+  });
+  $g("tcodin").addEventListener("keydown", e => { if (e.key === "Enter") $g("tcodver").click(); });
 })();
 </script>

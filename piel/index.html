@@ -5,8 +5,8 @@
 <meta name="robots" content="noindex">
 <meta name="description" content="Contesta 7 preguntas (1 minuto) y te armamos tu rutina coreana con precios de contado o en quincenas. Si quieres, te guiamos zona por zona sobre tu propia selfie — que nunca sale de tu celular.">
 <title>SO YOUNG · ¿Qué necesita tu piel?</title>
-<meta name="x-contenido" content="77aa42b2aa">
-<meta name="x-piel" content="9dc1997e7c">
+<meta name="x-contenido" content="6a9fac2d9f">
+<meta name="x-piel" content="d9b4d2e91a">
 <style>
 :root { --rosa:#D96C82; --rosad:#B94F66; --ink:#2A2226; --crema:#FBF6F4; --crema2:#FAEDEE;
   --mut:#8b7d82; --line:#F0DDE1; --texto:#584a4f; color-scheme: light; }
@@ -5446,6 +5446,9 @@ window._pielTest = { PREG, ZONAS, calcular, empezarQuiz, terminar, ir,
   const SELLO = document.querySelector('meta[name="x-contenido"]').content;
   const LSK = "tienda_carrito";
   const SELS = window.CARRITO_SELS || ".pname[data-p]";
+  /* las 3 herramientas viven en subcarpeta (fotos en ../p/); el backstage raíz
+     define window.CARRITO_RUTA_P = "p/" antes de cargar este módulo */
+  const RUTA_P = window.CARRITO_RUTA_P || "../p/";
   let CARRITO = [];
   try {
     const g = JSON.parse(localStorage.getItem(LSK) || "null");
@@ -5579,7 +5582,7 @@ window._pielTest = { PREG, ZONAS, calcular, empezarQuiz, terminar, ir,
       const yaEn = !alts.length && cand.length
         ? '<i>sus alternativas ya están en tu lista ✓</i> ' : "";
       return `<div class="titem">
-        ${p.th ? `<img class="tifoto" src="../p/${p.th}" alt="" loading="lazy" data-ficha="${it.i}">` : ""}
+        ${p.th ? `<img class="tifoto" src="${RUTA_P}${p.th}" alt="" loading="lazy" data-ficha="${it.i}">` : ""}
         <div class="tinom" data-ficha="${it.i}"><b>${p.d}</b><small>ó ${p.q} quincenas de $${p.pq} con tu vale</small></div>
         <span class="tiprecio">${money(p.pc)}</span>
         <button class="tix" data-quitar="${it.i}" type="button" aria-label="Quitar de mi lista">✕</button>

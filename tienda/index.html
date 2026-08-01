@@ -4,8 +4,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Tu asesora K-beauty de bolsillo en el corner SO YOUNG: entiende cualquier producto del estante, arma tu rutina coreana y conoce precios de contado o en quincenas con tu vale.">
 <meta name="robots" content="noindex">
-<meta name="x-contenido" content="77aa42b2aa">
-<meta name="x-tienda" content="646a94b6f2">
+<meta name="x-contenido" content="6a9fac2d9f">
+<meta name="x-tienda" content="fae14ae895">
 <meta name="theme-color" content="#FAF5F2">
 <title>SO YOUNG · Tu asesora de bolsillo</title>
 <style>
@@ -5041,6 +5041,9 @@ q.addEventListener("input", () => {
   const SELLO = document.querySelector('meta[name="x-contenido"]').content;
   const LSK = "tienda_carrito";
   const SELS = window.CARRITO_SELS || ".pname[data-p]";
+  /* las 3 herramientas viven en subcarpeta (fotos en ../p/); el backstage raíz
+     define window.CARRITO_RUTA_P = "p/" antes de cargar este módulo */
+  const RUTA_P = window.CARRITO_RUTA_P || "../p/";
   let CARRITO = [];
   try {
     const g = JSON.parse(localStorage.getItem(LSK) || "null");
@@ -5174,7 +5177,7 @@ q.addEventListener("input", () => {
       const yaEn = !alts.length && cand.length
         ? '<i>sus alternativas ya están en tu lista ✓</i> ' : "";
       return `<div class="titem">
-        ${p.th ? `<img class="tifoto" src="../p/${p.th}" alt="" loading="lazy" data-ficha="${it.i}">` : ""}
+        ${p.th ? `<img class="tifoto" src="${RUTA_P}${p.th}" alt="" loading="lazy" data-ficha="${it.i}">` : ""}
         <div class="tinom" data-ficha="${it.i}"><b>${p.d}</b><small>ó ${p.q} quincenas de $${p.pq} con tu vale</small></div>
         <span class="tiprecio">${money(p.pc)}</span>
         <button class="tix" data-quitar="${it.i}" type="button" aria-label="Quitar de mi lista">✕</button>
