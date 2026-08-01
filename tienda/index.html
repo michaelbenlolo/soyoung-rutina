@@ -4,8 +4,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Tu asesora K-beauty de bolsillo en el corner SO YOUNG: entiende cualquier producto del estante, arma tu rutina coreana y conoce precios de contado o en quincenas con tu vale.">
 <meta name="robots" content="noindex">
-<meta name="x-contenido" content="7f33291e29">
-<meta name="x-tienda" content="d6c1bc1161">
+<meta name="x-contenido" content="77aa42b2aa">
+<meta name="x-tienda" content="646a94b6f2">
 <meta name="theme-color" content="#FAF5F2">
 <title>SO YOUNG · Tu asesora de bolsillo</title>
 <style>
@@ -4883,7 +4883,7 @@ function abrirFicha(i) {
     <div class="mrow"><div class="mlab">¿Cómo se usa?</div><div>${COMO[p.p]}</div></div>
     <div class="mrow"><div class="mlab">Su colección</div><div><b>${p.c}</b> — ${p.cp}</div></div>
     ${subs.length ? `<div class="mrow"><div class="mlab">🔄 Si no hay — y en qué cambian</div><div>${
-      subs.map(({o, j}) => `<button class="pname alt" data-p="${j}">${o.d}</button> <span class="msub">${esFuerte(o) ? "🔥" : "🌿"} ${o.m} · ${money(o.pc)} · $${o.pq}/q</span>`).join("<br>")
+      subs.map(({o, j}) => `<button class="pname alt" data-p="${j}">${o.d}</button> <span class="msub">${esFuerte(o) ? "🔥 potente" : "🌿 suave"} · ${o.m} · ${money(o.pc)} · $${o.pq}/q</span>`).join("<br>")
     }<div class="mdif">Este: ${esFuerte(p) ? "🔥 activo potente" : "🌿 fórmula suave"} · $${p.pq}/q — mismo paso, cambia fórmula y precio.</div></div></div>` : ""}`;
   modal.hidden = false;
   document.body.style.overflow = "hidden";

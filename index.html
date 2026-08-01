@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="La herramienta de la asesora SO YOUNG: arma la rutina de tu clienta en 1 minuto, con guiones, precios de contado y quincenas con el vale.">
 <title>SO YOUNG · La herramienta de la asesora</title>
-<meta name="x-contenido" content="7f33291e29">
+<meta name="x-contenido" content="77aa42b2aa">
 <style>
 :root { --rosa:#D96C82; --rosad:#B94F66; --ink:#2A2226; --crema:#FBF6F4; --crema2:#FAEDEE;
   --mut:#8b7d82; --line:#F0DDE1; --texto:#584a4f; color-scheme: light; }
@@ -7253,7 +7253,7 @@ function abrirFicha(i) {
     <div class="mrow"><div class="mlab">¿Cómo se usa?</div><div>${COMO[p.p]}</div></div>
     <div class="mrow"><div class="mlab">Su colección</div><div><b>${p.c}</b> — ${p.cp}</div></div>
     ${subs.length ? `<div class="mrow"><div class="mlab">🔄 Si no hay — y en qué cambian</div><div>${
-      subs.map(({o, j}) => `<button class="pname alt" data-p="${j}">${o.d}</button> <span class="msub">${esFuerte(o) ? "🔥" : "🌿"} ${o.m} · ${money(o.pc)} · $${o.pq}/q</span>`).join("<br>")
+      subs.map(({o, j}) => `<button class="pname alt" data-p="${j}">${o.d}</button> <span class="msub">${esFuerte(o) ? "🔥 potente" : "🌿 suave"} · ${o.m} · ${money(o.pc)} · $${o.pq}/q</span>`).join("<br>")
     }<div class="mdif">Este: ${esFuerte(p) ? "🔥 activo potente" : "🌿 fórmula suave"} · $${p.pq}/q — mismo paso, cambia fórmula y precio.</div></div></div>` : ""}`;
   modal.hidden = false;
   document.body.style.overflow = "hidden";

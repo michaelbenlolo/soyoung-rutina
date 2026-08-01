@@ -5,8 +5,8 @@
 <meta name="robots" content="noindex">
 <meta name="description" content="¿Qué producto estás viendo? Escanea su código de barras, tómale foto o escribe su nombre: te decimos qué es, cuánto cuesta y con qué rutina va.">
 <title>SO YOUNG · ¿Qué producto estás viendo?</title>
-<meta name="x-contenido" content="7f33291e29">
-<meta name="x-buscar" content="d13d9b101a">
+<meta name="x-contenido" content="77aa42b2aa">
+<meta name="x-buscar" content="f3ad39f78b">
 <style>
 :root { --rosa:#D96C82; --rosad:#B94F66; --ink:#2A2226; --crema:#FBF6F4; --crema2:#FAEDEE;
   --mut:#8b7d82; --line:#F0DDE1; --texto:#584a4f; color-scheme: light; }
@@ -467,6 +467,10 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
   font:inherit; font-size:10.5px; font-weight:600; color:var(--texto); cursor:pointer; }
 .cpaso.on { border-color:var(--rosad); background:var(--crema2); color:var(--rosad); }
 .cmptit { margin-top:10px; font-size:11px; font-weight:700; color:var(--mut); line-height:1.45; }
+.cley { margin-top:9px; font-size:10px; color:var(--mut); line-height:1.5; background:var(--crema);
+  border-radius:10px; padding:7px 9px; }
+.cley b { color:var(--texto); }
+.cataca { display:block; font-size:9.5px; font-weight:700; color:var(--rosad); margin-top:2px; }
 .cgrp { margin-top:12px; font-size:10px; font-weight:800; letter-spacing:.08em; color:var(--rosad);
   background:var(--crema2); border-radius:8px; padding:5px 9px; }
 .crow2 { appearance:none; border:none; background:none; font:inherit; text-align:left; cursor:pointer;
@@ -477,7 +481,7 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
 .cmain2 em { font-style:normal; font-size:10px; color:var(--mut); display:block; }
 .cmain2 i { font-style:normal; font-size:10.5px; color:var(--texto); line-height:1.4; display:block; margin-top:1px; }
 .cside2 { flex:0 0 auto; text-align:right; }
-.cside2 u { display:block; text-decoration:none; font-size:11px; }
+.cside2 u { display:block; text-decoration:none; font-size:9px; font-weight:700; color:var(--texto); white-space:nowrap; }
 .cside2 b { font-size:12.5px; font-weight:800; color:var(--rosad); display:block; }
 .cside2 em { font-style:normal; font-size:9.5px; color:var(--mut); }
 .mctop { display:inline-block; font-size:9px; font-weight:800; color:var(--rosad); background:var(--crema2);
@@ -614,6 +618,9 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
         <div class="dslot" id="dslot0"></div>
         <div class="dslot" id="dslot1"></div>
       </div>
+      <div class="cley">Cómo leer: <b>🌿 suave</b> = apta para piel sensible o embarazo · <b>🔥 potente</b> = activo fuerte,
+        resultados más marcados pero no para sensibles ni embarazadas, y nunca dos 🔥 en la misma rutina ·
+        <b>ataca:</b> las necesidades que resuelve · <b>$/q</b> = su pago quincenal con el vale.</div>
       <div id="dresult"></div>
     </div>
     <div class="cwrap">
@@ -627,6 +634,9 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
         <button class="cpaso" type="button" data-paso="S">🧴 sellan</button>
         <button class="cpaso" type="button" data-paso="SOL">☀️ protegen</button>
       </div>
+      <div class="cley">Cómo leer: <b>🌿 suave</b> = apta para piel sensible o embarazo · <b>🔥 potente</b> = activo fuerte,
+        resultados más marcados pero no para sensibles ni embarazadas · <b>ataca:</b> lo que resuelve ·
+        <b>$/q</b> = pago quincenal con el vale.</div>
       <div id="cmpout"></div>
     </div>
   </section>
@@ -3024,7 +3034,7 @@ function abrirFicha(i, origen) {
     <div class="mrow"><div class="mlab">¿Cómo se usa?</div><div>${COMO[p.p]}</div></div>
     <div class="mrow"><div class="mlab">Su colección</div><div><b>${p.c}</b> — ${p.cp}</div></div>
     ${subs.length ? `<div class="mrow"><div class="mlab">🔄 Si no hay — y en qué cambian</div><div>${
-      subs.map(({ o, j }) => `<button class="pname alt" data-p="${j}">${o.d}</button> <span class="msub">${esFuerte(o) ? "🔥" : "🌿"} ${o.m} · ${money(o.pc)} · $${o.pq}/q</span>`).join("<br>")
+      subs.map(({ o, j }) => `<button class="pname alt" data-p="${j}">${o.d}</button> <span class="msub">${esFuerte(o) ? "🔥 potente" : "🌿 suave"} · ${o.m} · ${money(o.pc)} · $${o.pq}/q</span>`).join("<br>")
     }<div class="mdif">Este: ${esFuerte(p) ? "🔥 activo potente" : "🌿 suave"} · $${p.pq}/q — mismo paso (${PNOM[p.p]}), cambia fórmula y precio.</div></div></div>` : ""}
     ${niv ? `<div class="mrow"><div class="mlab">💗 Su rutina recomendada</div>
       <div class="linea"><div class="ltit">${p.ci} La rutina de su línea ${p.c}</div><div style="padding:0 11px">${niv}</div></div></div>` : ""}
@@ -3424,6 +3434,12 @@ document.querySelectorAll('a[href="#catalogo"], a[href="#identifica"], a[href="#
    uso, potencia 🔥/🌿 (esFuerte del motor), rotación 🏆 y precio/quincena. */
 const DUELO = [null, null];
 const dnums = ["①", "②"];
+/* qué necesidades resuelve, en palabras (Michael 1-ago: los iconos solos no se
+   entendían) — las claves del mapa curado ya son español corto: manchas, poros… */
+const ataca = p => {
+  const t = p.t.filter(x => NEC[x]);
+  return t.length ? t.slice(0, 3).join(" · ") + (t.length > 3 ? " +" : "") : "uso general";
+};
 function pintaSlot(k) {
   const el = document.getElementById("dslot" + k);
   const i = DUELO[k];
@@ -3458,8 +3474,8 @@ function pintaDuelo() {
       ? `<div class="cmptit">🎯 Se compara con estos (${SUBN[PROD[solo].sr] || "su mismo tipo"}, como él) — toca uno y listo:</div>`
         + l.map(({ x, j, af }) =>
           `<button class="crow2 cprow" type="button" data-j="${j}">${imgP(x, "cimg2")}
-            <span class="cmain2"><b>${x.d}</b><em>${x.m}${af ? " · ataca lo mismo" : ""}</em><i>${x.u}</i></span>
-            <span class="cside2"><u>${esFuerte(x) ? "🔥" : "🌿"}</u><b>${money(x.pc)}</b><em>$${x.pq}/q</em></span></button>`).join("")
+            <span class="cmain2"><b>${x.d}</b><em>${x.m}${af ? " · ataca lo mismo" : ""}</em><i>${x.u}</i><span class="cataca">ataca: ${ataca(x)}</span></span>
+            <span class="cside2"><u>${esFuerte(x) ? "🔥 potente" : "🌿 suave"}</u><b>${money(x.pc)}</b><em>$${x.pq}/q</em></span></button>`).join("")
       : `<div class="cmpnota">No hay otro ${SUBN[PROD[solo].sr] || "producto de su tipo"} en el corner — este no tiene rival directo.</div>`;
     return;
   }
@@ -3470,7 +3486,8 @@ function pintaDuelo() {
   const filas = [
     ["Qué es", x => `${PICO[x.p]} ${SUBN[x.sr] || PNOM[x.p]} · ${x.c}`],
     ["Para qué", x => x.u],
-    ["Potencia", x => esFuerte(x) ? "🔥 activo potente" : "🌿 suave"],
+    ["Ataca", x => ataca(x)],
+    ["Potencia", x => esFuerte(x) ? "🔥 activo potente — no para sensibles ni embarazo" : "🌿 suave — apta piel sensible"],
     ["Precio", x => `${money(x.pc)}<em> · $${x.pq}/q</em>`],
   ];
   /* aviso por TIPO, no solo por paso (Michael 1-ago: una mascarilla y un sérum
@@ -3537,8 +3554,8 @@ function pintaCmp() {
       return `<div class="cgrp">${SUBN[g] ? SUBN[g].toUpperCase() : "OTROS"} · ${gl.length}${gl.length > 1 ? " — comparables entre sí" : ""}</div>`
         + gl.map(({ p, i }) =>
           `<button class="crow2" type="button" data-p="${i}">${imgP(p, "cimg2")}
-            <span class="cmain2"><b>${p.d}</b><em>${p.m}</em><i>${p.u}</i>${p.v === topv && topv > 0 && gl.length > 1 ? '<span class="mctop">🏆 el que más piden de su tipo</span>' : ""}</span>
-            <span class="cside2"><u>${esFuerte(p) ? "🔥" : "🌿"}</u><b>${money(p.pc)}</b><em>$${p.pq}/q</em></span></button>`).join("");
+            <span class="cmain2"><b>${p.d}</b><em>${p.m}</em><i>${p.u}</i><span class="cataca">ataca: ${ataca(p)}</span>${p.v === topv && topv > 0 && gl.length > 1 ? '<span class="mctop">🏆 el que más piden de su tipo</span>' : ""}</span>
+            <span class="cside2"><u>${esFuerte(p) ? "🔥 potente" : "🌿 suave"}</u><b>${money(p.pc)}</b><em>$${p.pq}/q</em></span></button>`).join("");
     }).join("");
 }
 pintaCmp();
