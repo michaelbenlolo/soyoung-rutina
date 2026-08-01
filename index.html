@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="La herramienta de la asesora SO YOUNG: arma la rutina de tu clienta en 1 minuto, con guiones, precios de contado y quincenas con el vale.">
 <title>SO YOUNG · La herramienta de la asesora</title>
-<meta name="x-contenido" content="f7d658a2df">
+<meta name="x-contenido" content="b8f15c4e89">
 <style>
 :root { --rosa:#D96C82; --rosad:#B94F66; --ink:#2A2226; --crema:#FBF6F4; --crema2:#FAEDEE;
   --mut:#8b7d82; --line:#F0DDE1; --texto:#584a4f; color-scheme: light; }
@@ -163,6 +163,28 @@ details.col, .mv { scroll-margin-top:58px; }   /* la barra fija no tapa el desti
 .mvguion { font-size:11px; background:var(--crema); border-radius:9px; padding:6px 8px; margin-top:6px; line-height:1.45; }
 .mvver { appearance:none; border:none; background:none; font:inherit; font-size:11px; font-weight:700; color:var(--rosad);
   padding:6px 0 0; cursor:pointer; }
+/* ⚖️ comparador de opciones — plegable discreto, hechos alineados */
+.mvcomp { margin-top:9px; border:1px solid var(--line); border-radius:12px; background:#fff; }
+.mvcomp .mvct { list-style:none; cursor:pointer; padding:8px 10px; display:flex; align-items:center; gap:5px;
+  font-size:12px; font-weight:700; color:var(--texto); -webkit-tap-highlight-color:transparent; user-select:none; }
+.mvcomp .mvct::-webkit-details-marker { display:none; }
+.mvcomp .mvct em { font-style:normal; font-weight:500; font-size:10.5px; color:var(--mut); margin-left:auto; }
+.mvcomp .mvct .rcar { flex:0 0 auto; width:18px; height:18px; border-radius:50%; background:var(--crema2); color:var(--rosad);
+  display:flex; align-items:center; justify-content:center; font-size:10px; transition:transform .15s; }
+.mvcomp[open] .mvct .rcar { transform:rotate(180deg); }
+.mvcompb { padding:0 10px 9px; }
+.mcrow { display:flex; gap:7px; align-items:flex-start; border-top:1px dashed var(--line); padding:8px 0; }
+.mcrow.fuera { display:none; }
+.mcic { flex:0 0 auto; font-size:14px; }
+.mcmain { min-width:0; flex:1; }
+.mcmain b { font-size:12px; display:block; }
+.mcmain i { font-style:normal; font-size:10.5px; color:var(--mut); line-height:1.4; display:block; margin-top:1px; }
+.mctop { display:inline-block; font-size:9px; font-weight:800; color:var(--rosad); background:var(--crema2);
+  border-radius:99px; padding:1px 7px; margin-top:2px; }
+.mcside { flex:0 0 auto; text-align:right; }
+.mcside u { display:block; text-decoration:none; font-size:9.5px; font-weight:700; color:var(--texto); }
+.mcside b { font-size:12.5px; font-weight:800; color:var(--rosad); }
+.mvcompn { font-size:10.5px; color:var(--mut); line-height:1.5; border-top:1px dashed var(--line); padding-top:7px; }
 .mvarr { font-size:11px; line-height:1.5; background:var(--crema); border-radius:12px; padding:8px 10px; margin-top:9px; }
 .mvarr .pname { font-size:11px; }
 .mvarrp { font-weight:800; color:var(--rosad); white-space:nowrap; }
@@ -394,7 +416,25 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
           <div class="mvprecio">$1,744 <em>ó 12 quincenas de $203</em></div>
           <div class="mvguion">💬 «El bloqueador con color te empareja el tono al instante — pruébatelo.»</div>
           <button class="mvver" type="button" data-need="manchas" data-marca="SKIN1004" data-col="Tone Brightening">Ver la rutina armada ↓</button>
-        </div><div class="mvarr">🚪 <b>Rutina de arranque</b> — si el tope no da o duda, abre con UN producto:
+        </div><details class="mvcomp"><summary class="mvct">⚖️ ¿Cuál le doy?<em>las diferencias en corto</em><span class="rcar">▾</span></summary>
+            <div class="mvcompb"><div class="mcrow" data-pq="150" data-f="1">
+              <span class="mcic">💰</span>
+              <div class="mcmain"><b>Boosting Shot <span class="cmarca2">SKIN1004</span></b><span class="mctop">🏆 la que más piden</span>
+                <i>Retinol 0.2% o Niacinamida 10%, en frasco pequeño y potente</i></div>
+              <div class="mcside"><u>🔥 potente</u><b>$150/q</b></div>
+            </div><div class="mcrow" data-pq="162" data-f="1">
+              <span class="mcic">⭐</span>
+              <div class="mcmain"><b>Kojic Acid Turmeric <span class="cmarca2">Medicube</span></b>
+                <i>Ácido kójico + cúrcuma, la dupla clásica para aclarar</i></div>
+              <div class="mcside"><u>🔥 potente</u><b>$162/q</b></div>
+            </div><div class="mcrow" data-pq="203" data-f="0">
+              <span class="mcic">👑</span>
+              <div class="mcmain"><b>Tone Brightening <span class="cmarca2">SKIN1004</span></b>
+                <i>Centella + activos iluminadores, con bloqueador con color</i></div>
+              <div class="mcside"><u>🌿 suave</u><b>$203/q</b></div>
+            </div>
+              <div class="mvcompn">La diferencia real es la <b>fórmula</b> y la <b>potencia</b> — no hay «mejor para todas»: elige por su piel
+              (sensible o embarazo → 🌿 suave) y su quincena. Ante la duda, la ⭐.</div></div></details><div class="mvarr">🚪 <b>Rutina de arranque</b> — si el tope no da o duda, abre con UN producto:
           <button class="pname" data-p="112">Tone Brightening Cleansing Gel 125ml<span class="pver">ver ficha</span></button>
           <span class="mvarrp">$309 <em>ó 10 quincenas de $43</em></span> — y la rutina completa queda para su siguiente quincena.</div><div class="mvnada" hidden>Con ese tope quincenal no alcanza rutina completa aquí — abre con la <b>rutina de arranque</b> de arriba, o quita el filtro.</div></div><div class="mvbloque" id="mv-poros" hidden><div class="mvcard" data-k="SKIN1004|Poremizing" data-pq="180" data-f="0">
           <div class="mvtag">💰 La económica</div>
@@ -410,7 +450,20 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
           <div class="mvprecio">$1,550 <em>ó 12 quincenas de $181</em></div>
           <div class="mvguion">💬 «Pásate la toallita por la nariz y mira lo que sale — por eso es la más viral.»</div>
           <button class="mvver" type="button" data-need="poros" data-marca="Medicube" data-col="Zero Pore">Ver la rutina armada ↓</button>
-        </div><div class="mvarr">🚪 <b>Rutina de arranque</b> — si el tope no da o duda, abre con UN producto:
+        </div><details class="mvcomp"><summary class="mvct">⚖️ ¿Cuál le doy?<em>las diferencias en corto</em><span class="rcar">▾</span></summary>
+            <div class="mvcompb"><div class="mcrow" data-pq="180" data-f="0">
+              <span class="mcic">💰</span>
+              <div class="mcmain"><b>Poremizing <span class="cmarca2">SKIN1004</span></b>
+                <i>Centella + activos que limpian y afinan el poro</i></div>
+              <div class="mcside"><u>🌿 suave</u><b>$180/q</b></div>
+            </div><div class="mcrow" data-pq="181" data-f="1">
+              <span class="mcic">⭐</span>
+              <div class="mcmain"><b>Zero Pore <span class="cmarca2">Medicube</span></b><span class="mctop">🏆 la que más piden</span>
+                <i>Ácidos suaves y arcilla que limpian por dentro del poro</i></div>
+              <div class="mcside"><u>🔥 potente</u><b>$181/q</b></div>
+            </div>
+              <div class="mvcompn">La diferencia real es la <b>fórmula</b> y la <b>potencia</b> — no hay «mejor para todas»: elige por su piel
+              (sensible o embarazo → 🌿 suave) y su quincena. Ante la duda, la ⭐.</div></div></details><div class="mvarr">🚪 <b>Rutina de arranque</b> — si el tope no da o duda, abre con UN producto:
           <button class="pname" data-p="31">Zero Pore Hydrating Sun Serum 50ml<span class="pver">ver ficha</span></button>
           <span class="mvarrp">$282 <em>ó 10 quincenas de $39</em></span> — y la rutina completa queda para su siguiente quincena.</div><div class="mvnada" hidden>Con ese tope quincenal no alcanza rutina completa aquí — abre con la <b>rutina de arranque</b> de arriba, o quita el filtro.</div></div><div class="mvbloque" id="mv-granitos" hidden><div class="mvcard" data-k="Medicube|Azelaic Acid" data-pq="124" data-f="0">
           <div class="mvtag">💰 La económica</div>
@@ -426,7 +479,20 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
           <div class="mvprecio">$1,703 <em>ó 12 quincenas de $199</em></div>
           <div class="mvguion">💬 «Aquí está todo el paso a paso para los granitos, de la misma línea.»</div>
           <button class="mvver" type="button" data-need="granitos" data-marca="SKIN1004" data-col="Tea-Trica">Ver la rutina armada ↓</button>
-        </div><div class="mvarr">🚪 <b>Rutina de arranque</b> — si el tope no da o duda, abre con UN producto:
+        </div><details class="mvcomp"><summary class="mvct">⚖️ ¿Cuál le doy?<em>las diferencias en corto</em><span class="rcar">▾</span></summary>
+            <div class="mvcompb"><div class="mcrow" data-pq="124" data-f="0">
+              <span class="mcic">💰</span>
+              <div class="mcmain"><b>Azelaic Acid <span class="cmarca2">Medicube</span></b><span class="mctop">🏆 la que más piden</span>
+                <i>Ácido azelaico, de los pocos que sirve para acné y rosácea a la vez</i></div>
+              <div class="mcside"><u>🌿 suave</u><b>$124/q</b></div>
+            </div><div class="mcrow" data-pq="199" data-f="1">
+              <span class="mcic">⭐</span>
+              <div class="mcmain"><b>Tea-Trica <span class="cmarca2">SKIN1004</span></b>
+                <i>Árbol de té + centella: desinflama el brote sin resecar</i></div>
+              <div class="mcside"><u>🔥 potente</u><b>$199/q</b></div>
+            </div>
+              <div class="mvcompn">La diferencia real es la <b>fórmula</b> y la <b>potencia</b> — no hay «mejor para todas»: elige por su piel
+              (sensible o embarazo → 🌿 suave) y su quincena. Ante la duda, la ⭐.</div></div></details><div class="mvarr">🚪 <b>Rutina de arranque</b> — si el tope no da o duda, abre con UN producto:
           <button class="pname" data-p="89">Tea-Trica Relief Ampoule 30ml<span class="pver">ver ficha</span></button>
           <span class="mvarrp">$209 <em>ó 8 quincenas de $37</em></span> — y la rutina completa queda para su siguiente quincena.</div><div class="mvnada" hidden>Con ese tope quincenal no alcanza rutina completa aquí — abre con la <b>rutina de arranque</b> de arriba, o quita el filtro.</div></div><div class="mvbloque" id="mv-sensible" hidden><div class="mvcard" data-k="Medicube|Hyaluronic" data-pq="141" data-f="0">
           <div class="mvtag">💰 La económica</div>
@@ -449,7 +515,25 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
           <div class="mvprecio">$1,767 <em>ó 12 quincenas de $206</em></div>
           <div class="mvguion">💬 «Ponte una gota del bloqueador en la mano: se siente como sérum, no deja blanco.»</div>
           <button class="mvver" type="button" data-need="sensible" data-marca="SKIN1004" data-col="Hyalu-Cica">Ver la rutina armada ↓</button>
-        </div><div class="mvarr">🚪 <b>Rutina de arranque</b> — si el tope no da o duda, abre con UN producto:
+        </div><details class="mvcomp"><summary class="mvct">⚖️ ¿Cuál le doy?<em>las diferencias en corto</em><span class="rcar">▾</span></summary>
+            <div class="mvcompb"><div class="mcrow" data-pq="141" data-f="0">
+              <span class="mcic">💰</span>
+              <div class="mcmain"><b>Hyaluronic <span class="cmarca2">Medicube</span></b><span class="mctop">🏆 la que más piden</span>
+                <i>Ácido hialurónico + ceramidas, que retienen agua y reparan la barrera</i></div>
+              <div class="mcside"><u>🌿 suave</u><b>$141/q</b></div>
+            </div><div class="mcrow" data-pq="161" data-f="0">
+              <span class="mcic">⭐</span>
+              <div class="mcmain"><b>Centella Original <span class="cmarca2">SKIN1004</span></b>
+                <i>Centella asiática de Madagascar pura: la planta que desinflama</i></div>
+              <div class="mcside"><u>🌿 suave</u><b>$161/q</b></div>
+            </div><div class="mcrow" data-pq="206" data-f="0">
+              <span class="mcic">👑</span>
+              <div class="mcmain"><b>Hyalu-Cica <span class="cmarca2">SKIN1004</span></b>
+                <i>Centella + ácido hialurónico: calma y llena de agua</i></div>
+              <div class="mcside"><u>🌿 suave</u><b>$206/q</b></div>
+            </div>
+              <div class="mvcompn">La diferencia real es la <b>fórmula</b> y la <b>potencia</b> — no hay «mejor para todas»: elige por su piel
+              (sensible o embarazo → 🌿 suave) y su quincena. Ante la duda, la ⭐.</div></div></details><div class="mvarr">🚪 <b>Rutina de arranque</b> — si el tope no da o duda, abre con UN producto:
           <button class="pname" data-p="115">Centella Cream 30ml (mini)<span class="pver">ver ficha</span></button>
           <span class="mvarrp">$196 <em>ó 8 quincenas de $34</em></span> — y la rutina completa queda para su siguiente quincena.</div><div class="mvnada" hidden>Con ese tope quincenal no alcanza rutina completa aquí — abre con la <b>rutina de arranque</b> de arriba, o quita el filtro.</div></div><div class="mvbloque" id="mv-edad" hidden><div class="mvcard" data-k="Medicube|NAD" data-pq="141" data-f="0">
           <div class="mvtag">💰 La económica</div>
@@ -472,7 +556,25 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
           <div class="mvprecio">$1,948 <em>ó 12 quincenas de $227</em></div>
           <div class="mvguion">💬 «Es anti-edad para quien no tolera el retinol.»</div>
           <button class="mvver" type="button" data-need="edad" data-marca="SKIN1004" data-col="Probio-Cica">Ver la rutina armada ↓</button>
-        </div><div class="mvarr">🚪 <b>Rutina de arranque</b> — si el tope no da o duda, abre con UN producto:
+        </div><details class="mvcomp"><summary class="mvct">⚖️ ¿Cuál le doy?<em>las diferencias en corto</em><span class="rcar">▾</span></summary>
+            <div class="mvcompb"><div class="mcrow" data-pq="141" data-f="0">
+              <span class="mcic">💰</span>
+              <div class="mcmain"><b>NAD <span class="cmarca2">Medicube</span></b>
+                <i>EGF + NAD, tecnología de regeneración celular</i></div>
+              <div class="mcside"><u>🌿 suave</u><b>$141/q</b></div>
+            </div><div class="mcrow" data-pq="164" data-f="0">
+              <span class="mcic">⭐</span>
+              <div class="mcmain"><b>PDRN Pink <span class="cmarca2">Medicube</span></b><span class="mctop">🏆 la que más piden</span>
+                <i>PDRN, un regenerador que ayuda a la piel a repararse sola, con péptidos rosados</i></div>
+              <div class="mcside"><u>🌿 suave</u><b>$164/q</b></div>
+            </div><div class="mcrow" data-pq="227" data-f="0">
+              <span class="mcic">👑</span>
+              <div class="mcmain"><b>Probio-Cica <span class="cmarca2">SKIN1004</span></b>
+                <i>Probióticos + centella + bakuchiol (el «retinol vegetal»)</i></div>
+              <div class="mcside"><u>🌿 suave</u><b>$227/q</b></div>
+            </div>
+              <div class="mvcompn">La diferencia real es la <b>fórmula</b> y la <b>potencia</b> — no hay «mejor para todas»: elige por su piel
+              (sensible o embarazo → 🌿 suave) y su quincena. Ante la duda, la ⭐.</div></div></details><div class="mvarr">🚪 <b>Rutina de arranque</b> — si el tope no da o duda, abre con UN producto:
           <button class="pname" data-p="76">PDRN Collagen Gel Cleanser<span class="pver">ver ficha</span></button>
           <span class="mvarrp">$245 <em>ó 8 quincenas de $43</em></span> — y la rutina completa queda para su siguiente quincena.</div><div class="mvnada" hidden>Con ese tope quincenal no alcanza rutina completa aquí — abre con la <b>rutina de arranque</b> de arriba, o quita el filtro.</div></div><div class="mvbloque" id="mv-ojos" hidden><div class="mvcard" data-k="Medicube|PDRN Pink" data-pq="164" data-f="0">
           <div class="mvtag">💰 La económica</div>
@@ -495,7 +597,25 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
           <div class="mvprecio">$1,948 <em>ó 12 quincenas de $227</em></div>
           <div class="mvguion">💬 «Es anti-edad para quien no tolera el retinol.»</div>
           <button class="mvver" type="button" data-need="ojos" data-marca="SKIN1004" data-col="Probio-Cica">Ver la rutina armada ↓</button>
-        </div><div class="mvarr">🚪 <b>Rutina de arranque</b> — si el tope no da o duda, abre con UN producto:
+        </div><details class="mvcomp"><summary class="mvct">⚖️ ¿Cuál le doy?<em>las diferencias en corto</em><span class="rcar">▾</span></summary>
+            <div class="mvcompb"><div class="mcrow" data-pq="164" data-f="0">
+              <span class="mcic">💰</span>
+              <div class="mcmain"><b>PDRN Pink <span class="cmarca2">Medicube</span></b><span class="mctop">🏆 la que más piden</span>
+                <i>PDRN, un regenerador que ayuda a la piel a repararse sola, con péptidos rosados</i></div>
+              <div class="mcside"><u>🌿 suave</u><b>$164/q</b></div>
+            </div><div class="mcrow" data-pq="173" data-f="0">
+              <span class="mcic">⭐</span>
+              <div class="mcmain"><b>Sérums Activos <span class="cmarca2">COSRX</span></b>
+                <i>Péptidos, niacinamida 15% y parches de colágeno</i></div>
+              <div class="mcside"><u>🌿 suave</u><b>$173/q</b></div>
+            </div><div class="mcrow" data-pq="227" data-f="0">
+              <span class="mcic">👑</span>
+              <div class="mcmain"><b>Probio-Cica <span class="cmarca2">SKIN1004</span></b>
+                <i>Probióticos + centella + bakuchiol (el «retinol vegetal»)</i></div>
+              <div class="mcside"><u>🌿 suave</u><b>$227/q</b></div>
+            </div>
+              <div class="mvcompn">La diferencia real es la <b>fórmula</b> y la <b>potencia</b> — no hay «mejor para todas»: elige por su piel
+              (sensible o embarazo → 🌿 suave) y su quincena. Ante la duda, la ⭐.</div></div></details><div class="mvarr">🚪 <b>Rutina de arranque</b> — si el tope no da o duda, abre con UN producto:
           <button class="pname" data-p="11">360 Shot PDRN Eye Patch (6 pares)<span class="pver">ver ficha</span></button>
           <span class="mvarrp">$296 <em>ó 10 quincenas de $42</em></span> — y la rutina completa queda para su siguiente quincena.</div><div class="mvnada" hidden>Con ese tope quincenal no alcanza rutina completa aquí — abre con la <b>rutina de arranque</b> de arriba, o quita el filtro.</div></div><div class="mvbloque" id="mv-glow" hidden><div class="mvcard" data-k="Medicube|Hyaluronic" data-pq="141" data-f="0">
           <div class="mvtag">💰 La económica</div>
@@ -518,7 +638,25 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
           <div class="mvprecio">$2,283 <em>ó 12 quincenas de $266</em></div>
           <div class="mvguion">💬 «Fórmula cortita, sin perfume. Ideal si te intimidan los 10 pasos coreanos.»</div>
           <button class="mvver" type="button" data-need="glow" data-marca="MIXSOON" data-col="Bean (fermentado)">Ver la rutina armada ↓</button>
-        </div><div class="mvarr">🚪 <b>Rutina de arranque</b> — si el tope no da o duda, abre con UN producto:
+        </div><details class="mvcomp"><summary class="mvct">⚖️ ¿Cuál le doy?<em>las diferencias en corto</em><span class="rcar">▾</span></summary>
+            <div class="mvcompb"><div class="mcrow" data-pq="141" data-f="0">
+              <span class="mcic">💰</span>
+              <div class="mcmain"><b>Hyaluronic <span class="cmarca2">Medicube</span></b><span class="mctop">🏆 la que más piden</span>
+                <i>Ácido hialurónico + ceramidas, que retienen agua y reparan la barrera</i></div>
+              <div class="mcside"><u>🌿 suave</u><b>$141/q</b></div>
+            </div><div class="mcrow" data-pq="173" data-f="0">
+              <span class="mcic">⭐</span>
+              <div class="mcmain"><b>Advanced Snail <span class="cmarca2">COSRX</span></b>
+                <i>96% de mucina de caracol: repara, hidrata y da glow</i></div>
+              <div class="mcside"><u>🌿 suave</u><b>$173/q</b></div>
+            </div><div class="mcrow" data-pq="266" data-f="0">
+              <span class="mcic">👑</span>
+              <div class="mcmain"><b>Bean (fermentado) <span class="cmarca2">MIXSOON</span></b>
+                <i>Frijol de soya fermentado, con pocos ingredientes y sin perfume</i></div>
+              <div class="mcside"><u>🌿 suave</u><b>$266/q</b></div>
+            </div>
+              <div class="mvcompn">La diferencia real es la <b>fórmula</b> y la <b>potencia</b> — no hay «mejor para todas»: elige por su piel
+              (sensible o embarazo → 🌿 suave) y su quincena. Ante la duda, la ⭐.</div></div></details><div class="mvarr">🚪 <b>Rutina de arranque</b> — si el tope no da o duda, abre con UN producto:
           <button class="pname" data-p="121">Bio-Collagen Real Deep Mask (1 pza)<span class="pver">ver ficha</span></button>
           <span class="mvarrp">$383 <em>ó 10 quincenas de $54</em></span> — y la rutina completa queda para su siguiente quincena.</div><div class="mvnada" hidden>Con ese tope quincenal no alcanza rutina completa aquí — abre con la <b>rutina de arranque</b> de arriba, o quita el filtro.</div></div><div class="mvbloque" id="mv-sol" hidden><div class="mvcard" data-k="D'ALBA|Waterfull Sun" data-pq="151" data-f="0">
           <div class="mvtag">💰 La económica</div>
@@ -541,7 +679,25 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
           <div class="mvprecio">$2,010 <em>ó 12 quincenas de $235</em></div>
           <div class="mvguion">💬 «La barra la traes en la bolsa y te retocas sin despeinarte el maquillaje.»</div>
           <button class="mvver" type="button" data-need="sol" data-marca="COSRX" data-col="Protección Solar">Ver la rutina armada ↓</button>
-        </div><div class="mvarr">🚪 <b>Rutina de arranque</b> — si el tope no da o duda, abre con UN producto:
+        </div><details class="mvcomp"><summary class="mvct">⚖️ ¿Cuál le doy?<em>las diferencias en corto</em><span class="rcar">▾</span></summary>
+            <div class="mvcompb"><div class="mcrow" data-pq="151" data-f="0">
+              <span class="mcic">💰</span>
+              <div class="mcmain"><b>Waterfull Sun <span class="cmarca2">D'ALBA</span></b>
+                <i>Filtros con esencia hidratante de trufa</i></div>
+              <div class="mcside"><u>🌿 suave</u><b>$151/q</b></div>
+            </div><div class="mcrow" data-pq="208" data-f="0">
+              <span class="mcic">⭐</span>
+              <div class="mcmain"><b>Air-Fit Sun <span class="cmarca2">SKIN1004</span></b><span class="mctop">🏆 la que más piden</span>
+                <i>Filtros coreanos con centella calmante</i></div>
+              <div class="mcside"><u>🌿 suave</u><b>$208/q</b></div>
+            </div><div class="mcrow" data-pq="235" data-f="0">
+              <span class="mcic">👑</span>
+              <div class="mcmain"><b>Protección Solar <span class="cmarca2">COSRX</span></b>
+                <i>Filtros ligeros con aloe calmante</i></div>
+              <div class="mcside"><u>🌿 suave</u><b>$235/q</b></div>
+            </div>
+              <div class="mvcompn">La diferencia real es la <b>fórmula</b> y la <b>potencia</b> — no hay «mejor para todas»: elige por su piel
+              (sensible o embarazo → 🌿 suave) y su quincena. Ante la duda, la ⭐.</div></div></details><div class="mvarr">🚪 <b>Rutina de arranque</b> — si el tope no da o duda, abre con UN producto:
           <button class="pname" data-p="31">Zero Pore Hydrating Sun Serum 50ml<span class="pver">ver ficha</span></button>
           <span class="mvarrp">$282 <em>ó 10 quincenas de $39</em></span> — y la rutina completa queda para su siguiente quincena.</div><div class="mvnada" hidden>Con ese tope quincenal no alcanza rutina completa aquí — abre con la <b>rutina de arranque</b> de arriba, o quita el filtro.</div></div><div class="mvbloque" id="mv-regalo" hidden><div class="mvcard" data-k="SKIN1004|Centella Original" data-pq="161" data-f="0">
           <div class="mvtag">⭐ La recomendada</div>
@@ -557,7 +713,20 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
           <div class="mvprecio">$1,408 <em>ó 12 quincenas de $164</em></div>
           <div class="mvguion">💬 «Esta es la línea rosa que es viral en TikTok — y aquí la tienes original.»</div>
           <button class="mvver" type="button" data-need="regalo" data-marca="Medicube" data-col="PDRN Pink">Ver la rutina armada ↓</button>
-        </div><div class="mvarr">🚪 <b>Rutina de arranque</b> — si el tope no da o duda, abre con UN producto:
+        </div><details class="mvcomp"><summary class="mvct">⚖️ ¿Cuál le doy?<em>las diferencias en corto</em><span class="rcar">▾</span></summary>
+            <div class="mvcompb"><div class="mcrow" data-pq="161" data-f="0">
+              <span class="mcic">⭐</span>
+              <div class="mcmain"><b>Centella Original <span class="cmarca2">SKIN1004</span></b>
+                <i>Centella asiática de Madagascar pura: la planta que desinflama</i></div>
+              <div class="mcside"><u>🌿 suave</u><b>$161/q</b></div>
+            </div><div class="mcrow" data-pq="164" data-f="0">
+              <span class="mcic">👑</span>
+              <div class="mcmain"><b>PDRN Pink <span class="cmarca2">Medicube</span></b><span class="mctop">🏆 la que más piden</span>
+                <i>PDRN, un regenerador que ayuda a la piel a repararse sola, con péptidos rosados</i></div>
+              <div class="mcside"><u>🌿 suave</u><b>$164/q</b></div>
+            </div>
+              <div class="mvcompn">La diferencia real es la <b>fórmula</b> y la <b>potencia</b> — no hay «mejor para todas»: elige por su piel
+              (sensible o embarazo → 🌿 suave) y su quincena. Ante la duda, la ⭐.</div></div></details><div class="mvarr">🚪 <b>Rutina de arranque</b> — si el tope no da o duda, abre con UN producto:
           <button class="pname" data-p="121">Bio-Collagen Real Deep Mask (1 pza)<span class="pver">ver ficha</span></button>
           <span class="mvarrp">$383 <em>ó 10 quincenas de $54</em></span> — y la rutina completa queda para su siguiente quincena.</div><div class="mvnada" hidden>Con ese tope quincenal no alcanza rutina completa aquí — abre con la <b>rutina de arranque</b> de arriba, o quita el filtro.</div></div><div class="mvbloque" id="mv-mascarillas" hidden><div class="mvcard" data-k="Medicube|Kojic Acid Turmeric" data-pq="162" data-f="1">
           <div class="mvtag">⭐ La recomendada</div>
@@ -573,7 +742,20 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
           <div class="mvprecio">$1,812 <em>ó 12 quincenas de $211</em></div>
           <div class="mvguion">💬 «Toca la textura — es una gelatina. Por eso se volvió viral.»</div>
           <button class="mvver" type="button" data-need="mascarillas" data-marca="Medicube" data-col="Collagen">Ver la rutina armada ↓</button>
-        </div><div class="mvarr">🚪 <b>Rutina de arranque</b> — si el tope no da o duda, abre con UN producto:
+        </div><details class="mvcomp"><summary class="mvct">⚖️ ¿Cuál le doy?<em>las diferencias en corto</em><span class="rcar">▾</span></summary>
+            <div class="mvcompb"><div class="mcrow" data-pq="162" data-f="1">
+              <span class="mcic">⭐</span>
+              <div class="mcmain"><b>Kojic Acid Turmeric <span class="cmarca2">Medicube</span></b>
+                <i>Ácido kójico + cúrcuma, la dupla clásica para aclarar</i></div>
+              <div class="mcside"><u>🔥 potente</u><b>$162/q</b></div>
+            </div><div class="mcrow" data-pq="211" data-f="0">
+              <span class="mcic">👑</span>
+              <div class="mcmain"><b>Collagen <span class="cmarca2">Medicube</span></b><span class="mctop">🏆 la que más piden</span>
+                <i>Colágeno triple, en textura de gelatina que se derrite en la piel</i></div>
+              <div class="mcside"><u>🌿 suave</u><b>$211/q</b></div>
+            </div>
+              <div class="mvcompn">La diferencia real es la <b>fórmula</b> y la <b>potencia</b> — no hay «mejor para todas»: elige por su piel
+              (sensible o embarazo → 🌿 suave) y su quincena. Ante la duda, la ⭐.</div></div></details><div class="mvarr">🚪 <b>Rutina de arranque</b> — si el tope no da o duda, abre con UN producto:
           <button class="pname" data-p="30">Zero Pore Blackhead Mud Mask<span class="pver">ver ficha</span></button>
           <span class="mvarrp">$322 <em>ó 10 quincenas de $45</em></span> — y la rutina completa queda para su siguiente quincena.</div><div class="mvnada" hidden>Con ese tope quincenal no alcanza rutina completa aquí — abre con la <b>rutina de arranque</b> de arriba, o quita el filtro.</div></div>
   </div>
@@ -7136,12 +7318,16 @@ q.addEventListener("input", () => {
     const b = bloques.find(x => !x.hidden);
     if (!b) return;
     let vivos = 0;
-    b.querySelectorAll(".mvcard").forEach(c => {
+    /* mismo filtro para las tarjetas y sus filas del comparador ⚖️ */
+    b.querySelectorAll(".mvcard, .mcrow").forEach(c => {
       const fuera = (tope && +c.dataset.pq > tope) || (sen.getAttribute("aria-pressed") === "true" && c.dataset.f === "1");
       c.classList.toggle("fuera", fuera);
-      if (!fuera) vivos++;
+      if (!fuera && c.classList.contains("mvcard")) vivos++;
     });
     b.querySelector(".mvnada").hidden = vivos > 0;
+    const comp = b.querySelector(".mvcomp");
+    if (comp) comp.style.display =
+      [...b.querySelectorAll(".mcrow")].filter(x => !x.classList.contains("fuera")).length >= 2 ? "" : "none";
   };
   mv.querySelectorAll(".mvn").forEach(n => n.addEventListener("click", () => {
     const ya = n.classList.contains("on");
