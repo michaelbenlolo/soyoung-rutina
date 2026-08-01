@@ -6,7 +6,7 @@
 <meta name="description" content="Contesta 7 preguntas (1 minuto) y te armamos tu rutina coreana con precios de contado o en quincenas. Si quieres, te guiamos zona por zona sobre tu propia selfie — que nunca sale de tu celular.">
 <title>SO YOUNG · ¿Qué necesita tu piel?</title>
 <meta name="x-contenido" content="74e7bcb46f">
-<meta name="x-piel" content="7e7e725fe5">
+<meta name="x-piel" content="bf56bc82d6">
 <style>
 :root { --rosa:#D96C82; --rosad:#B94F66; --ink:#2A2226; --crema:#FBF6F4; --crema2:#FAEDEE;
   --mut:#8b7d82; --line:#F0DDE1; --texto:#584a4f; color-scheme: light; }
@@ -295,7 +295,7 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
 .pqsec { appearance:none; cursor:pointer; font:inherit; font-weight:700; background:#fff;
   border:1.5px solid var(--line); color:var(--ink); border-radius:16px; padding:13px 16px;
   font-size:13.5px; text-align:center; display:flex; align-items:center; justify-content:center; gap:8px; }
-.pqmain:focus-visible, .pqsec:focus-visible, .qop:focus-visible, .disparo:focus-visible
+.pqmain:focus-visible, .pqsec:focus-visible, .qop:focus-visible, .disparo:focus-visible, .dlado:focus-visible
   { outline:2px solid var(--rosad); outline-offset:2px; }
 .pqmeta { text-align:center; font-size:11.5px; color:var(--mut); margin-top:12px; }
 .pqlegal { font-size:10.8px; color:var(--mut); line-height:1.55; margin-top:16px; text-align:center; }
@@ -306,8 +306,8 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
    angosta lo justo para que el botón de disparo quede siempre a la vista */
 .camwrap { position:relative; margin:12px auto 0; border-radius:20px; overflow:hidden;
   background:#241d20; aspect-ratio:3/4;
-  width:min(100%, max(212px, calc((100vh - 270px) * .75)));
-  width:min(100%, max(212px, calc((100svh - 270px) * .75))); }
+  width:min(100%, max(212px, calc((100vh - 174px) * .75)));
+  width:min(100%, max(212px, calc((100svh - 174px) * .75))); }
 .camwrap video, .camwrap img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
 .camwrap video { transform:scaleX(-1); }
 .guia { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
@@ -326,10 +326,17 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
   cursor:pointer; font:inherit; font-size:13px; background:var(--ink); color:#fff; border-radius:14px;
   padding:13px 15px; box-shadow:0 6px 22px rgba(42,34,38,.35); }
 #vnueva b { color:#F3C3CD; }
-.disparo { width:70px; height:70px; border-radius:50%; border:5px solid #fff; cursor:pointer;
+/* fila compacta tipo cámara nativa: disparo al centro, opciones a los lados —
+   libera alto para que el visor de la cámara vaya a pantalla completa */
+.disparo { width:62px; height:62px; border-radius:50%; border:5px solid #fff; cursor:pointer;
   background:var(--rosa); box-shadow:0 0 0 3px var(--rosa), 0 4px 14px rgba(42,34,38,.28);
-  margin:18px auto 0; display:block; }
+  margin:0; display:block; flex:none; }
 .disparo:active { transform:scale(.94); }
+.disprow { display:flex; align-items:center; justify-content:center; gap:22px; margin-top:10px; }
+.dlado { appearance:none; font-family:inherit; cursor:pointer; background:#fff;
+  border:1.5px solid var(--line); color:var(--texto); border-radius:14px;
+  font-size:11px; font-weight:700; line-height:1.3; padding:7px 12px; text-align:center; }
+.dlado:active { transform:scale(.97); }
 .camfila { display:flex; gap:9px; margin-top:12px; }
 .camfila .pqsec, .camfila .pqmain { flex:1; }
 .subelink { display:block; text-align:center; margin-top:14px; font-size:12.5px;
@@ -482,16 +489,18 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
     <div class="camwrap">
       <video id="cam" playsinline autoplay muted></video>
       <svg class="guia" viewBox="0 0 300 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-        <path d="M0 0 H300 V400 H0 Z M42 172 a108 130 0 1 0 216 0 a108 130 0 1 0 -216 0 Z"
+        <path d="M0 0 H300 V400 H0 Z M38 172 a112 134 0 1 0 224 0 a112 134 0 1 0 -224 0 Z"
               fill="rgba(20,14,16,.38)" fill-rule="evenodd"/>
-        <ellipse cx="150" cy="172" rx="108" ry="130" fill="none" stroke="rgba(255,255,255,.95)" stroke-width="2.6" stroke-dasharray="7 6"/>
+        <ellipse cx="150" cy="172" rx="112" ry="134" fill="none" stroke="rgba(255,255,255,.95)" stroke-width="2.6" stroke-dasharray="7 6"/>
       </svg>
       <div class="caraaqui">👤 Llena el óvalo con tu cara</div>
       <div class="camtip">📏 Ni pegada ni lejos: que tu cara LLENE el óvalo · luz de frente · sin lentes</div>
     </div>
-    <button class="disparo" id="disparo" type="button" aria-label="Tomar la foto"></button>
-    <button class="pqsec" id="nativo1" type="button">📸 Máxima calidad: con la cámara del teléfono</button>
-    <span class="subelink" id="subir1" role="button" tabindex="0">o sube una foto que ya tengas</span>
+    <div class="disprow">
+      <button class="dlado" id="nativo1" type="button">📸 Máxima<br>calidad</button>
+      <button class="disparo" id="disparo" type="button" aria-label="Tomar la foto"></button>
+      <button class="dlado" id="subir1" type="button">🖼 Subir<br>una foto</button>
+    </div>
   </div>
   <div id="camprev" hidden>
     <div class="camwrap"><img id="prevista" alt="Tu selfie"><div class="camtip" id="caraok" hidden></div></div>
@@ -3990,7 +3999,7 @@ const ZONAS = {
    deformación de tenerla pegada a la lente. */
 /* 1-ago (Michael): óvalo más grande — la cara llena más cuadro ⇒ más píxeles de
    piel para ver imperfecciones. Las zonas de respaldo escalan con él solas. */
-const OVALO = { cx:150, cy:172, rx:108, ry:130 };
+const OVALO = { cx:150, cy:172, rx:112, ry:134 };
 
 /* ---------- la cara REAL: cada cara es diferente (Michael, 30-jul) ----------
    Al confirmar la selfie se buscan los puntos de la cara (ojos, cejas, nariz,
@@ -4292,8 +4301,8 @@ function svgCara(zonas) {
   return `<svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <rect width="300" height="400" fill="#FAEDEE"/>
     <g fill="none" stroke="#C9AEB6" stroke-width="3" stroke-linecap="round"
-       transform="translate(150 172) scale(1.256) translate(-150 -172)"><!-- rasgos dibujados
-       para el óvalo 86×104: el transform los lleva al óvalo actual 108×130 -->
+       transform="translate(150 172) scale(1.302) translate(-150 -172)"><!-- rasgos dibujados
+       para el óvalo 86×104: el transform los lleva al óvalo actual 112×134 -->
       <ellipse cx="150" cy="172" rx="86" ry="104"/>
       <path d="M103 135 Q118 128 134 133"/><path d="M166 133 Q182 128 197 135"/>
       <path d="M108 151 Q120 144 133 151 Q120 156 108 151 Z"/>
