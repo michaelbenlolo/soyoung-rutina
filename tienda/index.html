@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Tu asesora K-beauty de bolsillo en el corner SO YOUNG: entiende cualquier producto del estante, arma tu rutina coreana y conoce precios de contado o en quincenas con tu vale.">
 <meta name="x-contenido" content="5179d084b0">
-<meta name="x-tienda" content="a5012f8147">
+<meta name="x-tienda" content="e6a537a9be">
 <meta name="theme-color" content="#FAF5F2">
 <title>SO YOUNG · Tu asesora de bolsillo</title>
 <style>
@@ -401,7 +401,21 @@ body { font-family:-apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, s
 .tguia { display:flex; align-items:center; justify-content:center; gap:8px; margin:10px 0 2px;
   border:1.5px solid #bfe3c5; background:#f2faf3; color:var(--tverde); border-radius:13px;
   padding:13px; font-size:12.5px; font-weight:800; text-decoration:none; }
-/* botón «lo quiero» inyectado en cada producto de la rutina y en la ficha */
+/* el «lo quiero» es un MINI + dentro del cuadro de CADA producto de la página
+   (Michael 1-ago: «más pequeño y sutil, dentro del cuadro que teníamos») */
+.mini { display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px;
+  border-radius:50%; border:1.5px solid var(--trosa); color:var(--trosa); background:#fff;
+  font-size:14px; font-weight:800; line-height:1; margin-left:7px; vertical-align:middle;
+  cursor:pointer; flex:none; }
+.mini.en { background:var(--trosa); color:#fff; }
+.tprod { position:relative; }
+.tprod .mini { position:absolute; top:7px; right:7px; margin:0; background:#fff;
+  box-shadow:0 2px 8px rgba(90,60,60,.14); }
+/* la ✕ para cerrar la lista, arriba */
+.thx { position:absolute; top:12px; right:14px; appearance:none; border:1px solid var(--tline);
+  background:#fff; color:var(--tmut); width:30px; height:30px; border-radius:50%;
+  cursor:pointer; font-size:13px; z-index:2; }
+/* el botón grande queda SOLO en la ficha (ahí hay espacio de sobra) */
 .addbtn { appearance:none; font-family:inherit; cursor:pointer; margin-top:7px;
   border:1.5px solid var(--trosa); background:#fff; color:var(--trosa);
   border-radius:99px; padding:7px 13px; font-size:11.5px; font-weight:800; display:inline-block; }
@@ -3270,6 +3284,7 @@ body { font-family:-apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, s
 <div id="tases" hidden>
   <div class="tfondo" id="tfondo"></div>
   <div class="thoja">
+    <button class="thx" id="tasesx" type="button" aria-label="Cerrar mi lista">✕</button>
     <h3>Tu lista 👜 — enséñasela a tu asesora</h3>
     <p class="tsm">Ella baja todo del estante y te lo aparta hoy mismo. Toca la foto de un producto para ver su ficha.</p>
     <div class="tcodline">🔑 El código de tu lista: <b id="tcodigo">—</b><br>
@@ -3931,7 +3946,7 @@ q.addEventListener("input", () => {
     cta.disabled = n === 0;
     cta.textContent = n === 0 ? "Elige al menos 1"
       : (n === 1 ? "ARMAR MI RUTINA →" : `ARMAR MI RUTINA (${n}) →`);
-    decorarRutina();
+    decorarPagina();
   }
 
   /* ---------- EL CARRITO (Michael 1-ago): nada entra sin elegirse ----------
@@ -3956,7 +3971,7 @@ q.addEventListener("input", () => {
   function pintarCarrito() {
     $("tcart").hidden = !CARRITO.length;
     $("tcartn").textContent = CARRITO.length;
-    decorarRutina();
+    decorarPagina();
     if (!$("tases").hidden) llenarHoja();   // la hoja abierta se refresca sola
   }
   function agregar(i, alts) {
@@ -3991,30 +4006,38 @@ q.addEventListener("input", () => {
   }
   const filasRutina = lista => [...lista.querySelectorAll(".rp[data-org], .rp[data-cur]")];
 
-  /* botones «lo quiero» inyectados en cada fila de la rutina pintada + boton
-     «agregar toda la rutina»; idempotente — corre tras cada pintada del motor */
-  function decorarRutina() {
+  /* el MINI + universal (Michael 1-ago: "todos los productos deben tener la
+     opcion de lo quiero... mas pequeno y sutil, dentro del cuadro"): TODO
+     producto de la pagina se pinta con un boton .pname[data-p] — rutina,
+     ventanas de niveles (rutina mas completa), lineas alternativas, mezclador,
+     refuerzos y estante. Un solo decorador los cubre a todos; idempotente y
+     corre tras cada pintada del motor. En la ficha va el boton grande aparte. */
+  function altsDeFila(nom) {
+    const rp = nom.closest(".rp");
+    return rp ? [...rp.querySelectorAll(".altp")].map(a => +a.dataset.a) : [];
+  }
+  function decorarPagina() {
+    document.querySelectorAll(".pname[data-p]").forEach(nom => {
+      if (nom.closest("#mbody")) return;   // la ficha tiene su propio boton grande
+      let m = nom.querySelector(".mini");
+      if (!m) {
+        m = document.createElement("span");
+        m.className = "mini"; m.setAttribute("role", "button"); m.setAttribute("tabindex", "0");
+        m.addEventListener("click", e => {
+          e.stopPropagation(); e.preventDefault();   // que NO abra la ficha
+          const k = +nom.dataset.p;
+          if (enCarrito(k)) quitar(k); else agregar(k, altsDeFila(nom));
+        });
+        nom.appendChild(m);
+      }
+      const k = +nom.dataset.p;
+      m.classList.toggle("en", enCarrito(k));
+      m.textContent = enCarrito(k) ? "\u2713" : "+";
+      m.setAttribute("aria-label", enCarrito(k) ? "Quitar de mi lista" : "Agregar a mi lista");
+    });
+    // "agregar toda la rutina" — un solo boton discreto bajo el total
     const p = panelVisible(); if (!p) return;
     const b = bloquePrincipal(p); if (!b) return;
-    filasRutina(b.lista).forEach(rp => {
-      const nom = rp.querySelector(".pname"); if (!nom) return;
-      const i = +(rp.dataset.org !== undefined ? nom.dataset.p : (rp.dataset.cur ?? nom.dataset.p));
-      let btn = rp.querySelector(".addbtn");
-      if (!btn) {
-        btn = document.createElement("button");
-        btn.type = "button"; btn.className = "addbtn";
-        btn.addEventListener("click", () => {
-          const k = +btn.dataset.i;
-          if (enCarrito(k)) { quitar(k); return; }
-          const alts = [...rp.querySelectorAll(".altp")].map(a => +a.dataset.a);
-          agregar(k, alts);
-        });
-        (rp.querySelector(".rinfo") || rp).appendChild(btn);
-      }
-      btn.dataset.i = i;
-      btn.classList.toggle("enlista", enCarrito(i));
-      btn.textContent = enCarrito(i) ? "\u2713 En mi lista" : "\u2795 Lo quiero";
-    });
     let todo = b.bloque.querySelector(".agtodo");
     if (!todo) {
       todo = document.createElement("button");
@@ -4105,6 +4128,7 @@ q.addEventListener("input", () => {
   });
   const cerrarAses = () => { $("tases").hidden = true; document.body.style.overflow = ""; };
   $("tcerrar").addEventListener("click", cerrarAses);
+  $("tasesx").addEventListener("click", cerrarAses);
   $("tfondo").addEventListener("click", cerrarAses);
 
   // «ya los comprE» → los indices del carrito pasan al almacEn de /guia
@@ -4161,7 +4185,7 @@ q.addEventListener("input", () => {
   // (solo LEE el DOM — jamas toca PROD; setTimeout y no rAF: corre aunque la
   // pestana este en segundo plano)
   document.addEventListener("click", e => {
-    if (e.target.closest(".altp, .volverp")) setTimeout(decorarRutina, 0);
+    if (e.target.closest(".altp, .volverp")) setTimeout(decorarPagina, 0);
   });
 
   sincronizar();
