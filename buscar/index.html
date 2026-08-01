@@ -6,7 +6,7 @@
 <meta name="description" content="¿Qué producto estás viendo? Tómale foto, escanea su código de barras o escribe su nombre: te decimos qué es, cuánto cuesta y con qué rutina va.">
 <title>SO YOUNG · ¿Qué producto estás viendo?</title>
 <meta name="x-contenido" content="5179d084b0">
-<meta name="x-buscar" content="fc80f6e6a1">
+<meta name="x-buscar" content="c501f1eb3b">
 <style>
 :root { --rosa:#D96C82; --rosad:#B94F66; --ink:#2A2226; --crema:#FBF6F4; --crema2:#FAEDEE;
   --mut:#8b7d82; --line:#F0DDE1; --texto:#584a4f; color-scheme: light; }
@@ -366,7 +366,7 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
   <div class="osep">— O ESCRÍBELO —</div>
   <div class="buscador"><input id="q" type="search" placeholder="Busca: caracol, retinol, bloqueador, Anua…" autocomplete="off"></div>
   <div id="estado" hidden></div>
-  <div id="rgtit" class="rgtit">Los más buscados del corner</div>
+  <div id="rgtit" class="rgtit" hidden></div>
   <div id="rgrid" class="rgrid"></div>
   <div class="vacio" id="vacio" hidden>No encontramos nada con eso. Prueba con la marca («Cosrx»), el formato («espuma», «bloqueador») o tómale foto al código de barras.</div>
   </section>
@@ -2518,7 +2518,7 @@ const coincide = (indice, t) => {
 
 const q = document.getElementById("q"), rgrid = document.getElementById("rgrid"),
       rgtit = document.getElementById("rgtit"), vacio = document.getElementById("vacio"),
-      estado = document.getElementById("estado");
+      estado = document.getElementById("estado"), catal = document.getElementById("catalogo");
 
 function imgP(p, cls) { return p.th ? `<img class="${cls}" src="../p/${p.th}" alt="" loading="lazy">` : ""; }
 
@@ -2532,9 +2532,12 @@ function pintar(indices, titulo) {
   rgtit.textContent = titulo; rgtit.hidden = !indices.length;
   rgrid.innerHTML = indices.map(tarjeta).join("");
   vacio.hidden = indices.length > 0;
+  // con resultados o candidatos a la vista, el catálogo de abajo se esconde para
+  // dejarles la escena; al limpiar la búsqueda, vuelve (pedido de Michael 1-ago:
+  // lo que vive bajo el buscador es TODO EL CORNER, ya no un top de populares)
+  catal.hidden = indices.length > 0;
 }
-const POPULARES = PROD.map((p, i) => i).sort((a, b) => PROD[b].v - PROD[a].v).slice(0, 8);
-function inicio() { vacio.hidden = true; pintar(POPULARES, "Los más buscados del corner"); }
+function inicio() { pintar([], ""); vacio.hidden = true; }
 
 function rango(p, t) {   // identidad > necesidad > prosa; y el nombre exacto suma
   return (coincide(p.b1, t) ? 4 : 0) + (coincide(p.b1 + " " + p.b2, t) ? 2 : 0) +
@@ -2953,6 +2956,11 @@ function marcaTab() {
 }
 addEventListener("scroll", marcaTab, { passive: true });
 marcaTab();
+/* tocar «Todo el corner» siempre debe LLEGAR al catálogo: si había una búsqueda
+   o candidatos de foto (que lo esconden), se limpian y el catálogo reaparece */
+document.querySelector('.pesta[href="#catalogo"]').addEventListener("click", () => {
+  q.value = ""; limpiarAviso(); inicio();
+});
 
 /* volver inteligente: si llegaste desde otra página del sitio (la de clientes
    /tienda o la de la vendedora), el ← te regresa AHÍ; si llegaste directo, va a
