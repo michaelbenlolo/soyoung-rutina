@@ -6,7 +6,7 @@
 <meta name="description" content="¿Qué producto estás viendo? Escanea su código de barras, tómale foto o escribe su nombre: te decimos qué es, cuánto cuesta y con qué rutina va.">
 <title>SO YOUNG · ¿Qué producto estás viendo?</title>
 <meta name="x-contenido" content="b548cf8140">
-<meta name="x-buscar" content="316b1b478f">
+<meta name="x-buscar" content="1112893580">
 <style>
 :root { --rosa:#D96C82; --rosad:#B94F66; --ink:#2A2226; --crema:#FBF6F4; --crema2:#FAEDEE;
   --mut:#8b7d82; --line:#F0DDE1; --texto:#584a4f; color-scheme: light; }
@@ -448,11 +448,25 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
 .pcprecio { font-size:12.5px; font-weight:800; color:var(--ink); margin-top:auto; }
 .pcprecio span { display:block; font-size:9.5px; font-weight:400; color:var(--mut); }
 .mupc { margin-top:14px; font-size:9.5px; color:var(--mut); letter-spacing:.05em; }
-.scanbox { position:fixed; inset:0; z-index:80; background:rgba(20,14,16,.96); display:flex;
-  flex-direction:column; align-items:center; justify-content:center; padding:20px; }
+/* alto REAL de la ventana (100svh): con 100vh iOS cuenta también lo que tapa su barra
+   de abajo, y los botones quedaban cortados fuera de pantalla (Michael 2-ago). El video
+   además lleva tope de alto: nunca puede empujar los botones fuera. */
+.scanbox { position:fixed; inset:0; height:100svh; z-index:80; background:rgba(20,14,16,.96);
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px;
+  padding:14px 20px calc(16px + env(safe-area-inset-bottom)); overflow-y:auto; }
 .scanbox[hidden] { display:none; }
-.scanbox video { width:100%; max-width:480px; border-radius:16px; }
+.scanbox video { width:100%; max-width:480px; max-height:46svh; object-fit:cover;
+  border-radius:16px; flex:none; }
 .scanmsg { color:#fff; font-size:13px; margin-top:14px; text-align:center; line-height:1.5; }
+/* teclear el código: el respaldo que funciona en cualquier teléfono */
+.scanman { display:flex; gap:7px; margin-top:12px; width:100%; max-width:480px; }
+.scanman input { flex:1; min-width:0; font:inherit; font-size:16px; padding:11px 13px;
+  border:1px solid rgba(255,255,255,.45); border-radius:12px; background:rgba(255,255,255,.1);
+  color:#fff; }
+.scanman input::placeholder { color:rgba(255,255,255,.6); }
+.scanman input:focus { outline:none; border-color:#fff; background:rgba(255,255,255,.16); }
+.scanman button { appearance:none; border:0; font:inherit; font-weight:800; font-size:13px;
+  background:var(--rosad); color:#fff; border-radius:12px; padding:11px 16px; cursor:pointer; flex:none; }
 .scanfila { display:flex; gap:10px; margin-top:16px; }
 .scancerrar, .scanluz { appearance:none; border:0; font:inherit; font-weight:700; font-size:13px;
   background:#fff; color:var(--ink); border-radius:99px; padding:10px 22px; cursor:pointer; }
@@ -3008,6 +3022,15 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
 <div class="scanbox" id="scanbox" hidden>
   <video id="scanvid" playsinline muted></video>
   <div class="scanmsg" id="scanmsg"></div>
+  <!-- RESPALDO QUE NUNCA FALLA (Michael 2-ago: «asegúrate que sirva con cualquier celular»).
+       La lectura por cámara depende del teléfono: del lector del sistema, de qué lente elige
+       y de si enfoca a 10 cm. Tecleando los 13 números del código funciona en CUALQUIER
+       aparato, sin cámara ni permisos. -->
+  <form class="scanman" id="scanman" autocomplete="off">
+    <input id="scanmancod" inputmode="numeric" pattern="[0-9]*" maxlength="14"
+           placeholder="…o teclea los 13 números" aria-label="Escribe el código de barras">
+    <button type="submit">Buscar</button>
+  </form>
   <div class="scanfila">
     <button class="scanluz" id="scanluz" type="button" hidden>💡 Prender luz</button>
     <button class="scancerrar" id="scancerrar" type="button">Cancelar</button>
@@ -3426,7 +3449,10 @@ inputFoto.addEventListener("change", async () => {
 async function procesarFoto(blob) {
   try {
     avisoProgreso("Leyendo la foto…");
-    const bitmap = await createImageBitmap(blob);
+    /* «from-image» respeta la ORIENTACIÓN EXIF: el iPhone guarda la foto tal cual la
+       tomó el sensor y marca el giro en metadata. Sin esto entraba acostada y no
+       coincidía con nada del catálogo, que está derecho (Michael 2-ago) */
+    const bitmap = await createImageBitmap(blob, { imageOrientation: "from-image" });
     avisoProgreso("Buscando el código de barras…");
     const codigo = await decodificarBarras(bitmap).catch(() => null);
     if (codigo && UPCMAP[codigo] !== undefined) {
@@ -3479,18 +3505,15 @@ const scanbox = document.getElementById("scanbox"), scanvid = document.getElemen
 const SCAN_GUIA = "Apunta al <b>código de barras</b>: que las rayas llenen el ancho de la pantalla, " +
                   "a unos 10–15 cm y con buena luz. También puedes escribir los 13 números en el buscador.";
 let escaneando = false;
+let _stream = null;   /* el stream de la cámara cuando lee el lector NATIVO: hay que apagarlo a mano */
 document.getElementById("btnvivo").addEventListener("click", async () => {
   try {
-    const lector = await lectorBarras();
     scanbox.hidden = false; escaneando = true;
     history.pushState({ ov: "s" }, "", "#scan");   /* atrás cierra el escáner sin salir */
     scanmsg.innerHTML = SCAN_GUIA;
     let ultimoDesconocido = "";
-    await lector.decodeFromConstraints(
-      { video: { facingMode: "environment", width: { ideal: 1920 }, height: { ideal: 1080 } } },
-      scanvid, (res) => {
-        if (!escaneando || !res) return;
-        const codigo = res.getText();
+    const alLeer = (codigo) => {
+        if (!escaneando || !codigo) return;
         if (UPCMAP[codigo] !== undefined) {
           try { navigator.vibrate && navigator.vibrate(80); } catch (e) {}
           cerrarEscaner();
@@ -3502,7 +3525,43 @@ document.getElementById("btnvivo").addEventListener("click", async () => {
           scanmsg.innerHTML = `Leí el código <b>${codSeguro(codigo)}</b>, pero no coincide con ninguno del corner 🤔.<br>` +
             `¿Es de la cajita del producto? Prueba con otro código del empaque, escribe el nombre en el buscador — o pregúntale a tu asesora 💕.`;
         }
-      });
+    };
+    /* LECTOR NATIVO PRIMERO (Michael 2-ago: «no sucede nada cuando muestro el barcode»).
+       Safari de iOS 17+ y Chrome de Android traen BarcodeDetector, que usa el lector del
+       sistema: lee un EAN-13 al instante, de lado y con poca luz. ZXing en JavaScript
+       tenía que probar TODOS los formatos (QR, PDF417, Aztec…) sobre un vídeo de 1080p,
+       y entre cuadro y cuadro no alcanzaba a decodificar. ZXing queda de respaldo para
+       los teléfonos que no traen el nativo, ahora sí acotado a códigos de producto. */
+    let usoNativo = false;
+    if ("BarcodeDetector" in window) {
+      try {
+        const soportados = await BarcodeDetector.getSupportedFormats();
+        const quiero = ["ean_13", "ean_8", "upc_a", "upc_e", "code_128", "code_39", "itf"];
+        const formatos = quiero.filter(x => soportados.includes(x));
+        if (formatos.length) {
+          const det = new BarcodeDetector({ formats: formatos });
+          _stream = await navigator.mediaDevices.getUserMedia({
+            video: { facingMode: { ideal: "environment" },
+                     width: { ideal: 1280 }, height: { ideal: 720 } } });
+          scanvid.srcObject = _stream;
+          await scanvid.play();
+          usoNativo = true;
+          const mirar = async () => {
+            if (!escaneando) return;
+            try { const r = await det.detect(scanvid); if (r && r.length) alLeer(r[0].rawValue); }
+            catch (e) {}
+            if (escaneando) setTimeout(mirar, 160);
+          };
+          mirar();
+        }
+      } catch (e) { usoNativo = false; }
+    }
+    if (!usoNativo) {
+      const lector = await lectorBarras();
+      await lector.decodeFromConstraints(
+        { video: { facingMode: "environment", width: { ideal: 1280 }, height: { ideal: 720 } } },
+        scanvid, (res) => { if (res) alLeer(res.getText()); });
+    }
     prepararLuz();
   } catch (e) {
     cerrarEscaner();
@@ -3527,8 +3586,26 @@ function prepararLuz() {   // linterna, si el teléfono la deja controlar (Andro
 function cerrarEscaner() {
   escaneando = false; scanbox.hidden = true; scanluz.hidden = true;
   if (_lector) { try { _lector.reset(); } catch (e) {} }
+  /* con el lector nativo el stream es NUESTRO: si no se apaga, la cámara se queda
+     encendida y el led del teléfono sigue prendido */
+  if (_stream) { try { _stream.getTracks().forEach(t => t.stop()); } catch (e) {} _stream = null; }
+  scanvid.srcObject = null;
 }
 document.getElementById("scancerrar").addEventListener("click", cerrarEscaner);
+/* teclear el código va por el MISMO camino que la cámara: mismo resultado, mismos mensajes */
+document.getElementById("scanman").addEventListener("submit", (e) => {
+  e.preventDefault();
+  const campo = document.getElementById("scanmancod");
+  const cod = (campo.value || "").replace(/[^0-9]/g, "");
+  if (cod.length < 8) { scanmsg.textContent = "Escribe los 13 números que están debajo de las rayas."; return; }
+  if (UPCMAP[cod] !== undefined) {
+    campo.value = ""; cerrarEscaner();
+    abrirFicha(UPCMAP[cod], "✅ <b>Encontrado por su código.</b> Este es tu producto:");
+  } else {
+    scanmsg.innerHTML = `El código <b>${codSeguro(cod)}</b> no es de ninguno de nuestros productos 🤔.<br>` +
+      `Revisa que sean los 13 números de abajo de las rayas, o búscalo por su nombre.`;
+  }
+});
 
 /* ---------- arranque ---------- */
 inicio();

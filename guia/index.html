@@ -7,7 +7,7 @@
 <meta name="description" content="Escanea los productos que compraste y llévate tu guía de uso en PDF: cuándo va cada uno, en qué orden, cuánto esperar entre capas y sus precauciones.">
 <meta name="robots" content="noindex">
 <meta name="x-contenido" content="b548cf8140">
-<meta name="x-guia" content="690a327d73">
+<meta name="x-guia" content="b5780415d8">
 <style>
 :root { --rosa:#D96C82; --rosad:#B94F66; --ink:#2A2226; --crema:#FBF6F4; --crema2:#FAEDEE;
   --mut:#8b7d82; --line:#F0DDE1; --texto:#584a4f; --am:#B98A2F; --pm:#4A5A8A; color-scheme: light; }
@@ -339,17 +339,15 @@ async function lectorBarras() {
 }
 const SCAN_GUIA = "Apunta al <b>código de barras de la cajita</b>: que las rayas llenen el ancho, a 10–15 cm, con buena luz. Escanea <b>todos</b> tus productos uno tras otro.";
 let escaneando = false, ultimoCod = "", ultimoT = 0;
+let _stream = null;   /* stream propio del lector NATIVO: hay que apagarlo a mano */
 $("btnscan").addEventListener("click", async () => {
   try {
-    const lector = await lectorBarras();
     $("scanbox").hidden = false; escaneando = true;
     $("scanmsg").innerHTML = SCAN_GUIA;
     $("scancont").textContent = MIOS.length ? `${MIOS.length} en tu lista` : "";
-    await lector.decodeFromConstraints(
-      { video: { facingMode: "environment", width: { ideal: 1920 }, height: { ideal: 1080 } } },
-      $("scanvid"), (res) => {
-        if (!escaneando || !res) return;
-        const cod = res.getText(), t = Date.now();
+    const alLeer = (cod) => {
+        if (!escaneando || !cod) return;
+        const t = Date.now();
         if (cod === ultimoCod && t - ultimoT < 2500) return;   // el mismo código pegado a la cámara
         ultimoCod = cod; ultimoT = t;
         if (UPCMAP[cod] !== undefined) {
@@ -361,7 +359,40 @@ $("btnscan").addEventListener("click", async () => {
           try { navigator.vibrate && navigator.vibrate([40, 60, 40]); } catch (e) {}
           $("scanmsg").innerHTML = `Leí el código <b>${codSeguro(cod)}</b> pero no es de nuestro corner 🤔. Prueba con otro código del empaque o búscalo por nombre.`;
         }
-      });
+    };
+    /* mismo arreglo que /buscar (2-ago): primero el lector NATIVO del teléfono —lee un
+       EAN-13 al instante— y ZXing solo de respaldo, acotado a códigos de producto y a
+       720p para que alcance a decodificar entre cuadro y cuadro. */
+    let usoNativo = false;
+    if ("BarcodeDetector" in window) {
+      try {
+        const soportados = await BarcodeDetector.getSupportedFormats();
+        const formatos = ["ean_13", "ean_8", "upc_a", "upc_e", "code_128", "code_39", "itf"]
+          .filter(x => soportados.includes(x));
+        if (formatos.length) {
+          const det = new BarcodeDetector({ formats: formatos });
+          _stream = await navigator.mediaDevices.getUserMedia({
+            video: { facingMode: { ideal: "environment" },
+                     width: { ideal: 1280 }, height: { ideal: 720 } } });
+          $("scanvid").srcObject = _stream;
+          await $("scanvid").play();
+          usoNativo = true;
+          const mirar = async () => {
+            if (!escaneando) return;
+            try { const r = await det.detect($("scanvid")); if (r && r.length) alLeer(r[0].rawValue); }
+            catch (e) {}
+            if (escaneando) setTimeout(mirar, 160);
+          };
+          mirar();
+        }
+      } catch (e) { usoNativo = false; }
+    }
+    if (!usoNativo) {
+      const lector = await lectorBarras();
+      await lector.decodeFromConstraints(
+        { video: { facingMode: "environment", width: { ideal: 1280 }, height: { ideal: 720 } } },
+        $("scanvid"), (res) => { if (res) alLeer(res.getText()); });
+    }
     prepararLuz();
   } catch (e) {
     cerrarEscaner();
@@ -386,6 +417,9 @@ function prepararLuz() {
 function cerrarEscaner() {
   escaneando = false; $("scanbox").hidden = true; $("scanluz").hidden = true;
   if (_lector) { try { _lector.reset(); } catch (e) {} }
+  /* el stream del lector nativo es nuestro: hay que apagarlo o la cámara sigue prendida */
+  if (_stream) { try { _stream.getTracks().forEach(t => t.stop()); } catch (e) {} _stream = null; }
+  $("scanvid").srcObject = null;
 }
 $("scancerrar").addEventListener("click", cerrarEscaner);
 addEventListener("pagehide", cerrarEscaner);
