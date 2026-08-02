@@ -6,7 +6,7 @@
 <meta name="description" content="¿Qué producto estás viendo? Escanea su código de barras, tómale foto o escribe su nombre: te decimos qué es, cuánto cuesta y con qué rutina va.">
 <title>SO YOUNG · ¿Qué producto estás viendo?</title>
 <meta name="x-contenido" content="b548cf8140">
-<meta name="x-buscar" content="1112893580">
+<meta name="x-buscar" content="9122258141">
 <style>
 :root { --rosa:#D96C82; --rosad:#B94F66; --ink:#2A2226; --crema:#FBF6F4; --crema2:#FAEDEE;
   --mut:#8b7d82; --line:#F0DDE1; --texto:#584a4f; color-scheme: light; }
@@ -459,6 +459,8 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
   border-radius:16px; flex:none; }
 .scanmsg { color:#fff; font-size:13px; margin-top:14px; text-align:center; line-height:1.5; }
 /* teclear el código: el respaldo que funciona en cualquier teléfono */
+/* qué motor de lectura salió: sirve para diagnosticar sin adivinar */
+.scandiag { display:block; margin-top:5px; font-size:10px; opacity:.5; }
 .scanman { display:flex; gap:7px; margin-top:12px; width:100%; max-width:480px; }
 .scanman input { flex:1; min-width:0; font:inherit; font-size:16px; padding:11px 13px;
   border:1px solid rgba(255,255,255,.45); border-radius:12px; background:rgba(255,255,255,.1);
@@ -3505,7 +3507,8 @@ const scanbox = document.getElementById("scanbox"), scanvid = document.getElemen
 const SCAN_GUIA = "Apunta al <b>código de barras</b>: que las rayas llenen el ancho de la pantalla, " +
                   "a unos 10–15 cm y con buena luz. También puedes escribir los 13 números en el buscador.";
 let escaneando = false;
-let _stream = null;   /* el stream de la cámara cuando lee el lector NATIVO: hay que apagarlo a mano */
+let _stream = null;   /* stream de la cámara: es NUESTRO, hay que apagarlo a mano */
+let _avisoLento = null;
 document.getElementById("btnvivo").addEventListener("click", async () => {
   try {
     scanbox.hidden = false; escaneando = true;
@@ -3526,42 +3529,75 @@ document.getElementById("btnvivo").addEventListener("click", async () => {
             `¿Es de la cajita del producto? Prueba con otro código del empaque, escribe el nombre en el buscador — o pregúntale a tu asesora 💕.`;
         }
     };
-    /* LECTOR NATIVO PRIMERO (Michael 2-ago: «no sucede nada cuando muestro el barcode»).
-       Safari de iOS 17+ y Chrome de Android traen BarcodeDetector, que usa el lector del
-       sistema: lee un EAN-13 al instante, de lado y con poca luz. ZXing en JavaScript
-       tenía que probar TODOS los formatos (QR, PDF417, Aztec…) sobre un vídeo de 1080p,
-       y entre cuadro y cuadro no alcanzaba a decodificar. ZXing queda de respaldo para
-       los teléfonos que no traen el nativo, ahora sí acotado a códigos de producto. */
-    let usoNativo = false;
+    /* CÓMO SE LEE (Michael 2-ago: «el escáner sigue sin leer», con el código nítido).
+       1) Lector NATIVO (BarcodeDetector) si el navegador lo trae — Chrome de Android sí;
+          Safari de iPhone NO lo implementa, así que ahí nunca entra por aquí.
+       2) Para todo lo demás —incluido el iPhone— ya NO se usa decodeFromConstraints, que
+          deja el vídeo en manos de ZXing y en Safari no decodificaba ni un código perfecto.
+          Ahora tomamos NOSOTROS cada cuadro, recortamos la banda central (donde se apunta,
+          y así el código gana píxeles) y la pasamos por decodeFromImageUrl — exactamente el
+          mismo camino que usan las FOTOS, que sí funciona. */
+    let motor = "";
     if ("BarcodeDetector" in window) {
       try {
         const soportados = await BarcodeDetector.getSupportedFormats();
-        const quiero = ["ean_13", "ean_8", "upc_a", "upc_e", "code_128", "code_39", "itf"];
-        const formatos = quiero.filter(x => soportados.includes(x));
+        const formatos = ["ean_13", "ean_8", "upc_a", "upc_e", "code_128", "code_39", "itf"]
+          .filter(x => soportados.includes(x));
         if (formatos.length) {
           const det = new BarcodeDetector({ formats: formatos });
           _stream = await navigator.mediaDevices.getUserMedia({
             video: { facingMode: { ideal: "environment" },
                      width: { ideal: 1280 }, height: { ideal: 720 } } });
-          scanvid.srcObject = _stream;
-          await scanvid.play();
-          usoNativo = true;
+          scanvid.srcObject = _stream; await scanvid.play();
+          motor = "nativo";
           const mirar = async () => {
             if (!escaneando) return;
-            try { const r = await det.detect(scanvid); if (r && r.length) alLeer(r[0].rawValue); }
+            try { const r = await det.detect(scanvid); if (r && r.length) return alLeer(r[0].rawValue); }
             catch (e) {}
-            if (escaneando) setTimeout(mirar, 160);
+            if (escaneando) setTimeout(mirar, 150);
           };
           mirar();
         }
-      } catch (e) { usoNativo = false; }
+      } catch (e) { motor = ""; }
     }
-    if (!usoNativo) {
+    if (!motor) {
       const lector = await lectorBarras();
-      await lector.decodeFromConstraints(
-        { video: { facingMode: "environment", width: { ideal: 1280 }, height: { ideal: 720 } } },
-        scanvid, (res) => { if (res) alLeer(res.getText()); });
+      _stream = await navigator.mediaDevices.getUserMedia({
+        video: { facingMode: { ideal: "environment" },
+                 width: { ideal: 1280 }, height: { ideal: 720 } } });
+      scanvid.srcObject = _stream; await scanvid.play();
+      motor = "local";
+      /* enfoque continuo si el teléfono lo permite: a 10-15 cm es lo que más falla */
+      try {
+        const tr = _stream.getVideoTracks()[0];
+        if (tr.getCapabilities && tr.getCapabilities().focusMode)
+          await tr.applyConstraints({ advanced: [{ focusMode: "continuous" }] });
+      } catch (e) {}
+      const cv = document.createElement("canvas");
+      const leerCuadro = async () => {
+        if (!escaneando) return;
+        const vw = scanvid.videoWidth, vh = scanvid.videoHeight;
+        if (vw > 0 && vh > 0) {
+          const ch = Math.max(80, Math.round(vh * 0.6));
+          cv.width = vw; cv.height = ch;
+          cv.getContext("2d").drawImage(scanvid, 0, Math.round((vh - ch) / 2), vw, ch, 0, 0, vw, ch);
+          try {
+            const r = await lector.decodeFromImageUrl(cv.toDataURL("image/jpeg", 0.92));
+            if (r && r.getText()) return alLeer(r.getText());
+          } catch (e) { /* en este cuadro no se vio */ }
+        }
+        if (escaneando) setTimeout(leerCuadro, 200);
+      };
+      leerCuadro();
     }
+    /* si en 9 s no leyó nada, empujar al camino que SIEMPRE funciona */
+    clearTimeout(_avisoLento);
+    _avisoLento = setTimeout(() => {
+      if (escaneando) scanmsg.innerHTML =
+        "¿No lo agarra? Acércalo o aléjalo un poco hasta que se vea nítido — o " +
+        "<b>teclea aquí abajo los 13 números</b> que están debajo de las rayas. " +
+        "<span class=\"scandiag\">lector: " + motor + "</span>";
+    }, 9000);
     prepararLuz();
   } catch (e) {
     cerrarEscaner();
@@ -3585,6 +3621,7 @@ function prepararLuz() {   // linterna, si el teléfono la deja controlar (Andro
 }
 function cerrarEscaner() {
   escaneando = false; scanbox.hidden = true; scanluz.hidden = true;
+  clearTimeout(_avisoLento);
   if (_lector) { try { _lector.reset(); } catch (e) {} }
   /* con el lector nativo el stream es NUESTRO: si no se apaga, la cámara se queda
      encendida y el led del teléfono sigue prendido */
