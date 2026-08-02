@@ -6,8 +6,8 @@
 <title>SO YOUNG · Guía de uso de tus productos</title>
 <meta name="description" content="Escanea los productos que compraste y llévate tu guía de uso en PDF: cuándo va cada uno, en qué orden, cuánto esperar entre capas y sus precauciones.">
 <meta name="robots" content="noindex">
-<meta name="x-contenido" content="02eb517b61">
-<meta name="x-guia" content="9d1f505f61">
+<meta name="x-contenido" content="b2e62bd33d">
+<meta name="x-guia" content="51ce4b9efe">
 <style>
 :root { --rosa:#D96C82; --rosad:#B94F66; --ink:#2A2226; --crema:#FBF6F4; --crema2:#FAEDEE;
   --mut:#8b7d82; --line:#F0DDE1; --texto:#584a4f; --am:#B98A2F; --pm:#4A5A8A; color-scheme: light; }
@@ -28,7 +28,10 @@ p.gsub { font-size:13.5px; color:var(--texto); margin-bottom:14px; }
 .gpasos { display:flex; gap:7px; margin-bottom:14px; font-size:11px; color:var(--mut); }
 .gpasos b { display:block; font-size:12.5px; color:var(--ink); }
 .gpasos span { flex:1; background:#fff; border:1px solid var(--line); border-radius:12px; padding:8px 10px; }
+/* OJO con el COLOR: sin declararlo, Safari pinta el texto del <button> con su azul de
+   sistema y el botón se ve como un enlace ajeno a la app (Michael 2-ago) */
 .gbtn { display:flex; align-items:center; gap:12px; width:100%; text-align:left; background:#fff;
+  color:var(--ink); appearance:none; font-family:inherit;
   border:1.5px solid var(--rosa); border-radius:15px; padding:13px 14px; margin-bottom:9px; }
 .gbtn small { display:block; color:var(--mut); font-weight:500; font-size:11.5px; }
 .gbtn b { font-size:14.5px; }
@@ -564,5 +567,16 @@ pintaMios();
       document.body.appendChild(b);
     }
   } catch (e) {}
+})();
+</script><script>
+/* ---------- «Volver» al lugar correcto ---------- */
+(() => {
+  let origen = null;
+  try { origen = sessionStorage.getItem("so_origen"); } catch (e) {}
+  const aTienda = origen !== "asesora";     /* el default seguro es la página de clienta */
+  document.querySelectorAll("a.volver").forEach(a => {
+    a.setAttribute("href", aTienda ? "../tienda/" : "../");
+    if (aTienda) a.textContent = "← Volver";
+  });
 })();
 </script></body></html>
