@@ -3,10 +3,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<meta name="description" content="¿Qué producto estás viendo? Escanea su código de barras, tómale foto o escribe su nombre: te decimos qué es, cuánto cuesta y con qué rutina va.">
+<meta name="description" content="¿Qué producto estás viendo? Escanea su código de barras o escribe su nombre: te decimos qué es, cuánto cuesta y con qué rutina va.">
 <title>SO YOUNG · ¿Qué producto estás viendo?</title>
 <meta name="x-contenido" content="b548cf8140">
-<meta name="x-buscar" content="a646ca03bd">
+<meta name="x-buscar" content="eca08c2fe0">
 <style>
 :root { --rosa:#D96C82; --rosad:#B94F66; --ink:#2A2226; --crema:#FBF6F4; --crema2:#FAEDEE;
   --mut:#8b7d82; --line:#F0DDE1; --texto:#584a4f; color-scheme: light; }
@@ -690,7 +690,7 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
 <div class="wrap">
   <div class="hero">
     <h1>¿Qué producto <span>estás viendo</span>?</h1>
-    <p class="sub">Aquí puedes hacer tres cosas:<br>📷 <b>Identificar un producto</b> — escanéale el código de barras, tómale foto o escribe su nombre: qué es, para qué sirve y su precio de contado o en quincenas.<br>⚖️ <b>Comparar</b> — dos productos frente a frente, o todos los de un mismo uso.<br>🏬 <b>Ver el corner completo</b> — marca por marca, con precios.</p>
+    <p class="sub">Aquí puedes hacer tres cosas:<br>▮▮▮ <b>Identificar un producto</b> — escanéale el código de barras o escribe su nombre: qué es, para qué sirve y su precio de contado o en quincenas.<br>⚖️ <b>Comparar</b> — dos productos frente a frente, o todos los de un mismo uso.<br>🏬 <b>Ver el corner completo</b> — marca por marca, con precios.</p>
   </div>
   <nav class="pest" aria-label="Qué quieres hacer">
     <a class="pesta pon" href="#identifica">📷 Identifica</a>
@@ -700,17 +700,14 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
   <section id="identifica">
   <div class="acciones">
     <button class="abtn vivo" id="btnvivo"><span class="ai">▮▮▮</span>
-      <span><b>Escáner en vivo</b><small>apunta la cámara al código de barras y listo — es lo más rápido</small></span></button>
-    <button class="abtn foto" id="btnfoto"><span class="ai">📷</span>
-      <span><b>Tómale una foto</b><small>del código de barras o del frente del empaque, si el escáner no puede</small></span></button>
-    <input id="foto" type="file" accept="image/*" capture="environment" hidden>
+      <span><b>Escáner en vivo</b><small>apunta la cámara al código de barras — o teclea sus 13 números</small></span></button>
   </div>
   <div class="osep">— O ESCRÍBELO —</div>
   <div class="buscador"><input id="q" type="search" placeholder="Busca: caracol, retinol, bloqueador, Anua…" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" enterkeyhint="search"></div>
   <div id="estado" hidden></div>
   <div id="rgtit" class="rgtit" hidden></div>
   <div id="rgrid" class="rgrid"></div>
-  <div class="vacio" id="vacio" hidden>No encontramos nada con eso. Prueba con la marca («Cosrx»), el formato («espuma», «bloqueador») o tómale foto al código de barras.</div>
+  <div class="vacio" id="vacio" hidden>No encontramos nada con eso. Prueba con la marca («Cosrx»), el formato («espuma», «bloqueador») o escanea su código de barras.</div>
   </section>
   <section id="comparar">
     <div class="ctit0">⚖️ Comparador <span>¿cuál me conviene? Aquí los ves lado a lado.</span></div>
@@ -3279,227 +3276,13 @@ async function decodificarBarras(bitmap) {
   return null;
 }
 
-/* ---------- OCR del frente (tesseract local, solo si hace falta) ---------- */
-let _ocr = null;
-async function motorOCR() {
-  await cargarScript("lib/tesseract.min.js");
-  if (!_ocr) {
-    // el worker corre en un blob: las rutas deben ser URLs ABSOLUTAS
-    const base = new URL("lib/", location.href).href;
-    _ocr = await Tesseract.createWorker("eng", 1, {
-      workerPath: base + "worker.min.js", corePath: base, langPath: base, gzip: true });
-  }
-  return _ocr;
-}
-/* Palabras que salen en CUALQUIER empaque coreano: suman poquito y no bastan solas.
-   Sin esto, una foto borrosa que solo dejó leer «serum 100» proponía candidatos al azar. */
-const GENERICO = new Set(["serum","cream","crema","mist","spray","foam","cleanser","cleansing",
-  "toner","pad","mask","pack","essence","ampoule","gel","balm","stick","sun","care","skin",
-  "seoul","korea","korean","made","free","new","all","one","two","plus","the","for","with",
-  "and","extra","original","water","aqua","daily","real","deep","good","low","high","advanced",
-  "intensive","booster","perfect","complete","beauty","cosmetics","facial","face","type",
-  "10","15","20","25","30","40","50","55","60","70","75","80","90","120","180","205","250",
-  "100","150","200","300","500"]);
-function candidatosPorTexto(texto) {
-  const toks = [...new Set(norm(texto).split(/[^a-z0-9%+]+/)
-    .filter(w => (/[a-z]/.test(w) && w.length >= 3) || /^\d{2,}$/.test(w)))];
-  if (!toks.length) return [];
-  const compTexto = compacto(texto);
-  const punt = PROD.map((p, i) => {
-    const dC = compacto(p.d + " " + p.m + " " + p.c);
-    // palabra EXACTA del nombre/marca/colección identifica («snail», «pdrn», «92», «345»);
-    // una subcadena solo si es larga («niacinamide» leída pegada) — así el ruido corto
-    // del OCR («baw» dentro de «dAlbaWhite») no inventa candidatos
-    const words = new Set(norm(p.d + " " + p.m + " " + p.c).split(/[^a-z0-9%+]+/).filter(Boolean));
-    let s = 0, distintivos = 0;
-    for (const w of toks) {
-      const cw = compacto(w);
-      if (GENERICO.has(w)) { if (words.has(w) || (cw && dC.includes(cw))) s += 2; }
-      else if (words.has(w)) { s += Math.max(6, w.length * 2); distintivos++; }
-      else if (cw.length >= 5 && dC.includes(cw)) { s += w.length; distintivos++; }
-    }
-    if (compacto(p.m).length >= 4 && compTexto.includes(compacto(p.m))) { s += 10; distintivos++; }
-    return { i, s, distintivos, v: p.v };
-  }).filter(x => x.distintivos >= 1 && x.s >= 8)
-    .sort((a, b) => (b.s - a.s) || (b.v - a.v));
-  return punt.slice(0, 3).map(x => x.i);
-}
-
-/* ---------- reconocimiento visual: compara tu foto con las fotos del catálogo ----------
-   Red neuronal ligera (MobileNet local): convierte cada foto en una «huella» de 512
-   números y busca la más parecida entre las 139 del corner. No necesita leer texto,
-   así que funciona con empaques en coreano, fotos de una pantalla, etc. */
-const SELLO_DATOS = document.querySelector('meta[name="x-contenido"]').content;
-let _vis = null;
-function cargarImagen(src, intentos = 3) {
-  // con reintentos: si una foto no baja (señal débil) la huella de ese producto
-  // quedaría vacía y ese producto sería IRRECONOCIBLE en ese teléfono
-  return new Promise((ok, mal) => {
-    const intenta = (n) => {
-      const im = new Image();
-      im.onload = () => ok(im);
-      im.onerror = () => n > 1 ? setTimeout(() => intenta(n - 1), 400)
-                              : mal(new Error("no cargó " + src));
-      // en los reintentos se agrega ?r= para brincarse una respuesta de error cacheada
-      im.src = n === intentos ? src : src + (src.includes("?") ? "&" : "?") + "r=" + n;
-    };
-    intenta(intentos);
-  });
-}
-async function motorVisual(progreso) {
-  await cargarScript("lib/tf.min.js");
-  if (_vis) return _vis;
-  const base = await tf.loadLayersModel("lib/visual/model.json");
-  const tronco = tf.model({ inputs: base.inputs, outputs: base.getLayer("conv_pw_13_relu").output });
-  tf.tidy(() => tronco.predict(tf.zeros([1, 224, 224, 3])));   // calienta el modelo
-  const embed = (fuente) => tf.tidy(() => {
-    let t = tf.image.resizeBilinear(tf.browser.fromPixels(fuente).toFloat(), [224, 224]);
-    t = t.div(127.5).sub(1).expandDims(0);
-    const f = tronco.predict(t).mean([1, 2]).squeeze();
-    return f.div(f.norm()).dataSync();
-  });
-  // huellas de las 139 fotos del catálogo — se calculan una vez y quedan guardadas
-  // en el teléfono (cambian de llave si cambian los datos del sitio)
-  const clave = "soyoung_vis1_" + SELLO_DATOS;
-  let refs = null;
-  try {
-    const raw = localStorage.getItem(clave);
-    if (raw) {
-      const bytes = Uint8Array.from(atob(raw), c => c.charCodeAt(0));
-      const todo = new Float32Array(bytes.buffer);
-      const dim = todo.length / PROD.length;
-      if (Number.isInteger(dim) && dim > 0)
-        refs = PROD.map((p, i) => p.th ? todo.slice(i * dim, (i + 1) * dim) : null);
-      // huella VACÍA (pura de ceros) = una foto falló al calcularse en este teléfono
-      // y quedó guardada rota: ese producto jamás se reconocería aquí. Se descarta
-      // todo el caché y se recalcula (lección del cel de Michael, 30-jul).
-      if (refs && PROD.some((p, i) => p.th && refs[i] && !refs[i].some(x => x !== 0))) {
-        refs = null;
-        try { localStorage.removeItem(clave); } catch (e) {}
-      }
-    }
-  } catch (e) {}
-  if (!refs) {
-    refs = [];
-    let fallos = 0;
-    for (let i = 0; i < PROD.length; i++) {
-      if (progreso && i % 12 === 0) progreso(`Preparando el reconocimiento visual… ${i}/${PROD.length}<br><small>solo la primera vez; queda guardado en tu cel</small>`);
-      const p = PROD[i];
-      if (!p.th) { refs.push(null); continue; }
-      try { refs.push(embed(await cargarImagen("../p/" + p.th))); }
-      catch (e) { refs.push(null); fallos++; }
-    }
-    try {
-      const dim = (refs.find(r => r) || []).length;
-      // solo se guarda si el juego quedó COMPLETO: guardar huellas incompletas
-      // dejaba productos irreconocibles para siempre en ese teléfono
-      if (dim && fallos === 0) {
-        const todo = new Float32Array(PROD.length * dim);
-        refs.forEach((r, i) => { if (r) todo.set(r, i * dim); });
-        let bin = ""; const by = new Uint8Array(todo.buffer);
-        for (let i = 0; i < by.length; i += 8192) bin += String.fromCharCode.apply(null, by.subarray(i, i + 8192));
-        localStorage.setItem(clave, btoa(bin));
-      }
-    } catch (e) {}
-  }
-  _vis = { embed, refs };
-  return _vis;
-}
-function recorteCentral(bitmap) {
-  const lado = Math.min(bitmap.width, bitmap.height);
-  const c = document.createElement("canvas"); c.width = c.height = 448;
-  c.getContext("2d").drawImage(bitmap, (bitmap.width - lado) / 2, (bitmap.height - lado) / 2,
-                               lado, lado, 0, 0, 448, 448);
-  return c;
-}
-function recorteCaja(bitmap, f) {
-  // caja central (fracción f por lado, mismo encuadre): acerca la mirada al producto
-  // cuando la foto trae un fondo decorativo grande — p. ej. las imágenes de listing
-  // con el círculo amarillo gigante detrás del frasco (caso Kojic de Michael, 30-jul:
-  // con foto completa ganaban otros ~0.71 y con esta caja el correcto da ~0.77)
-  const w = bitmap.width * f, h = bitmap.height * f;
-  const c = document.createElement("canvas");
-  c.width = 448; c.height = Math.max(1, Math.round(448 * h / w));
-  c.getContext("2d").drawImage(bitmap, (bitmap.width - w) / 2, (bitmap.height - h) / 2,
-                               w, h, 0, 0, c.width, c.height);
-  return c;
-}
-async function candidatosVisuales(bitmap, progreso) {
-  const v = await motorVisual(progreso);
-  const e1 = v.embed(canvasDe(bitmap, 448, false));   // foto completa
-  const e2 = v.embed(recorteCentral(bitmap));          // su centro cuadrado, por si hay fondo
-  const e3 = v.embed(recorteCaja(bitmap, .6));         // y la caja central, por si el fondo domina
-  const cos = (a, b) => { let s = 0; for (let k = 0; k < a.length; k++) s += a[k] * b[k]; return s; };
-  return PROD.map((p, i) => v.refs[i]
-      ? { i, s: Math.max(cos(e1, v.refs[i]), cos(e2, v.refs[i]), cos(e3, v.refs[i])) } : { i, s: 0 })
-    .sort((a, b) => b.s - a.s);
-}
-/* Umbrales calibrados con pruebas (30-jul): fotos de pantalla correctas dan 0.71–0.97;
-   un control negativo dio 0.563 y el PEOR falso positivo medido dio 0.827 — por eso
-   «seguro» exige 0.88: debajo de eso el texto (OCR) también opina antes de proponer. */
-const UMBRAL_VIS = 0.62;      // debajo de esto, el parecido no significa nada
-const UMBRAL_SEGURO = 0.88;   // arriba de esto, ni hace falta leer el texto
-
-/* ---------- flujo: foto tomada o subida ---------- */
-const inputFoto = document.getElementById("foto");
-document.getElementById("btnfoto").addEventListener("click", () => inputFoto.click());
-inputFoto.addEventListener("change", async () => {
-  const f = inputFoto.files && inputFoto.files[0];
-  inputFoto.value = "";
-  if (f) await procesarFoto(f);
-});
-async function procesarFoto(blob) {
-  try {
-    avisoProgreso("Leyendo la foto…");
-    /* «from-image» respeta la ORIENTACIÓN EXIF: el iPhone guarda la foto tal cual la
-       tomó el sensor y marca el giro en metadata. Sin esto entraba acostada y no
-       coincidía con nada del catálogo, que está derecho (Michael 2-ago) */
-    const bitmap = await createImageBitmap(blob, { imageOrientation: "from-image" });
-    avisoProgreso("Buscando el código de barras…");
-    const codigo = await decodificarBarras(bitmap).catch(() => null);
-    if (codigo && UPCMAP[codigo] !== undefined) {
-      limpiarAviso();
-      abrirFicha(UPCMAP[codigo], "✅ <b>Encontrado por su código de barras.</b> Este es tu producto:");
-      return;
-    }
-    if (codigo) {
-      aviso(`Ese código (<b>${codigo}</b>) no es de un producto de nuestro corner 🤔. ` +
-            `Tómale una foto al <b>frente del empaque</b> y lo busco por su cara — ` +
-            `o pregúntale a tu asesora, ella se lo sabe de memoria 💕.`, "err");
-      return;
-    }
-    avisoProgreso("No se ve el código — comparando con las fotos del catálogo…");
-    let vis = [];
-    try { vis = await candidatosVisuales(bitmap, avisoProgreso); } catch (e) { vis = []; }
-    const V = vis.slice(0, 3).filter(x => x.s >= UMBRAL_VIS);
-    let cand = V.map(x => x.i);
-    const seguro = V.length && V[0].s >= UMBRAL_SEGURO;
-    if (!seguro) {
-      // el parecido no fue concluyente: leer también el texto del empaque y fusionar
-      avisoProgreso("Leyendo el texto del empaque…<br><small>la primera vez tarda unos segundos</small>");
-      try {
-        const ocr = await motorOCR();
-        const { data } = await ocr.recognize(canvasDe(bitmap, 1800, false));
-        const candO = (data.confidence || 0) >= 35 ? candidatosPorTexto(data.text || "") : [];
-        const ambos = cand.filter(i => candO.includes(i));   // coincidir en foto Y texto manda
-        cand = [...new Set([...ambos, ...cand, ...candO])].slice(0, 3);
-      } catch (e) {}
-    }
-    if (cand.length) {
-      aviso(seguro
-        ? "📸 <b>¡Se parece mucho a tu foto!</b> Toca el tuyo — y si no es, foto al <b>código de barras</b> y lo encontramos exacto."
-        : "🔍 <b>¿Es alguno de estos?</b> Toca el tuyo. Si no, tómale foto al <b>código de barras</b> (la cajita de rayas): con eso lo encontramos exacto.", "ok");
-      pintar(cand, "Lo que se parece a tu foto");
-      rgrid.scrollIntoView({ behavior: "smooth", block: "nearest" });
-    } else {
-      inicio();   // limpia candidatos de una foto anterior
-      aviso("No pude reconocerlo en la foto 😕. Tómale foto al <b>código de barras</b> (la cajita de rayas, suele estar atrás o en la caja), escribe el nombre abajo — o pregúntale a tu asesora, para eso está 💕.", "err");
-    }
-  } catch (e) {
-    inicio();
-    aviso("No pude leer esa foto. Intenta de nuevo con buena luz, o escribe el nombre abajo.", "err");
-  }
-}
+/* El reconocimiento por FOTO (OCR + red visual) se retiró el 2-ago por decisión de
+   Michael: «quitaría la opción de tomarle foto al producto y sólo dejaría escanear el
+   código de barras, es más rápido y menos errores». En sus pruebas de piso fallaba con
+   empaques planos y en ángulo, y arrastraba ~16 MB de descarga (tesseract 9.7 MB +
+   modelo visual y huellas 5.3 MB + tensorflow 1.4 MB) sobre la señal de la tienda.
+   Quedan tres caminos, todos exactos: escáner en vivo, teclear los 13 números y
+   buscar por nombre. */
 
 /* ---------- flujo: escáner en vivo ---------- */
 const scanbox = document.getElementById("scanbox"), scanvid = document.getElementById("scanvid"),
@@ -3600,7 +3383,7 @@ document.getElementById("btnvivo").addEventListener("click", async () => {
     prepararLuz();
   } catch (e) {
     cerrarEscaner();
-    aviso("No pude abrir la cámara aquí. Usa <b>📷 Tómale una foto</b> (abre la cámara normal de tu cel) o escribe el nombre abajo.", "err");
+    aviso("No pude abrir la cámara aquí. Teclea los <b>13 números</b> del código de barras en el buscador, o escribe el nombre del producto.", "err");
   }
 });
 function prepararLuz() {   // linterna, si el teléfono la deja controlar (Android casi siempre)
@@ -3913,7 +3696,7 @@ document.querySelectorAll('a.tback[href="../"], a.volver[href="../"]').forEach(a
 })();
 
 /* gancho para pruebas automatizadas (no afecta el uso normal) */
-window._buscarTest = { buscar, procesarFoto, candidatosPorTexto, candidatosVisuales, decodificarBarras, abrirFicha, PROD, UPCMAP };
+window._buscarTest = { buscar, decodificarBarras, abrirFicha, PROD, UPCMAP };
 </script>
 <script>
 window.CARRITO_SELS = ".pname[data-p], .pcard[data-p]";
