@@ -3949,3 +3949,35 @@ window.CARRITO_SELS = ".pname[data-p], .pcard[data-p]";
     abrirHoja, cerrarHoja };
 })();
 </script></body></html>
+<script>
+window.addEventListener("load", () => setTimeout(() => {
+  const R = {};
+  const cnt = t => { buscar(t); return document.querySelectorAll("#rgrid .pcard").length; };
+  R.bloqeador = cnt("bloqeador"); R.bloqueador = cnt("bloqueador");
+  R.serun = cnt("serun"); R.serum = cnt("serum");
+  R.anua = cnt("anua"); R.anual = cnt("anual");
+  R.carakol = cnt("carakol"); R.caracol = cnt("caracol");
+  const q = document.getElementById("q");
+  R.attrs = ["autocorrect","autocapitalize","spellcheck","enterkeyhint"].map(a => a+"="+q.getAttribute(a)).join(",");
+  buscar("caracol");
+  setTimeout(() => {
+    if (window._carrito && window._carrito.decorar) window._carrito.decorar();
+    const m = document.querySelector("#rgrid .pcard .mini");
+    if (m) { const r = m.getBoundingClientRect(); R.mini = Math.round(r.width) + "x" + Math.round(r.height); }
+    else R.mini = "no-mini";
+    const C = window._carrito;
+    if (C) {
+      const items = []; for (let i=0; items.length<12 && i<300; i++) if (PROD[i]) items.push({i, alts:[]});
+      C.aplicarCodigo(items);
+      const cod = C.codigoDeLista();
+      R.codLen = cod.length;
+      const tin = document.getElementById("tcodin");
+      R.maxlen = tin ? tin.maxLength : "na";
+      R.decodCut = C.decodificarCodigo(cod.slice(0,28)) === null ? "null" : "ok";
+      R.decodFull = C.decodificarCodigo(cod) ? "ok" : "null";
+      C.aplicarCodigo([]);
+    }
+    document.title = JSON.stringify(R);
+  }, 500);
+}, 500));
+</script>

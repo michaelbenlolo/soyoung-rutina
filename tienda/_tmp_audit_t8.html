@@ -2,11 +2,12 @@
 <html lang="es"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Tu asesora K-beauty de bolsillo en el corner SO YOUNG: entiende cualquier producto del estante, arma tu rutina coreana y conoce precios de contado o en quincenas con tu vale.">
 <meta name="robots" content="noindex">
-<meta name="description" content="Contesta 7 preguntas (1 minuto) y te armamos tu rutina coreana con precios de contado o en quincenas. Si quieres, te guiamos zona por zona sobre tu propia selfie — que nunca sale de tu celular.">
-<title>SO YOUNG · ¿Qué necesita tu piel?</title>
-<meta name="x-contenido" content="434ec92f5f">
-<meta name="x-piel" content="139b325d18">
+<meta name="x-contenido" content="7211dcffbf">
+<meta name="x-tienda" content="20714bd58e">
+<meta name="theme-color" content="#FAF5F2">
+<title>SO YOUNG · Tu asesora de bolsillo</title>
 <style>
 :root { --rosa:#D96C82; --rosad:#B94F66; --ink:#2A2226; --crema:#FBF6F4; --crema2:#FAEDEE;
   --mut:#8b7d82; --line:#F0DDE1; --texto:#584a4f; color-scheme: light; }
@@ -372,102 +373,129 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
 .notabuscar a { color:var(--rosad); font-weight:700; }
 </style>
 <style>
-/* --- propio del análisis con foto --- */
-/* el CSS del sitio trae img{display:block}, que le gana al [hidden] del navegador */
+/* ============================= MODO TIENDA =============================
+   Kiosco de bolsillo para usarse PARADA frente al estante: misiones grandes,
+   wizard de 2 pasos, total con quincenas siempre a la vista. Tipografía del
+   sistema (cero fuentes web): abre al instante con datos de tienda. */
+:root {
+  --rosa:#D96C82; --rosad:#B94F66; --ink:#2A2226; --crema:#FAF5F2; --crema2:#F7E9ED;
+  --line:#EDE2DE; --mut:#8B7D80;
+  --tbg:#FAF5F2; --tcard:#FFFFFF; --tink:#2A2226; --tmut:#8B7D80; --tline:#EDE2DE;
+  --trosa:#B94F66; --tsuave:#F7E9ED; --tverde:#2E7D5B;
+}
 [hidden] { display:none !important; }
-.tback { width:32px; height:32px; flex:none; display:flex; align-items:center; justify-content:center;
-  background:#fff; border:1.5px solid var(--line); border-radius:50%; color:var(--ink);
-  text-decoration:none; font-size:15px; font-weight:700; cursor:pointer; }
-.tback:focus-visible { outline:2px solid var(--rosad); outline-offset:2px; }
-.volver { display:flex; align-items:center; justify-content:center; gap:8px; margin-top:12px;
-  background:#fff; border:1.5px solid var(--rosa); color:var(--rosad); border-radius:16px;
-  padding:13px 15px; font-size:13.5px; font-weight:700; text-decoration:none; }
-.volver:focus-visible { outline:2px solid var(--rosad); outline-offset:2px; }
-.pqhero { padding:26px 0 4px; }
-.pqcard { background:#fff; border:1px solid var(--line); border-radius:16px; padding:14px 15px; margin-top:14px; }
-.pqpriv { display:flex; gap:11px; align-items:flex-start; font-size:12.8px; color:var(--texto); line-height:1.5; }
-.pqpriv .ico { font-size:20px; flex:none; }
-.pqpriv b { color:var(--ink); }
-.pqbtns { display:flex; flex-direction:column; gap:9px; margin-top:16px; }
-.pqmain { appearance:none; border:0; cursor:pointer; font:inherit; font-weight:700; border-radius:16px;
-  padding:15px 16px; background:var(--rosa); color:#fff; font-size:15px;
-  display:flex; align-items:center; justify-content:center; gap:9px; }
-.pqsec { appearance:none; cursor:pointer; font:inherit; font-weight:700; background:#fff;
-  border:1.5px solid var(--line); color:var(--ink); border-radius:16px; padding:13px 16px;
-  font-size:13.5px; text-align:center; display:flex; align-items:center; justify-content:center; gap:8px; }
-.pqmain:focus-visible, .pqsec:focus-visible, .qop:focus-visible, .disparo:focus-visible, .dlado:focus-visible
-  { outline:2px solid var(--rosad); outline-offset:2px; }
-.pqmeta { text-align:center; font-size:11.5px; color:var(--mut); margin-top:12px; }
-.pqlegal { font-size:10.8px; color:var(--mut); line-height:1.55; margin-top:16px; text-align:center; }
-/* cámara */
-.qbar { display:flex; align-items:center; gap:10px; margin-top:8px; }
-.qtit2 { font-size:15px; font-weight:800; }
-/* la cámara también se adapta al alto real del teléfono: en celulares chicos se
-   angosta lo justo para que el botón de disparo quede siempre a la vista */
-.camwrap { position:relative; margin:12px auto 0; border-radius:20px; overflow:hidden;
-  background:#241d20; aspect-ratio:3/4;
-  width:min(100%, max(212px, calc((100vh - 174px) * .75)));
-  width:min(100%, max(212px, calc((100svh - 174px) * .75))); }
-.camwrap video, .camwrap img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
-.camwrap video { transform:scaleX(-1); }
-.guia { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
-.camtip { position:absolute; left:10px; right:10px; bottom:10px; background:rgba(36,29,32,.72);
-  color:#fff; font-size:11.8px; line-height:1.4; border-radius:12px; padding:8px 11px;
-  text-align:center; backdrop-filter:blur(4px); }
-.caraaqui { position:absolute; left:50%; transform:translateX(-50%); top:5.5%;
-  background:rgba(36,29,32,.62); color:#fff; font-size:11px; font-weight:700;
-  border-radius:99px; padding:4px 11px; white-space:nowrap; backdrop-filter:blur(3px); }
-.vzoom { position:absolute; left:50%; transform:translateX(-50%); bottom:10px;
-  background:rgba(36,29,32,.66); color:#fff; font-size:11px; font-weight:700;
-  border-radius:99px; padding:5px 12px; white-space:nowrap; pointer-events:none;
-  backdrop-filter:blur(3px); }
-#vfoto { touch-action:none; }
-#vnueva { position:fixed; left:12px; right:12px; bottom:12px; z-index:90; appearance:none; border:0;
-  cursor:pointer; font:inherit; font-size:13px; background:var(--ink); color:#fff; border-radius:14px;
-  padding:13px 15px; box-shadow:0 6px 22px rgba(42,34,38,.35); }
+body { font-family:-apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background:var(--tbg); color:var(--tink); line-height:1.5; }
+
+.twrap { max-width:560px; margin:0 auto; padding:0 18px 40px; }
+/* encabezado PEGAJOSO: el carrito acompaña sin flotar ni tapar nada (Michael 1-ago:
+   «similar al checkout de un website — no tiene que molestar, solo ayudar») */
+.thead { display:flex; align-items:center; gap:10px; padding:14px 0 10px;
+  position:sticky; top:0; z-index:70; background:var(--tbg); }
+.tlogo { font-weight:800; letter-spacing:.08em; font-size:14.5px; }
+.tlogo em { font-style:normal; color:var(--trosa); }
+.tpaso { margin-left:auto; font-size:10.5px; font-weight:700; color:var(--tmut);
+  background:var(--tcard); border:1px solid var(--tline); border-radius:99px; padding:5px 11px; }
+
+/* ---------- pantalla 1: misiones ---------- */
+.tsaludo { font-size:25px; font-weight:800; line-height:1.25; margin:10px 0 6px; }
+.tsub { font-size:13px; color:var(--tmut); margin-bottom:16px; }
+.tmision { display:flex; align-items:center; gap:13px; width:100%; text-align:left;
+  background:var(--tcard); border:1px solid var(--tline); border-radius:18px;
+  padding:16px 15px; margin-bottom:10px; cursor:pointer; text-decoration:none;
+  color:var(--tink); font-family:inherit; box-shadow:0 6px 18px rgba(90,60,60,.05); }
+.tmico { font-size:29px; flex:none; }
+.tmtxt b { display:block; font-size:14.5px; font-weight:800; }
+.tmtxt small { display:block; font-size:11.5px; color:var(--tmut); margin-top:1px; line-height:1.35; }
+.tmfl { margin-left:auto; color:var(--trosa); font-weight:800; font-size:19px; flex:none; }
+.tmision:active { transform:scale(.985); }
+.tmision:focus-visible { outline:2px solid var(--trosa); outline-offset:2px; }
+
+.tconf { display:flex; flex-wrap:wrap; gap:4px 14px; margin:14px 2px 4px; font-size:10.5px;
+  color:var(--tmut); }
+.tconf b { color:var(--tverde); }
+
+.tseccion { font-size:11px; font-weight:800; letter-spacing:.14em; color:var(--tmut);
+  margin:20px 2px 8px; }
+.trail { display:flex; gap:10px; overflow-x:auto; margin:0 -18px; padding:2px 18px 12px;
+  scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; }
+.tprod { appearance:none; flex:0 0 138px; scroll-snap-align:start; background:var(--tcard);
+  border:1px solid var(--tline); border-radius:14px; padding:10px 10px 12px; text-align:left;
+  cursor:pointer; font-family:inherit; display:flex; flex-direction:column; gap:3px;
+  color:var(--tink); }
+.tprod img { width:100%; height:92px; object-fit:contain; background:var(--tsuave);
+  border-radius:10px; padding:6px; mix-blend-mode:multiply; }
+.tprod b { font-size:11px; line-height:1.3; font-weight:700; display:-webkit-box;
+  -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; min-height:28px; }
+.tprod small { font-size:8.5px; letter-spacing:.08em; color:var(--tmut); text-transform:uppercase; }
+.tprod em { font-style:normal; font-weight:800; font-size:15px; color:var(--trosa); }
+.tprod i { font-style:normal; font-size:9.5px; color:var(--tmut); }
+
+.tpie { margin-top:22px; padding-top:14px; border-top:1px solid var(--tline); }
+.tlegal { font-size:10px; color:var(--tmut); line-height:1.6; }
+.tpie a { display:inline-block; margin:10px 8px 0 0; font-size:10.5px; color:var(--tink);
+  text-decoration:none; border:1px solid var(--tline); border-radius:99px; padding:6px 12px;
+  background:var(--tcard); }
+
+/* ---------- pantalla 2: elegir ---------- */
+.tvolver { appearance:none; background:none; border:0; font-family:inherit; font-size:12.5px;
+  font-weight:700; color:var(--trosa); cursor:pointer; padding:6px 0; display:inline-block;
+  text-decoration:none; }
+/* la selfie como opción DENTRO del flujo (ya no es puerta aparte) */
+.tselfie { border:1.5px dashed var(--trosa); background:var(--tsuave); box-shadow:none;
+  margin-top:14px; }
+/* respaldo sin JavaScript: las puertas son anclas; si el JS no corre, el ancla
+   igual muestra su pantalla (encimada a la portada, pero navegable) */
+/* respaldo SOLO sin JavaScript: con JS vivo, el :target se queda pegado tras
+   pushState (nunca se re-evalúa) y apilaba las dos pantallas — bug de Michael
+   1-ago: «me baja de una vez a la rutina» / «el back no echa hacia atrás» */
+html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !important; }
+.topciones { display:grid; grid-template-columns:1fr 1fr; gap:9px; margin-top:6px; }
+.topcion { position:relative; display:flex; flex-direction:column; gap:5px; text-align:left;
+  background:var(--tcard); border:1.5px solid var(--tline); border-radius:16px;
+  padding:13px 12px 12px; min-height:88px; cursor:pointer; font-family:inherit; color:var(--tink); }
+.topcion .oe { font-size:24px; line-height:1; }
+.topcion .ot { font-size:12.3px; font-weight:700; line-height:1.3; }
+.topcion .oc { position:absolute; top:9px; right:9px; width:20px; height:20px; border-radius:50%;
+  border:1.5px solid var(--tline); font-size:11px; line-height:18px; text-align:center;
+  color:transparent; }
+.topcion.on { border-color:var(--trosa); background:var(--tsuave); }
+.topcion.on .oc { background:var(--trosa); border-color:var(--trosa); color:#fff; }
+.topcion:focus-visible { outline:2px solid var(--trosa); outline-offset:2px; }
+
+.tcta { position:fixed; left:14px; right:14px; bottom:14px; z-index:60; max-width:532px;
+  margin:0 auto; appearance:none; border:0; background:var(--trosa); color:#fff;
+  font-family:inherit; font-weight:800; font-size:14.5px; letter-spacing:.02em;
+  border-radius:15px; padding:16px; cursor:pointer; box-shadow:0 12px 30px rgba(185,79,102,.4); }
+.tcta:disabled { background:#D9C9CC; box-shadow:none; color:#fff; }
+
+.tespacio { height:78px; }   /* aire para que la barra fija no tape el final */
+
+/* el chip del carrito (viene de carrito.py) acomodado en ESTE encabezado */
+.thead .tcart { margin-left:auto; }
+.tcart + .tpaso { margin-left:8px; }
+.tcart[hidden] + .tpaso { margin-left:auto; }
+/* la entrada del código de la asesora (solo en esta página) */
+/* el diálogo del código es un OVERLAY de verdad: sin esto, .tfondo/.thoja
+   (absolutas) se pintan arriba del documento y desde el pie —donde vive el
+   botón «Soy asesora»— parece que el toque no hizo nada (Michael 1-ago) */
+#tcod { position:fixed; inset:0; z-index:96; }
+.tcodin { width:100%; font:inherit; font-size:16px; letter-spacing:.08em; text-transform:uppercase;
+  padding:12px 14px; border:1.5px solid var(--tline); border-radius:12px; margin:2px 0 8px;
+  background:#fff; color:var(--tink); }
+.tcodin:focus { outline:2px solid var(--trosa); border-color:var(--trosa); }
+.terr { color:#B3372F; font-weight:700; }
+.tcodver { background:var(--trosa) !important; color:#fff !important; border:0 !important;
+  font-weight:800 !important; }
+.tpieas { appearance:none; cursor:pointer; font-family:inherit; display:inline-block;
+  margin:10px 8px 0 0; font-size:10.5px; color:var(--tink); border:1px solid var(--tline);
+  border-radius:99px; padding:6px 12px; background:var(--tcard); }
+
+/* botón de versión nueva — arriba de la barra */
+#vnueva { position:fixed; left:12px; right:12px; bottom:78px; z-index:90; appearance:none; border:0;
+  background:var(--tink); color:#fff; border-radius:12px; padding:13px 16px; font-size:12.5px;
+  font-family:inherit; box-shadow:0 10px 30px rgba(0,0,0,.3); cursor:pointer; }
 #vnueva b { color:#F3C3CD; }
-/* fila compacta tipo cámara nativa: disparo al centro, opciones a los lados —
-   libera alto para que el visor de la cámara vaya a pantalla completa */
-.disparo { width:62px; height:62px; border-radius:50%; border:5px solid #fff; cursor:pointer;
-  background:var(--rosa); box-shadow:0 0 0 3px var(--rosa), 0 4px 14px rgba(42,34,38,.28);
-  margin:0; display:block; flex:none; }
-.disparo:active { transform:scale(.94); }
-.disprow { display:flex; align-items:center; justify-content:center; gap:22px; margin-top:10px; }
-.dlado { appearance:none; font-family:inherit; cursor:pointer; background:#fff;
-  border:1.5px solid var(--line); color:var(--texto); border-radius:14px;
-  font-size:11px; font-weight:700; line-height:1.3; padding:7px 12px; text-align:center; }
-.dlado:active { transform:scale(.97); }
-.camfila { display:flex; gap:9px; margin-top:12px; }
-.camfila .pqsec, .camfila .pqmain { flex:1; }
-.subelink { display:block; text-align:center; margin-top:14px; font-size:12.5px;
-  color:var(--rosad); font-weight:700; cursor:pointer; text-decoration:underline; }
-.qay2 { font-size:12px; color:var(--mut); margin-top:4px; line-height:1.45; font-weight:400; }
-/* quiz */
-.qprog { flex:1; height:6px; background:var(--crema2); border-radius:99px; overflow:hidden; }
-.qprog i { display:block; height:100%; width:0; background:var(--rosa); border-radius:99px; transition:width .25s; }
-.qnum { font-size:11px; font-weight:700; color:var(--mut); white-space:nowrap; }
-/* respaldo sin JS: 51vh; con JS, ajustarVisor() la hace A LA MEDIDA del teléfono
-   (todo el alto real menos la tarjeta de la pregunta) — lo más grande posible */
-.visor { position:relative; margin:8px auto 0; border-radius:20px; overflow:hidden;
-  aspect-ratio:3/4; background:var(--crema2); width:min(100%, calc(51vh * .75)); }
-.visor canvas, .vcara, .vcara svg { position:absolute; inset:0; width:100%; height:100%; }
-.qcard { background:#fff; border:1px solid var(--line); border-radius:16px; padding:12px 14px; margin-top:8px; }
-.qtxt { font-size:16.5px; font-weight:800; line-height:1.3; display:flex; gap:10px; align-items:flex-start; }
-.qtxt .qic { font-size:22px; flex:none; }
-.qay { font-size:12px; color:var(--mut); margin-top:7px; line-height:1.45; }
-.qops { display:flex; flex-direction:column; gap:7px; margin-top:10px; }
-.qop { appearance:none; cursor:pointer; font:inherit; font-size:14.5px; font-weight:700; text-align:left;
-  background:var(--crema); border:1.5px solid var(--line); color:var(--ink); border-radius:13px; padding:11px 15px; }
-.qop.on { border-color:var(--rosad); background:var(--crema2); color:var(--rosad); }
-/* resultados */
-.reshead { display:flex; gap:13px; align-items:center; margin-top:20px; }
-.resfoto { width:74px; height:74px; border-radius:50%; object-fit:cover; flex:none;
-  border:3px solid #fff; box-shadow:0 2px 12px rgba(42,34,38,.18); }
-.resh1 { font-size:22px; font-weight:800; line-height:1.15; letter-spacing:-.01em; }
-.ressub { font-size:12.5px; color:var(--mut); margin-top:3px; }
-.pqajusta { font-size:12.8px; color:var(--texto); background:var(--crema2); border-radius:13px;
-  padding:11px 14px; margin:12px 0 4px; line-height:1.5; }
-#sc-res .chips { margin-top:12px; }
 </style>
 <style>
 /* ============ EL CARRITO COMPARTIDO (tienda · piel · buscar) ============ */
@@ -556,108 +584,66 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
 .tcart[hidden], #tases[hidden], .agtodo[hidden], .tguia[hidden], .mini[hidden], .tvaciar[hidden] { display:none !important; }
 
 </style></head><body>
-<div class="top"><div class="topin"><a class="tback" href="../" aria-label="Volver a la portada">←</a><div class="logo">SO YOUNG <em>K-BEAUTY</em></div><div class="sello"><span class="kfl">🇰🇷</span> 100% ORIGINAL</div><button class="tcart" id="tcart" type="button" hidden aria-label="Ver mi lista">👜 <b id="tcartn">0</b></button></div></div>
-<div class="wrap">
 
-<!-- Jerarquía invertida (Michael 1-ago): el CTA grande es EMPEZAR el quiz; la
-     selfie es un paso OPCIONAL adentro. En el pasillo de la tienda la selfie da
-     PENA (no es tema de privacidad) — que nadie se quede afuera por eso. -->
-<section id="sc-intro">
-  <div class="pqhero">
-    <h1>¿Qué necesita <span>tu piel</span>?</h1>
-    <p class="sub">Te pregunto lo que una buena asesora te preguntaría, <b>zona por zona</b> — y al final te armo tu <b>rutina coreana</b> con precio de contado o en quincenas con tu vale.</p>
-  </div>
-  <div class="pqbtns">
-    <button class="pqmain" id="btnempezar" type="button">✨ Empezar — 7 preguntas, 1 minuto</button>
-  </div>
-  <div class="pqmeta">⏱️ Menos de 1 minuto · sin registrarte · tu rutina con precios al final</div>
-  <div class="pqlegal">Orientación cosmética para elegir productos — no es un diagnóstico ni sustituye la opinión de un dermatólogo.</div>
-</section>
+<div class="twrap">
+  <div class="thead"><div class="tlogo">SO YOUNG <em>K-BEAUTY</em></div><button class="tcart" id="tcart" type="button" hidden aria-label="Ver mi lista">👜 <b id="tcartn">0</b></button><div class="tpaso" id="tmiga">🇰🇷 100% original</div></div>
 
-<section id="sc-espejo" hidden>
-  <div class="qbar"><button class="tback" id="espback" type="button" aria-label="Regresar">←</button><div class="qtit2">Una cosita antes de empezar</div></div>
-  <div class="pqhero">
-    <h1>¿Quieres que además te guíe <span>con el espejo</span>?</h1>
-    <p class="sub">Es <b>opcional</b>: con una selfie, tu propia cara se vuelve el mapa — en cada pregunta ilumino la zona exacta para que te mires y decidas. Sin foto te guío igual de bien, con un dibujo.</p>
-  </div>
-  <div class="pqbtns">
-    <button class="pqmain" id="btnfoto" type="button">📷 Sí, tomarme la selfie</button>
-    <button class="pqsec" id="btnsin" type="button">Seguir sin foto →</button>
-  </div>
-  <span class="subelink" id="subir0" role="button" tabindex="0">…o usa una foto que ya tengas en tu celular</span>
-  <div class="pqcard pqpriv"><span class="ico">🔒</span><div><b>Tu foto es solo tuya.</b> No se sube a ningún lado ni se guarda: se queda en tu celular y desaparece al salir de la página. La usamos únicamente como espejo, aquí mismo.</div></div>
-  <div class="pqcard pqpriv"><span class="ico">💡</span><div><b>Para que salga bien:</b> búscate luz pareja de frente — una ventana funciona perfecto —, sin lentes y con el cabello fuera de la cara.</div></div>
-</section>
+  <!-- ===== pantalla 1 · misiones ===== -->
+  <section id="t-home">
+    <h1 class="tsaludo">Hola 👋 ¿En qué te ayudo?</h1>
+    <p class="tsub">Soy tu asesora de bolsillo aquí en el corner: entiendo cualquier producto del estante y te armo tu rutina con precios y quincenas.</p>
 
-<section id="sc-cam" hidden>
-  <div class="qbar"><button class="tback" id="camback" type="button" aria-label="Regresar">←</button><div class="qtit2">Tu selfie-espejo</div></div>
-  <div id="camvivo" hidden>
-    <div class="camwrap">
-      <video id="cam" playsinline autoplay muted></video>
-      <svg class="guia" viewBox="0 0 300 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-        <path d="M0 0 H300 V400 H0 Z M38 172 a112 134 0 1 0 224 0 a112 134 0 1 0 -224 0 Z"
-              fill="rgba(20,14,16,.38)" fill-rule="evenodd"/>
-        <ellipse cx="150" cy="172" rx="112" ry="134" fill="none" stroke="rgba(255,255,255,.95)" stroke-width="2.6" stroke-dasharray="7 6"/>
-      </svg>
-      <div class="caraaqui">👤 Llena el óvalo con tu cara</div>
-      <div class="camtip">📏 Que tu cara LLENE el óvalo · cabello recogido y frente despejada (el fleco tapa justo lo que quieres ver) · luz de frente · sin lentes</div>
+    <a class="tmision" href="../buscar/"><span class="tmico">🔎</span>
+      <span class="tmtxt"><b>Conoce y compara los productos</b><small>Escanéalo o escríbelo: qué es, su precio y comparaciones — y todo el corner, marca por marca.</small></span>
+      <span class="tmfl">→</span></a>
+
+    <a class="tmision" href="#t-elegir"><span class="tmico">✨</span>
+      <span class="tmtxt"><b>Ármame mi rutina</b><small>Dime qué quieres mejorar (hasta 3 cosas) y te la armo paso por paso, con precios y quincenas. ¿No sabes por dónde empezar? Te lo pregunto yo.</small></span>
+      <span class="tmfl">→</span></a>
+
+    <a class="tmision" href="../guia/"><span class="tmico">🧾</span>
+      <span class="tmtxt"><b>Ya compré — ¿cómo los uso?</b><small>Escanea tus productos y llévate tu guía de uso en PDF: orden, esperas y cuidados.</small></span>
+      <span class="tmfl">→</span></a>
+
+    <div class="tconf"><span><b>✓</b> 100% original de Corea</span><span><b>✓</b> Quincenas con tu vale</span><span><b>✓</b> Tu asesora te lo aparta hoy</span></div>
+
+    <div class="tseccion">🔥 LOS QUE TODOS SE LLEVAN</div>
+    <div class="trail"><button class="pname tprod" data-p="1" type="button"><img src="../p/B0DG1DQ2S7.jpg" alt="Azelaic Acid 10 Serum 30ml" loading="lazy"><b>Azelaic Acid 10 Serum 30ml</b><small>ANUA</small><em>$753</em><i>ó 12 quincenas de $88</i></button><button class="pname tprod" data-p="22" type="button"><img src="../p/B0FKGJYFC8.jpg" alt="345 Relief Cream 50ml" loading="lazy"><b>345 Relief Cream 50ml</b><small>DR.ALTHEA</small><em>$543</em><i>ó 12 quincenas de $63</i></button><button class="pname tprod" data-p="115" type="button"><img src="../p/8809576261318.jpg" alt="Centella Cream 30ml (mini)" loading="lazy"><b>Centella Cream 30ml (mini)</b><small>SKIN1004</small><em>$196</em><i>ó 8 quincenas de $34</i></button><button class="pname tprod" data-p="103" type="button"><img src="../p/B0FXH5LHN8.jpg" alt="Hyalu-Cica Water-Fit Sun Serum 50ml" loading="lazy"><b>Hyalu-Cica Water-Fit Sun Serum 50ml</b><small>SKIN1004</small><em>$401</em><i>ó 10 quincenas de $56</i></button><button class="pname tprod" data-p="28" type="button"><img src="../p/B09V7Z4TJG.jpg" alt="Zero Pore Pad 2.0 (toallitas)" loading="lazy"><b>Zero Pore Pad 2.0 (toallitas)</b><small>Medicube</small><em>$443</em><i>ó 10 quincenas de $62</i></button><button class="pname tprod" data-p="121" type="button"><img src="../p/B0B2RM68G2.jpg" alt="Bio-Collagen Real Deep Mask (1 pza)" loading="lazy"><b>Bio-Collagen Real Deep Mask (1 pza)</b><small>BIODANCE</small><em>$383</em><i>ó 10 quincenas de $54</i></button><button class="pname tprod" data-p="2" type="button"><img src="../p/B0FVT77ZLL.jpg" alt="PDRN Hyaluronic Capsule Mist 100ml" loading="lazy"><b>PDRN Hyaluronic Capsule Mist 100ml</b><small>ANUA</small><em>$823</em><i>ó 12 quincenas de $96</i></button><button class="pname tprod" data-p="132" type="button"><img src="../p/B0GHMZXX8Y.jpg" alt="PDRN Pink Collagen Multi Balm 10g" loading="lazy"><b>PDRN Pink Collagen Multi Balm 10g</b><small>Medicube</small><em>$483</em><i>ó 12 quincenas de $56</i></button><button class="pname tprod" data-p="39" type="button"><img src="../p/B0DBF65JYY.jpg" alt="PDRN Pink Peptide Serum 30ml" loading="lazy"><b>PDRN Pink Peptide Serum 30ml</b><small>Medicube</small><em>$402</em><i>ó 10 quincenas de $56</i></button></div>
+
+    <div class="tpie">
+      <p class="tlegal">Precios en pesos, de contado o en quincenas con tu vale. Esta guía sugiere cosméticos por lo que quieres mejorar; no es un diagnóstico ni sustituye la opinión de un dermatólogo. Skincare coreano 100% original, solo en tiendas BHermanos participantes.</p>
+      <button class="tpieas" id="tcodbtn" type="button">👩‍🦰 Soy asesora: tengo un código SY</button>
     </div>
-    <div class="disprow">
-      <button class="dlado" id="nativo1" type="button">📸 Máxima<br>calidad</button>
-      <button class="disparo" id="disparo" type="button" aria-label="Tomar la foto"></button>
-      <button class="dlado" id="subir1" type="button">🖼 Subir<br>una foto</button>
-    </div>
-  </div>
-  <div id="camprev" hidden>
-    <div class="camwrap"><img id="prevista" alt="Tu selfie"><div class="camtip" id="caraok" hidden></div></div>
-    <div class="camfila">
-      <button class="pqsec" id="repetir" type="button">↺ Repetir</button>
-      <button class="pqmain" id="usar" type="button">Se ve bien →</button>
-    </div>
-  </div>
-  <div id="camerr" hidden>
-    <div class="pqcard"><b>😕 No pudimos abrir la cámara.</b><div class="qay2">Dale permiso de cámara a tu navegador — o sigue por otro camino:</div></div>
-    <div class="pqbtns">
-      <button class="pqmain" id="subir2" type="button">🖼️ Subir una foto</button>
-      <button class="pqsec" id="btnsin2" type="button">Seguir sin foto →</button>
-    </div>
-  </div>
-  <input type="file" id="archivo" accept="image/*" hidden>
-  <input type="file" id="archivonativo" accept="image/*" capture="user" hidden>
-</section>
+  </section>
 
-<section id="sc-quiz" hidden>
-  <div class="qbar">
-    <button class="tback" id="qatras" type="button" aria-label="Pregunta anterior">←</button>
-    <div class="qprog"><i id="qfill"></i></div>
-    <div class="qnum" id="qnum"></div>
+  <!-- ===== pantalla 2 · elegir ===== -->
+  <section id="t-elegir" hidden>
+    <a class="tvolver" href="#t-home">← Volver</a>
+    <h1 class="tsaludo">¿Qué quieres mejorar?</h1>
+    <p class="tsub">Toca hasta <b>3</b> — una sola rutina puede resolverlas juntas.</p>
+    <div class="topciones" id="topciones"><button class="topcion" type="button" aria-pressed="false"><span class="oe">🎯</span><span class="ot">Manchas y tono disparejo</span><span class="oc">✓</span></button><button class="topcion" type="button" aria-pressed="false"><span class="oe">✨</span><span class="ot">Poros abiertos, grasa y brillo</span><span class="oc">✓</span></button><button class="topcion" type="button" aria-pressed="false"><span class="oe">🌿</span><span class="ot">Granitos y brotes</span><span class="oc">✓</span></button><button class="topcion" type="button" aria-pressed="false"><span class="oe">🌸</span><span class="ot">Piel reseca, sensible o irritada</span><span class="oc">✓</span></button><button class="topcion" type="button" aria-pressed="false"><span class="oe">⏳</span><span class="ot">Líneas, arrugas y flacidez</span><span class="oc">✓</span></button><button class="topcion" type="button" aria-pressed="false"><span class="oe">👁️</span><span class="ot">Ojeras, bolsas y contorno</span><span class="oc">✓</span></button><button class="topcion" type="button" aria-pressed="false"><span class="oe">🫧</span><span class="ot">Quiere GLOW / empezar desde cero</span><span class="oc">✓</span></button><button class="topcion" type="button" aria-pressed="false"><span class="oe">☀️</span><span class="ot">Protección de todos los días</span><span class="oc">✓</span></button><button class="topcion" type="button" aria-pressed="false"><span class="oe">🎁</span><span class="ot">Regalo o antojo</span><span class="oc">✓</span></button><button class="topcion" type="button" aria-pressed="false"><span class="oe">🎭</span><span class="ot">Mascarillas y consentirse</span><span class="oc">✓</span></button></div>
+    <div class="avisomax" id="aviso-max" hidden>Elige las <b>2 o 3 que más te importan</b>: tu piel no puede tratarse todo a la vez, y la rutina se vuelve muy larga. Quita una para agregar otra.</div>
+    <a class="tmision tselfie" href="../piel/"><span class="tmico">💬</span>
+      <span class="tmtxt"><b>¿No sabes qué marcar? Deja que te pregunte yo</b><small>7 preguntas, 1 minuto, y salgo con tu rutina — y si quieres, te guío zona por zona sobre tu propia selfie.</small></span>
+      <span class="tmfl">→</span></a>
+    <div id="toculto" hidden><div class="chips"><button class="chip" type="button" aria-pressed="false" data-need="manchas"><span class="chico">🎯</span>Manchas y tono disparejo</button><button class="chip" type="button" aria-pressed="false" data-need="poros"><span class="chico">✨</span>Poros abiertos, grasa y brillo</button><button class="chip" type="button" aria-pressed="false" data-need="granitos"><span class="chico">🌿</span>Granitos y brotes</button><button class="chip" type="button" aria-pressed="false" data-need="sensible"><span class="chico">🌸</span>Piel reseca, sensible o irritada</button><button class="chip" type="button" aria-pressed="false" data-need="edad"><span class="chico">⏳</span>Líneas, arrugas y flacidez</button><button class="chip" type="button" aria-pressed="false" data-need="ojos"><span class="chico">👁️</span>Ojeras, bolsas y contorno</button><button class="chip" type="button" aria-pressed="false" data-need="glow"><span class="chico">🫧</span>Quiere GLOW / empezar desde cero</button><button class="chip" type="button" aria-pressed="false" data-need="sol"><span class="chico">☀️</span>Protección de todos los días</button><button class="chip" type="button" aria-pressed="false" data-need="regalo"><span class="chico">🎁</span>Regalo o antojo</button><button class="chip" type="button" aria-pressed="false" data-need="mascarillas"><span class="chico">🎭</span>Mascarillas y consentirse</button></div></div>
+    <div class="strip">
+    <h2>La rutina coreana son solo 3 pasos</h2>
+    <div class="pasos">
+      <div class="paso"><i>🧼</i><b>1 · LIMPIA</b><small>aceite o espuma</small></div>
+      <div class="paso"><i>💧</i><b>2 · TRATA</b><small>tu sérum o esencia</small></div>
+      <div class="paso"><i>🧴</i><b>3 · SELLA</b><small>crema (+ bloqueador de día)</small></div>
+    </div>
+    <p class="nota">Lo mejor de las marcas coreanas es que cada <b>colección</b> trae los tres pasos con el mismo ingrediente — por eso funcionan mejor juntos que sueltos. ☀️ De día, cierra siempre con bloqueador: el sol causa la mayoría de manchas y arrugas.</p>
   </div>
-  <div class="visor">
-    <canvas id="vfoto" width="750" height="1000"></canvas>
-    <div id="vcara" class="vcara" aria-hidden="true"></div>
-    <div class="vzoom" id="vzoom" hidden>🔍 Dos dedos o doble toque para acercar o alejar</div>
-  </div>
-  <div class="qcard">
-    <div class="qtxt"><span class="qic" id="qic"></span><span id="qtx"></span></div>
-    <div class="qay" id="qay" hidden></div>
-    <div class="qops" id="qops"></div>
-  </div>
-</section>
+    <div class="tespacio"></div>
+    <button class="tcta" id="tarmar" type="button" disabled>Elige al menos 1</button>
+  </section>
 
-<section id="sc-res" hidden>
-  <div class="reshead">
-    <img id="resfoto" class="resfoto" alt="" hidden>
-    <div><div class="resh1">✨ Esto nos contó tu piel</div>
-    <div class="ressub">Tú te miraste — nosotros solo te guiamos.</div></div>
-  </div>
-  <div class="seltit" id="reschips" style="margin-top:12px"></div>
-  <div class="pqajusta" id="resextra" hidden></div>
-  <div class="nota suave" id="notasol" hidden style="margin-top:12px">☀️ <b>Marcaste que casi no usas bloqueador:</b> es el paso que más previene manchas y arrugas — en tu rutina de abajo ya viene incluido. Úsalo diario, aunque esté nublado.</div>
-  <div class="nota suave" id="resemb" hidden style="margin-top:12px">🤰 <b>Marcaste embarazo o lactancia:</b> tu rutina va solo con fórmulas suaves — sin retinol, sin kójico, sin exfoliantes fuertes. Si aparece <b>ácido azelaico</b>, es de los que los dermatólogos sí usan en esta etapa. Aun así, antes de estrenar, enséñale tu rutina a tu médico 💕.</div>
-  <div class="pqajusta">Abajo está tu rutina 👇 Si algo no cuadra, <b>toca los botones para ajustar</b> — tú te conoces mejor que nadie (puedes elegir hasta 3).</div>
-  <div class="chips"><button class="chip" type="button" aria-pressed="false" data-need="manchas"><span class="chico">🎯</span>Manchas y tono disparejo</button><button class="chip" type="button" aria-pressed="false" data-need="poros"><span class="chico">✨</span>Poros abiertos, grasa y brillo</button><button class="chip" type="button" aria-pressed="false" data-need="granitos"><span class="chico">🌿</span>Granitos y brotes</button><button class="chip" type="button" aria-pressed="false" data-need="sensible"><span class="chico">🌸</span>Piel reseca, sensible o irritada</button><button class="chip" type="button" aria-pressed="false" data-need="edad"><span class="chico">⏳</span>Líneas, arrugas y flacidez</button><button class="chip" type="button" aria-pressed="false" data-need="ojos"><span class="chico">👁️</span>Ojeras, bolsas y contorno</button><button class="chip" type="button" aria-pressed="false" data-need="glow"><span class="chico">🫧</span>Quiere GLOW / empezar desde cero</button><button class="chip" type="button" aria-pressed="false" data-need="sol"><span class="chico">☀️</span>Protección de todos los días</button><button class="chip" type="button" aria-pressed="false" data-need="regalo"><span class="chico">🎁</span>Regalo o antojo</button><button class="chip" type="button" aria-pressed="false" data-need="mascarillas"><span class="chico">🎭</span>Mascarillas y consentirse</button></div>
-  <div class="avisomax" id="aviso-max" hidden>Elige las <b>2 o 3 que más te importan</b>: tu piel no puede tratarse todo a la vez, y la rutina se vuelve muy larga. Quita una para agregar otra.</div>
-  <section class="panel" id="panel-combinado" hidden></section>
+  <!-- ===== pantalla 3 · rutina ===== -->
+  <section id="t-rutina" hidden>
+    <a class="tvolver" href="#t-elegir">← Cambiar mi elección</a>
+    <section class="panel" id="panel-combinado" hidden></section>
   <section class="panel" id="panel-manchas" hidden>
           <div class="ptit">🎯 Manchas y tono disparejo</div>
           <div class="plabel">La misma rutina, con otra marca — toca la que prefiera</div><details class="mez"><summary><span class="mzico">🔀</span>
@@ -4501,21 +4487,14 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
       </div></details>
           <div class="cta">💕 <b>Pídeselo a tu asesora:</b> te arma la rutina completa, te la aparta hoy y la pagas con tu vale en quincenas.</div>
         </section>
-  <div id="unpoco"></div>
-  <button class="pqsec" id="denuevo" type="button" style="width:100%;margin-top:18px">🔁 Empezar de nuevo</button>
-  <a class="volver" href="../">← Volver a la portada</a>
-  <div class="pqlegal">🔒 Tu foto nunca salió de tu celular — al recargar o cerrar la página, desaparece.<br>Precios de julio 2026 — confírmalos en tienda. Orientación cosmética; no sustituye la opinión de un dermatólogo.</div>
-</section>
+    <div class="tespacio"></div>
+  </section>
 
-<input id="q" hidden><div id="cat" hidden></div><div id="vacio" hidden></div>
+  <!-- stubs: el motor engancha el buscador del catálogo (q/cat/vacio) sin guardas;
+       aquí el catálogo no existe (vive en /buscar) — estos nodos evitan que truene -->
+  <div hidden aria-hidden="true"><input id="q" type="search" tabindex="-1"><div id="cat"></div><div id="vacio"></div></div>
 </div>
-<div id="modal" hidden>
-  <div class="mbg"></div>
-  <div class="mcard" role="dialog" aria-modal="true" aria-label="Ficha del producto">
-    <button class="mclose" type="button" aria-label="Cerrar">✕</button>
-    <div id="mbody"></div>
-  </div>
-</div>
+
 <div id="tases" hidden>
   <div class="tfondo" id="tfondo"></div>
   <div class="thoja">
@@ -4535,7 +4514,28 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
   </div>
 </div>
 
-<script>const D = {"P":[{"d":"Niacinamide 10% + TXA 4% Serum 30ml","m":"ANUA","c":"Niacinamide + TXA","p":"T","t":["manchas","glow"],"u":"Aclara manchas y empareja el tono; el favorito para marcas de granitos","th":"B0CLLV2T1P.jpg","pc":753,"cr":1054,"q":12,"pq":88,"v":70000,"ok":1,"cp":"El sérum anti-manchas más vendido de la marca","ci":"🎯"},{"d":"Azelaic Acid 10 Serum 30ml","m":"ANUA","c":"Azelaic Acid","p":"T","t":["granitos","sensible"],"u":"Calma rojeces y granitos en piel delicada, sin irritar","th":"B0DG1DQ2S7.jpg","pc":753,"cr":1054,"q":12,"pq":88,"v":100000,"ok":1,"cp":"Baja la rojez y el granito en piel delicada","ci":"🌿"},{"d":"PDRN Hyaluronic Capsule Mist 100ml","m":"ANUA","c":"PDRN","p":"T","t":["reseca","glow","regalo"],"u":"Bruma hidratante con cápsulas: refresca y da glow al instante, hasta sobre maquillaje","th":"B0FVT77ZLL.jpg","pc":823,"cr":1152,"q":12,"pq":96,"v":100000,"ok":1,"cp":"Hidratación regeneradora con glow inmediato","ci":"💦"},{"d":"PDRN Hyaluronic Capsule 100 Serum 30ml","m":"ANUA","c":"PDRN","p":"T","t":["reseca","edad"],"u":"Sérum regenerador con PDRN: piel más jugosa y rellenita","th":"B0DLB58CWR.jpg","pc":918,"cr":1285,"q":12,"pq":107,"v":20000,"ok":1,"cp":"Hidratación regeneradora con glow inmediato","ci":"💦"},{"d":"Heartleaf Pore Control Cleansing Oil 200ml","m":"ANUA","c":"Heartleaf","p":"L","t":["poros","sensible","empezar"],"u":"Aceite desmaquillante: derrite maquillaje, bloqueador y puntos negros","th":"B0BN2PX8V3.jpg","pc":564,"cr":790,"q":12,"pq":66,"v":70000,"ok":1,"cp":"La doble limpieza viral que deja el poro impecable","ci":"🌱"},{"d":"PDRN Hyaluronic Cleansing Foam 150ml","m":"ANUA","c":"PDRN","p":"L","t":["reseca","sensible"],"u":"Espuma que limpia e hidrata a la vez; ideal piel reseca","th":"B0FPQNL9K7.jpg","pc":376,"cr":526,"q":10,"pq":53,"v":10000,"ok":1,"cp":"Hidratación regeneradora con glow inmediato","ci":"💦"},{"d":"PDRN Hyaluronic Glow Pad 180ml","m":"ANUA","c":"PDRN","p":"T","t":["glow","manchas"],"u":"Toallitas de glow: exfolian suavecito e iluminan en un paso","th":"B0DQKP3G4V.jpg","pc":564,"cr":790,"q":12,"pq":66,"v":3000,"ok":1,"cp":"Hidratación regeneradora con glow inmediato","ci":"💦"},{"d":"Madeca Cream Time Reverse 50ml","m":"CENTELLIAN24","c":"Madeca Cream","p":"S","t":["edad"],"u":"Crema anti-edad con herencia farmacéutica: firmeza y nutrición","th":"B0DFY92NDB.jpg","pc":309,"cr":432,"q":10,"pq":43,"v":50,"ok":1,"cp":"Anti-edad con respaldo farmacéutico","ci":"🏥"},{"d":"360 Shot PDRN Lifting Eye Cream","m":"CENTELLIAN24","c":"360 Shot PDRN","p":"S","t":["ojos","edad"],"u":"Contorno de ojos con aplicador: líneas, bolsas y párpado caído","th":"B0G48T5CM2.jpg","pc":309,"cr":432,"q":10,"pq":43,"v":20000,"ok":0,"cp":"Contorno de ojos con efecto lifting visible","ci":"👁️"},{"d":"Madeca Cream Time Reverse Zero","m":"CENTELLIAN24","c":"Madeca Cream","p":"S","t":["edad"],"u":"Anti-edad ligera: perfecta para empezar a los 30","th":"B0FVY91T1Q.jpg","pc":309,"cr":432,"q":10,"pq":43,"v":7000,"ok":1,"cp":"Anti-edad con respaldo farmacéutico","ci":"🏥"},{"d":"Expert Madeca Cream PDRN 50ml","m":"CENTELLIAN24","c":"Madeca Cream","p":"S","t":["edad","regalo"],"u":"La crema anti-edad más potente del corner; el regalo para mamá","th":"B0FS7QVSVC.jpg","pc":408,"cr":571,"q":10,"pq":57,"v":10000,"ok":1,"cp":"Anti-edad con respaldo farmacéutico","ci":"🏥"},{"d":"360 Shot PDRN Eye Patch (6 pares)","m":"CENTELLIAN24","c":"360 Shot PDRN","p":"T","t":["ojos","regalo","mascarillas"],"u":"Parches de ojos efecto lifting exprés antes de un evento","th":"B0G48SXDV7.jpg","pc":296,"cr":415,"q":10,"pq":42,"v":900,"ok":0,"cp":"Contorno de ojos con efecto lifting visible","ci":"👁️"},{"d":"Airy-Light Sunscreen Stick","m":"COSRX","c":"Protección Solar","p":"SOL","t":["sol"],"u":"Bloqueador en barra: retoca en el día, hasta sobre el maquillaje","th":"B0F9NX6DX4.jpg","pc":525,"cr":736,"q":12,"pq":61,"v":10000,"ok":1,"cp":"Bloqueador cómodo, incluso en barra para retocar","ci":"☀️"},{"d":"Low pH Good Morning Cleanser","m":"COSRX","c":"Low pH / Limpieza","p":"L","t":["empezar","sensible"],"u":"El limpiador suave más famoso de Corea; para toda la familia","th":"B016NRXO06.jpg","pc":320,"cr":448,"q":10,"pq":45,"v":10000,"ok":1,"cp":"El limpiador suave más famoso de Corea","ci":"🧼"},{"d":"Aloe Soothing Sun Cream","m":"COSRX","c":"Protección Solar","p":"SOL","t":["sol"],"u":"Bloqueador fresco con aloe: se siente como crema, no como bloqueador","th":"8809416470191.jpg","pc":366,"cr":512,"q":10,"pq":51,"v":0,"ok":1,"cp":"Bloqueador cómodo, incluso en barra para retocar","ci":"☀️"},{"d":"The Niacinamide 15 Serum","m":"COSRX","c":"Sérums Activos","p":"T","t":["manchas","poros"],"u":"Niacinamida al 15%: aclara marcas y afina el poro","th":"B09ZYB8S31.jpg","pc":571,"cr":800,"q":12,"pq":67,"v":7000,"ok":1,"cp":"Los activos clásicos, bien hechos y sin misterio","ci":"💉"},{"d":"Peptide Collagen Eye Patch (60 pzas)","m":"COSRX","c":"Sérums Activos","p":"T","t":["ojos","regalo","mascarillas"],"u":"60 parches de hidrogel: ojos despiertos en 15 minutos","th":"B0DLKCCPYZ.jpg","pc":525,"cr":736,"q":12,"pq":61,"v":30000,"ok":0,"cp":"Los activos clásicos, bien hechos y sin misterio","ci":"💉"},{"d":"Advanced Snail 92 All In One Cream 100ml","m":"COSRX","c":"Advanced Snail","p":"S","t":["reseca","glow"],"u":"Crema de caracol todo-en-uno: repara y suaviza","th":"B01LEJ5MSK.jpg","pc":594,"cr":832,"q":12,"pq":69,"v":10000,"ok":1,"cp":"La baba de caracol que hizo famosa a la K-beauty","ci":"🐌"},{"d":"The 6 Peptide Booster Serum 150ml","m":"COSRX","c":"Sérums Activos","p":"T","t":["edad","glow"],"u":"6 péptidos: piel más elástica y descansada; tamaño jumbo","th":"B0CCJ3SRB9.jpg","pc":571,"cr":800,"q":12,"pq":67,"v":40000,"ok":1,"cp":"Los activos clásicos, bien hechos y sin misterio","ci":"💉"},{"d":"Advanced Snail 96 Mucin Essence 100ml","m":"COSRX","c":"Advanced Snail","p":"T","t":["glow","reseca","empezar","regalo"],"u":"LA baba de caracol viral: repara, hidrata y da glow a cualquier piel","th":"B00PBX3L7K.jpg","pc":571,"cr":800,"q":12,"pq":67,"v":40000,"ok":1,"cp":"La baba de caracol que hizo famosa a la K-beauty","ci":"🐌"},{"d":"Advanced Snail Peptide Eye Cream 25ml","m":"COSRX","c":"Advanced Snail","p":"S","t":["ojos"],"u":"Contorno de caracol + péptidos: líneas finas y ojeras","th":"B07ZRF416W.jpg","pc":640,"cr":896,"q":12,"pq":75,"v":9000,"ok":0,"cp":"La baba de caracol que hizo famosa a la K-beauty","ci":"🐌"},{"d":"Advanced Snail Radiance Dual Essence 80ml","m":"COSRX","c":"Advanced Snail","p":"T","t":["glow","manchas"],"u":"Doble esencia: caracol + niacinamida para iluminar","th":"B08FSWVXRD.jpg","pc":640,"cr":896,"q":12,"pq":75,"v":1000,"ok":1,"cp":"La baba de caracol que hizo famosa a la K-beauty","ci":"🐌"},{"d":"345 Relief Cream 50ml","m":"DR.ALTHEA","c":"345 Relief","p":"S","t":["sensible","granitos"],"u":"La crema calmante #1: baja rojez e irritación en días","th":"B0FKGJYFC8.jpg","pc":543,"cr":761,"q":12,"pq":63,"v":100000,"ok":1,"cp":"El rescate para piel irritada y enrojecida","ci":"🧯"},{"d":"345 Relief Cream 15ml","m":"DR.ALTHEA","c":"345 Relief","p":"S","t":["sensible","empezar"],"u":"La mini de la 345: para probarla o llevarla de viaje","th":"B0G643D8ZG.jpg","pc":225,"cr":315,"q":8,"pq":39,"v":30000,"ok":1,"cp":"El rescate para piel irritada y enrojecida","ci":"🧯"},{"d":"345 Relief Cream Mist 100ml","m":"DR.ALTHEA","c":"345 Relief","p":"T","t":["sensible","reseca"],"u":"La 345 en bruma: calma al instante donde sea","th":"B0FMWPNKJR.jpg","pc":432,"cr":605,"q":10,"pq":60,"v":20000,"ok":1,"cp":"El rescate para piel irritada y enrojecida","ci":"🧯"},{"d":"Gentle Vitamin C Serum 30ml","m":"DR.ALTHEA","c":"Esenciales","p":"T","t":["manchas","glow","sensible"],"u":"Vitamina C suave: ilumina sin irritar, apta piel sensible","th":"B0DGLCRZZ3.jpg","pc":420,"cr":588,"q":10,"pq":59,"v":10000,"ok":1,"cp":"Vitamina C que sí tolera la piel sensible","ci":"🍊"},{"d":"147 Barrier Cream 50ml","m":"DR.ALTHEA","c":"147 Barrier","p":"S","t":["reseca","sensible"],"u":"Repara la barrera: piel muy reseca, tirante o maltratada","th":"B0GPPRTD32.jpg","pc":543,"cr":761,"q":12,"pq":63,"v":0,"ok":1,"cp":"Repara la barrera muy dañada","ci":"🛡️"},{"d":"345 Relief Cream Mist 60ml","m":"DR.ALTHEA","c":"345 Relief","p":"T","t":["sensible"],"u":"La bruma calmante en tamaño bolsillo","th":"B0FMDKZW63.jpg","pc":266,"cr":372,"q":10,"pq":37,"v":4000,"ok":1,"cp":"El rescate para piel irritada y enrojecida","ci":"🧯"},{"d":"Zero Pore Pad 2.0 (toallitas)","m":"Medicube","c":"Zero Pore","p":"T","t":["poros","glow","empezar"],"u":"Las toallitas virales: destapan poros y quitan brillo en una pasada","th":"B09V7Z4TJG.jpg","pc":443,"cr":620,"q":10,"pq":62,"v":100000,"ok":1,"cp":"Poro cerrado y cero brillo, todo el día","ci":"🫧"},{"d":"Zero Foam Cleanser 120ml","m":"Medicube","c":"Zero Pore","p":"L","t":["poros"],"u":"Espuma para piel grasa: limpia profundo sin apretar","th":"B09C1B7BH5.jpg","pc":302,"cr":423,"q":10,"pq":42,"v":40000,"ok":1,"cp":"Poro cerrado y cero brillo, todo el día","ci":"🫧"},{"d":"Zero Pore Blackhead Mud Mask","m":"Medicube","c":"Zero Pore","p":"T","t":["poros","mascarillas"],"u":"Mascarilla de barro: puntos negros y nariz brillosa","th":"B0D1G7XF9X.jpg","pc":322,"cr":451,"q":10,"pq":45,"v":0,"ok":0,"cp":"Poro cerrado y cero brillo, todo el día","ci":"🫧"},{"d":"Zero Pore Hydrating Sun Serum 50ml","m":"Medicube","c":"Zero Pore","p":"SOL","t":["sol","poros"],"u":"Bloqueador-sérum para piel grasa: no tapa poros","th":"8800256119332.jpg","pc":282,"cr":394,"q":10,"pq":39,"v":0,"ok":1,"cp":"Poro cerrado y cero brillo, todo el día","ci":"🫧"},{"d":"Zero Pore Capsule Cleansing Foam","m":"Medicube","c":"Zero Pore","p":"L","t":["poros"],"u":"Espuma con cápsulas: limpieza profunda del poro","th":"B0DYTQ5GYQ.jpg","pc":322,"cr":451,"q":10,"pq":45,"v":40000,"ok":1,"cp":"Poro cerrado y cero brillo, todo el día","ci":"🫧"},{"d":"Zero Pore Blackhead Cleansing Oil 205ml","m":"Medicube","c":"Zero Pore","p":"L","t":["poros"],"u":"Aceite que disuelve puntos negros al masajear","th":"B0FP176X2H.jpg","pc":382,"cr":535,"q":10,"pq":54,"v":20000,"ok":1,"cp":"Poro cerrado y cero brillo, todo el día","ci":"🫧"},{"d":"Zero Pore One Day Cream 50ml","m":"Medicube","c":"Zero Pore","p":"S","t":["poros"],"u":"Gel-crema matificante: hidrata sin brillo","th":"B0BCK9G74Q.jpg","pc":523,"cr":732,"q":12,"pq":61,"v":0,"ok":1,"cp":"Poro cerrado y cero brillo, todo el día","ci":"🫧"},{"d":"Deep Vita C Capsule Cream 55g","m":"Medicube","c":"Deep Vita C","p":"S","t":["manchas","glow"],"u":"Crema de vitamina C: ilumina y empareja el tono","th":"B0D2Z3GGCY.jpg","pc":563,"cr":789,"q":12,"pq":66,"v":0,"ok":1,"cp":"Luz inmediata para piel apagada","ci":"🍊"},{"d":"Deep Vita C Capsule Serum 30ml","m":"Medicube","c":"Deep Vita C","p":"T","t":["manchas","glow"],"u":"Vitamina C concentrada en cápsulas: contra manchas y piel apagada","th":"B0FR4QYNK5.jpg","pc":382,"cr":535,"q":10,"pq":54,"v":20000,"ok":1,"cp":"Luz inmediata para piel apagada","ci":"🍊"},{"d":"Deep Vita C Pad (toallitas)","m":"Medicube","c":"Deep Vita C","p":"T","t":["manchas","glow"],"u":"Toallitas de vitamina C: glow y tono parejo en un paso","th":"B0BPLYHDPG.jpg","pc":523,"cr":732,"q":12,"pq":61,"v":0,"ok":1,"cp":"Luz inmediata para piel apagada","ci":"🍊"},{"d":"PDRN Pink Collagen Capsule Cream","m":"Medicube","c":"PDRN Pink","p":"S","t":["edad","glow"],"u":"La crema rosa de colágeno: piel que rebota","th":"B0DTKCN3Z4.jpg","pc":563,"cr":789,"q":12,"pq":66,"v":50000,"ok":1,"cp":"Piel de porcelana: firmeza, glow y poro cerrado","ci":"🌸"},{"d":"PDRN Pink Peptide Serum 30ml","m":"Medicube","c":"PDRN Pink","p":"T","t":["edad","glow","regalo"],"u":"EL sérum rosa viral de TikTok: firmeza, glow y piel de porcelana","th":"B0DBF65JYY.jpg","pc":402,"cr":563,"q":10,"pq":56,"v":100000,"ok":1,"cp":"Piel de porcelana: firmeza, glow y poro cerrado","ci":"🌸"},{"d":"PDRN Pink Peptide Eye Serum 30ml","m":"Medicube","c":"PDRN Pink","p":"T","t":["ojos"],"u":"Sérum de ojos con rodillo: líneas, ojeras y bolsas","th":"B0DWMSM6Y9.jpg","pc":342,"cr":479,"q":10,"pq":48,"v":50000,"ok":0,"cp":"Piel de porcelana: firmeza, glow y poro cerrado","ci":"🌸"},{"d":"PDRN Pink Hyaluronic Cream 50ml","m":"Medicube","c":"PDRN Pink","p":"S","t":["reseca"],"u":"Hidratación ligera diaria con toque rosa","th":"B0DKNP4TL6.jpg","pc":342,"cr":479,"q":10,"pq":48,"v":6000,"ok":1,"cp":"Piel de porcelana: firmeza, glow y poro cerrado","ci":"🌸"},{"d":"PDRN Pink Caffeine Night Mask 75ml","m":"Medicube","c":"PDRN Pink","p":"T","t":["glow","edad","mascarillas"],"u":"Mascarilla de noche con cafeína: amaneces desinflamada","th":"B0F8HHJG25.jpg","pc":483,"cr":676,"q":12,"pq":56,"v":10000,"ok":0,"cp":"Piel de porcelana: firmeza, glow y poro cerrado","ci":"🌸"},{"d":"PDRN Hydrating Gel Cleanser 200ml","m":"Medicube","c":"PDRN Pink","p":"L","t":["reseca","sensible"],"u":"Gel limpiador que no reseca","th":"B0F83N244B.jpg","pc":443,"cr":620,"q":10,"pq":62,"v":10000,"ok":1,"cp":"Piel de porcelana: firmeza, glow y poro cerrado","ci":"🌸"},{"d":"PDRN Pink Niacinamide Milky Toner 150ml","m":"Medicube","c":"PDRN Pink","p":"T","t":["glow","manchas"],"u":"Tóner lechoso: suaviza y aclara poco a poco","th":"B0DY7GDRV7.jpg","pc":342,"cr":479,"q":10,"pq":48,"v":0,"ok":1,"cp":"Piel de porcelana: firmeza, glow y poro cerrado","ci":"🌸"},{"d":"PDRN Pink Niacinamide Whip Cleanser","m":"Medicube","c":"PDRN Pink","p":"L","t":["glow"],"u":"Espuma cremosa tipo mousse: limpia con cariño","th":"8800289473159.jpg","pc":322,"cr":451,"q":10,"pq":45,"v":0,"ok":1,"cp":"Piel de porcelana: firmeza, glow y poro cerrado","ci":"🌸"},{"d":"PDRN Pink Exosome Shot Serum 30ml","m":"Medicube","c":"PDRN Pink","p":"T","t":["edad"],"u":"Sérum regenerador premium: la versión más avanzada del rosa","th":"B0DQCJ9T9N.jpg","pc":483,"cr":676,"q":12,"pq":56,"v":3000,"ok":1,"cp":"Piel de porcelana: firmeza, glow y poro cerrado","ci":"🌸"},{"d":"PDRN Pink Collagen Bubble Serum 95ml","m":"Medicube","c":"PDRN Pink","p":"T","t":["edad","glow"],"u":"Sérum en burbujas de colágeno: firmeza divertida de usar","th":"B0BRMZQBCR.jpg","pc":402,"cr":563,"q":10,"pq":56,"v":0,"ok":1,"cp":"Piel de porcelana: firmeza, glow y poro cerrado","ci":"🌸"},{"d":"PDRN Pink Glow Jelly Mist 100ml","m":"Medicube","c":"PDRN Pink","p":"T","t":["glow","regalo"],"u":"Bruma gelatinosa: glow inmediato, hasta sobre maquillaje","th":"B0FYN9CJKC.jpg","pc":443,"cr":620,"q":10,"pq":62,"v":10000,"ok":1,"cp":"Piel de porcelana: firmeza, glow y poro cerrado","ci":"🌸"},{"d":"PDRN Pink Glutathione Cleansing Foam 120g","m":"Medicube","c":"PDRN Pink","p":"L","t":["glow"],"u":"Espuma iluminadora con glutatión","th":"B0FSBL98M7.jpg","pc":322,"cr":451,"q":10,"pq":45,"v":0,"ok":1,"cp":"Piel de porcelana: firmeza, glow y poro cerrado","ci":"🌸"},{"d":"Rosemary PDRN Shampoo 400ml","m":"Medicube","c":"PDRN Pink","p":"L","t":["cabello"],"u":"Champú de romero: frescura y cabello con más cuerpo","th":"B0FY6DB6MR.jpg","pc":543,"cr":761,"q":12,"pq":63,"v":8000,"ok":0,"cp":"Piel de porcelana: firmeza, glow y poro cerrado","ci":"🌸"},{"d":"PDRN Pink Toning Gel Toner Pad","m":"Medicube","c":"PDRN Pink","p":"T","t":["glow"],"u":"Toallitas tonificantes de colágeno rosa","th":"B0DX74CWSQ.jpg","pc":463,"cr":648,"q":10,"pq":65,"v":8000,"ok":1,"cp":"Piel de porcelana: firmeza, glow y poro cerrado","ci":"🌸"},{"d":"TXA Niacinamide Capsule Cream 55g","m":"Medicube","c":"TXA Niacinamide","p":"S","t":["manchas"],"u":"Crema despigmentante de uso diario","th":"B0F29C8N84.jpg","pc":563,"cr":789,"q":12,"pq":66,"v":10000,"ok":1,"cp":"Borra las marcas que deja el acné","ci":"🎯"},{"d":"TXA Niacinamide 15 Serum 30ml","m":"Medicube","c":"TXA Niacinamide","p":"T","t":["manchas"],"u":"Aclara manchas oscuras y marcas de granitos","th":"B0DVSNQ37F.jpg","pc":382,"cr":535,"q":10,"pq":54,"v":10000,"ok":1,"cp":"Borra las marcas que deja el acné","ci":"🎯"},{"d":"Hyaluronic Moisturizing Capsule Cream 55g","m":"Medicube","c":"Hyaluronic","p":"S","t":["reseca"],"u":"Hidratación profunda en crema con cápsulas","th":"B0FQ4K6845.jpg","pc":563,"cr":789,"q":12,"pq":66,"v":7000,"ok":1,"cp":"Hidratación profunda que dura todo el día","ci":"💧"},{"d":"Hyaluronic Ceramide Jelly Cream 50ml","m":"Medicube","c":"Hyaluronic","p":"S","t":["reseca","empezar"],"u":"Gel-crema jugoso: hidratación + barrera reparada","th":"B0FPQ3Z16S.jpg","pc":362,"cr":507,"q":10,"pq":51,"v":70000,"ok":1,"cp":"Hidratación profunda que dura todo el día","ci":"💧"},{"d":"Glutathione Glow Capsule Cream","m":"Medicube","c":"Glutathione Glow","p":"S","t":["glow","manchas"],"u":"Crema iluminadora: tono más parejo","th":"B0D97JZ29D.jpg","pc":563,"cr":789,"q":12,"pq":66,"v":0,"ok":1,"cp":"Luminosidad pareja de pies a cabeza","ci":"🌟"},{"d":"Glutathione Glow Serum","m":"Medicube","c":"Glutathione Glow","p":"T","t":["glow","manchas"],"u":"Glow total: luminosidad y tono uniforme","th":"B0CN646H8X.jpg","pc":362,"cr":507,"q":10,"pq":51,"v":1000,"ok":1,"cp":"Luminosidad pareja de pies a cabeza","ci":"🌟"},{"d":"Collagen Night Wrapping Mask 75ml","m":"Medicube","c":"Collagen","p":"T","t":["edad","glow","mascarillas"],"u":"Te la pones y duermes: amaneces con piel firme","th":"B0BRMYHMS5.jpg","pc":483,"cr":676,"q":12,"pq":56,"v":0,"ok":0,"cp":"Piel que rebota: firmeza y efecto lifting","ci":"✨"},{"d":"Triple Collagen Cream 4.0 50ml","m":"Medicube","c":"Collagen","p":"S","t":["edad"],"u":"Colágeno triple: firmeza visible en semanas","th":"B0BPXT3GBN.jpg","pc":503,"cr":704,"q":12,"pq":59,"v":40000,"ok":1,"cp":"Piel que rebota: firmeza y efecto lifting","ci":"✨"},{"d":"Collagen Jelly Cream 110ml","m":"Medicube","c":"Collagen","p":"S","t":["edad","glow","empezar","regalo"],"u":"LA crema gelatina viral de colágeno: rebote y glow","th":"B0CM2PPNMW.jpg","pc":483,"cr":676,"q":12,"pq":56,"v":70000,"ok":1,"cp":"Piel que rebota: firmeza y efecto lifting","ci":"✨"},{"d":"Collagen Jelly Cream 50ml","m":"Medicube","c":"Collagen","p":"S","t":["edad","glow"],"u":"La gelatina de colágeno en tamaño chico","th":"B0DGPSZVW3.jpg","pc":322,"cr":451,"q":10,"pq":45,"v":0,"ok":1,"cp":"Piel que rebota: firmeza y efecto lifting","ci":"✨"},{"d":"Triple Collagen Serum 4.0 55ml","m":"Medicube","c":"Collagen","p":"T","t":["edad"],"u":"Sérum de colágeno triple: el paso fuerte anti-flacidez","th":"B085VWWJJT.jpg","pc":423,"cr":592,"q":10,"pq":59,"v":10000,"ok":1,"cp":"Piel que rebota: firmeza y efecto lifting","ci":"✨"},{"d":"Kojic Acid Turmeric Niacinamide Serum 30ml","m":"Medicube","c":"Kojic Acid Turmeric","p":"T","t":["manchas"],"u":"Kójico + cúrcuma: para manchas difíciles y paño","th":"B0FG7VLJKG.jpg","pc":382,"cr":535,"q":10,"pq":54,"v":30000,"ok":1,"cp":"Contra las manchas más difíciles y el paño","ci":"🎯"},{"d":"Kojic Turmeric Night Mask 75ml","m":"Medicube","c":"Kojic Acid Turmeric","p":"T","t":["manchas","mascarillas"],"u":"Duerme con ella y amanece con tono más parejo","th":"B0FB36X74P.jpg","pc":543,"cr":761,"q":12,"pq":63,"v":20000,"ok":0,"cp":"Contra las manchas más difíciles y el paño","ci":"🎯"},{"d":"Kojic Turmeric Vita Eye Gel 30ml","m":"Medicube","c":"Kojic Acid Turmeric","p":"T","t":["ojos","manchas"],"u":"Para ojeras oscuras: aclara la mirada","th":"B0FPBYP83F.jpg","pc":342,"cr":479,"q":10,"pq":48,"v":10000,"ok":0,"cp":"Contra las manchas más difíciles y el paño","ci":"🎯"},{"d":"Kojic Turmeric Vita Capsule Cream 53g","m":"Medicube","c":"Kojic Acid Turmeric","p":"S","t":["manchas"],"u":"Crema aclaradora para sellar la rutina anti-manchas","th":"B0FR91FPFS.jpg","pc":563,"cr":789,"q":12,"pq":66,"v":9000,"ok":1,"cp":"Contra las manchas más difíciles y el paño","ci":"🎯"},{"d":"Azelaic Acid 16 BB Calming Serum 30ml","m":"Medicube","c":"Azelaic Acid","p":"T","t":["granitos","sensible"],"u":"Granitos y rojez: calma los activos y previene nuevos","th":"B0FT7TKN36.jpg","pc":382,"cr":535,"q":10,"pq":54,"v":4000,"ok":1,"cp":"Calma el granito y la rojez al mismo tiempo","ci":"🌿"},{"d":"Azelaic Niacinamide Foam Cleanser 120g","m":"Medicube","c":"Azelaic Acid","p":"L","t":["granitos"],"u":"Espuma para piel con granitos: limpia sin maltratar","th":"B0FSBR2KGW.jpg","pc":322,"cr":451,"q":10,"pq":45,"v":8000,"ok":1,"cp":"Calma el granito y la rojez al mismo tiempo","ci":"🌿"},{"d":"Centella Cleansing Foam 150ml","m":"MIXSOON","c":"Centella / Cica","p":"L","t":["sensible"],"u":"Espuma suave de centella para piel delicada","th":"B0CMQ7B68P.jpg","pc":367,"cr":514,"q":10,"pq":51,"v":4000,"ok":1,"cp":"Calma esencial, sin adornos","ci":"🍃"},{"d":"Bean Cleansing Oil 195ml","m":"MIXSOON","c":"Bean (fermentado)","p":"L","t":["empezar","poros"],"u":"Aceite desmaquillante fermentado: primer paso de la doble limpieza","th":"B0BXL4P558.jpg","pc":509,"cr":713,"q":12,"pq":59,"v":2000,"ok":1,"cp":"Glow natural con lo mínimo: rutina sin complicaciones","ci":"🫘"},{"d":"Bean Essence 30ml","m":"MIXSOON","c":"Bean (fermentado)","p":"T","t":["glow","empezar"],"u":"La esencia viral en mini: prueba el glow fermentado","th":"B0BXKV9V2D.jpg","pc":509,"cr":713,"q":12,"pq":59,"v":2000,"ok":1,"cp":"Glow natural con lo mínimo: rutina sin complicaciones","ci":"🫘"},{"d":"Bean Cream 50ml","m":"MIXSOON","c":"Bean (fermentado)","p":"S","t":["reseca"],"u":"Crema nutritiva fermentada: sencilla y efectiva","th":"B09GP95FQP.jpg","pc":713,"cr":998,"q":12,"pq":83,"v":7000,"ok":1,"cp":"Glow natural con lo mínimo: rutina sin complicaciones","ci":"🫘"},{"d":"Bean Toner 300ml","m":"MIXSOON","c":"Bean (fermentado)","p":"T","t":["reseca"],"u":"Tóner-esencia 2 en 1, tamaño gigante","th":"B0CJC6P3BN.jpg","pc":553,"cr":775,"q":12,"pq":65,"v":100,"ok":1,"cp":"Glow natural con lo mínimo: rutina sin complicaciones","ci":"🫘"},{"d":"Bean Sun Serum","m":"MIXSOON","c":"Bean (fermentado)","p":"SOL","t":["sol"],"u":"Bloqueador con esencia de frijol: protege y nutre","th":"B0DSHX7242.jpg","pc":348,"cr":487,"q":10,"pq":49,"v":10000,"ok":1,"cp":"Glow natural con lo mínimo: rutina sin complicaciones","ci":"🫘"},{"d":"Glacier Water Hyaluronic Serum 100ml","m":"MIXSOON","c":"Glacier Water","p":"T","t":["reseca"],"u":"Ácido hialurónico de agua de glaciar: pura hidratación","th":"B0CYS3W2LG.jpg","pc":448,"cr":628,"q":10,"pq":63,"v":800,"ok":1,"cp":"Hidratación pura, ligerísima","ci":"🧊"},{"d":"PDRN Collagen Gel Cleanser","m":"MIXSOON","c":"PDRN Collagen","p":"L","t":["edad"],"u":"Gel limpiador de la línea regeneradora","th":"B0FJFSRJF6.jpg","pc":245,"cr":342,"q":8,"pq":43,"v":700,"ok":1,"cp":"Regeneración y firmeza a precio accesible","ci":"🌸"},{"d":"PDRN Collagen Serum 30ml","m":"MIXSOON","c":"PDRN Collagen","p":"T","t":["edad"],"u":"PDRN + colágeno: regeneración a precio accesible","th":"B0FS6TX6JM.jpg","pc":469,"cr":656,"q":12,"pq":55,"v":800,"ok":1,"cp":"Regeneración y firmeza a precio accesible","ci":"🌸"},{"d":"PDRN Collagen Eye Serum","m":"MIXSOON","c":"PDRN Collagen","p":"T","t":["ojos"],"u":"Sérum de ojos regenerador","th":"B0FJFSTCHP.jpg","pc":408,"cr":571,"q":10,"pq":57,"v":1000,"ok":0,"cp":"Regeneración y firmeza a precio accesible","ci":"🌸"},{"d":"Cica Hyal Deep Soothing Cream","m":"MIXSOON","c":"Centella / Cica","p":"S","t":["sensible","reseca"],"u":"Crema calmante profunda: piel irritada y tirante","th":"B0FDWNN5NH.jpg","pc":509,"cr":713,"q":12,"pq":59,"v":400,"ok":1,"cp":"Calma esencial, sin adornos","ci":"🍃"},{"d":"Bean Cleansing Oil 100ml","m":"MIXSOON","c":"Bean (fermentado)","p":"L","t":["empezar"],"u":"El aceite desmaquillante en tamaño para probar","th":"B0F7XJ2M5N.jpg","pc":306,"cr":428,"q":10,"pq":43,"v":400,"ok":1,"cp":"Glow natural con lo mínimo: rutina sin complicaciones","ci":"🫘"},{"d":"Bean Eye Cream 20ml","m":"MIXSOON","c":"Bean (fermentado)","p":"S","t":["ojos"],"u":"Contorno nutritivo minimalista","th":"B0CJC4Y7W3.jpg","pc":611,"cr":856,"q":12,"pq":71,"v":1000,"ok":0,"cp":"Glow natural con lo mínimo: rutina sin complicaciones","ci":"🫘"},{"d":"PDRN Collagen Cream","m":"MIXSOON","c":"PDRN Collagen","p":"S","t":["edad"],"u":"Crema regeneradora para sellar la rutina PDRN","th":"B0FJ8NWZZS.jpg","pc":509,"cr":713,"q":12,"pq":59,"v":0,"ok":1,"cp":"Regeneración y firmeza a precio accesible","ci":"🌸"},{"d":"Bean Essence 50ml","m":"MIXSOON","c":"Bean (fermentado)","p":"T","t":["glow","reseca","regalo"],"u":"La esencia fermentada viral: glow minimalista con 2 gotas","th":"B08ZXVVY8M.jpg","pc":713,"cr":998,"q":12,"pq":83,"v":7000,"ok":1,"cp":"Glow natural con lo mínimo: rutina sin complicaciones","ci":"🫘"},{"d":"Centella Travel Kit","m":"SKIN1004","c":"Centella Original","p":"T","t":["empezar","regalo"],"u":"La rutina completa en minis: regalo o kit de inicio perfecto","th":"B09S6JKB52.jpg","pc":725,"cr":1015,"q":12,"pq":85,"v":10000,"ok":0,"cp":"La rutina que calma todo, para la piel más delicada","ci":"🍃"},{"d":"Tea-Trica BHA Foam 125ml","m":"SKIN1004","c":"Tea-Trica","p":"L","t":["granitos","poros"],"u":"Espuma exfoliante anti-granitos con árbol de té","th":"B0B7XFYR23.jpg","pc":333,"cr":466,"q":10,"pq":47,"v":800,"ok":1,"cp":"Rutina completa contra los granitos","ci":"🌿"},{"d":"Tea-Trica Soothing Sun Milk 50ml","m":"SKIN1004","c":"Tea-Trica","p":"SOL","t":["sol","granitos"],"u":"Bloqueador ligero para piel con granitos","th":"8809913830610.jpg","pc":422,"cr":590,"q":10,"pq":59,"v":0,"ok":1,"cp":"Rutina completa contra los granitos","ci":"🌿"},{"d":"Tea-Trica Relief Ampoule 100ml","m":"SKIN1004","c":"Tea-Trica","p":"T","t":["granitos"],"u":"Árbol de té + centella: calma granitos activos","th":"B0B5WVY1VM.jpg","pc":533,"cr":746,"q":12,"pq":62,"v":1000,"ok":1,"cp":"Rutina completa contra los granitos","ci":"🌿"},{"d":"Tea-Trica C5 Cream 75ml","m":"SKIN1004","c":"Tea-Trica","p":"S","t":["granitos","sensible"],"u":"Crema ligera que calma piel con brotes","th":"B0C8SBJD89.jpg","pc":415,"cr":581,"q":10,"pq":58,"v":900,"ok":1,"cp":"Rutina completa contra los granitos","ci":"🌿"},{"d":"Tea-Trica Relief Ampoule 30ml","m":"SKIN1004","c":"Tea-Trica","p":"T","t":["granitos","empezar"],"u":"La ampolla anti-granitos en mini","th":"8809576261882.jpg","pc":209,"cr":293,"q":8,"pq":37,"v":0,"ok":1,"cp":"Rutina completa contra los granitos","ci":"🌿"},{"d":"Tea-Trica Mild Peeling Gel 125ml","m":"SKIN1004","c":"Tea-Trica","p":"L","t":["granitos","glow"],"u":"Exfoliante suave en gel: piel lisa sin maltratar","th":"B0FTB8MDDX.jpg","pc":433,"cr":606,"q":10,"pq":61,"v":50,"ok":0,"cp":"Rutina completa contra los granitos","ci":"🌿"},{"d":"Tea-Trica Spot Cream 20ml","m":"SKIN1004","c":"Tea-Trica","p":"T","t":["granitos"],"u":"Puntual: se aplica directo sobre el granito","th":"B0DHC28K9Y.jpg","pc":464,"cr":649,"q":10,"pq":65,"v":600,"ok":0,"cp":"Rutina completa contra los granitos","ci":"🌿"},{"d":"Probio-Cica Bakuchiol Eye Cream 20ml","m":"SKIN1004","c":"Probio-Cica","p":"S","t":["ojos","edad"],"u":"Contorno con retinol vegetal: líneas sin irritación","th":"B0CFL7LS43.jpg","pc":390,"cr":546,"q":10,"pq":55,"v":6000,"ok":0,"cp":"Barrera fuerte y anti-edad suave","ci":"🛡️"},{"d":"Probio-Cica Enrich Cream 50ml","m":"SKIN1004","c":"Probio-Cica","p":"S","t":["edad","reseca"],"u":"Nutre y refuerza la barrera de piel madura","th":"B0BTPGPK7H.jpg","pc":489,"cr":685,"q":12,"pq":57,"v":6000,"ok":1,"cp":"Barrera fuerte y anti-edad suave","ci":"🛡️"},{"d":"Probio-Cica Intensive Ampoule 95ml","m":"SKIN1004","c":"Probio-Cica","p":"T","t":["edad","sensible"],"u":"Ampolla con probióticos: piel fuerte y elástica","th":"B0CSDMNRGM.jpg","pc":627,"cr":878,"q":12,"pq":73,"v":3000,"ok":1,"cp":"Barrera fuerte y anti-edad suave","ci":"🛡️"},{"d":"Probio-Cica Glow Sun Ampoule 50ml","m":"SKIN1004","c":"Probio-Cica","p":"SOL","t":["sol","glow"],"u":"Bloqueador con glow y probióticos","th":"8809913830573.jpg","pc":422,"cr":590,"q":10,"pq":59,"v":0,"ok":1,"cp":"Barrera fuerte y anti-edad suave","ci":"🛡️"},{"d":"Poremizing Clay Stick Mask 27g","m":"SKIN1004","c":"Poremizing","p":"T","t":["poros","mascarillas"],"u":"Mascarilla de barro en barra: pásala por la zona T y enjuaga","th":"B0C8Y1TSKZ.jpg","pc":435,"cr":609,"q":10,"pq":61,"v":20000,"ok":0,"cp":"Rutina completa para el poro abierto","ci":"🫧"},{"d":"Poremizing Deep Cleansing Foam 125ml","m":"SKIN1004","c":"Poremizing","p":"L","t":["poros"],"u":"Espuma profunda para poro abierto","th":"B0BFW8BLLN.jpg","pc":322,"cr":451,"q":10,"pq":45,"v":0,"ok":1,"cp":"Rutina completa para el poro abierto","ci":"🫧"},{"d":"Poremizing Fresh Ampoule 100ml","m":"SKIN1004","c":"Poremizing","p":"T","t":["poros"],"u":"Ampolla fresca que afina el poro","th":"B0B1JRGGLF.jpg","pc":390,"cr":546,"q":10,"pq":55,"v":1000,"ok":1,"cp":"Rutina completa para el poro abierto","ci":"🫧"},{"d":"Poremizing Light Gel Cream 75ml","m":"SKIN1004","c":"Poremizing","p":"S","t":["poros"],"u":"Gel-crema ligera: hidrata sin brillo","th":"B0BSP1Y2BH.jpg","pc":403,"cr":564,"q":10,"pq":56,"v":1000,"ok":1,"cp":"Rutina completa para el poro abierto","ci":"🫧"},{"d":"Poremizing Clear Toner 210ml","m":"SKIN1004","c":"Poremizing","p":"T","t":["poros"],"u":"Tóner que limpia el poro y controla grasa","th":"B0B1JPZYMN.jpg","pc":400,"cr":560,"q":10,"pq":56,"v":1000,"ok":1,"cp":"Rutina completa para el poro abierto","ci":"🫧"},{"d":"Poremizing Velvet Sunscreen 50ml","m":"SKIN1004","c":"Poremizing","p":"SOL","t":["sol","poros"],"u":"Bloqueador acabado mate para piel grasa","th":"8809913832485.jpg","pc":428,"cr":599,"q":10,"pq":60,"v":0,"ok":1,"cp":"Rutina completa para el poro abierto","ci":"🫧"},{"d":"Hyalu-Cica Sun Stick 20g","m":"SKIN1004","c":"Hyalu-Cica","p":"SOL","t":["sol"],"u":"Bloqueador en barra sedoso: retoque sin ensuciarte las manos","th":"8809913830214.jpg","pc":408,"cr":571,"q":10,"pq":57,"v":0,"ok":0,"cp":"Hidrata y calma al mismo tiempo","ci":"💧"},{"d":"Hyalu-Cica Water-Fit Sun Serum 50ml","m":"SKIN1004","c":"Hyalu-Cica","p":"SOL","t":["sol","empezar","glow"],"u":"EL bloqueador viral: se siente como sérum, cero capa blanca","th":"B0FXH5LHN8.jpg","pc":401,"cr":562,"q":10,"pq":56,"v":50000,"ok":1,"cp":"Hidrata y calma al mismo tiempo","ci":"💧"},{"d":"Hyalu-Cica Water-Fit Sun Serum 100ml","m":"SKIN1004","c":"Hyalu-Cica","p":"SOL","t":["sol"],"u":"El bloqueador viral en tamaño doble","th":"8809913830603.jpg","pc":695,"cr":973,"q":12,"pq":81,"v":0,"ok":1,"cp":"Hidrata y calma al mismo tiempo","ci":"💧"},{"d":"Hyalu-Cica Cleansing Milk 200ml","m":"SKIN1004","c":"Hyalu-Cica","p":"L","t":["sensible","reseca"],"u":"Leche limpiadora suave para piel seca o sensible","th":"8809913832850.jpg","pc":454,"cr":635,"q":10,"pq":64,"v":0,"ok":1,"cp":"Hidrata y calma al mismo tiempo","ci":"💧"},{"d":"Hyalu-Cica Moisture Cream 75ml","m":"SKIN1004","c":"Hyalu-Cica","p":"S","t":["reseca","sensible"],"u":"Crema de hidratación profunda que calma","th":"B09XKFFQQX.jpg","pc":477,"cr":668,"q":12,"pq":56,"v":7000,"ok":1,"cp":"Hidrata y calma al mismo tiempo","ci":"💧"},{"d":"Hyalu-Cica Blue Serum 50ml","m":"SKIN1004","c":"Hyalu-Cica","p":"T","t":["reseca"],"u":"Sérum azul: hidratación + calma en uno","th":"B093JZCD7M.jpg","pc":435,"cr":609,"q":10,"pq":61,"v":1000,"ok":1,"cp":"Hidrata y calma al mismo tiempo","ci":"💧"},{"d":"Hyalu-Cica First Ampoule 100ml","m":"SKIN1004","c":"Hyalu-Cica","p":"T","t":["reseca"],"u":"Primera capa de hidratación después de lavarte","th":"B0B5WRBK93.jpg","pc":540,"cr":756,"q":12,"pq":63,"v":0,"ok":1,"cp":"Hidrata y calma al mismo tiempo","ci":"💧"},{"d":"Centella Light Cleansing Oil 200ml","m":"SKIN1004","c":"Centella Original","p":"L","t":["empezar","sensible"],"u":"Aceite ligero que desmaquilla sin tapar poros","th":"B07T5BN3P2.jpg","pc":410,"cr":574,"q":10,"pq":57,"v":40000,"ok":1,"cp":"La rutina que calma todo, para la piel más delicada","ci":"🍃"},{"d":"Niacinamide 10 Boosting Shot 30ml","m":"SKIN1004","c":"Boosting Shot","p":"T","t":["manchas"],"u":"Shot aclarador: se suma a cualquier rutina","th":"B0FDXXJT66.jpg","pc":366,"cr":512,"q":10,"pq":51,"v":700,"ok":0,"cp":"Un shot concentrado que le sumas a lo que ya usas","ci":"💉"},{"d":"Centella Ampoule Foam 125ml","m":"SKIN1004","c":"Centella Original","p":"L","t":["sensible","empezar"],"u":"Espuma con ampolla incluida: limpia y calma","th":"B09JBJDFHH.jpg","pc":337,"cr":472,"q":10,"pq":47,"v":10000,"ok":1,"cp":"La rutina que calma todo, para la piel más delicada","ci":"🍃"},{"d":"Tone Brightening Cleansing Gel 125ml","m":"SKIN1004","c":"Tone Brightening","p":"L","t":["manchas","glow"],"u":"Gel limpiador que ilumina desde el primer paso","th":"B09C1XCXVS.jpg","pc":309,"cr":432,"q":10,"pq":43,"v":800,"ok":1,"cp":"Efecto buena cara desde el primer día","ci":"🌟"},{"d":"Retinol 0.2 Boosting Shot 30ml","m":"SKIN1004","c":"Boosting Shot","p":"T","t":["edad"],"u":"Tu primer retinol: arruguitas sin irritación","th":"B0FDTZ8Y5Q.jpg","pc":430,"cr":602,"q":10,"pq":60,"v":2000,"ok":0,"cp":"Un shot concentrado que le sumas a lo que ya usas","ci":"💉"},{"d":"Centella Ampoule 100ml","m":"SKIN1004","c":"Centella Original","p":"T","t":["sensible","empezar","glow"],"u":"LA ampolla calmante: un solo ingrediente, piel tranquila","th":"B06Y15D1LH.jpg","pc":519,"cr":727,"q":12,"pq":61,"v":30000,"ok":1,"cp":"La rutina que calma todo, para la piel más delicada","ci":"🍃"},{"d":"Centella Cream 30ml (mini)","m":"SKIN1004","c":"Centella Original","p":"S","t":["sensible","empezar"],"u":"La crema de centella en mini: primera compra ideal","th":"8809576261318.jpg","pc":196,"cr":275,"q":8,"pq":34,"v":0,"ok":1,"cp":"La rutina que calma todo, para la piel más delicada","ci":"🍃"},{"d":"Centella Double Cleansing Duo","m":"SKIN1004","c":"Centella Original","p":"L","t":["empezar","regalo"],"u":"Aceite + espuma juntos: la doble limpieza en un kit","th":"B0D9TX8G86.jpg","pc":679,"cr":951,"q":12,"pq":79,"v":7000,"ok":0,"cp":"La rutina que calma todo, para la piel más delicada","ci":"🍃"},{"d":"Centella Cream 75ml","m":"SKIN1004","c":"Centella Original","p":"S","t":["sensible"],"u":"Crema de centella: calma y protege a diario","th":"B07RSXFC82.jpg","pc":513,"cr":718,"q":12,"pq":60,"v":1000,"ok":1,"cp":"La rutina que calma todo, para la piel más delicada","ci":"🍃"},{"d":"Air-Fit Suncream Light 50ml","m":"SKIN1004","c":"Air-Fit Sun","p":"SOL","t":["sol"],"u":"Bloqueador ligerito de diario: no se siente","th":"B0B3FYB9KL.jpg","pc":408,"cr":571,"q":10,"pq":57,"v":2000,"ok":1,"cp":"Bloqueador diario que de verdad se siente ligero","ci":"☀️"},{"d":"Tone Brightening Tone-Up Sunscreen 50ml","m":"SKIN1004","c":"Tone Brightening","p":"SOL","t":["sol","glow","manchas"],"u":"Bloqueador con color: empareja y da efecto buena cara","th":"8809576261622.jpg","pc":408,"cr":571,"q":10,"pq":57,"v":0,"ok":1,"cp":"Efecto buena cara desde el primer día","ci":"🌟"},{"d":"Centella Ampoule 55ml","m":"SKIN1004","c":"Centella Original","p":"T","t":["sensible","empezar"],"u":"La ampolla calmante en tamaño de entrada","th":"B07ZKHPV9Y.jpg","pc":351,"cr":491,"q":10,"pq":49,"v":6000,"ok":1,"cp":"La rutina que calma todo, para la piel más delicada","ci":"🍃"},{"d":"Bio-Collagen Real Deep Mask (1 pza)","m":"BIODANCE","c":"Real Deep Masks","p":"T","t":["glow","edad","regalo","empezar","mascarillas"],"u":"LA mascarilla viral: se vuelve transparente mientras duermes y amaneces con glow","th":"B0B2RM68G2.jpg","pc":383,"cr":536,"q":10,"pq":54,"v":100000,"ok":0,"cp":"La mascarilla que se vuelve transparente mientras duermes","ci":"🎭"},{"d":"Caviar PDRN Real Deep Mask (1 pza)","m":"BIODANCE","c":"Real Deep Masks","p":"T","t":["edad","regalo","mascarillas"],"u":"La versión premium con caviar: regeneración de noche","th":"B0GY427BJK.jpg","pc":383,"cr":536,"q":10,"pq":54,"v":10000,"ok":0,"cp":"La mascarilla que se vuelve transparente mientras duermes","ci":"🎭"},{"d":"Sea Kelp Real Deep Mask (1 pza)","m":"BIODANCE","c":"Real Deep Masks","p":"T","t":["poros","regalo","mascarillas"],"u":"La versión refrescante con alga marina: calma y poros","th":"B0DR7P1TKL.jpg","pc":383,"cr":536,"q":10,"pq":54,"v":10000,"ok":0,"cp":"La mascarilla que se vuelve transparente mientras duermes","ci":"🎭"},{"d":"Collagen Lifting Mask (1 pza)","m":"Medicube","c":"Collagen","p":"T","t":["edad","regalo","mascarillas"],"u":"Mascarilla lifting individual: efecto tensor para hoy","th":"B0DM894XYZ.jpg","pc":383,"cr":536,"q":10,"pq":54,"v":10000,"ok":0,"cp":"Piel que rebota: firmeza y efecto lifting","ci":"✨"},{"d":"Kojic Turmeric Gel Mask (4 pzas)","m":"Medicube","c":"Kojic Acid Turmeric","p":"T","t":["manchas","regalo","mascarillas"],"u":"4 mascarillas iluminadoras: el plan de domingo","th":"B0DPJRS9DS.jpg","pc":402,"cr":563,"q":10,"pq":56,"v":20000,"ok":0,"cp":"Contra las manchas más difíciles y el paño","ci":"🎯"},{"d":"Air-Fit Suncream Plus 50ml","m":"SKIN1004","c":"Air-Fit Sun","p":"SOL","t":["sol"],"u":"Más protección para playa y exterior","th":"B09JDXC8PM.jpg","pc":421,"cr":590,"q":10,"pq":59,"v":700,"ok":1,"cp":"Bloqueador diario que de verdad se siente ligero","ci":"☀️"},{"d":"Tone Brightening Capsule Cream 75ml","m":"SKIN1004","c":"Tone Brightening","p":"S","t":["manchas","glow"],"u":"Crema efecto buena cara: ilumina de inmediato","th":"B0BFX5KQL3.jpg","pc":508,"cr":711,"q":12,"pq":59,"v":700,"ok":1,"cp":"Efecto buena cara desde el primer día","ci":"🌟"},{"d":"White Truffle First Spray Serum 100ml","m":"D'ALBA","c":"White Truffle","p":"T","t":["glow","regalo","reseca"],"u":"La bruma de trufa blanca: glow de lujo hasta sobre el maquillaje","th":"B0BFQ9RD5B.jpg","pc":618,"cr":864,"q":12,"pq":72,"v":50000,"ok":1,"cp":"Lujo vegano: glow de celebridad coreana","ci":"👑"},{"d":"Double Serum Multi Balm 10g","m":"D'ALBA","c":"White Truffle","p":"S","t":["reseca","regalo"],"u":"Barra 2-en-1: hidrata líneas, labios y pómulos donde sea","th":"B09SZ5JX2Y.jpg","pc":618,"cr":864,"q":12,"pq":72,"v":30000,"ok":0,"cp":"Lujo vegano: glow de celebridad coreana","ci":"👑"},{"d":"Waterfull Essence Sun Cream 50ml","m":"D'ALBA","c":"Waterfull Sun","p":"SOL","t":["sol","regalo"],"u":"Bloqueador-esencia premium: protección con lujo vegano","th":"B0DKJ347ZJ.jpg","pc":679,"cr":951,"q":12,"pq":79,"v":3000,"ok":1,"cp":"Protección solar con acabado de lujo","ci":"☀️"},{"d":"Vita-A Retinal Shot Booster 15ml","m":"CELIMAX","c":"Retinal","p":"T","t":["edad"],"u":"Retinal: más potente que el retinol, para arrugas y firmeza","th":"B0DK4Y2YP3.jpg","pc":445,"cr":622,"q":10,"pq":62,"v":60000,"ok":1,"cp":"El anti-arrugas más potente del corner","ci":"⏳"},{"d":"PDRN Pink Collagen Multi Balm 10g","m":"Medicube","c":"PDRN Pink","p":"S","t":["reseca","regalo","edad"],"u":"Barra de colágeno rosa: rellena labios, pómulos y arruguitas al instante","th":"B0GHMZXX8Y.jpg","pc":483,"cr":676,"q":12,"pq":56,"v":100000,"ok":0,"cp":"Piel de porcelana: firmeza, glow y poro cerrado","ci":"🌸"},{"d":"Collagen Peptide Eye Patch (30 pares)","m":"BIODANCE","c":"Collagen Peptide","p":"T","t":["ojos","regalo","mascarillas"],"u":"Bote con 30 pares de parches: ojos frescos todo el mes","th":"B0GD6R7CFJ.jpg","pc":475,"cr":666,"q":12,"pq":56,"v":90000,"ok":0,"cp":"Ojos frescos en 15 minutos","ci":"👁️"},{"d":"Heartleaf Quercetinol Cleansing Foam 150ml","m":"ANUA","c":"Heartleaf","p":"L","t":["poros","granitos"],"u":"Espuma de limpieza profunda del poro, sin resecar","th":"B0BVV8BNYJ.jpg","pc":329,"cr":461,"q":10,"pq":46,"v":70000,"ok":1,"cp":"La doble limpieza viral que deja el poro impecable","ci":"🌱"},{"d":"Collagen Jelly Serum Mist 50ml","m":"BIODANCE","c":"Collagen Peptide","p":"T","t":["glow"],"u":"Sérum en bruma de péptidos: refresca y reafirma","th":"B0GF86QJK7.jpg","pc":358,"cr":501,"q":10,"pq":50,"v":60000,"ok":1,"cp":"Ojos frescos en 15 minutos","ci":"👁️"},{"d":"EGF NAD Firming Serum 30ml","m":"Medicube","c":"NAD","p":"T","t":["edad"],"u":"Anti-edad de nueva generación: firmeza y regeneración","th":"B0GCC2JV65.jpg","pc":403,"cr":564,"q":10,"pq":56,"v":40000,"ok":1,"cp":"Anti-edad de última generación","ci":"🧬"},{"d":"Collagen Firming Suncream 50ml","m":"Medicube","c":"Collagen","p":"SOL","t":["sol","edad"],"u":"Bloqueador reafirmante: sin capa blanca, puro glow","th":"B0FPQGLYK9.jpg","pc":463,"cr":648,"q":10,"pq":65,"v":40000,"ok":1,"cp":"Piel que rebota: firmeza y efecto lifting","ci":"✨"},{"d":"Centella Soothing Cream 75ml","m":"SKIN1004","c":"Centella Original","p":"S","t":["sensible"],"u":"Gel-crema calmante para piel enrojecida","th":"B09B221Q7K.jpg","pc":449,"cr":628,"q":10,"pq":63,"v":10000,"ok":1,"cp":"La rutina que calma todo, para la piel más delicada","ci":"🍃"}],"N":{"manchas":{"i":"🎯","t":"Manchas y tono disparejo"},"poros":{"i":"✨","t":"Poros abiertos, grasa y brillo"},"granitos":{"i":"🌿","t":"Granitos y brotes"},"sensible":{"i":"🌸","t":"Piel reseca, sensible o irritada"},"edad":{"i":"⏳","t":"Líneas, arrugas y flacidez"},"ojos":{"i":"👁️","t":"Ojeras, bolsas y contorno"},"glow":{"i":"🫧","t":"Quiere GLOW / empezar desde cero"},"sol":{"i":"☀️","t":"Protección de todos los días"},"regalo":{"i":"🎁","t":"Regalo o antojo"},"mascarillas":{"i":"🎭","t":"Mascarillas y consentirse"}},"PN":{"L":"LIMPIA","T":"TRATA","S":"SELLA","SOL":"PROTEGE"},"PI":{"L":"🧼","T":"💧","S":"🧴","SOL":"☀️"}};
+<div id="tcod" hidden>
+  <div class="tfondo" id="tcodfondo"></div>
+  <div class="thoja">
+    <h3>Teclea el código de la clienta 🔑</h3>
+    <p class="tsm">Es el que empieza con <b>SY</b> — su lista aparece tal cual la armó, con su total.</p>
+    <input id="tcodin" class="tcodin" type="text" autocomplete="off" spellcheck="false" placeholder="SY-" maxlength="28">
+    <p class="tsm terr" id="tcoderr" hidden>No reconozco ese código — revísalo caracter por caracter.</p>
+    <button class="tcerrar tcodver" id="tcodver" type="button">Ver la lista</button>
+    <button class="tcerrar" id="tcodcerrar" type="button">Cerrar</button>
+  </div>
+</div>
+
+<div id="modal" hidden>
+  <div class="mbg"></div>
+  <div class="mcard" role="dialog" aria-modal="true" aria-label="Ficha del producto">
+    <button class="mclose" type="button" aria-label="Cerrar">✕</button>
+    <div id="mbody"></div>
+  </div>
+</div>
+
+<script>
+const D = {"P":[{"d":"Niacinamide 10% + TXA 4% Serum 30ml","m":"ANUA","c":"Niacinamide + TXA","p":"T","t":["manchas","glow"],"u":"Aclara manchas y empareja el tono; el favorito para marcas de granitos","th":"B0CLLV2T1P.jpg","pc":753,"cr":1054,"q":12,"pq":88,"v":70000,"ok":1,"cp":"El sérum anti-manchas más vendido de la marca","ci":"🎯"},{"d":"Azelaic Acid 10 Serum 30ml","m":"ANUA","c":"Azelaic Acid","p":"T","t":["granitos","sensible"],"u":"Calma rojeces y granitos en piel delicada, sin irritar","th":"B0DG1DQ2S7.jpg","pc":753,"cr":1054,"q":12,"pq":88,"v":100000,"ok":1,"cp":"Baja la rojez y el granito en piel delicada","ci":"🌿"},{"d":"PDRN Hyaluronic Capsule Mist 100ml","m":"ANUA","c":"PDRN","p":"T","t":["reseca","glow","regalo"],"u":"Bruma hidratante con cápsulas: refresca y da glow al instante, hasta sobre maquillaje","th":"B0FVT77ZLL.jpg","pc":823,"cr":1152,"q":12,"pq":96,"v":100000,"ok":1,"cp":"Hidratación regeneradora con glow inmediato","ci":"💦"},{"d":"PDRN Hyaluronic Capsule 100 Serum 30ml","m":"ANUA","c":"PDRN","p":"T","t":["reseca","edad"],"u":"Sérum regenerador con PDRN: piel más jugosa y rellenita","th":"B0DLB58CWR.jpg","pc":918,"cr":1285,"q":12,"pq":107,"v":20000,"ok":1,"cp":"Hidratación regeneradora con glow inmediato","ci":"💦"},{"d":"Heartleaf Pore Control Cleansing Oil 200ml","m":"ANUA","c":"Heartleaf","p":"L","t":["poros","sensible","empezar"],"u":"Aceite desmaquillante: derrite maquillaje, bloqueador y puntos negros","th":"B0BN2PX8V3.jpg","pc":564,"cr":790,"q":12,"pq":66,"v":70000,"ok":1,"cp":"La doble limpieza viral que deja el poro impecable","ci":"🌱"},{"d":"PDRN Hyaluronic Cleansing Foam 150ml","m":"ANUA","c":"PDRN","p":"L","t":["reseca","sensible"],"u":"Espuma que limpia e hidrata a la vez; ideal piel reseca","th":"B0FPQNL9K7.jpg","pc":376,"cr":526,"q":10,"pq":53,"v":10000,"ok":1,"cp":"Hidratación regeneradora con glow inmediato","ci":"💦"},{"d":"PDRN Hyaluronic Glow Pad 180ml","m":"ANUA","c":"PDRN","p":"T","t":["glow","manchas"],"u":"Toallitas de glow: exfolian suavecito e iluminan en un paso","th":"B0DQKP3G4V.jpg","pc":564,"cr":790,"q":12,"pq":66,"v":3000,"ok":1,"cp":"Hidratación regeneradora con glow inmediato","ci":"💦"},{"d":"Madeca Cream Time Reverse 50ml","m":"CENTELLIAN24","c":"Madeca Cream","p":"S","t":["edad"],"u":"Crema anti-edad con herencia farmacéutica: firmeza y nutrición","th":"B0DFY92NDB.jpg","pc":309,"cr":432,"q":10,"pq":43,"v":50,"ok":1,"cp":"Anti-edad con respaldo farmacéutico","ci":"🏥"},{"d":"360 Shot PDRN Lifting Eye Cream","m":"CENTELLIAN24","c":"360 Shot PDRN","p":"S","t":["ojos","edad"],"u":"Contorno de ojos con aplicador: líneas, bolsas y párpado caído","th":"B0G48T5CM2.jpg","pc":309,"cr":432,"q":10,"pq":43,"v":20000,"ok":0,"cp":"Contorno de ojos con efecto lifting visible","ci":"👁️"},{"d":"Madeca Cream Time Reverse Zero","m":"CENTELLIAN24","c":"Madeca Cream","p":"S","t":["edad"],"u":"Anti-edad ligera: perfecta para empezar a los 30","th":"B0FVY91T1Q.jpg","pc":309,"cr":432,"q":10,"pq":43,"v":7000,"ok":1,"cp":"Anti-edad con respaldo farmacéutico","ci":"🏥"},{"d":"Expert Madeca Cream PDRN 50ml","m":"CENTELLIAN24","c":"Madeca Cream","p":"S","t":["edad","regalo"],"u":"La crema anti-edad más potente del corner; el regalo para mamá","th":"B0FS7QVSVC.jpg","pc":408,"cr":571,"q":10,"pq":57,"v":10000,"ok":1,"cp":"Anti-edad con respaldo farmacéutico","ci":"🏥"},{"d":"360 Shot PDRN Eye Patch (6 pares)","m":"CENTELLIAN24","c":"360 Shot PDRN","p":"T","t":["ojos","regalo","mascarillas"],"u":"Parches de ojos efecto lifting exprés antes de un evento","th":"B0G48SXDV7.jpg","pc":296,"cr":415,"q":10,"pq":42,"v":900,"ok":0,"cp":"Contorno de ojos con efecto lifting visible","ci":"👁️"},{"d":"Airy-Light Sunscreen Stick","m":"COSRX","c":"Protección Solar","p":"SOL","t":["sol"],"u":"Bloqueador en barra: retoca en el día, hasta sobre el maquillaje","th":"B0F9NX6DX4.jpg","pc":525,"cr":736,"q":12,"pq":61,"v":10000,"ok":1,"cp":"Bloqueador cómodo, incluso en barra para retocar","ci":"☀️"},{"d":"Low pH Good Morning Cleanser","m":"COSRX","c":"Low pH / Limpieza","p":"L","t":["empezar","sensible"],"u":"El limpiador suave más famoso de Corea; para toda la familia","th":"B016NRXO06.jpg","pc":320,"cr":448,"q":10,"pq":45,"v":10000,"ok":1,"cp":"El limpiador suave más famoso de Corea","ci":"🧼"},{"d":"Aloe Soothing Sun Cream","m":"COSRX","c":"Protección Solar","p":"SOL","t":["sol"],"u":"Bloqueador fresco con aloe: se siente como crema, no como bloqueador","th":"8809416470191.jpg","pc":366,"cr":512,"q":10,"pq":51,"v":0,"ok":1,"cp":"Bloqueador cómodo, incluso en barra para retocar","ci":"☀️"},{"d":"The Niacinamide 15 Serum","m":"COSRX","c":"Sérums Activos","p":"T","t":["manchas","poros"],"u":"Niacinamida al 15%: aclara marcas y afina el poro","th":"B09ZYB8S31.jpg","pc":571,"cr":800,"q":12,"pq":67,"v":7000,"ok":1,"cp":"Los activos clásicos, bien hechos y sin misterio","ci":"💉"},{"d":"Peptide Collagen Eye Patch (60 pzas)","m":"COSRX","c":"Sérums Activos","p":"T","t":["ojos","regalo","mascarillas"],"u":"60 parches de hidrogel: ojos despiertos en 15 minutos","th":"B0DLKCCPYZ.jpg","pc":525,"cr":736,"q":12,"pq":61,"v":30000,"ok":0,"cp":"Los activos clásicos, bien hechos y sin misterio","ci":"💉"},{"d":"Advanced Snail 92 All In One Cream 100ml","m":"COSRX","c":"Advanced Snail","p":"S","t":["reseca","glow"],"u":"Crema de caracol todo-en-uno: repara y suaviza","th":"B01LEJ5MSK.jpg","pc":594,"cr":832,"q":12,"pq":69,"v":10000,"ok":1,"cp":"La baba de caracol que hizo famosa a la K-beauty","ci":"🐌"},{"d":"The 6 Peptide Booster Serum 150ml","m":"COSRX","c":"Sérums Activos","p":"T","t":["edad","glow"],"u":"6 péptidos: piel más elástica y descansada; tamaño jumbo","th":"B0CCJ3SRB9.jpg","pc":571,"cr":800,"q":12,"pq":67,"v":40000,"ok":1,"cp":"Los activos clásicos, bien hechos y sin misterio","ci":"💉"},{"d":"Advanced Snail 96 Mucin Essence 100ml","m":"COSRX","c":"Advanced Snail","p":"T","t":["glow","reseca","empezar","regalo"],"u":"LA baba de caracol viral: repara, hidrata y da glow a cualquier piel","th":"B00PBX3L7K.jpg","pc":571,"cr":800,"q":12,"pq":67,"v":40000,"ok":1,"cp":"La baba de caracol que hizo famosa a la K-beauty","ci":"🐌"},{"d":"Advanced Snail Peptide Eye Cream 25ml","m":"COSRX","c":"Advanced Snail","p":"S","t":["ojos"],"u":"Contorno de caracol + péptidos: líneas finas y ojeras","th":"B07ZRF416W.jpg","pc":640,"cr":896,"q":12,"pq":75,"v":9000,"ok":0,"cp":"La baba de caracol que hizo famosa a la K-beauty","ci":"🐌"},{"d":"Advanced Snail Radiance Dual Essence 80ml","m":"COSRX","c":"Advanced Snail","p":"T","t":["glow","manchas"],"u":"Doble esencia: caracol + niacinamida para iluminar","th":"B08FSWVXRD.jpg","pc":640,"cr":896,"q":12,"pq":75,"v":1000,"ok":1,"cp":"La baba de caracol que hizo famosa a la K-beauty","ci":"🐌"},{"d":"345 Relief Cream 50ml","m":"DR.ALTHEA","c":"345 Relief","p":"S","t":["sensible","granitos"],"u":"La crema calmante #1: baja rojez e irritación en días","th":"B0FKGJYFC8.jpg","pc":543,"cr":761,"q":12,"pq":63,"v":100000,"ok":1,"cp":"El rescate para piel irritada y enrojecida","ci":"🧯"},{"d":"345 Relief Cream 15ml","m":"DR.ALTHEA","c":"345 Relief","p":"S","t":["sensible","empezar"],"u":"La mini de la 345: para probarla o llevarla de viaje","th":"B0G643D8ZG.jpg","pc":225,"cr":315,"q":8,"pq":39,"v":30000,"ok":1,"cp":"El rescate para piel irritada y enrojecida","ci":"🧯"},{"d":"345 Relief Cream Mist 100ml","m":"DR.ALTHEA","c":"345 Relief","p":"T","t":["sensible","reseca"],"u":"La 345 en bruma: calma al instante donde sea","th":"B0FMWPNKJR.jpg","pc":432,"cr":605,"q":10,"pq":60,"v":20000,"ok":1,"cp":"El rescate para piel irritada y enrojecida","ci":"🧯"},{"d":"Gentle Vitamin C Serum 30ml","m":"DR.ALTHEA","c":"Esenciales","p":"T","t":["manchas","glow","sensible"],"u":"Vitamina C suave: ilumina sin irritar, apta piel sensible","th":"B0DGLCRZZ3.jpg","pc":420,"cr":588,"q":10,"pq":59,"v":10000,"ok":1,"cp":"Vitamina C que sí tolera la piel sensible","ci":"🍊"},{"d":"147 Barrier Cream 50ml","m":"DR.ALTHEA","c":"147 Barrier","p":"S","t":["reseca","sensible"],"u":"Repara la barrera: piel muy reseca, tirante o maltratada","th":"B0GPPRTD32.jpg","pc":543,"cr":761,"q":12,"pq":63,"v":0,"ok":1,"cp":"Repara la barrera muy dañada","ci":"🛡️"},{"d":"345 Relief Cream Mist 60ml","m":"DR.ALTHEA","c":"345 Relief","p":"T","t":["sensible"],"u":"La bruma calmante en tamaño bolsillo","th":"B0FMDKZW63.jpg","pc":266,"cr":372,"q":10,"pq":37,"v":4000,"ok":1,"cp":"El rescate para piel irritada y enrojecida","ci":"🧯"},{"d":"Zero Pore Pad 2.0 (toallitas)","m":"Medicube","c":"Zero Pore","p":"T","t":["poros","glow","empezar"],"u":"Las toallitas virales: destapan poros y quitan brillo en una pasada","th":"B09V7Z4TJG.jpg","pc":443,"cr":620,"q":10,"pq":62,"v":100000,"ok":1,"cp":"Poro cerrado y cero brillo, todo el día","ci":"🫧"},{"d":"Zero Foam Cleanser 120ml","m":"Medicube","c":"Zero Pore","p":"L","t":["poros"],"u":"Espuma para piel grasa: limpia profundo sin apretar","th":"B09C1B7BH5.jpg","pc":302,"cr":423,"q":10,"pq":42,"v":40000,"ok":1,"cp":"Poro cerrado y cero brillo, todo el día","ci":"🫧"},{"d":"Zero Pore Blackhead Mud Mask","m":"Medicube","c":"Zero Pore","p":"T","t":["poros","mascarillas"],"u":"Mascarilla de barro: puntos negros y nariz brillosa","th":"B0D1G7XF9X.jpg","pc":322,"cr":451,"q":10,"pq":45,"v":0,"ok":0,"cp":"Poro cerrado y cero brillo, todo el día","ci":"🫧"},{"d":"Zero Pore Hydrating Sun Serum 50ml","m":"Medicube","c":"Zero Pore","p":"SOL","t":["sol","poros"],"u":"Bloqueador-sérum para piel grasa: no tapa poros","th":"8800256119332.jpg","pc":282,"cr":394,"q":10,"pq":39,"v":0,"ok":1,"cp":"Poro cerrado y cero brillo, todo el día","ci":"🫧"},{"d":"Zero Pore Capsule Cleansing Foam","m":"Medicube","c":"Zero Pore","p":"L","t":["poros"],"u":"Espuma con cápsulas: limpieza profunda del poro","th":"B0DYTQ5GYQ.jpg","pc":322,"cr":451,"q":10,"pq":45,"v":40000,"ok":1,"cp":"Poro cerrado y cero brillo, todo el día","ci":"🫧"},{"d":"Zero Pore Blackhead Cleansing Oil 205ml","m":"Medicube","c":"Zero Pore","p":"L","t":["poros"],"u":"Aceite que disuelve puntos negros al masajear","th":"B0FP176X2H.jpg","pc":382,"cr":535,"q":10,"pq":54,"v":20000,"ok":1,"cp":"Poro cerrado y cero brillo, todo el día","ci":"🫧"},{"d":"Zero Pore One Day Cream 50ml","m":"Medicube","c":"Zero Pore","p":"S","t":["poros"],"u":"Gel-crema matificante: hidrata sin brillo","th":"B0BCK9G74Q.jpg","pc":523,"cr":732,"q":12,"pq":61,"v":0,"ok":1,"cp":"Poro cerrado y cero brillo, todo el día","ci":"🫧"},{"d":"Deep Vita C Capsule Cream 55g","m":"Medicube","c":"Deep Vita C","p":"S","t":["manchas","glow"],"u":"Crema de vitamina C: ilumina y empareja el tono","th":"B0D2Z3GGCY.jpg","pc":563,"cr":789,"q":12,"pq":66,"v":0,"ok":1,"cp":"Luz inmediata para piel apagada","ci":"🍊"},{"d":"Deep Vita C Capsule Serum 30ml","m":"Medicube","c":"Deep Vita C","p":"T","t":["manchas","glow"],"u":"Vitamina C concentrada en cápsulas: contra manchas y piel apagada","th":"B0FR4QYNK5.jpg","pc":382,"cr":535,"q":10,"pq":54,"v":20000,"ok":1,"cp":"Luz inmediata para piel apagada","ci":"🍊"},{"d":"Deep Vita C Pad (toallitas)","m":"Medicube","c":"Deep Vita C","p":"T","t":["manchas","glow"],"u":"Toallitas de vitamina C: glow y tono parejo en un paso","th":"B0BPLYHDPG.jpg","pc":523,"cr":732,"q":12,"pq":61,"v":0,"ok":1,"cp":"Luz inmediata para piel apagada","ci":"🍊"},{"d":"PDRN Pink Collagen Capsule Cream","m":"Medicube","c":"PDRN Pink","p":"S","t":["edad","glow"],"u":"La crema rosa de colágeno: piel que rebota","th":"B0DTKCN3Z4.jpg","pc":563,"cr":789,"q":12,"pq":66,"v":50000,"ok":1,"cp":"Piel de porcelana: firmeza, glow y poro cerrado","ci":"🌸"},{"d":"PDRN Pink Peptide Serum 30ml","m":"Medicube","c":"PDRN Pink","p":"T","t":["edad","glow","regalo"],"u":"EL sérum rosa viral de TikTok: firmeza, glow y piel de porcelana","th":"B0DBF65JYY.jpg","pc":402,"cr":563,"q":10,"pq":56,"v":100000,"ok":1,"cp":"Piel de porcelana: firmeza, glow y poro cerrado","ci":"🌸"},{"d":"PDRN Pink Peptide Eye Serum 30ml","m":"Medicube","c":"PDRN Pink","p":"T","t":["ojos"],"u":"Sérum de ojos con rodillo: líneas, ojeras y bolsas","th":"B0DWMSM6Y9.jpg","pc":342,"cr":479,"q":10,"pq":48,"v":50000,"ok":0,"cp":"Piel de porcelana: firmeza, glow y poro cerrado","ci":"🌸"},{"d":"PDRN Pink Hyaluronic Cream 50ml","m":"Medicube","c":"PDRN Pink","p":"S","t":["reseca"],"u":"Hidratación ligera diaria con toque rosa","th":"B0DKNP4TL6.jpg","pc":342,"cr":479,"q":10,"pq":48,"v":6000,"ok":1,"cp":"Piel de porcelana: firmeza, glow y poro cerrado","ci":"🌸"},{"d":"PDRN Pink Caffeine Night Mask 75ml","m":"Medicube","c":"PDRN Pink","p":"T","t":["glow","edad","mascarillas"],"u":"Mascarilla de noche con cafeína: amaneces desinflamada","th":"B0F8HHJG25.jpg","pc":483,"cr":676,"q":12,"pq":56,"v":10000,"ok":0,"cp":"Piel de porcelana: firmeza, glow y poro cerrado","ci":"🌸"},{"d":"PDRN Hydrating Gel Cleanser 200ml","m":"Medicube","c":"PDRN Pink","p":"L","t":["reseca","sensible"],"u":"Gel limpiador que no reseca","th":"B0F83N244B.jpg","pc":443,"cr":620,"q":10,"pq":62,"v":10000,"ok":1,"cp":"Piel de porcelana: firmeza, glow y poro cerrado","ci":"🌸"},{"d":"PDRN Pink Niacinamide Milky Toner 150ml","m":"Medicube","c":"PDRN Pink","p":"T","t":["glow","manchas"],"u":"Tóner lechoso: suaviza y aclara poco a poco","th":"B0DY7GDRV7.jpg","pc":342,"cr":479,"q":10,"pq":48,"v":0,"ok":1,"cp":"Piel de porcelana: firmeza, glow y poro cerrado","ci":"🌸"},{"d":"PDRN Pink Niacinamide Whip Cleanser","m":"Medicube","c":"PDRN Pink","p":"L","t":["glow"],"u":"Espuma cremosa tipo mousse: limpia con cariño","th":"8800289473159.jpg","pc":322,"cr":451,"q":10,"pq":45,"v":0,"ok":1,"cp":"Piel de porcelana: firmeza, glow y poro cerrado","ci":"🌸"},{"d":"PDRN Pink Exosome Shot Serum 30ml","m":"Medicube","c":"PDRN Pink","p":"T","t":["edad"],"u":"Sérum regenerador premium: la versión más avanzada del rosa","th":"B0DQCJ9T9N.jpg","pc":483,"cr":676,"q":12,"pq":56,"v":3000,"ok":1,"cp":"Piel de porcelana: firmeza, glow y poro cerrado","ci":"🌸"},{"d":"PDRN Pink Collagen Bubble Serum 95ml","m":"Medicube","c":"PDRN Pink","p":"T","t":["edad","glow"],"u":"Sérum en burbujas de colágeno: firmeza divertida de usar","th":"B0BRMZQBCR.jpg","pc":402,"cr":563,"q":10,"pq":56,"v":0,"ok":1,"cp":"Piel de porcelana: firmeza, glow y poro cerrado","ci":"🌸"},{"d":"PDRN Pink Glow Jelly Mist 100ml","m":"Medicube","c":"PDRN Pink","p":"T","t":["glow","regalo"],"u":"Bruma gelatinosa: glow inmediato, hasta sobre maquillaje","th":"B0FYN9CJKC.jpg","pc":443,"cr":620,"q":10,"pq":62,"v":10000,"ok":1,"cp":"Piel de porcelana: firmeza, glow y poro cerrado","ci":"🌸"},{"d":"PDRN Pink Glutathione Cleansing Foam 120g","m":"Medicube","c":"PDRN Pink","p":"L","t":["glow"],"u":"Espuma iluminadora con glutatión","th":"B0FSBL98M7.jpg","pc":322,"cr":451,"q":10,"pq":45,"v":0,"ok":1,"cp":"Piel de porcelana: firmeza, glow y poro cerrado","ci":"🌸"},{"d":"Rosemary PDRN Shampoo 400ml","m":"Medicube","c":"PDRN Pink","p":"L","t":["cabello"],"u":"Champú de romero: frescura y cabello con más cuerpo","th":"B0FY6DB6MR.jpg","pc":543,"cr":761,"q":12,"pq":63,"v":8000,"ok":0,"cp":"Piel de porcelana: firmeza, glow y poro cerrado","ci":"🌸"},{"d":"PDRN Pink Toning Gel Toner Pad","m":"Medicube","c":"PDRN Pink","p":"T","t":["glow"],"u":"Toallitas tonificantes de colágeno rosa","th":"B0DX74CWSQ.jpg","pc":463,"cr":648,"q":10,"pq":65,"v":8000,"ok":1,"cp":"Piel de porcelana: firmeza, glow y poro cerrado","ci":"🌸"},{"d":"TXA Niacinamide Capsule Cream 55g","m":"Medicube","c":"TXA Niacinamide","p":"S","t":["manchas"],"u":"Crema despigmentante de uso diario","th":"B0F29C8N84.jpg","pc":563,"cr":789,"q":12,"pq":66,"v":10000,"ok":1,"cp":"Borra las marcas que deja el acné","ci":"🎯"},{"d":"TXA Niacinamide 15 Serum 30ml","m":"Medicube","c":"TXA Niacinamide","p":"T","t":["manchas"],"u":"Aclara manchas oscuras y marcas de granitos","th":"B0DVSNQ37F.jpg","pc":382,"cr":535,"q":10,"pq":54,"v":10000,"ok":1,"cp":"Borra las marcas que deja el acné","ci":"🎯"},{"d":"Hyaluronic Moisturizing Capsule Cream 55g","m":"Medicube","c":"Hyaluronic","p":"S","t":["reseca"],"u":"Hidratación profunda en crema con cápsulas","th":"B0FQ4K6845.jpg","pc":563,"cr":789,"q":12,"pq":66,"v":7000,"ok":1,"cp":"Hidratación profunda que dura todo el día","ci":"💧"},{"d":"Hyaluronic Ceramide Jelly Cream 50ml","m":"Medicube","c":"Hyaluronic","p":"S","t":["reseca","empezar"],"u":"Gel-crema jugoso: hidratación + barrera reparada","th":"B0FPQ3Z16S.jpg","pc":362,"cr":507,"q":10,"pq":51,"v":70000,"ok":1,"cp":"Hidratación profunda que dura todo el día","ci":"💧"},{"d":"Glutathione Glow Capsule Cream","m":"Medicube","c":"Glutathione Glow","p":"S","t":["glow","manchas"],"u":"Crema iluminadora: tono más parejo","th":"B0D97JZ29D.jpg","pc":563,"cr":789,"q":12,"pq":66,"v":0,"ok":1,"cp":"Luminosidad pareja de pies a cabeza","ci":"🌟"},{"d":"Glutathione Glow Serum","m":"Medicube","c":"Glutathione Glow","p":"T","t":["glow","manchas"],"u":"Glow total: luminosidad y tono uniforme","th":"B0CN646H8X.jpg","pc":362,"cr":507,"q":10,"pq":51,"v":1000,"ok":1,"cp":"Luminosidad pareja de pies a cabeza","ci":"🌟"},{"d":"Collagen Night Wrapping Mask 75ml","m":"Medicube","c":"Collagen","p":"T","t":["edad","glow","mascarillas"],"u":"Te la pones y duermes: amaneces con piel firme","th":"B0BRMYHMS5.jpg","pc":483,"cr":676,"q":12,"pq":56,"v":0,"ok":0,"cp":"Piel que rebota: firmeza y efecto lifting","ci":"✨"},{"d":"Triple Collagen Cream 4.0 50ml","m":"Medicube","c":"Collagen","p":"S","t":["edad"],"u":"Colágeno triple: firmeza visible en semanas","th":"B0BPXT3GBN.jpg","pc":503,"cr":704,"q":12,"pq":59,"v":40000,"ok":1,"cp":"Piel que rebota: firmeza y efecto lifting","ci":"✨"},{"d":"Collagen Jelly Cream 110ml","m":"Medicube","c":"Collagen","p":"S","t":["edad","glow","empezar","regalo"],"u":"LA crema gelatina viral de colágeno: rebote y glow","th":"B0CM2PPNMW.jpg","pc":483,"cr":676,"q":12,"pq":56,"v":70000,"ok":1,"cp":"Piel que rebota: firmeza y efecto lifting","ci":"✨"},{"d":"Collagen Jelly Cream 50ml","m":"Medicube","c":"Collagen","p":"S","t":["edad","glow"],"u":"La gelatina de colágeno en tamaño chico","th":"B0DGPSZVW3.jpg","pc":322,"cr":451,"q":10,"pq":45,"v":0,"ok":1,"cp":"Piel que rebota: firmeza y efecto lifting","ci":"✨"},{"d":"Triple Collagen Serum 4.0 55ml","m":"Medicube","c":"Collagen","p":"T","t":["edad"],"u":"Sérum de colágeno triple: el paso fuerte anti-flacidez","th":"B085VWWJJT.jpg","pc":423,"cr":592,"q":10,"pq":59,"v":10000,"ok":1,"cp":"Piel que rebota: firmeza y efecto lifting","ci":"✨"},{"d":"Kojic Acid Turmeric Niacinamide Serum 30ml","m":"Medicube","c":"Kojic Acid Turmeric","p":"T","t":["manchas"],"u":"Kójico + cúrcuma: para manchas difíciles y paño","th":"B0FG7VLJKG.jpg","pc":382,"cr":535,"q":10,"pq":54,"v":30000,"ok":1,"cp":"Contra las manchas más difíciles y el paño","ci":"🎯"},{"d":"Kojic Turmeric Night Mask 75ml","m":"Medicube","c":"Kojic Acid Turmeric","p":"T","t":["manchas","mascarillas"],"u":"Duerme con ella y amanece con tono más parejo","th":"B0FB36X74P.jpg","pc":543,"cr":761,"q":12,"pq":63,"v":20000,"ok":0,"cp":"Contra las manchas más difíciles y el paño","ci":"🎯"},{"d":"Kojic Turmeric Vita Eye Gel 30ml","m":"Medicube","c":"Kojic Acid Turmeric","p":"T","t":["ojos","manchas"],"u":"Para ojeras oscuras: aclara la mirada","th":"B0FPBYP83F.jpg","pc":342,"cr":479,"q":10,"pq":48,"v":10000,"ok":0,"cp":"Contra las manchas más difíciles y el paño","ci":"🎯"},{"d":"Kojic Turmeric Vita Capsule Cream 53g","m":"Medicube","c":"Kojic Acid Turmeric","p":"S","t":["manchas"],"u":"Crema aclaradora para sellar la rutina anti-manchas","th":"B0FR91FPFS.jpg","pc":563,"cr":789,"q":12,"pq":66,"v":9000,"ok":1,"cp":"Contra las manchas más difíciles y el paño","ci":"🎯"},{"d":"Azelaic Acid 16 BB Calming Serum 30ml","m":"Medicube","c":"Azelaic Acid","p":"T","t":["granitos","sensible"],"u":"Granitos y rojez: calma los activos y previene nuevos","th":"B0FT7TKN36.jpg","pc":382,"cr":535,"q":10,"pq":54,"v":4000,"ok":1,"cp":"Calma el granito y la rojez al mismo tiempo","ci":"🌿"},{"d":"Azelaic Niacinamide Foam Cleanser 120g","m":"Medicube","c":"Azelaic Acid","p":"L","t":["granitos"],"u":"Espuma para piel con granitos: limpia sin maltratar","th":"B0FSBR2KGW.jpg","pc":322,"cr":451,"q":10,"pq":45,"v":8000,"ok":1,"cp":"Calma el granito y la rojez al mismo tiempo","ci":"🌿"},{"d":"Centella Cleansing Foam 150ml","m":"MIXSOON","c":"Centella / Cica","p":"L","t":["sensible"],"u":"Espuma suave de centella para piel delicada","th":"B0CMQ7B68P.jpg","pc":367,"cr":514,"q":10,"pq":51,"v":4000,"ok":1,"cp":"Calma esencial, sin adornos","ci":"🍃"},{"d":"Bean Cleansing Oil 195ml","m":"MIXSOON","c":"Bean (fermentado)","p":"L","t":["empezar","poros"],"u":"Aceite desmaquillante fermentado: primer paso de la doble limpieza","th":"B0BXL4P558.jpg","pc":509,"cr":713,"q":12,"pq":59,"v":2000,"ok":1,"cp":"Glow natural con lo mínimo: rutina sin complicaciones","ci":"🫘"},{"d":"Bean Essence 30ml","m":"MIXSOON","c":"Bean (fermentado)","p":"T","t":["glow","empezar"],"u":"La esencia viral en mini: prueba el glow fermentado","th":"B0BXKV9V2D.jpg","pc":509,"cr":713,"q":12,"pq":59,"v":2000,"ok":1,"cp":"Glow natural con lo mínimo: rutina sin complicaciones","ci":"🫘"},{"d":"Bean Cream 50ml","m":"MIXSOON","c":"Bean (fermentado)","p":"S","t":["reseca"],"u":"Crema nutritiva fermentada: sencilla y efectiva","th":"B09GP95FQP.jpg","pc":713,"cr":998,"q":12,"pq":83,"v":7000,"ok":1,"cp":"Glow natural con lo mínimo: rutina sin complicaciones","ci":"🫘"},{"d":"Bean Toner 300ml","m":"MIXSOON","c":"Bean (fermentado)","p":"T","t":["reseca"],"u":"Tóner-esencia 2 en 1, tamaño gigante","th":"B0CJC6P3BN.jpg","pc":553,"cr":775,"q":12,"pq":65,"v":100,"ok":1,"cp":"Glow natural con lo mínimo: rutina sin complicaciones","ci":"🫘"},{"d":"Bean Sun Serum","m":"MIXSOON","c":"Bean (fermentado)","p":"SOL","t":["sol"],"u":"Bloqueador con esencia de frijol: protege y nutre","th":"B0DSHX7242.jpg","pc":348,"cr":487,"q":10,"pq":49,"v":10000,"ok":1,"cp":"Glow natural con lo mínimo: rutina sin complicaciones","ci":"🫘"},{"d":"Glacier Water Hyaluronic Serum 100ml","m":"MIXSOON","c":"Glacier Water","p":"T","t":["reseca"],"u":"Ácido hialurónico de agua de glaciar: pura hidratación","th":"B0CYS3W2LG.jpg","pc":448,"cr":628,"q":10,"pq":63,"v":800,"ok":1,"cp":"Hidratación pura, ligerísima","ci":"🧊"},{"d":"PDRN Collagen Gel Cleanser","m":"MIXSOON","c":"PDRN Collagen","p":"L","t":["edad"],"u":"Gel limpiador de la línea regeneradora","th":"B0FJFSRJF6.jpg","pc":245,"cr":342,"q":8,"pq":43,"v":700,"ok":1,"cp":"Regeneración y firmeza a precio accesible","ci":"🌸"},{"d":"PDRN Collagen Serum 30ml","m":"MIXSOON","c":"PDRN Collagen","p":"T","t":["edad"],"u":"PDRN + colágeno: regeneración a precio accesible","th":"B0FS6TX6JM.jpg","pc":469,"cr":656,"q":12,"pq":55,"v":800,"ok":1,"cp":"Regeneración y firmeza a precio accesible","ci":"🌸"},{"d":"PDRN Collagen Eye Serum","m":"MIXSOON","c":"PDRN Collagen","p":"T","t":["ojos"],"u":"Sérum de ojos regenerador","th":"B0FJFSTCHP.jpg","pc":408,"cr":571,"q":10,"pq":57,"v":1000,"ok":0,"cp":"Regeneración y firmeza a precio accesible","ci":"🌸"},{"d":"Cica Hyal Deep Soothing Cream","m":"MIXSOON","c":"Centella / Cica","p":"S","t":["sensible","reseca"],"u":"Crema calmante profunda: piel irritada y tirante","th":"B0FDWNN5NH.jpg","pc":509,"cr":713,"q":12,"pq":59,"v":400,"ok":1,"cp":"Calma esencial, sin adornos","ci":"🍃"},{"d":"Bean Cleansing Oil 100ml","m":"MIXSOON","c":"Bean (fermentado)","p":"L","t":["empezar"],"u":"El aceite desmaquillante en tamaño para probar","th":"B0F7XJ2M5N.jpg","pc":306,"cr":428,"q":10,"pq":43,"v":400,"ok":1,"cp":"Glow natural con lo mínimo: rutina sin complicaciones","ci":"🫘"},{"d":"Bean Eye Cream 20ml","m":"MIXSOON","c":"Bean (fermentado)","p":"S","t":["ojos"],"u":"Contorno nutritivo minimalista","th":"B0CJC4Y7W3.jpg","pc":611,"cr":856,"q":12,"pq":71,"v":1000,"ok":0,"cp":"Glow natural con lo mínimo: rutina sin complicaciones","ci":"🫘"},{"d":"PDRN Collagen Cream","m":"MIXSOON","c":"PDRN Collagen","p":"S","t":["edad"],"u":"Crema regeneradora para sellar la rutina PDRN","th":"B0FJ8NWZZS.jpg","pc":509,"cr":713,"q":12,"pq":59,"v":0,"ok":1,"cp":"Regeneración y firmeza a precio accesible","ci":"🌸"},{"d":"Bean Essence 50ml","m":"MIXSOON","c":"Bean (fermentado)","p":"T","t":["glow","reseca","regalo"],"u":"La esencia fermentada viral: glow minimalista con 2 gotas","th":"B08ZXVVY8M.jpg","pc":713,"cr":998,"q":12,"pq":83,"v":7000,"ok":1,"cp":"Glow natural con lo mínimo: rutina sin complicaciones","ci":"🫘"},{"d":"Centella Travel Kit","m":"SKIN1004","c":"Centella Original","p":"T","t":["empezar","regalo"],"u":"La rutina completa en minis: regalo o kit de inicio perfecto","th":"B09S6JKB52.jpg","pc":725,"cr":1015,"q":12,"pq":85,"v":10000,"ok":0,"cp":"La rutina que calma todo, para la piel más delicada","ci":"🍃"},{"d":"Tea-Trica BHA Foam 125ml","m":"SKIN1004","c":"Tea-Trica","p":"L","t":["granitos","poros"],"u":"Espuma exfoliante anti-granitos con árbol de té","th":"B0B7XFYR23.jpg","pc":333,"cr":466,"q":10,"pq":47,"v":800,"ok":1,"cp":"Rutina completa contra los granitos","ci":"🌿"},{"d":"Tea-Trica Soothing Sun Milk 50ml","m":"SKIN1004","c":"Tea-Trica","p":"SOL","t":["sol","granitos"],"u":"Bloqueador ligero para piel con granitos","th":"8809913830610.jpg","pc":422,"cr":590,"q":10,"pq":59,"v":0,"ok":1,"cp":"Rutina completa contra los granitos","ci":"🌿"},{"d":"Tea-Trica Relief Ampoule 100ml","m":"SKIN1004","c":"Tea-Trica","p":"T","t":["granitos"],"u":"Árbol de té + centella: calma granitos activos","th":"B0B5WVY1VM.jpg","pc":533,"cr":746,"q":12,"pq":62,"v":1000,"ok":1,"cp":"Rutina completa contra los granitos","ci":"🌿"},{"d":"Tea-Trica C5 Cream 75ml","m":"SKIN1004","c":"Tea-Trica","p":"S","t":["granitos","sensible"],"u":"Crema ligera que calma piel con brotes","th":"B0C8SBJD89.jpg","pc":415,"cr":581,"q":10,"pq":58,"v":900,"ok":1,"cp":"Rutina completa contra los granitos","ci":"🌿"},{"d":"Tea-Trica Relief Ampoule 30ml","m":"SKIN1004","c":"Tea-Trica","p":"T","t":["granitos","empezar"],"u":"La ampolla anti-granitos en mini","th":"8809576261882.jpg","pc":209,"cr":293,"q":8,"pq":37,"v":0,"ok":1,"cp":"Rutina completa contra los granitos","ci":"🌿"},{"d":"Tea-Trica Mild Peeling Gel 125ml","m":"SKIN1004","c":"Tea-Trica","p":"L","t":["granitos","glow"],"u":"Exfoliante suave en gel: piel lisa sin maltratar","th":"B0FTB8MDDX.jpg","pc":433,"cr":606,"q":10,"pq":61,"v":50,"ok":0,"cp":"Rutina completa contra los granitos","ci":"🌿"},{"d":"Tea-Trica Spot Cream 20ml","m":"SKIN1004","c":"Tea-Trica","p":"T","t":["granitos"],"u":"Puntual: se aplica directo sobre el granito","th":"B0DHC28K9Y.jpg","pc":464,"cr":649,"q":10,"pq":65,"v":600,"ok":0,"cp":"Rutina completa contra los granitos","ci":"🌿"},{"d":"Probio-Cica Bakuchiol Eye Cream 20ml","m":"SKIN1004","c":"Probio-Cica","p":"S","t":["ojos","edad"],"u":"Contorno con retinol vegetal: líneas sin irritación","th":"B0CFL7LS43.jpg","pc":390,"cr":546,"q":10,"pq":55,"v":6000,"ok":0,"cp":"Barrera fuerte y anti-edad suave","ci":"🛡️"},{"d":"Probio-Cica Enrich Cream 50ml","m":"SKIN1004","c":"Probio-Cica","p":"S","t":["edad","reseca"],"u":"Nutre y refuerza la barrera de piel madura","th":"B0BTPGPK7H.jpg","pc":489,"cr":685,"q":12,"pq":57,"v":6000,"ok":1,"cp":"Barrera fuerte y anti-edad suave","ci":"🛡️"},{"d":"Probio-Cica Intensive Ampoule 95ml","m":"SKIN1004","c":"Probio-Cica","p":"T","t":["edad","sensible"],"u":"Ampolla con probióticos: piel fuerte y elástica","th":"B0CSDMNRGM.jpg","pc":627,"cr":878,"q":12,"pq":73,"v":3000,"ok":1,"cp":"Barrera fuerte y anti-edad suave","ci":"🛡️"},{"d":"Probio-Cica Glow Sun Ampoule 50ml","m":"SKIN1004","c":"Probio-Cica","p":"SOL","t":["sol","glow"],"u":"Bloqueador con glow y probióticos","th":"8809913830573.jpg","pc":422,"cr":590,"q":10,"pq":59,"v":0,"ok":1,"cp":"Barrera fuerte y anti-edad suave","ci":"🛡️"},{"d":"Poremizing Clay Stick Mask 27g","m":"SKIN1004","c":"Poremizing","p":"T","t":["poros","mascarillas"],"u":"Mascarilla de barro en barra: pásala por la zona T y enjuaga","th":"B0C8Y1TSKZ.jpg","pc":435,"cr":609,"q":10,"pq":61,"v":20000,"ok":0,"cp":"Rutina completa para el poro abierto","ci":"🫧"},{"d":"Poremizing Deep Cleansing Foam 125ml","m":"SKIN1004","c":"Poremizing","p":"L","t":["poros"],"u":"Espuma profunda para poro abierto","th":"B0BFW8BLLN.jpg","pc":322,"cr":451,"q":10,"pq":45,"v":0,"ok":1,"cp":"Rutina completa para el poro abierto","ci":"🫧"},{"d":"Poremizing Fresh Ampoule 100ml","m":"SKIN1004","c":"Poremizing","p":"T","t":["poros"],"u":"Ampolla fresca que afina el poro","th":"B0B1JRGGLF.jpg","pc":390,"cr":546,"q":10,"pq":55,"v":1000,"ok":1,"cp":"Rutina completa para el poro abierto","ci":"🫧"},{"d":"Poremizing Light Gel Cream 75ml","m":"SKIN1004","c":"Poremizing","p":"S","t":["poros"],"u":"Gel-crema ligera: hidrata sin brillo","th":"B0BSP1Y2BH.jpg","pc":403,"cr":564,"q":10,"pq":56,"v":1000,"ok":1,"cp":"Rutina completa para el poro abierto","ci":"🫧"},{"d":"Poremizing Clear Toner 210ml","m":"SKIN1004","c":"Poremizing","p":"T","t":["poros"],"u":"Tóner que limpia el poro y controla grasa","th":"B0B1JPZYMN.jpg","pc":400,"cr":560,"q":10,"pq":56,"v":1000,"ok":1,"cp":"Rutina completa para el poro abierto","ci":"🫧"},{"d":"Poremizing Velvet Sunscreen 50ml","m":"SKIN1004","c":"Poremizing","p":"SOL","t":["sol","poros"],"u":"Bloqueador acabado mate para piel grasa","th":"8809913832485.jpg","pc":428,"cr":599,"q":10,"pq":60,"v":0,"ok":1,"cp":"Rutina completa para el poro abierto","ci":"🫧"},{"d":"Hyalu-Cica Sun Stick 20g","m":"SKIN1004","c":"Hyalu-Cica","p":"SOL","t":["sol"],"u":"Bloqueador en barra sedoso: retoque sin ensuciarte las manos","th":"8809913830214.jpg","pc":408,"cr":571,"q":10,"pq":57,"v":0,"ok":0,"cp":"Hidrata y calma al mismo tiempo","ci":"💧"},{"d":"Hyalu-Cica Water-Fit Sun Serum 50ml","m":"SKIN1004","c":"Hyalu-Cica","p":"SOL","t":["sol","empezar","glow"],"u":"EL bloqueador viral: se siente como sérum, cero capa blanca","th":"B0FXH5LHN8.jpg","pc":401,"cr":562,"q":10,"pq":56,"v":50000,"ok":1,"cp":"Hidrata y calma al mismo tiempo","ci":"💧"},{"d":"Hyalu-Cica Water-Fit Sun Serum 100ml","m":"SKIN1004","c":"Hyalu-Cica","p":"SOL","t":["sol"],"u":"El bloqueador viral en tamaño doble","th":"8809913830603.jpg","pc":695,"cr":973,"q":12,"pq":81,"v":0,"ok":1,"cp":"Hidrata y calma al mismo tiempo","ci":"💧"},{"d":"Hyalu-Cica Cleansing Milk 200ml","m":"SKIN1004","c":"Hyalu-Cica","p":"L","t":["sensible","reseca"],"u":"Leche limpiadora suave para piel seca o sensible","th":"8809913832850.jpg","pc":454,"cr":635,"q":10,"pq":64,"v":0,"ok":1,"cp":"Hidrata y calma al mismo tiempo","ci":"💧"},{"d":"Hyalu-Cica Moisture Cream 75ml","m":"SKIN1004","c":"Hyalu-Cica","p":"S","t":["reseca","sensible"],"u":"Crema de hidratación profunda que calma","th":"B09XKFFQQX.jpg","pc":477,"cr":668,"q":12,"pq":56,"v":7000,"ok":1,"cp":"Hidrata y calma al mismo tiempo","ci":"💧"},{"d":"Hyalu-Cica Blue Serum 50ml","m":"SKIN1004","c":"Hyalu-Cica","p":"T","t":["reseca"],"u":"Sérum azul: hidratación + calma en uno","th":"B093JZCD7M.jpg","pc":435,"cr":609,"q":10,"pq":61,"v":1000,"ok":1,"cp":"Hidrata y calma al mismo tiempo","ci":"💧"},{"d":"Hyalu-Cica First Ampoule 100ml","m":"SKIN1004","c":"Hyalu-Cica","p":"T","t":["reseca"],"u":"Primera capa de hidratación después de lavarte","th":"B0B5WRBK93.jpg","pc":540,"cr":756,"q":12,"pq":63,"v":0,"ok":1,"cp":"Hidrata y calma al mismo tiempo","ci":"💧"},{"d":"Centella Light Cleansing Oil 200ml","m":"SKIN1004","c":"Centella Original","p":"L","t":["empezar","sensible"],"u":"Aceite ligero que desmaquilla sin tapar poros","th":"B07T5BN3P2.jpg","pc":410,"cr":574,"q":10,"pq":57,"v":40000,"ok":1,"cp":"La rutina que calma todo, para la piel más delicada","ci":"🍃"},{"d":"Niacinamide 10 Boosting Shot 30ml","m":"SKIN1004","c":"Boosting Shot","p":"T","t":["manchas"],"u":"Shot aclarador: se suma a cualquier rutina","th":"B0FDXXJT66.jpg","pc":366,"cr":512,"q":10,"pq":51,"v":700,"ok":0,"cp":"Un shot concentrado que le sumas a lo que ya usas","ci":"💉"},{"d":"Centella Ampoule Foam 125ml","m":"SKIN1004","c":"Centella Original","p":"L","t":["sensible","empezar"],"u":"Espuma con ampolla incluida: limpia y calma","th":"B09JBJDFHH.jpg","pc":337,"cr":472,"q":10,"pq":47,"v":10000,"ok":1,"cp":"La rutina que calma todo, para la piel más delicada","ci":"🍃"},{"d":"Tone Brightening Cleansing Gel 125ml","m":"SKIN1004","c":"Tone Brightening","p":"L","t":["manchas","glow"],"u":"Gel limpiador que ilumina desde el primer paso","th":"B09C1XCXVS.jpg","pc":309,"cr":432,"q":10,"pq":43,"v":800,"ok":1,"cp":"Efecto buena cara desde el primer día","ci":"🌟"},{"d":"Retinol 0.2 Boosting Shot 30ml","m":"SKIN1004","c":"Boosting Shot","p":"T","t":["edad"],"u":"Tu primer retinol: arruguitas sin irritación","th":"B0FDTZ8Y5Q.jpg","pc":430,"cr":602,"q":10,"pq":60,"v":2000,"ok":0,"cp":"Un shot concentrado que le sumas a lo que ya usas","ci":"💉"},{"d":"Centella Ampoule 100ml","m":"SKIN1004","c":"Centella Original","p":"T","t":["sensible","empezar","glow"],"u":"LA ampolla calmante: un solo ingrediente, piel tranquila","th":"B06Y15D1LH.jpg","pc":519,"cr":727,"q":12,"pq":61,"v":30000,"ok":1,"cp":"La rutina que calma todo, para la piel más delicada","ci":"🍃"},{"d":"Centella Cream 30ml (mini)","m":"SKIN1004","c":"Centella Original","p":"S","t":["sensible","empezar"],"u":"La crema de centella en mini: primera compra ideal","th":"8809576261318.jpg","pc":196,"cr":275,"q":8,"pq":34,"v":0,"ok":1,"cp":"La rutina que calma todo, para la piel más delicada","ci":"🍃"},{"d":"Centella Double Cleansing Duo","m":"SKIN1004","c":"Centella Original","p":"L","t":["empezar","regalo"],"u":"Aceite + espuma juntos: la doble limpieza en un kit","th":"B0D9TX8G86.jpg","pc":679,"cr":951,"q":12,"pq":79,"v":7000,"ok":0,"cp":"La rutina que calma todo, para la piel más delicada","ci":"🍃"},{"d":"Centella Cream 75ml","m":"SKIN1004","c":"Centella Original","p":"S","t":["sensible"],"u":"Crema de centella: calma y protege a diario","th":"B07RSXFC82.jpg","pc":513,"cr":718,"q":12,"pq":60,"v":1000,"ok":1,"cp":"La rutina que calma todo, para la piel más delicada","ci":"🍃"},{"d":"Air-Fit Suncream Light 50ml","m":"SKIN1004","c":"Air-Fit Sun","p":"SOL","t":["sol"],"u":"Bloqueador ligerito de diario: no se siente","th":"B0B3FYB9KL.jpg","pc":408,"cr":571,"q":10,"pq":57,"v":2000,"ok":1,"cp":"Bloqueador diario que de verdad se siente ligero","ci":"☀️"},{"d":"Tone Brightening Tone-Up Sunscreen 50ml","m":"SKIN1004","c":"Tone Brightening","p":"SOL","t":["sol","glow","manchas"],"u":"Bloqueador con color: empareja y da efecto buena cara","th":"8809576261622.jpg","pc":408,"cr":571,"q":10,"pq":57,"v":0,"ok":1,"cp":"Efecto buena cara desde el primer día","ci":"🌟"},{"d":"Centella Ampoule 55ml","m":"SKIN1004","c":"Centella Original","p":"T","t":["sensible","empezar"],"u":"La ampolla calmante en tamaño de entrada","th":"B07ZKHPV9Y.jpg","pc":351,"cr":491,"q":10,"pq":49,"v":6000,"ok":1,"cp":"La rutina que calma todo, para la piel más delicada","ci":"🍃"},{"d":"Bio-Collagen Real Deep Mask (1 pza)","m":"BIODANCE","c":"Real Deep Masks","p":"T","t":["glow","edad","regalo","empezar","mascarillas"],"u":"LA mascarilla viral: se vuelve transparente mientras duermes y amaneces con glow","th":"B0B2RM68G2.jpg","pc":383,"cr":536,"q":10,"pq":54,"v":100000,"ok":0,"cp":"La mascarilla que se vuelve transparente mientras duermes","ci":"🎭"},{"d":"Caviar PDRN Real Deep Mask (1 pza)","m":"BIODANCE","c":"Real Deep Masks","p":"T","t":["edad","regalo","mascarillas"],"u":"La versión premium con caviar: regeneración de noche","th":"B0GY427BJK.jpg","pc":383,"cr":536,"q":10,"pq":54,"v":10000,"ok":0,"cp":"La mascarilla que se vuelve transparente mientras duermes","ci":"🎭"},{"d":"Sea Kelp Real Deep Mask (1 pza)","m":"BIODANCE","c":"Real Deep Masks","p":"T","t":["poros","regalo","mascarillas"],"u":"La versión refrescante con alga marina: calma y poros","th":"B0DR7P1TKL.jpg","pc":383,"cr":536,"q":10,"pq":54,"v":10000,"ok":0,"cp":"La mascarilla que se vuelve transparente mientras duermes","ci":"🎭"},{"d":"Collagen Lifting Mask (1 pza)","m":"Medicube","c":"Collagen","p":"T","t":["edad","regalo","mascarillas"],"u":"Mascarilla lifting individual: efecto tensor para hoy","th":"B0DM894XYZ.jpg","pc":383,"cr":536,"q":10,"pq":54,"v":10000,"ok":0,"cp":"Piel que rebota: firmeza y efecto lifting","ci":"✨"},{"d":"Kojic Turmeric Gel Mask (4 pzas)","m":"Medicube","c":"Kojic Acid Turmeric","p":"T","t":["manchas","regalo","mascarillas"],"u":"4 mascarillas iluminadoras: el plan de domingo","th":"B0DPJRS9DS.jpg","pc":402,"cr":563,"q":10,"pq":56,"v":20000,"ok":0,"cp":"Contra las manchas más difíciles y el paño","ci":"🎯"},{"d":"Air-Fit Suncream Plus 50ml","m":"SKIN1004","c":"Air-Fit Sun","p":"SOL","t":["sol"],"u":"Más protección para playa y exterior","th":"B09JDXC8PM.jpg","pc":421,"cr":590,"q":10,"pq":59,"v":700,"ok":1,"cp":"Bloqueador diario que de verdad se siente ligero","ci":"☀️"},{"d":"Tone Brightening Capsule Cream 75ml","m":"SKIN1004","c":"Tone Brightening","p":"S","t":["manchas","glow"],"u":"Crema efecto buena cara: ilumina de inmediato","th":"B0BFX5KQL3.jpg","pc":508,"cr":711,"q":12,"pq":59,"v":700,"ok":1,"cp":"Efecto buena cara desde el primer día","ci":"🌟"},{"d":"White Truffle First Spray Serum 100ml","m":"D'ALBA","c":"White Truffle","p":"T","t":["glow","regalo","reseca"],"u":"La bruma de trufa blanca: glow de lujo hasta sobre el maquillaje","th":"B0BFQ9RD5B.jpg","pc":618,"cr":864,"q":12,"pq":72,"v":50000,"ok":1,"cp":"Lujo vegano: glow de celebridad coreana","ci":"👑"},{"d":"Double Serum Multi Balm 10g","m":"D'ALBA","c":"White Truffle","p":"S","t":["reseca","regalo"],"u":"Barra 2-en-1: hidrata líneas, labios y pómulos donde sea","th":"B09SZ5JX2Y.jpg","pc":618,"cr":864,"q":12,"pq":72,"v":30000,"ok":0,"cp":"Lujo vegano: glow de celebridad coreana","ci":"👑"},{"d":"Waterfull Essence Sun Cream 50ml","m":"D'ALBA","c":"Waterfull Sun","p":"SOL","t":["sol","regalo"],"u":"Bloqueador-esencia premium: protección con lujo vegano","th":"B0DKJ347ZJ.jpg","pc":679,"cr":951,"q":12,"pq":79,"v":3000,"ok":1,"cp":"Protección solar con acabado de lujo","ci":"☀️"},{"d":"Vita-A Retinal Shot Booster 15ml","m":"CELIMAX","c":"Retinal","p":"T","t":["edad"],"u":"Retinal: más potente que el retinol, para arrugas y firmeza","th":"B0DK4Y2YP3.jpg","pc":445,"cr":622,"q":10,"pq":62,"v":60000,"ok":1,"cp":"El anti-arrugas más potente del corner","ci":"⏳"},{"d":"PDRN Pink Collagen Multi Balm 10g","m":"Medicube","c":"PDRN Pink","p":"S","t":["reseca","regalo","edad"],"u":"Barra de colágeno rosa: rellena labios, pómulos y arruguitas al instante","th":"B0GHMZXX8Y.jpg","pc":483,"cr":676,"q":12,"pq":56,"v":100000,"ok":0,"cp":"Piel de porcelana: firmeza, glow y poro cerrado","ci":"🌸"},{"d":"Collagen Peptide Eye Patch (30 pares)","m":"BIODANCE","c":"Collagen Peptide","p":"T","t":["ojos","regalo","mascarillas"],"u":"Bote con 30 pares de parches: ojos frescos todo el mes","th":"B0GD6R7CFJ.jpg","pc":475,"cr":666,"q":12,"pq":56,"v":90000,"ok":0,"cp":"Ojos frescos en 15 minutos","ci":"👁️"},{"d":"Heartleaf Quercetinol Cleansing Foam 150ml","m":"ANUA","c":"Heartleaf","p":"L","t":["poros","granitos"],"u":"Espuma de limpieza profunda del poro, sin resecar","th":"B0BVV8BNYJ.jpg","pc":329,"cr":461,"q":10,"pq":46,"v":70000,"ok":1,"cp":"La doble limpieza viral que deja el poro impecable","ci":"🌱"},{"d":"Collagen Jelly Serum Mist 50ml","m":"BIODANCE","c":"Collagen Peptide","p":"T","t":["glow"],"u":"Sérum en bruma de péptidos: refresca y reafirma","th":"B0GF86QJK7.jpg","pc":358,"cr":501,"q":10,"pq":50,"v":60000,"ok":1,"cp":"Ojos frescos en 15 minutos","ci":"👁️"},{"d":"EGF NAD Firming Serum 30ml","m":"Medicube","c":"NAD","p":"T","t":["edad"],"u":"Anti-edad de nueva generación: firmeza y regeneración","th":"B0GCC2JV65.jpg","pc":403,"cr":564,"q":10,"pq":56,"v":40000,"ok":1,"cp":"Anti-edad de última generación","ci":"🧬"},{"d":"Collagen Firming Suncream 50ml","m":"Medicube","c":"Collagen","p":"SOL","t":["sol","edad"],"u":"Bloqueador reafirmante: sin capa blanca, puro glow","th":"B0FPQGLYK9.jpg","pc":463,"cr":648,"q":10,"pq":65,"v":40000,"ok":1,"cp":"Piel que rebota: firmeza y efecto lifting","ci":"✨"},{"d":"Centella Soothing Cream 75ml","m":"SKIN1004","c":"Centella Original","p":"S","t":["sensible"],"u":"Gel-crema calmante para piel enrojecida","th":"B09B221Q7K.jpg","pc":449,"cr":628,"q":10,"pq":63,"v":10000,"ok":1,"cp":"La rutina que calma todo, para la piel más delicada","ci":"🍃"}],"N":{"manchas":{"i":"🎯","t":"Manchas y tono disparejo"},"poros":{"i":"✨","t":"Poros abiertos, grasa y brillo"},"granitos":{"i":"🌿","t":"Granitos y brotes"},"sensible":{"i":"🌸","t":"Piel reseca, sensible o irritada"},"edad":{"i":"⏳","t":"Líneas, arrugas y flacidez"},"ojos":{"i":"👁️","t":"Ojeras, bolsas y contorno"},"glow":{"i":"🫧","t":"Quiere GLOW / empezar desde cero"},"sol":{"i":"☀️","t":"Protección de todos los días"},"regalo":{"i":"🎁","t":"Regalo o antojo"},"mascarillas":{"i":"🎭","t":"Mascarillas y consentirse"}},"PN":{"L":"LIMPIA","T":"TRATA","S":"SELLA","SOL":"PROTEGE"},"PI":{"L":"🧼","T":"💧","S":"🧴","SOL":"☀️"}};
 const EXT = 1;   // 1 = fotos como archivos · 0 = fotos embebidas en el CSS
 // las fotos que dibuja el JS deben seguir el mismo modo que el resto de la página,
 // si no, el respaldo offline se ve con imágenes rotas
@@ -5119,505 +5119,104 @@ q.addEventListener("input", () => {
     if (mostrar) visibles++;
   });
   vacio.hidden = !(t && visibles === 0);
-});</script>
+});
+</script>
 <script>
-/* ================= ANÁLISIS GUIADO CON FOTO =================
-   La foto vive SOLO en memoria (canvas). Esta página no hace ninguna llamada
-   de red: nada se sube, nada se guarda. El resultado lo arma el motor del
-   sitio principal (script de arriba): aquí solo se hace click en sus chips. */
-const $ = id => document.getElementById(id);
-const PANTS = ["sc-intro", "sc-espejo", "sc-cam", "sc-quiz", "sc-res"];
-function ir(id) { PANTS.forEach(p => $(p).hidden = p !== id); window.scrollTo(0, 0); }
+/* ============================== UI TIENDA ==============================
+   El kiosco NO elige productos: sus opciones hacen click en los chips ocultos
+   del motor, y la barra y el resumen solo LEEN lo que el motor ya pintó.
+   (Regla T5: este bloque jamás toca PROD.) */
+(() => {
+  const $ = id => document.getElementById(id);
+  const chipsMotor = [...document.querySelectorAll("#toculto .chip")];
+  const ops = $("topciones");
 
-/* zonas de la cara: [x, y, rx, ry] relativos al óvalo-guía (mismo de la cámara) */
-const ZONAS = {
-  frente:    [[0, -.62, .60, .30]],
-  entrecejo: [[0, -.30, .18, .15]],
-  nariz:     [[0, .02, .20, .30]],
-  mejillas:  [[-.52, .18, .30, .26], [.52, .18, .30, .26]],
-  ojeras:    [[-.40, -.10, .24, .14], [.40, -.10, .24, .14]],
-  patas:     [[-.76, -.20, .15, .13], [.76, -.20, .15, .13]],
-  barbilla:  [[0, .76, .28, .16]],
-  cara:      [[0, .05, .95, .95]],
-};
-// óvalo-guía (en el lienzo 300×400): MÁS CHICO a propósito — obliga a estirar el
-// brazo, y de lejitos la cámara frontal deforma menos la cara (reporte de Michael)
-/* v7.4 (Michael, iPhone 17 Pro Max): el óvalo chico obligaba a alejarse tanto que
-   la cara perdía luz y detalle. Tamaño medio: más cara en el cuadro sin la
-   deformación de tenerla pegada a la lente. */
-/* 1-ago (Michael): óvalo más grande — la cara llena más cuadro ⇒ más píxeles de
-   piel para ver imperfecciones. Las zonas de respaldo escalan con él solas. */
-const OVALO = { cx:150, cy:172, rx:112, ry:134 };
-
-/* ---------- la cara REAL: cada cara es diferente (Michael, 30-jul) ----------
-   Al confirmar la selfie se buscan los puntos de la cara (ojos, cejas, nariz,
-   mandíbula) AQUÍ MISMO en el celular con face-api (en lib/, sin internet) y las
-   zonas se calculan desde ESOS puntos — ya no desde un óvalo fijo. Si no se
-   encuentra la cara (poca luz, muy de lado), se avisa y se usa el óvalo. */
-let CARA = null, caraJob = null;   // elipses por cara detectada, en coords de FOTO
-function cargarScript(src) {
-  return new Promise((ok, mal) => { const s = document.createElement("script");
-    s.src = src; s.onload = ok; s.onerror = mal; document.head.appendChild(s); });
-}
-async function detectarCara() {
-  try {
-    await cargarScript("lib/face-api.min.js");
-    if (!faceapi.nets.tinyFaceDetector.params) await faceapi.nets.tinyFaceDetector.loadFromUri("lib");
-    if (!faceapi.nets.faceLandmark68TinyNet.params) await faceapi.nets.faceLandmark68TinyNet.loadFromUri("lib");
-    const OPTS = new faceapi.TinyFaceDetectorOptions({ inputSize: 416, scoreThreshold: .3 });
-    let d = await faceapi.detectSingleFace(FOTO, OPTS).withFaceLandmarks(true);
-    if (d) return zonasDeLandmarks(d.landmarks.positions);
-    /* con el óvalo grande la cara LLENA el cuadro y el detector tiny la puede
-       perder (está afinado para caras chicas dentro de la escena): se reintenta
-       con la foto sobre un lienzo con 30% de margen y se resta el margen — así
-       las zonas siguen ancladas a la cara REAL y no al óvalo de respaldo */
-    const mx = Math.round(FOTO.width * .3), my = Math.round(FOTO.height * .3);
-    const c = document.createElement("canvas");
-    c.width = FOTO.width + mx * 2; c.height = FOTO.height + my * 2;
-    c.getContext("2d").drawImage(FOTO, mx, my);
-    d = await faceapi.detectSingleFace(c, OPTS).withFaceLandmarks(true);
-    return d ? zonasDeLandmarks(d.landmarks.positions.map(p => ({ x: p.x - mx, y: p.y - my }))) : null;
-  } catch (e) { return null; }
-}
-function zonasDeLandmarks(P) {
-  // índices iBUG-68: 0-16 mandíbula (8=barbilla) · 17-26 cejas · 27-35 nariz ·
-  // 36-41 ojo izq (36=esquina externa) · 42-47 ojo der (45=esquina externa)
-  const cen = ii => { let x = 0, y = 0; ii.forEach(i => { x += P[i].x; y += P[i].y; });
-    return { x: x / ii.length, y: y / ii.length }; };
-  const oI = cen([36, 37, 38, 39, 40, 41]), oD = cen([42, 43, 44, 45, 46, 47]);
-  const rot = Math.atan2(oD.y - oI.y, oD.x - oI.x);     // inclinación de la cabeza
-  const u = Math.hypot(oD.x - oI.x, oD.y - oI.y);       // distancia entre ojos = unidad
-  const entre = { x: (P[21].x + P[22].x) / 2, y: (P[21].y + P[22].y) / 2 };
-  const cejaY = Math.min(P[19].y, P[24].y);
-  const alto = P[8].y - cejaY;                          // de cejas a barbilla
-  const el = (x, y, rx, ry) => ({ x, y, rx, ry, rot });
-  return {
-    // frente y mejillas en unidades de distancia-entre-ojos (u), NO de cejas-a-barbilla:
-    // la BARBA corre la barbilla detectada hacia abajo, inflaba `alto` y la frente se
-    // iba al pelo (captura de Michael 31-jul)
-    frente:    [el(entre.x, cejaY - u * .48, u * 1.10, u * .36)],
-    entrecejo: [el(entre.x, entre.y - u * .02, u * .30, u * .28)],
-    nariz:     [el((P[27].x + P[33].x) / 2, (P[27].y + P[33].y) / 2 + u * .06, u * .32, (P[33].y - P[27].y) * .74)],
-    mejillas:  [el((P[31].x + P[3].x) / 2, oI.y + u * .82, u * .48, u * .45),
-                el((P[35].x + P[13].x) / 2, oD.y + u * .82, u * .48, u * .45)],
-    ojeras:    [el(oI.x, oI.y + u * .35, u * .42, u * .22), el(oD.x, oD.y + u * .35, u * .42, u * .22)],
-    patas:     [el(P[36].x - u * .28, P[36].y + u * .04, u * .22, u * .20),
-                el(P[45].x + u * .28, P[45].y + u * .04, u * .22, u * .20)],
-    barbilla:  [el(P[8].x, P[8].y - u * .34, u * .55, u * .34)],
-    cara:      [el((oI.x + oD.x) / 2, (cejaY + P[8].y) / 2, (P[16].x - P[0].x) * .54, alto * .74)],
+  /* pantallas por HASH: las puertas y los «volver» son <a href> de verdad
+     (#t-elegir, #t-home…) — navegar es cambiar el ancla, y el botón atrás
+     del teléfono funciona solo */
+  const PANTS = ["t-home", "t-elegir", "t-rutina"];
+  const pantalla = () => {
+    const h = location.hash.replace("#", "");
+    return PANTS.includes(h) ? h : "t-home";
   };
-}
+  function ir(id) {
+    // llegar a la rutina sin haber elegido nada → mejor a elegir
+    if (id === "t-rutina" && !panelVisible()) { location.replace("#t-elegir"); return; }
+    PANTS.forEach(p => { $(p).hidden = p !== id; });
+    $("tmiga").textContent = id === "t-home" ? "🇰🇷 100% original"
+      : (id === "t-elegir" ? "paso 1 de 2" : "paso 2 de 2");
+    scrollTo({ top: 0, behavior: "instant" });
+  }
+  window.addEventListener("hashchange", () => ir(pantalla()));
 
-const PREG = [
- {k:"poros",    ic:"✨", z:["frente","nariz","mejillas"],
-  t:"Mírate la frente y la nariz: ¿ves brillo (grasita) o poros abiertos?",
-  a:"La zona iluminada es la «zona T» — donde más se nota la piel grasa."},
- {k:"manchas",  ic:"🎯", z:["mejillas","frente"],
-  t:"¿Ves manchitas o zonas más oscuras que el resto?",
-  a:"Paño, marcas del sol o las que dejó un granito."},
- {k:"granitos", ic:"🌿", z:["frente","mejillas","barbilla"],
-  t:"¿Tienes granitos o brotes ahorita — o te salen seguido?", a:""},
- {k:"edad",     ic:"⏳", z:["frente","entrecejo","patas"],
-  t:"Acércate tantito: ¿notas líneas de expresión o la piel menos firme?",
-  a:"Frente, entrecejo y a los lados de los ojos."},
- {k:"ojos",     ic:"👁️", z:["ojeras"],
-  t:"¿Se te marcan ojeras o bolsas bajo los ojos?", a:""},
- {k:"sensible", ic:"🌸", z:["cara"],
-  t:"Ahora de sentir, no de ver: ¿tu piel se irrita fácil? (rojez, ardor con productos, resequedad)",
-  a:"Si marcas «sí», dejamos fuera los activos fuertes — tu piel primero."},
- {k:"embarazo", ic:"🤰", z:null,
-  t:"Casi terminamos — una para cuidarte: ¿estás embarazada o lactando?",
-  a:"Si marcas «sí», tu rutina va solo con fórmulas suaves: sin retinol, sin kójico, sin exfoliantes fuertes.",
-  ops:["Sí","No"]},
- {k:"sol",      ic:"☀️", z:null,
-  t:"La última: ¿usas bloqueador todos los días?",
-  a:"El sol causa la mayoría de manchas y arrugas — por eso importa tanto.",
-  ops:["Sí, siempre","A veces","Casi nunca"]},
-];
-/* si detectamos más de 3, mandan las de arriba (sensible primero: activa las
-   reglas suaves del motor); el resto se ofrece como ajuste manual */
-const PRIOR = ["sensible", "granitos", "manchas", "edad", "poros", "ojos", "sol"];
-
-let FOTO = null;      // canvas 1200×1600 con la selfie — SOLO en memoria
-let resp = {};        // clave de pregunta → índice de respuesta
-let idx = 0;
-let stream = null;
-
-/* ---------- cámara (frontal, espejeada) ---------- */
-const video = $("cam");
-async function abrirCam() {
-  $("camerr").hidden = true; $("camprev").hidden = true; $("camvivo").hidden = false;
-  try {
-    stream = await navigator.mediaDevices.getUserMedia(
-      // pedir la resolución más alta posible (iPhones modernos dan mucho más de
-      // 1080): «ideal» negocia hacia abajo solo si el equipo no la tiene
-      { video: { facingMode: "user", width: { ideal: 2160 }, height: { ideal: 2880 },
-                 aspectRatio: { ideal: 3 / 4 } }, audio: false });
-    video.srcObject = stream; await video.play();
-  } catch (e) { $("camvivo").hidden = true; $("camerr").hidden = false; }
-}
-function cerrarCam() {
-  if (stream) { stream.getTracks().forEach(t => t.stop()); stream = null; }
-  video.srcObject = null;
-}
-addEventListener("beforeunload", cerrarCam);
-addEventListener("pagehide", cerrarCam);
-
-$("btnempezar").addEventListener("click", () => ir("sc-espejo"));
-$("espback").addEventListener("click", () => ir("sc-intro"));
-$("btnfoto").addEventListener("click", () => { ir("sc-cam"); abrirCam(); });
-$("btnsin").addEventListener("click", () => { FOTO = null; CARA = null; cerrarCam(); empezarQuiz(); });
-$("btnsin2").addEventListener("click", () => { FOTO = null; CARA = null; cerrarCam(); empezarQuiz(); });
-$("camback").addEventListener("click", () => { cerrarCam(); ir("sc-espejo"); });
-$("subir0").addEventListener("click", () => $("archivo").click());
-$("subir1").addEventListener("click", () => $("archivo").click());
-$("subir2").addEventListener("click", () => $("archivo").click());
-
-function recorteCover(vw, vh) {
-  // recorta la fuente al 3:4 del visor (mismo encuadre que se ve en pantalla),
-  // SIEMPRE dentro de los límites: un rectángulo fuera de rango deforma la foto
-  const AR = 3 / 4; let sw, sh, sx, sy;
-  if (vw / vh > AR) { sh = vh; sw = vh * AR; sx = (vw - sw) / 2; sy = 0; }
-  else { sw = vw; sh = vw / AR; sx = 0; sy = (vh - sh) / 2; }
-  sx = Math.max(0, Math.round(sx)); sy = Math.max(0, Math.round(sy));
-  sw = Math.min(Math.round(sw), vw - sx); sh = Math.min(Math.round(sh), vh - sy);
-  return { sx, sy, sw, sh };
-}
-$("disparo").addEventListener("click", () => {
-  const vw = video.videoWidth, vh = video.videoHeight; if (!vw || !vh) return;
-  // 1º el cuadro COMPLETO a un lienzo intermedio: recortar directo del <video>
-  // deformaba la selfie en iPhone (reporte de Michael 30-jul)
-  const full = document.createElement("canvas"); full.width = vw; full.height = vh;
-  full.getContext("2d").drawImage(video, 0, 0);
-  const r = recorteCover(vw, vh);
-  // usar la resolución REAL que entregó la cámara (hasta 1800×2400): si el
-  // teléfono da 2160 de ancho, reducir a un tamaño fijo tiraba pixeles de piel
-  const W = Math.min(1800, Math.max(1200, r.sw)), H = Math.round(W * 4 / 3);
-  const c = document.createElement("canvas"); c.width = W; c.height = H;
-  const x = c.getContext("2d");
-  x.translate(W, 0); x.scale(-1, 1);   // espejo: la foto queda como ella se ve
-  x.drawImage(full, r.sx, r.sy, r.sw, r.sh, 0, 0, W, H);
-  FOTO = c; mostrarPrevia();
-});
-function mostrarPrevia() {
-  $("camvivo").hidden = true; $("camerr").hidden = true; $("camprev").hidden = false;
-  $("prevista").src = FOTO.toDataURL("image/jpeg", .9);
-  // buscar la cara en fondo, para que las zonas se acomoden a ELLA
-  CARA = null; $("caraok").hidden = true;
-  caraJob = detectarCara().then(z => {
-    CARA = z; $("caraok").hidden = false;
-    $("caraok").textContent = z ? "✅ Encontré tu cara — las guías se acomodan a ti"
-                                : "ℹ️ No distinguí bien tu cara: te guío con el óvalo";
-    return z;
+  /* las opciones ya vienen pintadas en el HTML (desde NEEDS, en Python); aquí
+     solo se les conecta el click al chip del motor con el MISMO índice */
+  [...ops.children].forEach((b, i) => {
+    b.addEventListener("click", () => { chipsMotor[i].click(); sincronizar(); });
   });
-}
-$("repetir").addEventListener("click", () => {
-  FOTO = null; CARA = null; caraJob = null;
-  if (stream && stream.active) { $("camprev").hidden = true; $("camvivo").hidden = false; }
-  // iOS apaga la cámara al cambiar de app: si el stream murió hay que PEDIRLA
-  // de nuevo, no mandar al selector de archivos (captura de Michael 31-jul)
-  else { cerrarCam(); abrirCam(); }
-});
-$("usar").addEventListener("click", async () => {
-  $("usar").disabled = true;
-  try { await Promise.race([caraJob, new Promise(r => setTimeout(r, 5000))]); } catch (e) {}
-  $("usar").disabled = false;
-  cerrarCam(); empezarQuiz();
-});
 
-function cargarArchivo(e) {
-  const f = e.target.files && e.target.files[0]; if (!f) return;
-  const img = new Image();
-  img.onload = () => {
-    URL.revokeObjectURL(img.src);
-    const r = recorteCover(img.naturalWidth, img.naturalHeight);
-    // la cámara nativa entrega 12-24MP: conservar hasta 1800×2400 de detalle
-    const W = Math.min(1800, Math.max(1200, r.sw)), H = Math.round(W * 4 / 3);
-    const c = document.createElement("canvas"); c.width = W; c.height = H;
-    c.getContext("2d").drawImage(img, r.sx, r.sy, r.sw, r.sh, 0, 0, W, H);  // subida/nativa: sin espejo
-    FOTO = c; ir("sc-cam"); mostrarPrevia();
-  };
-  img.src = URL.createObjectURL(f);
-  e.target.value = "";
-}
-$("archivo").addEventListener("change", cargarArchivo);
-// «máxima calidad»: abre la cámara NATIVA del teléfono (capture="user") — su foto
-// pasa por todo el procesamiento del iPhone (HDR, luz, nitidez), algo que el video
-// de getUserMedia no puede dar; las zonas se anclan a la cara detectada igual
-$("archivonativo").addEventListener("change", cargarArchivo);
-$("nativo1").addEventListener("click", () => { cerrarCam(); $("archivonativo").click(); });
+  /* los «volver» regresan DE VERDAD (history.back) para que el botón atrás del
+     teléfono nunca acumule pasos fantasmas. Cada pantalla que NOSOTROS apilamos
+     lleva su profundidad en history.state (tprof): volver con profundidad = back
+     real; sin profundidad (llegada directa por ancla) = reemplazo, sin apilar.
+     OJO: un contador simple no sirve — el click a un ancla dispara TAMBIÉN
+     popstate en Chrome/Safari; el estado por entrada es inmune a eso. */
+  const prof = () => (history.state && history.state.tprof) || 0;
+  const irApilando = h => { history.pushState({ tprof: prof() + 1 }, "", h); ir(pantalla()); };
+  document.querySelectorAll('a.tmision[href^="#"]').forEach(a =>
+    a.addEventListener("click", e => { e.preventDefault(); irApilando(a.getAttribute("href")); }));
+  document.querySelectorAll("a.tvolver").forEach(a =>
+    a.addEventListener("click", e => {
+      e.preventDefault();
+      if (prof() > 0) history.back();
+      else location.replace(a.getAttribute("href"));
+    }));
+  window.addEventListener("popstate", () => ir(pantalla()));
+  $("tarmar").addEventListener("click", () => irApilando("#t-rutina"));
 
-/* ---------- visor: la foto con la zona iluminada (o carita dibujada) ---------- */
-const vcan = $("vfoto"), vctx = vcan.getContext("2d");
-const ov = document.createElement("canvas"); ov.width = 750; ov.height = 1000;
-const K = 2.5;   // 300×400 de la guía → 750×1000 del visor
-function elipses(zonas) {
-  if (CARA) {  // zonas ancladas a la cara detectada (coords de FOTO → visor 750×1000)
-    const f = 750 / FOTO.width;   // el ancho de FOTO puede variar: factor calculado
-    return zonas.flatMap(z => CARA[z] || []).map(e => ({
-      x: e.x * f, y: e.y * f, rx: e.rx * f, ry: e.ry * f, rot: e.rot || 0 }));
+  function panelVisible() {
+    return [...document.querySelectorAll("section.panel")].find(p => !p.hidden) || null;
   }
-  return zonas.flatMap(z => ZONAS[z] || []).map(([fx, fy, fr, fry]) => ({
-    x: (OVALO.cx + fx * OVALO.rx) * K, y: (OVALO.cy + fy * OVALO.ry) * K,
-    rx: OVALO.rx * fr * K, ry: OVALO.ry * fry * K, rot: 0 }));
-}
-let VZ = { z: 1, tx: 0, ty: 0 };   // zoom y paneo del visor
-let zonaActual = null, zoomUsado = false;
-function repintar() {
-  vctx.setTransform(1, 0, 0, 1, 0, 0); vctx.clearRect(0, 0, 750, 1000);
-  vctx.setTransform(VZ.z, 0, 0, VZ.z, VZ.tx, VZ.ty);
-  vctx.drawImage(FOTO, 0, 0, 750, 1000);
-  if (zonaActual) {
-    vctx.drawImage(ov, 0, 0);
-    vctx.strokeStyle = "rgba(217,108,130,.95)"; vctx.lineWidth = 3 / VZ.z;
-    vctx.setLineDash([12 / VZ.z, 9 / VZ.z]);
-    elipses(zonaActual).forEach(e => { vctx.beginPath(); vctx.ellipse(e.x, e.y, e.rx, e.ry, e.rot, 0, 7); vctx.stroke(); });
-    vctx.setLineDash([]);
-  }
-  vctx.setTransform(1, 0, 0, 1, 0, 0);
-}
-function fijarZoom(z, cx, cy) {   // acerca manteniendo el punto (cx,cy) en su lugar
-  z = Math.max(1, Math.min(4, z));
-  VZ.tx = cx - (cx - VZ.tx) * (z / VZ.z);
-  VZ.ty = cy - (cy - VZ.ty) * (z / VZ.z);
-  VZ.z = z;
-  VZ.tx = Math.min(0, Math.max(750 - 750 * z, VZ.tx));
-  VZ.ty = Math.min(0, Math.max(1000 - 1000 * z, VZ.ty));
-  if (z > 1 && !zoomUsado) { zoomUsado = true; $("vzoom").hidden = true; }
-  repintar();
-}
-function centrarZona(es) {
-  /* arranca la pregunta ACERCADA a su zona (Michael 1-ago: que las imperfecciones
-     se vean): hasta 1.6x, centrada y con los mismos topes de paneo del pellizco.
-     El doble toque regresa a la cara completa; los gestos siguen mandando. */
-  if (!es.length) return;
-  const x1 = Math.min(...es.map(e => e.x - e.rx)), x2 = Math.max(...es.map(e => e.x + e.rx));
-  const y1 = Math.min(...es.map(e => e.y - e.ry)), y2 = Math.max(...es.map(e => e.y + e.ry));
-  const z = Math.max(1, Math.min(1.6, Math.min(750 / (x2 - x1 + 170), 1000 / (y2 - y1 + 230))));
-  VZ.z = z;
-  VZ.tx = Math.min(0, Math.max(750 - 750 * z, 375 - (x1 + x2) / 2 * z));
-  VZ.ty = Math.min(0, Math.max(1000 - 1000 * z, 500 - (y1 + y2) / 2 * z));
-}
-function pintarVisor(p) {
-  const conFoto = !!FOTO;
-  vcan.hidden = !conFoto; $("vcara").hidden = conFoto;
-  $("vzoom").hidden = !conFoto || zoomUsado;
-  if (!conFoto) { $("vcara").innerHTML = svgCara(p.z || []); return; }
-  zonaActual = p.z || null;
-  VZ = { z: 1, tx: 0, ty: 0 };
-  if (zonaActual) centrarZona(elipses(zonaActual));   // acercada a lo que pregunta
-  if (zonaActual) {
-    const es = elipses(zonaActual);
-    const o = ov.getContext("2d");
-    o.globalCompositeOperation = "source-over"; o.clearRect(0, 0, 750, 1000);
-    o.fillStyle = "rgba(36,29,32,.52)"; o.fillRect(0, 0, 750, 1000);
-    o.globalCompositeOperation = "destination-out";
-    es.forEach(e => {   // hueco con borde suave (gradiente radial, compatible con Safari)
-      o.save(); o.translate(e.x, e.y); o.rotate(e.rot || 0); o.scale(e.rx, e.ry);
-      const g = o.createRadialGradient(0, 0, 0, 0, 0, 1);
-      g.addColorStop(0, "rgba(0,0,0,1)"); g.addColorStop(.72, "rgba(0,0,0,1)"); g.addColorStop(1, "rgba(0,0,0,0)");
-      o.fillStyle = g; o.beginPath(); o.arc(0, 0, 1, 0, 7); o.fill(); o.restore();
+
+  function sincronizar() {
+    let n = 0;
+    chipsMotor.forEach((c, i) => {
+      const on = c.getAttribute("aria-pressed") === "true";
+      if (on) n++;
+      ops.children[i].classList.toggle("on", on);
+      ops.children[i].setAttribute("aria-pressed", on ? "true" : "false");
     });
+    const cta = $("tarmar");
+    cta.disabled = n === 0;
+    cta.textContent = n === 0 ? "Elige al menos 1"
+      : (n === 1 ? "ARMAR MI RUTINA →" : `ARMAR MI RUTINA (${n}) →`);
   }
-  repintar();
-}
-/* gestos del visor: pellizco = acercar · arrastre = moverse · doble toque = 2× · rueda en compu */
-const dedos = new Map(); let pinch0 = null, tapPrev = 0, movio = false;
-const enLienzo = ev => { const r = vcan.getBoundingClientRect();
-  return { x: (ev.clientX - r.left) * 750 / r.width, y: (ev.clientY - r.top) * 1000 / r.height }; };
-vcan.addEventListener("pointerdown", ev => {
-  vcan.setPointerCapture(ev.pointerId);
-  dedos.set(ev.pointerId, enLienzo(ev)); movio = false;
-  if (dedos.size === 2) { const [a, b] = [...dedos.values()];
-    pinch0 = { d: Math.hypot(a.x - b.x, a.y - b.y) || 1, z: VZ.z }; }
-});
-vcan.addEventListener("pointermove", ev => {
-  if (!dedos.has(ev.pointerId)) return;
-  const p = enLienzo(ev);
-  if (dedos.size === 2 && pinch0) {
-    dedos.set(ev.pointerId, p); movio = true;
-    const [a, b] = [...dedos.values()];
-    fijarZoom(pinch0.z * Math.hypot(a.x - b.x, a.y - b.y) / pinch0.d, (a.x + b.x) / 2, (a.y + b.y) / 2);
-  } else if (dedos.size === 1 && VZ.z > 1) {
-    const q = dedos.get(ev.pointerId);
-    if (Math.hypot(p.x - q.x, p.y - q.y) > 4) movio = true;
-    VZ.tx = Math.min(0, Math.max(750 - 750 * VZ.z, VZ.tx + (p.x - q.x)));
-    VZ.ty = Math.min(0, Math.max(1000 - 1000 * VZ.z, VZ.ty + (p.y - q.y)));
-    dedos.set(ev.pointerId, p); repintar();
-  }
-});
-vcan.addEventListener("pointerup", ev => {
-  if (dedos.size === 1 && !pinch0 && !movio) {   // fue un toque: ¿doble?
-    const ahora = performance.now();
-    if (ahora - tapPrev < 320) { const p = enLienzo(ev); fijarZoom(VZ.z > 1 ? 1 : 2.2, p.x, p.y); tapPrev = 0; }
-    else tapPrev = ahora;
-  }
-  dedos.delete(ev.pointerId); if (dedos.size < 2) pinch0 = null;
-});
-vcan.addEventListener("pointercancel", ev => { dedos.delete(ev.pointerId); pinch0 = null; });
-vcan.addEventListener("wheel", ev => { ev.preventDefault(); const p = enLienzo(ev);
-  fijarZoom(VZ.z * (ev.deltaY < 0 ? 1.15 : 1 / 1.15), p.x, p.y); }, { passive: false });
-function svgCara(zonas) {
-  const zs = elipses(zonas).map(e =>
-    `<ellipse cx="${e.x / K}" cy="${e.y / K}" rx="${e.rx / K}" ry="${e.ry / K}" fill="rgba(217,108,130,.20)" stroke="#D96C82" stroke-width="2" stroke-dasharray="6 5"/>`).join("");
-  return `<svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <rect width="300" height="400" fill="#FAEDEE"/>
-    <g fill="none" stroke="#C9AEB6" stroke-width="3" stroke-linecap="round"
-       transform="translate(150 172) scale(1.302) translate(-150 -172)"><!-- rasgos dibujados
-       para el óvalo 86×104: el transform los lleva al óvalo actual 112×134 -->
-      <ellipse cx="150" cy="172" rx="86" ry="104"/>
-      <path d="M103 135 Q118 128 134 133"/><path d="M166 133 Q182 128 197 135"/>
-      <path d="M108 151 Q120 144 133 151 Q120 156 108 151 Z"/>
-      <path d="M167 151 Q180 144 192 151 Q180 156 167 151 Z"/>
-      <path d="M150 162 L147 195 Q150 201 156 195"/>
-      <path d="M126 224 Q150 234 174 224"/>
-    </g>${zs}</svg>`;
-}
 
-/* ---------- las 7 preguntas ---------- */
-function empezarQuiz() { idx = 0; resp = {}; ir("sc-quiz"); pintarPregunta(); }
-function pintarPregunta() {
-  const p = PREG[idx];
-  $("qnum").textContent = (idx + 1) + " de " + PREG.length;
-  $("qfill").style.width = ((idx + 1) / PREG.length * 100) + "%";
-  pintarVisor(p);
-  $("qic").textContent = p.ic; $("qtx").textContent = p.t;
-  $("qay").textContent = p.a || ""; $("qay").hidden = !p.a;
-  const ops = p.ops || ["Sí", "Un poco", "No"];
-  $("qops").innerHTML = ops.map((o, i) =>
-    `<button type="button" class="qop${resp[p.k] === i ? " on" : ""}" data-i="${i}">${o}</button>`).join("");
-  ajustarVisor();
-  if (scrollY) scrollTo(0, 0);
-}
-/* la foto toma TODO el alto que este teléfono tenga de verdad (visualViewport
-   cuenta las barras de Safari/Chrome) menos lo que mide la tarjeta de ESTA
-   pregunta — lo más grande posible en cada celular, sin esconder los botones */
-function ajustarVisor() {
-  const vis = document.querySelector("#sc-quiz .visor"), card = document.querySelector("#sc-quiz .qcard");
-  if (!vis || !card) return;
-  const alto = window.visualViewport ? visualViewport.height : innerHeight;
-  const pc = vis.parentElement, cs = getComputedStyle(pc);
-  const maxw = pc.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
-  const libre = alto - vis.offsetTop - card.getBoundingClientRect().height - 26;
-  vis.style.width = Math.min(maxw, Math.max(212, libre * .75)) + "px";
-}
-let _avT = null;
-const _avLento = () => { clearTimeout(_avT); _avT = setTimeout(ajustarVisor, 150); };
-addEventListener("resize", _avLento);
-if (window.visualViewport) visualViewport.addEventListener("resize", _avLento);
-$("qops").addEventListener("click", e => {
-  const b = e.target.closest(".qop"); if (!b) return;
-  resp[PREG[idx].k] = +b.dataset.i;
-  [...$("qops").children].forEach(x => x.classList.toggle("on", x === b));
-  setTimeout(() => { if (idx < PREG.length - 1) { idx++; pintarPregunta(); } else terminar(); }, 170);
-});
-$("qatras").addEventListener("click", () => {
-  if (idx > 0) { idx--; pintarPregunta(); }
-  else if (FOTO) { ir("sc-cam"); mostrarPrevia(); }
-  else ir("sc-espejo");
-});
-
-/* ---------- resultado: encender los chips del motor de siempre ---------- */
-function calcular() {
-  const peso = {};
-  PREG.forEach(p => {
-    const r = resp[p.k]; if (r === undefined || p.k === "embarazo") return;
-    peso[p.k] = p.k === "sol" ? (r === 2 ? 2 : r === 1 ? 1 : 0)   // «casi nunca» pesa más
-                              : (r === 0 ? 2 : r === 1 ? 1 : 0);  // «sí» pesa más que «un poco»
+  // la asesora teclea un codigo SY → la lista de la clienta aparece tal cual
+  const cerrarCod = () => { $("tcod").hidden = true; document.body.style.overflow = ""; };
+  $("tcodbtn").addEventListener("click", () => {
+    $("tcoderr").hidden = true; $("tcodin").value = "";
+    $("tcod").hidden = false; document.body.style.overflow = "hidden";
+    setTimeout(() => $("tcodin").focus(), 60);
   });
-  const emb = resp.embarazo === 0;
-  let cand = PRIOR.filter(k => peso[k] === 2).concat(PRIOR.filter(k => peso[k] === 1));
-  // embarazo/lactancia ⇒ el chip «sensible» va SIEMPRE y primero: es el camino del
-  // motor auditado (R1) sin retinol, kójico, exfoliantes fuertes ni glutatión
-  if (emb) cand = ["sensible"].concat(cand.filter(k => k !== "sensible"));
-  const sel3 = cand.slice(0, 3);
-  return { sel3: sel3.length ? sel3 : (emb ? ["sensible"] : ["glow"]),
-           // del bloqueador habla SOLO la nota dedicada (notasol) — repetirlo en
-           // «también vimos señales de…» era hablar doble (Michael 1-ago)
-           extras: cand.slice(3).filter(k => k !== "sol"), emb,
-           solPend: (peso.sol || 0) > 0 && !sel3.includes("sol") };
-}
-function miniFoto() {
-  const c = document.createElement("canvas"); c.width = c.height = 160;
-  const sy = Math.max(0, FOTO.height * (OVALO.cy / 400) - FOTO.width / 2);   // cuadro centrado en la cara
-  c.getContext("2d").drawImage(FOTO, 0, sy, FOTO.width, FOTO.width, 0, 0, 160, 160);
-  return c.toDataURL("image/jpeg", .85);
-}
-function terminar() {
-  const r = calcular();
-  $("resfoto").hidden = !FOTO;
-  if (FOTO) $("resfoto").src = miniFoto();
-  $("reschips").innerHTML = r.sel3.map(k => `<span class="selchip">${NEC[k].i} ${NEC[k].t}</span>`).join("");
-  $("resextra").hidden = !r.extras.length;
-  if (r.extras.length) $("resextra").innerHTML = "También vimos señales de " +
-    r.extras.map(k => `<b>${NEC[k].t.toLowerCase()}</b>`).join(" y ") +
-    " — abajo, después de tu rutina, te dejamos algo específico para eso. Y si prefieres enfocarte ahí, cámbialo con un toque.";
-  $("notasol").hidden = !r.solPend;
-  $("resemb").hidden = !r.emb;
-  // las señales leves («un poco») se pasan al motor: con 2-3 categorías, él pinta el
-  // bloque «Para lo que notaste un poco» dentro del panel, antes de las mascarillas
-  window.EXTRAS_PIEL = r.extras;
-  // apagar lo que hubiera y prender la selección (los clicks corren el motor auditado
-  // del sitio; como la sección sigue oculta, su auto-scroll no mueve nada)
-  sel.slice().forEach(k => { const c = chips.find(x => x.dataset.need === k); if (c) c.click(); });
-  r.sel3.forEach(k => { const c = chips.find(x => x.dataset.need === k); if (c) c.click(); });
-  actualizarUnPoco();
-  setTimeout(() => ir("sc-res"), 140);
-}
-/* con UNA sola categoría el panel es estático (no lo arma pintarCombinada), así que
-   el bloque «un poco» lo pintamos aquí — conservador: SIN activos fuertes, siempre */
-function actualizarUnPoco() {
-  const cont = $("unpoco"); cont.innerHTML = "";
-  const ex = (window.EXTRAS_PIEL || []).filter(f => !sel.includes(f) && NEC[f]);
-  if (sel.length !== 1 || !ex.length) return;   // con 2-3 lo pinta el motor dentro del panel
-  const filas = ex.map(f => {
-    const i = elegirSuave(f);   // picker del MOTOR (sin fuertes): el quiz no elige por su cuenta
-    return i === null ? "" : fila(i, `<span class="cob">${NEC[f].i} ${NEC[f].t}</span>`);
-  }).join("");
-  if (filas) cont.innerHTML = `<div class="plabel">🔎 Para lo que notaste «un poco»</div>
-    <div class="compl">${filas}</div>`;
-}
-chips.forEach(c => c.addEventListener("click", () => setTimeout(actualizarUnPoco, 0)));
-$("denuevo").addEventListener("click", () => location.reload());
-
-/* volver inteligente: si llegaste desde otra página del sitio (la de clientes
-   /tienda o la de la vendedora), el ← te regresa AHÍ; si llegaste directo, va a
-   la portada como siempre (reporte de Michael 31-jul). OJO: solo los ENLACES
-   href="../" — los botones .tback internos (cámara, quiz) no se tocan */
-document.querySelectorAll('a.tback[href="../"], a.volver[href="../"]').forEach(a => {
-  a.addEventListener("click", e => {
-    try {
-      const ref = document.referrer && new URL(document.referrer);
-      if (ref && ref.origin === location.origin && ref.pathname !== location.pathname
-          && history.length > 1) { e.preventDefault(); history.back(); }
-    } catch (err) {}
+  $("tcodcerrar").addEventListener("click", cerrarCod);
+  $("tcodfondo").addEventListener("click", cerrarCod);
+  $("tcodver").addEventListener("click", () => {
+    const C = window._carrito;
+    const items = C && C.decodificarCodigo($("tcodin").value);
+    if (!items) { $("tcoderr").hidden = false; return; }
+    cerrarCod();
+    C.aplicarCodigo(items);
+    C.abrirHoja();
   });
-});
+  $("tcodin").addEventListener("keydown", e => { if (e.key === "Enter") $("tcodver").click(); });
 
-/* ¿hay versión nueva publicada? El navegador a veces se queda con la página VIEJA
-   (caché) y los arreglos «no llegan»: se compara el sello propio contra el publicado
-   y se ofrece actualizar con un toque (misma protección que /buscar) */
-(async () => {
-  try {
-    const mio = document.querySelector('meta[name="x-piel"]').content;
-    const r = await fetch(location.pathname + "?vchk=" + Math.random().toString(36).slice(2), { cache: "no-store" });
-    const m = (await r.text()).match(/name="x-piel" content="([a-f0-9]+)"/);
-    if (m && m[1] !== mio) {
-      const b = document.createElement("button");
-      b.id = "vnueva"; b.type = "button";
-      b.innerHTML = "🔄 Hay una versión nueva de esta página — <b>tócame para actualizarla</b>";
-      b.addEventListener("click", () => location.replace(location.pathname + "?v=" + m[1]));
-      document.body.appendChild(b);
-    }
-  } catch (e) {}
+  sincronizar();
+  // con JS vivo mandan SOLO los [hidden] de ir(): se apaga el respaldo :target
+  document.documentElement.classList.add("js");
+  ir(pantalla());   // respeta el ancla si llegas con #t-elegir en la URL
+  window._tiendaTest = { ir, sincronizar, nOpciones: () => ops.children.length };
 })();
-
-/* gancho para pruebas automatizadas (no afecta el uso normal) */
-window._pielTest = { PREG, ZONAS, calcular, empezarQuiz, terminar, ir,
-  responder: (k, i) => { resp[k] = i; }, getResp: () => resp,
-  setFoto: c => { FOTO = c; }, getFoto: () => FOTO, pintarPregunta, pintarVisor,
-  fijarZoom, getVZ: () => VZ,
-  zonasDeLandmarks, detectarCara, setCara: z => { CARA = z; }, getCara: () => CARA };
 </script>
 <script>
 /* ============ EL CARRITO COMPARTIDO — ver carrito.py ============ */
@@ -5889,4 +5488,52 @@ window._pielTest = { PREG, ZONAS, calcular, empezarQuiz, terminar, ir,
     codigoDeLista, decodificarCodigo, aplicarCodigo, decorar: decorarPagina,
     abrirHoja, cerrarHoja };
 })();
+</script>
+<script>
+/* ¿hay versión nueva publicada? (misma protección que /buscar, /piel y /k) */
+(async () => {
+  try {
+    const mio = document.querySelector('meta[name="x-tienda"]').content;
+    const r = await fetch(location.pathname + "?vchk=" + Math.random().toString(36).slice(2), { cache: "no-store" });
+    const m = (await r.text()).match(/name="x-tienda" content="([a-f0-9]+)"/);
+    if (m && m[1] !== mio) {
+      const b = document.createElement("button");
+      b.id = "vnueva"; b.type = "button";
+      b.innerHTML = "🔄 Hay una versión nueva de esta página — <b>tócame para actualizarla</b>";
+      b.addEventListener("click", () => location.replace(location.pathname + "?v=" + m[1]));
+      document.body.appendChild(b);
+    }
+  } catch (e) {}
+})();
 </script></body></html>
+<script>
+setTimeout(() => {
+  try {
+    localStorage.clear();
+    location.hash = "#t-elegir";
+    setTimeout(() => {
+      const elegirTxt = document.getElementById("t-elegir").textContent;
+      const mencionaEmb = /embaraz|lactan/i.test(elegirTxt);
+      document.querySelectorAll("#topciones .topcion")[0].click();
+      document.getElementById("tarmar").click();
+      setTimeout(() => {
+        const todo = document.querySelector(".agtodo");
+        const encontrado = !!todo;
+        const txtAntes = todo ? todo.textContent : "";
+        if (todo) todo.click();
+        setTimeout(() => {
+          const oculto = todo ? todo.hidden : null;
+          const tases = document.getElementById("tases").hidden;
+          const tcart = document.getElementById("tcart").hidden;
+          const leaf = [...document.querySelectorAll("body *")].filter(el =>
+            el.children.length === 0 && el.offsetParent !== null &&
+            /c[oó]digo|mi lista|tu lista/i.test(el.textContent || ""));
+          document.title = "AUDIT|agtodo=" + encontrado + "|txt=" + txtAntes.slice(0,40) +
+            "|hiddenTras=" + oculto + "|tasesHidden=" + tases + "|tcartHidden=" + tcart +
+            "|leafMencionesVisibles=" + leaf.length + "|elegirMencionaEmbarazo=" + mencionaEmb;
+        }, 400);
+      }, 500);
+    }, 400);
+  } catch (e) { document.title = "AUDIT-ERR|" + e.message; }
+}, 600);
+</script>
