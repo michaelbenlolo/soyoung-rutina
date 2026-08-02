@@ -3,8 +3,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<meta name="x-contenido" content="434ec92f5f">
-<meta name="x-k" content="fa69e041cd">
+<meta name="x-contenido" content="7d078a206b">
+<meta name="x-k" content="4680d00ba9">
 <title>SO YOUNG · Edición Seúl</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -74,7 +74,7 @@ details.col, .mv { scroll-margin-top:58px; }   /* la barra fija no tapa el desti
 .otra { font-size:8.5px; background:var(--crema2); color:var(--rosad); border-radius:99px; padding:1px 6px; margin-left:4px; white-space:nowrap; }
 .ruso { font-size:11.3px; color:var(--texto); line-height:1.35; }
 .rprec { font-size:12.7px; font-weight:700; color:var(--rosad); margin-top:2px; }
-.rprec span { font-weight:400; font-size:10.5px; color:var(--mut); }
+.rprec span { font-weight:400; font-size:12px; color:var(--texto); }
 .rtotal { display:flex; justify-content:space-between; align-items:center; gap:10px; background:var(--ink); color:#fff; padding:11px 13px; }
 .rtotal>div:first-child { font-size:12.5px; font-weight:700; }
 .rtotal span { display:block; font-weight:400; font-size:10px; color:#e7d3d8; }
@@ -86,7 +86,7 @@ details.col, .mv { scroll-margin-top:58px; }   /* la barra fija no tapa el desti
    «no se entiende que puede tocar» → recuadro; «no se ve la flecha» → circulito;
    «llama más la atención que el resto» → colores calmados: la forma dice
    «tócame», el color lo deja en segundo plano — nunca más fuerte que el precio) */
-.ralt .raltt { list-style:none; cursor:pointer; padding:4px 6px 4px 9px; display:flex; align-items:center; gap:5px;
+.ralt .raltt { list-style:none; cursor:pointer; position:relative; padding:4px 6px 4px 9px; display:flex; align-items:center; gap:5px;
   background:#fff; border:1px solid var(--line); border-radius:99px;
   font-size:10.2px; font-weight:600; color:var(--mut); -webkit-tap-highlight-color:transparent; user-select:none; }
 .ralt .raltt::-webkit-details-marker { display:none; }
@@ -96,7 +96,9 @@ details.col, .mv { scroll-margin-top:58px; }   /* la barra fija no tapa el desti
 .ralt[open] .raltt { border-radius:12px 12px 0 0; border-bottom-color:transparent; background:var(--crema); }
 .ralt[open] .raltt .rcar { transform:rotate(180deg); }
 .ralt .raltb { padding:4px 8px 6px; background:var(--crema); border:1px solid var(--line); border-top:none; border-radius:0 0 12px 12px; }
+.ralt .raltt::before { content:""; position:absolute; inset:-5px 0; }
 .ralt .altp, .ralt .volverp, .ralt .vera { display:inline-block; font:inherit; font-size:10.2px; font-weight:600; color:var(--texto);
+  padding-block:8px; margin-block:-5px;
   background:#fff; border:1px solid var(--rosad); border-radius:99px; padding:3px 9px; margin:3px 5px 1px 0; cursor:pointer; text-align:left; }
 .ralt .altp span, .ralt .vera span { font-size:9.5px; color:var(--mut); font-weight:500; }
 .ralt .volverp { border-color:var(--line); color:var(--mut); background:var(--crema); }
@@ -150,7 +152,7 @@ details.col, .mv { scroll-margin-top:58px; }   /* la barra fija no tapa el desti
 .mvn.on { border-color:var(--rosad); background:var(--crema2); }
 .mvfil { display:flex; align-items:center; flex-wrap:wrap; gap:5px; margin-top:9px; }
 .mvflab { font-size:10.5px; font-weight:700; color:var(--mut); }
-.mvb, .mvsen { appearance:none; border:1px solid var(--line); background:#fff; border-radius:99px; padding:4px 9px;
+.mvb, .mvsen { appearance:none; border:1px solid var(--line); background:#fff; border-radius:99px; padding:9px 12px; min-height:40px;
   font:inherit; font-size:10.5px; font-weight:600; color:var(--texto); cursor:pointer; }
 .mvb.on { border-color:var(--rosad); background:var(--crema2); color:var(--rosad); }
 .mvsen { margin-left:auto; }
@@ -165,7 +167,7 @@ details.col, .mv { scroll-margin-top:58px; }   /* la barra fija no tapa el desti
 .mvprecio em { font-style:normal; font-size:10.5px; font-weight:600; color:var(--mut); }
 .mvguion { font-size:11px; background:var(--crema); border-radius:9px; padding:6px 8px; margin-top:6px; line-height:1.45; }
 .mvver { appearance:none; border:none; background:none; font:inherit; font-size:11px; font-weight:700; color:var(--rosad);
-  padding:6px 0 0; cursor:pointer; }
+  padding:10px 0 6px; min-height:40px; cursor:pointer; }
 /* sello de oferta: el aterrizaje de «Ver la rutina armada» — repite el precio
    EXACTO de la carta 💰/⭐/👑 justo arriba de la rutina que lo arma */
 .mvland { display:flex; flex-wrap:wrap; align-items:baseline; gap:4px 6px; margin:9px 0 2px;
@@ -4991,7 +4993,14 @@ const compacto = s => norm(s).replace(/[^a-z0-9]/g, "");
 // «baba de caracol» o «skin 1004» funcionan aunque las palabras estén separadas
 const coincide = (indice, t) => {
   const I = norm(indice), C = compacto(indice);
-  return t.split(/\s+/).filter(Boolean).every(w => I.includes(w) || C.includes(compacto(w)));
+  /* el plural natural («cremas», «geles») no debe dar cero: si la palabra tal
+     cual no está, se reintenta con su singular (auditoría de usuarios 1-ago) */
+  const hay = w => I.includes(w) || C.includes(compacto(w));
+  return t.split(/\s+/).filter(Boolean).every(w => {
+    if (hay(w)) return true;
+    const s = w.replace(/(?:es|s)$/, "");
+    return s.length >= 3 && s !== w && hay(s);
+  });
 };
 q.addEventListener("input", () => {
   const t = norm(q.value);

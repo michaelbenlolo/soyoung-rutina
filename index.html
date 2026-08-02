@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="La herramienta de la asesora SO YOUNG: arma la rutina de tu clienta en 1 minuto, con guiones, precios de contado y quincenas con el vale.">
 <title>SO YOUNG · La herramienta de la asesora</title>
-<meta name="x-contenido" content="434ec92f5f">
+<meta name="x-contenido" content="7d078a206b">
 <style>
 :root { --rosa:#D96C82; --rosad:#B94F66; --ink:#2A2226; --crema:#FBF6F4; --crema2:#FAEDEE;
   --mut:#8b7d82; --line:#F0DDE1; --texto:#584a4f; color-scheme: light; }
@@ -71,7 +71,7 @@ details.col, .mv { scroll-margin-top:58px; }   /* la barra fija no tapa el desti
 .otra { font-size:8.5px; background:var(--crema2); color:var(--rosad); border-radius:99px; padding:1px 6px; margin-left:4px; white-space:nowrap; }
 .ruso { font-size:11.3px; color:var(--texto); line-height:1.35; }
 .rprec { font-size:12.7px; font-weight:700; color:var(--rosad); margin-top:2px; }
-.rprec span { font-weight:400; font-size:10.5px; color:var(--mut); }
+.rprec span { font-weight:400; font-size:12px; color:var(--texto); }
 .rtotal { display:flex; justify-content:space-between; align-items:center; gap:10px; background:var(--ink); color:#fff; padding:11px 13px; }
 .rtotal>div:first-child { font-size:12.5px; font-weight:700; }
 .rtotal span { display:block; font-weight:400; font-size:10px; color:#e7d3d8; }
@@ -83,7 +83,7 @@ details.col, .mv { scroll-margin-top:58px; }   /* la barra fija no tapa el desti
    «no se entiende que puede tocar» → recuadro; «no se ve la flecha» → circulito;
    «llama más la atención que el resto» → colores calmados: la forma dice
    «tócame», el color lo deja en segundo plano — nunca más fuerte que el precio) */
-.ralt .raltt { list-style:none; cursor:pointer; padding:4px 6px 4px 9px; display:flex; align-items:center; gap:5px;
+.ralt .raltt { list-style:none; cursor:pointer; position:relative; padding:4px 6px 4px 9px; display:flex; align-items:center; gap:5px;
   background:#fff; border:1px solid var(--line); border-radius:99px;
   font-size:10.2px; font-weight:600; color:var(--mut); -webkit-tap-highlight-color:transparent; user-select:none; }
 .ralt .raltt::-webkit-details-marker { display:none; }
@@ -93,7 +93,9 @@ details.col, .mv { scroll-margin-top:58px; }   /* la barra fija no tapa el desti
 .ralt[open] .raltt { border-radius:12px 12px 0 0; border-bottom-color:transparent; background:var(--crema); }
 .ralt[open] .raltt .rcar { transform:rotate(180deg); }
 .ralt .raltb { padding:4px 8px 6px; background:var(--crema); border:1px solid var(--line); border-top:none; border-radius:0 0 12px 12px; }
+.ralt .raltt::before { content:""; position:absolute; inset:-5px 0; }
 .ralt .altp, .ralt .volverp, .ralt .vera { display:inline-block; font:inherit; font-size:10.2px; font-weight:600; color:var(--texto);
+  padding-block:8px; margin-block:-5px;
   background:#fff; border:1px solid var(--rosad); border-radius:99px; padding:3px 9px; margin:3px 5px 1px 0; cursor:pointer; text-align:left; }
 .ralt .altp span, .ralt .vera span { font-size:9.5px; color:var(--mut); font-weight:500; }
 .ralt .volverp { border-color:var(--line); color:var(--mut); background:var(--crema); }
@@ -147,7 +149,7 @@ details.col, .mv { scroll-margin-top:58px; }   /* la barra fija no tapa el desti
 .mvn.on { border-color:var(--rosad); background:var(--crema2); }
 .mvfil { display:flex; align-items:center; flex-wrap:wrap; gap:5px; margin-top:9px; }
 .mvflab { font-size:10.5px; font-weight:700; color:var(--mut); }
-.mvb, .mvsen { appearance:none; border:1px solid var(--line); background:#fff; border-radius:99px; padding:4px 9px;
+.mvb, .mvsen { appearance:none; border:1px solid var(--line); background:#fff; border-radius:99px; padding:9px 12px; min-height:40px;
   font:inherit; font-size:10.5px; font-weight:600; color:var(--texto); cursor:pointer; }
 .mvb.on { border-color:var(--rosad); background:var(--crema2); color:var(--rosad); }
 .mvsen { margin-left:auto; }
@@ -162,7 +164,7 @@ details.col, .mv { scroll-margin-top:58px; }   /* la barra fija no tapa el desti
 .mvprecio em { font-style:normal; font-size:10.5px; font-weight:600; color:var(--mut); }
 .mvguion { font-size:11px; background:var(--crema); border-radius:9px; padding:6px 8px; margin-top:6px; line-height:1.45; }
 .mvver { appearance:none; border:none; background:none; font:inherit; font-size:11px; font-weight:700; color:var(--rosad);
-  padding:6px 0 0; cursor:pointer; }
+  padding:10px 0 6px; min-height:40px; cursor:pointer; }
 /* sello de oferta: el aterrizaje de «Ver la rutina armada» — repite el precio
    EXACTO de la carta 💰/⭐/👑 justo arriba de la rutina que lo arma */
 .mvland { display:flex; flex-wrap:wrap; align-items:baseline; gap:4px 6px; margin:9px 0 2px;
@@ -430,12 +432,17 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
 .tifoto { width:46px; height:46px; object-fit:contain; background:var(--crema2);
   border-radius:10px; padding:3px; flex:none; mix-blend-mode:multiply; cursor:pointer; }
 .tiprecio { color:var(--rosad); font-weight:800; white-space:nowrap; }
+.mini { position:relative; }
+.mini::after { content:""; position:absolute; inset:-11px; }
+.rp .mini::after, .trow .mini::after, .lrow .mini::after { inset:-8px; }
+.tix, .thx { position:relative; }
+.tix::after, .thx::after { content:""; position:absolute; inset:-9px; }
 .tix { appearance:none; border:1px solid var(--line); background:#fff; color:var(--mut);
   width:26px; height:26px; border-radius:50%; cursor:pointer; font-size:12px; flex:none; }
 .tialts { padding:0 0 10px; border-bottom:1px dashed var(--line); font-size:10.5px;
   color:var(--mut); }
 .titem + .titem, .tialts + .titem { border-top:1px dashed var(--line); }
-.trpl { appearance:none; font-family:inherit; cursor:pointer; border:1px solid var(--line);
+.trpl { appearance:none; font-family:inherit; cursor:pointer; padding-block:8px; border:1px solid var(--line);
   background:#fff; color:var(--ink); border-radius:99px; padding:5px 10px; font-size:10.5px;
   font-weight:700; margin:4px 4px 0 0; }
 .trpl b { color:var(--rosad); }
@@ -451,7 +458,7 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
   background:#fff; font-family:inherit; font-weight:700; font-size:13px; border-radius:12px;
   padding:12px; cursor:pointer; color:var(--ink); }
 /* vaciar todo: discreto, con doble toque de confirmación */
-.tvaciar { display:block; margin:10px auto 0; appearance:none; border:none; background:none;
+.tvaciar { display:block; margin:10px auto 0; padding:10px 12px; appearance:none; border:none; background:none;
   font-family:inherit; font-size:11.5px; font-weight:700; color:var(--mut); cursor:pointer;
   text-decoration:underline; padding:4px 10px; }
 .tvaciar.seguro { color:#b3261e; }
@@ -484,7 +491,7 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
     <div class="tchoque" id="tchoque" hidden></div>
     <div id="tlista"></div>
     <div class="ttotal"><b>Total de contado</b><span id="ttotal">—</span></div>
-    <div class="tquin" id="tquin"></div>
+    <div class="tquin" id="tquin"></div><!-- «ó Q quincenas de $X» del TOTAL — la pregunta central de la clienta (auditoría 1-ago) -->
     <div class="tnota">💕 <b>Lo pagas con tu vale en quincenas</b> — pregúntale a tu asesora por el plazo.</div>
     <a class="tguia" id="tguia" href="guia/">✅ Ya los compré — dame mi guía de uso en PDF</a>
     <button class="tcerrar" id="tcerrar" type="button">Cerrar</button>
@@ -526,21 +533,21 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
           <div class="mvtag">💰 La económica</div>
           <b class="mvnom">Boosting Shot <span class="cmarca2">SKIN1004</span></b>
           <div class="mvdif">Retinol 0.2% o Niacinamida 10%, en frasco pequeño y potente</div>
-          <div class="mvprecio">$1,289 <em>ó 12 quincenas de $150</em></div>
+          <div class="mvprecio">$1,289 <em>· 3 productos · ó 12 quincenas de $150</em></div>
           <div class="mvguion">💬 «No tienes que cambiar tu rutina: le agregas este shot y ya.»</div>
           <button class="mvver" type="button" data-need="manchas" data-marca="SKIN1004" data-col="Boosting Shot">Ver la rutina armada ↓</button>
         </div><div class="mvcard" data-k="Medicube|Kojic Acid Turmeric" data-pq="162" data-f="1">
           <div class="mvtag">⭐ La recomendada</div>
           <b class="mvnom">Kojic Acid Turmeric <span class="cmarca2">Medicube</span></b>
           <div class="mvdif">Ácido kójico + cúrcuma, la dupla clásica para aclarar</div>
-          <div class="mvprecio">$1,388 <em>ó 12 quincenas de $162</em></div>
+          <div class="mvprecio">$1,388 <em>· 3 productos · ó 12 quincenas de $162</em></div>
           <div class="mvguion">💬 «Esta es la artillería pesada para manchas — y sin bloqueador no funciona.»</div>
           <button class="mvver" type="button" data-need="manchas" data-marca="Medicube" data-col="Kojic Acid Turmeric">Ver la rutina armada ↓</button>
         </div><div class="mvcard" data-k="SKIN1004|Tone Brightening" data-pq="203" data-f="0">
           <div class="mvtag">👑 La premium</div>
           <b class="mvnom">Tone Brightening <span class="cmarca2">SKIN1004</span></b>
           <div class="mvdif">Centella + activos iluminadores, con bloqueador con color</div>
-          <div class="mvprecio">$1,744 <em>ó 12 quincenas de $203</em></div>
+          <div class="mvprecio">$1,744 <em>· 4 productos · ó 12 quincenas de $203</em></div>
           <div class="mvguion">💬 «El bloqueador con color te empareja el tono al instante — pruébatelo.»</div>
           <button class="mvver" type="button" data-need="manchas" data-marca="SKIN1004" data-col="Tone Brightening">Ver la rutina armada ↓</button>
         </div><details class="mvcomp"><summary class="mvct">⚖️ ¿Cuál le doy?<em>las diferencias en corto</em><span class="rcar">▾</span></summary>
@@ -567,14 +574,14 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
           <div class="mvtag">💰 La económica</div>
           <b class="mvnom">Poremizing <span class="cmarca2">SKIN1004</span></b>
           <div class="mvdif">Centella + activos que limpian y afinan el poro</div>
-          <div class="mvprecio">$1,543 <em>ó 12 quincenas de $180</em></div>
+          <div class="mvprecio">$1,543 <em>· 4 productos · ó 12 quincenas de $180</em></div>
           <div class="mvguion">💬 «Es la línea de poros para piel que no aguanta lo agresivo.»</div>
           <button class="mvver" type="button" data-need="poros" data-marca="SKIN1004" data-col="Poremizing">Ver la rutina armada ↓</button>
         </div><div class="mvcard" data-k="Medicube|Zero Pore" data-pq="181" data-f="1">
           <div class="mvtag">⭐ La recomendada</div>
           <b class="mvnom">Zero Pore <span class="cmarca2">Medicube</span></b>
           <div class="mvdif">Ácidos suaves y arcilla que limpian por dentro del poro</div>
-          <div class="mvprecio">$1,550 <em>ó 12 quincenas de $181</em></div>
+          <div class="mvprecio">$1,550 <em>· 4 productos · ó 12 quincenas de $181</em></div>
           <div class="mvguion">💬 «Pásate la toallita por la nariz y mira lo que sale — por eso es la más viral.»</div>
           <button class="mvver" type="button" data-need="poros" data-marca="Medicube" data-col="Zero Pore">Ver la rutina armada ↓</button>
         </div><details class="mvcomp"><summary class="mvct">⚖️ ¿Cuál le doy?<em>las diferencias en corto</em><span class="rcar">▾</span></summary>
@@ -596,14 +603,14 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
           <div class="mvtag">💰 La económica</div>
           <b class="mvnom">Azelaic Acid <span class="cmarca2">Medicube</span></b>
           <div class="mvdif">Ácido azelaico, de los pocos que sirve para acné y rosácea a la vez</div>
-          <div class="mvprecio">$1,066 <em>ó 12 quincenas de $124</em></div>
+          <div class="mvprecio">$1,066 <em>· 3 productos · ó 12 quincenas de $124</em></div>
           <div class="mvguion">💬 «Este calma el granito sin dejarte la cara como lija.»</div>
           <button class="mvver" type="button" data-need="granitos" data-marca="Medicube" data-col="Azelaic Acid">Ver la rutina armada ↓</button>
         </div><div class="mvcard" data-k="SKIN1004|Tea-Trica" data-pq="199" data-f="1">
           <div class="mvtag">⭐ La recomendada</div>
           <b class="mvnom">Tea-Trica <span class="cmarca2">SKIN1004</span></b>
           <div class="mvdif">Árbol de té + centella: desinflama el brote sin resecar</div>
-          <div class="mvprecio">$1,703 <em>ó 12 quincenas de $199</em></div>
+          <div class="mvprecio">$1,703 <em>· 4 productos · ó 12 quincenas de $199</em></div>
           <div class="mvguion">💬 «Aquí está todo el paso a paso para los granitos, de la misma línea.»</div>
           <button class="mvver" type="button" data-need="granitos" data-marca="SKIN1004" data-col="Tea-Trica">Ver la rutina armada ↓</button>
         </div><details class="mvcomp"><summary class="mvct">⚖️ ¿Cuál le doy?<em>las diferencias en corto</em><span class="rcar">▾</span></summary>
@@ -625,21 +632,21 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
           <div class="mvtag">💰 La económica</div>
           <b class="mvnom">Hyaluronic <span class="cmarca2">Medicube</span></b>
           <div class="mvdif">Ácido hialurónico + ceramidas, que retienen agua y reparan la barrera</div>
-          <div class="mvprecio">$1,207 <em>ó 12 quincenas de $141</em></div>
+          <div class="mvprecio">$1,207 <em>· 3 productos · ó 12 quincenas de $141</em></div>
           <div class="mvguion">💬 «Esta le queda a todas — la hidratación es la base de todo lo demás.»</div>
           <button class="mvver" type="button" data-need="sensible" data-marca="Medicube" data-col="Hyaluronic">Ver la rutina armada ↓</button>
         </div><div class="mvcard" data-k="SKIN1004|Centella Original" data-pq="161" data-f="0">
           <div class="mvtag">⭐ La recomendada</div>
           <b class="mvnom">Centella Original <span class="cmarca2">SKIN1004</span></b>
           <div class="mvdif">Centella asiática de Madagascar pura: la planta que desinflama</div>
-          <div class="mvprecio">$1,378 <em>ó 12 quincenas de $161</em></div>
+          <div class="mvprecio">$1,378 <em>· 3 productos · ó 12 quincenas de $161</em></div>
           <div class="mvguion">💬 «Un solo ingrediente, cero perfume. Si todo te irrita, empieza aquí.»</div>
           <button class="mvver" type="button" data-need="sensible" data-marca="SKIN1004" data-col="Centella Original">Ver la rutina armada ↓</button>
         </div><div class="mvcard" data-k="SKIN1004|Hyalu-Cica" data-pq="206" data-f="0">
           <div class="mvtag">👑 La premium</div>
           <b class="mvnom">Hyalu-Cica <span class="cmarca2">SKIN1004</span></b>
           <div class="mvdif">Centella + ácido hialurónico: calma y llena de agua</div>
-          <div class="mvprecio">$1,767 <em>ó 12 quincenas de $206</em></div>
+          <div class="mvprecio">$1,767 <em>· 4 productos · ó 12 quincenas de $206</em></div>
           <div class="mvguion">💬 «Ponte una gota del bloqueador en la mano: se siente como sérum, no deja blanco.»</div>
           <button class="mvver" type="button" data-need="sensible" data-marca="SKIN1004" data-col="Hyalu-Cica">Ver la rutina armada ↓</button>
         </div><details class="mvcomp"><summary class="mvct">⚖️ ¿Cuál le doy?<em>las diferencias en corto</em><span class="rcar">▾</span></summary>
@@ -666,21 +673,21 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
           <div class="mvtag">💰 La económica</div>
           <b class="mvnom">NAD <span class="cmarca2">Medicube</span></b>
           <div class="mvdif">EGF + NAD, tecnología de regeneración celular</div>
-          <div class="mvprecio">$1,208 <em>ó 12 quincenas de $141</em></div>
+          <div class="mvprecio">$1,208 <em>· 3 productos · ó 12 quincenas de $141</em></div>
           <div class="mvguion">💬 «Si ya probaste todo, esto es lo más nuevo que hay en Corea.»</div>
           <button class="mvver" type="button" data-need="edad" data-marca="Medicube" data-col="NAD">Ver la rutina armada ↓</button>
         </div><div class="mvcard" data-k="Medicube|PDRN Pink" data-pq="164" data-f="0">
           <div class="mvtag">⭐ La recomendada</div>
           <b class="mvnom">PDRN Pink <span class="cmarca2">Medicube</span></b>
           <div class="mvdif">PDRN, un regenerador que ayuda a la piel a repararse sola, con péptidos rosados</div>
-          <div class="mvprecio">$1,408 <em>ó 12 quincenas de $164</em></div>
+          <div class="mvprecio">$1,408 <em>· 3 productos · ó 12 quincenas de $164</em></div>
           <div class="mvguion">💬 «Esta es la línea rosa que es viral en TikTok — y aquí la tienes original.»</div>
           <button class="mvver" type="button" data-need="edad" data-marca="Medicube" data-col="PDRN Pink">Ver la rutina armada ↓</button>
         </div><div class="mvcard" data-k="SKIN1004|Probio-Cica" data-pq="227" data-f="0">
           <div class="mvtag">👑 La premium</div>
           <b class="mvnom">Probio-Cica <span class="cmarca2">SKIN1004</span></b>
           <div class="mvdif">Probióticos + centella + bakuchiol (el «retinol vegetal»)</div>
-          <div class="mvprecio">$1,948 <em>ó 12 quincenas de $227</em></div>
+          <div class="mvprecio">$1,948 <em>· 4 productos · ó 12 quincenas de $227</em></div>
           <div class="mvguion">💬 «Es anti-edad para quien no tolera el retinol.»</div>
           <button class="mvver" type="button" data-need="edad" data-marca="SKIN1004" data-col="Probio-Cica">Ver la rutina armada ↓</button>
         </div><details class="mvcomp"><summary class="mvct">⚖️ ¿Cuál le doy?<em>las diferencias en corto</em><span class="rcar">▾</span></summary>
@@ -707,21 +714,21 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
           <div class="mvtag">💰 La económica</div>
           <b class="mvnom">PDRN Pink <span class="cmarca2">Medicube</span></b>
           <div class="mvdif">PDRN, un regenerador que ayuda a la piel a repararse sola, con péptidos rosados</div>
-          <div class="mvprecio">$1,408 <em>ó 12 quincenas de $164</em></div>
+          <div class="mvprecio">$1,408 <em>· 3 productos · ó 12 quincenas de $164</em></div>
           <div class="mvguion">💬 «Esta es la línea rosa que es viral en TikTok — y aquí la tienes original.»</div>
           <button class="mvver" type="button" data-need="ojos" data-marca="Medicube" data-col="PDRN Pink">Ver la rutina armada ↓</button>
         </div><div class="mvcard" data-k="COSRX|Sérums Activos" data-pq="173" data-f="0">
           <div class="mvtag">⭐ La recomendada</div>
           <b class="mvnom">Sérums Activos <span class="cmarca2">COSRX</span></b>
           <div class="mvdif">Péptidos, niacinamida 15% y parches de colágeno</div>
-          <div class="mvprecio">$1,485 <em>ó 12 quincenas de $173</em></div>
+          <div class="mvprecio">$1,485 <em>· 3 productos · ó 12 quincenas de $173</em></div>
           <div class="mvguion">💬 «Marca famosa, fórmula sencilla: sabes exactamente qué estás comprando.»</div>
           <button class="mvver" type="button" data-need="ojos" data-marca="COSRX" data-col="Sérums Activos">Ver la rutina armada ↓</button>
         </div><div class="mvcard" data-k="SKIN1004|Probio-Cica" data-pq="227" data-f="0">
           <div class="mvtag">👑 La premium</div>
           <b class="mvnom">Probio-Cica <span class="cmarca2">SKIN1004</span></b>
           <div class="mvdif">Probióticos + centella + bakuchiol (el «retinol vegetal»)</div>
-          <div class="mvprecio">$1,948 <em>ó 12 quincenas de $227</em></div>
+          <div class="mvprecio">$1,948 <em>· 4 productos · ó 12 quincenas de $227</em></div>
           <div class="mvguion">💬 «Es anti-edad para quien no tolera el retinol.»</div>
           <button class="mvver" type="button" data-need="ojos" data-marca="SKIN1004" data-col="Probio-Cica">Ver la rutina armada ↓</button>
         </div><details class="mvcomp"><summary class="mvct">⚖️ ¿Cuál le doy?<em>las diferencias en corto</em><span class="rcar">▾</span></summary>
@@ -748,21 +755,21 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
           <div class="mvtag">💰 La económica</div>
           <b class="mvnom">Hyaluronic <span class="cmarca2">Medicube</span></b>
           <div class="mvdif">Ácido hialurónico + ceramidas, que retienen agua y reparan la barrera</div>
-          <div class="mvprecio">$1,207 <em>ó 12 quincenas de $141</em></div>
+          <div class="mvprecio">$1,207 <em>· 3 productos · ó 12 quincenas de $141</em></div>
           <div class="mvguion">💬 «Esta le queda a todas — la hidratación es la base de todo lo demás.»</div>
           <button class="mvver" type="button" data-need="glow" data-marca="Medicube" data-col="Hyaluronic">Ver la rutina armada ↓</button>
         </div><div class="mvcard" data-k="COSRX|Advanced Snail" data-pq="173" data-f="0">
           <div class="mvtag">⭐ La recomendada</div>
           <b class="mvnom">Advanced Snail <span class="cmarca2">COSRX</span></b>
           <div class="mvdif">96% de mucina de caracol: repara, hidrata y da glow</div>
-          <div class="mvprecio">$1,485 <em>ó 12 quincenas de $173</em></div>
+          <div class="mvprecio">$1,485 <em>· 3 productos · ó 12 quincenas de $173</em></div>
           <div class="mvguion">💬 «¿Has visto la baba de caracol en TikTok? Esta es LA original.»</div>
           <button class="mvver" type="button" data-need="glow" data-marca="COSRX" data-col="Advanced Snail">Ver la rutina armada ↓</button>
         </div><div class="mvcard" data-k="MIXSOON|Bean (fermentado)" data-pq="266" data-f="0">
           <div class="mvtag">👑 La premium</div>
           <b class="mvnom">Bean (fermentado) <span class="cmarca2">MIXSOON</span></b>
           <div class="mvdif">Frijol de soya fermentado, con pocos ingredientes y sin perfume</div>
-          <div class="mvprecio">$2,283 <em>ó 12 quincenas de $266</em></div>
+          <div class="mvprecio">$2,283 <em>· 4 productos · ó 12 quincenas de $266</em></div>
           <div class="mvguion">💬 «Fórmula cortita, sin perfume. Ideal si te intimidan los 10 pasos coreanos.»</div>
           <button class="mvver" type="button" data-need="glow" data-marca="MIXSOON" data-col="Bean (fermentado)">Ver la rutina armada ↓</button>
         </div><details class="mvcomp"><summary class="mvct">⚖️ ¿Cuál le doy?<em>las diferencias en corto</em><span class="rcar">▾</span></summary>
@@ -789,21 +796,21 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
           <div class="mvtag">💰 La económica</div>
           <b class="mvnom">Zero Pore <span class="cmarca2">Medicube</span></b>
           <div class="mvdif">Ácidos suaves y arcilla que limpian por dentro del poro</div>
-          <div class="mvprecio">$1,550 <em>ó 12 quincenas de $181</em></div>
+          <div class="mvprecio">$1,550 <em>· 4 productos · ó 12 quincenas de $181</em></div>
           <div class="mvguion">💬 «Pásate la toallita por la nariz y mira lo que sale — por eso es la más viral.»</div>
           <button class="mvver" type="button" data-need="sol" data-marca="Medicube" data-col="Zero Pore">Ver la rutina armada ↓</button>
         </div><div class="mvcard" data-k="SKIN1004|Air-Fit Sun" data-pq="208" data-f="0">
           <div class="mvtag">⭐ La recomendada</div>
           <b class="mvnom">Air-Fit Sun <span class="cmarca2">SKIN1004</span></b>
           <div class="mvdif">Filtros coreanos con centella calmante</div>
-          <div class="mvprecio">$1,786 <em>ó 12 quincenas de $208</em></div>
+          <div class="mvprecio">$1,786 <em>· 4 productos · ó 12 quincenas de $208</em></div>
           <div class="mvguion">💬 «El sol causa la mayoría de manchas y arrugas: esto es lo que más rinde de todo el mueble.»</div>
           <button class="mvver" type="button" data-need="sol" data-marca="SKIN1004" data-col="Air-Fit Sun">Ver la rutina armada ↓</button>
         </div><div class="mvcard" data-k="COSRX|Protección Solar" data-pq="235" data-f="0">
           <div class="mvtag">👑 La premium</div>
           <b class="mvnom">Protección Solar <span class="cmarca2">COSRX</span></b>
           <div class="mvdif">Filtros ligeros con aloe calmante</div>
-          <div class="mvprecio">$2,010 <em>ó 12 quincenas de $235</em></div>
+          <div class="mvprecio">$2,010 <em>· 4 productos · ó 12 quincenas de $235</em></div>
           <div class="mvguion">💬 «La barra la traes en la bolsa y te retocas sin despeinarte el maquillaje.»</div>
           <button class="mvver" type="button" data-need="sol" data-marca="COSRX" data-col="Protección Solar">Ver la rutina armada ↓</button>
         </div><details class="mvcomp"><summary class="mvct">⚖️ ¿Cuál le doy?<em>las diferencias en corto</em><span class="rcar">▾</span></summary>
@@ -830,14 +837,14 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
           <div class="mvtag">⭐ La recomendada</div>
           <b class="mvnom">Centella Original <span class="cmarca2">SKIN1004</span></b>
           <div class="mvdif">Centella asiática de Madagascar pura: la planta que desinflama</div>
-          <div class="mvprecio">$1,378 <em>ó 12 quincenas de $161</em></div>
+          <div class="mvprecio">$1,378 <em>· 3 productos · ó 12 quincenas de $161</em></div>
           <div class="mvguion">💬 «Un solo ingrediente, cero perfume. Si todo te irrita, empieza aquí.»</div>
           <button class="mvver" type="button" data-need="regalo" data-marca="SKIN1004" data-col="Centella Original">Ver la rutina armada ↓</button>
         </div><div class="mvcard" data-k="Medicube|PDRN Pink" data-pq="164" data-f="0">
           <div class="mvtag">👑 La premium</div>
           <b class="mvnom">PDRN Pink <span class="cmarca2">Medicube</span></b>
           <div class="mvdif">PDRN, un regenerador que ayuda a la piel a repararse sola, con péptidos rosados</div>
-          <div class="mvprecio">$1,408 <em>ó 12 quincenas de $164</em></div>
+          <div class="mvprecio">$1,408 <em>· 3 productos · ó 12 quincenas de $164</em></div>
           <div class="mvguion">💬 «Esta es la línea rosa que es viral en TikTok — y aquí la tienes original.»</div>
           <button class="mvver" type="button" data-need="regalo" data-marca="Medicube" data-col="PDRN Pink">Ver la rutina armada ↓</button>
         </div><details class="mvcomp"><summary class="mvct">⚖️ ¿Cuál le doy?<em>las diferencias en corto</em><span class="rcar">▾</span></summary>
@@ -859,14 +866,14 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
           <div class="mvtag">⭐ La recomendada</div>
           <b class="mvnom">Kojic Acid Turmeric <span class="cmarca2">Medicube</span></b>
           <div class="mvdif">Ácido kójico + cúrcuma, la dupla clásica para aclarar</div>
-          <div class="mvprecio">$1,388 <em>ó 12 quincenas de $162</em></div>
+          <div class="mvprecio">$1,388 <em>· 3 productos · ó 12 quincenas de $162</em></div>
           <div class="mvguion">💬 «Esta es la artillería pesada para manchas — y sin bloqueador no funciona.»</div>
           <button class="mvver" type="button" data-need="mascarillas" data-marca="Medicube" data-col="Kojic Acid Turmeric">Ver la rutina armada ↓</button>
         </div><div class="mvcard" data-k="Medicube|Collagen" data-pq="211" data-f="0">
           <div class="mvtag">👑 La premium</div>
           <b class="mvnom">Collagen <span class="cmarca2">Medicube</span></b>
           <div class="mvdif">Colágeno triple, en textura de gelatina que se derrite en la piel</div>
-          <div class="mvprecio">$1,812 <em>ó 12 quincenas de $211</em></div>
+          <div class="mvprecio">$1,812 <em>· 4 productos · ó 12 quincenas de $211</em></div>
           <div class="mvguion">💬 «Toca la textura — es una gelatina. Por eso se volvió viral.»</div>
           <button class="mvver" type="button" data-need="mascarillas" data-marca="Medicube" data-col="Collagen">Ver la rutina armada ↓</button>
         </div><details class="mvcomp"><summary class="mvct">⚖️ ¿Cuál le doy?<em>las diferencias en corto</em><span class="rcar">▾</span></summary>
@@ -887,6 +894,7 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
           <span class="mvarrp">$322 <em>ó 10 quincenas de $45</em></span> — y la rutina completa queda para su siguiente quincena.</div><div class="mvnada" hidden>Con ese tope quincenal no alcanza rutina completa aquí — abre con la <b>rutina de arranque</b> de arriba, o quita el filtro.</div></div>
   </div>
   <div class="mvsep">📚 <b>El mapa completo</b> — marca lo que le preocupa y estudia la rutina armada, sus niveles y reemplazos:</div>
+  <div class="nota" style="margin:-4px 2px 10px">🎓 ¿Primer día? Estudia en orden: 1º <a href="#pasos3">Los 3 pasos</a> · 2º <a href="#colecciones">Cómo leer las colecciones</a> · 3º vuelve aquí y marca una preocupación.</div>
   <div class="chips"><button class="chip" type="button" aria-pressed="false" data-need="manchas"><span class="chico">🎯</span>Manchas y tono disparejo</button><button class="chip" type="button" aria-pressed="false" data-need="poros"><span class="chico">✨</span>Poros abiertos, grasa y brillo</button><button class="chip" type="button" aria-pressed="false" data-need="granitos"><span class="chico">🌿</span>Granitos y brotes</button><button class="chip" type="button" aria-pressed="false" data-need="sensible"><span class="chico">🌸</span>Piel reseca, sensible o irritada</button><button class="chip" type="button" aria-pressed="false" data-need="edad"><span class="chico">⏳</span>Líneas, arrugas y flacidez</button><button class="chip" type="button" aria-pressed="false" data-need="ojos"><span class="chico">👁️</span>Ojeras, bolsas y contorno</button><button class="chip" type="button" aria-pressed="false" data-need="glow"><span class="chico">🫧</span>Quiere GLOW / empezar desde cero</button><button class="chip" type="button" aria-pressed="false" data-need="sol"><span class="chico">☀️</span>Protección de todos los días</button><button class="chip" type="button" aria-pressed="false" data-need="regalo"><span class="chico">🎁</span>Regalo o antojo</button><button class="chip" type="button" aria-pressed="false" data-need="mascarillas"><span class="chico">🎭</span>Mascarillas y consentirse</button></div>
   <div class="ayuda">Marca <b>hasta 3</b> — el sistema arma UNA rutina que las resuelve juntas. Recuerda: esta pantalla es tuya; a la clienta enséñale el <a href="tienda/">Modo Tienda</a>.</div>
   <div class="avisomax" id="aviso-max" hidden>Elige las <b>2 o 3 que más te importan</b>: tu piel no puede tratarse todo a la vez, y la rutina se vuelve muy larga. Quita una para agregar otra.</div>
@@ -4735,7 +4743,7 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
           <div class="cta">💕 <b>Pídeselo a tu asesora:</b> te arma la rutina completa, te la aparta hoy y la pagas con tu vale en quincenas.</div>
         </section>
   <div class="strip">
-    <h2>La rutina coreana son solo 3 pasos</h2>
+    <h2 id="pasos3">La rutina coreana son solo 3 pasos</h2>
     <div class="pasos">
       <div class="paso"><i>🧼</i><b>1 · LIMPIA</b><small>aceite o espuma</small></div>
       <div class="paso"><i>💧</i><b>2 · TRATA</b><small>tu sérum o esencia</small></div>
@@ -4744,13 +4752,13 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
     <p class="nota">Lo mejor de las marcas coreanas es que cada <b>colección</b> trae los tres pasos con el mismo ingrediente — por eso funcionan mejor juntos que sueltos. ☀️ De día, cierra siempre con bloqueador: el sol causa la mayoría de manchas y arrugas.</p>
   </div>
   <div class="strip">
-    <h2>Cómo leer las colecciones</h2>
+    <h2 id="colecciones">Cómo leer las colecciones</h2>
     <div style="margin-top:9px"><div class="texpl"><span class="tbadge" style="background:#D96C82">🎯 RUTINA COMPLETA</span><span>Esta colección sola arma toda la rutina: limpiador, tratamiento y crema de la misma familia. Es la venta más redonda que puedes hacer.</span></div><div class="texpl"><span class="tbadge" style="background:#C25E78">🎯 LÍNEA BASE</span><span>Es el corazón de la rutina: trae el tratamiento y la crema de la misma familia. Solo súmale el limpiador que te sugerimos abajo.</span></div><div class="texpl"><span class="tbadge" style="background:#7FA86B">➕ REFUERZO</span><span>Se suma a la rutina que ya tiene para atacar algo específico. No sustituye la base: la potencia.</span></div><div class="texpl"><span class="tbadge" style="background:#D9A05B">✨ CUIDADO EXTRA</span><span>Ojos, mascarillas y protección solar: complementan cualquier rutina y son la venta extra más fácil.</span></div></div>
   </div>
   <div class="strip">
     <h2>Todo el corner: 10 marcas · 40 colecciones · 139 productos</h2>
     <p class="nota">Abre una marca para ver sus colecciones, qué resuelve cada una y todos sus productos con precio.</p>
-    <div class="buscador"><input id="q" type="search" placeholder="Busca: mascarilla, caracol, manchas, bloqueador…" autocomplete="off"></div>
+    <div class="buscador"><input id="q" type="search" placeholder="Busca: mascarilla, caracol, manchas, bloqueador…" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" enterkeyhint="search"></div>
     <div class="nota notabuscar" style="margin-top:8px">📷 ¿Lo tienes enfrente? <a href="buscar/">Tómale foto o escanea su código</a> y te decimos qué es.</div>
     <div id="cat"><details class="marca" data-buscar="MEDICUBE Resultados por preocupación Medicube">
           <summary><span class="dot" style="background:#E8447A"></span>
@@ -6998,7 +7006,7 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
   <div class="strip objs">
     <h2>💬 Cuando la clienta dice…</h2>
     <p class="nota">Tu backstage de objeciones: la respuesta lista y el dato honesto. Promete rangos, nunca milagros.</p>
-    <details class="obj"><summary><span class="tcaret">▸</span>«Está caro»</summary><p>Di la <b>quincena</b>, no el total: «son 12 pagos de $203 con tu vale». Si aun así no da, el <b>⚡ modo venta</b> de arriba siempre trae una económica y la <b>rutina de arranque</b> de un solo producto — que compre HOY algo que le funcione y regrese por el resto.</p></details><details class="obj"><summary><span class="tcaret">▸</span>«¿No me va a irritar?»</summary><p>Pregunta si es de piel sensible. Si sí: chip <b>🌸 sensible</b> — el sistema no le ofrece activos fuertes. Y enséñale la <b>prueba de parche</b> de la guía de uso: un poquito detrás de la oreja, 24 horas, antes de estrenarlo en la cara.</p></details><details class="obj"><summary><span class="tcaret">▸</span>«¿En cuánto veo resultados?»</summary><p>Promete el <b>rango</b>, no el milagro — la tabla de abajo. La frase que cierra: «lo típico es notarlo entre la semana 4 y 8, siendo constante y con bloqueador de día».</p></details><details class="obj"><summary><span class="tcaret">▸</span>«Estoy embarazada / dando pecho»</summary><p>Sin activos fuertes (retinal, kójico, exfoliantes). Hazle el análisis en <b>/piel</b> y marca «sí» en la pregunta 🤰: el sistema solo le ofrece fórmulas suaves. Cierra siempre con: «enséñale tu rutina a tu médico».</p></details><details class="obj"><summary><span class="tcaret">▸</span>«¿Es original?»</summary><p>Todo el corner es <b>100% original</b>. Enséñale el sello, y si quiere verlo: escanea el código de barras del producto en <b>/buscar</b> — sale su ficha con precio oficial. Los 139 productos están registrados.</p></details>
+    <details class="obj"><summary><span class="tcaret">▸</span>«Está caro»</summary><p>Di la <b>quincena</b>, no el total: «son 12 pagos de $203 con tu vale». Si aun así no da, el <b>⚡ modo venta</b> de arriba siempre trae una económica y la <b>rutina de arranque</b> de un solo producto — que compre HOY algo que le funcione y regrese por el resto.</p></details><details class="obj"><summary><span class="tcaret">▸</span>«¿No me va a irritar?»</summary><p>Pregunta si es de piel sensible. Si sí: chip <b>🌸 sensible</b> — el sistema no le ofrece activos fuertes. Y enséñale la <b>prueba de parche</b> de la guía de uso: un poquito detrás de la oreja, 24 horas, antes de estrenarlo en la cara.</p></details><details class="obj"><summary><span class="tcaret">▸</span>«¿En cuánto veo resultados?»</summary><p>Promete el <b>rango</b>, no el milagro — la tabla de abajo. La frase que cierra: «lo típico es notarlo entre la semana 4 y 8, siendo constante y con bloqueador de día».</p></details><details class="obj"><summary><span class="tcaret">▸</span>«Estoy embarazada / dando pecho»</summary><p>Sin activos fuertes (retinal, kójico, exfoliantes). Hazle el análisis en <b>/piel</b> y marca «sí» en la pregunta 🤰: el sistema solo le ofrece fórmulas suaves. Cierra siempre con: «enséñale tu rutina a tu médico».</p></details><details class="obj"><summary><span class="tcaret">▸</span>«¿Es original?»</summary><p>Todo el corner es <b>100% original</b>. Enséñale el sello, y si quiere verlo: escanea el código de barras del producto en <b>/buscar</b> — sale su ficha con precio oficial. Los 139 productos están registrados.</p></details><details class="obj"><summary><span class="tcaret">▸</span>«¿Le sirve a mi esposo?»</summary><p>La piel es piel: <b>mismos pasos, mismos productos</b>. Que empiece con limpiador + bloqueador; si algo le preocupa (grasa, poros, manchas de afeitar), el <b>⚡ modo venta</b> le arma su rutina igual que a ella.</p></details><details class="obj"><summary><span class="tcaret">▸</span>«¿Y cuánto me dura?»</summary><p>La mayoría rinde <b>2–3 meses</b> con uso diario (los tamaños de 50ml o más, hasta 4). Se usa poquito: la frase que tranquiliza es «te dura más de lo que parece — sale a menos por día que un café».</p></details>
     <div class="otit2">⏱ ¿En cuánto se nota? — por ingrediente</div>
     <div class="orow2"><b>💧 Hidratación / centella</b><span class="ocua">2–7 días</span><i>«La calma y lo jugoso se sienten casi de inmediato.»</i></div><div class="orow2"><b>🧊 Niacinamida</b><span class="ocua">2–4 semanas</span><i>«El poro y el brillo se controlan en un par de semanas.»</i></div><div class="orow2"><b>🍊 Vitamina C</b><span class="ocua">4–8 semanas</span><i>«Ilumina poco a poco — y de día siempre con bloqueador.»</i></div><div class="orow2"><b>🌾 Kójico (manchas)</b><span class="ocua">4–8 semanas</span><i>«Se nota entre la semana 4 y 8. Sin bloqueador no funciona.»</i></div><div class="orow2"><b>🌰 Azelaico</b><span class="ocua">8–12 semanas</span><i>«Es suave pero constante: dale 2–3 meses.»</i></div><div class="orow2"><b>🌙 Retinal / retinol</b><span class="ocua">8–12 semanas</span><i>«Empieza 2 noches por semana; una resequedad ligera al inicio es normal.»</i></div><div class="orow2"><b>🫧 Colágeno / PDRN</b><span class="ocua">4–8 semanas</span><i>«Firmeza y rebote se ven al mes, mes y medio.»</i></div>
     <p class="nota" style="margin-top:8px">Regla de oro: <b>foto de antes</b> el día 1 y cita a las 4 semanas — la clienta que SE VE el cambio, vuelve.</p>
@@ -7599,7 +7607,14 @@ const compacto = s => norm(s).replace(/[^a-z0-9]/g, "");
 // «baba de caracol» o «skin 1004» funcionan aunque las palabras estén separadas
 const coincide = (indice, t) => {
   const I = norm(indice), C = compacto(indice);
-  return t.split(/\s+/).filter(Boolean).every(w => I.includes(w) || C.includes(compacto(w)));
+  /* el plural natural («cremas», «geles») no debe dar cero: si la palabra tal
+     cual no está, se reintenta con su singular (auditoría de usuarios 1-ago) */
+  const hay = w => I.includes(w) || C.includes(compacto(w));
+  return t.split(/\s+/).filter(Boolean).every(w => {
+    if (hay(w)) return true;
+    const s = w.replace(/(?:es|s)$/, "");
+    return s.length >= 3 && s !== w && hay(s);
+  });
 };
 q.addEventListener("input", () => {
   const t = norm(q.value);
@@ -7697,6 +7712,9 @@ q.addEventListener("input", () => {
     /* aterrizaje INSTANTÁNEO cuando el scroll suave del motor ya terminó: en
        iPhone dos scrolls suaves encimados se ignoran — el brinco seco siempre gana */
     setTimeout(() => destino.scrollIntoView({ behavior: "auto", block: "start" }), 550);
+    /* que el carrito re-decore la rutina recién abierta: el botón de «agregar
+       toda la rutina» debe estar ahí en el flujo rápido (auditoría 1-ago) */
+    if (window._carrito) setTimeout(window._carrito.decorar, 0);
     subir.hidden = false;
   });
 
@@ -7806,27 +7824,43 @@ q.addEventListener("input", () => {
       if (m.getAttribute("aria-label") !== aria) m.setAttribute("aria-label", aria);
     });
     const p = panelVis(); if (!p) return;
-    const b = bloquePrincipal(p); if (!b) return;
-    let todo = b.bloque.querySelector(".agtodo");
-    if (!todo) {
-      todo = document.createElement("button");
-      todo.type = "button"; todo.className = "agtodo";
-      todo.addEventListener("click", agregarTodaLaRutina);
-      const tot = b.bloque.querySelector(".rtotal");
-      (tot || b.lista).insertAdjacentElement("afterend", todo);
-    }
-    const faltan = filasRutina(b.lista).filter(rp => {
-      const nom = rp.querySelector(".pname");
-      return nom && !enCarrito(+nom.dataset.p);
-    }).length;
-    if (todo.hidden !== (faltan === 0)) todo.hidden = faltan === 0;
-    const txt = `🛍️ Agregar toda la rutina a mi lista (${faltan})`;
-    if (todo.textContent !== txt) todo.textContent = txt;
+    /* CADA rutina abierta trae SU botón, atado a su propio bloque — con dos
+       columnas abiertas, el botón viejo recalculaba «el primer bloque abierto»
+       y podía meter a la lista la rutina EQUIVOCADA (auditoría 1-ago) */
+    [...p.querySelectorAll(".rutina")].forEach(bloque => {
+      let d = bloque.closest("details");
+      while (d) { if (!d.open) return; d = d.parentElement && d.parentElement.closest("details"); }
+      const lista = bloque.querySelector(".rlist"); if (!lista) return;
+      let todo = bloque.querySelector(".agtodo");
+      if (!todo) {
+        todo = document.createElement("button");
+        todo.type = "button"; todo.className = "agtodo";
+        todo.addEventListener("click", e => {
+          if (e.currentTarget.dataset.done === "1") { abrirHoja(); return; }
+          agregarTodaLaRutina(e.currentTarget.closest(".rutina"));
+        });
+        const tot = bloque.querySelector(".rtotal");
+        (tot || lista).insertAdjacentElement("afterend", todo);
+      }
+      const faltan = filasRutina(lista).filter(rp => {
+        const nom = rp.querySelector(".pname");
+        return nom && !enCarrito(+nom.dataset.p);
+      }).length;
+      /* completa → el botón se vuelve el CIERRE, no desaparece (auditoría 1-ago) */
+      const done = faltan === 0 ? "1" : "0";
+      if (todo.dataset.done !== done) todo.dataset.done = done;
+      const txt = faltan === 0
+        ? `✓ Ya está en tu lista — ver mi lista 👜 y mi código (${CARRITO.length})`
+        : `🛍️ Agregar toda la rutina a mi lista (${faltan})`;
+      if (todo.textContent !== txt) todo.textContent = txt;
+      if (todo.hidden) todo.hidden = false;
+    });
   }
-  function agregarTodaLaRutina() {
-    const p = panelVis(); if (!p) return;
-    const b = bloquePrincipal(p); if (!b) return;
-    filasRutina(b.lista).forEach(rp => {
+  function agregarTodaLaRutina(bloque) {
+    if (!bloque) { const p = panelVis(); const b = p && bloquePrincipal(p); bloque = b && b.bloque; }
+    if (!bloque) return;
+    const lista = bloque.querySelector(".rlist"); if (!lista) return;
+    filasRutina(lista).forEach(rp => {
       const nom = rp.querySelector(".pname"); if (!nom) return;
       agregar(+nom.dataset.p, [...rp.querySelectorAll(".altp")].map(a => +a.dataset.a));
     });
@@ -7871,7 +7905,12 @@ q.addEventListener("input", () => {
       </div>`;
     }).join("");
     $c("ttotal").textContent = money(totalCarrito());
-    $c("tquin").textContent = `${CARRITO.length} producto${CARRITO.length === 1 ? "" : "s"} — cada renglón muestra sus quincenas`;
+    /* la pregunta central de la clienta: «¿cuánto por quincena por TODO?» —
+       misma regla 8/10/12 del motor, sobre el crédito total (auditoría 1-ago) */
+    const totCr = CARRITO.reduce((a, x) => a + (PROD[x.i].cr || 0), 0);
+    const qq = totCr <= 360 ? 8 : totCr <= 650 ? 10 : 12;
+
+    $c("tquin").textContent = `${CARRITO.length} producto${CARRITO.length === 1 ? "" : "s"} · ó ${qq} quincenas de $${Math.round(totCr / qq)} con tu vale — cada renglón muestra las suyas`;
     $c("tcodigo").textContent = codigoDeLista();
     $c("tguia").hidden = false;
     $c("tvaciar").hidden = false;
@@ -7979,6 +8018,10 @@ q.addEventListener("input", () => {
     clearTimeout(_debounce);
     _debounce = setTimeout(decorarPagina, 80);
   }).observe(document.body, { childList: true, subtree: true });
+  document.addEventListener("toggle", () => {
+    clearTimeout(_debounce);
+    _debounce = setTimeout(decorarPagina, 0);
+  }, true);
 
   decorarPagina();
   pintarCarrito();

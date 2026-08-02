@@ -5,8 +5,8 @@
 <meta name="robots" content="noindex">
 <meta name="description" content="¿Qué producto estás viendo? Escanea su código de barras, tómale foto o escribe su nombre: te decimos qué es, cuánto cuesta y con qué rutina va.">
 <title>SO YOUNG · ¿Qué producto estás viendo?</title>
-<meta name="x-contenido" content="434ec92f5f">
-<meta name="x-buscar" content="15c6cbf632">
+<meta name="x-contenido" content="7d078a206b">
+<meta name="x-buscar" content="171728b2cc">
 <style>
 :root { --rosa:#D96C82; --rosad:#B94F66; --ink:#2A2226; --crema:#FBF6F4; --crema2:#FAEDEE;
   --mut:#8b7d82; --line:#F0DDE1; --texto:#584a4f; color-scheme: light; }
@@ -72,7 +72,7 @@ details.col, .mv { scroll-margin-top:58px; }   /* la barra fija no tapa el desti
 .otra { font-size:8.5px; background:var(--crema2); color:var(--rosad); border-radius:99px; padding:1px 6px; margin-left:4px; white-space:nowrap; }
 .ruso { font-size:11.3px; color:var(--texto); line-height:1.35; }
 .rprec { font-size:12.7px; font-weight:700; color:var(--rosad); margin-top:2px; }
-.rprec span { font-weight:400; font-size:10.5px; color:var(--mut); }
+.rprec span { font-weight:400; font-size:12px; color:var(--texto); }
 .rtotal { display:flex; justify-content:space-between; align-items:center; gap:10px; background:var(--ink); color:#fff; padding:11px 13px; }
 .rtotal>div:first-child { font-size:12.5px; font-weight:700; }
 .rtotal span { display:block; font-weight:400; font-size:10px; color:#e7d3d8; }
@@ -84,7 +84,7 @@ details.col, .mv { scroll-margin-top:58px; }   /* la barra fija no tapa el desti
    «no se entiende que puede tocar» → recuadro; «no se ve la flecha» → circulito;
    «llama más la atención que el resto» → colores calmados: la forma dice
    «tócame», el color lo deja en segundo plano — nunca más fuerte que el precio) */
-.ralt .raltt { list-style:none; cursor:pointer; padding:4px 6px 4px 9px; display:flex; align-items:center; gap:5px;
+.ralt .raltt { list-style:none; cursor:pointer; position:relative; padding:4px 6px 4px 9px; display:flex; align-items:center; gap:5px;
   background:#fff; border:1px solid var(--line); border-radius:99px;
   font-size:10.2px; font-weight:600; color:var(--mut); -webkit-tap-highlight-color:transparent; user-select:none; }
 .ralt .raltt::-webkit-details-marker { display:none; }
@@ -94,7 +94,9 @@ details.col, .mv { scroll-margin-top:58px; }   /* la barra fija no tapa el desti
 .ralt[open] .raltt { border-radius:12px 12px 0 0; border-bottom-color:transparent; background:var(--crema); }
 .ralt[open] .raltt .rcar { transform:rotate(180deg); }
 .ralt .raltb { padding:4px 8px 6px; background:var(--crema); border:1px solid var(--line); border-top:none; border-radius:0 0 12px 12px; }
+.ralt .raltt::before { content:""; position:absolute; inset:-5px 0; }
 .ralt .altp, .ralt .volverp, .ralt .vera { display:inline-block; font:inherit; font-size:10.2px; font-weight:600; color:var(--texto);
+  padding-block:8px; margin-block:-5px;
   background:#fff; border:1px solid var(--rosad); border-radius:99px; padding:3px 9px; margin:3px 5px 1px 0; cursor:pointer; text-align:left; }
 .ralt .altp span, .ralt .vera span { font-size:9.5px; color:var(--mut); font-weight:500; }
 .ralt .volverp { border-color:var(--line); color:var(--mut); background:var(--crema); }
@@ -148,7 +150,7 @@ details.col, .mv { scroll-margin-top:58px; }   /* la barra fija no tapa el desti
 .mvn.on { border-color:var(--rosad); background:var(--crema2); }
 .mvfil { display:flex; align-items:center; flex-wrap:wrap; gap:5px; margin-top:9px; }
 .mvflab { font-size:10.5px; font-weight:700; color:var(--mut); }
-.mvb, .mvsen { appearance:none; border:1px solid var(--line); background:#fff; border-radius:99px; padding:4px 9px;
+.mvb, .mvsen { appearance:none; border:1px solid var(--line); background:#fff; border-radius:99px; padding:9px 12px; min-height:40px;
   font:inherit; font-size:10.5px; font-weight:600; color:var(--texto); cursor:pointer; }
 .mvb.on { border-color:var(--rosad); background:var(--crema2); color:var(--rosad); }
 .mvsen { margin-left:auto; }
@@ -163,7 +165,7 @@ details.col, .mv { scroll-margin-top:58px; }   /* la barra fija no tapa el desti
 .mvprecio em { font-style:normal; font-size:10.5px; font-weight:600; color:var(--mut); }
 .mvguion { font-size:11px; background:var(--crema); border-radius:9px; padding:6px 8px; margin-top:6px; line-height:1.45; }
 .mvver { appearance:none; border:none; background:none; font:inherit; font-size:11px; font-weight:700; color:var(--rosad);
-  padding:6px 0 0; cursor:pointer; }
+  padding:10px 0 6px; min-height:40px; cursor:pointer; }
 /* sello de oferta: el aterrizaje de «Ver la rutina armada» — repite el precio
    EXACTO de la carta 💰/⭐/👑 justo arriba de la rutina que lo arma */
 .mvland { display:flex; flex-wrap:wrap; align-items:baseline; gap:4px 6px; margin:9px 0 2px;
@@ -569,12 +571,17 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
 .tifoto { width:46px; height:46px; object-fit:contain; background:var(--crema2);
   border-radius:10px; padding:3px; flex:none; mix-blend-mode:multiply; cursor:pointer; }
 .tiprecio { color:var(--rosad); font-weight:800; white-space:nowrap; }
+.mini { position:relative; }
+.mini::after { content:""; position:absolute; inset:-11px; }
+.rp .mini::after, .trow .mini::after, .lrow .mini::after { inset:-8px; }
+.tix, .thx { position:relative; }
+.tix::after, .thx::after { content:""; position:absolute; inset:-9px; }
 .tix { appearance:none; border:1px solid var(--line); background:#fff; color:var(--mut);
   width:26px; height:26px; border-radius:50%; cursor:pointer; font-size:12px; flex:none; }
 .tialts { padding:0 0 10px; border-bottom:1px dashed var(--line); font-size:10.5px;
   color:var(--mut); }
 .titem + .titem, .tialts + .titem { border-top:1px dashed var(--line); }
-.trpl { appearance:none; font-family:inherit; cursor:pointer; border:1px solid var(--line);
+.trpl { appearance:none; font-family:inherit; cursor:pointer; padding-block:8px; border:1px solid var(--line);
   background:#fff; color:var(--ink); border-radius:99px; padding:5px 10px; font-size:10.5px;
   font-weight:700; margin:4px 4px 0 0; }
 .trpl b { color:var(--rosad); }
@@ -590,7 +597,7 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
   background:#fff; font-family:inherit; font-weight:700; font-size:13px; border-radius:12px;
   padding:12px; cursor:pointer; color:var(--ink); }
 /* vaciar todo: discreto, con doble toque de confirmación */
-.tvaciar { display:block; margin:10px auto 0; appearance:none; border:none; background:none;
+.tvaciar { display:block; margin:10px auto 0; padding:10px 12px; appearance:none; border:none; background:none;
   font-family:inherit; font-size:11.5px; font-weight:700; color:var(--mut); cursor:pointer;
   text-decoration:underline; padding:4px 10px; }
 .tvaciar.seguro { color:#b3261e; }
@@ -618,7 +625,7 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
     <input id="foto" type="file" accept="image/*" capture="environment" hidden>
   </div>
   <div class="osep">— O ESCRÍBELO —</div>
-  <div class="buscador"><input id="q" type="search" placeholder="Busca: caracol, retinol, bloqueador, Anua…" autocomplete="off"></div>
+  <div class="buscador"><input id="q" type="search" placeholder="Busca: caracol, retinol, bloqueador, Anua…" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" enterkeyhint="search"></div>
   <div id="estado" hidden></div>
   <div id="rgtit" class="rgtit" hidden></div>
   <div id="rgrid" class="rgrid"></div>
@@ -2947,7 +2954,7 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
     <div class="tchoque" id="tchoque" hidden></div>
     <div id="tlista"></div>
     <div class="ttotal"><b>Total de contado</b><span id="ttotal">—</span></div>
-    <div class="tquin" id="tquin"></div>
+    <div class="tquin" id="tquin"></div><!-- «ó Q quincenas de $X» del TOTAL — la pregunta central de la clienta (auditoría 1-ago) -->
     <div class="tnota">💕 <b>Lo pagas con tu vale en quincenas</b> — pregúntale a tu asesora por el plazo.</div>
     <a class="tguia" id="tguia" href="../guia/">✅ Ya los compré — dame mi guía de uso en PDF</a>
     <button class="tcerrar" id="tcerrar" type="button">Cerrar</button>
@@ -2972,7 +2979,13 @@ const norm = s => s.normalize("NFD").replace(/[̀-ͯ]/g, "").trim().toLowerCase(
 const compacto = s => norm(s).replace(/[^a-z0-9]/g, "");
 const coincide = (indice, t) => {
   const I = norm(indice), C = compacto(indice);
-  return t.split(/\s+/).filter(Boolean).every(w => I.includes(w) || C.includes(compacto(w)));
+  /* plural natural («cremas», «geles») sin cero resultados: fallback al singular */
+  const hay = w => I.includes(w) || C.includes(compacto(w));
+  return t.split(/\s+/).filter(Boolean).every(w => {
+    if (hay(w)) return true;
+    const s = w.replace(/(?:es|s)$/, "");
+    return s.length >= 3 && s !== w && hay(s);
+  });
 };
 
 const q = document.getElementById("q"), rgrid = document.getElementById("rgrid"),
@@ -3768,27 +3781,43 @@ window.CARRITO_SELS = ".pname[data-p], .pcard[data-p]";
       if (m.getAttribute("aria-label") !== aria) m.setAttribute("aria-label", aria);
     });
     const p = panelVis(); if (!p) return;
-    const b = bloquePrincipal(p); if (!b) return;
-    let todo = b.bloque.querySelector(".agtodo");
-    if (!todo) {
-      todo = document.createElement("button");
-      todo.type = "button"; todo.className = "agtodo";
-      todo.addEventListener("click", agregarTodaLaRutina);
-      const tot = b.bloque.querySelector(".rtotal");
-      (tot || b.lista).insertAdjacentElement("afterend", todo);
-    }
-    const faltan = filasRutina(b.lista).filter(rp => {
-      const nom = rp.querySelector(".pname");
-      return nom && !enCarrito(+nom.dataset.p);
-    }).length;
-    if (todo.hidden !== (faltan === 0)) todo.hidden = faltan === 0;
-    const txt = `🛍️ Agregar toda la rutina a mi lista (${faltan})`;
-    if (todo.textContent !== txt) todo.textContent = txt;
+    /* CADA rutina abierta trae SU botón, atado a su propio bloque — con dos
+       columnas abiertas, el botón viejo recalculaba «el primer bloque abierto»
+       y podía meter a la lista la rutina EQUIVOCADA (auditoría 1-ago) */
+    [...p.querySelectorAll(".rutina")].forEach(bloque => {
+      let d = bloque.closest("details");
+      while (d) { if (!d.open) return; d = d.parentElement && d.parentElement.closest("details"); }
+      const lista = bloque.querySelector(".rlist"); if (!lista) return;
+      let todo = bloque.querySelector(".agtodo");
+      if (!todo) {
+        todo = document.createElement("button");
+        todo.type = "button"; todo.className = "agtodo";
+        todo.addEventListener("click", e => {
+          if (e.currentTarget.dataset.done === "1") { abrirHoja(); return; }
+          agregarTodaLaRutina(e.currentTarget.closest(".rutina"));
+        });
+        const tot = bloque.querySelector(".rtotal");
+        (tot || lista).insertAdjacentElement("afterend", todo);
+      }
+      const faltan = filasRutina(lista).filter(rp => {
+        const nom = rp.querySelector(".pname");
+        return nom && !enCarrito(+nom.dataset.p);
+      }).length;
+      /* completa → el botón se vuelve el CIERRE, no desaparece (auditoría 1-ago) */
+      const done = faltan === 0 ? "1" : "0";
+      if (todo.dataset.done !== done) todo.dataset.done = done;
+      const txt = faltan === 0
+        ? `✓ Ya está en tu lista — ver mi lista 👜 y mi código (${CARRITO.length})`
+        : `🛍️ Agregar toda la rutina a mi lista (${faltan})`;
+      if (todo.textContent !== txt) todo.textContent = txt;
+      if (todo.hidden) todo.hidden = false;
+    });
   }
-  function agregarTodaLaRutina() {
-    const p = panelVis(); if (!p) return;
-    const b = bloquePrincipal(p); if (!b) return;
-    filasRutina(b.lista).forEach(rp => {
+  function agregarTodaLaRutina(bloque) {
+    if (!bloque) { const p = panelVis(); const b = p && bloquePrincipal(p); bloque = b && b.bloque; }
+    if (!bloque) return;
+    const lista = bloque.querySelector(".rlist"); if (!lista) return;
+    filasRutina(lista).forEach(rp => {
       const nom = rp.querySelector(".pname"); if (!nom) return;
       agregar(+nom.dataset.p, [...rp.querySelectorAll(".altp")].map(a => +a.dataset.a));
     });
@@ -3833,7 +3862,12 @@ window.CARRITO_SELS = ".pname[data-p], .pcard[data-p]";
       </div>`;
     }).join("");
     $c("ttotal").textContent = money(totalCarrito());
-    $c("tquin").textContent = `${CARRITO.length} producto${CARRITO.length === 1 ? "" : "s"} — cada renglón muestra sus quincenas`;
+    /* la pregunta central de la clienta: «¿cuánto por quincena por TODO?» —
+       misma regla 8/10/12 del motor, sobre el crédito total (auditoría 1-ago) */
+    const totCr = CARRITO.reduce((a, x) => a + (PROD[x.i].cr || 0), 0);
+    const qq = totCr <= 360 ? 8 : totCr <= 650 ? 10 : 12;
+
+    $c("tquin").textContent = `${CARRITO.length} producto${CARRITO.length === 1 ? "" : "s"} · ó ${qq} quincenas de $${Math.round(totCr / qq)} con tu vale — cada renglón muestra las suyas`;
     $c("tcodigo").textContent = codigoDeLista();
     $c("tguia").hidden = false;
     $c("tvaciar").hidden = false;
@@ -3941,6 +3975,10 @@ window.CARRITO_SELS = ".pname[data-p], .pcard[data-p]";
     clearTimeout(_debounce);
     _debounce = setTimeout(decorarPagina, 80);
   }).observe(document.body, { childList: true, subtree: true });
+  document.addEventListener("toggle", () => {
+    clearTimeout(_debounce);
+    _debounce = setTimeout(decorarPagina, 0);
+  }, true);
 
   decorarPagina();
   pintarCarrito();
