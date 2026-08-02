@@ -3,8 +3,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<meta name="x-contenido" content="fdf5899db1">
-<meta name="x-k" content="288ba75551">
+<meta name="x-contenido" content="713a832149">
+<meta name="x-k" content="b2499ebad5">
 <title>SO YOUNG · Edición Seúl</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -56,6 +56,13 @@ details.col, .mv { scroll-margin-top:58px; }   /* la barra fija no tapa el desti
 /* «para quién es» — el dato con el que de verdad se ELIGE un refuerzo. Va en el summary,
    discreto: la promesa (rosa) vende, esta línea decide (Michael 2-ago) */
 .cpara { font-size:11.5px; color:var(--texto); line-height:1.35; margin-top:3px; }
+/* refuerzos de la rutina combinada: etiqueta de si compite o no, y para quién es */
+.rbadge { display:inline-block; font-size:9.5px; font-weight:800; letter-spacing:.04em;
+  border-radius:99px; padding:2px 7px; color:#fff; vertical-align:middle; white-space:nowrap; }
+.rbadge.rt { background:var(--rosad); }
+.rbadge.ra { background:#2E7D5B; }
+.rquien { font-size:11px; color:var(--texto); line-height:1.35; margin-top:3px; }
+.rdoble { font-size:11px; color:var(--rosad); font-weight:700; line-height:1.35; margin-top:4px; }
 /* la guía de CUÁNTOS: no se quitan opciones, se dice cuántas tomar */
 .pguia { font-size:11.5px; color:var(--texto); line-height:1.5; background:var(--crema2);
   border-radius:11px; padding:9px 12px; margin:-2px 0 9px; }
@@ -4516,6 +4523,8 @@ const plan = (cr, q) => `${q} quincenas de $${Math.round(cr / q)} = ${money(Math
 
 /* ---------- niveles de la rutina combinada (espejo de rutinas.py) ---------- */
 const NEEDCOLS = {"manchas":[["Medicube","Kojic Acid Turmeric"],["SKIN1004","Tone Brightening"],["ANUA","Niacinamide + TXA"],["Medicube","TXA Niacinamide"],["Medicube","Deep Vita C"],["Medicube","Glutathione Glow"],["DR.ALTHEA","Esenciales"],["SKIN1004","Boosting Shot"]],"poros":[["Medicube","Zero Pore"],["SKIN1004","Poremizing"],["ANUA","Heartleaf"],["BIODANCE","Real Deep Masks"]],"granitos":[["SKIN1004","Tea-Trica"],["Medicube","Azelaic Acid"],["ANUA","Azelaic Acid"],["COSRX","Low pH / Limpieza"]],"sensible":[["SKIN1004","Centella Original"],["SKIN1004","Hyalu-Cica"],["DR.ALTHEA","345 Relief"],["DR.ALTHEA","147 Barrier"],["ANUA","PDRN"],["MIXSOON","Centella / Cica"],["Medicube","Hyaluronic"],["MIXSOON","Glacier Water"]],"edad":[["Medicube","PDRN Pink"],["Medicube","Collagen"],["CENTELLIAN24","Madeca Cream"],["CELIMAX","Retinal"],["SKIN1004","Probio-Cica"],["MIXSOON","PDRN Collagen"],["Medicube","NAD"]],"ojos":[["BIODANCE","Collagen Peptide"],["CENTELLIAN24","360 Shot PDRN"],["COSRX","Sérums Activos"],["Medicube","PDRN Pink"],["SKIN1004","Probio-Cica"]],"glow":[["COSRX","Advanced Snail"],["MIXSOON","Bean (fermentado)"],["BIODANCE","Real Deep Masks"],["COSRX","Low pH / Limpieza"],["Medicube","Hyaluronic"],["D'ALBA","White Truffle"]],"sol":[["SKIN1004","Air-Fit Sun"],["SKIN1004","Hyalu-Cica"],["COSRX","Protección Solar"],["D'ALBA","Waterfull Sun"],["Medicube","Zero Pore"],["SKIN1004","Tone Brightening"]],"mascarillas":[["BIODANCE","Real Deep Masks"],["BIODANCE","Collagen Peptide"],["Medicube","Kojic Acid Turmeric"],["Medicube","Collagen"],["SKIN1004","Poremizing"],["Medicube","PDRN Pink"],["Medicube","Zero Pore"]],"regalo":[["BIODANCE","Real Deep Masks"],["D'ALBA","White Truffle"],["CENTELLIAN24","Madeca Cream"],["SKIN1004","Centella Original"],["BIODANCE","Collagen Peptide"],["Medicube","PDRN Pink"]]};
+const REFCOLS = {"manchas":[["ANUA","Niacinamide + TXA"],["Medicube","TXA Niacinamide"],["Medicube","Deep Vita C"],["Medicube","Glutathione Glow"],["DR.ALTHEA","Esenciales"],["SKIN1004","Boosting Shot"]],"poros":[["ANUA","Heartleaf"],["BIODANCE","Real Deep Masks"]],"granitos":[["Medicube","Azelaic Acid"],["ANUA","Azelaic Acid"],["COSRX","Low pH / Limpieza"]],"sensible":[["DR.ALTHEA","345 Relief"],["DR.ALTHEA","147 Barrier"],["ANUA","PDRN"],["MIXSOON","Centella / Cica"],["Medicube","Hyaluronic"],["MIXSOON","Glacier Water"]],"edad":[["CENTELLIAN24","Madeca Cream"],["CELIMAX","Retinal"],["SKIN1004","Probio-Cica"],["MIXSOON","PDRN Collagen"],["Medicube","NAD"]],"ojos":[["COSRX","Sérums Activos"],["Medicube","PDRN Pink"],["SKIN1004","Probio-Cica"]],"glow":[["BIODANCE","Real Deep Masks"],["COSRX","Low pH / Limpieza"],["Medicube","Hyaluronic"],["D'ALBA","White Truffle"]],"sol":[["COSRX","Protección Solar"],["D'ALBA","Waterfull Sun"],["Medicube","Zero Pore"],["SKIN1004","Tone Brightening"]],"mascarillas":[["Medicube","Kojic Acid Turmeric"],["Medicube","Collagen"],["SKIN1004","Poremizing"],["Medicube","PDRN Pink"],["Medicube","Zero Pore"]],"regalo":[["CENTELLIAN24","Madeca Cream"],["SKIN1004","Centella Original"],["BIODANCE","Collagen Peptide"],["Medicube","PDRN Pink"]]};   /* solo los REFUERZOS (suma) por necesidad */
+const COLPARA = {"Medicube|PDRN Pink":"La que vio el sérum rosa en TikTok y quiere ese efecto «piel de vidrio». De los 25 en adelante.","Medicube|Zero Pore":"Piel grasa o mixta, con puntos negros y brillo en la zona T.","Medicube|Collagen":"De los 30 en adelante, o quien siente la piel «caída» o sin vida.","Medicube|Kojic Acid Turmeric":"Manchas que te dejó el embarazo, el sol o los años — de las que no se van con nada.","Medicube|Deep Vita C":"Piel cansada, sin brillo, con tono disparejo. Buenísima para quien no tolera ácidos fuertes.","Medicube|TXA Niacinamide":"La que ya no tiene granitos pero le quedaron las manchitas oscuras.","Medicube|Hyaluronic":"Cualquier piel: es el complemento universal, sobre todo en clima seco o con aire acondicionado.","Medicube|Glutathione Glow":"La que busca ese brillo uniforme y saludable, no solo quitar una mancha.","Medicube|Azelaic Acid":"Piel con brotes que además se pone roja e irritada.","Medicube|NAD":"La clienta que ya usa de todo y quiere el siguiente nivel.","SKIN1004|Centella Original":"Piel sensible, reactiva, o quien apenas empieza y no quiere arriesgarse.","SKIN1004|Hyalu-Cica":"Piel seca que además se irrita. Y su bloqueador le queda a TODAS.","SKIN1004|Tea-Trica":"Piel con acné activo, adolescentes, o brotes de temporada.","SKIN1004|Poremizing":"Piel grasa que además es sensible (no aguanta lo agresivo).","SKIN1004|Probio-Cica":"Piel madura o debilitada que quiere anti-edad sin irritación.","SKIN1004|Tone Brightening":"La que quiere verse despierta ya, aunque las manchas tarden en irse.","SKIN1004|Boosting Shot":"La que ya tiene su rutina y quiere subirle a un problema puntual.","SKIN1004|Air-Fit Sun":"Todas, todos los días. La versión Plus para playa y exterior.","MIXSOON|Bean (fermentado)":"La que se abruma con rutinas largas y quiere algo simple que funcione.","MIXSOON|PDRN Collagen":"La que quiere probar el PDRN sin gastar de más.","MIXSOON|Centella / Cica":"Piel irritada que además quiere sencillez.","MIXSOON|Glacier Water":"Piel deshidratada que no quiere sentir nada pesado encima.","COSRX|Advanced Snail":"TODAS. Es el producto que valida el corner y con el que abres la plática.","COSRX|Sérums Activos":"La que sabe lo que busca y quiere una marca reconocida.","COSRX|Protección Solar":"La que odia el bloqueador pegajoso, o necesita retocar sobre el maquillaje.","COSRX|Low pH / Limpieza":"Toda la familia. Es el limpiador «no te puedes equivocar».","ANUA|Heartleaf":"Quien usa maquillaje o bloqueador a diario — o sea, casi todas.","ANUA|PDRN":"Piel seca o cansada que quiere resultado visible rápido.","ANUA|Niacinamide + TXA":"Manchas, marcas de acné y tono disparejo.","ANUA|Azelaic Acid":"Piel sensible con brotes o rosácea.","CENTELLIAN24|Madeca Cream":"La clienta anti-edad exigente que pide «algo con respaldo».","CENTELLIAN24|360 Shot PDRN":"Ojeras, bolsas y párpado caído.","DR.ALTHEA|345 Relief":"Piel maltratada: por el clima, por tratamientos o por productos agresivos.","DR.ALTHEA|147 Barrier":"Piel muy seca, tirante, descamada o después de un tratamiento fuerte.","DR.ALTHEA|Esenciales":"Quien quiere iluminar pero la vitamina C normal le pica.","BIODANCE|Real Deep Masks":"Todas: es el antojo, el regalo y la primera compra del corner.","BIODANCE|Collagen Peptide":"Ojeras, hinchazón de la mañana, o antes de un evento.","D'ALBA|White Truffle":"El regalo elegante, o la clienta que quiere darse un gusto.","D'ALBA|Waterfull Sun":"Quien quiere que hasta el bloqueador se sienta premium.","CELIMAX|Retinal":"La que ya usa anti-edad y quiere resultados de verdad."};   /* «¿para quién es?» de cada colección */
 const SUB = {"NOM":{"aceite":"aceite limpiador · va primero: disuelve maquillaje y bloqueador","espuma":"espuma · termina la limpieza (2º paso de la doble limpieza)","tonico":"tónico / toallitas · después de lavar, antes del sérum","esencia":"esencia · la capa ligera antes del sérum","serum":"sérum · el tratamiento","bruma":"bruma · refresca y fija durante el día","contorno":"contorno de ojos · líneas finas y ojeras","crema":"crema · sella todo","noche":"mascarilla de noche · trabaja mientras duerme","mascarilla":"mascarilla / parches · 2-3 veces por semana","retoque":"bálsamo en barra · retoque en el día, sobre el maquillaje","sol":"bloqueador · todas las mañanas"},"CORTO":{"aceite":"aceite limpiador","espuma":"espuma","tonico":"tónico","esencia":"esencia","serum":"sérum","bruma":"bruma","contorno":"contorno de ojos","crema":"crema","noche":"mascarilla de noche","mascarilla":"mascarilla","retoque":"bálsamo retoque","sol":"bloqueador"}};
 const subrol = p => {
   const n = p.d.toLowerCase();
@@ -4793,6 +4802,64 @@ function pintarCombinada() {
     }).join("");
     extra = `<div class="plabel">Súmale esto para lo que falta</div>
       <div class="compl">${filas}</div>`;
+  }
+
+  /* ---- REFUERZOS de la rutina combinada (Michael 2-ago: «¿por qué no se recomiendan
+     refuerzos cuando la persona escoge dos o más problemas?») ----
+     No los había: los bloques «Súmale» solo se generan en los paneles de UNA necesidad,
+     así que con 2 o 3 preocupaciones la clienta no veía ni un refuerzo (0 de 165 casos).
+     Aquí se reúnen los de TODAS las elegidas y se ordenan por lo que ella pidió:
+       1º los que sirven a VARIAS de sus preocupaciones a la vez — un solo producto que
+          resuelve dos cosas es mejor compra que dos productos;
+       2º dentro de eso, el que más rota.
+     Sin chocar entre sí: nada que ya esté en la rutina, nada potente si es piel sensible
+     o si ya hay un activo fuerte, y UN SOLO 🔬 tratamiento (los que van en la cara a
+     diario compiten entre ellos); lo que «va aparte» —mascarilla, contorno, labial,
+     cabello— no compite y puede acompañar. */
+  const compiteDiario = p => ["serum", "esencia", "tonico", "crema"].includes(subrol(p))
+    && ["AM", "PM", "AMPM"].includes(p.mo);
+  const colsRef = new Set();
+  sel.forEach(f => (REFCOLS[f] || []).forEach(([m, c]) => colsRef.add(m + "|" + c)));
+  let refs = PROD.map((p, i) => ({p, i}))
+    .filter(({p, i}) => !usados.has(i) && colsRef.has(p.m + "|" + p.c)
+            && sel.some(f => (p.t || []).includes(f))
+            && !(esFuerte(p) && (sensible || fuertesYa >= 1)))
+    .map(o => ({...o, cubre: sel.filter(f => (o.p.t || []).includes(f))}));
+  refs.sort((a, b) => (b.cubre.length - a.cubre.length) || (b.p.v - a.p.v)
+                   || (a.p.pc - b.p.pc) || (a.p.d < b.p.d ? -1 : 1));
+  const elegidos = [];
+  let yaTrata = false;
+  for (const o of refs) {
+    if (elegidos.length >= 4) break;
+    const trata = compiteDiario(o.p);
+    if (trata && yaTrata) continue;          // un solo tratamiento nuevo a la vez
+    if (elegidos.some(x => subrol(x.p) === subrol(o.p))) continue;   // ni dos del mismo tipo
+    if (trata) yaTrata = true;
+    elegidos.push(o);
+  }
+  if (elegidos.length) {
+    const filasR = elegidos.map(({p, i, cubre}) => {
+      const trata = compiteDiario(p);
+      const tag = trata ? `<span class="rbadge rt">🔬 tratamiento</span>`
+                        : `<span class="rbadge ra">🗓 va aparte</span>`;
+      /* para qué de LO SUYO sirve: si cubre varias, decirlo — es el argumento más fuerte */
+      const para = cubre.map(f => `<span class="cob">${NEC[f].i} ${NEC[f].t}</span>`).join("");
+      const quien = COLPARA[p.m + "|" + p.c] || "";
+      return `<div class="trow">${imgHTML(p, "timg")}
+        <div class="tinfo">
+          <button class="pname" data-p="${i}">${p.d}<span class="pver">ver ficha</span></button>
+          <span class="cmarca2">${p.m}</span> ${tag}
+          ${cubre.length > 1 ? `<div class="rdoble">✨ Con uno solo cubres <b>${cubre.length}</b> de las cosas que marcaste</div>` : ""}
+          <div class="cobs">${para}</div>
+          ${quien ? `<div class="rquien">👉 ${quien}</div>` : ""}
+        </div>
+        <div class="lprec"><b>${money(p.pc)}</b><span>${plan(p.cr, p.q)}</span></div></div>`;
+    }).join("");
+    extra += `<div class="plabel">Súmale lo que te falte</div>
+      <div class="pguia">No es cuántos, es cuáles. De <b>🔬 tratamiento</b> —lo que va en la cara todos los
+      días— <b>uno nuevo a la vez</b>: así tu piel lo tolera y sabes cuál te funcionó. Lo que dice
+      <b>🗓 va aparte</b> no compite con nada y se suma sin problema.</div>
+      <div class="compl">${filasR}</div>`;
   }
 
   // ---- lo que notó «un poco» en el análisis con foto (/piel) ----
