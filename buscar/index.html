@@ -6,7 +6,7 @@
 <meta name="description" content="¿Qué producto estás viendo? Escanea su código de barras, tómale foto o escribe su nombre: te decimos qué es, cuánto cuesta y con qué rutina va.">
 <title>SO YOUNG · ¿Qué producto estás viendo?</title>
 <meta name="x-contenido" content="54393b41a1">
-<meta name="x-buscar" content="98c53c1cd8">
+<meta name="x-buscar" content="baf4441c4a">
 <style>
 :root { --rosa:#D96C82; --rosad:#B94F66; --ink:#2A2226; --crema:#FBF6F4; --crema2:#FAEDEE;
   --mut:#8b7d82; --line:#F0DDE1; --texto:#584a4f; color-scheme: light; }
@@ -485,9 +485,18 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
   display:flex; align-items:center; gap:7px; }
 .dslot.lleno { border-style:solid; border-color:var(--rosad); }
 .dnum { font-size:11px; font-weight:800; color:var(--rosad); }
-.dvacio { font-size:10px; color:var(--mut); line-height:1.35; }
+.dvacio { font-size:9.5px; color:var(--mut); line-height:1.3; }
 .dscan { display:block; margin-top:6px; appearance:none; font:inherit; font-size:10px; font-weight:700;
   color:var(--rosad); background:#fff; border:1px solid var(--rosad); border-radius:99px; padding:6px 10px; cursor:pointer; }
+/* el slot VACÍO es una acción, no un párrafo: número, botón y una nota chica debajo */
+.dslot:not(.lleno) { flex-direction:column; align-items:stretch; justify-content:center; gap:2px; text-align:center; }
+.dslot:not(.lleno) .dscan { margin-top:2px; width:100%; padding:8px 8px; font-size:11px; }
+/* la leyenda va PLEGADA y al final: se consulta cuando ya hay tabla que leer, no antes */
+.cleyd { margin-top:10px; }
+.cleyd summary { list-style:none; cursor:pointer; font-size:11px; font-weight:700; color:var(--rosad);
+  padding:7px 0; }
+.cleyd summary::-webkit-details-marker { display:none; }
+.cleyd .cley { margin-top:2px; }
 .dimg { width:34px; height:34px; object-fit:contain; flex:none; }
 .dnom { min-width:0; font-size:10.5px; font-weight:700; line-height:1.25; }
 .dnom em { display:block; font-style:normal; font-weight:500; font-size:9.5px; color:var(--mut); }
@@ -678,21 +687,24 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
   <div class="vacio" id="vacio" hidden>No encontramos nada con eso. Prueba con la marca («Cosrx»), el formato («espuma», «bloqueador») o tómale foto al código de barras.</div>
   </section>
   <section id="comparar">
-    <div class="ctit0">⚖️ Comparador <span>responde «¿cuál me conviene?» con hechos, no con opiniones</span></div>
+    <div class="ctit0">⚖️ Comparador <span>¿cuál me conviene? Aquí los ves lado a lado.</span></div>
     <div class="dwrap">
       <div class="dtit">🥊 Frente a frente</div>
-      <div class="dsub"><b>①</b> Escanea o busca un producto y en su ficha toca <b>⚖️ Comparar</b>.<br>
-        <b>②</b> Abajo te sugerimos sus rivales — <b>toca uno</b> (o escanea otro producto y repite ⚖️).<br>
-        Con los dos lados llenos, sale la tabla de diferencias.</div>
+      <!-- UNA línea y a trabajar (Michael 2-ago: «muy difícil de entender para un cliente
+           que abre por primera vez»). Antes: 3 renglones de instrucciones + los dos slots
+           repitiendo la misma frase + 6 renglones de leyenda ANTES de que hubiera nada que
+           leer. La leyenda bajó al final y va plegada: se consulta cuando ya hay tabla. -->
+      <div class="dsub">Escoge <b>dos productos</b> y te digo en qué se diferencian.</div>
       <div class="dslots">
         <div class="dslot" id="dslot0"></div>
         <div class="dslot" id="dslot1"></div>
       </div>
-      <div class="cley">Cómo leer: <b>🔥 potente</b> = trae un activo fuerte (retinol, ácidos, kójico, vitamina C…):
+      <div id="dresult"></div>
+      <details class="cleyd"><summary>¿Qué quieren decir 🔥 y 🌿?</summary>
+      <div class="cley"><b>🔥 potente</b> = trae un activo fuerte (retinol, ácidos, kójico, vitamina C…):
         resultados más marcados, y nunca dos 🔥 en la misma rutina · <b>🌿 suave</b> = no le detectamos esos activos.
         Eso no es un certificado: si estás <b>embarazada, lactando o en tratamiento</b>, revisa la etiqueta del
-        empaque y consulta a tu médico · <b>ataca:</b> las necesidades que resuelve · <b>$/q</b> = su pago quincenal con el vale.</div>
-      <div id="dresult"></div>
+        empaque y consulta a tu médico · <b>ataca:</b> las necesidades que resuelve · <b>$/q</b> = su pago quincenal con el vale.</div></details>
     </div>
     <div class="cwrap">
       <div class="dtit">📚 Por categoría y uso</div>
@@ -3582,7 +3594,11 @@ function pintaSlot(k) {
   const i = DUELO[k];
   el.classList.toggle("lleno", i !== null);
   el.innerHTML = i === null
-    ? `<span class="dnum">${dnums[k]}</span><span class="dvacio">esperando producto — escanéalo o búscalo y toca ⚖️ en su ficha</span><button class="dscan" type="button">▮▮▮ Escanear el otro</button>`
+    /* el slot vacío pide UNA cosa. Antes los dos repetían «esperando producto — escanéalo
+       o búscalo y toca ⚖️ en su ficha»: la misma frase larga dos veces, y hablando de un ⚖️
+       que la clienta todavía no ha visto (Michael 2-ago) */
+    ? `<span class="dnum">${dnums[k]}</span><button class="dscan" type="button">▮▮▮ Escanear</button>`
+      + `<span class="dvacio">o búscalo arriba y toca <b>⚖️ Comparar</b> en su ficha</span>`
     : `<span class="dnum">${dnums[k]}</span>${imgP(PROD[i], "dimg")}<span class="dnom">${PROD[i].d}<em>${PROD[i].m}</em></span><button class="dx" type="button" data-k="${k}" aria-label="Quitar">✕</button>`;
 }
 /* comparables de UN producto (Michael 1-ago: «así escanee un solo producto que
