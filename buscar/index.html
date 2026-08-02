@@ -5,8 +5,8 @@
 <meta name="robots" content="noindex">
 <meta name="description" content="¿Qué producto estás viendo? Escanea su código de barras, tómale foto o escribe su nombre: te decimos qué es, cuánto cuesta y con qué rutina va.">
 <title>SO YOUNG · ¿Qué producto estás viendo?</title>
-<meta name="x-contenido" content="713a832149">
-<meta name="x-buscar" content="a584b77b7f">
+<meta name="x-contenido" content="5ebed16ee0">
+<meta name="x-buscar" content="3e1404f0c3">
 <style>
 :root { --rosa:#D96C82; --rosad:#B94F66; --ink:#2A2226; --crema:#FBF6F4; --crema2:#FAEDEE;
   --mut:#8b7d82; --line:#F0DDE1; --texto:#584a4f; color-scheme: light; }
@@ -59,8 +59,23 @@ details.col, .mv { scroll-margin-top:58px; }   /* la barra fija no tapa el desti
   border-radius:99px; padding:2px 7px; color:#fff; vertical-align:middle; white-space:nowrap; }
 .rbadge.rt { background:var(--rosad); }
 .rbadge.ra { background:#2E7D5B; }
-.rquien { font-size:11px; color:var(--texto); line-height:1.35; margin-top:3px; }
-.rdoble { font-size:11px; color:var(--rosad); font-weight:700; line-height:1.35; margin-top:4px; }
+.rquien { font-size:11px; color:var(--texto); line-height:1.35; margin-top:5px; }
+.rdoble { font-size:11px; color:var(--rosad); font-weight:700; line-height:1.35; margin-top:5px; }
+/* CADA REFUERZO ES SU PROPIA TARJETA (Michael 2-ago: «parece un solo bloque»): antes iban
+   todos dentro de una caja única separados por una línea punteada tenue, y con el precio en
+   una columna derecha que apretaba el nombre a dos renglones. Ahora: tarjetas sueltas con
+   aire entre ellas, el nombre a todo lo ancho y el precio abajo, sobre su propia línea. */
+.refs { display:flex; flex-direction:column; gap:9px; margin-top:9px; }
+.rref { background:#fff; border:1px solid var(--line); border-radius:14px; padding:11px 12px; }
+.rrtop { display:flex; gap:10px; align-items:flex-start; }
+.rrimg { width:38px; height:46px; object-fit:contain; flex:none; mix-blend-mode:multiply; }
+.rrmain { flex:1; min-width:0; }
+.rrmarca { display:flex; align-items:center; gap:6px; flex-wrap:wrap; margin-top:4px;
+  font-size:10.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--mut); }
+.rrprec { display:flex; align-items:baseline; gap:8px; flex-wrap:wrap; margin-top:9px;
+  padding-top:8px; border-top:1px dashed var(--line); }
+.rrprec b { font-size:16px; color:var(--rosad); }
+.rrprec span { font-size:10.5px; color:var(--mut); }
 /* la guía de CUÁNTOS: no se quitan opciones, se dice cuántas tomar */
 .pguia { font-size:11.5px; color:var(--texto); line-height:1.5; background:var(--crema2);
   border-radius:11px; padding:9px 12px; margin:-2px 0 9px; }
