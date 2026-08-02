@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="La herramienta de la asesora SO YOUNG: arma la rutina de tu clienta en 1 minuto, con guiones, precios de contado y quincenas con el vale.">
 <title>SO YOUNG · La herramienta de la asesora</title>
-<meta name="x-contenido" content="7d078a206b">
+<meta name="x-contenido" content="e0c4d28c1a">
 <style>
 :root { --rosa:#D96C82; --rosad:#B94F66; --ink:#2A2226; --crema:#FBF6F4; --crema2:#FAEDEE;
   --mut:#8b7d82; --line:#F0DDE1; --texto:#584a4f; color-scheme: light; }
@@ -142,7 +142,7 @@ details.col, .mv { scroll-margin-top:58px; }   /* la barra fija no tapa el desti
 .mv { margin-top:18px; border:1.5px solid var(--rosad); border-radius:18px; background:#fff; padding:13px 13px 11px; }
 .mvtit { font-size:15.5px; font-weight:800; letter-spacing:-.01em; }
 .mvtit em { display:block; font-style:normal; font-size:11.5px; font-weight:500; color:var(--mut); margin-top:1px; }
-.mvrow { display:flex; gap:6px; overflow-x:auto; margin:10px -13px 0; padding:2px 13px 6px; -webkit-overflow-scrolling:touch; scrollbar-width:none; }
+.mvrow { display:flex; flex-wrap:wrap; gap:6px; margin:10px 0 0; padding:2px 0 6px; }
 .mvrow::-webkit-scrollbar { display:none; }
 .mvn { appearance:none; flex:0 0 auto; border:1.5px solid var(--line); background:var(--crema); border-radius:99px;
   padding:7px 12px; font:inherit; font-size:12px; font-weight:600; color:var(--ink); display:flex; align-items:center; gap:5px; cursor:pointer; }
@@ -215,7 +215,7 @@ details.col, .mv { scroll-margin-top:58px; }   /* la barra fija no tapa el desti
 .orow2 b { font-size:12px; }
 .orow2 .ocua { justify-self:end; font-weight:800; color:var(--rosad); white-space:nowrap; }
 .orow2 i { grid-column:1 / -1; font-style:normal; color:var(--mut); line-height:1.4; }
-.buscador input { width:100%; font:inherit; font-size:15px; padding:12px 14px; border:1.5px solid var(--line);
+.buscador input { width:100%; font:inherit; font-size:16px; padding:12px 14px; border:1.5px solid var(--line);
   border-radius:13px; background:#fff; color:var(--ink); }
 .buscador input:focus { outline:none; border-color:var(--rosad); }
 .texpl { display:flex; gap:9px; align-items:flex-start; font-size:11.8px; color:var(--texto); line-height:1.4; margin-bottom:7px; }
@@ -442,6 +442,10 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
 .tialts { padding:0 0 10px; border-bottom:1px dashed var(--line); font-size:10.5px;
   color:var(--mut); }
 .titem + .titem, .tialts + .titem { border-top:1px dashed var(--line); }
+.tiald summary { list-style:none; cursor:pointer; font-size:11px; font-weight:700; color:var(--mut); padding:6px 0; }
+.tiald summary em { font-style:normal; color:var(--rosad); }
+.tiald summary::-webkit-details-marker { display:none; }
+.tialdb { padding-top:2px; }
 .trpl { appearance:none; font-family:inherit; cursor:pointer; padding-block:8px; border:1px solid var(--line);
   background:#fff; color:var(--ink); border-radius:99px; padding:5px 10px; font-size:10.5px;
   font-weight:700; margin:4px 4px 0 0; }
@@ -838,7 +842,7 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
           <b class="mvnom">Centella Original <span class="cmarca2">SKIN1004</span></b>
           <div class="mvdif">Centella asiática de Madagascar pura: la planta que desinflama</div>
           <div class="mvprecio">$1,378 <em>· 3 productos · ó 12 quincenas de $161</em></div>
-          <div class="mvguion">💬 «Un solo ingrediente, cero perfume. Si todo te irrita, empieza aquí.»</div>
+          <div class="mvguion">💬 «Kit completo de la centella más famosa de Corea — el regalo seguro para cualquier piel.»</div>
           <button class="mvver" type="button" data-need="regalo" data-marca="SKIN1004" data-col="Centella Original">Ver la rutina armada ↓</button>
         </div><div class="mvcard" data-k="Medicube|PDRN Pink" data-pq="164" data-f="0">
           <div class="mvtag">👑 La premium</div>
@@ -860,7 +864,7 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
               <div class="mcside"><u>🌿 suave</u><b>$164/q</b></div>
             </div>
               <div class="mvcompn">La diferencia real es la <b>fórmula</b> y la <b>potencia</b> — no hay «mejor para todas»: elige por su piel
-              (sensible o embarazo → 🌿 suave) y su quincena. Ante la duda, la ⭐.</div></div></details><div class="mvarr">🚪 <b>Rutina de arranque</b> — si el tope no da o duda, abre con UN producto:
+              (sensible o embarazo → 🌿 suave) y su quincena. Ante la duda, la ⭐.</div></div></details><div class="mvarr">🎁 <b>El regalito seguro</b> — para quedar bien sin armar rutina completa:
           <button class="pname" data-p="121">Bio-Collagen Real Deep Mask (1 pza)<span class="pver">ver ficha</span></button>
           <span class="mvarrp">$383 <em>ó 10 quincenas de $54</em></span> — y la rutina completa queda para su siguiente quincena.</div><div class="mvnada" hidden>Con ese tope quincenal no alcanza rutina completa aquí — abre con la <b>rutina de arranque</b> de arriba, o quita el filtro.</div></div><div class="mvbloque" id="mv-mascarillas" hidden><div class="mvcard" data-k="Medicube|Kojic Acid Turmeric" data-pq="162" data-f="1">
           <div class="mvtag">⭐ La recomendada</div>
@@ -1065,7 +1069,7 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
             <div class="ouso">Shot aclarador: se suma a cualquier rutina</div></div>
           <div class="oprec"><b>$366</b><span>10 quincenas de $51</span></div></div></div></details>
       </div></details>
-          <div class="plabel">⭐ Tu rutina recomendada</div><details class="col" open data-marca="Medicube" data-col="Kojic Acid Turmeric" data-buscar="Medicube Kojic Acid Turmeric Contra las manchas más difíciles y el paño Ácido kójico + cúrcuma, la dupla clásica para aclarar Manchas de embarazo, de sol o marcas viejas que no se van con nada. Kojic Acid Turmeric Niacinamide Serum 30ml Kójico + cúrcuma: para manchas difíciles y paño 382 Kojic Turmeric Night Mask 75ml Duerme con ella y amanece con tono más parejo 543 Kojic Turmeric Gel Mask (4 pzas) 4 mascarillas iluminadoras: el plan de domingo 402 Kojic Turmeric Vita Eye Gel 30ml Para ojeras oscuras: aclara la mirada 342 Kojic Turmeric Vita Capsule Cream 53g Crema aclaradora para sellar la rutina anti-manchas 563 arroz crema decoloracion desigual gel hidratante hiperpigmentacion humectante kojico kójico manchas marcas mascarilla mascarillas mask melasma oscuras overnight parche parches paño pigmentacion pigmentación sellar serum sheet sérum tono tratamiento tratar">
+          <div class="plabel">⭐ Tu rutina recomendada</div><details class="col" open data-marca="Medicube" data-col="Kojic Acid Turmeric" data-buscar="Medicube Kojic Acid Turmeric Contra las manchas más difíciles y el paño Ácido kójico + cúrcuma, la dupla clásica para aclarar Manchas que te dejó el embarazo, el sol o los años — de las que no se van con nada. Kojic Acid Turmeric Niacinamide Serum 30ml Kójico + cúrcuma: para manchas difíciles y paño 382 Kojic Turmeric Night Mask 75ml Duerme con ella y amanece con tono más parejo 543 Kojic Turmeric Gel Mask (4 pzas) 4 mascarillas iluminadoras: el plan de domingo 402 Kojic Turmeric Vita Eye Gel 30ml Para ojeras oscuras: aclara la mirada 342 Kojic Turmeric Vita Capsule Cream 53g Crema aclaradora para sellar la rutina anti-manchas 563 arroz crema decoloracion desigual gel hidratante hiperpigmentacion humectante kojico kójico manchas marcas mascarilla mascarillas mask melasma oscuras overnight parche parches paño pigmentacion pigmentación sellar serum sheet sérum tono tratamiento tratar">
       <summary><span class="cico">🎯</span>
         <div class="chead"><div class="cnom">⭐ Kojic Acid Turmeric <span class="cmarca">Medicube</span></div>
           <div class="cprom">Contra las manchas más difíciles y el paño</div></div>
@@ -1074,7 +1078,7 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
       <div class="cbody">
         <div class="cficha">
           <div><b>¿Qué tiene?</b> Ácido kójico + cúrcuma, la dupla clásica para aclarar</div>
-          <div><b>¿Para quién es?</b> Manchas de embarazo, de sol o marcas viejas que no se van con nada.</div>
+          <div><b>¿Para quién es?</b> Manchas que te dejó el embarazo, el sol o los años — de las que no se van con nada.</div>
           <div><b>¿Qué va a notar?</b> El tono se empareja poco a poco: se nota entre la cuarta y la octava semana.</div>
         </div>
         <div class="cgancho">💬 «Esta es la artillería pesada para manchas — y sin bloqueador no funciona.»</div>
@@ -4294,7 +4298,7 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
           <div class="cta">💕 <b>Pídeselo a tu asesora:</b> te arma la rutina completa, te la aparta hoy y la pagas con tu vale en quincenas.</div>
         </section><section class="panel" id="panel-mascarillas" hidden>
           <div class="ptit">🎭 Mascarillas y consentirse</div>
-          <div class="plabel">La misma rutina, con otra marca — toca la que prefiera</div><details class="col alt"  data-marca="Medicube" data-col="Kojic Acid Turmeric" data-buscar="Medicube Kojic Acid Turmeric Contra las manchas más difíciles y el paño Ácido kójico + cúrcuma, la dupla clásica para aclarar Manchas de embarazo, de sol o marcas viejas que no se van con nada. Kojic Acid Turmeric Niacinamide Serum 30ml Kójico + cúrcuma: para manchas difíciles y paño 382 Kojic Turmeric Night Mask 75ml Duerme con ella y amanece con tono más parejo 543 Kojic Turmeric Gel Mask (4 pzas) 4 mascarillas iluminadoras: el plan de domingo 402 Kojic Turmeric Vita Eye Gel 30ml Para ojeras oscuras: aclara la mirada 342 Kojic Turmeric Vita Capsule Cream 53g Crema aclaradora para sellar la rutina anti-manchas 563 arroz crema decoloracion desigual gel hidratante hiperpigmentacion humectante kojico kójico manchas marcas mascarilla mascarillas mask melasma oscuras overnight parche parches paño pigmentacion pigmentación sellar serum sheet sérum tono tratamiento tratar">
+          <div class="plabel">La misma rutina, con otra marca — toca la que prefiera</div><details class="col alt"  data-marca="Medicube" data-col="Kojic Acid Turmeric" data-buscar="Medicube Kojic Acid Turmeric Contra las manchas más difíciles y el paño Ácido kójico + cúrcuma, la dupla clásica para aclarar Manchas que te dejó el embarazo, el sol o los años — de las que no se van con nada. Kojic Acid Turmeric Niacinamide Serum 30ml Kójico + cúrcuma: para manchas difíciles y paño 382 Kojic Turmeric Night Mask 75ml Duerme con ella y amanece con tono más parejo 543 Kojic Turmeric Gel Mask (4 pzas) 4 mascarillas iluminadoras: el plan de domingo 402 Kojic Turmeric Vita Eye Gel 30ml Para ojeras oscuras: aclara la mirada 342 Kojic Turmeric Vita Capsule Cream 53g Crema aclaradora para sellar la rutina anti-manchas 563 arroz crema decoloracion desigual gel hidratante hiperpigmentacion humectante kojico kójico manchas marcas mascarilla mascarillas mask melasma oscuras overnight parche parches paño pigmentacion pigmentación sellar serum sheet sérum tono tratamiento tratar">
       <summary><span class="cico">🎯</span>
         <div class="chead"><div class="cnom">Rutina <span class="cmarca">Medicube</span></div>
           <div class="cprom">con su línea Kojic Acid Turmeric · Contra las manchas más difíciles y el paño</div></div>
@@ -4302,7 +4306,7 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
       <div class="cbody">
         <div class="cficha">
           <div><b>¿Qué tiene?</b> Ácido kójico + cúrcuma, la dupla clásica para aclarar</div>
-          <div><b>¿Para quién es?</b> Manchas de embarazo, de sol o marcas viejas que no se van con nada.</div>
+          <div><b>¿Para quién es?</b> Manchas que te dejó el embarazo, el sol o los años — de las que no se van con nada.</div>
           <div><b>¿Qué va a notar?</b> El tono se empareja poco a poco: se nota entre la cuarta y la octava semana.</div>
         </div>
         <div class="cgancho">💬 «Esta es la artillería pesada para manchas — y sin bloqueador no funciona.»</div>
@@ -5083,7 +5087,7 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
             <button class="pname" data-p="137">Collagen Firming Suncream 50ml<span class="pver">ver ficha</span></button>
             <div class="luso">Bloqueador reafirmante: sin capa blanca, puro glow</div></div>
           <div class="lprec"><b>$463</b><span>10 quincenas de $65</span></div></div></div></div>
-      </div></details><details class="col"  data-marca="Medicube" data-col="Kojic Acid Turmeric" data-buscar="Medicube Kojic Acid Turmeric Contra las manchas más difíciles y el paño Ácido kójico + cúrcuma, la dupla clásica para aclarar Manchas de embarazo, de sol o marcas viejas que no se van con nada. Kojic Acid Turmeric Niacinamide Serum 30ml Kójico + cúrcuma: para manchas difíciles y paño 382 Kojic Turmeric Night Mask 75ml Duerme con ella y amanece con tono más parejo 543 Kojic Turmeric Gel Mask (4 pzas) 4 mascarillas iluminadoras: el plan de domingo 402 Kojic Turmeric Vita Eye Gel 30ml Para ojeras oscuras: aclara la mirada 342 Kojic Turmeric Vita Capsule Cream 53g Crema aclaradora para sellar la rutina anti-manchas 563 arroz crema decoloracion desigual gel hidratante hiperpigmentacion humectante kojico kójico manchas marcas mascarilla mascarillas mask melasma oscuras overnight parche parches paño pigmentacion pigmentación sellar serum sheet sérum tono tratamiento tratar">
+      </div></details><details class="col"  data-marca="Medicube" data-col="Kojic Acid Turmeric" data-buscar="Medicube Kojic Acid Turmeric Contra las manchas más difíciles y el paño Ácido kójico + cúrcuma, la dupla clásica para aclarar Manchas que te dejó el embarazo, el sol o los años — de las que no se van con nada. Kojic Acid Turmeric Niacinamide Serum 30ml Kójico + cúrcuma: para manchas difíciles y paño 382 Kojic Turmeric Night Mask 75ml Duerme con ella y amanece con tono más parejo 543 Kojic Turmeric Gel Mask (4 pzas) 4 mascarillas iluminadoras: el plan de domingo 402 Kojic Turmeric Vita Eye Gel 30ml Para ojeras oscuras: aclara la mirada 342 Kojic Turmeric Vita Capsule Cream 53g Crema aclaradora para sellar la rutina anti-manchas 563 arroz crema decoloracion desigual gel hidratante hiperpigmentacion humectante kojico kójico manchas marcas mascarilla mascarillas mask melasma oscuras overnight parche parches paño pigmentacion pigmentación sellar serum sheet sérum tono tratamiento tratar">
       <summary><span class="cico">🎯</span>
         <div class="chead"><div class="cnom">Kojic Acid Turmeric <span class="cmarca">Medicube</span></div>
           <div class="cprom">Contra las manchas más difíciles y el paño</div></div>
@@ -5092,7 +5096,7 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
       <div class="cbody">
         <div class="cficha">
           <div><b>¿Qué tiene?</b> Ácido kójico + cúrcuma, la dupla clásica para aclarar</div>
-          <div><b>¿Para quién es?</b> Manchas de embarazo, de sol o marcas viejas que no se van con nada.</div>
+          <div><b>¿Para quién es?</b> Manchas que te dejó el embarazo, el sol o los años — de las que no se van con nada.</div>
           <div><b>¿Qué va a notar?</b> El tono se empareja poco a poco: se nota entre la cuarta y la octava semana.</div>
         </div>
         <div class="cgancho">💬 «Esta es la artillería pesada para manchas — y sin bloqueador no funciona.»</div>
@@ -7006,7 +7010,7 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
   <div class="strip objs">
     <h2>💬 Cuando la clienta dice…</h2>
     <p class="nota">Tu backstage de objeciones: la respuesta lista y el dato honesto. Promete rangos, nunca milagros.</p>
-    <details class="obj"><summary><span class="tcaret">▸</span>«Está caro»</summary><p>Di la <b>quincena</b>, no el total: «son 12 pagos de $203 con tu vale». Si aun así no da, el <b>⚡ modo venta</b> de arriba siempre trae una económica y la <b>rutina de arranque</b> de un solo producto — que compre HOY algo que le funcione y regrese por el resto.</p></details><details class="obj"><summary><span class="tcaret">▸</span>«¿No me va a irritar?»</summary><p>Pregunta si es de piel sensible. Si sí: chip <b>🌸 sensible</b> — el sistema no le ofrece activos fuertes. Y enséñale la <b>prueba de parche</b> de la guía de uso: un poquito detrás de la oreja, 24 horas, antes de estrenarlo en la cara.</p></details><details class="obj"><summary><span class="tcaret">▸</span>«¿En cuánto veo resultados?»</summary><p>Promete el <b>rango</b>, no el milagro — la tabla de abajo. La frase que cierra: «lo típico es notarlo entre la semana 4 y 8, siendo constante y con bloqueador de día».</p></details><details class="obj"><summary><span class="tcaret">▸</span>«Estoy embarazada / dando pecho»</summary><p>Sin activos fuertes (retinal, kójico, exfoliantes). Hazle el análisis en <b>/piel</b> y marca «sí» en la pregunta 🤰: el sistema solo le ofrece fórmulas suaves. Cierra siempre con: «enséñale tu rutina a tu médico».</p></details><details class="obj"><summary><span class="tcaret">▸</span>«¿Es original?»</summary><p>Todo el corner es <b>100% original</b>. Enséñale el sello, y si quiere verlo: escanea el código de barras del producto en <b>/buscar</b> — sale su ficha con precio oficial. Los 139 productos están registrados.</p></details><details class="obj"><summary><span class="tcaret">▸</span>«¿Le sirve a mi esposo?»</summary><p>La piel es piel: <b>mismos pasos, mismos productos</b>. Que empiece con limpiador + bloqueador; si algo le preocupa (grasa, poros, manchas de afeitar), el <b>⚡ modo venta</b> le arma su rutina igual que a ella.</p></details><details class="obj"><summary><span class="tcaret">▸</span>«¿Y cuánto me dura?»</summary><p>La mayoría rinde <b>2–3 meses</b> con uso diario (los tamaños de 50ml o más, hasta 4). Se usa poquito: la frase que tranquiliza es «te dura más de lo que parece — sale a menos por día que un café».</p></details>
+    <details class="obj"><summary><span class="tcaret">▸</span>«Está caro»</summary><p>Di la <b>quincena</b>, no el total: «son 12 pagos de $203 con tu vale». Si aun así no da, el <a href="#mv"><b>⚡ modo venta</b></a> de arriba siempre trae una económica y la <b>rutina de arranque</b> de un solo producto — que compre HOY algo que le funcione y regrese por el resto.</p></details><details class="obj"><summary><span class="tcaret">▸</span>«¿No me va a irritar?»</summary><p>Pregunta si es de piel sensible. Si sí: chip <b>🌸 sensible</b> — el sistema no le ofrece activos fuertes. Y enséñale la <b>prueba de parche</b> de la guía de uso: un poquito detrás de la oreja, 24 horas, antes de estrenarlo en la cara.</p></details><details class="obj"><summary><span class="tcaret">▸</span>«¿En cuánto veo resultados?»</summary><p>Promete el <b>rango</b>, no el milagro — la tabla de abajo. La frase que cierra: «lo típico es notarlo entre la semana 4 y 8, siendo constante y con bloqueador de día».</p></details><details class="obj"><summary><span class="tcaret">▸</span>«Estoy embarazada / dando pecho»</summary><p>Sin activos fuertes (retinal, kójico, exfoliantes). Hazle el análisis en <b>/piel</b> y marca «sí» en la pregunta 🤰: el sistema solo le ofrece fórmulas suaves. Cierra siempre con: «enséñale tu rutina a tu médico».</p></details><details class="obj"><summary><span class="tcaret">▸</span>«¿Es original?»</summary><p>Todo el corner es <b>100% original</b>. Enséñale el sello, y si quiere verlo: escanea el código de barras del producto en <b>/buscar</b> — sale su ficha con precio oficial. Los 139 productos están registrados.</p></details><details class="obj"><summary><span class="tcaret">▸</span>«¿Le sirve a mi esposo?»</summary><p>La piel es piel: <b>mismos pasos, mismos productos</b>. Que empiece con limpiador + bloqueador; si algo le preocupa (grasa, poros, manchas de afeitar), el <b>⚡ modo venta</b> le arma su rutina igual que a ella.</p></details><details class="obj"><summary><span class="tcaret">▸</span>«¿Y cuánto me dura?»</summary><p>La mayoría rinde <b>2–3 meses</b> con uso diario (los tamaños de 50ml o más, hasta 4). Se usa poquito: la frase que tranquiliza es «te dura más de lo que parece — sale a menos por día que un café».</p></details>
     <div class="otit2">⏱ ¿En cuánto se nota? — por ingrediente</div>
     <div class="orow2"><b>💧 Hidratación / centella</b><span class="ocua">2–7 días</span><i>«La calma y lo jugoso se sienten casi de inmediato.»</i></div><div class="orow2"><b>🧊 Niacinamida</b><span class="ocua">2–4 semanas</span><i>«El poro y el brillo se controlan en un par de semanas.»</i></div><div class="orow2"><b>🍊 Vitamina C</b><span class="ocua">4–8 semanas</span><i>«Ilumina poco a poco — y de día siempre con bloqueador.»</i></div><div class="orow2"><b>🌾 Kójico (manchas)</b><span class="ocua">4–8 semanas</span><i>«Se nota entre la semana 4 y 8. Sin bloqueador no funciona.»</i></div><div class="orow2"><b>🌰 Azelaico</b><span class="ocua">8–12 semanas</span><i>«Es suave pero constante: dale 2–3 meses.»</i></div><div class="orow2"><b>🌙 Retinal / retinol</b><span class="ocua">8–12 semanas</span><i>«Empieza 2 noches por semana; una resequedad ligera al inicio es normal.»</i></div><div class="orow2"><b>🫧 Colágeno / PDRN</b><span class="ocua">4–8 semanas</span><i>«Firmeza y rebote se ven al mes, mes y medio.»</i></div>
     <p class="nota" style="margin-top:8px">Regla de oro: <b>foto de antes</b> el día 1 y cita a las 4 semanas — la clienta que SE VE el cambio, vuelve.</p>
@@ -7015,13 +7019,14 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
     <h2>🔑 ¿Tu clienta te dio un código SY?</h2>
     <p class="nota">Su lista aparece tal cual la armó — con productos y total — en cualquier teléfono. El código sale en su 👜 lista del Modo Tienda.</p>
     <button class="sybtn" id="sybtn" type="button">👩‍🦰 Soy asesora: teclear el código SY</button>
+    <p class="nota" style="margin-top:10px">📦 <b>Con su lista en mano:</b> 1) surte los productos del mueble — si falta alguno, cámbialo con el ⇄ de su renglón · 2) acompáñala a caja · 3) ya pagado, entrégale su <b>guía de uso</b> (🧾 arriba).</p>
   </div>
   <div id="tcod" hidden>
     <div class="tfondo" id="tcodfondo"></div>
     <div class="thoja">
       <h3>Teclea el código de la clienta 🔑</h3>
       <p class="tsm">Es el que empieza con <b>SY</b> — su lista aparece tal cual la armó, con su total.</p>
-      <input id="tcodin" class="tcodin" type="text" autocomplete="off" spellcheck="false" placeholder="SY-" maxlength="28">
+      <input id="tcodin" class="tcodin" type="text" autocomplete="off" spellcheck="false" placeholder="SY-" maxlength="80">
       <p class="tsm terr" id="tcoderr" hidden>No reconozco ese código — revísalo caracter por caracter.</p>
       <button class="tcerrar tcodver" id="tcodver" type="button">Ver la lista</button>
       <button class="tcerrar" id="tcodcerrar" type="button">Cerrar</button>
@@ -7575,7 +7580,7 @@ function abrirFicha(i) {
     <div class="mrow"><div class="mlab">¿Cómo se usa?</div><div>${COMO[p.p]}</div></div>
     <div class="mrow"><div class="mlab">Su colección</div><div><b>${p.c}</b> — ${p.cp}</div></div>
     ${subs.length ? `<div class="mrow"><div class="mlab">🔄 Si no hay — y en qué cambian</div><div>${
-      subs.map(({o, j}) => `<button class="pname alt" data-p="${j}">${o.d}</button> <span class="msub">${esFuerte(o) ? "🔥 potente" : "🌿 suave"} · ${o.m} · ${money(o.pc)} · $${o.pq}/q</span>`).join("<br>")
+      subs.map(({o, j}) => `<button class="pname alt" data-p="${j}">${o.d}</button> <span class="msub">${esFuerte(o) ? "🔥 potente (no si es piel sensible o embarazo)" : "🌿 suave"} · ${o.m} · ${money(o.pc)} · $${o.pq}/q</span>`).join("<br>")
     }<div class="mdif">Este: ${esFuerte(p) ? "🔥 activo potente" : "🌿 fórmula suave"} · $${p.pq}/q — mismo paso, cambia fórmula y precio.</div></div></div>` : ""}`;
   modal.hidden = false;
   document.body.style.overflow = "hidden";
@@ -7890,7 +7895,10 @@ q.addEventListener("input", () => {
       // código SY), se las pedimos al motor: mismo paso, ataca lo mismo (subsDe)
       const cand = it.alts.length ? it.alts
         : (typeof subsDe === "function" ? subsDe(it.i) : []);
-      const alts = cand.filter(j => PROD[j] && !enCarrito(j)).slice(0, 3);
+      const esF = p => (typeof esFuerte === "function") && esFuerte(p);
+      /* regla del motor también aquí: jamás un activo potente como repuesto de
+         uno suave (auditoría 1-ago) */
+      const alts = cand.filter(j => PROD[j] && !enCarrito(j) && !(esF(PROD[j]) && !esF(PROD[it.i]))).slice(0, 3);
       const yaEn = !alts.length && cand.length
         ? '<i>sus alternativas ya están en tu lista ✓</i> ' : "";
       return `<div class="titem">
@@ -7899,8 +7907,8 @@ q.addEventListener("input", () => {
         <span class="tiprecio">${money(p.pc)}</span>
         <button class="tix" data-quitar="${it.i}" type="button" aria-label="Quitar de mi lista">✕</button>
       </div>
-      <div class="tialts">⇄ ¿No hay en el estante, o no te late? Cámbialo:
-        ${yaEn}${alts.map(j => `<button class="trpl" type="button" data-de="${it.i}" data-a="${j}">${PROD[j].d} <b>${money(PROD[j].pc)}</b></button>`).join("")}
+      <div class="tialts"><details class="tiald"><summary>⇄ ¿No hay o no te late? <em>ver ${alts.length || "sus"} reemplazos</em></summary><div class="tialdb">
+        ${yaEn}${alts.map(j => `<button class="trpl" type="button" data-de="${it.i}" data-a="${j}">${esF(PROD[j]) ? "🔥 " : "🌿 "}${PROD[j].d} <b>${money(PROD[j].pc)}</b></button>`).join("")}</div></details>
         <button class="trpl" type="button" data-ficha="${it.i}">🔍 ver ficha</button>
       </div>`;
     }).join("");
@@ -7943,23 +7951,27 @@ q.addEventListener("input", () => {
   });
 
   /* código SY: n + índices del carrito (2 caracteres base36 c/u) + control */
+  /* v2 (auditoría 1-ago): 1er carácter = versión (nace del sello de datos — un
+     código viejo tras actualizar YA no pinta otros productos) y checksum
+     PONDERADO por posición — dos letras invertidas al dictar ya no pasan */
+  const VERC = (parseInt(SELLO.slice(0, 2), 16) % 36).toString(36).toUpperCase();
+  const chk36 = c => { let s = 0; for (let k = 0; k < c.length; k++) s += parseInt(c[k], 36) * (k + 1); return (s % 36).toString(36).toUpperCase(); };
   function codigoDeLista() {
     if (!CARRITO.length) return "—";
-    let cuerpo = CARRITO.length.toString(36).toUpperCase() + CARRITO.map(x => B36(x.i)).join("");
-    let s = 0; for (const ch of cuerpo) s += parseInt(ch, 36);
-    return "SY-" + cuerpo + (s % 36).toString(36).toUpperCase();
+    const cuerpo = VERC + CARRITO.length.toString(36).toUpperCase() + CARRITO.map(x => B36(x.i)).join("");
+    return "SY-" + cuerpo + chk36(cuerpo);
   }
   function decodificarCodigo(txt) {
     const t = (txt || "").trim().toUpperCase().replace(/^SY[-\s]*/, "").replace(/[^0-9A-Z]/g, "");
-    if (t.length < 4) return null;
+    if (t.length < 5) return null;
     const cuerpo = t.slice(0, -1), chk = t.slice(-1);
-    let s = 0; for (const ch of cuerpo) s += parseInt(ch, 36);
-    if ((s % 36).toString(36).toUpperCase() !== chk) return null;
-    const n = parseInt(cuerpo[0], 36);
-    if (!n || cuerpo.length !== 1 + n * 2) return null;
+    if (chk36(cuerpo) !== chk) return null;
+    if (cuerpo[0] !== VERC) return null;   /* código de otra versión de datos */
+    const n = parseInt(cuerpo[1], 36);
+    if (!n || cuerpo.length !== 2 + n * 2) return null;
     const items = [];
     for (let k = 0; k < n; k++) {
-      const i = parseInt(cuerpo.slice(1 + k * 2, 3 + k * 2), 36);
+      const i = parseInt(cuerpo.slice(2 + k * 2, 4 + k * 2), 36);
       if (!PROD[i] || items.some(x => x.i === i)) return null;
       items.push({ i, alts: [] });
     }

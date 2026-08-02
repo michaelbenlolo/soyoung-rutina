@@ -5,8 +5,8 @@
 <meta name="robots" content="noindex">
 <meta name="description" content="¿Qué producto estás viendo? Escanea su código de barras, tómale foto o escribe su nombre: te decimos qué es, cuánto cuesta y con qué rutina va.">
 <title>SO YOUNG · ¿Qué producto estás viendo?</title>
-<meta name="x-contenido" content="7d078a206b">
-<meta name="x-buscar" content="171728b2cc">
+<meta name="x-contenido" content="e0c4d28c1a">
+<meta name="x-buscar" content="cdd52b6935">
 <style>
 :root { --rosa:#D96C82; --rosad:#B94F66; --ink:#2A2226; --crema:#FBF6F4; --crema2:#FAEDEE;
   --mut:#8b7d82; --line:#F0DDE1; --texto:#584a4f; color-scheme: light; }
@@ -143,7 +143,7 @@ details.col, .mv { scroll-margin-top:58px; }   /* la barra fija no tapa el desti
 .mv { margin-top:18px; border:1.5px solid var(--rosad); border-radius:18px; background:#fff; padding:13px 13px 11px; }
 .mvtit { font-size:15.5px; font-weight:800; letter-spacing:-.01em; }
 .mvtit em { display:block; font-style:normal; font-size:11.5px; font-weight:500; color:var(--mut); margin-top:1px; }
-.mvrow { display:flex; gap:6px; overflow-x:auto; margin:10px -13px 0; padding:2px 13px 6px; -webkit-overflow-scrolling:touch; scrollbar-width:none; }
+.mvrow { display:flex; flex-wrap:wrap; gap:6px; margin:10px 0 0; padding:2px 0 6px; }
 .mvrow::-webkit-scrollbar { display:none; }
 .mvn { appearance:none; flex:0 0 auto; border:1.5px solid var(--line); background:var(--crema); border-radius:99px;
   padding:7px 12px; font:inherit; font-size:12px; font-weight:600; color:var(--ink); display:flex; align-items:center; gap:5px; cursor:pointer; }
@@ -216,7 +216,7 @@ details.col, .mv { scroll-margin-top:58px; }   /* la barra fija no tapa el desti
 .orow2 b { font-size:12px; }
 .orow2 .ocua { justify-self:end; font-weight:800; color:var(--rosad); white-space:nowrap; }
 .orow2 i { grid-column:1 / -1; font-style:normal; color:var(--mut); line-height:1.4; }
-.buscador input { width:100%; font:inherit; font-size:15px; padding:12px 14px; border:1.5px solid var(--line);
+.buscador input { width:100%; font:inherit; font-size:16px; padding:12px 14px; border:1.5px solid var(--line);
   border-radius:13px; background:#fff; color:var(--ink); }
 .buscador input:focus { outline:none; border-color:var(--rosad); }
 .texpl { display:flex; gap:9px; align-items:flex-start; font-size:11.8px; color:var(--texto); line-height:1.4; margin-bottom:7px; }
@@ -455,6 +455,8 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
 .dslot.lleno { border-style:solid; border-color:var(--rosad); }
 .dnum { font-size:11px; font-weight:800; color:var(--rosad); }
 .dvacio { font-size:10px; color:var(--mut); line-height:1.35; }
+.dscan { display:block; margin-top:6px; appearance:none; font:inherit; font-size:10px; font-weight:700;
+  color:var(--rosad); background:#fff; border:1px solid var(--rosad); border-radius:99px; padding:6px 10px; cursor:pointer; }
 .dimg { width:34px; height:34px; object-fit:contain; flex:none; }
 .dnom { min-width:0; font-size:10.5px; font-weight:700; line-height:1.25; }
 .dnom em { display:block; font-style:normal; font-weight:500; font-size:9.5px; color:var(--mut); }
@@ -581,6 +583,10 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
 .tialts { padding:0 0 10px; border-bottom:1px dashed var(--line); font-size:10.5px;
   color:var(--mut); }
 .titem + .titem, .tialts + .titem { border-top:1px dashed var(--line); }
+.tiald summary { list-style:none; cursor:pointer; font-size:11px; font-weight:700; color:var(--mut); padding:6px 0; }
+.tiald summary em { font-style:normal; color:var(--rosad); }
+.tiald summary::-webkit-details-marker { display:none; }
+.tialdb { padding-top:2px; }
 .trpl { appearance:none; font-family:inherit; cursor:pointer; padding-block:8px; border:1px solid var(--line);
   background:#fff; color:var(--ink); border-radius:99px; padding:5px 10px; font-size:10.5px;
   font-weight:700; margin:4px 4px 0 0; }
@@ -991,7 +997,7 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
             <button class="pname" data-p="137">Collagen Firming Suncream 50ml<span class="pver">ver ficha</span></button>
             <div class="luso">Bloqueador reafirmante: sin capa blanca, puro glow</div></div>
           <div class="lprec"><b>$463</b><span>10 quincenas de $65</span></div></div></div></div>
-      </div></details><details class="col"  data-marca="Medicube" data-col="Kojic Acid Turmeric" data-buscar="Medicube Kojic Acid Turmeric Contra las manchas más difíciles y el paño Ácido kójico + cúrcuma, la dupla clásica para aclarar Manchas de embarazo, de sol o marcas viejas que no se van con nada. Kojic Acid Turmeric Niacinamide Serum 30ml Kójico + cúrcuma: para manchas difíciles y paño 382 Kojic Turmeric Night Mask 75ml Duerme con ella y amanece con tono más parejo 543 Kojic Turmeric Gel Mask (4 pzas) 4 mascarillas iluminadoras: el plan de domingo 402 Kojic Turmeric Vita Eye Gel 30ml Para ojeras oscuras: aclara la mirada 342 Kojic Turmeric Vita Capsule Cream 53g Crema aclaradora para sellar la rutina anti-manchas 563 arroz crema decoloracion desigual gel hidratante hiperpigmentacion humectante kojico kójico manchas marcas mascarilla mascarillas mask melasma oscuras overnight parche parches paño pigmentacion pigmentación sellar serum sheet sérum tono tratamiento tratar">
+      </div></details><details class="col"  data-marca="Medicube" data-col="Kojic Acid Turmeric" data-buscar="Medicube Kojic Acid Turmeric Contra las manchas más difíciles y el paño Ácido kójico + cúrcuma, la dupla clásica para aclarar Manchas que te dejó el embarazo, el sol o los años — de las que no se van con nada. Kojic Acid Turmeric Niacinamide Serum 30ml Kójico + cúrcuma: para manchas difíciles y paño 382 Kojic Turmeric Night Mask 75ml Duerme con ella y amanece con tono más parejo 543 Kojic Turmeric Gel Mask (4 pzas) 4 mascarillas iluminadoras: el plan de domingo 402 Kojic Turmeric Vita Eye Gel 30ml Para ojeras oscuras: aclara la mirada 342 Kojic Turmeric Vita Capsule Cream 53g Crema aclaradora para sellar la rutina anti-manchas 563 arroz crema decoloracion desigual gel hidratante hiperpigmentacion humectante kojico kójico manchas marcas mascarilla mascarillas mask melasma oscuras overnight parche parches paño pigmentacion pigmentación sellar serum sheet sérum tono tratamiento tratar">
       <summary><span class="cico">🎯</span>
         <div class="chead"><div class="cnom">Kojic Acid Turmeric <span class="cmarca">Medicube</span></div>
           <div class="cprom">Contra las manchas más difíciles y el paño</div></div>
@@ -1000,7 +1006,7 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
       <div class="cbody">
         <div class="cficha">
           <div><b>¿Qué tiene?</b> Ácido kójico + cúrcuma, la dupla clásica para aclarar</div>
-          <div><b>¿Para quién es?</b> Manchas de embarazo, de sol o marcas viejas que no se van con nada.</div>
+          <div><b>¿Para quién es?</b> Manchas que te dejó el embarazo, el sol o los años — de las que no se van con nada.</div>
           <div><b>¿Qué va a notar?</b> El tono se empareja poco a poco: se nota entre la cuarta y la octava semana.</div>
         </div>
         <div class="cgancho">💬 «Esta es la artillería pesada para manchas — y sin bloqueador no funciona.»</div>
@@ -3024,7 +3030,12 @@ function buscar(texto) {
     .map(({ i }) => i).slice(0, 18);
   pintar(res, res.length ? "Resultados" : "");
 }
-q.addEventListener("input", () => buscar(q.value));
+q.addEventListener("input", () => {
+  /* el aviso rojo de una foto fallida no debe quedarse sobre resultados nuevos
+     (auditoría 1-ago); los avisos ok (candidatos de foto) sí sobreviven */
+  if (!estado.hidden && !estado.className.includes(" ok")) estado.hidden = true;
+  buscar(q.value);
+});
 
 /* ---------- ficha + rutina recomendada ---------- */
 const modal = document.getElementById("modal"), mbody = document.getElementById("mbody");
@@ -3073,9 +3084,10 @@ function abrirFicha(i, origen) {
   modal.hidden = false;
   document.body.style.overflow = "hidden";
   modal.querySelector(".mclose").focus();
-  history.replaceState(null, "", "#p=" + i);
+  history.pushState({ ov: "p" }, "", "#p=" + i);   /* atrás CIERRA la ficha, no expulsa (auditoría 1-ago) */
 }
-function cerrarFicha() {
+function cerrarFicha(desdePop) {
+  if (!desdePop && history.state && history.state.ov === "p") { history.back(); return; }
   modal.hidden = true;
   document.body.style.overflow = "";
   history.replaceState(null, "", location.pathname + location.search);
@@ -3091,6 +3103,13 @@ document.addEventListener("click", e => {
   if (e.target.closest(".mclose") || e.target.classList.contains("mbg")) cerrarFicha();
 });
 document.addEventListener("keydown", e => { if (e.key === "Escape" && !modal.hidden) cerrarFicha(); });
+document.addEventListener("click", e => {
+  if (e.target.closest(".dscan")) document.getElementById("btnvivo").click();
+});
+addEventListener("popstate", () => {
+  if (!modal.hidden) { cerrarFicha(true); return; }
+  if (escaneando) { escaneando = false; scanbox.hidden = true; scanluz.hidden = true; }
+});
 
 /* ---------- estado / avisos ---------- */
 function aviso(html, tipo) {
@@ -3378,6 +3397,7 @@ document.getElementById("btnvivo").addEventListener("click", async () => {
   try {
     const lector = await lectorBarras();
     scanbox.hidden = false; escaneando = true;
+    history.pushState({ ov: "s" }, "", "#scan");   /* atrás cierra el escáner sin salir */
     scanmsg.innerHTML = SCAN_GUIA;
     let ultimoDesconocido = "";
     await lector.decodeFromConstraints(
@@ -3504,7 +3524,7 @@ function pintaSlot(k) {
   const i = DUELO[k];
   el.classList.toggle("lleno", i !== null);
   el.innerHTML = i === null
-    ? `<span class="dnum">${dnums[k]}</span><span class="dvacio">esperando producto — escanéalo o búscalo y toca ⚖️ en su ficha</span>`
+    ? `<span class="dnum">${dnums[k]}</span><span class="dvacio">esperando producto — escanéalo o búscalo y toca ⚖️ en su ficha</span><button class="dscan" type="button">▮▮▮ Escanear el otro</button>`
     : `<span class="dnum">${dnums[k]}</span>${imgP(PROD[i], "dimg")}<span class="dnom">${PROD[i].d}<em>${PROD[i].m}</em></span><button class="dx" type="button" data-k="${k}" aria-label="Quitar">✕</button>`;
 }
 /* comparables de UN producto (Michael 1-ago: «así escanee un solo producto que
@@ -3847,7 +3867,10 @@ window.CARRITO_SELS = ".pname[data-p], .pcard[data-p]";
       // código SY), se las pedimos al motor: mismo paso, ataca lo mismo (subsDe)
       const cand = it.alts.length ? it.alts
         : (typeof subsDe === "function" ? subsDe(it.i) : []);
-      const alts = cand.filter(j => PROD[j] && !enCarrito(j)).slice(0, 3);
+      const esF = p => (typeof esFuerte === "function") && esFuerte(p);
+      /* regla del motor también aquí: jamás un activo potente como repuesto de
+         uno suave (auditoría 1-ago) */
+      const alts = cand.filter(j => PROD[j] && !enCarrito(j) && !(esF(PROD[j]) && !esF(PROD[it.i]))).slice(0, 3);
       const yaEn = !alts.length && cand.length
         ? '<i>sus alternativas ya están en tu lista ✓</i> ' : "";
       return `<div class="titem">
@@ -3856,8 +3879,8 @@ window.CARRITO_SELS = ".pname[data-p], .pcard[data-p]";
         <span class="tiprecio">${money(p.pc)}</span>
         <button class="tix" data-quitar="${it.i}" type="button" aria-label="Quitar de mi lista">✕</button>
       </div>
-      <div class="tialts">⇄ ¿No hay en el estante, o no te late? Cámbialo:
-        ${yaEn}${alts.map(j => `<button class="trpl" type="button" data-de="${it.i}" data-a="${j}">${PROD[j].d} <b>${money(PROD[j].pc)}</b></button>`).join("")}
+      <div class="tialts"><details class="tiald"><summary>⇄ ¿No hay o no te late? <em>ver ${alts.length || "sus"} reemplazos</em></summary><div class="tialdb">
+        ${yaEn}${alts.map(j => `<button class="trpl" type="button" data-de="${it.i}" data-a="${j}">${esF(PROD[j]) ? "🔥 " : "🌿 "}${PROD[j].d} <b>${money(PROD[j].pc)}</b></button>`).join("")}</div></details>
         <button class="trpl" type="button" data-ficha="${it.i}">🔍 ver ficha</button>
       </div>`;
     }).join("");
@@ -3900,23 +3923,27 @@ window.CARRITO_SELS = ".pname[data-p], .pcard[data-p]";
   });
 
   /* código SY: n + índices del carrito (2 caracteres base36 c/u) + control */
+  /* v2 (auditoría 1-ago): 1er carácter = versión (nace del sello de datos — un
+     código viejo tras actualizar YA no pinta otros productos) y checksum
+     PONDERADO por posición — dos letras invertidas al dictar ya no pasan */
+  const VERC = (parseInt(SELLO.slice(0, 2), 16) % 36).toString(36).toUpperCase();
+  const chk36 = c => { let s = 0; for (let k = 0; k < c.length; k++) s += parseInt(c[k], 36) * (k + 1); return (s % 36).toString(36).toUpperCase(); };
   function codigoDeLista() {
     if (!CARRITO.length) return "—";
-    let cuerpo = CARRITO.length.toString(36).toUpperCase() + CARRITO.map(x => B36(x.i)).join("");
-    let s = 0; for (const ch of cuerpo) s += parseInt(ch, 36);
-    return "SY-" + cuerpo + (s % 36).toString(36).toUpperCase();
+    const cuerpo = VERC + CARRITO.length.toString(36).toUpperCase() + CARRITO.map(x => B36(x.i)).join("");
+    return "SY-" + cuerpo + chk36(cuerpo);
   }
   function decodificarCodigo(txt) {
     const t = (txt || "").trim().toUpperCase().replace(/^SY[-\s]*/, "").replace(/[^0-9A-Z]/g, "");
-    if (t.length < 4) return null;
+    if (t.length < 5) return null;
     const cuerpo = t.slice(0, -1), chk = t.slice(-1);
-    let s = 0; for (const ch of cuerpo) s += parseInt(ch, 36);
-    if ((s % 36).toString(36).toUpperCase() !== chk) return null;
-    const n = parseInt(cuerpo[0], 36);
-    if (!n || cuerpo.length !== 1 + n * 2) return null;
+    if (chk36(cuerpo) !== chk) return null;
+    if (cuerpo[0] !== VERC) return null;   /* código de otra versión de datos */
+    const n = parseInt(cuerpo[1], 36);
+    if (!n || cuerpo.length !== 2 + n * 2) return null;
     const items = [];
     for (let k = 0; k < n; k++) {
-      const i = parseInt(cuerpo.slice(1 + k * 2, 3 + k * 2), 36);
+      const i = parseInt(cuerpo.slice(2 + k * 2, 4 + k * 2), 36);
       if (!PROD[i] || items.some(x => x.i === i)) return null;
       items.push({ i, alts: [] });
     }
