@@ -5,7 +5,7 @@
 <meta name="description" content="Tu asesora K-beauty de bolsillo en el corner SO YOUNG: entiende cualquier producto del estante, arma tu rutina coreana y conoce precios de contado o en quincenas con tu vale.">
 <meta name="robots" content="noindex">
 <meta name="x-contenido" content="17e6c59fea">
-<meta name="x-tienda" content="0a460fdb18">
+<meta name="x-tienda" content="57377ac698">
 <meta name="theme-color" content="#FAF5F2">
 <title>SO YOUNG · Tu asesora de bolsillo</title>
 <style>
@@ -511,15 +511,22 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
 .topin .logo { min-width:0; }
 .topin .sello { min-width:0; flex:0 4 auto; overflow:hidden; text-overflow:ellipsis;
   white-space:nowrap; }
-/* proporcional al texto del renglón (Michael 1-ago: a 22px se veía grande) */
-.mini { display:inline-flex; align-items:center; justify-content:center; width:18px;
-  height:18px; border-radius:50%; border:1.2px solid var(--rosad); color:var(--rosad);
-  background:#fff; font-size:12px; font-weight:800; line-height:1; margin-left:6px;
+/* EL BOTÓN DICE LO QUE HACE (2-ago, reporte de piso: «un usuario piensa que el + es
+   ver la ficha, no agregar a la lista»). El «+» pelón era ambiguo — en casi cualquier
+   app significa «ver más» — y encima quedaba pegadito a la pastilla «ver ficha» del
+   nombre, así que se leía como parte de ella. Ahora lleva verbo: «＋ Agregar». */
+.mini { display:inline-flex; align-items:center; justify-content:center; gap:3px;
+  border-radius:99px; border:1.3px solid var(--rosad); color:var(--rosad);
+  background:#fff; font-size:10.5px; font-weight:800; line-height:1; margin-left:7px;
+  padding:5px 9px; white-space:nowrap; font-family:inherit;
   vertical-align:middle; cursor:pointer; flex:none; }
-.mini.en { background:var(--rosad); color:#fff; }
+.mini.en { background:var(--rosad); color:#fff; border-color:var(--rosad); }
 .tprod, .pcard { position:relative; }
-.tprod .mini, .pcard .mini { position:absolute; top:7px; right:7px; margin:0;
-  background:#fff; box-shadow:0 2px 8px rgba(90,60,60,.14); }
+/* en las tarjetas ya no flota sobre la foto (ahí parecía «ampliar imagen»): baja al
+   pie de la tarjeta, a lo ancho, que es donde se espera el botón de comprar */
+.tprod .mini, .pcard .mini { display:flex; width:100%; margin:8px 0 0; padding:7px 9px;
+  justify-content:center; box-shadow:none; }
+.tprod .mini::after, .pcard .mini::after { inset:-4px; }
 .addbtn { appearance:none; font-family:inherit; cursor:pointer; margin-top:7px;
   border:1.5px solid var(--rosad); background:#fff; color:var(--rosad);
   border-radius:99px; padding:7px 13px; font-size:11.5px; font-weight:800;
@@ -558,8 +565,10 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
   border-radius:10px; padding:3px; flex:none; mix-blend-mode:multiply; cursor:pointer; }
 .tiprecio { color:var(--rosad); font-weight:800; white-space:nowrap; }
 .mini { position:relative; }
-.mini::after { content:""; position:absolute; inset:-11px; }
-.rp .mini::after, .trow .mini::after, .lrow .mini::after { inset:-8px; }
+/* el área táctil solo crece HACIA ARRIBA Y ABAJO: el botón ya mide lo suyo de ancho, y
+   estirarlo a los lados se comía los 7px de margen y parte de «ver ficha» — tocar «ver
+   ficha» habría agregado a la lista, justo la confusión que estamos quitando (2-ago) */
+.mini::after { content:""; position:absolute; inset:-7px 0; }
 .tix, .thx { position:relative; }
 .tix::after, .thx::after { content:""; position:absolute; inset:-9px; }
 .tix { appearance:none; border:1px solid var(--line); background:#fff; color:var(--mut);
@@ -5334,7 +5343,8 @@ q.addEventListener("input", () => {
       // escribir siempre lo mismo armaría un ciclo infinito de mutaciones
       const k = +nom.dataset.p, en = enCarrito(k);
       if (m.classList.contains("en") !== en) m.classList.toggle("en", en);
-      const t = en ? "✓" : "+";
+      /* con VERBO: el símbolo solo no decía si agregaba o abría la ficha (2-ago) */
+      const t = en ? "✓ En mi lista" : "＋ Agregar";
       if (m.textContent !== t) m.textContent = t;
       const aria = en ? "Quitar de mi lista" : "Agregar a mi lista";
       if (m.getAttribute("aria-label") !== aria) m.setAttribute("aria-label", aria);
