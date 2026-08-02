@@ -7,7 +7,7 @@
 <meta name="description" content="Escanea los productos que compraste y llévate tu guía de uso en PDF: cuándo va cada uno, en qué orden, cuánto esperar entre capas y sus precauciones.">
 <meta name="robots" content="noindex">
 <meta name="x-contenido" content="b548cf8140">
-<meta name="x-guia" content="b5780415d8">
+<meta name="x-guia" content="bb47553774">
 <style>
 :root { --rosa:#D96C82; --rosad:#B94F66; --ink:#2A2226; --crema:#FBF6F4; --crema2:#FAEDEE;
   --mut:#8b7d82; --line:#F0DDE1; --texto:#584a4f; --am:#B98A2F; --pm:#4A5A8A; color-scheme: light; }
@@ -360,10 +360,10 @@ $("btnscan").addEventListener("click", async () => {
           $("scanmsg").innerHTML = `Leí el código <b>${codSeguro(cod)}</b> pero no es de nuestro corner 🤔. Prueba con otro código del empaque o búscalo por nombre.`;
         }
     };
-    /* mismo arreglo que /buscar (2-ago): primero el lector NATIVO del teléfono —lee un
-       EAN-13 al instante— y ZXing solo de respaldo, acotado a códigos de producto y a
-       720p para que alcance a decodificar entre cuadro y cuadro. */
-    let usoNativo = false;
+    /* MISMO camino que /buscar, ya probado en el iPhone de Michael (2-ago): Safari no trae
+       BarcodeDetector y decodeFromConstraints no leía ni un código perfecto. Tomamos cada
+       cuadro, recortamos la banda central y lo pasamos por decodeFromImageUrl. */
+    let motor = "";
     if ("BarcodeDetector" in window) {
       try {
         const soportados = await BarcodeDetector.getSupportedFormats();
@@ -374,24 +374,45 @@ $("btnscan").addEventListener("click", async () => {
           _stream = await navigator.mediaDevices.getUserMedia({
             video: { facingMode: { ideal: "environment" },
                      width: { ideal: 1280 }, height: { ideal: 720 } } });
-          $("scanvid").srcObject = _stream;
-          await $("scanvid").play();
-          usoNativo = true;
+          $("scanvid").srcObject = _stream; await $("scanvid").play();
+          motor = "nativo";
           const mirar = async () => {
             if (!escaneando) return;
-            try { const r = await det.detect($("scanvid")); if (r && r.length) alLeer(r[0].rawValue); }
+            try { const r = await det.detect($("scanvid")); if (r && r.length) return alLeer(r[0].rawValue); }
             catch (e) {}
-            if (escaneando) setTimeout(mirar, 160);
+            if (escaneando) setTimeout(mirar, 150);
           };
           mirar();
         }
-      } catch (e) { usoNativo = false; }
+      } catch (e) { motor = ""; }
     }
-    if (!usoNativo) {
+    if (!motor) {
       const lector = await lectorBarras();
-      await lector.decodeFromConstraints(
-        { video: { facingMode: "environment", width: { ideal: 1280 }, height: { ideal: 720 } } },
-        $("scanvid"), (res) => { if (res) alLeer(res.getText()); });
+      _stream = await navigator.mediaDevices.getUserMedia({
+        video: { facingMode: { ideal: "environment" },
+                 width: { ideal: 1280 }, height: { ideal: 720 } } });
+      $("scanvid").srcObject = _stream; await $("scanvid").play();
+      try {
+        const tr = _stream.getVideoTracks()[0];
+        if (tr.getCapabilities && tr.getCapabilities().focusMode)
+          await tr.applyConstraints({ advanced: [{ focusMode: "continuous" }] });
+      } catch (e) {}
+      const cv = document.createElement("canvas");
+      const leerCuadro = async () => {
+        if (!escaneando) return;
+        const v = $("scanvid"), vw = v.videoWidth, vh = v.videoHeight;
+        if (vw > 0 && vh > 0) {
+          const ch = Math.max(80, Math.round(vh * 0.6));
+          cv.width = vw; cv.height = ch;
+          cv.getContext("2d").drawImage(v, 0, Math.round((vh - ch) / 2), vw, ch, 0, 0, vw, ch);
+          try {
+            const r = await lector.decodeFromImageUrl(cv.toDataURL("image/jpeg", 0.92));
+            if (r && r.getText()) return alLeer(r.getText());
+          } catch (e) {}
+        }
+        if (escaneando) setTimeout(leerCuadro, 200);
+      };
+      leerCuadro();
     }
     prepararLuz();
   } catch (e) {
