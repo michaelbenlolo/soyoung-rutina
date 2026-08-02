@@ -5,8 +5,8 @@
 <meta name="robots" content="noindex">
 <meta name="description" content="¿Qué producto estás viendo? Escanea su código de barras o escribe su nombre: te decimos qué es, cuánto cuesta y con qué rutina va.">
 <title>SO YOUNG · ¿Qué producto estás viendo?</title>
-<meta name="x-contenido" content="b2e62bd33d">
-<meta name="x-buscar" content="ec542009a0">
+<meta name="x-contenido" content="ef47d05fc1">
+<meta name="x-buscar" content="7680a56b29">
 <style>
 :root { --rosa:#D96C82; --rosad:#B94F66; --ink:#2A2226; --crema:#FBF6F4; --crema2:#FAEDEE;
   --mut:#8b7d82; --line:#F0DDE1; --texto:#584a4f; color-scheme: light; }
@@ -171,17 +171,25 @@ details.col, .mv { scroll-margin-top:58px; }   /* la barra fija no tapa el desti
 .mv { margin-top:18px; border:1.5px solid var(--rosad); border-radius:18px; background:#fff; padding:13px 13px 11px; }
 .mvtit { font-size:15.5px; font-weight:800; letter-spacing:-.01em; }
 .mvtit em { display:block; font-style:normal; font-size:11.5px; font-weight:500; color:var(--mut); margin-top:1px; }
-.mvrow { display:flex; flex-wrap:wrap; gap:6px; margin:10px 0 0; padding:2px 0 6px; }
+/* REJILLA de 2 columnas (Michael 2-ago: «este cuadro se puede hacer más bonito»): en
+   flex con ancho automático caían 1-2-1-2 según el largo del texto y se veía desordenado.
+   En grid todos miden lo mismo y las filas quedan a la par. */
+.mvrow { display:grid; grid-template-columns:1fr 1fr; gap:7px; margin:11px 0 0; padding:0; }
 .mvrow::-webkit-scrollbar { display:none; }
-.mvn { appearance:none; flex:0 0 auto; border:1.5px solid var(--line); background:var(--crema); border-radius:99px;
-  padding:7px 12px; font:inherit; font-size:12px; font-weight:600; color:var(--ink); display:flex; align-items:center; gap:5px; cursor:pointer; }
-.mvn.on { border-color:var(--rosad); background:var(--crema2); }
-.mvfil { display:flex; align-items:center; flex-wrap:wrap; gap:5px; margin-top:9px; }
+.mvn { appearance:none; width:100%; border:1.5px solid var(--line); background:var(--crema); border-radius:13px;
+  padding:9px 11px; font:inherit; font-size:11.5px; font-weight:600; color:var(--ink); text-align:left;
+  display:flex; align-items:center; gap:6px; cursor:pointer; line-height:1.25; min-height:42px; }
+.mvn > span { flex:none; font-size:14px; }
+.mvn.on { border-color:var(--rosad); background:var(--crema2); box-shadow:inset 0 0 0 1px var(--rosad); }
+/* los ajustes van agrupados y separados de las necesidades por una línea */
+.mvfil { display:flex; align-items:center; flex-wrap:wrap; gap:6px; margin-top:12px;
+  padding-top:11px; border-top:1px dashed var(--line); }
 .mvflab { font-size:10.5px; font-weight:700; color:var(--mut); }
-.mvb, .mvsen { appearance:none; border:1px solid var(--line); background:#fff; border-radius:99px; padding:9px 12px; min-height:40px;
-  font:inherit; font-size:10.5px; font-weight:600; color:var(--texto); cursor:pointer; }
+.mvb, .mvsen { appearance:none; border:1px solid var(--line); background:#fff; border-radius:99px;
+  padding:8px 13px; min-height:38px; font:inherit; font-size:11px; font-weight:600;
+  color:var(--texto); cursor:pointer; }
 .mvb.on { border-color:var(--rosad); background:var(--crema2); color:var(--rosad); }
-.mvsen { margin-left:auto; }
+.mvsen { margin-left:0; }
 .mvsen[aria-pressed="true"] { border-color:var(--rosad); background:var(--crema2); color:var(--rosad); }
 .mvbloque { margin-top:10px; }
 .mvcard { border:1px solid var(--line); border-radius:14px; padding:10px 11px; margin-top:8px; }
