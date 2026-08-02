@@ -4,8 +4,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Tu asesora K-beauty de bolsillo en el corner SO YOUNG: entiende cualquier producto del estante, arma tu rutina coreana y conoce precios de contado o en quincenas con tu vale.">
 <meta name="robots" content="noindex">
-<meta name="x-contenido" content="54393b41a1">
-<meta name="x-tienda" content="10fd1d93d1">
+<meta name="x-contenido" content="b548cf8140">
+<meta name="x-tienda" content="ee1f3df056">
 <meta name="theme-color" content="#FAF5F2">
 <title>SO YOUNG · Tu asesora de bolsillo</title>
 <style>
@@ -633,6 +633,16 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
 .tvaciar.seguro { color:#b3261e; }
 /* blindaje: reglas de display de autor le ganan al [hidden] del user-agent */
 .tcart[hidden], #tases[hidden], .agtodo[hidden], .tguia[hidden], .mini[hidden], .tvaciar[hidden] { display:none !important; }
+
+/* aparece SOLO cuando ya se bajó lo suficiente; se aparta de la barra fija de cierre */
+.subir { position:fixed; right:14px; bottom:calc(14px + env(safe-area-inset-bottom)); z-index:70;
+  appearance:none; border:none; width:46px; height:46px; border-radius:50%; cursor:pointer;
+  background:var(--ink); color:#fff; font-size:19px; line-height:1; display:flex;
+  align-items:center; justify-content:center; box-shadow:0 6px 18px rgba(60,30,40,.3);
+  opacity:0; pointer-events:none; transform:translateY(6px);
+  transition:opacity .18s ease, transform .18s ease; }
+.subir.on { opacity:1; pointer-events:auto; transform:none; }
+@media (prefers-reduced-motion: reduce) { .subir { transition:none; } }
 
 </style></head><body>
 
@@ -5810,6 +5820,37 @@ q.addEventListener("input", () => {
     codigoDeLista, decodificarCodigo, aplicarCodigo, decorar: decorarPagina,
     abrirHoja, cerrarHoja };
 })();
+/* ---------- volver arriba (páginas largas) ---------- */
+(() => {
+  const b = document.createElement("button");
+  b.type = "button"; b.className = "subir"; b.textContent = "↑";
+  b.setAttribute("aria-label", "Volver arriba");
+  document.body.appendChild(b);
+  /* si la página tiene barra fija de cierre (.tcta en /tienda), el botón se sube por
+     encima de ella en vez de taparla */
+  const acomoda = () => {
+    /* OJO: en un elemento position:fixed —como .tcta— offsetParent es SIEMPRE null por
+       especificación, así que no sirve para saber si está visible. Se mide su alto real:
+       oculto da 0. Con el chequeo equivocado el botón se plantaba encima de la barra de
+       cierre (cazado al probarlo, 2-ago). */
+    const cta = document.querySelector(".tcta");
+    const r = cta ? cta.getBoundingClientRect() : null;
+    const alto = (r && r.height > 0) ? r.height + 10 : 0;
+    b.style.bottom = "calc(14px + " + alto + "px + env(safe-area-inset-bottom))";
+  };
+  /* se reacomoda SIEMPRE, no solo cuando ya está visible: la barra de cierre aparece al
+     agregar el primer producto, y para entonces el botón ya podía estar en pantalla */
+  const ver = () => { b.classList.toggle("on", scrollY > innerHeight * 2); acomoda(); };
+  addEventListener("scroll", ver, { passive: true });
+  addEventListener("resize", ver);
+  b.addEventListener("click", () => {
+    /* arriba está el encabezado con el buscador y las pestañas: a eso quiere volver */
+    scrollTo({ top: 0, behavior: "smooth" });
+    b.classList.remove("on");
+  });
+  ver();
+})();
+
 </script>
 <script>
 /* ¿hay versión nueva publicada? (misma protección que /buscar, /piel y /k) */
