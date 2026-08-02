@@ -5,8 +5,8 @@
 <meta name="robots" content="noindex">
 <meta name="description" content="¿Qué producto estás viendo? Escanea su código de barras o escribe su nombre: te decimos qué es, cuánto cuesta y con qué rutina va.">
 <title>SO YOUNG · ¿Qué producto estás viendo?</title>
-<meta name="x-contenido" content="ef47d05fc1">
-<meta name="x-buscar" content="7680a56b29">
+<meta name="x-contenido" content="4bbbf81e5c">
+<meta name="x-buscar" content="cb21a8f7b9">
 <style>
 :root { --rosa:#D96C82; --rosad:#B94F66; --ink:#2A2226; --crema:#FBF6F4; --crema2:#FAEDEE;
   --mut:#8b7d82; --line:#F0DDE1; --texto:#584a4f; color-scheme: light; }
@@ -169,6 +169,11 @@ details.col, .mv { scroll-margin-top:58px; }   /* la barra fija no tapa el desti
 
 /* ---------- ⚡ MODO VENTA (backstage de la asesora, solo en la raíz) ---------- */
 .mv { margin-top:18px; border:1.5px solid var(--rosad); border-radius:18px; background:#fff; padding:13px 13px 11px; }
+.mv > summary.mvtit { list-style:none; cursor:pointer; display:block; position:relative; padding-right:26px; }
+.mv > summary.mvtit::-webkit-details-marker { display:none; }
+.mvcar { position:absolute; right:0; top:2px; font-size:15px; color:var(--rosad);
+  transition:transform .18s ease; }
+.mv[open] .mvcar { transform:rotate(180deg); }
 .mvtit { font-size:15.5px; font-weight:800; letter-spacing:-.01em; }
 .mvtit em { display:block; font-style:normal; font-size:11.5px; font-weight:500; color:var(--mut); margin-top:1px; }
 /* REJILLA de 2 columnas (Michael 2-ago: «este cuadro se puede hacer más bonito»): en

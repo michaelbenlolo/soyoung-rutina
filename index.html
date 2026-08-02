@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="La herramienta de la asesora SO YOUNG: arma la rutina de tu clienta en 1 minuto, con guiones, precios de contado y quincenas con el vale.">
 <title>SO YOUNG · La herramienta de la asesora</title>
-<meta name="x-contenido" content="ef47d05fc1">
+<meta name="x-contenido" content="4bbbf81e5c">
 <style>
 :root { --rosa:#D96C82; --rosad:#B94F66; --ink:#2A2226; --crema:#FBF6F4; --crema2:#FAEDEE;
   --mut:#8b7d82; --line:#F0DDE1; --texto:#584a4f; color-scheme: light; }
@@ -168,6 +168,11 @@ details.col, .mv { scroll-margin-top:58px; }   /* la barra fija no tapa el desti
 
 /* ---------- ⚡ MODO VENTA (backstage de la asesora, solo en la raíz) ---------- */
 .mv { margin-top:18px; border:1.5px solid var(--rosad); border-radius:18px; background:#fff; padding:13px 13px 11px; }
+.mv > summary.mvtit { list-style:none; cursor:pointer; display:block; position:relative; padding-right:26px; }
+.mv > summary.mvtit::-webkit-details-marker { display:none; }
+.mvcar { position:absolute; right:0; top:2px; font-size:15px; color:var(--rosad);
+  transition:transform .18s ease; }
+.mv[open] .mvcar { transform:rotate(180deg); }
 .mvtit { font-size:15.5px; font-weight:800; letter-spacing:-.01em; }
 .mvtit em { display:block; font-style:normal; font-size:11.5px; font-weight:500; color:var(--mut); margin-top:1px; }
 /* REJILLA de 2 columnas (Michael 2-ago: «este cuadro se puede hacer más bonito»): en
@@ -571,8 +576,8 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
       <small>Escanea lo que llevó y dale su PDF: cuándo va cada producto, en qué orden y cuánto esperar.</small></span>
       <span class="sbfl">→</span></a>
   </div>
-  <div class="mv" id="mv">
-    <div class="mvtit">⚡ Venta en vivo <em>¿qué te pidió? — tres ofertas con guion, en 5 segundos</em></div>
+  <details class="mv" id="mv">
+    <summary class="mvtit">⚡ Venta en vivo <em>¿qué te pidió? — tres ofertas con guion y su quincena</em><span class="mvcar">▾</span></summary>
     <div class="mvrow"><button class="mvn" type="button" data-need="manchas"><span>🎯</span>Manchas y tono disparejo</button><button class="mvn" type="button" data-need="poros"><span>✨</span>Poros abiertos, grasa y brillo</button><button class="mvn" type="button" data-need="granitos"><span>🌿</span>Granitos y brotes</button><button class="mvn" type="button" data-need="sensible"><span>🌸</span>Piel reseca, sensible o irritada</button><button class="mvn" type="button" data-need="edad"><span>⏳</span>Líneas, arrugas y flacidez</button><button class="mvn" type="button" data-need="ojos"><span>👁️</span>Ojeras, bolsas y contorno</button><button class="mvn" type="button" data-need="glow"><span>🫧</span>Quiere GLOW / empezar desde cero</button><button class="mvn" type="button" data-need="sol"><span>☀️</span>Protección de todos los días</button><button class="mvn" type="button" data-need="regalo"><span>🎁</span>Regalo o antojo</button><button class="mvn" type="button" data-need="mascarillas"><span>🎭</span>Mascarillas y consentirse</button></div>
     <div class="mvfil" hidden>
       <span class="mvflab">Su quincena:</span>
@@ -954,7 +959,7 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
               y su quincena. Ante la duda, la ⭐.</div></div></details><div class="mvarr">🚪 <b>Rutina de arranque</b> — si el tope no da o duda, abre con UN producto:
           <button class="pname" data-p="30">Zero Pore Blackhead Mud Mask<span class="pver">ver ficha</span></button>
           <span class="mvarrp">$322 <em>ó 10 quincenas de $45 = $450</em></span> — y la rutina completa queda para su siguiente quincena.</div><div class="mvnada" hidden>Con ese tope quincenal no alcanza rutina completa aquí — abre con la <b>rutina de arranque</b> de arriba, o quita el filtro.</div></div>
-  </div>
+  </details>
   <div class="mvsep">📚 <b>El mapa completo</b> — marca lo que le preocupa y estudia la rutina armada, sus niveles y reemplazos:</div>
   <div class="nota" style="margin:-4px 2px 10px">🎓 ¿Primer día? Estudia en orden: 1º <a href="#pasos3">Los 3 pasos</a> · 2º <a href="#colecciones">Cómo leer las colecciones</a> · 3º vuelve aquí y marca una preocupación.</div>
   <div class="chips"><button class="chip" type="button" aria-pressed="false" data-need="manchas"><span class="chico">🎯</span>Manchas y tono disparejo</button><button class="chip" type="button" aria-pressed="false" data-need="poros"><span class="chico">✨</span>Poros abiertos, grasa y brillo</button><button class="chip" type="button" aria-pressed="false" data-need="granitos"><span class="chico">🌿</span>Granitos y brotes</button><button class="chip" type="button" aria-pressed="false" data-need="sensible"><span class="chico">🌸</span>Piel reseca, sensible o irritada</button><button class="chip" type="button" aria-pressed="false" data-need="edad"><span class="chico">⏳</span>Líneas, arrugas y flacidez</button><button class="chip" type="button" aria-pressed="false" data-need="ojos"><span class="chico">👁️</span>Ojeras, bolsas y contorno</button><button class="chip" type="button" aria-pressed="false" data-need="glow"><span class="chico">🫧</span>Quiere GLOW / empezar desde cero</button><button class="chip" type="button" aria-pressed="false" data-need="sol"><span class="chico">☀️</span>Protección de todos los días</button><button class="chip" type="button" aria-pressed="false" data-need="regalo"><span class="chico">🎁</span>Regalo o antojo</button><button class="chip" type="button" aria-pressed="false" data-need="mascarillas"><span class="chico">🎭</span>Mascarillas y consentirse</button></div>
@@ -7913,6 +7918,13 @@ q.addEventListener("input", () => {
 (() => {
   const mv = document.getElementById("mv");
   if (!mv) return;
+  /* el bloque nace PLEGADO, así que quien llegue por un salto a #mv —la objeción
+     «Está caro» o el botón flotante ↑ ⚡— tiene que encontrarlo ABIERTO, si no ve
+     solo el título y parece que no pasó nada (2-ago) */
+  const abrirMV = () => { if (!mv.open) mv.open = true; };
+  document.querySelectorAll('a[href="#mv"]').forEach(a => a.addEventListener("click", abrirMV));
+  if (location.hash === "#mv") abrirMV();
+  addEventListener("hashchange", () => { if (location.hash === "#mv") abrirMV(); });
   const bloques = [...mv.querySelectorAll(".mvbloque")];
   const fil = mv.querySelector(".mvfil");
   const sen = mv.querySelector(".mvsen");
@@ -7998,6 +8010,7 @@ q.addEventListener("input", () => {
   subir.innerHTML = "↑ ⚡ venta en vivo";
   document.body.appendChild(subir);
   subir.addEventListener("click", () => {
+    abrirMV();   /* si volvió aquí es para usarlo: que no lo reciba plegado */
     mv.scrollIntoView({ behavior: "smooth", block: "start" });
   });
   addEventListener("scroll", () => {

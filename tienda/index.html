@@ -4,8 +4,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Tu asesora K-beauty de bolsillo en el corner SO YOUNG: entiende cualquier producto del estante, arma tu rutina coreana y conoce precios de contado o en quincenas con tu vale.">
 <meta name="robots" content="noindex">
-<meta name="x-contenido" content="ef47d05fc1">
-<meta name="x-tienda" content="4f4df8941e">
+<meta name="x-contenido" content="4bbbf81e5c">
+<meta name="x-tienda" content="5830c35e35">
 <meta name="theme-color" content="#FAF5F2">
 <title>SO YOUNG · Tu asesora de bolsillo</title>
 <style>
@@ -170,6 +170,11 @@ details.col, .mv { scroll-margin-top:58px; }   /* la barra fija no tapa el desti
 
 /* ---------- ⚡ MODO VENTA (backstage de la asesora, solo en la raíz) ---------- */
 .mv { margin-top:18px; border:1.5px solid var(--rosad); border-radius:18px; background:#fff; padding:13px 13px 11px; }
+.mv > summary.mvtit { list-style:none; cursor:pointer; display:block; position:relative; padding-right:26px; }
+.mv > summary.mvtit::-webkit-details-marker { display:none; }
+.mvcar { position:absolute; right:0; top:2px; font-size:15px; color:var(--rosad);
+  transition:transform .18s ease; }
+.mv[open] .mvcar { transform:rotate(180deg); }
 .mvtit { font-size:15.5px; font-weight:800; letter-spacing:-.01em; }
 .mvtit em { display:block; font-style:normal; font-size:11.5px; font-weight:500; color:var(--mut); margin-top:1px; }
 /* REJILLA de 2 columnas (Michael 2-ago: «este cuadro se puede hacer más bonito»): en
