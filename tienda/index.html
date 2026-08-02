@@ -4,8 +4,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Tu asesora K-beauty de bolsillo en el corner SO YOUNG: entiende cualquier producto del estante, arma tu rutina coreana y conoce precios de contado o en quincenas con tu vale.">
 <meta name="robots" content="noindex">
-<meta name="x-contenido" content="b548cf8140">
-<meta name="x-tienda" content="ee1f3df056">
+<meta name="x-contenido" content="02eb517b61">
+<meta name="x-tienda" content="656db4d9e2">
 <meta name="theme-color" content="#FAF5F2">
 <title>SO YOUNG · Tu asesora de bolsillo</title>
 <style>
@@ -5840,7 +5840,9 @@ q.addEventListener("input", () => {
   };
   /* se reacomoda SIEMPRE, no solo cuando ya está visible: la barra de cierre aparece al
      agregar el primer producto, y para entonces el botón ya podía estar en pantalla */
-  const ver = () => { b.classList.toggle("on", scrollY > innerHeight * 2); acomoda(); };
+  /* aparece en cuanto se pierde de vista el encabezado —UNA pantalla—, no a las dos:
+     con el umbral viejo había que bajar mucho para que saliera (Michael 2-ago) */
+  const ver = () => { b.classList.toggle("on", scrollY > innerHeight * 0.9); acomoda(); };
   addEventListener("scroll", ver, { passive: true });
   addEventListener("resize", ver);
   b.addEventListener("click", () => {

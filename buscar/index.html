@@ -5,8 +5,8 @@
 <meta name="robots" content="noindex">
 <meta name="description" content="¿Qué producto estás viendo? Escanea su código de barras o escribe su nombre: te decimos qué es, cuánto cuesta y con qué rutina va.">
 <title>SO YOUNG · ¿Qué producto estás viendo?</title>
-<meta name="x-contenido" content="b548cf8140">
-<meta name="x-buscar" content="eca08c2fe0">
+<meta name="x-contenido" content="02eb517b61">
+<meta name="x-buscar" content="8ee4953d8e">
 <style>
 :root { --rosa:#D96C82; --rosad:#B94F66; --ink:#2A2226; --crema:#FBF6F4; --crema2:#FAEDEE;
   --mut:#8b7d82; --line:#F0DDE1; --texto:#584a4f; color-scheme: light; }
@@ -4045,7 +4045,9 @@ window.CARRITO_SELS = ".pname[data-p], .pcard[data-p]";
   };
   /* se reacomoda SIEMPRE, no solo cuando ya está visible: la barra de cierre aparece al
      agregar el primer producto, y para entonces el botón ya podía estar en pantalla */
-  const ver = () => { b.classList.toggle("on", scrollY > innerHeight * 2); acomoda(); };
+  /* aparece en cuanto se pierde de vista el encabezado —UNA pantalla—, no a las dos:
+     con el umbral viejo había que bajar mucho para que saliera (Michael 2-ago) */
+  const ver = () => { b.classList.toggle("on", scrollY > innerHeight * 0.9); acomoda(); };
   addEventListener("scroll", ver, { passive: true });
   addEventListener("resize", ver);
   b.addEventListener("click", () => {
