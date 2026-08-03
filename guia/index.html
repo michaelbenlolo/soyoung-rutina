@@ -7,7 +7,7 @@
 <meta name="description" content="Escanea los productos que compraste y llévate tu guía de uso en PDF: cuándo va cada uno, en qué orden, cuánto esperar entre capas y sus precauciones.">
 <meta name="robots" content="noindex">
 <meta name="x-contenido" content="61de17a62b">
-<meta name="x-guia" content="ac0ac1f1b5">
+<meta name="x-guia" content="a6cd824c6d">
 <style>
 :root { --rosa:#D96C82; --rosad:#B94F66; --ink:#2A2226; --crema:#FBF6F4; --crema2:#FAEDEE;
   --mut:#8b7d82; --line:#F0DDE1; --texto:#584a4f; --am:#B98A2F; --pm:#4A5A8A; color-scheme: light; }
@@ -346,7 +346,7 @@ async function lectorBarras() {
   }
   return _lector;
 }
-const SCAN_GUIA = "Apunta al <b>código de barras de la cajita</b>: que las rayas llenen el ancho, a 10–15 cm, con buena luz. Escanea <b>todos</b> tus productos uno tras otro.";
+const SCAN_GUIA = "Que las rayas del <b>código</b> llenen el ancho, a 10–15 cm y con luz. Escanea <b>todos</b> tus productos, uno tras otro.";
 let escaneando = false, ultimoCod = "", ultimoT = 0;
 let _stream = null;   /* stream propio del lector NATIVO: hay que apagarlo a mano */
 $("btnscan").addEventListener("click", async () => {

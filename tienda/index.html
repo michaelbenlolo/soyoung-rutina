@@ -5,7 +5,7 @@
 <meta name="description" content="Tu asesora K-beauty de bolsillo en la tienda SO YOUNG: entiende cualquier producto del estante, arma tu rutina coreana y conoce precios de contado o en quincenas con tu vale.">
 <meta name="robots" content="noindex">
 <meta name="x-contenido" content="61de17a62b">
-<meta name="x-tienda" content="7009350043">
+<meta name="x-tienda" content="bb3c0dfb2e">
 <meta name="theme-color" content="#FAF5F2">
 <title>SO YOUNG · Tu asesora de bolsillo</title>
 <style>
@@ -496,7 +496,13 @@ body { font-family:-apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, s
 .tprod i { font-style:normal; font-size:9.5px; color:var(--tmut); }
 
 .tpie { margin-top:22px; padding-top:14px; border-top:1px solid var(--tline); }
-.tlegal { font-size:10px; color:var(--tmut); line-height:1.6; }
+.tlegal { font-size:10px; color:var(--tmut); line-height:1.6; margin-top:7px; }
+/* misma gramática de plegable que el resto del sitio: forma de control + flecha que gira */
+.tlegd > summary { list-style:none; cursor:pointer; display:flex; align-items:center; gap:8px;
+  font-size:10.5px; font-weight:700; color:var(--tmut); }
+.tlegd > summary::-webkit-details-marker { display:none; }
+.tlegcar { margin-left:auto; flex:none; font-size:10px; transition:transform .15s; }
+.tlegd[open] .tlegcar { transform:rotate(180deg); }
 .tpie a { display:inline-block; margin:10px 8px 0 0; font-size:10.5px; color:var(--tink);
   text-decoration:none; border:1px solid var(--tline); border-radius:99px; padding:6px 12px;
   background:var(--tcard); }
@@ -705,7 +711,11 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
     <div class="trail"><button class="pname tprod" data-p="1" type="button"><img src="../p/B0DG1DQ2S7.jpg" alt="Azelaic Acid 10 Serum 30ml" loading="lazy"><b>Azelaic Acid 10 Serum 30ml</b><small>ANUA</small><em>$753</em><i>ó 12 quincenas de $88</i></button><button class="pname tprod" data-p="22" type="button"><img src="../p/B0FKGJYFC8.jpg" alt="345 Relief Cream 50ml" loading="lazy"><b>345 Relief Cream 50ml</b><small>DR.ALTHEA</small><em>$543</em><i>ó 12 quincenas de $63</i></button><button class="pname tprod" data-p="115" type="button"><img src="../p/8809576261318.jpg" alt="Centella Cream 30ml (mini)" loading="lazy"><b>Centella Cream 30ml (mini)</b><small>SKIN1004</small><em>$196</em><i>ó 8 quincenas de $34</i></button><button class="pname tprod" data-p="103" type="button"><img src="../p/B0FXH5LHN8.jpg" alt="Hyalu-Cica Water-Fit Sun Serum 50ml" loading="lazy"><b>Hyalu-Cica Water-Fit Sun Serum 50ml</b><small>SKIN1004</small><em>$401</em><i>ó 10 quincenas de $56</i></button><button class="pname tprod" data-p="28" type="button"><img src="../p/B09V7Z4TJG.jpg" alt="Zero Pore Pad 2.0 (toallitas)" loading="lazy"><b>Zero Pore Pad 2.0 (toallitas)</b><small>Medicube</small><em>$443</em><i>ó 10 quincenas de $62</i></button><button class="pname tprod" data-p="121" type="button"><img src="../p/B0B2RM68G2.jpg" alt="Bio-Collagen Real Deep Mask (1 pza)" loading="lazy"><b>Bio-Collagen Real Deep Mask (1 pza)</b><small>BIODANCE</small><em>$383</em><i>ó 10 quincenas de $54</i></button><button class="pname tprod" data-p="2" type="button"><img src="../p/B0FVT77ZLL.jpg" alt="PDRN Hyaluronic Capsule Mist 100ml" loading="lazy"><b>PDRN Hyaluronic Capsule Mist 100ml</b><small>ANUA</small><em>$823</em><i>ó 12 quincenas de $96</i></button><button class="pname tprod" data-p="132" type="button"><img src="../p/B0GHMZXX8Y.jpg" alt="PDRN Pink Collagen Multi Balm 10g" loading="lazy"><b>PDRN Pink Collagen Multi Balm 10g</b><small>Medicube</small><em>$483</em><i>ó 12 quincenas de $56</i></button><button class="pname tprod" data-p="39" type="button"><img src="../p/B0DBF65JYY.jpg" alt="PDRN Pink Peptide Serum 30ml" loading="lazy"><b>PDRN Pink Peptide Serum 30ml</b><small>Medicube</small><em>$402</em><i>ó 10 quincenas de $56</i></button></div>
 
     <div class="tpie">
-      <p class="tlegal">Precios en pesos, de contado o en quincenas con tu vale. Esta guía sugiere cosméticos por lo que quieres mejorar; no es un diagnóstico ni sustituye la opinión de un dermatólogo. Skincare coreano 100% original, solo en tiendas BHermanos participantes.</p>
+      <!-- El aviso es necesario, pero eran 3 renglones de letra chica cerrando la
+           portada. Se pliega DEJANDO AFUERA lo único que de verdad protege a la
+           clienta —que esto no es un diagnóstico—; el detalle se abre si lo busca. -->
+      <details class="tlegd"><summary>ℹ️ Esto no es un diagnóstico médico<span class="tlegcar">▾</span></summary>
+        <p class="tlegal">Aquí te sugerimos cosméticos por lo que quieres mejorar; no sustituye la opinión de un dermatólogo. Precios en pesos, de contado o en quincenas con tu vale. Skincare coreano 100% original, solo en tiendas BHermanos participantes.</p></details>
       <button class="tpieas" id="tcodbtn" type="button">🔑 Tengo un código SY — ver esa lista</button>
     </div>
   </section>
@@ -714,11 +724,12 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
   <section id="t-elegir" hidden>
     <a class="tvolver" href="#t-home">← Volver</a>
     <h1 class="tsaludo">¿Qué quieres mejorar?</h1>
-    <p class="tsub">Toca hasta <b>3</b> — una sola rutina puede resolverlas juntas.</p>
+    <p class="tsub">Toca hasta <b>3</b> — te armo una sola rutina.</p>
     <div class="topciones" id="topciones"><button class="topcion" type="button" aria-pressed="false"><span class="oe">🎯</span><span class="ot">Manchas y tono disparejo</span><span class="oc">✓</span></button><button class="topcion" type="button" aria-pressed="false"><span class="oe">✨</span><span class="ot">Poros abiertos, grasa y brillo</span><span class="oc">✓</span></button><button class="topcion" type="button" aria-pressed="false"><span class="oe">🌿</span><span class="ot">Granitos y brotes</span><span class="oc">✓</span></button><button class="topcion" type="button" aria-pressed="false"><span class="oe">🌸</span><span class="ot">Piel reseca, sensible o irritada</span><span class="oc">✓</span></button><button class="topcion" type="button" aria-pressed="false"><span class="oe">⏳</span><span class="ot">Líneas, arrugas y flacidez</span><span class="oc">✓</span></button><button class="topcion" type="button" aria-pressed="false"><span class="oe">👁️</span><span class="ot">Ojeras, bolsas y contorno</span><span class="oc">✓</span></button><button class="topcion" type="button" aria-pressed="false"><span class="oe">🫧</span><span class="ot">Quiere GLOW / empezar desde cero</span><span class="oc">✓</span></button><button class="topcion" type="button" aria-pressed="false"><span class="oe">☀️</span><span class="ot">Protección de todos los días</span><span class="oc">✓</span></button><button class="topcion" type="button" aria-pressed="false"><span class="oe">🎁</span><span class="ot">Regalo o antojo</span><span class="oc">✓</span></button><button class="topcion" type="button" aria-pressed="false"><span class="oe">🎭</span><span class="ot">Mascarillas y consentirse</span><span class="oc">✓</span></button></div>
     <div class="avisomax" id="aviso-max" hidden>Elige las <b>2 o 3 que más te importan</b>: tu piel no puede tratarse todo a la vez, y la rutina se vuelve muy larga. Quita una para agregar otra.</div>
     <a class="tmision tselfie" href="../piel/"><span class="tmico">💬</span>
-      <span class="tmtxt"><b>¿No sabes qué marcar? Deja que te pregunte yo</b><small>7 preguntas, 1 minuto, y salgo con tu rutina — y si quieres, te guío zona por zona sobre tu propia selfie.</small></span>
+      <!-- las otras puertas ya perdieron su glosa; esta seguía con 22 palabras -->
+      <span class="tmtxt"><b>¿No sabes qué marcar? Deja que te pregunte yo</b><small>7 preguntas, 1 minuto.</small></span>
       <span class="tmfl">→</span></a>
     <div id="toculto" hidden><div class="chips"><button class="chip" type="button" aria-pressed="false" data-need="manchas"><span class="chico">🎯</span>Manchas y tono disparejo</button><button class="chip" type="button" aria-pressed="false" data-need="poros"><span class="chico">✨</span>Poros abiertos, grasa y brillo</button><button class="chip" type="button" aria-pressed="false" data-need="granitos"><span class="chico">🌿</span>Granitos y brotes</button><button class="chip" type="button" aria-pressed="false" data-need="sensible"><span class="chico">🌸</span>Piel reseca, sensible o irritada</button><button class="chip" type="button" aria-pressed="false" data-need="edad"><span class="chico">⏳</span>Líneas, arrugas y flacidez</button><button class="chip" type="button" aria-pressed="false" data-need="ojos"><span class="chico">👁️</span>Ojeras, bolsas y contorno</button><button class="chip" type="button" aria-pressed="false" data-need="glow"><span class="chico">🫧</span>Quiere GLOW / empezar desde cero</button><button class="chip" type="button" aria-pressed="false" data-need="sol"><span class="chico">☀️</span>Protección de todos los días</button><button class="chip" type="button" aria-pressed="false" data-need="regalo"><span class="chico">🎁</span>Regalo o antojo</button><button class="chip" type="button" aria-pressed="false" data-need="mascarillas"><span class="chico">🎭</span>Mascarillas y consentirse</button></div></div>
     <div class="strip">
