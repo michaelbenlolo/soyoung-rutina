@@ -7,7 +7,7 @@
 <meta name="description" content="Escanea los productos que compraste y llévate tu guía de uso en PDF: cuándo va cada uno, en qué orden, cuánto esperar entre capas y sus precauciones.">
 <meta name="robots" content="noindex">
 <meta name="x-contenido" content="45cb5353f3">
-<meta name="x-guia" content="f2865e1365">
+<meta name="x-guia" content="929749820a">
 <style>
 :root { --rosa:#D96C82; --rosad:#B94F66; --ink:#2A2226; --crema:#FBF6F4; --crema2:#FAEDEE;
   --mut:#8b7d82; --line:#F0DDE1; --texto:#584a4f; --am:#B98A2F; --pm:#4A5A8A; color-scheme: light; }
@@ -25,9 +25,16 @@ button { font:inherit; cursor:pointer; }
 .sello b { color:var(--rosad); }
 h1.gt { font-size:24px; line-height:1.2; margin:10px 0 4px; }
 p.gsub { font-size:13.5px; color:var(--texto); margin-bottom:14px; }
-.gpasos { display:flex; gap:7px; margin-bottom:14px; font-size:11px; color:var(--mut); }
-.gpasos b { display:block; font-size:12.5px; color:var(--ink); }
-.gpasos span { flex:1; background:#fff; border:1px solid var(--line); border-radius:12px; padding:8px 10px; }
+/* los tres pasos como SECUENCIA: número en círculo, unidos por una línea. Sustituyen al
+   párrafo que decía lo mismo en 3 renglones (Michael 2-ago) */
+.gpasos { position:relative; display:flex; gap:8px; margin:6px 0 16px; }
+.gpasos::before { content:""; position:absolute; top:23px; left:16%; right:16%;
+  border-top:1.5px dashed var(--line); z-index:0; }
+.gpasos span { position:relative; z-index:1; flex:1; text-align:center; font-size:11px;
+  line-height:1.3; color:var(--texto); }
+.gpasos b { display:flex; width:30px; height:30px; margin:0 auto 7px; border-radius:50%;
+  background:var(--rosa); color:#fff; font-size:14px; font-weight:800;
+  align-items:center; justify-content:center; box-shadow:0 0 0 4px var(--crema); }
 /* OJO con el COLOR: sin declararlo, Safari pinta el texto del <button> con su azul de
    sistema y el botón se ve como un enlace ajeno a la app (Michael 2-ago) */
 .gbtn { display:flex; align-items:center; gap:12px; width:100%; text-align:left; background:#fff;
@@ -194,11 +201,10 @@ p.gsub { font-size:13.5px; color:var(--texto); margin-bottom:14px; }
   <!-- ===== pantalla 1 · armar mi lista ===== -->
   <section id="g-armar">
     <h1 class="gt">🧾 Tu guía de uso</h1>
-    <p class="gsub">¿Ya tienes tus productos? Escanéalos y te doy <b>tu guía personalizada</b>: cuándo va cada uno, en qué orden, cuánto esperar entre capas y sus cuidados — <b>descargable en PDF</b>.</p>
     <div class="gpasos">
-      <span><b>1</b> Escanea o busca cada producto</span>
+      <span><b>1</b> Escanea tus productos</span>
       <span><b>2</b> Revisa tu lista</span>
-      <span><b>3</b> Tu guía lista para guardar</span>
+      <span><b>3</b> Guarda tu guía en PDF</span>
     </div>
 
     <button class="gbtn" id="btnscan" type="button"><span class="gi">📷</span>
@@ -210,7 +216,7 @@ p.gsub { font-size:13.5px; color:var(--texto); margin-bottom:14px; }
     </div>
 
     <div id="mios"></div>
-    <div id="vacio2">Aún no agregas productos. Escanea el <b>código de barras de la cajita</b> o búscalo por nombre — sirve para lo que compraste hoy o lo que ya tienes en casa (del corner).</div>
+    <div id="vacio2">Escanea el <b>código de barras</b> de cada producto, o búscalo por nombre.</div>
 
     <button id="vermiguia" type="button" disabled>Agrega tus productos ↑</button>
   </section>

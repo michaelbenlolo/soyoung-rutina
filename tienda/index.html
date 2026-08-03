@@ -5,7 +5,7 @@
 <meta name="description" content="Tu asesora K-beauty de bolsillo en el corner SO YOUNG: entiende cualquier producto del estante, arma tu rutina coreana y conoce precios de contado o en quincenas con tu vale.">
 <meta name="robots" content="noindex">
 <meta name="x-contenido" content="45cb5353f3">
-<meta name="x-tienda" content="71c68649ce">
+<meta name="x-tienda" content="f5f93c85c4">
 <meta name="theme-color" content="#FAF5F2">
 <title>SO YOUNG · Tu asesora de bolsillo</title>
 <style>
@@ -444,14 +444,16 @@ body { font-family:-apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, s
   background:var(--tcard); border:1px solid var(--tline); border-radius:99px; padding:5px 11px; }
 
 /* ---------- pantalla 1: misiones ---------- */
-.tsaludo { font-size:25px; font-weight:800; line-height:1.25; margin:10px 0 6px; }
+/* sin el párrafo de bienvenida debajo (Michael 2-ago: «estamos haciendo a los clientes
+   leer mucho»), el saludo se queda con el aire que aportaba ese <p> */
+.tsaludo { font-size:25px; font-weight:800; line-height:1.25; margin:10px 0 18px; }
 .tsub { font-size:13px; color:var(--tmut); margin-bottom:16px; }
 .tmision { display:flex; align-items:center; gap:13px; width:100%; text-align:left;
   background:var(--tcard); border:1px solid var(--tline); border-radius:18px;
-  padding:16px 15px; margin-bottom:10px; cursor:pointer; text-decoration:none;
+  padding:17px 15px; margin-bottom:10px; cursor:pointer; text-decoration:none;
   color:var(--tink); font-family:inherit; box-shadow:0 6px 18px rgba(90,60,60,.05); }
 .tmico { font-size:29px; flex:none; }
-.tmtxt b { display:block; font-size:14.5px; font-weight:800; }
+.tmtxt b { display:block; font-size:15.5px; font-weight:800; line-height:1.3; }
 .tmtxt small { display:block; font-size:11.5px; color:var(--tmut); margin-top:1px; line-height:1.35; }
 .tmfl { margin-left:auto; color:var(--trosa); font-weight:800; font-size:19px; flex:none; }
 .tmision:active { transform:scale(.985); }
@@ -665,18 +667,17 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
   <!-- ===== pantalla 1 · misiones ===== -->
   <section id="t-home">
     <h1 class="tsaludo">Hola 👋 ¿En qué te ayudo?</h1>
-    <p class="tsub">Soy tu asesora de bolsillo aquí en el corner: entiendo cualquier producto del estante y te armo tu rutina con precios y quincenas.</p>
 
     <a class="tmision" href="../buscar/"><span class="tmico">🔎</span>
-      <span class="tmtxt"><b>Conoce y compara los productos</b><small>Escanéalo o escríbelo: qué es, su precio y comparaciones — y todo el corner, marca por marca.</small></span>
+      <span class="tmtxt"><b>Conoce y compara los productos</b></span>
       <span class="tmfl">→</span></a>
 
     <a class="tmision" href="#t-elegir"><span class="tmico">✨</span>
-      <span class="tmtxt"><b>Ármame mi rutina</b><small>Dime qué quieres mejorar (hasta 3 cosas) y te la armo paso por paso, con precios y quincenas. ¿No sabes por dónde empezar? Te lo pregunto yo.</small></span>
+      <span class="tmtxt"><b>Ármame mi rutina</b></span>
       <span class="tmfl">→</span></a>
 
     <a class="tmision" href="../guia/"><span class="tmico">🧾</span>
-      <span class="tmtxt"><b>Ya compré — ¿cómo los uso?</b><small>Escanea tus productos y llévate tu guía de uso en PDF: orden, esperas y cuidados.</small></span>
+      <span class="tmtxt"><b>Ya compré — ¿cómo los uso?</b></span>
       <span class="tmfl">→</span></a>
 
     <div class="tconf"><span><b>✓</b> 100% original de Corea</span><span><b>✓</b> Quincenas con tu vale</span><span><b>✓</b> Tu asesora te lo aparta hoy</span></div>
