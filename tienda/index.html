@@ -5,7 +5,7 @@
 <meta name="description" content="Tu asesora K-beauty de bolsillo en la tienda SO YOUNG: entiende cualquier producto del estante, arma tu rutina coreana y conoce precios de contado o en quincenas con tu vale.">
 <meta name="robots" content="noindex">
 <meta name="x-contenido" content="382296da8f">
-<meta name="x-tienda" content="1e5388b4c7">
+<meta name="x-tienda" content="1858e513d6">
 <meta name="theme-color" content="#FAF5F2">
 <title>SO YOUNG · Tu asesora de bolsillo</title>
 <style>
@@ -465,31 +465,51 @@ body { font-family:-apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, s
 .tsaludo { font-size:25px; font-weight:800; line-height:1.25; margin:10px 0 18px; }
 .tsaludo em { font-style:normal; color:var(--trosa); }
 .tsub { font-size:13px; color:var(--tmut); margin-bottom:16px; }
+/* ===== portada nueva: bienvenida sobre degradado rosa ===== */
+.thero { background:linear-gradient(157deg,#FDEBF2 0%,#FBDCE7 52%,#FDF4F6 100%);
+  border-radius:22px; padding:20px 18px 22px; margin:6px 0 14px; }
+.thbien { font-size:15px; font-style:italic; font-weight:600; color:#DE7099; }
+.thtit { font-size:33px; font-weight:800; line-height:1.03; letter-spacing:-.015em; margin:4px 0 0; }
+.thtit em { font-style:normal; color:var(--trosa); }
+.thq { font-size:15px; font-weight:800; margin-top:15px; }
+.thsub { font-size:12.5px; color:#8A7076; line-height:1.4; margin-top:3px; }
+
 .tmision { display:flex; align-items:center; gap:13px; width:100%; text-align:left;
   background:var(--tcard); border:1px solid var(--tline); border-radius:18px;
   padding:14px 15px; margin-bottom:9px; cursor:pointer; text-decoration:none;
   color:var(--tink); font-family:inherit; box-shadow:0 6px 18px rgba(90,60,60,.05); }
+/* la puerta que da dinero va PRIMERO y se ve primero: fondo rosa y su sello */
+.tmision.pri { background:linear-gradient(100deg,#FBDCE8 0%,#F7C7D9 100%);
+  border-color:#F2B7CC; box-shadow:0 10px 26px rgba(185,79,102,.16); }
+.tmision.pri .tmfl { background:var(--trosa); color:#fff; }
+.tbadge { display:inline-flex; font-style:normal; font-size:8.5px; font-weight:800;
+  letter-spacing:.1em; color:#fff; background:var(--trosa); border-radius:99px;
+  padding:3px 9px; margin-bottom:6px; }
 /* MEDALLÓN, no emoji suelto (Michael 2-ago, sobre la portada: «¿cómo mejorarías esto?»).
    Los tres emojis son de familias visuales distintas —lupa gris 3D, chispas amarillas,
    recibo blanco ilegible en chico— y flotando en una tarjeta ancha se veían perdidos.
    Un círculo de color detrás les da marco común, los agranda y llena el lado izquierdo:
    la fila se lee como un juego de tres, no como tres dibujos que no se conocen. */
-.tmico { flex:none; width:46px; height:46px; border-radius:50%; display:flex;
-  align-items:center; justify-content:center; font-size:23px; background:var(--tsuave); }
-.tmico.a { background:#EAF0F7; }     /* conocer y comparar */
-.tmico.b { background:#FCEFD8; }     /* armar la rutina */
-.tmico.c { background:#E8F2EA; }     /* ya compré */
+.tmico { flex:none; width:50px; height:50px; border-radius:50%; display:flex;
+  align-items:center; justify-content:center; font-size:23px; background:#fff;
+  box-shadow:0 0 0 1px #F5DFE6 inset; color:var(--trosa); }
+.tmico svg { width:25px; height:25px; }
 .tmtxt b { display:block; font-size:15.5px; font-weight:800; line-height:1.3; }
 .tmtxt small { display:block; font-size:11.5px; color:var(--tmut); margin-top:1px; line-height:1.35; }
-.tmfl { margin-left:auto; color:var(--trosa); font-weight:800; font-size:19px; flex:none; }
+/* flecha dentro de un círculo, como el diseño de referencia */
+.tmfl { margin-left:auto; flex:none; width:32px; height:32px; border-radius:50%;
+  background:var(--tsuave); color:var(--trosa); display:flex; align-items:center;
+  justify-content:center; font-weight:800; font-size:15px; }
 .tmision:active { transform:scale(.985); }
 .tmision:focus-visible { outline:2px solid var(--trosa); outline-offset:2px; }
 
-/* tres columnas iguales: con flex-wrap caían 2 y 1, que se ve descuidado */
-.tconf { display:grid; grid-template-columns:repeat(3,1fr); gap:9px; margin:16px 2px 4px;
-  font-size:9.5px; color:var(--tmut); line-height:1.35; }
-.tconf span { display:flex; gap:5px; align-items:flex-start; }
-.tconf b { color:var(--tverde); flex:none; }
+/* tres columnas separadas por hairlines, con su icono arriba (diseño de referencia) */
+.tconf { display:grid; grid-template-columns:repeat(3,1fr); margin:20px 0 4px; }
+.tconf span { display:flex; flex-direction:column; align-items:center; text-align:center;
+  gap:7px; padding:2px 7px; border-left:1px solid var(--tline); }
+.tconf span:first-child { border-left:0; }
+.tconf svg { width:22px; height:22px; color:var(--trosa); }
+.tconf em { font-style:normal; font-size:9.5px; color:var(--tmut); line-height:1.35; }
 
 .tseccion { font-size:11px; font-weight:800; letter-spacing:.14em; color:var(--tmut);
   margin:20px 2px 8px; }
@@ -524,9 +544,11 @@ body { font-family:-apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, s
   font-weight:700; color:var(--trosa); cursor:pointer; padding:6px 0; display:inline-block;
   text-decoration:none; }
 /* la selfie como opción DENTRO del flujo (ya no es puerta aparte) */
-.tselfie .tmico { background:#fff; }
-.tselfie { border:1.5px dashed var(--trosa); background:var(--tsuave); box-shadow:none;
-  margin-top:14px; }
+/* blanca y tranquila, como en el diseño de referencia: es la salida para quien no
+   sabe qué marcar, no debe competir con las diez opciones de arriba */
+.tselfie { background:var(--tcard); border:1px solid var(--tline);
+  box-shadow:0 3px 12px rgba(120,80,90,.07); margin-top:14px; }
+.tselfie .tmico { background:#F4EFF0; box-shadow:none; width:46px; height:46px; font-size:21px; }
 /* respaldo sin JavaScript: las puertas son anclas; si el JS no corre, el ancla
    igual muestra su pantalla (encimada a la portada, pero navegable) */
 /* respaldo SOLO sin JavaScript: con JS vivo, el :target se queda pegado tras
@@ -538,17 +560,20 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
    descripción: en un teléfono de 390 px cada tarjeta mide 176, y con el círculo de
    selección a la derecha el texto se queda con ~100 — una línea más de gris ahí no
    se lee, estorba. */
-.topcion { position:relative; display:flex; align-items:center; gap:9px; text-align:left;
-  background:var(--tcard); border:1.5px solid var(--tline); border-radius:16px;
-  padding:11px 30px 11px 11px; min-height:62px; cursor:pointer;
-  font-family:inherit; color:var(--tink); }
-/* mismo medallón que las puertas de la portada, en chico */
-.topcion .oe { flex:none; width:34px; height:34px; border-radius:50%; display:flex;
-  align-items:center; justify-content:center; font-size:18px; background:var(--tsuave); }
-.topcion .ot { display:block; font-size:11.8px; font-weight:800; line-height:1.25; }
-.topcion .oc { position:absolute; top:50%; margin-top:-10px; right:9px;
-  width:20px; height:20px; border-radius:50%;
-  border:1.5px solid var(--tline); font-size:11px; line-height:18px; text-align:center;
+/* 2ª vuelta (Michael 2-ago: «quedó similar pero me gusta más este»): medallón MÁS
+   GRANDE, tarjeta sin borde duro —sombra suave, como flotando— y el círculo de
+   selección como aro rosa fino. La diferencia con la primera versión es de aire:
+   la tarjeta respira y el emoji pesa lo suficiente para reconocerse de un vistazo. */
+.topcion { position:relative; display:flex; align-items:center; gap:10px; text-align:left;
+  background:var(--tcard); border:1.5px solid transparent; border-radius:18px;
+  padding:13px 32px 13px 12px; min-height:76px; cursor:pointer;
+  box-shadow:0 3px 12px rgba(120,80,90,.07); font-family:inherit; color:var(--tink); }
+.topcion .oe { flex:none; width:46px; height:46px; border-radius:50%; display:flex;
+  align-items:center; justify-content:center; font-size:24px; background:var(--tsuave); }
+.topcion .ot { display:block; font-size:12.4px; font-weight:800; line-height:1.28; }
+.topcion .oc { position:absolute; top:50%; margin-top:-10.5px; right:10px;
+  width:21px; height:21px; border-radius:50%;
+  border:1.5px solid #EFCEDA; font-size:11px; line-height:19px; text-align:center;
   color:transparent; }
 .topcion.on { border-color:var(--trosa); background:var(--tsuave); }
 .topcion.on .oc { background:var(--trosa); border-color:var(--trosa); color:#fff; }
@@ -709,27 +734,37 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
 
   <!-- ===== pantalla 1 · misiones ===== -->
   <section id="t-home">
-    <h1 class="tsaludo">Hola 👋 ¿En qué te ayudo?</h1>
+    <!-- PORTADA NUEVA (Michael 2-ago: «cambia la página principal para que sea así»).
+         Bienvenida grande sobre degradado rosa, la puerta de la rutina DESTACADA con
+         su sello «empieza aquí», y los iconos dibujados en línea rosa en vez de emoji
+         suelto: los tres emojis eran de familias visuales distintas y no hacían juego. -->
+    <div class="thero">
+      <div class="thbien">✨ Bienvenida a</div>
+      <h1 class="thtit">SO YOUNG<br><em>K-BEAUTY</em></h1>
+      <div class="thq">¿Qué quieres hacer hoy?</div>
+      <div class="thsub">Te ayudamos a encontrar la rutina perfecta para tu piel.</div>
+    </div>
 
-    <a class="tmision" href="../buscar/"><span class="tmico a">🔎</span>
+    <a class="tmision pri" href="#t-elegir"><span class="tmico"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11 2.4l1.8 4.8 4.8 1.8-4.8 1.8L11 15.6l-1.8-4.8L4.4 9l4.8-1.8z"/><path d="M18.4 13.6l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z"/><path d="M5.6 16l.6 1.7 1.7.6-1.7.6-.6 1.7-.6-1.7L3.3 18.3l1.7-.6z"/></svg></span>
+      <span class="tmtxt"><i class="tbadge">★ EMPIEZA AQUÍ</i><b>Ármame mi rutina coreana&nbsp;🇰🇷</b></span>
+      <span class="tmfl">→</span></a>
+
+    <a class="tmision" href="../buscar/"><span class="tmico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><circle cx="10.4" cy="10.4" r="6.3"/><path d="M15.1 15.1L20.8 20.8"/></svg></span>
       <span class="tmtxt"><b>Conoce y compara los productos</b></span>
       <span class="tmfl">→</span></a>
 
-    <!-- Michael 2-ago: «prefiero las estrellas en Ármame mi rutina coreana». El ✨ vuelve
-         al lugar del icono (es el que da el brillo de la puerta) y la 🇰🇷 queda PEGADA a
-         la palabra «coreana», que fue el pedido original («al lado de coreana»). -->
-    <a class="tmision" href="#t-elegir"><span class="tmico b">✨</span>
-      <span class="tmtxt"><b>Ármame mi rutina coreana 🇰🇷</b></span>
-      <span class="tmfl">→</span></a>
-
-    <a class="tmision" href="../guia/"><span class="tmico c">🧾</span>
+    <a class="tmision" href="../guia/"><span class="tmico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.6 2.9h3.2v2.6H8.6z"/><rect x="7.2" y="5.5" width="6" height="15.6" rx="2.1"/><rect x="14.9" y="12.4" width="6.4" height="8.7" rx="1.7"/><path d="M16.7 12.4v-1.6h2.8v1.6"/></svg></span>
       <span class="tmtxt"><b>Ya compré — ¿cómo los uso?</b></span>
       <span class="tmfl">→</span></a>
 
-    <div class="tconf"><span><b>✓</b> 100% original de Corea</span><span><b>✓</b> Quincenas con tu vale</span><span><b>✓</b> Tu asesora te lo aparta hoy</span></div>
-
-    <div class="tseccion">🔥 LOS QUE TODOS SE LLEVAN</div>
-    <div class="trail"><button class="pname tprod" data-p="1" type="button"><img src="../p/B0DG1DQ2S7.jpg" alt="Azelaic Acid 10 Serum 30ml" loading="lazy"><b>Azelaic Acid 10 Serum 30ml</b><small>ANUA</small><em>$753</em><i>ó 12 quincenas de $88</i></button><button class="pname tprod" data-p="22" type="button"><img src="../p/B0FKGJYFC8.jpg" alt="345 Relief Cream 50ml" loading="lazy"><b>345 Relief Cream 50ml</b><small>DR.ALTHEA</small><em>$543</em><i>ó 12 quincenas de $63</i></button><button class="pname tprod" data-p="115" type="button"><img src="../p/8809576261318.jpg" alt="Centella Cream 30ml (mini)" loading="lazy"><b>Centella Cream 30ml (mini)</b><small>SKIN1004</small><em>$196</em><i>ó 8 quincenas de $34</i></button><button class="pname tprod" data-p="103" type="button"><img src="../p/B0FXH5LHN8.jpg" alt="Hyalu-Cica Water-Fit Sun Serum 50ml" loading="lazy"><b>Hyalu-Cica Water-Fit Sun Serum 50ml</b><small>SKIN1004</small><em>$401</em><i>ó 10 quincenas de $56</i></button><button class="pname tprod" data-p="28" type="button"><img src="../p/B09V7Z4TJG.jpg" alt="Zero Pore Pad 2.0 (toallitas)" loading="lazy"><b>Zero Pore Pad 2.0 (toallitas)</b><small>Medicube</small><em>$443</em><i>ó 10 quincenas de $62</i></button><button class="pname tprod" data-p="121" type="button"><img src="../p/B0B2RM68G2.jpg" alt="Bio-Collagen Real Deep Mask (1 pza)" loading="lazy"><b>Bio-Collagen Real Deep Mask (1 pza)</b><small>BIODANCE</small><em>$383</em><i>ó 10 quincenas de $54</i></button><button class="pname tprod" data-p="2" type="button"><img src="../p/B0FVT77ZLL.jpg" alt="PDRN Hyaluronic Capsule Mist 100ml" loading="lazy"><b>PDRN Hyaluronic Capsule Mist 100ml</b><small>ANUA</small><em>$823</em><i>ó 12 quincenas de $96</i></button><button class="pname tprod" data-p="132" type="button"><img src="../p/B0GHMZXX8Y.jpg" alt="PDRN Pink Collagen Multi Balm 10g" loading="lazy"><b>PDRN Pink Collagen Multi Balm 10g</b><small>Medicube</small><em>$483</em><i>ó 12 quincenas de $56</i></button><button class="pname tprod" data-p="39" type="button"><img src="../p/B0DBF65JYY.jpg" alt="PDRN Pink Peptide Serum 30ml" loading="lazy"><b>PDRN Pink Peptide Serum 30ml</b><small>Medicube</small><em>$402</em><i>ó 10 quincenas de $56</i></button></div>
+    <!-- las tres son VERDAD y verificables aquí: originalidad, asesoría sin costo y el
+         vale de BHermanos. (El «envío rápido a todo México» del diseño de referencia NO
+         va: esto es el corner dentro de la tienda, no hay envíos.) -->
+    <div class="tconf">
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.6l2.1 1.5 2.6-.2.9 2.5 2.2 1.4-.9 2.5.9 2.5-2.2 1.4-.9 2.5-2.6-.2L12 21l-2.1-1.5-2.6.2-.9-2.5-2.2-1.4.9-2.5-.9-2.5 2.2-1.4.9-2.5 2.6.2z"/><path d="M8.9 12.1l2.1 2.1 4-4.2"/></svg><em>Productos 100% originales de Corea</em></span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.2S3.7 15.1 3.7 9.4a4.5 4.5 0 0 1 8.3-2.5 4.5 4.5 0 0 1 8.3 2.5c0 5.7-8.3 10.8-8.3 10.8z"/></svg><em>Asesoría personalizada sin costo</em></span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.7" y="5.4" width="18.6" height="13.2" rx="2.4"/><path d="M2.7 10.1h18.6M6.4 14.7h3.7"/></svg><em>Quincenas con tu vale BHermanos</em></span>
+    </div>
 
     <div class="tpie">
       <!-- El aviso es necesario, pero eran 3 renglones de letra chica cerrando la
@@ -745,7 +780,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
   <section id="t-elegir" hidden>
     <a class="tvolver" href="#t-home">← Volver</a>
     <h1 class="tsaludo">¿Qué quieres <em>mejorar</em> con tu piel?</h1>
-    <p class="tsub">Toca hasta <b>3</b> — te armo una sola rutina.</p>
+    <p class="tsub">Elige hasta <b>3</b> y te armamos tu rutina ideal.</p>
     <div class="topciones" id="topciones"><button class="topcion" type="button" aria-pressed="false"><span class="oe" style="background:#FBE6E6">🎯</span><span class="ot">Manchas y tono disparejo</span><span class="oc">✓</span></button><button class="topcion" type="button" aria-pressed="false"><span class="oe" style="background:#E7F0F8">🫧</span><span class="ot">Poros abiertos, grasa y brillo</span><span class="oc">✓</span></button><button class="topcion" type="button" aria-pressed="false"><span class="oe" style="background:#E9F2E4">🌿</span><span class="ot">Granitos y brotes</span><span class="oc">✓</span></button><button class="topcion" type="button" aria-pressed="false"><span class="oe" style="background:#FBE7EF">🌸</span><span class="ot">Piel reseca, sensible o irritada</span><span class="oc">✓</span></button><button class="topcion" type="button" aria-pressed="false"><span class="oe" style="background:#F6EAE0">⏳</span><span class="ot">Líneas, arrugas y flacidez</span><span class="oc">✓</span></button><button class="topcion" type="button" aria-pressed="false"><span class="oe" style="background:#F1E9E2">👁️</span><span class="ot">Ojeras, bolsas y contorno</span><span class="oc">✓</span></button><button class="topcion" type="button" aria-pressed="false"><span class="oe" style="background:#FCF2DA">✨</span><span class="ot">Más brillo (glow)</span><span class="oc">✓</span></button><button class="topcion" type="button" aria-pressed="false"><span class="oe" style="background:#FDE9CE">☀️</span><span class="ot">Protección de todos los días</span><span class="oc">✓</span></button><button class="topcion" type="button" aria-pressed="false"><span class="oe" style="background:#FAE4E4">🎁</span><span class="ot">Regalo o antojo</span><span class="oc">✓</span></button><button class="topcion" type="button" aria-pressed="false"><span class="oe" style="background:#EFE9F6">🧖</span><span class="ot">Mascarillas y consentirse</span><span class="oc">✓</span></button></div>
     <div class="avisomax" id="aviso-max" hidden>Elige las <b>2 o 3 que más te importan</b>: tu piel no puede tratarse todo a la vez, y la rutina se vuelve muy larga. Quita una para agregar otra.</div>
     <a class="tmision tselfie" href="../piel/"><span class="tmico">💬</span>
@@ -5514,7 +5549,7 @@ q.addEventListener("input", () => {
     const cta = $("tarmar");
     cta.disabled = n === 0;
     cta.textContent = n === 0 ? "Elige al menos 1"
-      : (n === 1 ? "ARMAR MI RUTINA →" : `ARMAR MI RUTINA (${n}) →`);
+      : (n === 1 ? "✨ Arma mi rutina ideal" : `✨ Arma mi rutina ideal (${n})`);
   }
 
   // la asesora teclea un codigo SY → la lista de la clienta aparece tal cual
