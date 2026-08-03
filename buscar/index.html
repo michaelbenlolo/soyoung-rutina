@@ -5,8 +5,8 @@
 <meta name="robots" content="noindex">
 <meta name="description" content="¿Qué producto estás viendo? Escanea su código de barras o escribe su nombre: te decimos qué es, cuánto cuesta y con qué rutina va.">
 <title>SO YOUNG · ¿Qué producto estás viendo?</title>
-<meta name="x-contenido" content="fa1d2cbb90">
-<meta name="x-buscar" content="85539cd210">
+<meta name="x-contenido" content="2756efd7e6">
+<meta name="x-buscar" content="6bace18dcb">
 <style>
 :root { --rosa:#D96C82; --rosad:#B94F66; --ink:#2A2226; --crema:#FBF6F4; --crema2:#FAEDEE;
   --mut:#8b7d82; --line:#F0DDE1; --texto:#584a4f; color-scheme: light; }
@@ -82,8 +82,15 @@ details.col, .mv { scroll-margin-top:58px; }   /* la barra fija no tapa el desti
 .cbadge { flex:none; font-size:8px; font-weight:700; color:#fff; padding:3px 7px; border-radius:99px; letter-spacing:.06em; white-space:nowrap; }
 .ccnt { flex:none; font-size:10px; color:var(--mut); background:var(--crema); border-radius:99px; padding:2px 7px; }
 .cbody { padding:0 13px 13px; }
-.cficha { display:flex; flex-direction:column; gap:5px; font-size:12.3px; color:var(--texto); line-height:1.45;
-  background:var(--crema); border-radius:11px; padding:11px 13px; }
+/* la ficha nace PLEGADA: quien ya sabe qué es el producto no tiene por qué leerla, y
+   quien quiere el detalle lo abre (Michael 2-ago: «se puede mantener cerrado tipo las
+   preguntas y que el cliente lo abra si quiere — se debe aplicar para todo») */
+.cficha { margin-top:8px; }
+.cficha > summary { list-style:none; cursor:pointer; font-size:11.5px; font-weight:700;
+  color:var(--rosad); padding:7px 0; }
+.cficha > summary::-webkit-details-marker { display:none; }
+.cficha > div { font-size:12.5px; color:var(--texto); line-height:1.5; margin-top:5px; }
+.cficha > div b { color:var(--ink); }
 .cficha b { color:var(--ink); }
 .cgancho { font-size:12.5px; line-height:1.45; background:var(--crema2); border-left:3px solid var(--rosa);
   border-radius:0 10px 10px 0; padding:9px 12px; margin-top:8px; }
@@ -780,11 +787,11 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
         <span class="cbadge" style="background:#D96C82">🎯 RUTINA COMPLETA</span>
         <span class="ccnt">15</span></summary>
       <div class="cbody">
-        <div class="cficha">
+        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
           <div><b>¿Qué tiene?</b> PDRN, un regenerador que ayuda a la piel a repararse sola, con péptidos rosados</div>
           <div><b>¿Para quién es?</b> Si viste el sérum rosa en TikTok y quieres ese efecto «piel de vidrio». De los 25 en adelante.</div>
           <div><b>¿Qué va a notar?</b> Piel más rellenita y luminosa; la textura se siente más lisa desde las primeras semanas.</div>
-        </div>
+        </details>
         <div class="cgancho">💬 «Esta es la línea rosa que es viral en TikTok — y aquí la tienes original.»</div>
         <div class="linea">
       <div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">⭐</span>
@@ -920,11 +927,11 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
         <span class="cbadge" style="background:#D96C82">🎯 RUTINA COMPLETA</span>
         <span class="ccnt">7</span></summary>
       <div class="cbody">
-        <div class="cficha">
+        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
           <div><b>¿Qué tiene?</b> Ácidos suaves y arcilla que limpian por dentro del poro</div>
           <div><b>¿Para quién es?</b> Piel grasa o mixta, con puntos negros y brillo en la zona T.</div>
           <div><b>¿Qué va a notar?</b> El poro se ve más pequeño y la piel deja de brillar a media tarde.</div>
-        </div>
+        </details>
         <div class="cgancho">💬 «Pásate la toallita por la nariz y mira lo que sale — por eso es la más viral.»</div>
         <div class="linea">
       <div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">⭐</span>
@@ -1013,11 +1020,11 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
         <span class="cbadge" style="background:#C25E78">🎯 LÍNEA BASE</span>
         <span class="ccnt">7</span></summary>
       <div class="cbody">
-        <div class="cficha">
+        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
           <div><b>¿Qué tiene?</b> Colágeno triple, en textura de gelatina que se derrite en la piel</div>
           <div><b>¿Para quién es?</b> Si pasas de los 30, o sientes la piel «caída» y sin vida.</div>
           <div><b>¿Qué va a notar?</b> Piel más firme y descansada; la crema gelatina es de las más vendidas de la tienda.</div>
-        </div>
+        </details>
         <div class="cgancho">💬 «Toca la textura — es una gelatina. Por eso se volvió viral.»</div>
         <div class="linea">
       <div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">⭐</span>
@@ -1098,11 +1105,11 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
         <span class="cbadge" style="background:#7FA86B">➕ REFUERZO</span>
         <span class="ccnt">5</span></summary>
       <div class="cbody">
-        <div class="cficha">
+        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
           <div><b>¿Qué tiene?</b> Ácido kójico + cúrcuma, la dupla clásica para aclarar</div>
           <div><b>¿Para quién es?</b> Manchas que te dejó el embarazo, el sol o los años — de las que no se van con nada.</div>
           <div><b>¿Qué va a notar?</b> El tono se empareja poco a poco: se nota entre la cuarta y la octava semana.</div>
-        </div>
+        </details>
         <div class="cgancho">💬 «Esta es la artillería pesada para manchas — y sin bloqueador no funciona.»</div>
         <div class="linea">
       <div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">⭐</span>
@@ -1157,11 +1164,11 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
         <span class="cbadge" style="background:#7FA86B">➕ REFUERZO</span>
         <span class="ccnt">3</span></summary>
       <div class="cbody">
-        <div class="cficha">
+        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
           <div><b>¿Qué tiene?</b> Vitamina C encapsulada, que no se oxida ni pica</div>
           <div><b>¿Para quién es?</b> Piel cansada, sin brillo, con tono disparejo. Ideal si los ácidos fuertes te pican.</div>
           <div><b>¿Qué va a notar?</b> La piel se ve más despierta desde los primeros días; el tono se empareja con el uso.</div>
-        </div>
+        </details>
         <div class="cgancho">💬 «¿Te dicen que te ves cansada? Esto es luz en frasco.»</div>
         <div class="linea">
       <div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">⭐</span>
@@ -1213,11 +1220,11 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
         <span class="cbadge" style="background:#7FA86B">➕ REFUERZO</span>
         <span class="ccnt">2</span></summary>
       <div class="cbody">
-        <div class="cficha">
+        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
           <div><b>¿Qué tiene?</b> Ácido tranexámico + niacinamida, despigmentantes suaves de uso diario</div>
           <div><b>¿Para quién es?</b> Si ya no te salen granitos pero te quedaron las manchitas oscuras.</div>
           <div><b>¿Qué va a notar?</b> Las marcas se aclaran gradualmente sin irritar la piel.</div>
-        </div>
+        </details>
         <div class="cgancho">💬 «Los granitos ya se fueron; ahora vamos por la marca que dejaron.»</div>
         <div class="linea">
       <div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">⭐</span>
@@ -1257,11 +1264,11 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
         <span class="cbadge" style="background:#7FA86B">➕ REFUERZO</span>
         <span class="ccnt">2</span></summary>
       <div class="cbody">
-        <div class="cficha">
+        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
           <div><b>¿Qué tiene?</b> Ácido hialurónico + ceramidas, que retienen agua y reparan la barrera</div>
           <div><b>¿Para quién es?</b> Cualquier piel — sobre todo si vives en clima seco o pasas el día con aire acondicionado.</div>
           <div><b>¿Qué va a notar?</b> La piel deja de sentirse tirante; se ve más jugosa.</div>
-        </div>
+        </details>
         <div class="cgancho">💬 «Esta le queda a todas — la hidratación es la base de todo lo demás.»</div>
         <div class="linea">
       <div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">⭐</span>
@@ -1300,11 +1307,11 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
         <span class="cbadge" style="background:#7FA86B">➕ REFUERZO</span>
         <span class="ccnt">2</span></summary>
       <div class="cbody">
-        <div class="cficha">
+        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
           <div><b>¿Qué tiene?</b> Glutatión, el antioxidante estrella de Corea para el tono</div>
           <div><b>¿Para quién es?</b> Si buscas un brillo parejo y saludable, no solo quitar una mancha.</div>
           <div><b>¿Qué va a notar?</b> Tono más parejo y luminoso con el uso constante.</div>
-        </div>
+        </details>
         <div class="cgancho">💬 «Esto no es para una mancha: es para que TODO el tono se vea parejo.»</div>
         <div class="linea">
       <div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">⭐</span>
@@ -1344,11 +1351,11 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
         <span class="cbadge" style="background:#7FA86B">➕ REFUERZO</span>
         <span class="ccnt">2</span></summary>
       <div class="cbody">
-        <div class="cficha">
+        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
           <div><b>¿Qué tiene?</b> Ácido azelaico, de los pocos que sirve para acné y rosácea a la vez</div>
           <div><b>¿Para quién es?</b> Piel con brotes que además se pone roja e irritada.</div>
           <div><b>¿Qué va a notar?</b> Menos granitos nuevos y menos rojez, sin resecar.</div>
-        </div>
+        </details>
         <div class="cgancho">💬 «Este calma el granito sin dejarte la cara como lija.»</div>
         <div class="linea">
       <div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">⭐</span>
@@ -1388,11 +1395,11 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
         <span class="cbadge" style="background:#7FA86B">➕ REFUERZO</span>
         <span class="ccnt">1</span></summary>
       <div class="cbody">
-        <div class="cficha">
+        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
           <div><b>¿Qué tiene?</b> EGF + NAD, tecnología de regeneración celular</div>
           <div><b>¿Para quién es?</b> Si ya usas de todo y quieres subir al siguiente nivel.</div>
           <div><b>¿Qué va a notar?</b> Piel más firme y densa; es un tratamiento de fondo, no de efecto inmediato.</div>
-        </div>
+        </details>
         <div class="cgancho">💬 «Si ya probaste todo, esto es lo más nuevo que hay en Corea.»</div>
         <div class="linea">
       <div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">⭐</span>
@@ -1431,11 +1438,11 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
         <span class="cbadge" style="background:#D96C82">🎯 RUTINA COMPLETA</span>
         <span class="ccnt">9</span></summary>
       <div class="cbody">
-        <div class="cficha">
+        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
           <div><b>¿Qué tiene?</b> Centella asiática de Madagascar pura: la planta que desinflama</div>
           <div><b>¿Para quién es?</b> Piel sensible o reactiva — o si apenas empiezas y no quieres arriesgarte.</div>
           <div><b>¿Qué va a notar?</b> Baja la rojez y la irritación; la piel se siente tranquila.</div>
-        </div>
+        </details>
         <div class="cgancho">💬 «Un solo ingrediente, cero perfume. Si todo te irrita, empieza aquí.»</div>
         <div class="linea">
       <div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">⭐</span>
@@ -1518,11 +1525,11 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
         <span class="cbadge" style="background:#D96C82">🎯 RUTINA COMPLETA</span>
         <span class="ccnt">7</span></summary>
       <div class="cbody">
-        <div class="cficha">
+        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
           <div><b>¿Qué tiene?</b> Árbol de té + centella: desinflama el brote sin resecar</div>
           <div><b>¿Para quién es?</b> Piel con acné activo, adolescentes, o brotes de temporada.</div>
           <div><b>¿Qué va a notar?</b> Los granitos bajan más rápido y dejan menos marca.</div>
-        </div>
+        </details>
         <div class="cgancho">💬 «Aquí está todo el paso a paso para los granitos, de la misma línea.»</div>
         <div class="linea">
       <div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">⭐</span>
@@ -1593,11 +1600,11 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
         <span class="cbadge" style="background:#D96C82">🎯 RUTINA COMPLETA</span>
         <span class="ccnt">7</span></summary>
       <div class="cbody">
-        <div class="cficha">
+        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
           <div><b>¿Qué tiene?</b> Centella + ácido hialurónico: calma y llena de agua</div>
           <div><b>¿Para quién es?</b> Piel seca que además se irrita. Y su bloqueador le queda a cualquier piel.</div>
           <div><b>¿Qué va a notar?</b> Piel jugosa y en calma; el Water-Fit Sun Serum es EL bloqueador viral.</div>
-        </div>
+        </details>
         <div class="cgancho">💬 «Ponte una gota del bloqueador en la mano: se siente como sérum, no deja blanco.»</div>
         <div class="linea">
       <div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">⭐</span>
@@ -1668,11 +1675,11 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
         <span class="cbadge" style="background:#D96C82">🎯 RUTINA COMPLETA</span>
         <span class="ccnt">6</span></summary>
       <div class="cbody">
-        <div class="cficha">
+        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
           <div><b>¿Qué tiene?</b> Centella + activos que limpian y afinan el poro</div>
           <div><b>¿Para quién es?</b> Piel grasa que además es sensible (no aguanta lo agresivo).</div>
           <div><b>¿Qué va a notar?</b> Poro más fino y menos grasa, sin la resequedad de los productos fuertes.</div>
-        </div>
+        </details>
         <div class="cgancho">💬 «Es la línea de poros para piel que no aguanta lo agresivo.»</div>
         <div class="linea">
       <div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">⭐</span>
@@ -1756,11 +1763,11 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
         <span class="cbadge" style="background:#7FA86B">➕ REFUERZO</span>
         <span class="ccnt">4</span></summary>
       <div class="cbody">
-        <div class="cficha">
+        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
           <div><b>¿Qué tiene?</b> Probióticos + centella + bakuchiol (el «retinol vegetal»)</div>
           <div><b>¿Para quién es?</b> Piel madura o debilitada, si quieres anti-edad sin irritación.</div>
           <div><b>¿Qué va a notar?</b> Piel más resistente y elástica; el bakuchiol trabaja las líneas sin picar.</div>
-        </div>
+        </details>
         <div class="cgancho">💬 «Es anti-edad para quien no tolera el retinol.»</div>
         <div class="linea">
       <div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">⭐</span>
@@ -1822,11 +1829,11 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
         <span class="cbadge" style="background:#7FA86B">➕ REFUERZO</span>
         <span class="ccnt">3</span></summary>
       <div class="cbody">
-        <div class="cficha">
+        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
           <div><b>¿Qué tiene?</b> Centella + activos iluminadores, con bloqueador con color</div>
           <div><b>¿Para quién es?</b> Si quieres verte despierta ya, aunque las manchas tarden en irse.</div>
           <div><b>¿Qué va a notar?</b> Resultado inmediato de tono parejo; a largo plazo, aclara.</div>
-        </div>
+        </details>
         <div class="cgancho">💬 «El bloqueador con color te empareja el tono al instante — pruébatelo.»</div>
         <div class="linea">
       <div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">⭐</span>
@@ -1876,11 +1883,11 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
         <span class="cbadge" style="background:#7FA86B">➕ REFUERZO</span>
         <span class="ccnt">2</span></summary>
       <div class="cbody">
-        <div class="cficha">
+        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
           <div><b>¿Qué tiene?</b> Retinol 0.2% o Niacinamida 10%, en frasco pequeño y potente</div>
           <div><b>¿Para quién es?</b> Si ya tienes tu rutina y quieres atacar algo puntual.</div>
           <div><b>¿Qué va a notar?</b> Se suma a cualquier crema: arruguitas (retinol) o manchas (niacinamida).</div>
-        </div>
+        </details>
         <div class="cgancho">💬 «No tienes que cambiar tu rutina: le agregas este shot y ya.»</div>
         <div class="linea">
       <div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">⭐</span>
@@ -1919,11 +1926,11 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
         <span class="cbadge" style="background:#D9A05B">✨ CUIDADO EXTRA</span>
         <span class="ccnt">2</span></summary>
       <div class="cbody">
-        <div class="cficha">
+        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
           <div><b>¿Qué tiene?</b> Filtros coreanos con centella calmante</div>
           <div><b>¿Para quién es?</b> Para todos los días. La versión Plus, para playa y aire libre.</div>
           <div><b>¿Qué va a notar?</b> Protege sin capa blanca ni sensación grasosa.</div>
-        </div>
+        </details>
         <div class="cgancho">💬 «El sol causa la mayoría de manchas y arrugas: esto es lo que más rinde de todo el mueble.»</div>
         <div class="linea">
       <div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">⭐</span>
@@ -1971,11 +1978,11 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
         <span class="cbadge" style="background:#D96C82">🎯 RUTINA COMPLETA</span>
         <span class="ccnt">8</span></summary>
       <div class="cbody">
-        <div class="cficha">
+        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
           <div><b>¿Qué tiene?</b> Frijol de soya fermentado, con pocos ingredientes y sin perfume</div>
           <div><b>¿Para quién es?</b> Si las rutinas largas te abruman y quieres algo simple que funcione.</div>
           <div><b>¿Qué va a notar?</b> Piel luminosa y suave; la esencia se usa con 2 gotas y rinde muchísimo.</div>
-        </div>
+        </details>
         <div class="cgancho">💬 «Fórmula cortita, sin perfume. Ideal si te intimidan los 10 pasos coreanos.»</div>
         <div class="linea">
       <div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">⭐</span>
@@ -2069,11 +2076,11 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
         <span class="cbadge" style="background:#D96C82">🎯 RUTINA COMPLETA</span>
         <span class="ccnt">4</span></summary>
       <div class="cbody">
-        <div class="cficha">
+        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
           <div><b>¿Qué tiene?</b> PDRN + colágeno, la misma tecnología premium en versión económica</div>
           <div><b>¿Para quién es?</b> Si quieres probar el PDRN sin gastar de más.</div>
           <div><b>¿Qué va a notar?</b> Piel más firme y reparada; puerta de entrada a la categoría regeneradora.</div>
-        </div>
+        </details>
         <div class="cgancho">💬 «¿Te gustó el PDRN pero está fuerte de precio? Esta es la versión accesible.»</div>
         <div class="linea">
       <div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">⭐</span>
@@ -2131,11 +2138,11 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
         <span class="cbadge" style="background:#7FA86B">➕ REFUERZO</span>
         <span class="ccnt">2</span></summary>
       <div class="cbody">
-        <div class="cficha">
+        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
           <div><b>¿Qué tiene?</b> Centella en fórmula minimalista</div>
           <div><b>¿Para quién es?</b> Piel irritada, si además quieres algo sencillo.</div>
           <div><b>¿Qué va a notar?</b> Desinflama y suaviza; la crema es muy nutritiva.</div>
-        </div>
+        </details>
         <div class="cgancho">💬 «Calma pura, sin perfume ni relleno.»</div>
         <div class="linea">
       <div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">⭐</span>
@@ -2175,11 +2182,11 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
         <span class="cbadge" style="background:#7FA86B">➕ REFUERZO</span>
         <span class="ccnt">1</span></summary>
       <div class="cbody">
-        <div class="cficha">
+        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
           <div><b>¿Qué tiene?</b> Ácido hialurónico con agua de glaciar</div>
           <div><b>¿Para quién es?</b> Piel deshidratada, si no soportas sentir nada pesado encima.</div>
           <div><b>¿Qué va a notar?</b> Hidrata sin capa: perfecto para clima caliente.</div>
-        </div>
+        </details>
         <div class="cgancho">💬 «Se siente como agua. Para calor, es lo mejor.»</div>
         <div class="linea">
       <div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">⭐</span>
@@ -2218,11 +2225,11 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
         <span class="cbadge" style="background:#C25E78">🎯 LÍNEA BASE</span>
         <span class="ccnt">4</span></summary>
       <div class="cbody">
-        <div class="cficha">
+        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
           <div><b>¿Qué tiene?</b> 96% de mucina de caracol: repara, hidrata y da glow</div>
           <div><b>¿Para quién es?</b> Cualquier piel. El clásico coreano por el que todo mundo pregunta.</div>
           <div><b>¿Qué va a notar?</b> Piel reparada, jugosa y con brillo; funciona en cualquier tipo de piel.</div>
-        </div>
+        </details>
         <div class="cgancho">💬 «¿Has visto la baba de caracol en TikTok? Esta es LA original.»</div>
         <div class="linea">
       <div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">⭐</span>
@@ -2279,11 +2286,11 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
         <span class="cbadge" style="background:#7FA86B">➕ REFUERZO</span>
         <span class="ccnt">3</span></summary>
       <div class="cbody">
-        <div class="cficha">
+        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
           <div><b>¿Qué tiene?</b> Péptidos, niacinamida 15% y parches de colágeno</div>
           <div><b>¿Para quién es?</b> Si sabes lo que buscas y prefieres una marca reconocida.</div>
           <div><b>¿Qué va a notar?</b> Cada uno ataca algo puntual: firmeza, manchas u ojeras.</div>
-        </div>
+        </details>
         <div class="cgancho">💬 «Marca famosa, fórmula sencilla: sabes exactamente qué estás comprando.»</div>
         <div class="linea">
       <div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">⭐</span>
@@ -2334,11 +2341,11 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
         <span class="cbadge" style="background:#D9A05B">✨ CUIDADO EXTRA</span>
         <span class="ccnt">2</span></summary>
       <div class="cbody">
-        <div class="cficha">
+        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
           <div><b>¿Qué tiene?</b> Filtros ligeros con aloe calmante</div>
           <div><b>¿Para quién es?</b> Si odias el bloqueador pegajoso, o necesitas retocar sobre el maquillaje.</div>
           <div><b>¿Qué va a notar?</b> Protección sin sensación grasosa; la barra se lleva en la bolsa.</div>
-        </div>
+        </details>
         <div class="cgancho">💬 «La barra la traes en la bolsa y te retocas sin despeinarte el maquillaje.»</div>
         <div class="linea">
       <div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">⭐</span>
@@ -2381,11 +2388,11 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
         <span class="cbadge" style="background:#7FA86B">➕ REFUERZO</span>
         <span class="ccnt">1</span></summary>
       <div class="cbody">
-        <div class="cficha">
+        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
           <div><b>¿Qué tiene?</b> pH bajo, respeta la barrera de la piel</div>
           <div><b>¿Para quién es?</b> Toda la familia. Es el limpiador «no te puedes equivocar».</div>
           <div><b>¿Qué va a notar?</b> Limpia sin dejar la piel tirante ni chirriante.</div>
-        </div>
+        </details>
         <div class="cgancho">💬 «Si tu piel queda tirante después de lavarte, tu limpiador está mal. Prueba este.»</div>
         <div class="linea">
       <div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">⭐</span>
@@ -2424,11 +2431,11 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
         <span class="cbadge" style="background:#7FA86B">➕ REFUERZO</span>
         <span class="ccnt">4</span></summary>
       <div class="cbody">
-        <div class="cficha">
+        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
           <div><b>¿Qué tiene?</b> PDRN + ácido hialurónico en cápsulas</div>
           <div><b>¿Para quién es?</b> Piel seca o cansada, si quieres ver resultado rápido.</div>
           <div><b>¿Qué va a notar?</b> La bruma da glow al instante; el sérum trabaja de fondo.</div>
-        </div>
+        </details>
         <div class="cgancho">💬 «Rocíate la bruma aquí mismo — es glow instantáneo, hasta sobre el maquillaje.»</div>
         <div class="linea">
       <div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">⭐</span>
@@ -2492,11 +2499,11 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
         <span class="cbadge" style="background:#7FA86B">➕ REFUERZO</span>
         <span class="ccnt">2</span></summary>
       <div class="cbody">
-        <div class="cficha">
+        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
           <div><b>¿Qué tiene?</b> Heartleaf (hierba de la cola de lagarto), calmante y purificante</div>
           <div><b>¿Para quién es?</b> Si usas maquillaje o bloqueador a diario.</div>
           <div><b>¿Qué va a notar?</b> Quita todo sin resecar; se sienten los puntos negros más limpios.</div>
-        </div>
+        </details>
         <div class="cgancho">💬 «Este aceite es EL viral de TikTok: quita hasta el bloqueador más necio.»</div>
         <div class="linea">
       <div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">⭐</span>
@@ -2538,11 +2545,11 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
         <span class="cbadge" style="background:#7FA86B">➕ REFUERZO</span>
         <span class="ccnt">1</span></summary>
       <div class="cbody">
-        <div class="cficha">
+        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
           <div><b>¿Qué tiene?</b> Niacinamida 10% + ácido tranexámico 4%</div>
           <div><b>¿Para quién es?</b> Manchas, marcas de acné y tono disparejo.</div>
           <div><b>¿Qué va a notar?</b> Aclara de forma gradual y pareja, sin irritar.</div>
-        </div>
+        </details>
         <div class="cgancho">💬 «Este es de los sérums más vendidos del mundo para manchas.»</div>
         <div class="linea">
       <div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">⭐</span>
@@ -2572,11 +2579,11 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
         <span class="cbadge" style="background:#7FA86B">➕ REFUERZO</span>
         <span class="ccnt">1</span></summary>
       <div class="cbody">
-        <div class="cficha">
+        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
           <div><b>¿Qué tiene?</b> Ácido azelaico 10% + hialurónico</div>
           <div><b>¿Para quién es?</b> Piel sensible con brotes o rosácea.</div>
           <div><b>¿Qué va a notar?</b> Menos rojez visible y menos granitos nuevos.</div>
-        </div>
+        </details>
         <div class="cgancho">💬 «Si tienes la cara roja e irritada, este calma sin agredir.»</div>
         <div class="linea">
       <div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">⭐</span>
@@ -2611,11 +2618,11 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
         <span class="cbadge" style="background:#7FA86B">➕ REFUERZO</span>
         <span class="ccnt">3</span></summary>
       <div class="cbody">
-        <div class="cficha">
+        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
           <div><b>¿Qué tiene?</b> Madecassoside, derivado de una pomada cicatrizante coreana real</div>
           <div><b>¿Para quién es?</b> Si eres exigente con el anti-edad y quieres algo con respaldo.</div>
           <div><b>¿Qué va a notar?</b> Nutre, repara y firma; es la crema regalo de la tienda.</div>
-        </div>
+        </details>
         <div class="cgancho">💬 «Esta marca la hace una farmacéutica: nació de una pomada para cicatrizar.»</div>
         <div class="linea">
       <div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">⭐</span>
@@ -2651,11 +2658,11 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
         <span class="cbadge" style="background:#D9A05B">✨ CUIDADO EXTRA</span>
         <span class="ccnt">2</span></summary>
       <div class="cbody">
-        <div class="cficha">
+        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
           <div><b>¿Qué tiene?</b> PDRN + aplicador metálico que desinflama al masajear</div>
           <div><b>¿Para quién es?</b> Ojeras, bolsas y párpado caído.</div>
           <div><b>¿Qué va a notar?</b> Efecto tensor inmediato con el aplicador; a largo plazo, líneas más suaves.</div>
-        </div>
+        </details>
         <div class="cgancho">💬 «Siente el aplicador frío en tu mano — desinflama mientras te lo pones.»</div>
         <div class="linea">
       <div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">⭐</span>
@@ -2696,11 +2703,11 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
         <span class="cbadge" style="background:#7FA86B">➕ REFUERZO</span>
         <span class="ccnt">4</span></summary>
       <div class="cbody">
-        <div class="cficha">
+        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
           <div><b>¿Qué tiene?</b> Fórmula corta y calmante, sin perfume</div>
           <div><b>¿Para quién es?</b> Piel maltratada: por el clima, por tratamientos o por productos agresivos.</div>
           <div><b>¿Qué va a notar?</b> La rojez te baja en días — y es de las que se acaban y se vuelven a comprar.</div>
-        </div>
+        </details>
         <div class="cgancho">💬 «Esta es de las cremas más vendidas de Amazon en el mundo. Si tu piel está irritada, es esta.»</div>
         <div class="linea">
       <div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">⭐</span>
@@ -2746,11 +2753,11 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
         <span class="cbadge" style="background:#7FA86B">➕ REFUERZO</span>
         <span class="ccnt">1</span></summary>
       <div class="cbody">
-        <div class="cficha">
+        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
           <div><b>¿Qué tiene?</b> Vitamina C en versión suave</div>
           <div><b>¿Para quién es?</b> Si quieres iluminar pero la vitamina C normal te pica.</div>
           <div><b>¿Qué va a notar?</b> Ilumina de forma gradual, sin ardor.</div>
-        </div>
+        </details>
         <div class="cgancho">💬 «¿La vitamina C te pica? Esta es la versión amable.»</div>
         <div class="linea">
       <div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">⭐</span>
@@ -2780,11 +2787,11 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
         <span class="cbadge" style="background:#7FA86B">➕ REFUERZO</span>
         <span class="ccnt">1</span></summary>
       <div class="cbody">
-        <div class="cficha">
+        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
           <div><b>¿Qué tiene?</b> Ceramidas y lípidos que reconstruyen la piel</div>
           <div><b>¿Para quién es?</b> Piel muy seca, tirante, descamada o después de un tratamiento fuerte.</div>
           <div><b>¿Qué va a notar?</b> La piel deja de arder y de descamarse.</div>
-        </div>
+        </details>
         <div class="cgancho">💬 «Cuando la piel ya está rota, primero se repara. Después lo demás.»</div>
         <div class="linea">
       <div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">⭐</span>
@@ -2819,11 +2826,11 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
         <span class="cbadge" style="background:#D9A05B">✨ CUIDADO EXTRA</span>
         <span class="ccnt">3</span></summary>
       <div class="cbody">
-        <div class="cficha">
+        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
           <div><b>¿Qué tiene?</b> Colágeno en hidrogel que se absorbe durante la noche</div>
           <div><b>¿Para quién es?</b> Para cualquier piel: el antojo, el regalo y la primera que todas quieren probar.</div>
           <div><b>¿Qué va a notar?</b> Amaneces con la piel lisa y con glow. El efecto se ve en una sola noche.</div>
-        </div>
+        </details>
         <div class="cgancho">💬 «Te la pones, se vuelve transparente y amaneces con piel de vidrio. Llévate una para probar.»</div>
         <div class="linea">
       <div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">⭐</span>
@@ -2859,11 +2866,11 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
         <span class="cbadge" style="background:#D9A05B">✨ CUIDADO EXTRA</span>
         <span class="ccnt">2</span></summary>
       <div class="cbody">
-        <div class="cficha">
+        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
           <div><b>¿Qué tiene?</b> Péptidos de colágeno en parches e hidrogel</div>
           <div><b>¿Para quién es?</b> Ojeras, hinchazón de la mañana, o antes de un evento.</div>
           <div><b>¿Qué va a notar?</b> Resultado visible al instante — por eso es el mejor probador de la tienda.</div>
-        </div>
+        </details>
         <div class="cgancho">💬 «Póntelos mientras te enseño lo demás y checa la diferencia en 15 minutos.»</div>
         <div class="linea">
       <div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">⭐</span>
@@ -2906,11 +2913,11 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
         <span class="cbadge" style="background:#7FA86B">➕ REFUERZO</span>
         <span class="ccnt">2</span></summary>
       <div class="cbody">
-        <div class="cficha">
+        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
           <div><b>¿Qué tiene?</b> Trufa blanca del Piamonte, en bruma y en barra multiusos</div>
           <div><b>¿Para quién es?</b> El regalo elegante — o para darte un gusto.</div>
           <div><b>¿Qué va a notar?</b> Glow inmediato que se puede aplicar hasta sobre el maquillaje.</div>
-        </div>
+        </details>
         <div class="cgancho">💬 «Esta es la bruma de lujo que usan las actrices coreanas. Para regalar bonito.»</div>
         <div class="linea">
       <div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">⭐</span>
@@ -2946,11 +2953,11 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
         <span class="cbadge" style="background:#D9A05B">✨ CUIDADO EXTRA</span>
         <span class="ccnt">1</span></summary>
       <div class="cbody">
-        <div class="cficha">
+        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
           <div><b>¿Qué tiene?</b> Filtros con esencia hidratante de trufa</div>
           <div><b>¿Para quién es?</b> Si quieres que hasta el bloqueador se sienta premium.</div>
           <div><b>¿Qué va a notar?</b> Protege e hidrata a la vez, con acabado luminoso.</div>
-        </div>
+        </details>
         <div class="cgancho">💬 «Hasta el bloqueador se siente de lujo — es el detalle que eleva el regalo.»</div>
         <div class="linea">
       <div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">⭐</span>
@@ -2985,11 +2992,11 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
         <span class="cbadge" style="background:#7FA86B">➕ REFUERZO</span>
         <span class="ccnt">1</span></summary>
       <div class="cbody">
-        <div class="cficha">
+        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
           <div><b>¿Qué tiene?</b> Retinal, la versión más fuerte y rápida del retinol</div>
           <div><b>¿Para quién es?</b> Si ya usas anti-edad y quieres resultados de verdad.</div>
           <div><b>¿Qué va a notar?</b> Arrugas y firmeza; el más vendido de su categoría en Corea.</div>
-        </div>
+        </details>
         <div class="cgancho">💬 «El retinol lo conoces. El retinal es su versión más potente — y este es el #1 de Corea.»</div>
         <div class="linea">
       <div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">⭐</span>
