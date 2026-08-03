@@ -5,26 +5,38 @@
 <meta name="robots" content="noindex">
 <meta name="description" content="Contesta 7 preguntas (1 minuto) y te armamos tu rutina coreana con precios de contado o en quincenas. Si quieres, te guiamos zona por zona sobre tu propia selfie — que nunca sale de tu celular.">
 <title>SO YOUNG · ¿Qué necesita tu piel?</title>
-<meta name="x-contenido" content="874698de99">
-<meta name="x-piel" content="4e1416a5ab">
+<meta name="x-contenido" content="47cf2dbcb3">
+<meta name="x-piel" content="6b6de30200">
 <style>
-:root { --rosa:#D96C82; --rosad:#B94F66; --ink:#2A2226; --crema:#FBF6F4; --crema2:#FAEDEE;
-  --mut:#8b7d82; --line:#F0DDE1; --texto:#584a4f; color-scheme: light; }
+/* PALETA COMPARTIDA por las cinco páginas (Michael 2-ago: «este look debería aplicarse
+   por toda la página en todas partes para tener consistencia»). Todo lo que cambie aquí
+   viaja a /buscar, /piel, /k, /guia y la portada de la asesora, porque las cinco extraen
+   este bloque. Dos cambios de fondo respecto a la versión vieja:
+     · --crema pasa de crema (#FBF6F4) a ROSA LAVADO: sobre crema, una tarjeta blanca
+       casi no contrasta y toda la página se ve deslavada;
+     · --vivo es el rosa caramelo del diseño de referencia. Va en lo GRANDE y lo dibujado
+       (títulos, iconos, sellos, botones). El texto chico sigue con --rosad, que es el
+       que contrasta 5.2:1 — un rosa vivo a 10px no se lee. */
+:root { --rosa:#D96C82; --rosad:#B94F66; --ink:#2A2226; --crema:#FDF3F7; --crema2:#FAE7EE;
+  --vivo:#ED4E86; --vivoo:#D22F6C; --vivopal:#FCE0EA;
+  --mut:#8b7d82; --line:#F3DFE6; --texto:#584a4f; color-scheme: light; }
 * { margin:0; padding:0; box-sizing:border-box; }
 html,body { overflow-x:clip; }
 body { font-family:"Avenir Next","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
   background:var(--crema); color:var(--ink); line-height:1.5; }
 img { display:block; }
 .wrap { max-width:560px; margin:0 auto; padding:0 16px 70px; }
-.top { position:sticky; top:0; z-index:20; background:rgba(251,246,244,.95); backdrop-filter:blur(8px); border-bottom:1px solid var(--line); }
+.top { position:sticky; top:0; z-index:20; background:rgba(253,243,247,.95); backdrop-filter:blur(8px); border-bottom:1px solid var(--line); }
 .topin { max-width:560px; margin:0 auto; padding:11px 16px; display:flex; align-items:center; gap:8px; }
 .logo { font-weight:700; letter-spacing:.12em; font-size:12.5px; white-space:nowrap; }
-.logo em { color:var(--rosa); font-style:normal; }
+.logo em { color:var(--vivo); font-style:normal; }
 .sello { margin-left:auto; white-space:nowrap; font-size:9.5px; font-weight:700; background:var(--ink); color:#fff; padding:4px 10px; border-radius:99px; letter-spacing:.06em; }
 .sello .kfl { font-size:16px; line-height:1; vertical-align:-3px; margin-right:2px; }
 .hero { padding:30px 0 8px; }
 h1 { font-size:clamp(27px,7.6vw,35px); font-weight:800; line-height:1.07; letter-spacing:-.015em; text-wrap:balance; }
-h1 span { color:var(--rosad); }
+/* el acento del titular va en ROSA VIVO — es lo más grande de la pantalla y es donde
+   el color de marca tiene que verse (Michael 2-ago) */
+h1 span { color:var(--vivo); }
 .sub { color:#6d5a60; font-size:14.5px; margin-top:10px; }
 h2 { font-size:20px; font-weight:800; letter-spacing:-.01em; text-wrap:balance; }
 .strip { margin-top:34px; }
@@ -452,7 +464,7 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
 .pqpriv b { color:var(--ink); }
 .pqbtns { display:flex; flex-direction:column; gap:9px; margin-top:16px; }
 .pqmain { appearance:none; border:0; cursor:pointer; font:inherit; font-weight:700; border-radius:16px;
-  padding:15px 16px; background:var(--rosa); color:#fff; font-size:15px;
+  padding:15px 16px; background:linear-gradient(100deg,var(--vivo) 0%,var(--vivoo) 100%); color:#fff; font-size:15px;
   display:flex; align-items:center; justify-content:center; gap:9px; }
 .pqsec { appearance:none; cursor:pointer; font:inherit; font-weight:700; background:#fff;
   border:1.5px solid var(--line); color:var(--ink); border-radius:16px; padding:13px 16px;

@@ -6,10 +6,11 @@
 <title>SO YOUNG · Guía de uso de tus productos</title>
 <meta name="description" content="Escanea los productos que compraste y llévate tu guía de uso en PDF: cuándo va cada uno, en qué orden, cuánto esperar entre capas y sus precauciones.">
 <meta name="robots" content="noindex">
-<meta name="x-contenido" content="874698de99">
-<meta name="x-guia" content="2f9aca7d72">
+<meta name="x-contenido" content="47cf2dbcb3">
+<meta name="x-guia" content="dea3565118">
 <style>
-:root { --rosa:#D96C82; --rosad:#B94F66; --ink:#2A2226; --crema:#FBF6F4; --crema2:#FAEDEE;
+:root { --rosa:#D96C82; --rosad:#B94F66; --ink:#2A2226; --crema:#FDF3F7; --crema2:#FAE7EE;
+  --vivo:#ED4E86; --vivoo:#D22F6C; --vivopal:#FCE0EA;
   --mut:#8b7d82; --line:#F0DDE1; --texto:#584a4f; --am:#B98A2F; --pm:#4A5A8A; color-scheme: light; }
 * { margin:0; padding:0; box-sizing:border-box; }
 html, body { overflow-x:clip; }
@@ -33,7 +34,7 @@ p.gsub { font-size:13.5px; color:var(--texto); margin-bottom:14px; }
 .gpasos span { position:relative; z-index:1; flex:1; text-align:center; font-size:11px;
   line-height:1.3; color:var(--texto); }
 .gpasos b { display:flex; width:30px; height:30px; margin:0 auto 7px; border-radius:50%;
-  background:var(--rosa); color:#fff; font-size:14px; font-weight:800;
+  background:linear-gradient(100deg,var(--vivo) 0%,var(--vivoo) 100%); color:#fff; font-size:14px; font-weight:800;
   align-items:center; justify-content:center; box-shadow:0 0 0 4px var(--crema); }
 /* OJO con el COLOR: sin declararlo, Safari pinta el texto del <button> con su azul de
    sistema y el botón se ve como un enlace ajeno a la app (Michael 2-ago) */
@@ -65,7 +66,7 @@ p.gsub { font-size:13.5px; color:var(--texto); margin-bottom:14px; }
 #vacio2 { font-size:12.5px; color:var(--mut); background:#fff; border:1px dashed var(--line);
   border-radius:13px; padding:12px 14px; }
 #vermiguia { position:fixed; left:14px; right:14px; bottom:14px; z-index:60; max-width:532px; margin:0 auto;
-  background:var(--rosad); color:#fff; border:0; border-radius:15px; padding:15px; font-size:16px;
+  background:linear-gradient(100deg,var(--vivo) 0%,var(--vivoo) 100%); color:#fff; border:0; border-radius:15px; padding:15px; font-size:16px;
   font-weight:800; box-shadow:0 12px 30px rgba(90,40,55,.35); }
 #vermiguia[disabled] { background:#C9AEB6; box-shadow:none; }
 /* ---- pantalla guía ---- */
@@ -108,7 +109,7 @@ p.gsub { font-size:13.5px; color:var(--texto); margin-bottom:14px; }
 .card .alz div { font-size:11px; color:#8A5A17; background:#FFF6E8; border-radius:9px; padding:4px 8px; margin-top:4px; }
 .gleg { font-size:10.5px; color:var(--mut); line-height:1.5; margin:14px 2px 0; }
 #pdfbtn { position:fixed; left:14px; right:14px; bottom:14px; z-index:60; max-width:532px; margin:0 auto;
-  background:var(--rosad); color:#fff; border:0; border-radius:15px; padding:15px; font-size:16px;
+  background:linear-gradient(100deg,var(--vivo) 0%,var(--vivoo) 100%); color:#fff; border:0; border-radius:15px; padding:15px; font-size:16px;
   font-weight:800; box-shadow:0 12px 30px rgba(90,40,55,.35); }
 .pdftip { text-align:center; font-size:10.5px; color:var(--mut); margin-top:6px; }
 .geditar { background:none; border:0; color:var(--rosad); font-weight:700; font-size:12.5px;
