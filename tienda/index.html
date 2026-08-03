@@ -4,8 +4,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Tu asesora K-beauty de bolsillo en la tienda SO YOUNG: entiende cualquier producto del estante, arma tu rutina coreana y conoce precios de contado o en quincenas con tu vale.">
 <meta name="robots" content="noindex">
-<meta name="x-contenido" content="2756efd7e6">
-<meta name="x-tienda" content="2090a21a1a">
+<meta name="x-contenido" content="61de17a62b">
+<meta name="x-tienda" content="7009350043">
 <meta name="theme-color" content="#FAF5F2">
 <title>SO YOUNG · Tu asesora de bolsillo</title>
 <style>
@@ -86,10 +86,19 @@ details.col, .mv { scroll-margin-top:58px; }   /* la barra fija no tapa el desti
 /* la ficha nace PLEGADA: quien ya sabe qué es el producto no tiene por qué leerla, y
    quien quiere el detalle lo abre (Michael 2-ago: «se puede mantener cerrado tipo las
    preguntas y que el cliente lo abra si quiere — se debe aplicar para todo») */
+/* Michael 2-ago: «aquí no se entiende que el cliente puede abrir esa información».
+   Texto rosa en negritas se lee como TÍTULO, no como botón. Ahora es una barra con
+   fondo, borde y una flecha que gira al abrir — los tres avisos de «esto se toca» —
+   y el verbo «Ver» dice qué pasa si lo tocas. */
 .cficha { margin-top:8px; }
 .cficha > summary { list-style:none; cursor:pointer; font-size:11.5px; font-weight:700;
-  color:var(--rosad); padding:7px 0; }
+  color:var(--rosad); padding:8px 11px; display:flex; align-items:center; gap:8px;
+  background:var(--crema); border:1px solid var(--line); border-radius:11px; }
 .cficha > summary::-webkit-details-marker { display:none; }
+.cfcar { margin-left:auto; flex:none; width:18px; height:18px; border-radius:50%;
+  background:var(--crema2); color:var(--rosad); font-size:11px; line-height:18px;
+  text-align:center; transition:transform .15s; }
+.cficha[open] .cfcar { transform:rotate(180deg); }
 .cficha > div { font-size:12.5px; color:var(--texto); line-height:1.5; margin-top:5px; }
 .cficha > div b { color:var(--ink); }
 .cficha b { color:var(--ink); }
@@ -679,8 +688,11 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
       <span class="tmtxt"><b>Conoce y compara los productos</b></span>
       <span class="tmfl">→</span></a>
 
-    <a class="tmision" href="#t-elegir"><span class="tmico">🇰🇷</span>
-      <span class="tmtxt"><b>Ármame mi rutina coreana</b></span>
+    <!-- Michael 2-ago: «prefiero las estrellas en Ármame mi rutina coreana». El ✨ vuelve
+         al lugar del icono (es el que da el brillo de la puerta) y la 🇰🇷 queda PEGADA a
+         la palabra «coreana», que fue el pedido original («al lado de coreana»). -->
+    <a class="tmision" href="#t-elegir"><span class="tmico">✨</span>
+      <span class="tmtxt"><b>Ármame mi rutina coreana 🇰🇷</b></span>
       <span class="tmfl">→</span></a>
 
     <a class="tmision" href="../guia/"><span class="tmico">🧾</span>
@@ -763,7 +775,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
           <div class="cprom">con su línea Tone Brightening · Efecto buena cara desde el primer día</div></div>
         <span class="aprecio">$1,744<em>12 quincenas de $203 = $2,436</em></span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> Centella + activos iluminadores, con bloqueador con color</div>
           <div><b>¿Para quién es?</b> Si quieres verte despierta ya, aunque las manchas tarden en irse.</div>
           <div><b>¿Qué va a notar?</b> Resultado inmediato de tono parejo; a largo plazo, aclara.</div>
@@ -835,7 +847,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
           <div class="cprom">con su línea Boosting Shot · Un shot concentrado que le sumas a lo que ya usas</div></div>
         <span class="aprecio">$1,289<em>12 quincenas de $150 = $1,800</em></span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> Retinol 0.2% o Niacinamida 10%, en frasco pequeño y potente</div>
           <div><b>¿Para quién es?</b> Si ya tienes tu rutina y quieres atacar algo puntual.</div>
           <div><b>¿Qué va a notar?</b> Se suma a cualquier crema: arruguitas (retinol) o manchas (niacinamida).</div>
@@ -899,7 +911,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
         <span class="cbadge" style="background:#D96C82">🎯 RUTINA COMPLETA</span>
         <span class="ccnt">5</span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> Ácido kójico + cúrcuma, la dupla clásica para aclarar</div>
           <div><b>¿Para quién es?</b> Manchas que te dejó el embarazo, el sol o los años — de las que no se van con nada.</div>
           <div><b>¿Qué va a notar?</b> El tono se empareja poco a poco: se nota entre la cuarta y la octava semana.</div>
@@ -984,7 +996,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
         <span class="cbadge" style="background:#B94F66">🔬 TRATAMIENTO</span>
         <span class="ccnt">1</span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> Niacinamida 10% + ácido tranexámico 4%</div>
           <div><b>¿Para quién es?</b> Manchas, marcas de acné y tono disparejo.</div>
           <div><b>¿Qué va a notar?</b> Aclara de forma gradual y pareja, sin irritar.</div>
@@ -1003,7 +1015,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
         <span class="cbadge" style="background:#B94F66">🔬 TRATAMIENTO</span>
         <span class="ccnt">2</span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> Ácido tranexámico + niacinamida, despigmentantes suaves de uso diario</div>
           <div><b>¿Para quién es?</b> Si ya no te salen granitos pero te quedaron las manchitas oscuras.</div>
           <div><b>¿Qué va a notar?</b> Las marcas se aclaran gradualmente sin irritar la piel.</div>
@@ -1025,7 +1037,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
         <span class="cbadge" style="background:#B94F66">🔬 TRATAMIENTO</span>
         <span class="ccnt">3</span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> Vitamina C encapsulada, que no se oxida ni pica</div>
           <div><b>¿Para quién es?</b> Piel cansada, sin brillo, con tono disparejo. Ideal si los ácidos fuertes te pican.</div>
           <div><b>¿Qué va a notar?</b> La piel se ve más despierta desde los primeros días; el tono se empareja con el uso.</div>
@@ -1050,7 +1062,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
         <span class="cbadge" style="background:#B94F66">🔬 TRATAMIENTO</span>
         <span class="ccnt">2</span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> Glutatión, el antioxidante estrella de Corea para el tono</div>
           <div><b>¿Para quién es?</b> Si buscas un brillo parejo y saludable, no solo quitar una mancha.</div>
           <div><b>¿Qué va a notar?</b> Tono más parejo y luminoso con el uso constante.</div>
@@ -1072,7 +1084,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
         <span class="cbadge" style="background:#B94F66">🔬 TRATAMIENTO</span>
         <span class="ccnt">1</span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> Vitamina C en versión suave</div>
           <div><b>¿Para quién es?</b> Si quieres iluminar pero la vitamina C normal te pica.</div>
           <div><b>¿Qué va a notar?</b> Ilumina de forma gradual, sin ardor.</div>
@@ -1137,7 +1149,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
           <div class="cprom">con su línea Poremizing · Rutina completa para el poro abierto</div></div>
         <span class="aprecio">$1,543<em>12 quincenas de $180 = $2,160</em></span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> Centella + activos que limpian y afinan el poro</div>
           <div><b>¿Para quién es?</b> Piel grasa que además es sensible (no aguanta lo agresivo).</div>
           <div><b>¿Qué va a notar?</b> Poro más fino y menos grasa, sin la resequedad de los productos fuertes.</div>
@@ -1221,7 +1233,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
         <span class="cbadge" style="background:#D96C82">🎯 RUTINA COMPLETA</span>
         <span class="ccnt">7</span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> Ácidos suaves y arcilla que limpian por dentro del poro</div>
           <div><b>¿Para quién es?</b> Piel grasa o mixta, con puntos negros y brillo en la zona T.</div>
           <div><b>¿Qué va a notar?</b> El poro se ve más pequeño y la piel deja de brillar a media tarde.</div>
@@ -1319,7 +1331,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
         <span class="cbadge" style="background:#2E7D5B">🌙 PRIMER PASO DE LA NOCHE</span>
         <span class="ccnt">2</span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> Heartleaf (hierba de la cola de lagarto), calmante y purificante</div>
           <div><b>¿Para quién es?</b> Si usas maquillaje o bloqueador a diario.</div>
           <div><b>¿Qué va a notar?</b> Quita todo sin resecar; se sienten los puntos negros más limpios.</div>
@@ -1341,7 +1353,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
         <span class="cbadge" style="background:#2E7D5B">🗓 UNA O DOS VECES POR SEMANA</span>
         <span class="ccnt">1</span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> Colágeno en hidrogel que se absorbe durante la noche</div>
           <div><b>¿Para quién es?</b> Para cualquier piel: el antojo, el regalo y la primera que todas quieren probar.</div>
           <div><b>¿Qué va a notar?</b> Amaneces con la piel lisa y con glow. El efecto se ve en una sola noche.</div>
@@ -1384,7 +1396,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
           <div class="cprom">con su línea Azelaic Acid · Calma el granito y la rojez al mismo tiempo</div></div>
         <span class="aprecio">$1,066<em>12 quincenas de $124 = $1,488</em></span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> Ácido azelaico, de los pocos que sirve para acné y rosácea a la vez</div>
           <div><b>¿Para quién es?</b> Piel con brotes que además se pone roja e irritada.</div>
           <div><b>¿Qué va a notar?</b> Menos granitos nuevos y menos rojez, sin resecar.</div>
@@ -1459,7 +1471,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
           <div class="cprom">con su línea Low pH / Limpieza · El limpiador suave más famoso de Corea</div></div>
         <span class="aprecio">$1,485<em>12 quincenas de $173 = $2,076</em></span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> pH bajo, respeta la barrera de la piel</div>
           <div><b>¿Para quién es?</b> Toda la familia. Es el limpiador «no te puedes equivocar».</div>
           <div><b>¿Qué va a notar?</b> Limpia sin dejar la piel tirante ni chirriante.</div>
@@ -1517,7 +1529,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
         <span class="cbadge" style="background:#D96C82">🎯 RUTINA COMPLETA</span>
         <span class="ccnt">7</span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> Árbol de té + centella: desinflama el brote sin resecar</div>
           <div><b>¿Para quién es?</b> Piel con acné activo, adolescentes, o brotes de temporada.</div>
           <div><b>¿Qué va a notar?</b> Los granitos bajan más rápido y dejan menos marca.</div>
@@ -1595,7 +1607,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
         <span class="cbadge" style="background:#B94F66">🔬 TRATAMIENTO</span>
         <span class="ccnt">1</span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> Ácido azelaico 10% + hialurónico</div>
           <div><b>¿Para quién es?</b> Piel sensible con brotes o rosácea.</div>
           <div><b>¿Qué va a notar?</b> Menos rojez visible y menos granitos nuevos.</div>
@@ -1656,7 +1668,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
           <div class="cprom">Hidrata y calma al mismo tiempo</div></div>
         <span class="aprecio">$1,767<em>12 quincenas de $206 = $2,472</em></span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> Centella + ácido hialurónico: calma y llena de agua</div>
           <div><b>¿Para quién es?</b> Piel seca que además se irrita. Y su bloqueador le queda a cualquier piel.</div>
           <div><b>¿Qué va a notar?</b> Piel jugosa y en calma; el Water-Fit Sun Serum es EL bloqueador viral.</div>
@@ -1733,7 +1745,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
           <div class="cprom">con su línea Centella / Cica · Calma esencial, sin adornos</div></div>
         <span class="aprecio">$1,589<em>12 quincenas de $185 = $2,220</em></span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> Centella en fórmula minimalista</div>
           <div><b>¿Para quién es?</b> Piel irritada, si además quieres algo sencillo.</div>
           <div><b>¿Qué va a notar?</b> Desinflama y suaviza; la crema es muy nutritiva.</div>
@@ -1800,7 +1812,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
           <div class="cprom">con su línea Hyaluronic · Hidratación profunda que dura todo el día</div></div>
         <span class="aprecio">$1,207<em>12 quincenas de $141 = $1,692</em></span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> Ácido hialurónico + ceramidas, que retienen agua y reparan la barrera</div>
           <div><b>¿Para quién es?</b> Cualquier piel — sobre todo si vives en clima seco o pasas el día con aire acondicionado.</div>
           <div><b>¿Qué va a notar?</b> La piel deja de sentirse tirante; se ve más jugosa.</div>
@@ -1880,7 +1892,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
         <span class="cbadge" style="background:#D96C82">🎯 RUTINA COMPLETA</span>
         <span class="ccnt">9</span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> Centella asiática de Madagascar pura: la planta que desinflama</div>
           <div><b>¿Para quién es?</b> Piel sensible o reactiva — o si apenas empiezas y no quieres arriesgarte.</div>
           <div><b>¿Qué va a notar?</b> Baja la rojez y la irritación; la piel se siente tranquila.</div>
@@ -1966,7 +1978,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
         <span class="cbadge" style="background:#B94F66">🔬 TRATAMIENTO</span>
         <span class="ccnt">4</span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> Fórmula corta y calmante, sin perfume</div>
           <div><b>¿Para quién es?</b> Piel maltratada: por el clima, por tratamientos o por productos agresivos.</div>
           <div><b>¿Qué va a notar?</b> La rojez te baja en días — y es de las que se acaban y se vuelven a comprar.</div>
@@ -1994,7 +2006,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
         <span class="cbadge" style="background:#B94F66">🔬 TRATAMIENTO</span>
         <span class="ccnt">1</span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> Ceramidas y lípidos que reconstruyen la piel</div>
           <div><b>¿Para quién es?</b> Piel muy seca, tirante, descamada o después de un tratamiento fuerte.</div>
           <div><b>¿Qué va a notar?</b> La piel deja de arder y de descamarse.</div>
@@ -2013,7 +2025,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
         <span class="cbadge" style="background:#2E7D5B">🧼 AL LAVARTE LA CARA</span>
         <span class="ccnt">1</span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> PDRN + ácido hialurónico en cápsulas</div>
           <div><b>¿Para quién es?</b> Piel seca o cansada, si quieres ver resultado rápido.</div>
           <div><b>¿Qué va a notar?</b> La bruma da glow al instante; el sérum trabaja de fondo.</div>
@@ -2032,7 +2044,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
         <span class="cbadge" style="background:#B94F66">🔬 TRATAMIENTO</span>
         <span class="ccnt">1</span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> Ácido hialurónico con agua de glaciar</div>
           <div><b>¿Para quién es?</b> Piel deshidratada, si no soportas sentir nada pesado encima.</div>
           <div><b>¿Qué va a notar?</b> Hidrata sin capa: perfecto para clima caliente.</div>
@@ -2053,7 +2065,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
           <div class="cprom">Piel que rebota: firmeza y efecto lifting</div></div>
         <span class="aprecio">$1,812<em>12 quincenas de $211 = $2,532</em></span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> Colágeno triple, en textura de gelatina que se derrite en la piel</div>
           <div><b>¿Para quién es?</b> Si pasas de los 30, o sientes la piel «caída» y sin vida.</div>
           <div><b>¿Qué va a notar?</b> Piel más firme y descansada; la crema gelatina es de las más vendidas de la tienda.</div>
@@ -2145,7 +2157,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
           <div class="cprom">con su línea Probio-Cica · Barrera fuerte y anti-edad suave</div></div>
         <span class="aprecio">$1,948<em>12 quincenas de $227 = $2,724</em></span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> Probióticos + centella + bakuchiol (el «retinol vegetal»)</div>
           <div><b>¿Para quién es?</b> Piel madura o debilitada, si quieres anti-edad sin irritación.</div>
           <div><b>¿Qué va a notar?</b> Piel más resistente y elástica; el bakuchiol trabaja las líneas sin picar.</div>
@@ -2228,7 +2240,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
           <div class="cprom">con su línea PDRN Collagen · Regeneración y firmeza a precio accesible</div></div>
         <span class="aprecio">$1,223<em>12 quincenas de $143 = $1,716</em></span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> PDRN + colágeno, la misma tecnología premium en versión económica</div>
           <div><b>¿Para quién es?</b> Si quieres probar el PDRN sin gastar de más.</div>
           <div><b>¿Qué va a notar?</b> Piel más firme y reparada; puerta de entrada a la categoría regeneradora.</div>
@@ -2306,7 +2318,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
           <div class="cprom">Anti-edad de última generación</div></div>
         <span class="aprecio">$1,208<em>12 quincenas de $141 = $1,692</em></span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> EGF + NAD, tecnología de regeneración celular</div>
           <div><b>¿Para quién es?</b> Si ya usas de todo y quieres subir al siguiente nivel.</div>
           <div><b>¿Qué va a notar?</b> Piel más firme y densa; es un tratamiento de fondo, no de efecto inmediato.</div>
@@ -2383,7 +2395,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
         <span class="cbadge" style="background:#D96C82">🎯 RUTINA COMPLETA</span>
         <span class="ccnt">15</span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> PDRN, un regenerador que ayuda a la piel a repararse sola, con péptidos rosados</div>
           <div><b>¿Para quién es?</b> Si viste el sérum rosa en TikTok y quieres ese efecto «piel de vidrio». De los 25 en adelante.</div>
           <div><b>¿Qué va a notar?</b> Piel más rellenita y luminosa; la textura se siente más lisa desde las primeras semanas.</div>
@@ -2507,7 +2519,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
         <span class="cbadge" style="background:#B94F66">🔬 TRATAMIENTO</span>
         <span class="ccnt">3</span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> Madecassoside, derivado de una pomada cicatrizante coreana real</div>
           <div><b>¿Para quién es?</b> Si eres exigente con el anti-edad y quieres algo con respaldo.</div>
           <div><b>¿Qué va a notar?</b> Nutre, repara y firma; es la crema regalo de la tienda.</div>
@@ -2532,7 +2544,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
         <span class="cbadge" style="background:#B94F66">🔬 TRATAMIENTO</span>
         <span class="ccnt">1</span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> Retinal, la versión más fuerte y rápida del retinol</div>
           <div><b>¿Para quién es?</b> Si ya usas anti-edad y quieres resultados de verdad.</div>
           <div><b>¿Qué va a notar?</b> Arrugas y firmeza; el más vendido de su categoría en Corea.</div>
@@ -2553,7 +2565,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
           <div class="cprom">con su línea Sérums Activos · Los activos clásicos, bien hechos y sin misterio</div></div>
         <span class="aprecio">$1,485<em>12 quincenas de $173 = $2,076</em></span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> Péptidos, niacinamida 15% y parches de colágeno</div>
           <div><b>¿Para quién es?</b> Si sabes lo que buscas y prefieres una marca reconocida.</div>
           <div><b>¿Qué va a notar?</b> Cada uno ataca algo puntual: firmeza, manchas u ojeras.</div>
@@ -2623,7 +2635,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
           <div class="cprom">con su línea PDRN Pink · Piel de porcelana: firmeza, glow y poro cerrado</div></div>
         <span class="aprecio">$1,408<em>12 quincenas de $164 = $1,968</em></span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> PDRN, un regenerador que ayuda a la piel a repararse sola, con péptidos rosados</div>
           <div><b>¿Para quién es?</b> Si viste el sérum rosa en TikTok y quieres ese efecto «piel de vidrio». De los 25 en adelante.</div>
           <div><b>¿Qué va a notar?</b> Piel más rellenita y luminosa; la textura se siente más lisa desde las primeras semanas.</div>
@@ -2742,7 +2754,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
           <div class="cprom">con su línea Probio-Cica · Barrera fuerte y anti-edad suave</div></div>
         <span class="aprecio">$1,948<em>12 quincenas de $227 = $2,724</em></span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> Probióticos + centella + bakuchiol (el «retinol vegetal»)</div>
           <div><b>¿Para quién es?</b> Piel madura o debilitada, si quieres anti-edad sin irritación.</div>
           <div><b>¿Qué va a notar?</b> Piel más resistente y elástica; el bakuchiol trabaja las líneas sin picar.</div>
@@ -2827,7 +2839,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
         <span class="cbadge" style="background:#D9A05B">✨ CUIDADO EXTRA</span>
         <span class="ccnt">2</span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> Péptidos de colágeno en parches e hidrogel</div>
           <div><b>¿Para quién es?</b> Ojeras, hinchazón de la mañana, o antes de un evento.</div>
           <div><b>¿Qué va a notar?</b> Resultado visible al instante — por eso es el mejor probador de la tienda.</div>
@@ -2892,7 +2904,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
         <span class="cbadge" style="background:#D9A05B">✨ CUIDADO EXTRA</span>
         <span class="ccnt">2</span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> PDRN + aplicador metálico que desinflama al masajear</div>
           <div><b>¿Para quién es?</b> Ojeras, bolsas y párpado caído.</div>
           <div><b>¿Qué va a notar?</b> Efecto tensor inmediato con el aplicador; a largo plazo, líneas más suaves.</div>
@@ -3011,7 +3023,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
           <div class="cprom">con su línea Bean (fermentado) · Glow natural con lo mínimo: rutina sin complicaciones</div></div>
         <span class="aprecio">$2,283<em>12 quincenas de $266 = $3,192</em></span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> Frijol de soya fermentado, con pocos ingredientes y sin perfume</div>
           <div><b>¿Para quién es?</b> Si las rutinas largas te abruman y quieres algo simple que funcione.</div>
           <div><b>¿Qué va a notar?</b> Piel luminosa y suave; la esencia se usa con 2 gotas y rinde muchísimo.</div>
@@ -3107,7 +3119,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
           <div class="cprom">con su línea Hyaluronic · Hidratación profunda que dura todo el día</div></div>
         <span class="aprecio">$1,207<em>12 quincenas de $141 = $1,692</em></span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> Ácido hialurónico + ceramidas, que retienen agua y reparan la barrera</div>
           <div><b>¿Para quién es?</b> Cualquier piel — sobre todo si vives en clima seco o pasas el día con aire acondicionado.</div>
           <div><b>¿Qué va a notar?</b> La piel deja de sentirse tirante; se ve más jugosa.</div>
@@ -3199,7 +3211,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
         <span class="cbadge" style="background:#D96C82">🎯 RUTINA COMPLETA</span>
         <span class="ccnt">4</span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> 96% de mucina de caracol: repara, hidrata y da glow</div>
           <div><b>¿Para quién es?</b> Cualquier piel. El clásico coreano por el que todo mundo pregunta.</div>
           <div><b>¿Qué va a notar?</b> Piel reparada, jugosa y con brillo; funciona en cualquier tipo de piel.</div>
@@ -3281,7 +3293,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
         <span class="cbadge" style="background:#2E7D5B">🗓 UNA O DOS VECES POR SEMANA</span>
         <span class="ccnt">1</span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> Colágeno en hidrogel que se absorbe durante la noche</div>
           <div><b>¿Para quién es?</b> Para cualquier piel: el antojo, el regalo y la primera que todas quieren probar.</div>
           <div><b>¿Qué va a notar?</b> Amaneces con la piel lisa y con glow. El efecto se ve en una sola noche.</div>
@@ -3300,7 +3312,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
         <span class="cbadge" style="background:#2E7D5B">🧼 AL LAVARTE LA CARA</span>
         <span class="ccnt">1</span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> pH bajo, respeta la barrera de la piel</div>
           <div><b>¿Para quién es?</b> Toda la familia. Es el limpiador «no te puedes equivocar».</div>
           <div><b>¿Qué va a notar?</b> Limpia sin dejar la piel tirante ni chirriante.</div>
@@ -3319,7 +3331,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
         <span class="cbadge" style="background:#B94F66">🔬 TRATAMIENTO</span>
         <span class="ccnt">1</span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> Trufa blanca del Piamonte, en bruma y en barra multiusos</div>
           <div><b>¿Para quién es?</b> El regalo elegante — o para darte un gusto.</div>
           <div><b>¿Qué va a notar?</b> Glow inmediato que se puede aplicar hasta sobre el maquillaje.</div>
@@ -3340,7 +3352,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
           <div class="cprom">Hidrata y calma al mismo tiempo</div></div>
         <span class="aprecio">$1,767<em>12 quincenas de $206 = $2,472</em></span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> Centella + ácido hialurónico: calma y llena de agua</div>
           <div><b>¿Para quién es?</b> Piel seca que además se irrita. Y su bloqueador le queda a cualquier piel.</div>
           <div><b>¿Qué va a notar?</b> Piel jugosa y en calma; el Water-Fit Sun Serum es EL bloqueador viral.</div>
@@ -3417,7 +3429,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
           <div class="cprom">con su línea Protección Solar · Bloqueador cómodo, incluso en barra para retocar</div></div>
         <span class="aprecio">$2,010<em>12 quincenas de $235 = $2,820</em></span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> Filtros ligeros con aloe calmante</div>
           <div><b>¿Para quién es?</b> Si odias el bloqueador pegajoso, o necesitas retocar sobre el maquillaje.</div>
           <div><b>¿Qué va a notar?</b> Protección sin sensación grasosa; la barra se lleva en la bolsa.</div>
@@ -3488,7 +3500,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
           <div class="cprom">con su línea Zero Pore · Poro cerrado y cero brillo, todo el día</div></div>
         <span class="aprecio">$1,550<em>12 quincenas de $181 = $2,172</em></span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> Ácidos suaves y arcilla que limpian por dentro del poro</div>
           <div><b>¿Para quién es?</b> Piel grasa o mixta, con puntos negros y brillo en la zona T.</div>
           <div><b>¿Qué va a notar?</b> El poro se ve más pequeño y la piel deja de brillar a media tarde.</div>
@@ -3579,7 +3591,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
         <span class="cbadge" style="background:#D96C82">🎯 RUTINA COMPLETA</span>
         <span class="ccnt">2</span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> Filtros coreanos con centella calmante</div>
           <div><b>¿Para quién es?</b> Para todos los días. La versión Plus, para playa y aire libre.</div>
           <div><b>¿Qué va a notar?</b> Protege sin capa blanca ni sensación grasosa.</div>
@@ -3655,7 +3667,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
         <span class="cbadge" style="background:#2E7D5B">☀️ TODAS LAS MAÑANAS</span>
         <span class="ccnt">1</span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> Filtros con esencia hidratante de trufa</div>
           <div><b>¿Para quién es?</b> Si quieres que hasta el bloqueador se sienta premium.</div>
           <div><b>¿Qué va a notar?</b> Protege e hidrata a la vez, con acabado luminoso.</div>
@@ -3674,7 +3686,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
         <span class="cbadge" style="background:#2E7D5B">☀️ TODAS LAS MAÑANAS</span>
         <span class="ccnt">1</span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> Centella + activos iluminadores, con bloqueador con color</div>
           <div><b>¿Para quién es?</b> Si quieres verte despierta ya, aunque las manchas tarden en irse.</div>
           <div><b>¿Qué va a notar?</b> Resultado inmediato de tono parejo; a largo plazo, aclara.</div>
@@ -3751,7 +3763,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
           <div class="cprom">con su línea Centella Original · La rutina que calma todo, para la piel más delicada</div></div>
         <span class="aprecio">$1,378<em>12 quincenas de $161 = $1,932</em></span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> Centella asiática de Madagascar pura: la planta que desinflama</div>
           <div><b>¿Para quién es?</b> Piel sensible o reactiva — o si apenas empiezas y no quieres arriesgarte.</div>
           <div><b>¿Qué va a notar?</b> Baja la rojez y la irritación; la piel se siente tranquila.</div>
@@ -3844,7 +3856,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
           <div class="cprom">con su línea PDRN Pink · Piel de porcelana: firmeza, glow y poro cerrado</div></div>
         <span class="aprecio">$1,408<em>12 quincenas de $164 = $1,968</em></span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> PDRN, un regenerador que ayuda a la piel a repararse sola, con péptidos rosados</div>
           <div><b>¿Para quién es?</b> Si viste el sérum rosa en TikTok y quieres ese efecto «piel de vidrio». De los 25 en adelante.</div>
           <div><b>¿Qué va a notar?</b> Piel más rellenita y luminosa; la textura se siente más lisa desde las primeras semanas.</div>
@@ -3965,7 +3977,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
         <span class="cbadge" style="background:#D9A05B">✨ CUIDADO EXTRA</span>
         <span class="ccnt">3</span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> Colágeno en hidrogel que se absorbe durante la noche</div>
           <div><b>¿Para quién es?</b> Para cualquier piel: el antojo, el regalo y la primera que todas quieren probar.</div>
           <div><b>¿Qué va a notar?</b> Amaneces con la piel lisa y con glow. El efecto se ve en una sola noche.</div>
@@ -4045,7 +4057,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
         <span class="cbadge" style="background:#7FA86B">➕ REFUERZO</span>
         <span class="ccnt">2</span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> Trufa blanca del Piamonte, en bruma y en barra multiusos</div>
           <div><b>¿Para quién es?</b> El regalo elegante — o para darte un gusto.</div>
           <div><b>¿Qué va a notar?</b> Glow inmediato que se puede aplicar hasta sobre el maquillaje.</div>
@@ -4124,7 +4136,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
         <span class="cbadge" style="background:#B94F66">🔬 TRATAMIENTO</span>
         <span class="ccnt">1</span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> Madecassoside, derivado de una pomada cicatrizante coreana real</div>
           <div><b>¿Para quién es?</b> Si eres exigente con el anti-edad y quieres algo con respaldo.</div>
           <div><b>¿Qué va a notar?</b> Nutre, repara y firma; es la crema regalo de la tienda.</div>
@@ -4143,7 +4155,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
         <span class="cbadge" style="background:#2E7D5B">🗓 2–3 VECES POR SEMANA</span>
         <span class="ccnt">1</span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> Péptidos de colágeno en parches e hidrogel</div>
           <div><b>¿Para quién es?</b> Ojeras, hinchazón de la mañana, o antes de un evento.</div>
           <div><b>¿Qué va a notar?</b> Resultado visible al instante — por eso es el mejor probador de la tienda.</div>
@@ -4164,7 +4176,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
           <div class="cprom">con su línea Kojic Acid Turmeric · Contra las manchas más difíciles y el paño</div></div>
         <span class="aprecio">$1,388<em>12 quincenas de $162 = $1,944</em></span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> Ácido kójico + cúrcuma, la dupla clásica para aclarar</div>
           <div><b>¿Para quién es?</b> Manchas que te dejó el embarazo, el sol o los años — de las que no se van con nada.</div>
           <div><b>¿Qué va a notar?</b> El tono se empareja poco a poco: se nota entre la cuarta y la octava semana.</div>
@@ -4236,7 +4248,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
           <div class="cprom">con su línea Poremizing · Rutina completa para el poro abierto</div></div>
         <span class="aprecio">$1,543<em>12 quincenas de $180 = $2,160</em></span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> Centella + activos que limpian y afinan el poro</div>
           <div><b>¿Para quién es?</b> Piel grasa que además es sensible (no aguanta lo agresivo).</div>
           <div><b>¿Qué va a notar?</b> Poro más fino y menos grasa, sin la resequedad de los productos fuertes.</div>
@@ -4330,7 +4342,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
           <div class="cprom">con su línea Collagen · Piel que rebota: firmeza y efecto lifting</div></div>
         <span class="aprecio">$1,812<em>12 quincenas de $211 = $2,532</em></span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> Colágeno triple, en textura de gelatina que se derrite en la piel</div>
           <div><b>¿Para quién es?</b> Si pasas de los 30, o sientes la piel «caída» y sin vida.</div>
           <div><b>¿Qué va a notar?</b> Piel más firme y descansada; la crema gelatina es de las más vendidas de la tienda.</div>
@@ -4424,7 +4436,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
         <span class="cbadge" style="background:#D9A05B">✨ CUIDADO EXTRA</span>
         <span class="ccnt">3</span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> Colágeno en hidrogel que se absorbe durante la noche</div>
           <div><b>¿Para quién es?</b> Para cualquier piel: el antojo, el regalo y la primera que todas quieren probar.</div>
           <div><b>¿Qué va a notar?</b> Amaneces con la piel lisa y con glow. El efecto se ve en una sola noche.</div>
@@ -4500,7 +4512,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
         <span class="cbadge" style="background:#D9A05B">✨ CUIDADO EXTRA</span>
         <span class="ccnt">2</span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> Péptidos de colágeno en parches e hidrogel</div>
           <div><b>¿Para quién es?</b> Ojeras, hinchazón de la mañana, o antes de un evento.</div>
           <div><b>¿Qué va a notar?</b> Resultado visible al instante — por eso es el mejor probador de la tienda.</div>
@@ -4577,7 +4589,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
         <span class="cbadge" style="background:#2E7D5B">🌙 MIENTRAS DUERMES</span>
         <span class="ccnt">1</span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> PDRN, un regenerador que ayuda a la piel a repararse sola, con péptidos rosados</div>
           <div><b>¿Para quién es?</b> Si viste el sérum rosa en TikTok y quieres ese efecto «piel de vidrio». De los 25 en adelante.</div>
           <div><b>¿Qué va a notar?</b> Piel más rellenita y luminosa; la textura se siente más lisa desde las primeras semanas.</div>
@@ -4596,7 +4608,7 @@ html:not(.js) #t-elegir:target, html:not(.js) #t-rutina:target { display:block !
         <span class="cbadge" style="background:#2E7D5B">🗓 1–2 VECES POR SEMANA</span>
         <span class="ccnt">1</span></summary>
       <div class="cbody">
-        <details class="cficha"><summary>ℹ️ Qué tiene, para quién es y qué se nota</summary>
+        <details class="cficha"><summary><span>Ver qué tiene, para quién es y qué se nota</span><span class="cfcar">▾</span></summary>
           <div><b>¿Qué tiene?</b> Ácidos suaves y arcilla que limpian por dentro del poro</div>
           <div><b>¿Para quién es?</b> Piel grasa o mixta, con puntos negros y brillo en la zona T.</div>
           <div><b>¿Qué va a notar?</b> El poro se ve más pequeño y la piel deja de brillar a media tarde.</div>
