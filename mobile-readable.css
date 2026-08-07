@@ -1,0 +1,412 @@
+/*
+ * Escala móvil aprobada para lectura real en tienda.
+ * Se conserva la jerarquía compacta: crecen decisiones, productos y acciones;
+ * sellos, marcas, etiquetas y datos de quincenas permanecen secundarios.
+ */
+@media (max-width: 600px) {
+  /* Objetivos: mejora pequeña para no romper la vista compacta aprobada. */
+  body.aprobada-objetivos #t-elegir .topcion .ot {
+    font-size: 14.2px !important;
+    line-height: 1.18 !important;
+  }
+  body.aprobada-objetivos #t-elegir .topcion {
+    min-height: 82px !important;
+  }
+  body.aprobada-objetivos #t-elegir .topcion .oe {
+    width: 56px !important;
+    height: 56px !important;
+    flex-basis: 56px !important;
+  }
+  body.aprobada-objetivos #t-elegir .tcta {
+    font-size: 15px !important;
+  }
+
+  /* Rutinas: el producto es lo principal. */
+  body.rutina-combinada-preview.rutina-compacta .compact-result > .ptit {
+    font-size: clamp(27px, 7.5vw, 33px) !important;
+  }
+  body.rutina-combinada-preview.rutina-compacta .apple-reco-toggle {
+    min-height: 34px !important;
+    font-size: 13px !important;
+  }
+  body.rutina-combinada-preview.rutina-compacta .apple-reco-toggle .apple-reco-arrow {
+    width: 22px !important;
+    height: 22px !important;
+    font-size: 12px !important;
+  }
+  body.rutina-combinada-preview.rutina-compacta .compact-result .rlist {
+    gap: 6px !important;
+  }
+  body.rutina-combinada-preview.rutina-compacta .compact-result .rp {
+    min-height: 116px !important;
+    padding: 9px !important;
+    gap: 9px !important;
+  }
+  body.rutina-combinada-preview.rutina-compacta .compact-result .rpaso {
+    width: 34px !important;
+    font-size: 7.2px !important;
+    line-height: 1.1 !important;
+  }
+  body.rutina-combinada-preview.rutina-compacta .compact-result .rpaso span {
+    width: 29px !important;
+    height: 29px !important;
+    font-size: 13px !important;
+  }
+  body.rutina-combinada-preview.rutina-compacta .compact-result .rimg {
+    width: 82px !important;
+    height: 100px !important;
+  }
+  body.rutina-combinada-preview.rutina-compacta .compact-result .rinfo {
+    padding-right: 0 !important;
+  }
+  body.rutina-combinada-preview.rutina-compacta .compact-result .pname {
+    font-size: 15.5px !important;
+    line-height: 1.14 !important;
+  }
+  body.rutina-combinada-preview.rutina-compacta .compact-result .cmarca2 {
+    font-size: 10.2px !important;
+    letter-spacing: .035em !important;
+  }
+  body.rutina-combinada-preview.rutina-compacta .compact-result .ruso,
+  body.rutina-combinada-preview.rutina-compacta .compact-result .tuso,
+  body.rutina-combinada-preview.rutina-compacta .compact-result .cuso,
+  body.rutina-combinada-preview.rutina-compacta .compact-result .ouso,
+  body.rutina-combinada-preview.rutina-compacta .compact-result .rquien {
+    font-size: 11.5px !important;
+    line-height: 1.25 !important;
+  }
+  body.rutina-combinada-preview.rutina-compacta .compact-result .rprec,
+  body.rutina-combinada-preview.rutina-compacta .compact-result .lprec,
+  body.rutina-combinada-preview.rutina-compacta .compact-result .cprec,
+  body.rutina-combinada-preview.rutina-compacta .compact-result .oprec,
+  body.rutina-combinada-preview.rutina-compacta .compact-result .rrprec {
+    margin-top: 6px !important;
+    font-size: 15.5px !important;
+    line-height: 1.15 !important;
+  }
+  body.rutina-combinada-preview.rutina-compacta .compact-result .lprec b,
+  body.rutina-combinada-preview.rutina-compacta .compact-result .cprec b,
+  body.rutina-combinada-preview.rutina-compacta .compact-result .oprec b,
+  body.rutina-combinada-preview.rutina-compacta .compact-result .rrprec b {
+    font-size: 15.5px !important;
+  }
+  body.rutina-combinada-preview.rutina-compacta .compact-result .rprec > span,
+  body.rutina-combinada-preview.rutina-compacta .compact-result .lprec > span,
+  body.rutina-combinada-preview.rutina-compacta .compact-result .cprec > span,
+  body.rutina-combinada-preview.rutina-compacta .compact-result .oprec > span,
+  body.rutina-combinada-preview.rutina-compacta .compact-result .rrprec > span {
+    font-size: 10.5px !important;
+    line-height: 1.2 !important;
+  }
+  body.rutina-combinada-preview .compact-result .apple-add-standard {
+    min-height: 30px !important;
+    padding: 6px 10px !important;
+    border-radius: 8px !important;
+    font-size: 12px !important;
+    line-height: 1.1 !important;
+  }
+
+  /* La ficha y los niveles deben poder leerse sin esfuerzo. */
+  body.rutina-combinada-preview.rutina-compacta .compact-result .col > .cbody > .cficha > summary {
+    min-height: 42px !important;
+    padding: 8px 10px !important;
+    font-size: 12px !important;
+  }
+  body.rutina-combinada-preview.rutina-compacta .compact-result .col > .cbody > .cficha > div {
+    padding: 8px 10px 2px !important;
+    font-size: 11.5px !important;
+    line-height: 1.45 !important;
+  }
+  body.rutina-combinada-preview.rutina-compacta .compact-result .tier > summary,
+  body.rutina-combinada-preview.rutina-compacta .compact-result .plegable > summary {
+    min-height: 56px !important;
+    padding: 10px 11px !important;
+    font-size: 12.5px !important;
+  }
+  body.rutina-combinada-preview.rutina-compacta .compact-result .tnom {
+    font-size: 12.8px !important;
+  }
+  body.rutina-combinada-preview.rutina-compacta .compact-result .tnom em {
+    font-size: 10px !important;
+    line-height: 1.2 !important;
+  }
+  body.rutina-combinada-preview.rutina-compacta .compact-result .tprecio {
+    font-size: 14px !important;
+  }
+  body.rutina-combinada-preview.rutina-compacta .compact-result .tprecio em,
+  body.rutina-combinada-preview.rutina-compacta .compact-result .plegable > summary em {
+    font-size: 9.5px !important;
+  }
+
+  /* Productos dentro de niveles, comparaciones y complementos. */
+  body.rutina-combinada-preview.rutina-compacta .compact-result .trow,
+  body.rutina-combinada-preview.rutina-compacta .compact-result .crow,
+  body.rutina-combinada-preview.rutina-compacta .compact-result .orow {
+    grid-template-columns: 82px minmax(0, 1fr) !important;
+    min-height: 116px !important;
+    column-gap: 10px !important;
+    padding: 9px !important;
+  }
+  body.rutina-combinada-preview.rutina-compacta .compact-result .timg,
+  body.rutina-combinada-preview.rutina-compacta .compact-result .cimg,
+  body.rutina-combinada-preview.rutina-compacta .compact-result .oimg,
+  body.rutina-combinada-preview.rutina-compacta .compact-result .rrimg {
+    width: 82px !important;
+    height: 100px !important;
+  }
+  body.rutina-combinada-preview.rutina-compacta .compact-result .tinfo,
+  body.rutina-combinada-preview.rutina-compacta .compact-result .crow > div:nth-child(2),
+  body.rutina-combinada-preview.rutina-compacta .compact-result .orow > div:nth-child(2) {
+    padding-right: 0 !important;
+  }
+  body.rutina-combinada-preview.rutina-compacta .compact-result .lprec,
+  body.rutina-combinada-preview.rutina-compacta .compact-result .cprec,
+  body.rutina-combinada-preview.rutina-compacta .compact-result .oprec {
+    padding-right: 0 !important;
+  }
+  body.rutina-combinada-preview.rutina-compacta .compact-result .rref {
+    min-height: 116px !important;
+    padding: 9px !important;
+  }
+
+  /* Comparar y sumar siguen siendo secundarios, pero ya no microscópicos. */
+  body.rutina-combinada-preview .apple-treatment-section {
+    padding: 10px !important;
+  }
+  body.rutina-combinada-preview .apple-treatment-head b,
+  body.rutina-combinada-preview .apple-brand-copy b {
+    font-size: 14px !important;
+    line-height: 1.18 !important;
+  }
+  body.rutina-combinada-preview .apple-treatment-head small,
+  body.rutina-combinada-preview .apple-brand-copy small {
+    font-size: 10.5px !important;
+    line-height: 1.25 !important;
+  }
+  body.rutina-combinada-preview .apple-category > summary {
+    min-height: 54px !important;
+    padding: 8px 10px !important;
+  }
+  body.rutina-combinada-preview .apple-category-copy b {
+    font-size: 12.5px !important;
+  }
+  body.rutina-combinada-preview .apple-category-copy small,
+  body.rutina-combinada-preview .apple-category-count {
+    font-size: 9.8px !important;
+    line-height: 1.2 !important;
+  }
+  body.rutina-combinada-preview .apple-brand-section > summary {
+    min-height: 70px !important;
+    padding: 10px 11px !important;
+  }
+  body.rutina-combinada-preview .apple-treatment-card > summary,
+  body.rutina-combinada-preview .apple-brand-card > summary,
+  body.rutina-combinada-preview .apple-brand-content > .mez > summary {
+    min-height: 64px !important;
+    padding: 9px !important;
+  }
+  body.rutina-combinada-preview .apple-treatment-card > summary .cnom,
+  body.rutina-combinada-preview .apple-brand-card > summary .cnom,
+  body.rutina-combinada-preview .apple-brand-content > .mez > summary .mznom {
+    font-size: 12.5px !important;
+    line-height: 1.18 !important;
+  }
+  body.rutina-combinada-preview .apple-treatment-card > summary .cpara,
+  body.rutina-combinada-preview .apple-brand-card > summary .cpara,
+  body.rutina-combinada-preview .apple-brand-card > summary .cprom,
+  body.rutina-combinada-preview .apple-brand-content > .mez > summary .mzsub {
+    font-size: 10px !important;
+    line-height: 1.22 !important;
+  }
+  body.rutina-combinada-preview.rutina-compacta .apple-brand-content > .mez > summary .mzprecio {
+    width: 96px !important;
+    flex-basis: 96px !important;
+    font-size: 15px !important;
+  }
+  body.rutina-combinada-preview.rutina-compacta .apple-brand-content > .mez > summary .mzprecio em {
+    font-size: 9px !important;
+  }
+  body.rutina-combinada-preview.rutina-compacta .apple-category > .apple-treatment-note,
+  body.rutina-combinada-preview.rutina-compacta #panel-combinado.compact-result > .nota.suave {
+    font-size: 10.5px !important;
+    line-height: 1.4 !important;
+  }
+  body.rutina-combinada-preview.rutina-compacta #panel-combinado.compact-result > .seltit > .selchip {
+    min-height: 38px !important;
+    font-size: 8.7px !important;
+    line-height: 1.18 !important;
+  }
+
+  /* Resultado del análisis de piel. */
+  body.piel-resumen-nuevo-2 #sc-res .result-summary .resh1 {
+    font-size: clamp(27px, 7.4vw, 32px) !important;
+  }
+  body.piel-resumen-nuevo-2 #sc-res .result-summary .ressub {
+    font-size: 12px !important;
+  }
+  body.piel-summary-round2 #sc-res .summary-kicker {
+    font-size: 9px !important;
+  }
+  body.piel-resumen-nuevo-2 #sc-res .result-summary > #reschips .selchip {
+    min-height: 46px !important;
+    padding: 8px 10px !important;
+    font-size: 13px !important;
+    line-height: 1.25 !important;
+  }
+  body.piel-resumen-nuevo-2 #sc-res .result-summary > #reschips .selchip img {
+    width: 26px !important;
+    height: 26px !important;
+  }
+  body.piel-resumen-nuevo-2 #sc-res .summary-note-icon {
+    width: 28px !important;
+    height: 28px !important;
+    flex-basis: 28px !important;
+    background-size: 20px 20px !important;
+  }
+  body.piel-resumen-nuevo-2 #sc-res .summary-note-copy small {
+    font-size: 8.5px !important;
+  }
+  body.piel-resumen-nuevo-2 #sc-res .summary-note-copy strong {
+    font-size: 11.5px !important;
+    line-height: 1.25 !important;
+  }
+  body.piel-resumen-nuevo-2 #sc-res .summary-note-copy em {
+    font-size: 10.5px !important;
+    line-height: 1.35 !important;
+  }
+  body.piel-resultado-1.rutina-combinada-preview.rutina-compacta .compact-result .cob {
+    min-height: 20px !important;
+    padding: 3px 6px !important;
+    font-size: 8.5px !important;
+  }
+  body.piel-result-option #sc-res .result-adjust > summary,
+  body.piel-result-option #sc-res .result-info > summary,
+  body.piel-result-option #sc-res .result-sensitive {
+    font-size: 12px !important;
+    line-height: 1.4 !important;
+  }
+
+  /* Cuestionario: preguntas y respuestas deben leerse a distancia normal. */
+  body:has(#sc-intro) .qtxt {
+    font-size: 20px !important;
+    line-height: 1.25 !important;
+  }
+  body:has(#sc-intro) .qay,
+  body:has(#sc-intro) .qay2 {
+    font-size: 13px !important;
+  }
+  body:has(#sc-intro) .qop {
+    min-height: 52px !important;
+    padding: 12px 14px !important;
+    font-size: 16.5px !important;
+  }
+
+  /* Buscar y comparar productos. */
+  body.buscar-opcion-1 .abtn b { font-size: 16px !important; }
+  body.buscar-opcion-1 .abtn small { font-size: 12.5px !important; }
+  body.buscar-opcion-1 .pesta { min-height: 48px; font-size: 13.5px !important; }
+  body.buscar-opcion-1 .pcard img { height: 132px !important; }
+  body.buscar-opcion-1 .pcnom { font-size: 15px !important; }
+  body.buscar-opcion-1 .pcmarca { font-size: 10px !important; }
+  body.buscar-opcion-1 .pcprecio { font-size: 14px !important; }
+  body.buscar-opcion-1 .pcprecio span { font-size: 10.5px !important; }
+  body.buscar-opcion-1 #comparar .cwrap > .dtit { font-size: 16px !important; }
+  body.buscar-opcion-1 #comparar .cwrap > .dsub { font-size: 11.5px !important; }
+  body.buscar-filtro-2 #comparar .cnec {
+    min-height: 60px !important;
+    padding: 5px 24px 5px 6px !important;
+    font-size: 12px !important;
+    line-height: 1.16 !important;
+  }
+  body.buscar-filtro-2 #comparar .cnec .needico {
+    width: 46px !important;
+    height: 46px !important;
+  }
+  body.buscar-filtro-2 #comparar .cpasl::before { font-size: 12px !important; }
+  body.buscar-filtro-2 #comparar .cpaso,
+  body.buscar-filtro-2 #comparar .cpaso:first-child,
+  body.buscar-filtro-2 #comparar .cpaso:last-child {
+    min-height: 42px !important;
+    font-size: 10.5px !important;
+  }
+  body.buscar-filtro-2 #comparar .step-guide { font-size: 9.5px !important; }
+  body.buscar-marcas-1c #catalogo .mnom { font-size: 16px !important; }
+  body.buscar-marcas-1c #catalogo .mfrase { font-size: 13px !important; }
+  body.buscar-marcas-1c #catalogo .mcnt { font-size: 9.5px !important; }
+  body.buscar-marcas #catalogo .shop-stats span { font-size: 10.5px !important; }
+  body.buscar-ayuda #ayuda-rapida > .nota:first-of-type { font-size: 12px !important; }
+  body.buscar-ayuda #ayuda-rapida .faq-list .obj > summary {
+    min-height: 62px !important;
+    font-size: 15px !important;
+  }
+  body.buscar-ayuda #ayuda-rapida .faq-list .obj > p {
+    font-size: 13px !important;
+    line-height: 1.55 !important;
+  }
+  body.buscar-ayuda #ayuda-rapida .times-panel .orow2 b { font-size: 14px !important; }
+  body.buscar-ayuda #ayuda-rapida .times-panel .orow2 i { font-size: 12px !important; }
+
+  /* Guía de uso: agrandar el contenido, no el sello decorativo. */
+  body.guia-redisenada .gpasos span { font-size: 11.5px !important; }
+  body.guia-redisenada .gbtn b { font-size: 16px !important; }
+  body.guia-redisenada .gbtn small { font-size: 12.5px !important; }
+  body.guia-redisenada .mio { font-size: 13px !important; }
+  body.guia-redisenada .mio img {
+    width: 38px !important;
+    height: 46px !important;
+  }
+  body.guia-redisenada .gale { font-size: 12px !important; }
+  body.guia-redisenada .ol .pn { font-size: 14.5px !important; }
+  body.guia-redisenada .ol .pm2,
+  body.guia-redisenada .ol li.espera { font-size: 11.5px !important; }
+  body.guia-redisenada .card.guide-product-card {
+    grid-template-columns: 76px minmax(0, 1fr) !important;
+    gap: 12px !important;
+    padding: 12px !important;
+  }
+  body.guia-redisenada .card.guide-product-card > img {
+    width: 76px !important;
+    height: 94px !important;
+  }
+  body.guia-redisenada .card.guide-product-card .cn { font-size: 15.5px !important; }
+  body.guia-redisenada .card.guide-product-card .cm2 { font-size: 11px !important; }
+  body.guia-redisenada .guide-card-toggle {
+    min-height: 34px !important;
+    font-size: 11px !important;
+  }
+  body.guia-redisenada .card.guide-product-card .fila {
+    font-size: 12.5px !important;
+    line-height: 1.5 !important;
+  }
+  body.guia-redisenada .card.guide-product-card .alz div { font-size: 11.5px !important; }
+  body.guia-redisenada .gleg { font-size: 11px !important; }
+
+  /* Dos ajustes puntuales aprobados: más jerarquía para la mezcla de marcas
+     y una llamada a la acción de rutina que se lee al primer vistazo. */
+  body.rutina-combinada-preview.rutina-compacta .apple-brand-content > .mez > summary {
+    min-height: 76px !important;
+    padding: 11px !important;
+    gap: 9px !important;
+  }
+  body.rutina-combinada-preview.rutina-compacta .apple-brand-content > .mez > summary .mzico {
+    width: 38px !important;
+    height: 38px !important;
+    flex-basis: 38px !important;
+    font-size: 18px !important;
+  }
+  body.rutina-combinada-preview.rutina-compacta .apple-brand-content > .mez > summary .mznom {
+    font-size: 14px !important;
+    line-height: 1.16 !important;
+  }
+  body.rutina-combinada-preview.rutina-compacta .apple-brand-content > .mez > summary .mzsub {
+    margin-top: 3px !important;
+    font-size: 11px !important;
+    line-height: 1.22 !important;
+  }
+  body.rutina-combinada-preview.rutina-compacta .compact-result .agtodo {
+    min-height: 50px !important;
+    padding: 11px 12px !important;
+    font-size: 14.5px !important;
+    line-height: 1.2 !important;
+  }
+}
