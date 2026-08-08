@@ -2440,11 +2440,11 @@ body.rutina-combinada-preview.rutina-compacta .apple-brand-content .tier[open] >
 }
 
 </style>
-<link rel="stylesheet" href="../mobile-readable.css?v=75cb0d69ac88">
+<link rel="stylesheet" href="../mobile-readable.css?v=c8353eae1606">
 </head><body class="rutina-combinada-preview">
 
 <div class="twrap">
-  <div class="thead"><div class="tlogo">SO YOUNG <em>K-BEAUTY</em></div><button class="tcart" id="tcart" type="button" hidden aria-label="Ver mi lista"><span class="uiico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8.3h14l-1 12H6z"/><path d="M8.6 9V7a3.4 3.4 0 0 1 6.8 0v2"/></svg></span><b id="tcartn">0</b></button><div class="tpaso" id="tmiga">🇰🇷 100% original</div></div>
+  <div class="thead"><button class="tback" id="tflowback" type="button" aria-label="Volver" hidden>←</button><div class="tlogo">SO YOUNG <em>K-BEAUTY</em></div><button class="tcart" id="tcart" type="button" hidden aria-label="Ver mi lista"><span class="uiico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8.3h14l-1 12H6z"/><path d="M8.6 9V7a3.4 3.4 0 0 1 6.8 0v2"/></svg></span><b id="tcartn">0</b></button><div class="tpaso" id="tmiga">🇰🇷 100% original</div></div>
 
   <!-- ===== pantalla 1 · misiones ===== -->
   <section id="t-home">
@@ -7155,6 +7155,8 @@ q.addEventListener("input", () => {
     PANTS.forEach(p => { $(p).hidden = p !== id; });
     document.body.classList.toggle("enportada", id === "t-home");
     document.body.classList.toggle("aprobada-objetivos", id === "t-elegir");
+    $("tflowback").hidden = id === "t-home";
+    $("tflowback").setAttribute("aria-label", id === "t-rutina" ? "Cambiar mi elección" : "Volver");
     $("tmiga").textContent = id === "t-home" ? "🇰🇷 100% original"
       : (id === "t-elegir" ? "paso 1 de 2" : "paso 2 de 2");
     scrollTo({ top: 0, behavior: "instant" });
@@ -7183,6 +7185,11 @@ q.addEventListener("input", () => {
       if (prof() > 0) history.back();
       else location.replace(a.getAttribute("href"));
     }));
+  $("tflowback").addEventListener("click", () => {
+    const destino = pantalla() === "t-rutina" ? "#t-elegir" : "#t-home";
+    if (prof() > 0) history.back();
+    else location.replace(destino);
+  });
   window.addEventListener("popstate", () => ir(pantalla()));
   $("tarmar").addEventListener("click", () => irApilando("#t-rutina"));
 

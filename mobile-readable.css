@@ -9,6 +9,54 @@ body.rutina-combinada-preview .compact-result::before {
   display: none !important;
 }
 
+/* Un solo regreso en todo el sitio: círculo blanco, flecha negra y la misma lógica
+ * contextual que ya tiene cada flujo (página anterior, pantalla anterior o pregunta). */
+:is(a.tback, button.tback, a.tvolver, a.volver) {
+  position: relative !important;
+  width: 32px !important;
+  height: 32px !important;
+  min-width: 32px !important;
+  min-height: 32px !important;
+  flex: 0 0 32px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: visible !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 50% !important;
+  background: #fff !important;
+  color: transparent !important;
+  font-size: 0 !important;
+  line-height: 1 !important;
+  text-decoration: none !important;
+  box-shadow: 0 2px 10px rgba(48, 35, 41, .06) !important;
+  cursor: pointer !important;
+  touch-action: manipulation;
+}
+:is(a.tback, button.tback, a.tvolver, a.volver)::before {
+  content: "←";
+  color: #211d20 !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  line-height: 1 !important;
+}
+:is(a.tback, button.tback, a.tvolver, a.volver)::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+}
+:is(a.tback, button.tback, a.tvolver, a.volver):focus-visible {
+  outline: 2px solid #D74773 !important;
+  outline-offset: 2px !important;
+}
+:is(a.tback, button.tback, a.tvolver, a.volver)[hidden],
+:is(a.tback, button.tback, a.tvolver, a.volver).unified-hidden,
+html.js a.tvolver {
+  display: none !important;
+}
+
 @media (max-width: 600px) {
   /* El acceso al código conserva su aspecto, pero ofrece un toque cómodo en celular. */
   #t-home .tpieas {
