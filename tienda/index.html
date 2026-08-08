@@ -2440,7 +2440,7 @@ body.rutina-combinada-preview.rutina-compacta .apple-brand-content .tier[open] >
 }
 
 </style>
-<link rel="stylesheet" href="../mobile-readable.css?v=c8353eae1606">
+<link rel="stylesheet" href="../mobile-readable.css?v=d9c160baf5ee">
 </head><body class="rutina-combinada-preview">
 
 <div class="twrap">
@@ -6352,10 +6352,12 @@ body.rutina-combinada-preview.rutina-compacta .apple-brand-content .tier[open] >
   <div class="tfondo" id="tfondo"></div>
   <div class="thoja">
     <button class="thx" id="tasesx" type="button" aria-label="Cerrar mi lista">✕</button>
-    <h3><span class="uiico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8.3h14l-1 12H6z"/><path d="M8.6 9V7a3.4 3.4 0 0 1 6.8 0v2"/></svg></span> Tu lista — enséñasela a tu asesora</h3>
-    <p class="tsm">Ella baja todo del estante y te lo aparta hoy mismo. Toca la foto de un producto para ver su ficha.</p>
-    <div class="tcodline"><span class="uiico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8.2" cy="11.4" r="4.2"/><path d="M12.4 11.4H21M17.1 11.4v3M19.6 11.4v2"/></svg></span> El código de tu lista: <b id="tcodigo">—</b><br>
-      Apúntalo o díctaselo a tu asesora: con él tu lista aparece en cualquier teléfono de la tienda — aunque el tuyo se bloquee, se quede sin pila, o venga tu mamá a pagarla por ti.</div>
+    <h3><span class="uiico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8.3h14l-1 12H6z"/><path d="M8.6 9V7a3.4 3.4 0 0 1 6.8 0v2"/></svg></span> Tu Lista</h3>
+    <div class="tcodline">
+      <div class="tcodlabel"><span class="uiico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8.2" cy="11.4" r="4.2"/><path d="M12.4 11.4H21M17.1 11.4v3M19.6 11.4v2"/></svg></span><span>El código de tu lista:</span></div>
+      <b id="tcodigo">—</b>
+      <p class="tcodhelp">Guarda este código para volver a abrir la lista que elegiste.</p>
+    </div>
     <div class="tchoque" id="tchoque" hidden></div>
     <div id="tlista"></div>
     <div class="ttotal"><b>Total de contado</b><span id="ttotal">—</span></div>
@@ -7420,7 +7422,7 @@ q.addEventListener("input", () => {
         <span class="tiprecio">${money(p.pc)}</span>
         <button class="tix" data-quitar="${it.i}" type="button" aria-label="Quitar de mi lista">✕</button>
       </div>
-      <div class="tialts"><details class="tiald"><summary>⇄ ¿No hay o no te late? <em>ver ${alts.length || "sus"} reemplazos</em></summary><div class="tialdb">
+      <div class="tialts"><details class="tiald"><summary>🔄 Si no hay <em>ver ${alts.length || "sus"} reemplazos</em></summary><div class="tialdb">
         ${yaEn}${alts.map(j => `<button class="trpl" type="button" data-de="${it.i}" data-a="${j}">${esF(PROD[j]) ? "🔥 " : "🌿 "}${PROD[j].d} <b>${money(PROD[j].pc)}</b></button>`).join("")}</div></details>
         <button class="trpl" type="button" data-ficha="${it.i}">🔍 ver ficha</button>
       </div>`;
