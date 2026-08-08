@@ -21,19 +21,19 @@ body.rutina-combinada-preview .compact-result::before {
     min-height: 30px !important;
     display: flex !important;
     align-items: center !important;
-    font-size: 13px !important;
+    font-size: 12.5px !important;
     line-height: 1.15 !important;
     letter-spacing: -.025em !important;
   }
   body.aprobada-objetivos #t-elegir .topcion {
     min-height: 82px !important;
-    padding: 8px 23px 8px 8px !important;
-    gap: 7px !important;
+    padding: 8px 18px 8px 8px !important;
+    gap: 5px !important;
   }
   body.aprobada-objetivos #t-elegir .topcion .oe {
-    width: 46px !important;
-    height: 46px !important;
-    flex-basis: 46px !important;
+    width: 40px !important;
+    height: 40px !important;
+    flex-basis: 40px !important;
   }
   body.aprobada-objetivos #t-elegir .tcta {
     font-size: 18px !important;
