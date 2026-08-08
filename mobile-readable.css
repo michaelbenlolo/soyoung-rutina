@@ -16,24 +16,18 @@ body.rutina-combinada-preview .compact-result::before {
     line-height: 1.12 !important;
   }
 
-  /* Los diez objetivos conservan la misma caja de dos líneas. */
+  /* Objetivos: se restaura exactamente la apariencia aprobada de las diez tarjetas. */
   body.aprobada-objetivos #t-elegir .topcion .ot {
-    min-height: 30px !important;
-    display: flex !important;
-    align-items: center !important;
-    font-size: 12.5px !important;
-    line-height: 1.15 !important;
-    letter-spacing: -.025em !important;
+    font-size: 14.2px !important;
+    line-height: 1.18 !important;
   }
   body.aprobada-objetivos #t-elegir .topcion {
     min-height: 82px !important;
-    padding: 8px 18px 8px 8px !important;
-    gap: 5px !important;
   }
   body.aprobada-objetivos #t-elegir .topcion .oe {
-    width: 40px !important;
-    height: 40px !important;
-    flex-basis: 40px !important;
+    width: 56px !important;
+    height: 56px !important;
+    flex-basis: 56px !important;
   }
   body.aprobada-objetivos #t-elegir .tcta {
     font-size: 18px !important;
