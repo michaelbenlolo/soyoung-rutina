@@ -2440,7 +2440,7 @@ body.rutina-combinada-preview.rutina-compacta .apple-brand-content .tier[open] >
 }
 
 </style>
-<link rel="stylesheet" href="../mobile-readable.css?v=1951089314e7">
+<link rel="stylesheet" href="../mobile-readable.css?v=75cb0d69ac88">
 </head><body class="rutina-combinada-preview">
 
 <div class="twrap">
@@ -2482,7 +2482,7 @@ body.rutina-combinada-preview.rutina-compacta .apple-brand-content .tier[open] >
            clienta —que esto no es un diagnóstico—; el detalle se abre si lo busca. -->
       <details class="tlegd"><summary>ℹ️ Esto no es un diagnóstico médico<span class="tlegcar">▾</span></summary>
         <p class="tlegal">Aquí te sugerimos cosméticos por lo que quieres mejorar; no sustituye la opinión de un dermatólogo. Precios en pesos, de contado o en quincenas con tu vale. Skincare coreano 100% original, solo en tiendas BHermanos participantes.</p></details>
-      <button class="tpieas" id="tcodbtn" type="button"><span class="uiico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8.2" cy="11.4" r="4.2"/><path d="M12.4 11.4H21M17.1 11.4v3M19.6 11.4v2"/></svg></span> Tengo un código SY — ver esa lista</button>
+      <button class="tpieas" id="tcodbtn" type="button" aria-controls="tcod" aria-expanded="false"><span class="uiico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8.2" cy="11.4" r="4.2"/><path d="M12.4 11.4H21M17.1 11.4v3M19.6 11.4v2"/></svg></span> Tengo un código SY — ver esa lista</button>
     </div>
   </section>
 
@@ -6367,12 +6367,12 @@ body.rutina-combinada-preview.rutina-compacta .apple-brand-content .tier[open] >
   </div>
 </div>
 
-<div id="tcod" hidden>
+<div id="tcod" role="dialog" aria-modal="true" aria-labelledby="tcodtitulo" hidden>
   <div class="tfondo" id="tcodfondo"></div>
   <div class="thoja">
-    <h3><span class="titleico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8.2" cy="11.4" r="4.2"/><path d="M12.4 11.4H21M17.1 11.4v3M19.6 11.4v2"/></svg></span>Teclea el código</h3>
+    <h3 id="tcodtitulo"><span class="titleico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8.2" cy="11.4" r="4.2"/><path d="M12.4 11.4H21M17.1 11.4v3M19.6 11.4v2"/></svg></span>Teclea el código</h3>
     <p class="tsm">Es el que empieza con <b>SY</b> — su lista aparece tal cual la armó, con su total.</p>
-    <input id="tcodin" class="tcodin" type="text" autocomplete="off" spellcheck="false" placeholder="SY-" maxlength="28">
+    <input id="tcodin" class="tcodin" type="text" autocomplete="off" autocapitalize="characters" enterkeyhint="go" spellcheck="false" placeholder="SY-" maxlength="28">
     <p class="tsm terr" id="tcoderr" hidden>No reconozco ese código — revísalo caracter por caracter.</p>
     <button class="tcerrar tcodver" id="tcodver" type="button">Ver la lista</button>
     <button class="tcerrar" id="tcodcerrar" type="button">Cerrar</button>
@@ -7205,11 +7205,19 @@ q.addEventListener("input", () => {
   }
 
   // la asesora teclea un codigo SY → la lista de la clienta aparece tal cual
-  const cerrarCod = () => { $("tcod").hidden = true; document.body.style.overflow = ""; };
+  const cerrarCod = () => {
+    $("tcod").hidden = true;
+    $("tcodbtn").setAttribute("aria-expanded", "false");
+    document.body.style.overflow = "";
+  };
   $("tcodbtn").addEventListener("click", () => {
-    $("tcoderr").hidden = true; $("tcodin").value = "";
+    const input = $("tcodin");
+    $("tcoderr").hidden = true; input.value = "";
     $("tcod").hidden = false; document.body.style.overflow = "hidden";
-    setTimeout(() => $("tcodin").focus(), 60);
+    $("tcodbtn").setAttribute("aria-expanded", "true");
+    // En iPhone el teclado solo aparece si el foco ocurre dentro del mismo toque.
+    // El setTimeout anterior perdía esa activación y hacía parecer que no funcionaba.
+    try { input.focus({ preventScroll: true }); } catch (e) { input.focus(); }
   });
   $("tcodcerrar").addEventListener("click", cerrarCod);
   $("tcodfondo").addEventListener("click", cerrarCod);

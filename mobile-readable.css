@@ -10,6 +10,15 @@ body.rutina-combinada-preview .compact-result::before {
 }
 
 @media (max-width: 600px) {
+  /* El acceso al código conserva su aspecto, pero ofrece un toque cómodo en celular. */
+  #t-home .tpieas {
+    min-height: 44px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    touch-action: manipulation;
+  }
+
   /* Portada: la acción principal debe leerse al primer vistazo. */
   #t-home .tmision.pri .tmtxt b {
     font-size: 18px !important;
