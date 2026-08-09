@@ -69,12 +69,15 @@ body.rutina-combinada-preview .compact-result::before {
 }
 #modal .mfoldbody .mdif { margin-top: 7px !important; }
 
-/* Comparador frente a frente: el símbolo de LIMPIA/TRATA/SELLA es una ayuda
- * junto al texto, no una ilustración de producto. */
-#comparar .dcol .df > svg {
+/* Comparador frente a frente: cualquier símbolo de LIMPIA/TRATA/SELLA/PROTEGE
+ * dentro de una fila es una ayuda junto al texto, no una ilustración de producto. */
+#comparar .dcol .df svg {
   display: inline-block !important;
   width: 14px !important;
   height: 14px !important;
+  max-width: 14px !important;
+  max-height: 14px !important;
+  flex: 0 0 14px !important;
   margin-right: 4px !important;
   vertical-align: -3px !important;
 }
