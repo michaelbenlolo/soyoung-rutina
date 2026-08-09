@@ -69,6 +69,16 @@ body.rutina-combinada-preview .compact-result::before {
 }
 #modal .mfoldbody .mdif { margin-top: 7px !important; }
 
+/* Comparador frente a frente: el símbolo de LIMPIA/TRATA/SELLA es una ayuda
+ * junto al texto, no una ilustración de producto. */
+#comparar .dcol .df > svg {
+  display: inline-block !important;
+  width: 14px !important;
+  height: 14px !important;
+  margin-right: 4px !important;
+  vertical-align: -3px !important;
+}
+
 /* Un solo regreso en todo el sitio: círculo blanco, flecha negra y la misma lógica
  * contextual que ya tiene cada flujo (página anterior, pantalla anterior o pregunta). */
 :is(a.tback, button.tback, a.tvolver, a.volver) {
