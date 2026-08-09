@@ -69,6 +69,13 @@ body.rutina-combinada-preview .compact-result::before {
 }
 #modal .mfoldbody .mdif { margin-top: 7px !important; }
 
+/* Las ofertas de rutina muestran solo el nombre del nivel. Los comentarios
+ * auxiliares bajo Rutina sugerida / más completa / coreana completa se omiten
+ * en todas las marcas y también en las ofertas generadas dinámicamente. */
+.tiers .tnom > em {
+  display: none !important;
+}
+
 /* Comparador frente a frente: cualquier símbolo de LIMPIA/TRATA/SELLA/PROTEGE
  * dentro de una fila es una ayuda junto al texto, no una ilustración de producto. */
 #comparar .dcol .df svg {
