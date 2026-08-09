@@ -1578,7 +1578,7 @@ body.buscar-ayuda #ayuda-rapida .times-panel > .nota::before {
 }
 </style>
 
-<link rel="stylesheet" href="../mobile-readable.css?v=77a0d0fac88a">
+<link rel="stylesheet" href="../mobile-readable.css?v=e092b061685e">
 </head><body class="buscar-opcion-1 buscar-filtro-2 buscar-marcas buscar-marcas-1c buscar-ayuda">
 <div class="top"><div class="topin"><a class="tback" href="../" aria-label="Volver a armar tu rutina">←</a><div class="logo">SO YOUNG <em>K-BEAUTY</em></div><div class="sello"><span class="kfl">🇰🇷</span> 100% ORIGINAL</div><button class="tcart" id="tcart" type="button" hidden aria-label="Ver mi lista"><span class="uiico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8.3h14l-1 12H6z"/><path d="M8.6 9V7a3.4 3.4 0 0 1 6.8 0v2"/></svg></span><b id="tcartn">0</b></button></div></div>
 <div class="wrap">
@@ -4083,13 +4083,13 @@ function abrirFicha(i, origen) {
     <div class="mprec"><b>${money(p.pc)}</b> de contado<span>ó ${plan(p.cr, p.q)} con tu vale</span></div>
     <div class="mrow"><div class="mlab">¿Para qué sirve?</div><div>${p.u}</div></div>
     ${tags ? `<div class="mrow"><div class="mlab">¿Qué resuelve?</div><div class="cobs">${tags}</div></div>` : ""}
+    <div class="mrow"><div class="mlab">Su colección</div><div><b>${p.c}</b> — ${p.cp}</div></div>
+    ${niv ? `<div class="mrow"><div class="mlab">💗 Su rutina recomendada</div>
+      <div class="linea"><div class="ltit">${p.ci} La rutina de su línea ${p.c}</div><div style="padding:0 11px">${niv}</div></div></div>` : ""}
     <details class="mfold"><summary><span class="mlab">¿Cómo se usa?</span><span class="mfoldcar" aria-hidden="true">⌄</span></summary><div class="mfoldbody">${COMO(p)}</div></details>
     ${subs.length ? `<details class="mfold"><summary><span class="mlab">🔄 Si no hay — y en qué cambian</span><span class="mfoldcar" aria-hidden="true">⌄</span></summary><div class="mfoldbody">${
       subs.map(({ o, j }) => `<button class="pname alt" data-p="${j}">${o.d}</button> <span class="msub">${esFuerte(o) ? "🔥 potente" : "🌿 suave"} · ${o.m} · ${money(o.pc)} · $${o.pq}/q</span>`).join("<br>")
     }<div class="mdif">Este: ${esFuerte(p) ? "🔥 activo potente" : "🌿 suave"} · $${p.pq}/q — mismo paso (${PNOM[p.p]}), cambia fórmula y precio.</div></div></details>` : ""}
-    <div class="mrow"><div class="mlab">Su colección</div><div><b>${p.c}</b> — ${p.cp}</div></div>
-    ${niv ? `<div class="mrow"><div class="mlab">💗 Su rutina recomendada</div>
-      <div class="linea"><div class="ltit">${p.ci} La rutina de su línea ${p.c}</div><div style="padding:0 11px">${niv}</div></div></div>` : ""}
     <button class="mcompbtn" type="button" data-i="${i}">⚖️ Comparar este producto</button>
     ${p.upc ? `<div class="mupc">Código: ${p.upc}</div>` : ""}`;
   modal.hidden = false;
