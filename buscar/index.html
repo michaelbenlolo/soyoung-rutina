@@ -592,6 +592,7 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
 .dvals { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:8px; }
 .dvalue { min-width:0; padding:8px 9px; border-radius:10px; background:var(--crema); font-size:10.5px; line-height:1.4; overflow-wrap:anywhere; }
 .dvalue em { font-style:normal; color:var(--mut); }
+.dvalue svg { display:inline-block; width:14px; height:14px; max-width:14px; max-height:14px; margin-right:4px; vertical-align:-3px; }
 .dactions { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:8px; margin-top:10px; }
 .dactions .pname { width:100%; min-height:38px; border:1.5px solid var(--rosad); border-radius:99px; background:#fff; color:var(--rosad); font:inherit; font-size:10.5px; font-weight:700; line-height:1.2; padding:7px 8px; cursor:pointer; }
 .dmore { margin-top:9px; border-radius:12px; background:var(--crema2); overflow:hidden; }
@@ -4518,7 +4519,7 @@ function pintaDuelo() {
     : (a.m === b.m && a.c === b.c
     ? `<div class="dinfo">ℹ️ Son <b>hermanos de la misma línea</b> (${a.c} de ${a.m}): hacen el mismo trabajo con otra textura y tamaño — se elige por gusto, tamaño y presupuesto.</div>` : "")))
     + pintaFilas(filasClave)
-    + `<div class="dactions">${DUELO.map(i => `<button class="pname" type="button" data-p="${i}">Ver ficha y agregar</button>`).join("")}</div>`
+    + `<div class="dactions">${DUELO.map(i => `<button class="pname" type="button" data-p="${i}">Ver ficha</button>`).join("")}</div>`
     + `<details class="dmore"><summary>Ver comparación completa <span class="dcaret">⌄</span></summary>${pintaFilas(filasDetalle)}</details>`;
 }
 pintaDuelo();
