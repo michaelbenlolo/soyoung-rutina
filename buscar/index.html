@@ -5,8 +5,8 @@
 <meta name="robots" content="noindex">
 <meta name="description" content="¿Qué producto estás viendo? Escanea su código de barras o escribe su nombre: te decimos qué es, cuánto cuesta y con qué rutina va.">
 <title>Buscar Opcion 1 · SO YOUNG · ¿Qué producto estás viendo?</title>
-<meta name="x-contenido" content="05affe6bd4">
-<meta name="x-buscar" content="801be746c2">
+<meta name="x-contenido" content="797482f895">
+<meta name="x-buscar" content="191b4b5e5b">
 <style>
 /* PALETA COMPARTIDA por las cinco páginas (Michael 2-ago: «este look debería aplicarse
    por toda la página en todas partes para tener consistencia»). Todo lo que cambie aquí
@@ -3757,7 +3757,7 @@ body.buscar-ayuda #ayuda-rapida .times-panel > .nota::before {
           <div><b>¿Para quién es?</b> Ojeras, hinchazón de la mañana, o antes de un evento.</div>
           <div><b>¿Qué va a notar?</b> Resultado visible al instante — por eso es el mejor probador de la tienda.</div>
         </details>
-        <div class="cgancho">💬 «Póntelos mientras te enseño lo demás y checa la diferencia en 15 minutos.»</div>
+        <div class="cgancho">💬 «Póntelos mientras te enseño lo demás y mira la diferencia en 15 minutos.»</div>
         <div class="linea">
       <div class="tiers"><details class="tier"><summary><span class="tcaret">▸</span><span class="ticn">⭐</span>
           <span class="tnom">Lo que arma esta línea<em>esta línea no cubre los 3 pasos</em></span>
@@ -4497,6 +4497,17 @@ function pintaDuelo() {
     })();
 }
 pintaDuelo();
+/* deep-link del comparador: las fichas de /tienda y /piel cierran con
+   «⚖️ Comparar este producto» y llegan aquí con #comparar=N — el producto
+   entra al duelo y de una vez se pintan sus rivales (Michael 9-ago).
+   OJO: va AQUÍ y no en el arranque — allá DUELO aún no se inicializa (TDZ). */
+const _hc = location.hash.match(/^#comparar=(\d+)$/);
+if (_hc && PROD[+_hc[1]]) {
+  DUELO[0] = +_hc[1];
+  pintaDuelo();
+  requestAnimationFrame(() => requestAnimationFrame(() =>
+    document.getElementById("comparar")?.scrollIntoView({ block: "start" })));
+}
 document.addEventListener("click", e => {
   const mb = e.target.closest(".mcompbtn");
   if (mb) {
@@ -4721,9 +4732,11 @@ window.CARRITO_SELS = ".pname[data-p], .pcard[data-p], .crow2[data-p]";
       /* completa → el botón se vuelve el CIERRE, no desaparece (auditoría 1-ago) */
       const done = faltan === 0 ? "1" : "0";
       if (todo.dataset.done !== done) todo.dataset.done = done;
+      /* data-todo: el bloque que NO es una rutina trae su propio verbo (los
+         regalos armados decían «Agregar toda la rutina» y mentían — Michael 9-ago) */
       const txt = faltan === 0
         ? `✓ Ya está en tu lista — ver mi lista y mi código (${CARRITO.length})`
-        : `Agregar toda la rutina a mi lista (${faltan})`;
+        : `${bloque.dataset.todo || "Agregar toda la rutina a mi lista"} (${faltan})`;
       if (todo.textContent !== txt) todo.textContent = txt;
       if (todo.hidden) todo.hidden = false;
     });
@@ -4774,7 +4787,7 @@ window.CARRITO_SELS = ".pname[data-p], .pcard[data-p], .crow2[data-p]";
         <span class="tiprecio">${money(p.pc)}</span>
         <button class="tix" data-quitar="${it.i}" type="button" aria-label="Quitar de mi lista">✕</button>
       </div>
-      <div class="tialts"><details class="tiald"><summary>⇄ ¿No hay o no te late? <em>ver ${alts.length || "sus"} reemplazos</em></summary><div class="tialdb">
+      <div class="tialts"><details class="tiald"><summary>🔄 Si no hay <em>ver ${alts.length || "sus"} reemplazos</em></summary><div class="tialdb">
         ${yaEn}${alts.map(j => `<button class="trpl" type="button" data-de="${it.i}" data-a="${j}">${esF(PROD[j]) ? "🔥 " : "🌿 "}${PROD[j].d} <b>${money(PROD[j].pc)}</b></button>`).join("")}</div></details>
         <button class="trpl" type="button" data-ficha="${it.i}">🔍 ver ficha</button>
       </div>`;

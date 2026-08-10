@@ -4,8 +4,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Tu asesora K-beauty de bolsillo en la tienda SO YOUNG: entiende cualquier producto del estante, arma tu rutina coreana y conoce precios de contado o en quincenas con tu vale.">
 <meta name="robots" content="noindex">
-<meta name="x-contenido" content="05affe6bd4">
-<meta name="x-tienda" content="34a6fdc51e">
+<meta name="x-contenido" content="797482f895">
+<meta name="x-tienda" content="5906ac7053">
 <meta name="theme-color" content="#FCCDD4">
 <title>SO YOUNG · Tu asesora de bolsillo</title>
 <style>
@@ -327,6 +327,9 @@ details.col, .mv { scroll-margin-top:58px; }   /* la barra fija no tapa el desti
 .pname.alt { font-size:12.5px; }
 .msub { font-size:11.5px; color:var(--mut); }
 .mdif { font-size:10px; color:var(--mut); margin-top:4px; }
+.mcompbtn { display:block; margin-top:12px; border:1.5px solid var(--rosad); background:#fff;
+  border-radius:12px; padding:10px; font-size:12.5px; font-weight:700; color:var(--rosad);
+  text-align:center; text-decoration:none; }
 /* --- ficha emergente --- */
 #modal { position:fixed; inset:0; z-index:60; display:flex; align-items:flex-end; justify-content:center; }
 #modal[hidden] { display:none; }
@@ -5432,10 +5435,8 @@ body.rutina-combinada-preview.rutina-compacta .apple-brand-content .tier[open] >
           <div class="cta">💕 <b>Pídeselo a tu asesora:</b> te arma la rutina completa, te la aparta hoy y la pagas con tu vale en quincenas.</div>
         </section><section class="panel" id="panel-regalo" hidden>
       <div class="ptit"><span class="needico"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><defs><linearGradient id="iregalo" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FB8AA8"/><stop offset="1" stop-color="#D33A63"/></linearGradient></defs><rect x="4.4" y="12.6" width="23.2" height="15" rx="2.4" stroke="url(#iregalo)" stroke-width="2.5"/><rect x="2.8" y="8.6" width="26.4" height="5.4" rx="1.8" stroke="url(#iregalo)" stroke-width="2.5"/><path d="M16 8.6v19" stroke="url(#iregalo)" stroke-width="2.5"/><path d="M16 8.4c-1.4-3-3-4.6-4.8-4.6a2.6 2.6 0 0 0 0 5.2h4.8zM16 8.4c1.4-3 3-4.6 4.8-4.6a2.6 2.6 0 0 1 0 5.2H16z" stroke="url(#iregalo)" stroke-width="2.4" stroke-linejoin="round"/></svg></span> Regalo o antojo</div>
-      <div class="pguia">Tres regalos armados con lo más pedido — cada uno con su precio cerrado —
-      o el detalle individual si buscas algo más sencillo.</div>
-      <div class="plabel">🎁 El detalle que apantalla — Lo más pedido de toda la tienda — el regalo seguro</div>
-        <div class="rutina">
+      <div class="plabel">🎁 El regalo seguro — Lo más pedido de toda la tienda</div>
+        <div class="rutina" data-todo="Agregar este regalo a mi lista">
           <div class="rtit">Este regalo · 1 producto</div>
           <div class="rlist"><div class="rp" data-cur="121">
       <div class="rpaso"><span>🎁</span>REGALO</div>
@@ -5443,10 +5444,10 @@ body.rutina-combinada-preview.rutina-compacta .apple-brand-content .tier[open] >
       <div class="rinfo"><button class="pname" data-p="121">Bio-Collagen Real Deep Mask (1 pza)<span class="pver">ver ficha</span></button> <span class="cmarca2">BIODANCE</span>
         <div class="ruso">LA mascarilla viral: se vuelve transparente mientras duermes y amaneces con glow</div>
         <div class="rprec">$383 <span>ó 10 quincenas de $54 = $540</span></div></div></div></div>
-          <div class="rtotal"><div>El detalle que apantalla<span>1 producto</span></div>
+          <div class="rtotal"><div>El regalo seguro<span>1 producto</span></div>
             <div class="rtcifra">$383<span>ó 10 quincenas de $54 = $540</span></div></div>
         </div><div class="plabel">🎁 El dúo de lujo — Lo más lujoso y lo más pedido, juntos</div>
-        <div class="rutina">
+        <div class="rutina" data-todo="Agregar este regalo a mi lista">
           <div class="rtit">Este regalo · 2 productos</div>
           <div class="rlist"><div class="rp" data-cur="2">
       <div class="rpaso"><span>🎁</span>REGALO</div>
@@ -5462,7 +5463,7 @@ body.rutina-combinada-preview.rutina-compacta .apple-brand-content .tier[open] >
           <div class="rtotal"><div>El dúo de lujo<span>2 productos</span></div>
             <div class="rtcifra">$1,206<span>ó 12 quincenas de $141 = $1,692</span></div></div>
         </div><div class="plabel">🎁 La noche de spa — El ritual completo de la línea Real Deep Masks</div>
-        <div class="rutina">
+        <div class="rutina" data-todo="Agregar este regalo a mi lista">
           <div class="rtit">Este regalo · 3 productos</div>
           <div class="rlist"><div class="rp" data-cur="121">
       <div class="rpaso"><span>🎁</span>REGALO</div>
@@ -5527,8 +5528,6 @@ body.rutina-combinada-preview.rutina-compacta .apple-brand-content .tier[open] >
       armarlo a la medida — y con tu vale lo pagas en quincenas.</div>
     </section><section class="panel" id="panel-mascarillas" hidden>
           <div class="ptit"><span class="needico"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><defs><linearGradient id="imascarillas" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#B08DE6"/><stop offset="1" stop-color="#7448C4"/></linearGradient></defs><path d="M16 3.8c5.5 0 9.2 1.3 9.2 4 0 3.5-.7 8.4-2.1 12.2-1.4 3.8-4 7.8-7.1 7.8s-5.7-4-7.1-7.8C7.5 16.2 6.8 11.3 6.8 7.8c0-2.7 3.7-4 9.2-4z" stroke="url(#imascarillas)" stroke-width="2.4" stroke-linejoin="round"/><ellipse cx="12.4" cy="13.4" rx="2.5" ry="1.8" stroke="url(#imascarillas)" stroke-width="2"/><ellipse cx="19.6" cy="13.4" rx="2.5" ry="1.8" stroke="url(#imascarillas)" stroke-width="2"/><ellipse cx="16" cy="21" rx="3.1" ry="1.7" stroke="url(#imascarillas)" stroke-width="2"/></svg></span> Mascarillas y consentirse</div>
-          <div class="pguia">Aquí no hay pasos ni orden: cada mascarilla va por su cuenta y se usan
-          en noches distintas. Elige por lo que quieres lograr — y si te laten dos, altérnalas.</div>
           <div class="plabel">✨ Para amanecer con brillo</div><div class="rp">
       <div class="rpaso"><span>✨</span>GLOW</div>
       <img class="rimg" src="../p/B0B2RM68G2.jpg" alt="Bio-Collagen Real Deep Mask (1 pza)" loading="lazy">
@@ -6332,7 +6331,8 @@ function abrirFicha(i) {
     <div class="mrow"><div class="mlab">Su colección</div><div><b>${p.c}</b> — ${p.cp}</div></div>
     ${subs.length ? `<div class="mrow"><div class="mlab">🔄 Si no hay — y en qué cambian</div><div>${
       subs.map(({o, j}) => `<button class="pname alt" data-p="${j}">${o.d}</button> <span class="msub">${esFuerte(o) ? "🔥 potente (no si es piel sensible o embarazo)" : "🌿 suave"} · ${o.m} · ${money(o.pc)} · $${o.pq}/q</span>`).join("<br>")
-    }<div class="mdif">Este: ${esFuerte(p) ? "🔥 activo potente" : "🌿 fórmula suave"} · $${p.pq}/q — mismo paso, cambia fórmula y precio.</div></div></div>` : ""}`;
+    }<div class="mdif">Este: ${esFuerte(p) ? "🔥 activo potente" : "🌿 fórmula suave"} · $${p.pq}/q — mismo paso, cambia fórmula y precio.</div></div></div>` : ""}
+    <a class="mcompbtn" href="../buscar/#comparar=${i}">⚖️ Comparar este producto</a>`;
   modal.hidden = false;
   document.body.style.overflow = "hidden";
   modal.querySelector(".mclose").focus();
@@ -6623,10 +6623,13 @@ q.addEventListener("input", () => {
       /* completa → el botón se vuelve el CIERRE, no desaparece (auditoría 1-ago) */
       const done = faltan === 0 ? "1" : "0";
       if (todo.dataset.done !== done) todo.dataset.done = done;
+      /* data-todo: el bloque que NO es una rutina trae su propio verbo (los
+         regalos armados decían «Agregar toda la rutina» y mentían — Michael 9-ago) */
+      const _v = bloque.dataset.todo;
       const txt = faltan === 0
-        ? `✓ Toda la rutina está en mi lista (${total}) — ver mi lista y mi código`
+        ? `✓ ${_v ? "Ya está" : "Toda la rutina está"} en mi lista (${total}) — ver mi lista y mi código`
         : faltan === total
-          ? `Agregar toda la rutina a mi lista (${total})`
+          ? `${_v || "Agregar toda la rutina a mi lista"} (${total})`
           : faltan === 1
             ? "Agregar el producto que falta"
             : `Agregar los ${faltan} que faltan`;

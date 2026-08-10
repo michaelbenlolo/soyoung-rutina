@@ -5,8 +5,8 @@
 <meta name="robots" content="noindex">
 <meta name="description" content="Contesta 7 preguntas (1 minuto) y te armamos tu rutina coreana con precios de contado o en quincenas. Si quieres, te guiamos zona por zona sobre tu propia selfie — que nunca sale de tu celular.">
 <title>Piel final · SO YOUNG</title>
-<meta name="x-contenido" content="05affe6bd4">
-<meta name="x-piel" content="adfba96fde">
+<meta name="x-contenido" content="797482f895">
+<meta name="x-piel" content="6b633e83dd">
 <style>
 /* PALETA COMPARTIDA por las cinco páginas (Michael 2-ago: «este look debería aplicarse
    por toda la página en todas partes para tener consistencia»). Todo lo que cambie aquí
@@ -326,6 +326,9 @@ details.col, .mv { scroll-margin-top:58px; }   /* la barra fija no tapa el desti
 .pname.alt { font-size:12.5px; }
 .msub { font-size:11.5px; color:var(--mut); }
 .mdif { font-size:10px; color:var(--mut); margin-top:4px; }
+.mcompbtn { display:block; margin-top:12px; border:1.5px solid var(--rosad); background:#fff;
+  border-radius:12px; padding:10px; font-size:12.5px; font-weight:700; color:var(--rosad);
+  text-align:center; text-decoration:none; }
 /* --- ficha emergente --- */
 #modal { position:fixed; inset:0; z-index:60; display:flex; align-items:flex-end; justify-content:center; }
 #modal[hidden] { display:none; }
@@ -5514,10 +5517,8 @@ body.piel-resumen-nuevo-2 #sc-res #panel-combinado > .ptit {
           <div class="cta">💕 <b>Pídeselo a tu asesora:</b> te arma la rutina completa, te la aparta hoy y la pagas con tu vale en quincenas.</div>
         </section><section class="panel" id="panel-regalo" hidden>
       <div class="ptit">🎁 Regalo o antojo</div>
-      <div class="pguia">Tres regalos armados con lo más pedido — cada uno con su precio cerrado —
-      o el detalle individual si buscas algo más sencillo.</div>
-      <div class="plabel">🎁 El detalle que apantalla — Lo más pedido de toda la tienda — el regalo seguro</div>
-        <div class="rutina">
+      <div class="plabel">🎁 El regalo seguro — Lo más pedido de toda la tienda</div>
+        <div class="rutina" data-todo="Agregar este regalo a mi lista">
           <div class="rtit">Este regalo · 1 producto</div>
           <div class="rlist"><div class="rp" data-cur="121">
       <div class="rpaso"><span>🎁</span>REGALO</div>
@@ -5525,10 +5526,10 @@ body.piel-resumen-nuevo-2 #sc-res #panel-combinado > .ptit {
       <div class="rinfo"><button class="pname" data-p="121">Bio-Collagen Real Deep Mask (1 pza)<span class="pver">ver ficha</span></button> <span class="cmarca2">BIODANCE</span>
         <div class="ruso">LA mascarilla viral: se vuelve transparente mientras duermes y amaneces con glow</div>
         <div class="rprec">$383 <span>ó 10 quincenas de $54 = $540</span></div></div></div></div>
-          <div class="rtotal"><div>El detalle que apantalla<span>1 producto</span></div>
+          <div class="rtotal"><div>El regalo seguro<span>1 producto</span></div>
             <div class="rtcifra">$383<span>ó 10 quincenas de $54 = $540</span></div></div>
         </div><div class="plabel">🎁 El dúo de lujo — Lo más lujoso y lo más pedido, juntos</div>
-        <div class="rutina">
+        <div class="rutina" data-todo="Agregar este regalo a mi lista">
           <div class="rtit">Este regalo · 2 productos</div>
           <div class="rlist"><div class="rp" data-cur="2">
       <div class="rpaso"><span>🎁</span>REGALO</div>
@@ -5544,7 +5545,7 @@ body.piel-resumen-nuevo-2 #sc-res #panel-combinado > .ptit {
           <div class="rtotal"><div>El dúo de lujo<span>2 productos</span></div>
             <div class="rtcifra">$1,206<span>ó 12 quincenas de $141 = $1,692</span></div></div>
         </div><div class="plabel">🎁 La noche de spa — El ritual completo de la línea Real Deep Masks</div>
-        <div class="rutina">
+        <div class="rutina" data-todo="Agregar este regalo a mi lista">
           <div class="rtit">Este regalo · 3 productos</div>
           <div class="rlist"><div class="rp" data-cur="121">
       <div class="rpaso"><span>🎁</span>REGALO</div>
@@ -5609,8 +5610,6 @@ body.piel-resumen-nuevo-2 #sc-res #panel-combinado > .ptit {
       armarlo a la medida — y con tu vale lo pagas en quincenas.</div>
     </section><section class="panel" id="panel-mascarillas" hidden>
           <div class="ptit">🧖 Mascarillas y consentirse</div>
-          <div class="pguia">Aquí no hay pasos ni orden: cada mascarilla va por su cuenta y se usan
-          en noches distintas. Elige por lo que quieres lograr — y si te laten dos, altérnalas.</div>
           <div class="plabel">✨ Para amanecer con brillo</div><div class="rp">
       <div class="rpaso"><span>✨</span>GLOW</div>
       <img class="rimg" src="../p/B0B2RM68G2.jpg" alt="Bio-Collagen Real Deep Mask (1 pza)" loading="lazy">
@@ -6398,7 +6397,8 @@ function abrirFicha(i) {
     <div class="mrow"><div class="mlab">Su colección</div><div><b>${p.c}</b> — ${p.cp}</div></div>
     ${subs.length ? `<div class="mrow"><div class="mlab">🔄 Si no hay — y en qué cambian</div><div>${
       subs.map(({o, j}) => `<button class="pname alt" data-p="${j}">${o.d}</button> <span class="msub">${esFuerte(o) ? "🔥 potente (no si es piel sensible o embarazo)" : "🌿 suave"} · ${o.m} · ${money(o.pc)} · $${o.pq}/q</span>`).join("<br>")
-    }<div class="mdif">Este: ${esFuerte(p) ? "🔥 activo potente" : "🌿 fórmula suave"} · $${p.pq}/q — mismo paso, cambia fórmula y precio.</div></div></div>` : ""}`;
+    }<div class="mdif">Este: ${esFuerte(p) ? "🔥 activo potente" : "🌿 fórmula suave"} · $${p.pq}/q — mismo paso, cambia fórmula y precio.</div></div></div>` : ""}
+    <a class="mcompbtn" href="../buscar/#comparar=${i}">⚖️ Comparar este producto</a>`;
   modal.hidden = false;
   document.body.style.overflow = "hidden";
   modal.querySelector(".mclose").focus();
@@ -6553,7 +6553,7 @@ const PREG = [
   t:"¿Ves manchitas o zonas más oscuras que el resto?",
   a:"Paño, marcas del sol o las que dejó un granito."},
  {k:"granitos", z:["frente","mejillas","barbilla"],
-  t:"¿Tienes granitos o brotes ahorita — o te salen seguido?", a:""},
+  t:"¿Tienes granitos o brotes ahora mismo — o te salen seguido?", a:""},
  {k:"edad",     z:["frente","entrecejo","patas"],
   t:"Acércate tantito: ¿notas líneas de expresión o la piel menos firme?",
   a:"Frente, entrecejo y a los lados de los ojos."},
@@ -7072,9 +7072,11 @@ window._pielTest = { PREG, ZONAS, calcular, empezarQuiz, terminar, ir,
       /* completa → el botón se vuelve el CIERRE, no desaparece (auditoría 1-ago) */
       const done = faltan === 0 ? "1" : "0";
       if (todo.dataset.done !== done) todo.dataset.done = done;
+      /* data-todo: el bloque que NO es una rutina trae su propio verbo (los
+         regalos armados decían «Agregar toda la rutina» y mentían — Michael 9-ago) */
       const txt = faltan === 0
         ? `✓ Ya está en tu lista — ver mi lista y mi código (${CARRITO.length})`
-        : `Agregar toda la rutina a mi lista (${faltan})`;
+        : `${bloque.dataset.todo || "Agregar toda la rutina a mi lista"} (${faltan})`;
       if (todo.textContent !== txt) todo.textContent = txt;
       if (todo.hidden) todo.hidden = false;
     });
@@ -7125,7 +7127,7 @@ window._pielTest = { PREG, ZONAS, calcular, empezarQuiz, terminar, ir,
         <span class="tiprecio">${money(p.pc)}</span>
         <button class="tix" data-quitar="${it.i}" type="button" aria-label="Quitar de mi lista">✕</button>
       </div>
-      <div class="tialts"><details class="tiald"><summary>⇄ ¿No hay o no te late? <em>ver ${alts.length || "sus"} reemplazos</em></summary><div class="tialdb">
+      <div class="tialts"><details class="tiald"><summary>🔄 Si no hay <em>ver ${alts.length || "sus"} reemplazos</em></summary><div class="tialdb">
         ${yaEn}${alts.map(j => `<button class="trpl" type="button" data-de="${it.i}" data-a="${j}">${esF(PROD[j]) ? "🔥 " : "🌿 "}${PROD[j].d} <b>${money(PROD[j].pc)}</b></button>`).join("")}</div></details>
         <button class="trpl" type="button" data-ficha="${it.i}">🔍 ver ficha</button>
       </div>`;

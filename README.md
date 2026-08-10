@@ -31,3 +31,13 @@ se queda sin productos y la reconstrucción se detiene con error.
 3. Nada de diagnóstico médico.
 4. La promesa de privacidad de la selfie en `/piel` (todo local, nada se sube)
    tiene que seguir siendo cierta y visible.
+5. **Sin modismos mexicanos** en ningún texto que se pinte («te late», «apantalla»,
+   «ahorita», «checa»…): la página servirá también para otros países. Hay un
+   auditor que detiene la publicación si aparece uno.
+6. **La ficha de producto siempre CIERRA con `⚖️ Comparar este producto`**
+   (`.mcompbtn`): en `/buscar` mete el producto al duelo del comparador; en
+   `/tienda` y `/piel` es un enlace a `../buscar/#comparar=N` (deep-link que
+   precarga el duelo). Los auditores lo exigen en las tres páginas.
+7. Los bloques `.rutina` que **no** son rutinas (los regalos armados) traen
+   `data-todo="…"` con su propio verbo; el carrito lo lee (`dataset.todo`) para
+   el botón de agregar-todo. No quitar ni el atributo ni la lectura.
