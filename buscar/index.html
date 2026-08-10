@@ -547,10 +547,11 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
 .dwrap, .cwrap { margin-top:12px; border:1.5px solid var(--line); border-radius:16px; background:#fff; padding:12px; }
 .dtit { font-size:13.5px; font-weight:800; }
 .dsub { font-size:11px; color:var(--mut); line-height:1.45; margin-top:2px; }
-.dslots { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:9px; }
-.dslot { position:relative; border:1.5px dashed var(--line); border-radius:12px; min-height:56px; padding:7px 8px;
+.dslots { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:9px; margin-top:9px; }
+.dslot { position:relative; border:1.5px dashed var(--line); border-radius:14px; min-height:64px; padding:8px;
   display:flex; align-items:center; gap:7px; }
-.dslot.lleno { border-style:solid; border-color:var(--rosad); }
+.dslot.lleno { display:grid; grid-template-columns:auto minmax(0,1fr); border-style:solid; border-color:var(--rosad); background:#fffafd; }
+.dslot.lleno .dnum { display:none; }
 .dnum { font-size:11px; font-weight:800; color:var(--rosad); }
 /* una sola vez, debajo de los dos huecos (antes vivía DENTRO de cada slot y se leía
    como dos instrucciones distintas); desaparece cuando ya no hay hueco que llenar */
@@ -567,10 +568,10 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
   padding:7px 0; }
 .cleyd summary::-webkit-details-marker { display:none; }
 .cleyd .cley { margin-top:2px; }
-.dimg { width:34px; height:34px; object-fit:contain; flex:none; }
-.dnom { min-width:0; font-size:10.5px; font-weight:700; line-height:1.25; }
-.dnom em { display:block; font-style:normal; font-weight:500; font-size:9.5px; color:var(--mut); }
-.dx { position:absolute; top:-7px; right:-7px; width:20px; height:20px; border-radius:50%; border:none;
+.dimg { width:44px; height:50px; object-fit:contain; flex:none; }
+.dnom { min-width:0; font-size:11px; font-weight:700; line-height:1.2; overflow-wrap:anywhere; }
+.dnom em { display:block; font-style:normal; font-weight:500; font-size:9.5px; color:var(--mut); margin-top:2px; }
+.dx { position:absolute; top:-7px; right:-7px; width:22px; height:22px; border-radius:50%; border:none;
   background:var(--ink); color:#fff; font-size:10px; cursor:pointer; }
 .daviso { margin-top:9px; font-size:11px; line-height:1.45; background:#FFF6E5; border:1px solid #E8B84B;
   border-radius:10px; padding:7px 9px; }
@@ -583,6 +584,22 @@ div.timg { background-size:contain; background-repeat:no-repeat; background-posi
   padding:0; cursor:pointer; color:var(--ink); width:100%; }
 .dcol .pname.dn .pver { display:block; font-size:8.5px; font-weight:700; color:var(--rosad); }
 .dvered { margin-top:9px; font-size:11.5px; line-height:1.5; background:var(--crema2); border-radius:12px; padding:8px 10px; }
+.dvered .dshort { display:block; margin-bottom:2px; font-size:9px; font-weight:800; letter-spacing:.09em; color:var(--rosad); }
+.dcompare { margin-top:10px; }
+.drow { border-top:1px dashed var(--line); padding-top:8px; margin-top:8px; }
+.drow:first-child { margin-top:0; }
+.dlabel { margin-bottom:5px; font-size:9px; font-weight:800; letter-spacing:.07em; text-transform:uppercase; color:var(--mut); }
+.dvals { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:8px; }
+.dvalue { min-width:0; padding:8px 9px; border-radius:10px; background:var(--crema); font-size:10.5px; line-height:1.4; overflow-wrap:anywhere; }
+.dvalue em { font-style:normal; color:var(--mut); }
+.dactions { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:8px; margin-top:10px; }
+.dactions .pname { width:100%; min-height:38px; border:1.5px solid var(--rosad); border-radius:99px; background:#fff; color:var(--rosad); font:inherit; font-size:10.5px; font-weight:700; line-height:1.2; padding:7px 8px; cursor:pointer; }
+.dmore { margin-top:9px; border-radius:12px; background:var(--crema2); overflow:hidden; }
+.dmore > summary { list-style:none; display:flex; align-items:center; justify-content:center; gap:6px; min-height:38px; padding:7px 10px; color:var(--rosad); font-size:10.5px; font-weight:700; cursor:pointer; }
+.dmore > summary::-webkit-details-marker { display:none; }
+.dmore .dcaret { transition:transform .16s ease; }
+.dmore[open] .dcaret { transform:rotate(180deg); }
+.dmore .dcompare { margin:0; padding:0 10px 10px; }
 .dcol .cmarca2 { display:inline-block; margin-top:1px; }
 .df { border-top:1px dashed var(--line); margin-top:6px; padding-top:5px; font-size:10.5px; line-height:1.4; }
 .df i { display:block; font-style:normal; font-size:9px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:var(--mut); }
@@ -1615,6 +1632,7 @@ body.buscar-ayuda #ayuda-rapida .times-panel > .nota::before {
            repitiendo la misma frase + 6 renglones de leyenda ANTES de que hubiera nada que
            leer. La leyenda bajó al final y va plegada: se consulta cuando ya hay tabla. -->
       <div class="dsub">Escoge <b>dos productos</b> y te digo en qué se diferencian.</div>
+      <div id="dsummary" hidden></div>
       <div class="dslots">
         <div class="dslot" id="dslot0"></div>
         <div class="dslot" id="dslot1"></div>
@@ -4371,9 +4389,10 @@ document.querySelectorAll('a[href="#catalogo"], a[href="#identifica"], a[href="#
 const DUELO = [null, null];
 const dnums = ["①", "②"];
 /* qué necesidades resuelve, en palabras (Michael 1-ago: los iconos solos no se
-   entendían) — las claves del mapa curado ya son español corto: manchas, poros… */
+   entendían) — «regalo» sirve para explorar la tienda, pero no describe lo que
+   resuelve un producto y por eso nunca entra en una comparación. */
 const ataca = p => {
-  const t = p.t.filter(x => NEC[x]);
+  const t = p.t.filter(x => x !== "regalo" && NEC[x]);
   return t.length ? t.slice(0, 3).join(" · ") + (t.length > 3 ? " +" : "") : "uso general";
 };
 /* FORMATO real por nombre (Michael 1-ago: al gel le decíamos «espuma» — el
@@ -4431,13 +4450,16 @@ function comparables(i) {
   return PROD.map((x, j) => ({ x, j }))
     .filter(({ x, j }) => j !== i && j !== DUELO[0] && j !== DUELO[1]
       && x.sr === p.sr && x.sr && !(x.m === p.m && x.c === p.c))
-    .map(o => ({ ...o, af: o.x.t.filter(t => p.t.includes(t)).length }))
+    .map(o => ({ ...o, af: o.x.t.filter(t => t !== "regalo" && p.t.includes(t)).length }))
     .sort((a, b) => b.af - a.af || b.x.v - a.x.v)
     .slice(0, 6);
 }
 function pintaDuelo() {
   pintaSlot(0); pintaSlot(1);
   const out = document.getElementById("dresult");
+  const summary = document.getElementById("dsummary");
+  summary.hidden = true;
+  summary.innerHTML = "";
   const solo = DUELO[0] === null ? (DUELO[1] === null ? null : DUELO[1]) : (DUELO[1] === null ? DUELO[0] : null);
   if (solo !== null) {
     const l = comparables(solo);
@@ -4453,22 +4475,39 @@ function pintaDuelo() {
   if (DUELO[0] === null || DUELO[1] === null) { out.innerHTML = ""; return; }
   const pares = DUELO.map(i => PROD[i]);
   const [a, b] = pares;
-  const topv = Math.max(a.v, b.v);
   /* el $/ml solo cuando LOS DOS traen tamaño en la misma unidad — comparar
      peras con peras (Michael 1-ago: «¿son realmente comparables?») */
   const tt = pares.map(tam);
   const porUnidad = tt[0] && tt[1] && tt[0].u === tt[1].u;
-  const filas = [
+  const precioTamano = x => {
+    const t = tam(x);
+    const medida = t ? `${t.n} ${t.u}` + (porUnidad ? ` · $${(x.pc / t.n).toFixed(1)} por ${t.u}` : "") : "tamaño no indicado";
+    return `<b>${money(x.pc)}</b><br><em>${medida}</em>`;
+  };
+  const filasClave = [
+    ["Lo mejor de cada uno", x => x.u],
+    ["Potencia", x => esFuerte(x) ? "🔥 activo potente — no para sensibles ni embarazo" : "🌿 suave — apta piel sensible"],
+    ["Tamaño y precio", x => precioTamano(x)],
+  ];
+  const filasDetalle = [
     ["Qué es", x => `${PICO[x.p]} ${formato(x)} · ${x.c}`],
     ["Qué lleva", x => x.cin],
-    ["Para qué", x => x.u],
-    ["Ataca", x => ataca(x)],
-    ["Potencia", x => esFuerte(x) ? "🔥 activo potente — no para sensibles ni embarazo" : "🌿 suave — apta piel sensible"],
+    ["Qué resuelve", x => ataca(x)],
     ["Se nota en", x => plazo(x)],
-    ["Tamaño", x => { const t = tam(x);
-      return t ? `${t.n} ${t.u}` + (porUnidad ? `<em> · $${(x.pc / t.n).toFixed(1)} por ${t.u}</em>` : "") : "—"; }],
-    ["Precio", x => `${money(x.pc)}<em> · $${x.pq}/q</em>`],
+    ["Pago con vale", x => `${x.q} quincenas de $${x.pq}`],
   ];
+  const pintaFilas = filas => `<div class="dcompare">${filas.map(([lab, f]) =>
+    `<div class="drow"><div class="dlabel">${lab}</div><div class="dvals">${pares.map(x => `<div class="dvalue">${f(x)}</div>`).join("")}</div></div>`
+  ).join("")}</div>`;
+  /* La conclusión sube antes de las dos fichas: primero responde cuál conviene
+     y después deja revisar las diferencias fila por fila. */
+  const nom = x => a.m === b.m ? x.d.split(" ").slice(0, 3).join(" ") : x.m;
+  const corto = [];
+  if (a.pc !== b.pc) corto.push(`<b>${nom(a.pc < b.pc ? a : b)}</b> cuesta $${Math.abs(a.pc - b.pc)} menos`);
+  if (esFuerte(a) !== esFuerte(b)) corto.push(`<b>${nom(esFuerte(a) ? b : a)}</b> es la opción suave`);
+  if (a.v !== b.v && Math.max(a.v, b.v) > 0) corto.push(`<b>${nom(a.v > b.v ? a : b)}</b> es el más pedido`);
+  summary.innerHTML = `<div class="dvered"><span class="dshort">EN CORTO</span>${corto.length ? corto.join(" · ") : "Tienen precio y potencia similares; revisa para qué sirve cada uno"}.</div>`;
+  summary.hidden = false;
   /* aviso por TIPO, no solo por paso (Michael 1-ago: una mascarilla y un sérum
      comparten paso pero NO son reemplazables — hacen trabajos distintos);
      y si son HERMANOS de la misma línea, decirlo: mismo trabajo, otra textura */
@@ -4478,23 +4517,9 @@ function pintaDuelo() {
     ? `<div class="daviso">⚠️ Hacen trabajos distintos: ${SUBN[a.sr] || "uno"} vs ${SUBN[b.sr] || "otro"} — se <b>complementan</b>, no se reemplazan uno por otro.</div>`
     : (a.m === b.m && a.c === b.c
     ? `<div class="dinfo">ℹ️ Son <b>hermanos de la misma línea</b> (${a.c} de ${a.m}): hacen el mismo trabajo con otra textura y tamaño — se elige por gusto, tamaño y presupuesto.</div>` : "")))
-    + `<div class="dtab">` + DUELO.map(i => {
-      const x = PROD[i];
-      return `<div class="dcol"><button class="pname dn" data-p="${i}">${x.d}<span class="pver">ver ficha y agregar</span></button><span class="cmarca2">${x.m}</span>`
-        + (x.v === topv && topv > 0 ? '<span class="mctop">🏆 la que más piden</span>' : "")
-        + filas.map(([lab, f]) => `<div class="df"><i>${lab}</i>${f(x)}</div>`).join("")
-        + `</div>`;
-    }).join("") + `</div>`
-    /* 💬 el guion de cierre: las diferencias dichas en una línea, para leerse
-       en voz alta — solo hechos: precio, suavidad y rotación */
-    + (() => {
-      const nom = x => a.m === b.m ? x.d.split(" ").slice(0, 3).join(" ") : "el de " + x.m;
-      const v = [];
-      if (a.pc !== b.pc) v.push(`${nom(a.pc < b.pc ? a : b)} sale <b>$${Math.abs(a.pc - b.pc)} más barato</b>`);
-      if (esFuerte(a) !== esFuerte(b)) v.push(`${nom(esFuerte(a) ? b : a)} es <b>la opción suave</b> (sin activos fuertes)`);
-      if (a.v !== b.v && Math.max(a.v, b.v) > 0) v.push(`<b>más pedido:</b> ${nom(a.v > b.v ? a : b)}`);
-      return v.length ? `<div class="dvered">💬 <b>En corto:</b> ${v.join(" · ")}.</div>` : "";
-    })();
+    + pintaFilas(filasClave)
+    + `<div class="dactions">${DUELO.map(i => `<button class="pname" type="button" data-p="${i}">Ver ficha y agregar</button>`).join("")}</div>`
+    + `<details class="dmore"><summary>Ver comparación completa <span class="dcaret">⌄</span></summary>${pintaFilas(filasDetalle)}</details>`;
 }
 pintaDuelo();
 /* deep-link del comparador: las fichas de /tienda y /piel cierran con
