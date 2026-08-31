@@ -3,12 +3,25 @@
 Este repositorio es el **sitio en vivo** del corner SO YOUNG (BHermanos, México).
 La página oficial es **`/tienda`**; la raíz y `/k` solo redirigen ahí.
 
-## Si vas a editar el diseño aquí (ChatGPT / Codex)
+## Este repositorio es de SOLO LECTURA
 
-Adelante: el diseño que se publica aquí **es el definitivo**, y el pipeline de
-datos lo adopta tal cual. Pero hay piezas que **se regeneran a máquina** con cada
-alta o baja de producto — lo que edites ahí se pierde en la siguiente
-reconstrucción:
+**Régimen vigente (31-ago-2026):** aquí publica únicamente el pipeline oficial
+del proyecto. No se aceptan pushes, PRs ni ediciones externas — el publicador y
+el sincronizador del pipeline se detienen ante cualquier commit ajeno, y buena
+parte del HTML **se regenera a máquina** en cada reconstrucción (lo editado ahí
+se pierde). Si construyes algo EN BASE a este proyecto: léelo cuanto quieras
+(el repo es público a propósito), y para mantenerte sincronizado:
+
+- **`git pull`** de este repo trae siempre la última versión publicada.
+- El `<meta name="x-contenido">` de cada página es el **sello de la versión de
+  datos**: si cambió, cambiaron productos/precios. Compáralo antes de re-leer todo.
+- Los datos viven embebidos como JSON puro en cada página (`const D` en /tienda
+  y /piel, `const B` en /buscar): productos, precios de contado y quincenas,
+  necesidades, rutinas. Ese JSON es la interfaz de lectura estable.
+- Las propuestas de cambio a ESTA página se entregan al dueño del proyecto como
+  texto o diff; solo su pipeline publica.
+
+Piezas que se regeneran a máquina con cada alta o baja de producto:
 
 - los `<meta name="x-…">` del `<head>` (sellos de contenido),
 - los `<section class="panel">` de `/tienda` y `/piel` (fichas de colecciones)
