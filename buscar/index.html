@@ -4495,7 +4495,8 @@ function pintaDuelo() {
     ["Qué lleva", x => x.cin],
     ["Qué resuelve", x => ataca(x)],
     ["Se nota en", x => plazo(x)],
-    ["Pago con vale", x => `${x.q} quincenas de $${x.pq}`],
+    /* LFPC art. 66 y regla de la casa: NUNCA la quincena sola — con su total */
+    ["Pago con vale", x => `${x.q} quincenas de $${x.pq} = ${money(x.pq * x.q)}`],
   ];
   const pintaFilas = filas => `<div class="dcompare">${filas.map(([lab, f]) =>
     `<div class="drow"><div class="dlabel">${lab}</div><div class="dvals">${pares.map(x => `<div class="dvalue">${f(x)}</div>`).join("")}</div></div>`
