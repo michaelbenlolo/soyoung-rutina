@@ -5,11 +5,12 @@ La página oficial es **`/tienda`**; la raíz y `/k` solo redirigen ahí.
 
 ## Este repositorio es de SOLO LECTURA
 
-**Régimen vigente (31-ago-2026):** aquí publica únicamente el pipeline oficial
-del proyecto. No se aceptan pushes, PRs ni ediciones externas — el publicador y
-el sincronizador del pipeline se detienen ante cualquier commit ajeno, y buena
-parte del HTML **se regenera a máquina** en cada reconstrucción (lo editado ahí
-se pierde). Si construyes algo EN BASE a este proyecto: léelo cuanto quieras
+**Régimen vigente (31-ago-2026):** aquí publica únicamente el dueño del
+proyecto (su pipeline y sus rondas de diseño). No se aceptan pushes, PRs ni
+ediciones externas — el repositorio no tiene colaboradores ni llaves de
+terceros, y buena parte del HTML **se regenera a máquina** en cada
+reconstrucción (lo editado ahí se pierde). Si construyes algo EN BASE a este
+proyecto: léelo cuanto quieras
 (el repo es público a propósito), y para mantenerte sincronizado:
 
 - **`git pull`** de este repo trae siempre la última versión publicada.
