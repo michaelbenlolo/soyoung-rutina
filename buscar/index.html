@@ -6,7 +6,7 @@
 <meta name="description" content="¿Qué producto estás viendo? Escanea su código de barras o escribe su nombre: te decimos qué es, cuánto cuesta y con qué rutina va.">
 <title>Buscar Opcion 1 · SO YOUNG · ¿Qué producto estás viendo?</title>
 <meta name="x-contenido" content="3b0b2487d5">
-<meta name="x-buscar" content="7334c0fc70">
+<meta name="x-buscar" content="43026ceac8">
 <style>
 /* PALETA COMPARTIDA por las cinco páginas (Michael 2-ago: «este look debería aplicarse
    por toda la página en todas partes para tener consistencia»). Todo lo que cambie aquí
@@ -3315,7 +3315,13 @@ function pintaCmp() {
     if (!grupos.has(g)) grupos.set(g, []);
     grupos.get(g).push(o);
   });
-  const orden = SUBO.filter(g => grupos.has(g)).concat(grupos.has("otros") ? ["otros"] : []);
+  let orden = SUBO.filter(g => grupos.has(g)).concat(grupos.has("otros") ? ["otros"] : []);
+  /* 18-nov-2026 · Michael: «¿por qué en protección de todos los días no me salen los bloqueadores?». En «Protección» lo que
+     PROTEGE va primero; los limpiadores y cremas suaves que también usa la rutina de sol quedan abajo */
+  if (CNEED === "sol") {
+    const protege = g => grupos.get(g).some(o => o.p.p === "SOL");
+    orden = orden.filter(protege).concat(orden.filter(g => !protege(g)));
+  }
   out.innerHTML = `<div class="cmptit">${l.length} producto${l.length === 1 ? "" : "s"} en ${orden.length} tipo${orden.length === 1 ? "" : "s"} — <b>solo los del mismo tipo se reemplazan entre sí</b></div>`
     + orden.map(g => {
       const propio = p => p.t.includes(CNEED) ? 1 : 0;
@@ -3334,6 +3340,13 @@ document.querySelectorAll(".cnec").forEach(b => b.addEventListener("click", () =
   document.querySelectorAll(".cnec").forEach(x => x.classList.remove("on"));
   CNEED = ya ? null : b.dataset.need;
   if (!ya) b.classList.add("on");
+  /* 18-nov-2026: «Protección de todos los días» abre SIEMPRE con los bloqueadores. Si venía puesto «Limpia», «Trata» o
+     «Sella» de otra preocupación, el filtro vuelve a «Todos los productos» (Michael la eligió con «Sella» marcado y solo
+     salían cremas). Las demás preocupaciones conservan el paso elegido */
+  if (CNEED === "sol" && CPASO && CPASO !== "SOL") {
+    CPASO = "";
+    document.querySelectorAll(".cpaso").forEach(x => x.classList.toggle("on", x.dataset.paso === ""));
+  }
   pintaCmp();
 }));
 document.querySelectorAll(".cpaso").forEach(b => b.addEventListener("click", () => {
