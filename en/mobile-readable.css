@@ -1,17 +1,10 @@
-/*
- * Escala móvil aprobada para lectura real en tienda.
- * Se conserva la jerarquía compacta: crecen decisiones, productos y acciones;
- * sellos, marcas, etiquetas y datos de quincenas permanecen secundarios.
- */
-/* Este rótulo era una nota interna de revisión, no contenido para la clienta. */
+
+
 body.rutina-combinada-preview .compact-result::before {
   content: none !important;
   display: none !important;
 }
 
-/* Fichas de producto: el icono del paso acompaña el rótulo sin convertirse en
- * una ilustración gigante. La ventana queda por encima del encabezado fijo y
- * conserva aire en la parte superior de cualquier celular. */
 #modal {
   z-index: 110 !important;
   box-sizing: border-box !important;
@@ -69,15 +62,10 @@ body.rutina-combinada-preview .compact-result::before {
 }
 #modal .mfoldbody .mdif { margin-top: 7px !important; }
 
-/* Las ofertas de rutina muestran solo el nombre del nivel. Los comentarios
- * auxiliares bajo Rutina sugerida / más completa / coreana completa se omiten
- * en todas las marcas y también en las ofertas generadas dinámicamente. */
 .tiers .tnom > em {
   display: none !important;
 }
 
-/* Comparador frente a frente: cualquier símbolo de LIMPIA/TRATA/SELLA/PROTEGE
- * dentro de una fila es una ayuda junto al texto, no una ilustración de producto. */
 #comparar .dcol .df svg {
   display: inline-block !important;
   width: 14px !important;
@@ -89,8 +77,6 @@ body.rutina-combinada-preview .compact-result::before {
   vertical-align: -3px !important;
 }
 
-/* Un solo regreso en todo el sitio: círculo blanco, flecha negra y la misma lógica
- * contextual que ya tiene cada flujo (página anterior, pantalla anterior o pregunta). */
 :is(a.tback, button.tback, a.tvolver, a.volver) {
   position: relative !important;
   width: 32px !important;
@@ -137,7 +123,6 @@ html.js a.tvolver {
   display: none !important;
 }
 
-/* Hoja de compra: la misma gramática limpia, redondeada y rosa suave del sitio. */
 #tases .thoja {
   padding: 22px 16px 18px !important;
   border: 1px solid #f0e4e9 !important;
@@ -245,8 +230,6 @@ html.js a.tvolver {
   font-size: 11.5px !important;
 }
 
-/* Ningún título principal debe arrancar pegado a la barra superior. Estas
-   páginas siempre usan una columna angosta, incluso en la vista previa amplia. */
 body.aprobada-objetivos #t-elegir > .tsaludo {
   margin-top: 14px !important;
 }
@@ -261,7 +244,7 @@ body.guia-redisenada .wrap > .top + section:not([hidden]) > h1.gt {
 }
 
 @media (max-width: 600px) {
-  /* El acceso al código conserva su aspecto, pero ofrece un toque cómodo en celular. */
+
   #t-home .tpieas {
     min-height: 44px !important;
     display: inline-flex !important;
@@ -270,13 +253,11 @@ body.guia-redisenada .wrap > .top + section:not([hidden]) > h1.gt {
     touch-action: manipulation;
   }
 
-  /* Portada: la acción principal debe leerse al primer vistazo. */
   #t-home .tmision.pri .tmtxt b {
     font-size: 18px !important;
     line-height: 1.12 !important;
   }
 
-  /* Objetivos: se restaura exactamente la apariencia aprobada de las diez tarjetas. */
   body.aprobada-objetivos #t-elegir .topcion .ot {
     font-size: 14.2px !important;
     line-height: 1.18 !important;
@@ -293,7 +274,6 @@ body.guia-redisenada .wrap > .top + section:not([hidden]) > h1.gt {
     font-size: 18px !important;
   }
 
-  /* Rutinas: el producto es lo principal. */
   body.rutina-combinada-preview.rutina-compacta .compact-result > .ptit {
     display: flex !important;
     flex-wrap: nowrap !important;
@@ -310,7 +290,7 @@ body.guia-redisenada .wrap > .top + section:not([hidden]) > h1.gt {
     flex: 0 0 24px !important;
     vertical-align: 0 !important;
   }
-  /* El resumen de compra gana un poco de jerarquía sin agrandar el precio. */
+
   body.rutina-combinada-preview.rutina-compacta .compact-result .rutina > .rtotal > div:first-child {
     font-size: 11.5px !important;
     line-height: 1.15 !important;
@@ -332,7 +312,7 @@ body.guia-redisenada .wrap > .top + section:not([hidden]) > h1.gt {
   body.rutina-combinada-preview.rutina-compacta .compact-result .rlist {
     gap: 6px !important;
   }
-  /* “Si no hay” sigue discreto, pero ya se puede leer con comodidad. */
+
   body.rutina-combinada-preview.rutina-compacta .compact-result .ralt .raltt {
     min-height: 18px !important;
     padding: 2px 0 !important;
@@ -408,7 +388,6 @@ body.guia-redisenada .wrap > .top + section:not([hidden]) > h1.gt {
     line-height: 1.1 !important;
   }
 
-  /* La ficha y los niveles deben poder leerse sin esfuerzo. */
   body.rutina-combinada-preview.rutina-compacta .compact-result .col > .cbody > .cficha > summary {
     min-height: 42px !important;
     padding: 8px 10px !important;
@@ -440,7 +419,6 @@ body.guia-redisenada .wrap > .top + section:not([hidden]) > h1.gt {
     font-size: 9.5px !important;
   }
 
-  /* Productos dentro de niveles, comparaciones y complementos. */
   body.rutina-combinada-preview.rutina-compacta .compact-result .trow,
   body.rutina-combinada-preview.rutina-compacta .compact-result .crow,
   body.rutina-combinada-preview.rutina-compacta .compact-result .orow {
@@ -471,7 +449,6 @@ body.guia-redisenada .wrap > .top + section:not([hidden]) > h1.gt {
     padding: 9px !important;
   }
 
-  /* Comparar y sumar siguen siendo secundarios, pero ya no microscópicos. */
   body.rutina-combinada-preview .apple-treatment-section {
     padding: 10px !important;
   }
@@ -543,7 +520,6 @@ body.guia-redisenada .wrap > .top + section:not([hidden]) > h1.gt {
     white-space: nowrap !important;
   }
 
-  /* Resultado del análisis de piel. */
   body.piel-resumen-nuevo-2 #sc-res .result-summary .resh1 {
     font-size: clamp(27px, 7.4vw, 32px) !important;
   }
@@ -592,7 +568,6 @@ body.guia-redisenada .wrap > .top + section:not([hidden]) > h1.gt {
     line-height: 1.4 !important;
   }
 
-  /* Cuestionario: preguntas y respuestas deben leerse a distancia normal. */
   body:has(#sc-intro) .qtxt {
     font-size: 20px !important;
     line-height: 1.25 !important;
@@ -607,7 +582,6 @@ body.guia-redisenada .wrap > .top + section:not([hidden]) > h1.gt {
     font-size: 16.5px !important;
   }
 
-  /* Buscar y comparar productos. */
   body.buscar-opcion-1 .abtn b { font-size: 16px !important; }
   body.buscar-opcion-1 .abtn small { font-size: 12.5px !important; }
   body.buscar-opcion-1 .pesta { min-height: 48px; font-size: 13.5px !important; }
@@ -652,7 +626,6 @@ body.guia-redisenada .wrap > .top + section:not([hidden]) > h1.gt {
   body.buscar-ayuda #ayuda-rapida .times-panel .orow2 b { font-size: 14px !important; }
   body.buscar-ayuda #ayuda-rapida .times-panel .orow2 i { font-size: 12px !important; }
 
-  /* Guía de uso: agrandar el contenido, no el sello decorativo. */
   body.guia-redisenada .gpasos span { font-size: 11.5px !important; }
   body.guia-redisenada .gbtn b { font-size: 16px !important; }
   body.guia-redisenada .gbtn small { font-size: 12.5px !important; }
@@ -688,8 +661,6 @@ body.guia-redisenada .wrap > .top + section:not([hidden]) > h1.gt {
   body.guia-redisenada .gleg { font-size: 11px !important; }
   body.guia-redisenada #pdfbtn { font-size: 16px !important; }
 
-  /* Dos ajustes puntuales aprobados: más jerarquía para la mezcla de marcas
-     y una llamada a la acción de rutina que se lee al primer vistazo. */
   body.rutina-combinada-preview.rutina-compacta .apple-brand-content > .mez > summary {
     min-height: 76px !important;
     padding: 11px !important;
