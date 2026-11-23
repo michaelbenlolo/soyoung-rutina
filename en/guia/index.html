@@ -1,0 +1,1235 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SO YOUNG · How to use your products</title>
+<meta name="description" content="Scan the products you bought and take home your how-to guide as a PDF: when to use each one, in what order, how long to wait between layers, and their precautions.">
+<meta name="robots" content="noindex">
+<meta name="x-contenido" content="0dc7dde36f">
+<meta name="x-guia" content="89cb5941c6">
+<style>
+:root { --rosa:#D96C82; --rosad:#B94F66; --ink:#2A2226; --crema:#FDF3F7; --crema2:#FAE7EE;
+  --vivo:#ED4E86; --vivoo:#D22F6C; --vivopal:#FCE0EA;
+  --mut:#8b7d82; --line:#F0DDE1; --texto:#584a4f; --am:#B98A2F; --pm:#4A5A8A; color-scheme: light; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { overflow-x:clip; }
+body { font-family:"Avenir Next","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  background:var(--crema); color:var(--ink); line-height:1.5; }
+img { display:block; }
+button { font:inherit; cursor:pointer; }
+.wrap { max-width:560px; margin:0 auto; padding:0 14px 90px; }
+.top { display:flex; align-items:center; gap:10px; padding:12px 0 4px; }
+.top a.volver { text-decoration:none; color:var(--rosad); font-weight:700; font-size:13px;
+  background:#fff; border:1px solid var(--line); border-radius:99px; padding:7px 13px; }
+.sello { margin-left:auto; font-size:10px; color:var(--mut); text-align:right; line-height:1.3; }
+.sello b { color:var(--rosad); }
+h1.gt { font-size:24px; line-height:1.2; margin:10px 0 4px; }
+p.gsub { font-size:13.5px; color:var(--texto); margin-bottom:14px; }
+/* los tres pasos como SECUENCIA: número en círculo, unidos por una línea. Sustituyen al
+   párrafo que decía lo mismo en 3 renglones (Michael 2-ago) */
+.gpasos { position:relative; display:flex; gap:8px; margin:6px 0 16px; }
+.gpasos::before { content:""; position:absolute; top:23px; left:16%; right:16%;
+  border-top:1.5px dashed var(--line); z-index:0; }
+.gpasos span { position:relative; z-index:1; flex:1; text-align:center; font-size:11px;
+  line-height:1.3; color:var(--texto); }
+.gpasos b { display:flex; width:30px; height:30px; margin:0 auto 7px; border-radius:50%;
+  background:linear-gradient(100deg,var(--vivo) 0%,var(--vivoo) 100%); color:#fff; font-size:14px; font-weight:800;
+  align-items:center; justify-content:center; box-shadow:0 0 0 4px var(--crema); }
+/* OJO con el COLOR: sin declararlo, Safari pinta el texto del <button> con su azul de
+   sistema y el botón se ve como un enlace ajeno a la app (Michael 2-ago) */
+.gbtn { display:flex; align-items:center; gap:12px; width:100%; text-align:left; background:#fff;
+  color:var(--ink); appearance:none; font-family:inherit;
+  border:1.5px solid var(--rosa); border-radius:15px; padding:13px 14px; margin-bottom:9px; }
+.gbtn small { display:block; color:var(--mut); font-weight:500; font-size:11.5px; }
+.gbtn b { font-size:14.5px; }
+.gbtn .gi { font-size:22px; }
+.gbtn:active { transform:scale(.985); }
+.gsec { border-color:var(--line); }
+#buscawrap { position:relative; margin-bottom:9px; }
+#busca { width:100%; font:inherit; font-size:15px; padding:12px 14px; border:1.5px solid var(--line);
+  border-radius:13px; background:#fff; color:var(--ink); }
+#busca:focus { outline:none; border-color:var(--rosad); }
+#sugs { position:absolute; left:0; right:0; top:calc(100% + 4px); background:#fff; border:1px solid var(--line);
+  border-radius:13px; box-shadow:0 10px 26px rgba(90,40,55,.14); z-index:30; overflow:hidden; }
+#sugs button { display:flex; align-items:center; gap:9px; width:100%; text-align:left; background:none;
+  border:0; border-bottom:1px solid var(--crema2); padding:8px 11px; font-size:12.5px; }
+#sugs button:last-child { border-bottom:0; }
+#sugs img { width:26px; height:34px; object-fit:contain; flex:none; }
+#sugs .sm { color:var(--mut); font-size:10.5px; display:block; }
+#mios { display:flex; flex-wrap:wrap; gap:7px; margin:12px 0 4px; }
+.mio { display:flex; align-items:center; gap:7px; background:#fff; border:1px solid var(--rosa);
+  border-radius:99px; padding:5px 6px 5px 11px; font-size:12px; font-weight:600; }
+.mio img { width:20px; height:26px; object-fit:contain; }
+.mio button { border:0; background:var(--crema2); color:var(--rosad); border-radius:99px;
+  width:20px; height:20px; line-height:1; font-size:12px; font-weight:800; }
+#vacio2 { font-size:12.5px; color:var(--mut); background:#fff; border:1px dashed var(--line);
+  border-radius:13px; padding:12px 14px; }
+#vermiguia { position:fixed; left:14px; right:14px; bottom:14px; z-index:60; max-width:532px; margin:0 auto;
+  background:linear-gradient(100deg,var(--vivo) 0%,var(--vivoo) 100%); color:#fff; border:0; border-radius:15px; padding:15px; font-size:16px;
+  font-weight:800; box-shadow:0 12px 30px rgba(90,40,55,.35); }
+#vermiguia[disabled] { background:#C9AEB6; box-shadow:none; }
+/* ---- pantalla guía ---- */
+.gfecha { font-size:11px; color:var(--mut); }
+.bloque { background:#fff; border:1px solid var(--line); border-radius:16px; padding:14px; margin-bottom:12px; }
+.bloque h2 { font-size:15px; margin-bottom:2px; }
+.bloque .bsub { font-size:11.5px; color:var(--mut); margin-bottom:10px; }
+.btag { font-size:10px; font-weight:800; letter-spacing:.4px; border-radius:99px; padding:2px 9px; }
+.btag.am { background:#FCF3DF; color:var(--am); }
+.btag.pm { background:#E8ECF7; color:var(--pm); }
+.btag.sem { background:var(--crema2); color:var(--rosad); }
+.ol { list-style:none; }
+.ol li.paso { display:flex; align-items:center; gap:10px; padding:7px 0; }
+.ol .num { flex:none; width:22px; height:22px; border-radius:50%; background:var(--crema2); color:var(--rosad);
+  font-size:11.5px; font-weight:800; display:flex; align-items:center; justify-content:center; }
+.ol img { width:30px; height:38px; object-fit:contain; flex:none; }
+.ol .pn { font-size:13px; font-weight:700; line-height:1.25; }
+.ol .pm2 { font-size:10.5px; color:var(--mut); display:block; font-weight:500; }
+.ol li.espera { font-size:10.5px; color:var(--mut); padding:0 0 0 54px; position:relative; }
+.ol li.espera::before { content:"↓"; position:absolute; left:38px; color:var(--rosa); font-weight:800; }
+.semrow { display:flex; align-items:flex-start; gap:10px; padding:8px 0; border-bottom:1px solid var(--crema2); }
+.semrow:last-child { border-bottom:0; }
+.semrow img { width:30px; height:38px; object-fit:contain; flex:none; margin-top:2px; }
+.semrow .pn { font-size:13px; font-weight:700; line-height:1.25; }
+.semrow .fr { font-size:11px; color:var(--rosad); font-weight:600; }
+.semrow .cm { font-size:11.5px; color:var(--texto); }
+.gale { background:#FFF6E8; border:1px solid #F2DFB9; border-radius:13px; padding:10px 12px;
+  font-size:12px; color:#6B5220; margin-bottom:8px; }
+.gale b { color:#4d3a12; }
+/* tarjetas producto por producto */
+.card { background:#fff; border:1px solid var(--line); border-radius:16px; padding:13px; margin-bottom:10px;
+  display:flex; gap:11px; }
+.card img { width:52px; height:66px; object-fit:contain; flex:none; }
+.card .cd { flex:1; min-width:0; }
+.card .cn { font-size:13.5px; font-weight:800; line-height:1.25; }
+.card .cm2 { font-size:10.5px; color:var(--mut); margin-bottom:5px; }
+.card .fila { font-size:11.8px; color:var(--texto); margin-top:4px; line-height:1.45; }
+.card .fila b { color:var(--ink); }
+.card .alz { margin-top:6px; }
+.card .alz div { font-size:11px; color:#8A5A17; background:#FFF6E8; border-radius:9px; padding:4px 8px; margin-top:4px; }
+.gleg { font-size:10.5px; color:var(--mut); line-height:1.5; margin:14px 2px 0; }
+#pdfbtn { position:fixed; left:14px; right:14px; bottom:14px; z-index:60; max-width:532px; margin:0 auto;
+  background:linear-gradient(100deg,var(--vivo) 0%,var(--vivoo) 100%); color:#fff; border:0; border-radius:15px; padding:15px; font-size:16px;
+  font-weight:800; box-shadow:0 12px 30px rgba(90,40,55,.35); }
+.pdftip { text-align:center; font-size:10.5px; color:var(--mut); margin-top:6px; }
+.geditar { background:none; border:0; color:var(--rosad); font-weight:700; font-size:12.5px;
+  text-decoration:underline; margin:2px 0 12px; padding:0; }
+#vnueva { position:fixed; left:12px; right:12px; bottom:78px; z-index:90; appearance:none; border:0;
+  border-radius:13px; background:#2A2226; color:#fff; font:inherit; font-size:13px; font-weight:600;
+  padding:12px 14px; box-shadow:0 12px 30px rgba(0,0,0,.3); }
+#vnueva b { color:#F3C3CD; }
+/* escáner */
+#scanbox { position:fixed; inset:0; z-index:80; background:rgba(20,10,14,.93); display:flex;
+  flex-direction:column; align-items:center; justify-content:center; padding:18px; }
+#scanbox[hidden] { display:none; }
+#scanvid { width:100%; max-width:520px; border-radius:16px; background:#000; aspect-ratio:4/3; object-fit:cover; }
+#scanmsg { color:#fff; font-size:13px; text-align:center; margin-top:12px; max-width:460px; line-height:1.5; }
+#scancont { color:#F3C3CD; font-size:12.5px; font-weight:700; margin-top:6px; }
+#scanluz, #scancerrar { margin-top:12px; appearance:none; border:0; border-radius:99px; padding:11px 22px;
+  font:inherit; font-weight:700; }
+#scanluz { background:#fff; color:var(--ink); }
+#scancerrar { background:var(--rosad); color:#fff; font-size:15px; }
+@media (min-width:700px) { h1.gt { font-size:28px; } }
+/* ---- impresión: un documento de marca, no una página web en blanco ---- */
+#printhead, #printfoot, #printsub { display:none; }
+@media print {
+  @page { size: letter; margin: 13mm 12mm 14mm; }
+  html { scroll-behavior:auto; }
+  body { background:#fff; font-size:11.5px; }
+  .top, #pdfbtn, .pdftip, .geditar, #vnueva, #g-armar, #scanbox,
+  h1.gt, p.gsub { display:none !important; }
+  .wrap { max-width:100%; padding:0; }
+  /* membrete */
+  #printhead { display:flex !important; align-items:flex-end; justify-content:space-between;
+    gap:10px; border-bottom:3px solid var(--rosad); padding:0 0 8px; margin-bottom:6px;
+    print-color-adjust:exact; -webkit-print-color-adjust:exact; }
+  #printhead .ph1 { font-size:19px; font-weight:800; letter-spacing:1px; }
+  #printhead .ph1 em { font-style:normal; color:var(--rosad); font-weight:700; }
+  #printhead .ph2 { font-size:8.5px; font-weight:700; letter-spacing:1.6px; color:var(--mut);
+    text-transform:uppercase; margin-top:2px; }
+  #printhead .ph3 { text-align:right; font-size:8.8px; color:var(--mut); line-height:1.5; }
+  #printhead .ph3 b { color:var(--ink); font-size:10px; }
+  #printsub { display:block; font-size:9px; font-weight:700; letter-spacing:1.2px;
+    color:var(--rosad); text-transform:uppercase; margin:0 0 10px;
+    print-color-adjust:exact; -webkit-print-color-adjust:exact; }
+  /* avisos y bloques con su color real */
+  .gale { break-inside:avoid; font-size:10px; padding:7px 10px; margin-bottom:5px; border-radius:8px;
+    print-color-adjust:exact; -webkit-print-color-adjust:exact; }
+  .bloque { break-inside:avoid; border:1px solid #E9D8DC; border-radius:10px;
+    padding:10px 12px; margin-bottom:7px; }
+  .bloque .bsub { font-size:10px; margin-bottom:6px; }
+  .btag, .ol .num, .card .alz div, .semrow .fr {
+    print-color-adjust:exact; -webkit-print-color-adjust:exact; }
+  .ol li.paso { padding:4px 0; }
+  .ol img { width:24px; height:31px; }
+  .ol .pn { font-size:11px; }
+  .ol .pm2 { font-size:9px; }
+  .ol li.espera { font-size:9px; padding-left:48px; }
+  .ol li.espera::before { left:34px; }
+  .semrow { padding:5px 0; }
+  .semrow img { width:24px; height:31px; }
+  .semrow .pn { font-size:11px; }
+  .semrow .fr { font-size:9.5px; }
+  .semrow .cm { font-size:10px; }
+  /* tarjetas a DOS columnas: caben ~8 productos por hoja, como catálogo */
+  #tarjetas { column-count:2; column-gap:6mm; margin-top:2px; }
+  #tarjetas .bloque { column-span:all; border:0; padding:2px 0 4px; margin:0; }
+  #tarjetas h2 { font-size:12px; letter-spacing:.8px; text-transform:uppercase; color:var(--rosad);
+    border-bottom:1.5px solid var(--line); padding-bottom:3px; }
+  .card { break-inside:avoid; border:1px solid #E9D8DC; border-radius:10px;
+    padding:9px 10px; margin:0 0 8px; gap:9px; }
+  .card img { width:34px; height:45px; }
+  .card .cn { font-size:10.5px; }
+  .card .cm2 { font-size:8.6px; margin-bottom:3px; }
+  .card .fila { font-size:9.3px; margin-top:2px; line-height:1.4; }
+  .card .alz { margin-top:4px; }
+  .card .alz div { font-size:8.6px; padding:3px 7px; margin-top:3px; }
+  .gleg { font-size:8.4px; margin:8px 2px 0; break-inside:avoid; }
+  /* pie institucional */
+  #printfoot { display:flex !important; justify-content:space-between; gap:10px; margin-top:9px;
+    border-top:1.5px solid var(--line); padding-top:6px; font-size:8.4px; color:var(--mut); }
+  #printfoot b { color:var(--rosad); }
+}
+</style>
+<style>
+
+:root {
+  --stage-pink:#E54B7D;
+  --stage-pink-deep:#B92F61;
+  --stage-pink-soft:#FDE3EC;
+  --stage-ink:#261F23;
+  --stage-muted:#7F7076;
+  --stage-card:rgba(255,255,255,.94);
+  --stage-shadow:0 14px 38px rgba(103,55,72,.10);
+  --stage-shadow-soft:0 8px 24px rgba(103,55,72,.075);
+}
+
+html { scroll-behavior:smooth; }
+body {
+  background:
+    radial-gradient(circle at 8% -4%,rgba(248,195,215,.42),transparent 24rem),
+    radial-gradient(circle at 100% 15%,rgba(255,255,255,.9),transparent 21rem),
+    var(--crema,#FDF3F7);
+  color:var(--ink,var(--stage-ink));
+}
+button,a,summary,input { -webkit-tap-highlight-color:transparent; }
+button:focus-visible,a:focus-visible,summary:focus-visible,input:focus-visible {
+  outline:3px solid rgba(229,75,125,.34) !important;
+  outline-offset:3px;
+}
+.uiico {
+  display:inline-flex; align-items:center; justify-content:center;
+  width:1.25em; height:1.25em; flex:none; color:currentColor;
+}
+.uiico svg,.needico svg { display:block; width:100%; height:100%; }
+.needico { display:inline-flex; align-items:center; justify-content:center; flex:none; }
+.chico.needico { width:25px; height:25px; }
+.cob > svg { width:15px; height:15px; vertical-align:-3px; margin-right:3px; }
+.titleico {
+  display:inline-flex; width:34px; height:34px; align-items:center; justify-content:center;
+  margin-right:8px; border-radius:12px; background:#FFF0F5; color:var(--stage-pink);
+  vertical-align:-9px;
+}
+.titleico svg { width:20px; height:20px; }
+.wrap,.twrap { width:100%; }
+
+/* Portada editorial aprobada: misma composición de la referencia de Michael.
+   La foto domina la mitad derecha; la marca y las tres puertas siguen siendo
+   HTML real y accesible, nunca una captura plana. */
+body.enportada .twrap { position:relative; }
+body.enportada {
+  background:
+    radial-gradient(circle at 18% 7%,rgba(255,255,255,.98),transparent 25rem),
+    linear-gradient(180deg,#FFFCFC 0%,#FFF8FA 64%,#FFFDFD 100%);
+}
+body.enportada .thead {
+  position:absolute; top:0; left:0; right:0; z-index:72;
+  margin:0; padding:20px 24px; background:transparent;
+}
+body.enportada .tlogo {
+  font-size:16px; letter-spacing:.13em; color:#15141A;
+}
+body.enportada .tlogo em { color:#E95682; }
+body.enportada .tpaso {
+  padding:9px 14px; border:1px solid rgba(255,255,255,.92);
+  background:rgba(255,255,255,.94); color:#1F1D21; font-size:12px;
+  box-shadow:0 7px 22px rgba(97,48,63,.12);
+  backdrop-filter:blur(12px);
+}
+#t-home .thero {
+  min-height:346px; margin:0 -18px; padding:80px 24px 18px;
+  background:
+    radial-gradient(circle at 19% 18%,rgba(255,255,255,.98) 0 18%,rgba(255,255,255,.63) 42%,transparent 64%),
+    linear-gradient(112deg,#FFFDFC 0%,#FFF9FA 36%,#FDE1EA 72%,#F8C9D8 100%);
+}
+#t-home .thero::after {
+  top:0; right:0; width:50%; height:100%;
+  background-position:center top; background-size:cover;
+  filter:saturate(.9) contrast(.98);
+}
+#t-home .thero::before {
+  content:""; position:absolute; inset:auto 0 0; height:25%; z-index:1;
+  background:linear-gradient(to bottom,transparent,rgba(255,252,251,.94));
+  pointer-events:none;
+}
+#t-home .thero > * { max-width:54%; }
+#t-home .thbien {
+  margin:22px 0 9px; font-size:24px; line-height:1.05;
+  color:#E95682; text-shadow:0 1px 0 rgba(255,255,255,.8);
+}
+#t-home .thbien::before {
+  content:"✦"; margin-right:7px; color:#F3A64B;
+  font-family:Georgia,serif; font-style:normal;
+}
+#t-home .thtit {
+  margin:0; font-size:46px; line-height:.97; letter-spacing:-.045em;
+}
+#t-home .thtit em {
+  display:inline-block; margin-top:8px;
+  background:linear-gradient(96deg,#F486A5 0%,#E34D79 100%);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+#t-home .thq { margin-top:29px; font-size:18px; letter-spacing:-.025em; }
+#t-home .thsub {
+  margin-top:6px; max-width:225px; font-size:15px; line-height:1.5; color:#6F6970;
+}
+
+#t-home .tmision {
+  min-height:100px; margin:0 8px 13px; padding:12px 17px;
+  border:1px solid rgba(246,232,235,.92); border-radius:18px;
+  box-shadow:0 11px 30px rgba(120,72,88,.085);
+}
+#t-home .tmision.pri {
+  min-height:126px; border-color:#F48AAA;
+  background:
+    radial-gradient(circle at 79% 26%,rgba(255,255,255,.86) 0 2px,transparent 3px),
+    radial-gradient(circle at 84% 43%,rgba(255,255,255,.7) 0 3px,transparent 4px),
+    linear-gradient(105deg,rgba(255,249,251,.98),rgba(252,211,226,.94));
+  box-shadow:0 15px 34px rgba(202,76,115,.16);
+}
+#t-home .tmico {
+  width:74px; height:74px; background:rgba(255,255,255,.95);
+  box-shadow:0 9px 24px rgba(160,88,111,.12),0 0 0 1px rgba(247,222,230,.78) inset;
+}
+#t-home .tmision.pri .tmico { width:82px; height:82px; }
+#t-home .tmico svg { width:38px; height:38px; }
+#t-home .tmision.pri .tmico svg { width:43px; height:43px; }
+#t-home .tmtxt { min-width:0; }
+#t-home .tmtxt b {
+  font-size:20px; line-height:1.22; letter-spacing:-.025em;
+}
+#t-home .tmision.pri .tmtxt b { font-size:23px; }
+#t-home .tbadge {
+  margin-bottom:8px; padding:6px 13px; font-size:12px;
+  background:linear-gradient(100deg,#EB5A86,#D83D70);
+}
+#t-home .tmfl {
+  width:44px; height:44px; font-size:23px;
+  background:#FFF0F5; color:#E84F7D;
+}
+#t-home .tmision.pri .tmfl {
+  background:linear-gradient(135deg,#EF5B87,#D93E70);
+  color:#FFF !important; font-weight:800;
+  box-shadow:0 7px 17px rgba(210,47,108,.28);
+}
+#t-home .tconf { margin:14px 0 8px; }
+#t-home .tconf span { gap:9px; padding:4px 10px; }
+#t-home .tconf svg { width:30px; height:30px; color:#EA5680; }
+#t-home .tconf em { font-size:12px; line-height:1.4; color:#3D373B; }
+
+@media (max-width:380px) {
+  body.enportada .thead { padding-left:18px; padding-right:18px; }
+  body.enportada .tlogo { font-size:14px; }
+  #t-home .thero { min-height:352px; padding:78px 18px 18px; }
+  #t-home .thbien { margin-top:18px; font-size:21px; }
+  #t-home .thtit { font-size:41px; }
+  #t-home .thq { font-size:17px; }
+  #t-home .thsub { font-size:13.5px; max-width:200px; }
+  #t-home .thero::after { width:50%; }
+  #t-home .tmision { min-height:94px; padding-left:13px; padding-right:13px; }
+  #t-home .tmision.pri { min-height:118px; }
+  #t-home .tmico { width:66px; height:66px; }
+  #t-home .tmision.pri .tmico { width:74px; height:74px; }
+  #t-home .tmtxt b { font-size:17.5px; }
+  #t-home .tmision.pri .tmtxt b { font-size:20px; }
+  #t-home .tbadge { font-size:10px; }
+}
+
+/* Selector aprobado: solo se mejora la respuesta al tocar. */
+#t-home .tmision,#t-elegir .topcion,#t-elegir .tselfie {
+  transition:transform 160ms ease,box-shadow 160ms ease,border-color 160ms ease;
+}
+#t-home .tmision:hover,#t-elegir .topcion:hover,#t-elegir .tselfie:hover {
+  transform:translateY(-1px);
+}
+#t-elegir .tcta:not(:disabled) {
+  background:linear-gradient(105deg,var(--stage-pink),var(--stage-pink-deep));
+  box-shadow:0 16px 36px rgba(185,47,97,.34);
+}
+#t-elegir .paso > i.needico { width:30px; height:30px; color:var(--stage-pink); }
+#t-elegir .nota .uiico { width:16px; height:16px; color:#E79A24; vertical-align:-3px; }
+
+/* Resultados: una jerarquía clara y el detalle secundario plegado. */
+#t-rutina { padding-bottom:28px; }
+#t-rutina > .tvolver { margin:5px 0 10px; }
+#t-rutina .panel { margin-top:8px; }
+#t-rutina .ptit {
+  font-size:clamp(25px,7.2vw,32px); line-height:1.08;
+  letter-spacing:-.035em; margin:4px 0 18px;
+}
+#t-rutina .ptit .needico { width:36px; height:36px; vertical-align:-9px; }
+#t-rutina .plabel {
+  margin:20px 2px 10px; color:var(--stage-muted); letter-spacing:.17em;
+}
+#t-rutina .mez,#t-rutina .col,#t-rutina .tier,#t-rutina .plegable,#t-rutina .rref {
+  background:var(--stage-card); border-color:rgba(228,194,207,.72);
+  box-shadow:var(--stage-shadow-soft);
+}
+#t-rutina .mez,#t-rutina .col { border-radius:22px; margin-bottom:13px; }
+#t-rutina .mez > summary,#t-rutina .col > summary { min-height:82px; padding:16px; }
+#t-rutina .col[open] {
+  border-color:var(--stage-pink); box-shadow:0 17px 42px rgba(185,47,97,.13);
+}
+#t-rutina .cnom,#t-rutina .mznom { font-size:16px; letter-spacing:-.015em; }
+#t-rutina .cprom,#t-rutina .mzsub { margin-top:3px; color:#9F3E62; }
+#t-rutina .aprecio,#t-rutina .mzprecio { color:var(--stage-pink-deep); }
+#t-rutina .cbody,#t-rutina .mzbody {
+  padding-left:14px; padding-right:14px; padding-bottom:16px;
+}
+#t-rutina .cficha > summary {
+  min-height:44px; border-radius:14px; background:#FFF7FA;
+}
+#t-rutina .cgancho {
+  border-left-color:var(--stage-pink); border-radius:0 14px 14px 0; padding:11px 13px;
+}
+#t-rutina .rutina {
+  margin-top:14px; border-color:rgba(185,47,97,.62); border-radius:20px; background:#FFF;
+}
+#t-rutina .rtit {
+  background:linear-gradient(100deg,#CF647E,#B94F66); padding:9px 13px;
+}
+#t-rutina .rp { align-items:flex-start; gap:9px; padding:13px 0; }
+#t-rutina .rimg {
+  width:52px; height:64px; padding:3px; border-radius:12px; background:#FFF8FA;
+}
+#t-rutina .rname,#t-rutina .pname { font-size:13px; line-height:1.28; }
+#t-rutina .ruso { margin-top:3px; }
+#t-rutina .rprec { margin-top:5px; color:var(--stage-pink-deep); }
+#t-rutina .rtotal { padding:14px; }
+#t-rutina .agtodo {
+  min-height:48px; border:0; border-radius:14px;
+  background:linear-gradient(100deg,var(--stage-pink),var(--stage-pink-deep));
+  color:#FFF; box-shadow:0 10px 22px rgba(185,47,97,.22);
+}
+#t-rutina .tier,#t-rutina .plegable {
+  border-radius:15px; margin-top:9px; overflow:hidden;
+}
+#t-rutina .tier > summary,#t-rutina .plegable > summary { min-height:52px; }
+#t-rutina .ralt .raltt { min-height:36px; }
+
+/* Productos y comparador: superficies ligeras y acciones más evidentes. */
+body:has(#identifica) .top {
+  background:rgba(253,243,247,.88); backdrop-filter:blur(18px) saturate(130%);
+}
+body:has(#identifica) .hero { padding-top:34px; }
+body:has(#identifica) .hero h1 { max-width:420px; letter-spacing:-.04em; }
+body:has(#identifica) .pest {
+  gap:8px; padding:4px; border-radius:18px; background:rgba(255,255,255,.72);
+  box-shadow:var(--stage-shadow-soft);
+}
+body:has(#identifica) .pesta { min-height:48px; border-radius:14px; }
+body:has(#identifica) .pesta .uiico { width:18px; height:18px; }
+body:has(#identifica) .otit2 .uiico { width:17px; height:17px; color:var(--stage-pink); vertical-align:-3px; }
+body:has(#identifica) .abtn,
+body:has(#identifica) .dwrap,
+body:has(#identifica) .cwrap,
+body:has(#identifica) .marca,
+body:has(#identifica) .faq details,
+body:has(#identifica) .tiempos {
+  border-color:rgba(228,194,207,.7); border-radius:22px;
+  box-shadow:var(--stage-shadow-soft);
+}
+body:has(#identifica) .abtn {
+  min-height:88px; padding:17px; background:rgba(255,255,255,.96);
+}
+body:has(#identifica) .buscador { background:transparent; }
+body:has(#identifica) .buscador input,body:has(#identifica) #q {
+  min-height:56px; border-radius:17px; border-color:rgba(228,194,207,.86);
+  box-shadow:0 8px 24px rgba(103,55,72,.06);
+}
+body:has(#identifica) .ctit0,body:has(#identifica) .strip h2 { letter-spacing:-.025em; }
+body:has(#identifica) .ctit0 > .titleico {
+  display:inline-flex; width:34px; height:34px; margin:0 8px 0 0;
+  color:var(--stage-pink); vertical-align:-9px;
+}
+body:has(#identifica) .dwrap,body:has(#identifica) .cwrap { padding:16px; }
+body:has(#identifica) .cnec {
+  min-height:58px; border-color:transparent; background:rgba(255,255,255,.94);
+  box-shadow:0 6px 16px rgba(103,55,72,.07);
+}
+body:has(#identifica) .cnec .needico {
+  width:29px; height:29px; padding:5px; border-radius:10px; background:#FFF2F6;
+}
+body:has(#identifica) .cnec.on {
+  border-color:var(--stage-pink); background:#FFF4F8;
+}
+body:has(#identifica) .cpaso { min-height:40px; display:inline-flex; align-items:center; gap:5px; }
+body:has(#identifica) .cpaso .uiico { width:15px; height:15px; color:var(--stage-pink-deep); }
+body:has(#identifica) .marca { margin-bottom:12px; }
+body:has(#identifica) .marca > summary { min-height:70px; padding:16px; }
+
+/* Guía: selección más tranquila y una acción primaria inequívoca. */
+body:has(#g-armar) .wrap {
+  max-width:590px; padding-left:15px; padding-right:15px;
+}
+body:has(#g-armar) h1.gt {
+  font-size:clamp(26px,7vw,33px); letter-spacing:-.035em;
+}
+body:has(#g-armar) .gbtn,
+body:has(#g-armar) #busca,
+body:has(#g-armar) .bloque,
+body:has(#g-armar) .card,
+body:has(#g-armar) .mio {
+  border-color:rgba(228,194,207,.75); box-shadow:var(--stage-shadow-soft);
+}
+body:has(#g-armar) .gbtn {
+  min-height:72px; border-radius:20px; padding:15px 16px;
+}
+body:has(#g-armar) .gbtn .gi {
+  display:flex; width:44px; height:44px; align-items:center; justify-content:center;
+  border-radius:15px; background:#FFF0F5; color:var(--stage-pink);
+}
+body:has(#g-armar) .gbtn .gi svg { width:23px; height:23px; }
+body:has(#g-armar) #busca { min-height:54px; border-radius:16px; }
+body:has(#g-armar) #mios { gap:8px; }
+body:has(#g-armar) .mio {
+  min-height:42px; border-radius:16px; padding-left:13px;
+}
+body:has(#g-armar) #vermiguia,body:has(#g-armar) #pdfbtn {
+  min-height:54px; border-radius:17px;
+  background:linear-gradient(105deg,var(--stage-pink),var(--stage-pink-deep));
+  box-shadow:0 15px 34px rgba(185,47,97,.31);
+}
+body:has(#g-armar) .bloque,body:has(#g-armar) .card { border-radius:20px; }
+
+/* Diagnóstico guiado: pictogramas de marca, no glifos del teléfono. */
+body:has(#sc-intro) .pqmain .uiico,body:has(#sc-intro) .pqsec .uiico {
+  width:20px; height:20px;
+}
+body:has(#sc-intro) .pqmeta { display:flex; justify-content:center; align-items:center; gap:6px; }
+body:has(#sc-intro) .pqmeta .uiico { width:15px; height:15px; color:var(--stage-pink-deep); }
+body:has(#sc-intro) .pqpriv .ico {
+  display:flex; width:38px; height:38px; align-items:center; justify-content:center;
+  border-radius:13px; background:#FFF0F5; color:var(--stage-pink); flex:none;
+}
+body:has(#sc-intro) .pqpriv .ico svg { width:20px; height:20px; }
+body:has(#sc-intro) .qtxt .qic {
+  display:flex; width:42px; height:42px; align-items:center; justify-content:center;
+  padding:7px; border-radius:14px; background:#FFF0F5; flex:none;
+}
+body:has(#sc-intro) .qtxt .qic svg { width:100%; height:100%; }
+body:has(#sc-intro) .resh1 { display:flex; align-items:center; gap:9px; }
+body:has(#sc-intro) .resh1 .uiico { width:25px; height:25px; color:var(--stage-pink); }
+
+@media (max-width:380px) {
+  #t-rutina .mez > summary,#t-rutina .col > summary { padding:14px 12px; }
+  #t-rutina .rpaso { width:42px; }
+  #t-rutina .rimg { width:44px; height:58px; }
+  body:has(#identifica) .pesta { font-size:11px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  html { scroll-behavior:auto; }
+  #t-home .tmision,#t-elegir .topcion,#t-elegir .tselfie { transition:none; }
+}
+@media print { body { background:#FFF !important; } }
+
+</style>
+
+<style id="guia-redesign-preview-css">
+body.guia-redisenada {
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue",Arial,sans-serif;
+  background:
+    radial-gradient(circle at 6% -4%,rgba(248,195,215,.38),transparent 22rem),
+    linear-gradient(180deg,#FFF9FB 0%,#F8F7F8 100%);
+}
+body.guia-redisenada .wrap { max-width:560px; padding:0 16px 94px; }
+
+/* Encabezado compartido: regreso, marca y sello son tres piezas claras. */
+body.guia-redisenada .top {
+  display:grid; grid-template-columns:38px minmax(0,1fr) auto;
+  align-items:center; gap:9px; padding:12px 0 7px;
+}
+body.guia-redisenada .top a.volver {
+  width:38px; height:38px; display:grid; place-items:center; padding:0;
+  overflow:hidden; border:1px solid #ECE7E9; border-radius:50%;
+  background:rgba(255,255,255,.94); color:transparent; font-size:0;
+  box-shadow:0 4px 14px rgba(80,51,62,.06);
+}
+body.guia-redisenada .top a.volver::before {
+  content:"←"; color:#C53D68; font-size:19px; line-height:1;
+}
+body.guia-redisenada .guide-logo {
+  min-width:0; color:#17161A; font-size:12px; font-weight:850;
+  letter-spacing:.14em; line-height:1; white-space:nowrap;
+}
+body.guia-redisenada .guide-logo em {
+  margin-left:5px; color:#E55782; font-style:normal; font-weight:780;
+}
+body.guia-redisenada .sello {
+  margin:0; display:flex; align-items:center; gap:5px;
+  padding:6px 9px; border:1px solid rgba(237,226,230,.9); border-radius:99px;
+  background:rgba(255,255,255,.94); color:#242126; font-size:8.5px;
+  font-weight:760; letter-spacing:.02em; line-height:1; white-space:nowrap;
+  box-shadow:0 4px 14px rgba(80,51,62,.06);
+}
+body.guia-redisenada .sello b { color:inherit; }
+
+body.guia-redisenada h1.gt {
+  margin:10px 0 7px; color:#201D21; font-size:29px; line-height:1.08;
+  letter-spacing:-.04em;
+}
+body.guia-redisenada .titleico {
+  width:32px; height:32px; margin-right:7px; border-radius:11px;
+  vertical-align:-7px; background:#FFF0F5;
+}
+body.guia-redisenada .titleico svg { width:18px; height:18px; }
+
+/* Secuencia más legible sin aumentar la altura. */
+body.guia-redisenada .gpasos {
+  gap:5px; margin:12px 0 17px; padding:0 2px;
+}
+body.guia-redisenada .gpasos::before {
+  top:17px; left:16%; right:16%; border-top:1px solid #E9D6DD;
+}
+body.guia-redisenada .gpasos span {
+  color:#625A5E; font-size:10.5px; font-weight:570; line-height:1.22;
+}
+body.guia-redisenada .gpasos b {
+  width:34px; height:34px; margin-bottom:7px; font-size:13px;
+  box-shadow:0 0 0 5px #FFF9FB,0 6px 15px rgba(188,51,96,.16);
+}
+
+body.guia-redisenada .gbtn,
+body.guia-redisenada #busca {
+  border:1px solid #E8E1E4; border-radius:17px; background:#FFF;
+  box-shadow:0 7px 22px rgba(84,51,64,.055);
+}
+body.guia-redisenada .gbtn { min-height:73px; padding:12px 14px; }
+body.guia-redisenada .gbtn .gi {
+  width:43px; height:43px; display:grid; place-items:center; flex:none;
+  padding:10px; border-radius:13px; background:#FFF0F5; color:#E34B79;
+}
+body.guia-redisenada .gbtn .gi svg { width:100%; height:100%; }
+body.guia-redisenada .gbtn b { font-size:14px; }
+body.guia-redisenada .gbtn small { margin-top:2px; font-size:10.8px; }
+body.guia-redisenada #busca {
+  min-height:52px; padding:13px 15px; font-size:14px;
+}
+
+/* La lista deja de formar pastillas de longitudes distintas. */
+body.guia-redisenada #mios {
+  display:grid; grid-template-columns:1fr; gap:7px; margin:11px 0 5px;
+}
+body.guia-redisenada .mio {
+  width:100%; min-height:50px; padding:5px 7px 5px 10px; gap:9px;
+  border:1px solid #EAE4E6; border-radius:15px; background:#FFF;
+  color:#2B272A; font-size:11.5px; font-weight:680;
+  box-shadow:0 4px 15px rgba(80,51,62,.045);
+}
+body.guia-redisenada .mio img {
+  width:31px; height:38px; padding:2px; border-radius:8px; background:#FAFAFB;
+}
+body.guia-redisenada .mio button {
+  width:28px; height:28px; margin-left:auto; flex:0 0 28px;
+  border:1px solid #F0DCE3; background:#FFF4F7; font-size:12px;
+}
+body.guia-redisenada #vacio2 {
+  border:1px dashed #E7D9DE; border-radius:15px; background:rgba(255,255,255,.72);
+}
+body.guia-redisenada #vermiguia,
+body.guia-redisenada #pdfbtn {
+  min-height:55px; border-radius:17px; font-size:14px; letter-spacing:.01em;
+  box-shadow:0 12px 28px rgba(168,47,88,.26);
+}
+
+/* Resultado: información primaria abierta; detalle individual bajo demanda. */
+body.guia-redisenada p.gsub { margin-bottom:7px; }
+body.guia-redisenada .geditar {
+  min-height:36px; margin:1px 0 10px; padding:5px 1px;
+  text-decoration:none; font-size:11.5px;
+}
+body.guia-redisenada .gale {
+  position:relative; margin-bottom:8px; padding:10px 11px 10px 39px;
+  border:1px solid #EECFD9; border-radius:14px; background:#FFF7FA;
+  color:#665A5F; font-size:10.8px; line-height:1.45;
+}
+body.guia-redisenada .gale::before {
+  content:"!"; position:absolute; left:11px; top:11px;
+  width:19px; height:19px; display:grid; place-items:center;
+  border-radius:50%; background:#F9DDE6; color:#C23D67;
+  font-size:11px; font-weight:850;
+}
+body.guia-redisenada .gale b { color:#40383C; }
+body.guia-redisenada .bloque {
+  margin-bottom:9px; padding:12px; border:1px solid #E8E3E5; border-radius:16px;
+  box-shadow:0 5px 18px rgba(75,50,60,.045);
+}
+body.guia-redisenada .btag {
+  display:inline-flex; align-items:center; min-height:23px; padding:3px 9px;
+  letter-spacing:.06em;
+}
+body.guia-redisenada .btag.am { background:#FFF1D8; color:#8C6724; }
+body.guia-redisenada .btag.pm { background:#EAF0F7; color:#465F75; }
+body.guia-redisenada .btag.sem { background:#F3EAF8; color:#77528A; }
+body.guia-redisenada .ol li.paso { padding:6px 0; }
+body.guia-redisenada .semrow { padding:7px 0; }
+
+body.guia-redisenada #tarjetas > .bloque {
+  margin:14px 0 6px !important; padding:0 2px 3px !important;
+}
+body.guia-redisenada #tarjetas > .bloque h2 {
+  font-size:19px; letter-spacing:-.025em;
+}
+body.guia-redisenada .card.guide-product-card {
+  display:grid; grid-template-columns:48px minmax(0,1fr); gap:10px;
+  margin-bottom:7px; padding:10px; border:1px solid #E7E2E4; border-radius:15px;
+  box-shadow:0 4px 15px rgba(76,50,60,.04);
+}
+body.guia-redisenada .card.guide-product-card > img {
+  width:48px; height:61px; padding:2px; border-radius:9px; background:#FAFAFB;
+}
+body.guia-redisenada .card.guide-product-card .cn {
+  color:#252125; font-size:12.5px; line-height:1.18;
+}
+body.guia-redisenada .card.guide-product-card .cm2 {
+  margin:2px 0 5px; font-size:9.8px;
+}
+body.guia-redisenada .guide-card-toggle {
+  min-height:28px; display:inline-flex; align-items:center; gap:6px;
+  padding:4px 9px; border:0; border-radius:99px; background:#FFF0F5;
+  color:#C63E69; font-size:9.6px; font-weight:750;
+}
+body.guia-redisenada .guide-card-toggle span {
+  font-size:11px; transition:transform 150ms ease;
+}
+body.guia-redisenada .card.guide-product-card:not(.guide-open) .fila,
+body.guia-redisenada .card.guide-product-card:not(.guide-open) .alz { display:none; }
+body.guia-redisenada .card.guide-product-card.guide-open .guide-card-toggle span {
+  transform:rotate(180deg);
+}
+body.guia-redisenada .card.guide-product-card .fila {
+  margin-top:7px; padding-top:7px; border-top:1px solid #F0EBED;
+  color:#665E62; font-size:10.8px; line-height:1.4;
+}
+body.guia-redisenada .card.guide-product-card .fila + .fila {
+  margin-top:4px; padding-top:0; border-top:0;
+}
+body.guia-redisenada .card.guide-product-card .alz div {
+  background:#FFF7FA; color:#79505E; font-size:10px;
+}
+body.guia-redisenada .gleg { font-size:9.8px; line-height:1.45; }
+
+@media (max-width:370px) {
+  body.guia-redisenada .guide-logo { font-size:10.5px; letter-spacing:.11em; }
+  body.guia-redisenada .sello { padding:6px 7px; font-size:7.8px; }
+  body.guia-redisenada h1.gt { font-size:27px; }
+  body.guia-redisenada .gpasos span { font-size:9.6px; }
+}
+@media print {
+  body.guia-redisenada .guide-card-toggle { display:none !important; }
+  body.guia-redisenada .card.guide-product-card .fila,
+  body.guia-redisenada .card.guide-product-card .alz { display:block !important; }
+}
+</style>
+
+<link rel="stylesheet" href="../mobile-readable.css?v=cd0d9b397327">
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <a class="volver" href="../">← Back</a>
+    <div class="sello"><b><span class="kfl">🇰🇷</span> SO YOUNG</b><br>100% authentic from Korea</div>
+  </div>
+
+  <!-- ===== pantalla 1 · armar mi lista ===== -->
+  <section id="g-armar">
+    <h1 class="gt"><span class="titleico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3.2h9.5L19 6.7v14.1H6z"/><path d="M15.5 3.2v3.5H19M9 11h7M9 14.5h7M9 18h4.5"/></svg></span>Your how-to guide</h1>
+    <div class="gpasos">
+      <span><b>1</b> Scan your products</span>
+      <span><b>2</b> Review your list</span>
+      <span><b>3</b> Save your guide as a PDF</span>
+    </div>
+
+    <button class="gbtn" id="btnscan" type="button"><span class="gi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.1v13.8M7 5.1v13.8M10.5 5.1v13.8M13 5.1v13.8M17 5.1v13.8M20 5.1v13.8"/></svg></span>
+      <span><b>Scan the barcode</b><small>One by one: they add themselves to your list.</small></span></button>
+
+    <div id="buscawrap">
+      <input id="busca" type="search" autocomplete="off" placeholder="…or type its name (e.g. «snail 96»)">
+      <div id="sugs" hidden></div>
+    </div>
+
+    <div id="mios"></div>
+    <div id="vacio2">Scan the <b>barcode</b> on each product, or search for it by name.</div>
+
+    <button id="vermiguia" type="button" disabled>Add your products ↑</button>
+  </section>
+
+  <!-- ===== pantalla 2 · la guía ===== -->
+  <section id="g-guia" hidden>
+    <div id="printhead">
+      <div>
+        <div class="ph1">🇰🇷 SO YOUNG <em>K-BEAUTY</em></div>
+        <div class="ph2">Korean skincare · 100% authentic</div>
+      </div>
+      <div class="ph3"><b>Personalized how-to guide</b><br><span id="pfecha2"></span> · <span id="pcuenta2"></span><br>rutina.ginproducts.com/en/guia</div>
+    </div>
+    <span id="printsub">Your routine, step by step and in order</span>
+    <h1 class="gt"><span class="titleico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3.2h9.5L19 6.7v14.1H6z"/><path d="M15.5 3.2v3.5H19M9 11h7M9 14.5h7M9 18h4.5"/></svg></span>How to use them</h1>
+    <p class="gsub"><span id="gcuenta"></span> · <span class="gfecha" id="pfecha"></span></p>
+    <button class="geditar" id="geditar" type="button">⟵ edit my product list</button>
+    <div id="alertas"></div>
+    <div id="rutinas"></div>
+    <div id="tarjetas"></div>
+    <p class="gleg">General cosmetic guide based on each product's type: the instructions <b>on the packaging</b> from the manufacturer always come first. It is not medical advice and does not replace a dermatologist's opinion; if anything irritates you, <b>stop</b> using it. With actives (acids, retinol, vitamin C), sunscreen every morning.</p>
+    <div id="printfoot"><span><b>🇰🇷 SO YOUNG</b> · 100% authentic from Korea</span><span>Questions about your routine? Your store advisor will be glad to help.</span></div>
+    <button id="pdfbtn" type="button"><span class="uiico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3.2h9.5L19 6.7v14.1H6z"/><path d="M15.5 3.2v3.5H19M9.2 12.2h5.6M9.2 15.5h5.6"/></svg></span> Save my guide as a PDF</button>
+    <p class="pdftip">Print opens → on iPhone tap <b>Share → Save to Files</b>; on Android choose <b>Save as PDF</b>.</p>
+  </section>
+</div>
+
+<div id="scanbox" hidden>
+  <video id="scanvid" autoplay muted playsinline></video>
+  <div id="scanmsg"></div>
+  <div id="scancont"></div>
+  <button id="scanluz" type="button" hidden>💡 Turn light on</button>
+  <button id="scancerrar" type="button">✓ I'm done scanning</button>
+</div>
+
+<script>
+"use strict";
+/* GUÍA DE USO — esta página NO recomienda: documenta el uso de lo que TÚ elegiste.
+   El catálogo y todas las instrucciones vienen del servidor (Python); este JS solo
+   busca por código/nombre, ordena por `or` y agrupa por `mo`. */
+const GP = [{"d":"Niacinamide 10% + TXA 4% Serum 30ml","m":"ANUA","c":"Niacinamide + TXA","f":"B0CLLV2T1P.jpg","uso":"Fades dark spots and evens out your tone; the favorite for breakout marks","upc":"8809640734526","mo":"AMPM","or":50,"es":"1 min","fr":"every day","como":"After toner: 1–2 drops spread over your face. Let it absorb well before your cream. It also works on elbows, knees or hands if they look rough or dull.","al":[],"fl":{"f":0,"rt":0,"vc":0,"ac":0,"sol":0}},{"d":"Azelaic Acid 10 Serum 30ml","m":"ANUA","c":"Azelaic Acid","f":"B0DG1DQ2S7.jpg","uso":"Light serum for oily, breakout-prone skin: refines texture and calms redness without irritating","upc":"8809640737190","mo":"AMPM","or":50,"es":"1 min","fr":"start 1–2 times a week and build up gradually to 2 times a day","como":"Between toner and cream. Start with 1–2 drops and work up to 5.","al":["At first it may dry your skin or pill into little balls: hydrate your skin well and pair it with a soothing toner.","If a little white powder is left on the bottle or on your skin, it is the azelaic acid itself: that is normal.","Avoid contact with the eyes.","If you get new breakouts, stop using it and consult a doctor.","By day, always finish with sunscreen."],"fl":{"f":0,"rt":0,"vc":0,"ac":0,"sol":0}},{"d":"PDRN Hyaluronic Capsule 100 Serum 30ml","m":"ANUA","c":"PDRN","f":"B0DLB58CWR.jpg","uso":"PDRN and hyaluronic acid serum: dewy, hydrated, glowing skin","upc":"8809640736667","mo":"AMPM","or":50,"es":"1 min","fr":"every day","como":"After toner: take a suitable amount, spread it gently and let it absorb. At night you can apply 2–3 layers instead of a night mask. Tip: 1–2 drops in your foundation give it a dewy finish.","al":["By day, always finish with sunscreen."],"fl":{"f":0,"rt":0,"vc":0,"ac":0,"sol":0}},{"d":"Heartleaf Pore Control Cleansing Oil 200ml","m":"ANUA","c":"Heartleaf","f":"B0BN2PX8V3.jpg","uso":"Cleansing oil: melts away the makeup, oil and dirt that clog pores","upc":"8809640732829","mo":"AMPM","or":10,"es":"no wait needed — follow with your foam","fr":"every day","como":"With DRY hands and face: 2–3 pumps of oil and massage for 60 seconds or more. Add 3–5 drops of water until it turns milky, follow with your foam and rinse.","al":["If your skin is sensitive, test it on a small area first."],"fl":{"f":0,"rt":0,"vc":0,"ac":0,"sol":0}},{"d":"PDRN Hyaluronic Cleansing Foam 150ml","m":"ANUA","c":"PDRN","f":"B0FPQNL9K7.jpg","uso":"A foam that cleanses and hydrates at once; ideal for dry skin","upc":"8800307372983","mo":"AMPM","or":20,"es":"no wait needed","fr":"every day","como":"Lather a suitable amount, gently massage your face and rinse with lukewarm water. Brand tip: apply it thick on dry skin (avoiding eyes and lips), wait 1 minute, add water and lather.","al":["By day, always finish with sunscreen."],"fl":{"f":0,"rt":0,"vc":0,"ac":0,"sol":0}},{"d":"Madeca Cream Time Reverse 50ml","m":"CENTELLIAN24","c":"Madeca Cream","f":"B0DFY92NDB.jpg","uso":"Anti-aging cream with pharmacy heritage: firmness and nourishment","upc":"8806109101257","mo":"AMPM","or":70,"es":"—","fr":"morning and night, and whenever your skin feels dry","como":"Last step of your routine: oily skin, 1 knuckle-length of cream; dry skin, 2 knuckle-lengths. Spread over face and neck and pat gently to help it absorb. Tip: a generous layer before bed works as a night mask.","al":["Contains retinol: by day, finish with sunscreen.","Avoid contact with the eyes; if your skin gets irritated, stop using it and consult a dermatologist.","If you are pregnant or breastfeeding, ask first before using retinoids.","Do not mix it with exfoliants or vitamin C on the same night."],"fl":{"f":1,"rt":1,"vc":0,"ac":0,"sol":0}},{"d":"360 Shot PDRN Lifting Eye Cream","m":"CENTELLIAN24","c":"360 Shot PDRN","f":"B0G48T5CM2.jpg","uso":"Eye cream with applicator and retinol: lines, bags and droopy lids","upc":"8806109107358","mo":"AMPM","or":55,"es":"no wait needed","fr":"every day","como":"A little on the areas that need it: under the eyes, crow's feet, forehead, expression lines, neck or lips. Pat gently until absorbed.","al":["Contains retinol: by day, finish with sunscreen.","If you are pregnant or breastfeeding, ask first before using retinoids.","Do not mix it with exfoliants or vitamin C on the same night."],"fl":{"f":1,"rt":1,"vc":0,"ac":0,"sol":0}},{"d":"Expert Madeca Cream PDRN 50ml","m":"CENTELLIAN24","c":"Madeca Cream","f":"B0FS7QVSVC.jpg","uso":"Intensive firming cream with PDRN and centella: firmness and elasticity; the gift for your mother","upc":"8806109106733","mo":"AMPM","or":70,"es":"1 min (by day, before sunscreen)","fr":"every day","como":"By day and at night: apply it to your face and add extra to the areas that need it: eye area, expression lines, cheeks and neck.","al":[],"fl":{"f":0,"rt":0,"vc":0,"ac":0,"sol":0}},{"d":"Low pH Good Morning Cleanser","m":"COSRX","c":"Low pH / Cleansing","f":"B016NRXO06.jpg","uso":"Korea's most famous gentle cleanser; for the whole family","upc":"8809416470511","mo":"AMPM","or":20,"es":"no wait needed","fr":"every day","como":"On a damp face: a small amount in your hands, apply it and lather with a gentle circular massage; rinse with lukewarm water. It also works for the body.","al":[],"fl":{"f":0,"rt":0,"vc":0,"ac":0,"sol":0}},{"d":"The Peptide Collagen Hydrogel Eye Patch (60 pcs)","m":"COSRX","c":"Peptide Collagen","f":"B0DLKCCPYZ.jpg","uso":"60 hydrogel patches with 4 peptides and collagen: they depuff and refresh the eye area","upc":"8809598456983","mo":"LIBRE","or":35,"es":"once you remove them, continue your routine","fr":"anytime","como":"On clean, dry skin: place the patches where you need them (under the eyes or on the cheeks) and leave them on for about 10 minutes, or longer if you like, up to 30. Remove them and massage in any remaining essence.","al":["Do not put them inside the eye."],"fl":{"f":0,"rt":0,"vc":0,"ac":0,"sol":0}},{"d":"Advanced Snail 92 All In One Cream 100ml","m":"COSRX","c":"Advanced Snail","f":"B01LEJ5MSK.jpg","uso":"All-in-one snail cream: repairs and softens","upc":"8809416470016","mo":"AMPM","or":70,"es":"1 min (by day, before sunscreen)","fr":"every day","como":"After cleansing and toning, apply the cream to face and neck, avoiding the eye area, and pat with your fingertips to help it absorb.","al":[],"fl":{"f":0,"rt":0,"vc":0,"ac":0,"sol":0}},{"d":"The 6 Peptide Booster Serum 150ml","m":"COSRX","c":"Active Serums","f":"B0CCJ3SRB9.jpg","uso":"6 peptides: skin more elastic and more rested; jumbo size","upc":"8809598455658","mo":"AMPM","or":50,"es":"1 min","fr":"every day","como":"Right after cleansing: 2–3 pumps on your face. You can add more layers if you like, then your cream.","al":[],"fl":{"f":0,"rt":0,"vc":0,"ac":0,"sol":0}},{"d":"Advanced Snail 96 Mucin Essence 100ml","m":"COSRX","c":"Advanced Snail","f":"B00PBX3L7K.jpg","uso":"THE viral snail mucin: repairs, hydrates and gives glow to any skin","upc":"8809416470009","mo":"AMPM","or":40,"es":"30–60 sec","fr":"every day","como":"After cleansing and toning: 2–3 pumps over your whole face and pat with your fingertips to help it absorb. Follow with your cream if you need it.","al":["Test it first on an area of your body; if there is no irritation after 24 hours, use it on your face."],"fl":{"f":0,"rt":0,"vc":0,"ac":0,"sol":0}},{"d":"345 Relief Cream 50ml","m":"DR.ALTHEA","c":"345 Relief","f":"B0FKGJYFC8.jpg","uso":"The favorite soothing cream: relieves redness and irritation, on skin with breakouts too","upc":"8809447256221","mo":"AMPM","or":70,"es":"1 min (by day, before sunscreen)","fr":"every day","como":"Last step of your routine, after serum: spread over your face.","al":[],"fl":{"f":0,"rt":0,"vc":0,"ac":0,"sol":0}},{"d":"345 Relief Cream 15ml","m":"DR.ALTHEA","c":"345 Relief","f":"B0G643D8ZG.jpg","uso":"The mini 345: to try it out or to take travelling","upc":"8809447256429","mo":"AMPM","or":70,"es":"1 min (by day, before sunscreen)","fr":"every day","como":"Last step of your routine, after serum: spread over your face.","al":[],"fl":{"f":0,"rt":0,"vc":0,"ac":0,"sol":0}},{"d":"345 Relief Cream Mist 100ml","m":"DR.ALTHEA","c":"345 Relief","f":"B0FMWPNKJR.jpg","uso":"Cream mist that calms and hydrates irritated skin, even over makeup","upc":"8809447256115","mo":"LIBRE","or":93,"es":"—","fr":"during the day, as often as you like","como":"Shake well to mix its layers and spray evenly over your face, before or after makeup.","al":[],"fl":{"f":0,"rt":0,"vc":0,"ac":0,"sol":0}},{"d":"Gentle Vitamin C Serum 30ml","m":"DR.ALTHEA","c":"Essentials","f":"B0DGLCRZZ3.jpg","uso":"Gentle vitamin C to start with: brightens dull skin and evens out your tone; designed for sensitive skin","upc":"8809447255101","mo":"AMPM","or":50,"es":"1–2 min","fr":"every day; if you're new to vitamin C, start every other day and build up gradually","como":"After cleansing and toner, once your skin is dry: a few drops evenly over your whole face; pat gently until absorbed and follow with your cream. It works morning or night; by day, always finish with sunscreen.","al":["Vitamin C works hand in hand with sunscreen: use it every morning."],"fl":{"f":0,"rt":0,"vc":1,"ac":0,"sol":0}},{"d":"147 Barrier Cream 50ml","m":"DR.ALTHEA","c":"147 Barrier","f":"B0GPPRTD32.jpg","uso":"Barrier cream with ceramides: deep hydration for dry or stressed skin","upc":"8809447256795","mo":"AMPM","or":70,"es":"1 min (by day, before sunscreen)","fr":"every day","como":"Morning and night, as the last step of your routine. It layers well under makeup.","al":[],"fl":{"f":0,"rt":0,"vc":0,"ac":0,"sol":0}},{"d":"Zero Pore Pad 2.0 (pads)","m":"Medicube","c":"Zero Pore","f":"B09V7Z4TJG.jpg","uso":"The viral pads: they exfoliate, clean out pores and control oil","upc":"8800256114665","mo":"AMPM","or":30,"es":"1–2 min","fr":"every day; if your skin is very sensitive, start a few times a week","como":"After cleansing: wipe the textured side from the center of your face outward; flip to the smooth side and wipe once more. Pat gently to help it absorb and continue your routine.","al":["Avoid the eye area and do not use it right after hair removal or on irritated skin.","If you are pregnant or breastfeeding, better skip this one — your advisor gives you the gentle swap.","By day, always finish with sunscreen."],"fl":{"f":1,"rt":0,"vc":0,"ac":0,"sol":0}},{"d":"Zero Foam Cleanser 120ml","m":"Medicube","c":"Zero Pore","f":"B09C1B7BH5.jpg","uso":"Foam for oily skin: cleans deep without the tight feeling","upc":"8800240575298","mo":"AMPM","or":20,"es":"no wait needed","fr":"every day","como":"Put a suitable amount in your palm, lather with water, gently massage your face (avoiding the eyes) and rinse thoroughly with lukewarm water.","al":[],"fl":{"f":0,"rt":0,"vc":0,"ac":0,"sol":0}},{"d":"Zero Pore Hydrating Sun Serum 50ml","m":"Medicube","c":"Zero Pore","f":"8800256119332.jpg","uso":"Sunscreen serum that hydrates and cares for pores: light, clear and with no sticky feel","upc":"8800256119332","mo":"AM","or":90,"es":"—","fr":"EVERY morning","como":"Last step of your morning routine. Shake it well so its two layers (water and oil) mix; take a suitable amount, spread it gently along your skin and pat to help it absorb.","al":[],"fl":{"f":0,"rt":0,"vc":0,"ac":0,"sol":1}},{"d":"Zero Pore Capsule Cleansing Foam","m":"Medicube","c":"Zero Pore","f":"B0DYTQ5GYQ.jpg","uso":"Foam with capsules: deep pore cleansing","upc":"8800256119226","mo":"AMPM","or":20,"es":"no wait needed","fr":"every day","como":"Put a suitable amount in your palm, lather with water, gently massage your face and rinse with lukewarm water. If you're wearing makeup or sunscreen, use the cleansing oil first.","al":[],"fl":{"f":0,"rt":0,"vc":0,"ac":0,"sol":0}},{"d":"Zero Pore One Day Cream 50ml","m":"Medicube","c":"Zero Pore","f":"B0BCK9G74Q.jpg","uso":"Gel-cream for pores: refines pores and controls oil, with no shine","upc":"8800240567354","mo":"AMPM","or":70,"es":"1 min (by day, before sunscreen)","fr":"every day","como":"Morning and night, after cleansing and toning: take a suitable amount, apply it from the center of your face outward and pat gently to help it absorb.","al":[],"fl":{"f":0,"rt":0,"vc":0,"ac":0,"sol":0}},{"d":"Deep Vita C Capsule Cream 55g","m":"Medicube","c":"Deep Vita C","f":"B0D2Z3GGCY.jpg","uso":"Vitamin C cream: brightens and evens out your tone","upc":"8809982769866","mo":"AMPM","or":70,"es":"1 min (by day, before sunscreen)","fr":"every day","como":"Last step of your routine: on the back of your hand, mix the yellow capsules with the clear gel and apply gently. More gel if you want it light; more capsules if you want more hydration and firmness.","al":["Vitamin C works hand in hand with sunscreen: use it every morning."],"fl":{"f":0,"rt":0,"vc":1,"ac":0,"sol":0}},{"d":"Deep Vita C Capsule Serum 30ml","m":"Medicube","c":"Deep Vita C","f":"B0FR4QYNK5.jpg","uso":"Vitamin C concentrated in capsules: for dark spots and dull skin","upc":"8800289479977","mo":"AMPM","or":50,"es":"1–2 min","fr":"every day; if you're new to vitamin C, start slowly","como":"After toner: a suitable amount over your whole face and massage gently. The capsules dissolve on their own: no need to break them.","al":["Vitamin C works hand in hand with sunscreen: use it every morning."],"fl":{"f":0,"rt":0,"vc":1,"ac":0,"sol":0}},{"d":"Deep Vita C Pad (pads)","m":"Medicube","c":"Deep Vita C","f":"B0BPLYHDPG.jpg","uso":"Vitamin C pads: glow and even tone in one step","upc":"8800256109661","mo":"AMPM","or":30,"es":"1–2 min","fr":"every day","como":"First step after washing your face: wipe the textured side from the center outward, with gentle upward strokes; then the other side, and pat gently to help it absorb. Close the lid tightly so they don't dry out.","al":["Be careful around the eye area: do not let it get into your eye.","If you are pregnant or breastfeeding, better skip this one — your advisor gives you the gentle swap.","Vitamin C works hand in hand with sunscreen: use it every morning."],"fl":{"f":1,"rt":0,"vc":1,"ac":0,"sol":0}},{"d":"PDRN Pink Collagen Capsule Cream","m":"Medicube","c":"PDRN Pink","f":"B0DTKCN3Z4.jpg","uso":"The pink collagen cream: skin that bounces back","upc":"8800289467714","mo":"AMPM","or":70,"es":"1 min (by day, before sunscreen)","fr":"every day","como":"Morning and night, after serum: mix the pink capsules with the gel in the ratio you like (more gel, lighter; more capsules, more hydration and firmness) and apply to face and neck.","al":[],"fl":{"f":0,"rt":0,"vc":0,"ac":0,"sol":0}},{"d":"PDRN Pink Peptide Serum 30ml","m":"Medicube","c":"PDRN Pink","f":"B0DBF65JYY.jpg","uso":"THE viral pink serum from TikTok: firmness, glow and porcelain skin","upc":"8800256108053","mo":"AMPM","or":50,"es":"1 min","fr":"every day","como":"Morning and night, on clean, dry skin: 2–3 drops on face and neck; massage in circles or pat gently until absorbed. If you want more hydration, add 1–2 more layers. Follow with your cream and, by day, with sunscreen.","al":[],"fl":{"f":0,"rt":0,"vc":0,"ac":0,"sol":0}},{"d":"PDRN Pink Peptide Eye Serum 30ml","m":"Medicube","c":"PDRN Pink","f":"B0DWMSM6Y9.jpg","uso":"Eye serum with retinol and peptides: dark circles, puffiness and lines","upc":"8800256119042","mo":"AMPM","or":55,"es":"no wait needed","fr":"1–2 times a day; if you're new to retinol or your skin is sensitive, start slowly","como":"Last step of your routine: a suitable amount around your eyes or on any area with fine lines; massage gently or pat until absorbed.","al":["Contains retinol: be careful when combining it with other retinol products or strong actives on the same area.","By day, finish with sunscreen.","If you are pregnant or breastfeeding, ask first before using retinoids.","Do not mix it with exfoliants or vitamin C on the same night."],"fl":{"f":1,"rt":1,"vc":0,"ac":0,"sol":0}},{"d":"PDRN Pink Hyaluronic Moisturizing Cream 50ml","m":"Medicube","c":"Hyaluronic","f":"B0DKNP4TL6.jpg","uso":"Light cream with hyaluronic acid and PDRN: lasting hydration and more elastic skin","upc":"8800256113101","mo":"AMPM","or":70,"es":"1 min (by day, before sunscreen)","fr":"every day","como":"As your cream step, after serum: spread over your face and let it absorb.","al":[],"fl":{"f":0,"rt":0,"vc":0,"ac":0,"sol":0}},{"d":"PDRN Hydrating Gel Cleanser 200ml","m":"Medicube","c":"PDRN Pink","f":"B0F83N244B.jpg","uso":"A gel cleanser that does not dry you out","upc":"8800289473852","mo":"AMPM","or":20,"es":"no wait needed","fr":"every day","como":"Apply a suitable amount to your face, add water to lather and massage gently in circles; rinse with lukewarm water. With heavy makeup or water-resistant sunscreen, use a cleansing oil first.","al":[],"fl":{"f":0,"rt":0,"vc":0,"ac":0,"sol":0}},{"d":"Kojic Turmeric Pad (70 pads)","m":"Medicube","c":"Kojic Acid Turmeric","f":"B0FJ21Z6BW.jpg","uso":"Pads with kojic acid and turmeric: they help even out your tone, on skin with breakouts too","upc":"8800289477386","mo":"AMPM","or":30,"es":"1–2 min","fr":"every day; it contains glycolic acid: if your skin is sensitive, adjust the frequency","como":"First step after washing your face: wipe the textured side from the center outward, then the other side, and pat gently to help it absorb. It also works on the body: chest, back, arms, underarms or knees.","al":["If you are pregnant or breastfeeding, better skip this one — your advisor gives you the gentle swap.","Do not mix it with retinol on the same night.","By day, always finish with sunscreen."],"fl":{"f":1,"rt":0,"vc":0,"ac":1,"sol":0}},{"d":"PDRN Pink Caffeine Collagen Eye Patch (60 pcs)","m":"Medicube","c":"PDRN Pink","f":"B0G38FGSKL.jpg","uso":"60 eye patches with caffeine, collagen and retinol: rested eyes in about 10 minutes","upc":"8800289466441","mo":"PM","or":35,"es":"once you remove them, continue your routine","fr":"every day; with sensitive skin or if you're new to retinol, start 2–3 times a week","como":"At night (as the brand recommends): use the spatula to place the patches under your eyes and leave them on for about 10 minutes. Remove them and massage in any remaining essence; no need to rinse. They also work on expression lines, forehead and neck.","al":["First test a little behind your ear.","Contains retinol: if you already use other retinol products, go slowly.","The next day, finish with sunscreen.","If you are pregnant or breastfeeding, ask first before using retinoids.","Do not mix it with exfoliants or vitamin C on the same night."],"fl":{"f":1,"rt":1,"vc":0,"ac":0,"sol":0}},{"d":"TXA Niacinamide Capsule Cream 55g","m":"Medicube","c":"TXA Niacinamide","f":"B0F29C8N84.jpg","uso":"Daily cream with TXA and niacinamide: helps even out your tone","upc":"8800256119660","mo":"AMPM","or":70,"es":"1 min (by day, before sunscreen)","fr":"every day","como":"Morning and night, after serum: mix the red capsules with the gel in the ratio you like and apply to face and neck.","al":["First test a little behind your ear."],"fl":{"f":0,"rt":0,"vc":0,"ac":0,"sol":0}},{"d":"PDRN Collagen Gua Sha Neck Cream 90g","m":"Medicube","c":"PDRN Pink","f":"B0GVQ6NYR3.jpg","uso":"Neck cream with a gua sha applicator: firmness where age shows most","upc":"8800366240759","mo":"LIBRE","or":70,"es":"1 min (by day, before sunscreen)","fr":"once a day","como":"Turn the applicator head to ON, gently squeeze the tube and glide the gua sha along your jawline, neck and upper chest with an upward massage until absorbed. When you finish, turn it to close.","al":[],"fl":{"f":0,"rt":0,"vc":0,"ac":0,"sol":0}},{"d":"Collagen Night Wrapping Mask 75ml","m":"Medicube","c":"Collagen","f":"B0BRMYHMS5.jpg","uso":"Put it on and sleep: you wake up with firm skin","upc":"8800256113217","mo":"PM","or":75,"es":"—","fr":"whenever you want to give your skin a little extra","como":"Last step at night, AFTER your cream: a thin, even layer, avoiding eyes and mouth. Let it dry for 15 minutes, then go to bed. In the morning, peel it off like a film or rinse.","al":[],"fl":{"f":0,"rt":0,"vc":0,"ac":0,"sol":0}},{"d":"Triple Collagen Cream 4.0 50ml","m":"Medicube","c":"Collagen","f":"B0BPXT3GBN.jpg","uso":"Triple collagen: visible firmness in weeks","upc":"8800256114313","mo":"AMPM","or":70,"es":"1 min (by day, before sunscreen)","fr":"every day","como":"Last step of your routine: take a little, spread it from the center of your face outward and pat gently to help it absorb. Tip: mixed with your makeup, it keeps the makeup from cracking.","al":[],"fl":{"f":0,"rt":0,"vc":0,"ac":0,"sol":0}},{"d":"Collagen Jelly Cream 110ml","m":"Medicube","c":"Collagen","f":"B0CM2PPNMW.jpg","uso":"THE viral collagen jelly cream: bounce and glow","upc":"8809982769903","mo":"AMPM","or":70,"es":"1 min (by day, before sunscreen)","fr":"every day","como":"After your serums, on face, neck and upper chest. By day, a moderate amount: pat it in and let it absorb before makeup. At night, a generous amount, avoiding the eye and mouth area, and let it absorb before bed.","al":["Test it first on an area of your body; if there is no irritation after 24 hours, use it on your face."],"fl":{"f":0,"rt":0,"vc":0,"ac":0,"sol":0}},{"d":"Collagen Jelly Cream 50ml","m":"Medicube","c":"Collagen","f":"B0DGPSZVW3.jpg","uso":"The collagen jelly in the small size","upc":"8800256112227","mo":"AMPM","or":70,"es":"1 min (by day, before sunscreen)","fr":"every day","como":"After your serums, on face, neck and upper chest. By day, a moderate amount: pat it in and let it absorb before makeup. At night, a generous amount, avoiding the eye and mouth area, and let it absorb before bed.","al":["Test it first on an area of your body; if there is no irritation after 24 hours, use it on your face."],"fl":{"f":0,"rt":0,"vc":0,"ac":0,"sol":0}},{"d":"Kojic Acid Turmeric Niacinamide Serum 30ml","m":"Medicube","c":"Kojic Acid Turmeric","f":"B0FG7VLJKG.jpg","uso":"Kojic acid + turmeric: helps fade dark spots and even out your tone","upc":"8800289477416","mo":"AMPM","or":50,"es":"1–2 min","fr":"every day","como":"After toner: a suitable amount, spread evenly following the texture of your skin.","al":["If you are pregnant or breastfeeding, better skip this one — your advisor gives you the gentle swap.","Do not mix it with retinol on the same night.","By day, always finish with sunscreen."],"fl":{"f":1,"rt":0,"vc":0,"ac":1,"sol":0}},{"d":"PDRN Hyaluronic 100 Moisture Cream 60ml","m":"ANUA","c":"PDRN","f":"B0DWFLY18Y.jpg","uso":"PDRN cream: seals in moisture with glow, light enough for all day","upc":"8809640738135","mo":"AMPM","or":70,"es":"1 min (by day, before sunscreen)","fr":"every day","como":"Last step of your routine, morning and night: dispense only what you need with the dropper-style tip, spread over your whole face and massage gently until absorbed.","al":["By day, always finish with sunscreen."],"fl":{"f":0,"rt":0,"vc":0,"ac":0,"sol":0}},{"d":"Collagen Retinol Gua Sha Cream 80ml","m":"ANUA","c":"Collagen Retinol","f":"B0GKFD9ZQW.jpg","uso":"Neck and chin cream with retinol and collagen, with a gua sha roller: firmness and lines; it works on the face too","upc":"8800307379326","mo":"PM","or":70,"es":"—","fr":"for the first 2 weeks, every other night; after that, every night","como":"At night (as the brand recommends): turn the applicator head to ON, apply the cream to your jawline, neck and upper chest, and massage upward for 5 minutes. It also works on the face. When you finish, clean the head and turn it to OFF.","al":["Do a patch test on a small area before first use.","At first it may cause temporary tingling, redness or flaking.","Do not mix it with vitamin C or exfoliants.","If you use it by day, finish with sunscreen.","If you are pregnant or breastfeeding, ask first before using retinoids."],"fl":{"f":1,"rt":1,"vc":0,"ac":0,"sol":0}},{"d":"PDRN Pink Collagen Gel Mask (4 pcs)","m":"Medicube","c":"PDRN Pink","f":"B0DGTMR754.jpg","uso":"4 gel masks from the pink line: glow and firmness in one night","upc":"8800256114399","mo":"LIBRE","or":45,"es":"no rinsing — follow with your cream","fr":"all night, or by day for 3–4 hours","como":"At night: at the end of your routine, put it on and leave it on all night; remove it in the morning. By day: after toner or serum, leave it on for 3–4 hours or until it turns clear. Use the eye and mouth cutouts on dark circles, neck or expression lines.","al":[],"fl":{"f":0,"rt":0,"vc":0,"ac":0,"sol":0}},{"d":"Vitamin E Vitalizing Sunscreen SPF50+","m":"COSRX","c":"Sun Protection","f":"B09ZY7468X.jpg","uso":"Sunscreen with vitamin E: light, no white cast, for every day","upc":"8809598454613","mo":"AM","or":90,"es":"—","fr":"EVERY morning","como":"Last step of your routine, before makeup: apply it generously 15–30 minutes before going out. You can apply it under your eyes, without touching the eye. Reapply at least every 2 hours.","al":[],"fl":{"f":0,"rt":0,"vc":0,"ac":0,"sol":1}},{"d":"Pore+Dark Spot Brightening Cream 35ml","m":"CELIMAX","c":"Dark Spot","f":"B0DHKSF81K.jpg","uso":"A cream for dark spots and pores at the same time: Celimax's second pick","upc":"8809971484503","mo":"AMPM","or":70,"es":"1 min (by day, before sunscreen)","fr":"every day","como":"Last step of your routine, morning and night: spread evenly over face and neck. If you use retinal or retinol at night, apply this cream after it. Tip: before an event, a thick layer as a night mask.","al":[],"fl":{"f":0,"rt":0,"vc":0,"ac":0,"sol":0}},{"d":"Tea-Trica Soothing Sun Milk 50ml","m":"SKIN1004","c":"Tea-Trica","f":"8809913830610.jpg","uso":"Light, soothing sunscreen for skin with breakouts or sensitive skin","upc":"8809913830610","mo":"AM","or":90,"es":"—","fr":"EVERY morning","como":"Last step of your routine: an even layer on face, neck and exposed areas, 15 minutes before going out in the sun. Reapply at least every 2 hours.","al":[],"fl":{"f":0,"rt":0,"vc":0,"ac":0,"sol":1}},{"d":"Tea-Trica Relief Ampoule 30ml","m":"SKIN1004","c":"Tea-Trica","f":"8809576261882.jpg","uso":"The anti-breakout, soothing ampoule in mini size: for sensitive skin too","upc":"8809576261882","mo":"AMPM","or":50,"es":"1 min","fr":"every day","como":"Apply a suitable amount with the dropper, spread evenly over your skin and pat gently to help it absorb.","al":[],"fl":{"f":0,"rt":0,"vc":0,"ac":0,"sol":0}},{"d":"Tone Brightening Capsule Ampoule 50ml","m":"SKIN1004","c":"Tone Brightening","f":"8809913830627.jpg","uso":"Niacinamide and TXA ampoule with capsules: a more even tone and brighter skin","upc":"8809913830627","mo":"AMPM","or":50,"es":"1 min","fr":"every day","como":"Apply a suitable amount with the dropper, spread evenly over your skin and pat gently to help it absorb.","al":[],"fl":{"f":0,"rt":0,"vc":0,"ac":0,"sol":0}},{"d":"Probio-Cica Glow Sun Ampoule 50ml","m":"SKIN1004","c":"Probio-Cica","f":"8809913830573.jpg","uso":"Sunscreen with glow and probiotics","upc":"8809913830573","mo":"AM","or":90,"es":"—","fr":"EVERY morning","como":"Last step of your routine: apply it evenly to the areas that get sun, such as face, neck, arms and legs.","al":[],"fl":{"f":0,"rt":0,"vc":0,"ac":0,"sol":1}},{"d":"Poremizing Velvet Sunscreen 50ml","m":"SKIN1004","c":"Poremizing","f":"8809913832485.jpg","uso":"Matte-finish sunscreen for oily skin","upc":"8809913832485","mo":"AM","or":90,"es":"—","fr":"EVERY morning","como":"Last step of your routine: an even layer on face, neck and exposed areas, 15 minutes before going out in the sun. Reapply at least every 2 hours.","al":[],"fl":{"f":0,"rt":0,"vc":0,"ac":0,"sol":1}},{"d":"Hyalu-Cica Sun Stick 20g","m":"SKIN1004","c":"Hyalu-Cica","f":"8809913830214.jpg","uso":"Silky sunscreen stick: touch-ups without messy hands","upc":"8809913830214","mo":"AM","or":90,"es":"—","fr":"EVERY morning","como":"Last step of your routine: glide the stick directly over face, neck and exposed areas until they are covered, 15 minutes before going out in the sun. Reapply at least every 2 hours.","al":[],"fl":{"f":0,"rt":0,"vc":0,"ac":0,"sol":1}},{"d":"Hyalu-Cica Water-Fit Sun Serum 50ml","m":"SKIN1004","c":"Hyalu-Cica","f":"B0FXH5LHN8.jpg","uso":"THE viral sunscreen: it feels like a serum, zero white cast","upc":"8809576261592","mo":"AM","or":90,"es":"—","fr":"EVERY morning","como":"Last step of your routine: an even layer on face, neck and exposed areas, 15 minutes before going out in the sun; massage gently. Reapply at least every 2 hours.","al":[],"fl":{"f":0,"rt":0,"vc":0,"ac":0,"sol":1}},{"d":"Hyalu-Cica Water-Fit Sun Serum 100ml","m":"SKIN1004","c":"Hyalu-Cica","f":"8809913830603.jpg","uso":"The viral sunscreen in double size","upc":"8809913830603","mo":"AM","or":90,"es":"—","fr":"EVERY morning","como":"Last step of your routine: an even layer on face, neck and exposed areas, 15 minutes before going out in the sun; massage gently. Reapply at least every 2 hours.","al":[],"fl":{"f":0,"rt":0,"vc":0,"ac":0,"sol":1}},{"d":"Hyalu-Cica Cleansing Milk 200ml","m":"SKIN1004","c":"Hyalu-Cica","f":"8809913832850.jpg","uso":"Gentle cleansing milk for dry or sensitive skin","upc":"8809913832850","mo":"AMPM","or":20,"es":"no wait needed","fr":"every day","como":"With DRY hands and face: a suitable amount, gently massage your whole face to dissolve makeup and impurities, and rinse thoroughly with lukewarm water. If you're wearing heavy makeup, follow with a second cleanser.","al":[],"fl":{"f":0,"rt":0,"vc":0,"ac":0,"sol":0}},{"d":"Centella Ampoule 100ml","m":"SKIN1004","c":"Centella Original","f":"B06Y15D1LH.jpg","uso":"THE soothing ampoule: one single ingredient, calm skin","upc":"8809576260663","mo":"AMPM","or":50,"es":"1 min","fr":"every day","como":"Morning and night: 2–3 drops directly onto clean skin with the dropper; spread gently and pat until absorbed.","al":["Avoid contact with the eyes; if your skin gets irritated, stop using it."],"fl":{"f":0,"rt":0,"vc":0,"ac":0,"sol":0}},{"d":"Centella Cream 30ml (mini)","m":"SKIN1004","c":"Centella Original","f":"8809576261318.jpg","uso":"The centella cream in mini: the ideal first buy","upc":"8809576261318","mo":"AMPM","or":70,"es":"1 min (by day, before sunscreen)","fr":"every day","como":"Last step of your routine: a suitable amount on your face and pat with both palms to help it absorb.","al":[],"fl":{"f":0,"rt":0,"vc":0,"ac":0,"sol":0}},{"d":"Heartleaf 77% Soothing Toner 250ml","m":"ANUA","c":"Heartleaf","f":"B08CMS8P67.jpg","uso":"The viral soothing toner: calms irritation and leaves skin hydrated","upc":"8800307370859","mo":"AMPM","or":30,"es":"30 sec","fr":"every day","como":"After washing your face: with your hands or a cotton pad, press it gently all over your face. You can apply 2–3 layers, or soak cotton pads and leave them on for 3–5 minutes as a mini mask.","al":["By day, finish with sunscreen."],"fl":{"f":0,"rt":0,"vc":0,"ac":0,"sol":0}},{"d":"Tone Brightening Tone-Up Sunscreen 50ml","m":"SKIN1004","c":"Tone Brightening","f":"8809576261622.jpg","uso":"Tinted sunscreen: evens your tone and gives a fresh-faced look","upc":"8809576261622","mo":"AM","or":90,"es":"—","fr":"EVERY morning","como":"Last step of your routine: an even layer on face, neck and exposed areas, 15 minutes before going out in the sun. Reapply at least every 2 hours.","al":[],"fl":{"f":0,"rt":0,"vc":0,"ac":0,"sol":1}},{"d":"Bio-Collagen Real Deep Mask (1 pc)","m":"BIODANCE","c":"Real Deep Masks","f":"B0B2RM68G2.jpg","uso":"THE viral sheet mask: it turns clear while you sleep and you wake up with glow","upc":"8809937360834","mo":"LIBRE","or":76,"es":"—","fr":"all night, or by day for at least 3–4 hours","como":"At night: at the end of your routine, put it on and leave it on all night; remove it in the morning. By day: after toner or serum, leave it on for 3–4 hours or until it turns clear. Use the eye and mouth cutouts on the sides of your nose, on dark circles or on your neck.","al":[],"fl":{"f":0,"rt":0,"vc":0,"ac":0,"sol":0}},{"d":"Caviar PDRN Real Deep Mask (1 pc)","m":"BIODANCE","c":"Real Deep Masks","f":"B0GY427BJK.jpg","uso":"The premium version with caviar and PDRN: revitalizes, nourishes and leaves skin plumper","upc":"8809891184606","mo":"LIBRE","or":76,"es":"—","fr":"all night, or by day for at least 3–4 hours","como":"At night: at the end of your routine, put it on and leave it on all night; remove it in the morning. By day: after toner or serum, leave it on for 3–4 hours or until it turns clear. Use the eye and mouth cutouts on the sides of your nose, on dark circles or on your neck.","al":[],"fl":{"f":0,"rt":0,"vc":0,"ac":0,"sol":0}},{"d":"Vita-A Retinal Shot Booster 15ml","m":"CELIMAX","c":"Retinal","f":"B0DK4Y2YP3.jpg","uso":"Retinal, a step up from retinol: for wrinkles and firmness","upc":"8809700320812","mo":"PM","or":50,"es":"1–2 min","fr":"1–2 nights a week at first; then every other night; after that, every night if your skin tolerates it","como":"At night only: after a creamy toner or a light serum, an amount the size of a grain of rice; then a moisturizing cream (the brand recommends one with niacinamide). Wash your hands when you finish.","al":["Avoid contact with the eyes.","If your skin gets irritated, reduce the amount and the frequency.","If it leaves a yellow tint, it comes off when you wash your face.","The next morning, finish with sunscreen.","If you are pregnant or breastfeeding, ask first before using retinoids.","Do not mix it with exfoliants or vitamin C on the same night."],"fl":{"f":1,"rt":1,"vc":0,"ac":0,"sol":0}},{"d":"PDRN Lip Sleeping Mask 10g","m":"Medicube","c":"PDRN Pink","f":"8800289470455.jpg","uso":"Night lip balm with PDRN and collagen: lips wake up soft, full and hydrated","upc":"8800289470455","mo":"LIBRE","or":88,"es":"—","fr":"at night, and by day when your lips ask for it","como":"At night: a generous layer before bed; in the morning, wipe off any excess if you like. By day: a light layer when your lips ask for moisture.","al":[],"fl":{"f":0,"rt":0,"vc":0,"ac":0,"sol":0}},{"d":"Collagen Peptide Eye Patch (30 pairs)","m":"BIODANCE","c":"Collagen Peptide","f":"B0GD6R7CFJ.jpg","uso":"A jar with 30 pairs of patches: fresh eyes all month","upc":"8809891186655","mo":"LIBRE","or":35,"es":"once you remove them, continue your routine","fr":"at any step of your routine","como":"Use the spatula to take out the patches and place them under your eyes. Remove them after 20–30 minutes.","al":[],"fl":{"f":0,"rt":0,"vc":0,"ac":0,"sol":0}},{"d":"Heartleaf Quercetinol Cleansing Foam 150ml","m":"ANUA","c":"Heartleaf","f":"B0BVV8BNYJ.jpg","uso":"Deep pore cleansing foam that does not dry you out","upc":"8809640734427","mo":"AMPM","or":20,"es":"no wait needed","fr":"every day; with sensitive skin, start 2–3 times a week","como":"Work up enough lather with a suitable amount, gently massage your face for 1–2 minutes, rinse with lukewarm water and pat dry.","al":["The brand recommends testing it on a small area first."],"fl":{"f":0,"rt":0,"vc":0,"ac":0,"sol":0}},{"d":"Collagen Jelly Serum Mist 50ml","m":"BIODANCE","c":"Collagen Peptide","f":"B0GF86QJK7.jpg","uso":"Peptide serum in a mist: refreshes and firms","upc":"8809891186570","mo":"LIBRE","or":93,"es":"—","fr":"when your skin asks for it","como":"As a mist: spray from about 20 cm away for a fresh, radiant finish. As a serum: spray up close for a concentrated layer. It works as a toner, to set makeup or to freshen up during the day.","al":["If your skin is sensitive, test it first on a small area, such as your forearm or behind your ear."],"fl":{"f":0,"rt":0,"vc":0,"ac":0,"sol":0}},{"d":"EGF NAD Firming Serum 30ml","m":"Medicube","c":"NAD","f":"B0GCC2JV65.jpg","uso":"EGF + NAD: improves the look of wrinkles, firmness, pores and radiance","upc":"8800289467271","mo":"AMPM","or":50,"es":"1 min","fr":"every day","como":"Morning and night, after cleansing and before your cream: 2–3 drops evenly over face and neck; pat gently to help it absorb.","al":[],"fl":{"f":0,"rt":0,"vc":0,"ac":0,"sol":0}},{"d":"Collagen Firming Suncream 50ml","m":"Medicube","c":"Collagen","f":"B0FPQGLYK9.jpg","uso":"Firming sunscreen: no white cast, pure glow","upc":"8800240576608","mo":"AM","or":90,"es":"—","fr":"EVERY morning","como":"Last step of your routine: apply it generously 15 minutes before going out in the sun. Reapply at least every 2 hours.","al":[],"fl":{"f":0,"rt":0,"vc":0,"ac":0,"sol":1}}];
+const UPCMAP = {"8809640734526":0,"8809640735820":0,"8809640737190":1,"8809640736667":2,"8809640732829":3,"8800307372983":4,"8806109101257":5,"8806109107358":6,"8806109106733":7,"8809416470511":8,"8809598456983":9,"8809416470016":10,"8809598455658":11,"8809416470009":12,"8809447256221":13,"8809447256429":14,"8809447256115":15,"8809447255101":16,"8809447256795":17,"8800256114665":18,"8800256119066":18,"8800289479915":18,"8800256115327":18,"8800256108374":18,"8809517418870":18,"8809517412908":18,"8809921779215":18,"8800240575298":19,"8800256118953":19,"8809517411376":19,"8800256119332":20,"8800289461859":20,"8800256119226":21,"8800289461842":21,"8800240567354":22,"8800256118908":22,"8809865269834":22,"8809982769866":23,"8800256119011":23,"8800289479977":24,"8800256109661":25,"8800289474972":25,"8809883884002":25,"8800289467714":26,"8800366242333":26,"8800289461071":26,"8800256118885":26,"8800256108053":27,"8800289474989":27,"8800289469985":27,"8800256119042":28,"8800289461293":28,"8800256113101":29,"8800289474736":29,"8800289473852":30,"8800289469374":30,"8800289462207":30,"8800289477386":31,"8800289469367":31,"8800366242975":31,"8800289466441":32,"8800366244023":32,"8800256119660":33,"8800289461088":33,"8800366240759":34,"8800366240773":34,"8800256113217":35,"8800256118984":35,"8809921777112":35,"8800256114313":36,"8800256118977":36,"8809960356286":36,"8809982769903":37,"8800256118991":37,"8800289468001":37,"8800256112227":38,"8800256119004":38,"8800289467998":38,"8800289477416":39,"8800289467608":39,"8800289460784":39,"8809640738135":40,"8800307379326":41,"8800256114399":42,"8800289474873":42,"8800289461576":42,"8800256108046":42,"8809598454613":43,"8809971484503":44,"8809913830610":45,"8809576261882":46,"8809913830627":47,"8809913830573":48,"8809913832485":49,"8809913830214":50,"8809576261592":51,"8809913830603":52,"8809913832850":53,"8809576260663":54,"8809576261318":55,"8800307370859":56,"8809640731433":56,"8809640734694":56,"8809576261622":57,"8809937360834":58,"8809937361060":58,"8809891184606":59,"8809891184613":59,"8809891187454":59,"8809700320812":60,"8800289470455":61,"8809891186655":62,"8809640734427":63,"8809891186570":64,"8800289467271":65,"8800366241046":65,"8800240576608":66,"8809921775095":66};
+/* CÓDIGOS (13-nov-2026, Michael: «no escaneaba productos que sí tenemos»): cada producto se reconoce por su código principal
+   Y por los otros que trae su empaque real (la caja de 4 de las mascarillas BIODANCE, otras ediciones del tónico ANUA). Lo leído
+   se normaliza: un UPC-A de 12 cifras es el mismo EAN-13 con un 0 adelante, y un GTIN-14 de caja (0 o 1–8 adelante) se lleva
+   a su EAN-13 recalculando el dígito verificador. Antes solo se buscaba el código tal cual llegaba. */
+const digitoEAN = s => { let t = 0; for (let k = 0; k < s.length; k++) t += (+s[k]) * (k % 2 ? 3 : 1); return String((10 - t % 10) % 10); };
+const idxCodigo = raw => {
+  const c = String(raw == null ? "" : raw).replace(/[^0-9]/g, "");
+  const cands = [c];
+  if (c.length === 12) cands.push("0" + c);
+  if (c.length === 13 && c[0] === "0") cands.push(c.slice(1));
+  if (c.length === 14) { cands.push(c.slice(1)); cands.push(c.slice(1, 13) + digitoEAN(c.slice(1, 13))); }
+  for (const k of cands) if (UPCMAP[k] !== undefined) return UPCMAP[k];
+  return undefined;
+};
+/* lo que lee la cámara es dato AJENO: se sanea por formato (letras, dígitos y
+   guiones, máx 32) antes de mostrarlo, para que nunca llegue como HTML (auditoría 2-ago) */
+const codSeguro = c => String(c == null ? "" : c).replace(/[^A-Za-z0-9\-]/g, "").slice(0, 32);
+const $ = id => document.getElementById(id);
+
+/* mi lista (persistida como índices de producto — nada personal) */
+let MIOS = [];
+try { MIOS = (JSON.parse(localStorage.getItem("guia_mios") || "[]") || []).filter(i => GP[i]); } catch (e) {}
+const guarda = () => { try { localStorage.setItem("guia_mios", JSON.stringify(MIOS)); } catch (e) {} };
+
+const foto = (p, cls) => p.f ? `<img class="${cls || ""}" src="../p/${p.f}" alt="" loading="lazy">` : "";
+
+function pintaMios() {
+  $("mios").innerHTML = MIOS.map(i => {
+    const p = GP[i];
+    return `<span class="mio">${foto(p)}${p.d}<button type="button" data-q="${i}" aria-label="remove">✕</button></span>`;
+  }).join("");
+  $("vacio2").hidden = MIOS.length > 0;
+  const b = $("vermiguia");
+  b.disabled = MIOS.length === 0;
+  b.textContent = MIOS.length ? `SEE MY USAGE GUIDE (${MIOS.length}) →` : "Add your products ↑";
+}
+function agrega(i) {
+  if (!MIOS.includes(i)) { MIOS.push(i); guarda(); pintaMios(); }
+  try { navigator.vibrate && navigator.vibrate(60); } catch (e) {}
+}
+$("mios").addEventListener("click", e => {
+  const b = e.target.closest("button[data-q]");
+  if (b) { MIOS = MIOS.filter(x => x !== +b.dataset.q); guarda(); pintaMios(); }
+});
+
+/* búsqueda por nombre — misma normalización que el buscador del sitio */
+const norm = s => s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim().toLowerCase();
+const compacto = s => norm(s).replace(/[^a-z0-9]/g, "");
+const coincide = (indice, t) => {
+  const I = norm(indice), C = compacto(indice);
+  /* plural natural («cremas», «geles») sin cero resultados: fallback al singular */
+  const hay = w => I.includes(w) || C.includes(compacto(w));
+  return t.split(/\s+/).filter(Boolean).every(w => {
+    if (hay(w)) return true;
+    const s = w.replace(/(?:es|s)$/, "");
+    return s.length >= 3 && s !== w && hay(s);
+  });
+};
+$("busca").addEventListener("input", () => {
+  const t = norm($("busca").value);
+  const caja = $("sugs");
+  if (!t) { caja.hidden = true; return; }
+  const hits = [];
+  for (let i = 0; i < GP.length && hits.length < 8; i++)
+    if (coincide(GP[i].d + " " + GP[i].m + " " + GP[i].c + " " + GP[i].upc, t)) hits.push(i);
+  caja.innerHTML = hits.map(i =>
+    `<button type="button" data-add="${i}">${foto(GP[i])}<span>${GP[i].d}<span class="sm">${GP[i].m} · ${GP[i].c}</span></span></button>`).join("")
+    || `<button type="button" disabled>Can't find it — try another word or scan it 📷</button>`;
+  caja.hidden = false;
+});
+$("sugs").addEventListener("click", e => {
+  const b = e.target.closest("button[data-add]");
+  if (b) { agrega(+b.dataset.add); $("busca").value = ""; $("sugs").hidden = true; }
+});
+document.addEventListener("click", e => {
+  if (!e.target.closest("#buscawrap")) $("sugs").hidden = true;
+});
+
+/* ---------- escáner en vivo (ZXing local, la misma librería de /buscar) ---------- */
+const _scripts = {};
+function cargarScript(src) {
+  if (!_scripts[src]) _scripts[src] = new Promise((ok, mal) => {
+    const s = document.createElement("script");
+    s.src = src; s.onload = ok; s.onerror = () => mal(new Error("Failed to load " + src));
+    document.head.appendChild(s);
+  });
+  return _scripts[src];
+}
+let _lector = null;
+async function lectorBarras() {
+  await cargarScript("../buscar/lib/zxing.min.js");
+  if (!_lector) {
+    const hints = new Map();
+    hints.set(ZXing.DecodeHintType.POSSIBLE_FORMATS, [
+      ZXing.BarcodeFormat.EAN_13, ZXing.BarcodeFormat.EAN_8,
+      ZXing.BarcodeFormat.UPC_A, ZXing.BarcodeFormat.UPC_E, ZXing.BarcodeFormat.CODE_128]);
+    hints.set(ZXing.DecodeHintType.TRY_HARDER, true);
+    _lector = new ZXing.BrowserMultiFormatReader(hints);
+  }
+  return _lector;
+}
+const SCAN_GUIA = "Let the bars of the <b>barcode</b> fill the width, at 10–15 cm and in good light. Scan <b>all</b> your products, one after another.";
+let escaneando = false, ultimoCod = "", ultimoT = 0;
+let _stream = null;   /* stream propio del lector NATIVO: hay que apagarlo a mano */
+$("btnscan").addEventListener("click", async () => {
+  try {
+    $("scanbox").hidden = false; escaneando = true;
+    $("scanmsg").innerHTML = SCAN_GUIA;
+    $("scancont").textContent = MIOS.length ? `${MIOS.length} in your list` : "";
+    const alLeer = (cod) => {
+        if (!escaneando || !cod) return;
+        const t = Date.now();
+        if (cod === ultimoCod && t - ultimoT < 2500) return;   // el mismo código pegado a la cámara
+        ultimoCod = cod; ultimoT = t;
+        const ix = idxCodigo(cod);
+        if (ix !== undefined) {
+          const i = ix;
+          agrega(i);
+          $("scanmsg").innerHTML = `✅ <b>${GP[i].d}</b> added. Go on with the next one, or tap «I'm done».`;
+          $("scancont").textContent = `${MIOS.length} in your list`;
+        } else {
+          try { navigator.vibrate && navigator.vibrate([40, 60, 40]); } catch (e) {}
+          $("scanmsg").innerHTML = `I read the code <b>${codSeguro(cod)}</b> but it isn't from our store 🤔. Try another code on the package or search by name.`;
+        }
+    };
+    /* MISMO camino que /buscar, ya probado en el iPhone de Michael (2-ago): Safari no trae
+       BarcodeDetector y decodeFromConstraints no leía ni un código perfecto. Tomamos cada
+       cuadro, recortamos la banda central y lo pasamos por decodeFromImageUrl. */
+    let motor = "";
+    if ("BarcodeDetector" in window) {
+      try {
+        const soportados = await BarcodeDetector.getSupportedFormats();
+        const formatos = ["ean_13", "ean_8", "upc_a", "upc_e", "code_128", "code_39", "itf"]
+          .filter(x => soportados.includes(x));
+        if (formatos.length) {
+          const det = new BarcodeDetector({ formats: formatos });
+          _stream = await navigator.mediaDevices.getUserMedia({
+            video: { facingMode: { ideal: "environment" },
+                     width: { ideal: 1280 }, height: { ideal: 720 } } });
+          $("scanvid").srcObject = _stream; await $("scanvid").play();
+          motor = "nativo";
+          const mirar = async () => {
+            if (!escaneando) return;
+            try { const r = await det.detect($("scanvid")); if (r && r.length) return alLeer(r[0].rawValue); }
+            catch (e) {}
+            if (escaneando) setTimeout(mirar, 150);
+          };
+          mirar();
+        }
+      } catch (e) { motor = ""; }
+    }
+    if (!motor) {
+      const lector = await lectorBarras();
+      _stream = await navigator.mediaDevices.getUserMedia({
+        video: { facingMode: { ideal: "environment" },
+                 width: { ideal: 1280 }, height: { ideal: 720 } } });
+      $("scanvid").srcObject = _stream; await $("scanvid").play();
+      try {
+        const tr = _stream.getVideoTracks()[0];
+        if (tr.getCapabilities && tr.getCapabilities().focusMode)
+          await tr.applyConstraints({ advanced: [{ focusMode: "continuous" }] });
+      } catch (e) {}
+      const cv = document.createElement("canvas");
+      const leerCuadro = async () => {
+        if (!escaneando) return;
+        const v = $("scanvid"), vw = v.videoWidth, vh = v.videoHeight;
+        if (vw > 0 && vh > 0) {
+          const ch = Math.max(80, Math.round(vh * 0.6));
+          cv.width = vw; cv.height = ch;
+          cv.getContext("2d").drawImage(v, 0, Math.round((vh - ch) / 2), vw, ch, 0, 0, vw, ch);
+          try {
+            const r = await lector.decodeFromImageUrl(cv.toDataURL("image/jpeg", 0.92));
+            if (r && r.getText()) return alLeer(r.getText());
+          } catch (e) {}
+        }
+        if (escaneando) setTimeout(leerCuadro, 200);
+      };
+      leerCuadro();
+    }
+    prepararLuz();
+  } catch (e) {
+    cerrarEscaner();
+    alert("I couldn't open the camera here. Search for your products by name — it works just the same.");
+  }
+});
+function prepararLuz() {
+  setTimeout(() => {
+    try {
+      const track = $("scanvid").srcObject && $("scanvid").srcObject.getVideoTracks()[0];
+      if (track && track.getCapabilities && track.getCapabilities().torch) {
+        $("scanluz").hidden = false; let luzOn = false;
+        $("scanluz").onclick = () => {
+          luzOn = !luzOn;
+          track.applyConstraints({ advanced: [{ torch: luzOn }] }).catch(() => {});
+          $("scanluz").textContent = luzOn ? "💡 Turn light off" : "💡 Turn light on";
+        };
+      }
+    } catch (e) {}
+  }, 800);
+}
+function cerrarEscaner() {
+  escaneando = false; $("scanbox").hidden = true; $("scanluz").hidden = true;
+  if (_lector) { try { _lector.reset(); } catch (e) {} }
+  /* el stream del lector nativo es nuestro: hay que apagarlo o la cámara sigue prendida */
+  if (_stream) { try { _stream.getTracks().forEach(t => t.stop()); } catch (e) {} _stream = null; }
+  $("scanvid").srcObject = null;
+}
+$("scancerrar").addEventListener("click", cerrarEscaner);
+addEventListener("pagehide", cerrarEscaner);
+
+/* ---------- la guía ---------- */
+const MO = { AM: "am", PM: "pm", SEM: "sem" };
+function itemLista(p, n) {
+  return `<li class="paso"><span class="num">${n}</span>${foto(p)}
+    <span><span class="pn">${p.d}</span><span class="pm2">${p.m}</span></span></li>`;
+}
+function listaOrdenada(idxs, titulo, tag, sub) {
+  if (!idxs.length) return "";
+  const els = [];
+  idxs.forEach((i, k) => {
+    els.push(itemLista(GP[i], k + 1));
+    if (k < idxs.length - 1 && GP[i].es && GP[i].es !== "—")
+      els.push(`<li class="espera">wait: ${GP[i].es}</li>`);
+  });
+  return `<div class="bloque"><span class="btag ${tag}">${titulo}</span>
+    <div class="bsub">${sub}</div><ol class="ol">${els.join("")}</ol></div>`;
+}
+function pintaGuia() {
+  const orden = [...MIOS].sort((a, b) => GP[a].or - GP[b].or || (GP[a].d < GP[b].d ? -1 : 1));
+  const am  = orden.filter(i => GP[i].mo === "AM" || GP[i].mo === "AMPM");
+  const pm  = orden.filter(i => GP[i].mo === "PM" || GP[i].mo === "AMPM");
+  const sem = orden.filter(i => GP[i].mo === "SEM");
+  const lib = orden.filter(i => GP[i].mo === "LIBRE");
+  $("gcuenta").textContent = `${MIOS.length} product${MIOS.length !== 1 ? "s" : ""}`;
+  $("pcuenta2").textContent = `${MIOS.length} product${MIOS.length !== 1 ? "s" : ""}`;
+  const f = new Date().toLocaleDateString("en-US", { day: "numeric", month: "long", year: "numeric" });
+  $("pfecha").textContent = f; $("pfecha2").textContent = f;
+
+  /* avisos cruzados — solo LEEN las banderas que trae cada producto elegido */
+  const avisos = [];
+  // SIEMPRE, como primer consejo de uso (Michael 1-ago: la prueba de parche va
+  // aquí, post-compra — es recomendación de uso, no de venta)
+  avisos.push(`<b>Before first use: patch test.</b> One new product at a time: ` +
+    `a little behind the ear or on the wrist, and wait 24 hours. ` +
+    `Burning, redness or itching? Don't use it on your face — tell your advisor.`);
+  const con = fl => orden.filter(i => GP[i].fl[fl]);
+  const fuertes = con("f");
+  if (fuertes.length >= 2)
+    avisos.push(`<b>You have ${fuertes.length} strong actives</b> (${fuertes.map(i => GP[i].d).join(" · ")}): use them on <b>different nights</b>, never together, and give your skin rest nights.`);
+  if (con("rt").length && con("vc").length)
+    avisos.push(`<b>Vitamin C and retinol:</b> vitamin C by DAY (with sunscreen) and retinol at NIGHT — that way they don't clash.`);
+  if (con("rt").length && con("ac").length)
+    avisos.push(`<b>Retinol and exfoliant:</b> separate nights; on the same night they irritate.`);
+  if ((fuertes.length || con("vc").length) && !con("sol").length)
+    avisos.push(`<b>Your list doesn't include sunscreen:</b> with actives, sunscreen every morning is not optional — ask your advisor for yours.`);
+  $("alertas").innerHTML = avisos.map(a => `<div class="gale">⚠️ ${a}</div>`).join("");
+
+  let rus = listaOrdenada(am, "☀️ YOUR MORNING", "am", "In this order, every day:")
+          + listaOrdenada(pm, "🌙 YOUR NIGHT", "pm", "In this order, every night:");
+  if (sem.length)
+    rus += `<div class="bloque"><span class="btag sem">📅 ONLY A FEW TIMES A WEEK</span>
+      <div class="bsub">They're not daily — each one has its own frequency:</div>` +
+      sem.map(i => `<div class="semrow">${foto(GP[i])}<div><span class="pn">${GP[i].d}</span>
+        <div class="fr">${GP[i].fr}</div><div class="cm">${GP[i].como}</div></div></div>`).join("") + `</div>`;
+  if (lib.length)
+    rus += `<div class="bloque"><span class="btag sem">💗 WHENEVER YOU LIKE</span>
+      <div class="bsub">No fixed time:</div>` +
+      lib.map(i => `<div class="semrow">${foto(GP[i])}<div><span class="pn">${GP[i].d}</span>
+        <div class="cm">${GP[i].como}</div></div></div>`).join("") + `</div>`;
+  $("rutinas").innerHTML = rus;
+
+  $("tarjetas").innerHTML = `<div class="bloque" style="border:0;background:none;padding:0 0 2px"><h2>Product by product</h2></div>`
+    + orden.map(i => {
+      const p = GP[i];
+      const cuando = p.mo === "AM" ? "☀️ Daytime only" : p.mo === "PM" ? "🌙 Night only"
+        : p.mo === "AMPM" ? "☀️🌙 Morning and night" : p.mo === "SEM" ? "📅 " + p.fr : "💗 Whenever you like";
+      return `<div class="card">${foto(p)}<div class="cd">
+        <div class="cn">${p.d}</div><div class="cm2">${p.m} · ${p.c}</div>
+        <div class="fila"><b>When?</b> ${cuando}${p.mo !== "SEM" && p.fr !== "every day" ? " · " + p.fr : ""}</div>
+        <div class="fila"><b>How?</b> ${p.como}</div>
+        ${p.es && p.es !== "—" ? `<div class="fila"><b>⏱ Before the next step:</b> ${p.es}</div>` : ""}
+        ${p.al.length ? `<div class="alz">${p.al.map(a => `<div>⚠️ ${a}</div>`).join("")}</div>` : ""}
+      </div></div>`;
+    }).join("");
+}
+
+$("vermiguia").addEventListener("click", () => {
+  cerrarEscaner();
+  pintaGuia();
+  $("g-armar").hidden = true; $("g-guia").hidden = false;
+  scrollTo({ top: 0, behavior: "instant" });
+});
+$("geditar").addEventListener("click", () => {
+  $("g-guia").hidden = true; $("g-armar").hidden = false;
+  scrollTo({ top: 0, behavior: "instant" });
+});
+$("pdfbtn").addEventListener("click", () => {
+  /* fotos de abajo aún en carga diferida: forzarlas antes de imprimir */
+  document.querySelectorAll('img[loading="lazy"]').forEach(i => { i.loading = "eager"; });
+  setTimeout(() => window.print(), 200);
+});
+
+/* volver inteligente: si venimos de una página del sitio, regresar A ESA */
+document.querySelectorAll('a.volver[href="../"]').forEach(a => {
+  a.addEventListener("click", e => {
+    try {
+      const ref = document.referrer && new URL(document.referrer);
+      if (ref && ref.origin === location.origin && ref.pathname !== location.pathname
+          && history.length > 1) { e.preventDefault(); history.back(); }
+    } catch (err) {}
+  });
+});
+
+pintaMios();
+
+/* ¿hay versión nueva publicada? (misma protección que las demás páginas) */
+(async () => {
+  try {
+    const mio = document.querySelector('meta[name="x-guia"]').content;
+    const r = await fetch(location.pathname + "?vchk=" + Math.random().toString(36).slice(2), { cache: "no-store" });
+    const m = (await r.text()).match(/name="x-guia" content="([a-f0-9]+)"/);
+    if (m && m[1] !== mio) {
+      const b = document.createElement("button");
+      b.id = "vnueva"; b.type = "button";
+      b.innerHTML = "🔄 There's a new version of this page — <b>tap me to update it</b>";
+      b.addEventListener("click", () => location.replace(location.pathname + "?v=" + m[1]));
+      document.body.appendChild(b);
+    }
+  } catch (e) {}
+})();
+</script><script>
+/* ---------- «Volver» al lugar correcto ---------- */
+(() => {
+  let origen = null;
+  try { origen = sessionStorage.getItem("so_origen"); } catch (e) {}
+  const aTienda = origen !== "asesora";     /* el default seguro es la página de clienta */
+  document.querySelectorAll("a.volver").forEach(a => {
+    a.setAttribute("href", aTienda ? "../tienda/" : "../");
+    if (aTienda) a.textContent = "← Back";
+  });
+})();
+</script>
+<script id="guia-redesign-preview-js">
+(() => {
+  document.body.classList.add("guia-redisenada");
+
+  const top = document.querySelector(".top");
+  const back = top?.querySelector("a.volver");
+  if (back) back.setAttribute("aria-label", "Back");
+  if (top && !top.querySelector(".guide-logo")) {
+    const logo = document.createElement("div");
+    logo.className = "guide-logo";
+    logo.innerHTML = "<strong>SO YOUNG</strong><em>K-BEAUTY</em>";
+    top.querySelector("a.volver")?.insertAdjacentElement("afterend", logo);
+  }
+  const seal = top?.querySelector(".sello");
+  if (seal) seal.innerHTML = '<span aria-hidden="true">🇰🇷</span><b>100% AUTHENTIC</b>';
+
+  const stripLeadingEmoji = element => {
+    if (!element || element.dataset.guideClean === "true") return;
+    const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+    const first = walker.nextNode();
+    if (first) first.textContent = first.textContent.replace(/^[\s☀️🌙📅💗⚠️]+/u, "");
+    element.dataset.guideClean = "true";
+  };
+
+  const setCardState = (card, open) => {
+    const button = card.querySelector(".guide-card-toggle");
+    card.classList.toggle("guide-open", open);
+    if (!button) return;
+    button.setAttribute("aria-expanded", String(open));
+    button.firstChild.textContent = open ? "Hide instructions " : "See how to use it ";
+  };
+
+  function enhanceGuide() {
+    document.querySelectorAll(".btag,.gale").forEach(stripLeadingEmoji);
+    document.querySelectorAll("#tarjetas .card").forEach(card => {
+      if (card.dataset.guideEnhanced === "true") return;
+      card.dataset.guideEnhanced = "true";
+      card.classList.add("guide-product-card");
+      card.querySelectorAll(".fila").forEach(row => {
+        row.innerHTML = row.innerHTML.replace(/☀️🌙|☀️|🌙|📅|💗/gu, "");
+      });
+      const copy = card.querySelector(".cd");
+      const brand = copy?.querySelector(".cm2");
+      if (!copy || !brand) return;
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "guide-card-toggle";
+      button.innerHTML = 'See how to use it <span aria-hidden="true">⌄</span>';
+      button.setAttribute("aria-expanded", "false");
+      button.addEventListener("click", () => {
+        setCardState(card, !card.classList.contains("guide-open"));
+      });
+      brand.insertAdjacentElement("afterend", button);
+    });
+  }
+
+  const preparePrint = () => {
+    document.querySelectorAll("#tarjetas .guide-product-card").forEach(card => {
+      card.dataset.guideWasOpen = String(card.classList.contains("guide-open"));
+      setCardState(card, true);
+    });
+  };
+  const restoreAfterPrint = () => {
+    document.querySelectorAll("#tarjetas .guide-product-card").forEach(card => {
+      if (card.dataset.guideWasOpen === "false") setCardState(card, false);
+      delete card.dataset.guideWasOpen;
+    });
+  };
+
+  enhanceGuide();
+  const guide = document.getElementById("g-guia");
+  if (guide) new MutationObserver(enhanceGuide).observe(guide, {childList:true, subtree:true});
+  document.getElementById("pdfbtn")?.addEventListener("click", preparePrint, true);
+  addEventListener("beforeprint", preparePrint);
+  addEventListener("afterprint", restoreAfterPrint);
+})();
+</script>
+
+</body></html>
